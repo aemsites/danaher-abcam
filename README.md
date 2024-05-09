@@ -2,8 +2,8 @@
 Your project's description...
 
 ## Environments
-- Preview: https://main--danaher-optimus--aemsites.hlx.page/
-- Live: https://main--danaher-optimus--aemsites.hlx.live/
+- Preview: https://main--danaher-optimus--aemsites.aem.page/
+- Live: https://main--danaher-optimus--aemsites.aem.live/
 
 ## Installation
 
