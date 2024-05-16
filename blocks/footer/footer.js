@@ -16,27 +16,27 @@ function callSocialIcons(socialIcons) {
 
 function showHideFooterLinks(footerLinks) {
   footerLinks.addEventListener('click', (event) => {
-  event.target.closest('li').querySelector('span').classList.toggle('open-arrow');
+    event.target.closest('li').querySelector('span').classList.toggle('open-arrow');
 
-  if (event.target.closest('li').querySelector('ul').classList.contains('show-hide')) {
-    event.target.closest('li').querySelector('ul').classList.remove('show-hide');
-  } else { event.target.closest('li').querySelector('ul').classList.add('show-hide'); }
+    if (event.target.closest('li').querySelector('ul').classList.contains('show-hide')) {
+      event.target.closest('li').querySelector('ul').classList.remove('show-hide');
+    } else { event.target.closest('li').querySelector('ul').classList.add('show-hide'); }
   });
 }
 
 function addClassesToListItems(element, depth) {
-    for (let i = 0; i < element.length; i += 1) {
-      const item = element[i];
-      item.classList.add('hs-menu-item', `hs-menu-depth-${depth}`, 'hs-item-has-children', `menu-num-${i + 1}`);
-      if (depth == 1) { 
-        item.prepend(span({class:'arrow'})); 
-      }
-      const childItems = item.querySelector('ul');
-      if (childItems?.children?.length > 0) {
-        addClassesToListItems(childItems.children, depth + 1);
-      }
+  for (let i = 0; i < element.length; i += 1) {
+    const item = element[i];
+    item.classList.add('hs-menu-item', `hs-menu-depth-${depth}`, 'hs-item-has-children', `menu-num-${i + 1}`);
+    if (depth === 1) {
+      item.prepend(span({ class: 'arrow' }));
+    }
+    const childItems = item.querySelector('ul');
+    if (childItems?.children?.length > 0) {
+      addClassesToListItems(childItems.children, depth + 1);
     }
   }
+}
 
 /**
  * Create Footer DOM Structure
@@ -75,7 +75,7 @@ function createFooterDOM(mainContainer) {
 
   footerLinks.appendChild(links);
   middleContainer.appendChild(footerLinks);
-  
+
   showHideFooterLinks(footerLinks);
   addClassesToListItems(footerLinks.children[0].children, 1);
   danaharLogoContainer.appendChild(danaharLogo);
