@@ -1,8 +1,9 @@
 import {
-  div, article, p, a, img, h1, h4, h3,
+  div, h1,
 } from '../../scripts/dom-builder.js';
 
 import { getMetadata } from '../../scripts/aem.js';
+
 export default function decorate(block) {
   const contentBlocks = block.querySelector('.section');
   const heading = getMetadata('og:title');
@@ -19,5 +20,4 @@ export default function decorate(block) {
     productCategoryWrapper.appendChild(container);
     contentBlocks.innerHTML = productCategoryWrapper.outerHTML;
   } else block.appendChild(container);
-
 }
