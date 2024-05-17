@@ -50,7 +50,6 @@ const TEMPLATE_LIST = [
   'product-category',
 ];
 
-
 async function decorateTemplates(main) {
   try {
     const template = toClassName(getMetadata('template'));
@@ -120,27 +119,23 @@ async function loadEager(doc) {
   }
 }
 
-//Changes date format from excel general format to date
+// Changes date format from excel general format to date
 export function formatDateRange(date) {
   const options = {
     month: 'short', day: '2-digit', year: 'numeric', timeZone: 'UTC',
   };
   const startDate = new Date(Number(date - 25569) * 24 * 60 * 60 * 1000).toUTCString();
-  console.log(startDate);
   const formattedStartDate = new Date(startDate).toLocaleDateString('en-us', options);
-  console.log(formattedStartDate);
   return formattedStartDate;
 }
 
-//Changes date format from Unix Epoch to date
+// Changes date format from Unix Epoch to date
 export function formatDate(date) {
   const options = {
     month: 'short', day: '2-digit', year: 'numeric', timeZone: 'UTC',
   };
   const startDate = new Date(Number(date) * 1000).toUTCString();
-  console.log(startDate);
   const formattedStartDate = new Date(startDate).toLocaleDateString('en-us', options);
-  console.log(formattedStartDate);
   return formattedStartDate;
 }
 /**
