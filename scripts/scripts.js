@@ -11,6 +11,9 @@ import {
   waitForLCP,
   loadBlocks,
   loadCSS,
+  toClassName,
+  getMetadata,
+  capitalizeWords,
 } from './aem.js';
 
 const LCP_BLOCKS = []; // add your LCP blocks to the list
@@ -39,6 +42,29 @@ async function loadFonts() {
     if (!window.location.hostname.includes('localhost')) sessionStorage.setItem('fonts-loaded', 'true');
   } catch (e) {
     // do nothing
+  }
+}
+
+const TEMPLATE_LIST = [
+  'default',
+  'product-category',
+];
+
+
+async function decorateTemplates(main) {
+  try {
+    const template = toClassName(getMetadata('template'));
+    if (TEMPLATE_LIST.includes(template)) {
+      const templateName = capitalizeWords(template);
+      const mod = await import(`../templates/${templateName}/${templateName}.js`);
+      loadCSS(`${window.hlx.codeBasePath}/templates/${templateName}/${templateName}.css`);
+      if (mod.default) {
+        await mod.default(main);
+      }
+    }
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('Auto Blocking failed', error);
   }
 }
 
@@ -79,6 +105,7 @@ async function loadEager(doc) {
   const main = doc.querySelector('main');
   if (main) {
     decorateMain(main);
+    await decorateTemplates(main);
     document.body.classList.add('appear');
     await waitForLCP(LCP_BLOCKS);
   }
@@ -93,6 +120,29 @@ async function loadEager(doc) {
   }
 }
 
+//Changes date format from excel general format to date
+export function formatDateRange(date) {
+  const options = {
+    month: 'short', day: '2-digit', year: 'numeric', timeZone: 'UTC',
+  };
+  const startDate = new Date(Number(date - 25569) * 24 * 60 * 60 * 1000).toUTCString();
+  console.log(startDate);
+  const formattedStartDate = new Date(startDate).toLocaleDateString('en-us', options);
+  console.log(formattedStartDate);
+  return formattedStartDate;
+}
+
+//Changes date format from Unix Epoch to date
+export function formatDate(date) {
+  const options = {
+    month: 'short', day: '2-digit', year: 'numeric', timeZone: 'UTC',
+  };
+  const startDate = new Date(Number(date) * 1000).toUTCString();
+  console.log(startDate);
+  const formattedStartDate = new Date(startDate).toLocaleDateString('en-us', options);
+  console.log(formattedStartDate);
+  return formattedStartDate;
+}
 /**
  * Loads everything that doesn't need to be delayed.
  * @param {Element} doc The container element

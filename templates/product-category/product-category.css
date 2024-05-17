@@ -1,13 +1,12 @@
 .product-category-wrapper {
-    width: 90%;
-    margin: 0 auto;
+    width: 980px;
+    margin:  auto;
   }
   
   .product-category-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    font-family: noto-sans, Open Sans, Roboto, Helvetica, sans-serif;
     --tw-text-opacity: 1;
     color: rgb(0 0 0 / var(--tw-text-opacity));
     margin-top: 3rem;
@@ -20,25 +19,28 @@
   }
   
   .product-category-container h1 {
-    font-family: lubalingraphstd, Century Gothic, Futura, Helvetica;
-    font-weight: 600;
-    --tw-text-opacity: 1;
     color: rgb(0 0 0 / var(--tw-text-opacity));
-    padding-bottom: 1.25rem;
+    padding-bottom: 2.25rem;
     margin-bottom: 0;
     font-size: 3.5rem;
     letter-spacing: 0;
     line-height: 3.5rem;
+    position: relative;
   }
- .mb-5 {
-    border: 1px solid rgb(255 114 35);
-    border-color: rgb(255 114 35);
+  .product-category-container h1::after {
+    content:'';
+    display:block;
+    border: 1px solid #FF7223;
+    border-color: #FF7223;
     width: 16.666667%;
     border-top-width: 4px;
     margin-bottom: 20px;
     line-height: 23px;
+    position:absolute;
+    top:70px;
+
   }
-  
+
   @media (min-width: 769px) {
     .product-category-wrapper {
       justify-items: center;

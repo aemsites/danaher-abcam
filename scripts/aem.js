@@ -524,6 +524,17 @@ function decorateSections(main) {
   });
 }
 
+function capitalizeWords(str) {
+  const words = str.split(' ');
+  const capitalizedWords = words.map((word) => {
+    if (word.length > 0) {
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    }
+    return word;
+  });
+  return capitalizedWords.join(' ');
+}
+
 /**
  * Gets placeholders object.
  * @param {string} [prefix] Location of placeholders
@@ -745,6 +756,7 @@ init();
 export {
   buildBlock,
   createOptimizedPicture,
+  capitalizeWords,
   decorateBlock,
   decorateBlocks,
   decorateButtons,
