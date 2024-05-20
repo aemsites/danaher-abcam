@@ -32,6 +32,18 @@ function buildHeroBlock(main) {
   }
 }
 
+// Change to first letter  is Capital in each word
+function capitalizeWords(str) {
+  const words = str.split(' ');
+  const capitalizedWords = words.map((word) => {
+    if (word.length > 0) {
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    }
+    return word;
+  });
+  return capitalizedWords.join(' ');
+}
+
 /**
  * load fonts.css and set a session storage flag
  */
@@ -126,17 +138,6 @@ export function formatDateRange(date) {
   const startDate = new Date(Number(date - 25569) * 24 * 60 * 60 * 1000).toUTCString();
   const formattedStartDate = new Date(startDate).toLocaleDateString('en-us', options);
   return formattedStartDate;
-}
-// Change to first letter  is Capital in each word
-function capitalizeWords(str) {
-  const words = str.split(' ');
-  const capitalizedWords = words.map((word) => {
-    if (word.length > 0) {
-      return word.charAt(0).toUpperCase() + word.slice(1);
-    }
-    return word;
-  });
-  return capitalizedWords.join(' ');
 }
 
 // Changes date format from Unix Epoch to date
