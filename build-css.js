@@ -6,6 +6,26 @@ const fileMappings = [
     input: './styles/tailwind.css',
     output: './styles/styles.css',
   },
+  {
+    input: './blocks/header/header.css',
+    output: './blocks/header/header.css',
+  },
+  {
+    input: './blocks/footer/footer.css',
+    output: './blocks/footer/footer.css',
+  },
+  {
+    input: './blocks/cards/cards.css',
+    output: './blocks/cards/cards.css',
+  },
+  {
+    input: './blocks/hero/hero.css',
+    output: './blocks/hero/hero.css',
+  },
+  {
+    input: './blocks/columns/columns.css',
+    output: './blocks/columns/columns.css',
+  },
 ];
 
 const watch = process.argv[2];

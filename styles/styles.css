@@ -588,10 +588,6 @@ video {
   }
 }
 
-.collapse {
-  visibility: collapse;
-}
-
 .block {
   display: block;
 }
@@ -606,14 +602,6 @@ video {
 
 .table {
   display: table;
-}
-
-.hidden {
-  display: none;
-}
-
-.resize {
-  resize: both;
 }
 
 .filter {
