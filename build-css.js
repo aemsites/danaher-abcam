@@ -7,23 +7,23 @@ const fileMappings = [
     output: './styles/styles.css',
   },
   {
-    input: './blocks/header/header.css',
+    content: './blocks/header/header.js',
     output: './blocks/header/header.css',
   },
   {
-    input: './blocks/footer/footer.css',
+    content: './blocks/footer/footer.js',
     output: './blocks/footer/footer.css',
   },
   {
-    input: './blocks/cards/cards.css',
+    content: './blocks/cards/cards.js',
     output: './blocks/cards/cards.css',
   },
   {
-    input: './blocks/hero/hero.css',
+    content: './blocks/hero/hero.js',
     output: './blocks/hero/hero.css',
   },
   {
-    input: './blocks/columns/columns.css',
+    content: './blocks/columns/columns.js',
     output: './blocks/columns/columns.css',
   },
 ];
