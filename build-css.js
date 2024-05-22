@@ -9,22 +9,27 @@ const fileMappings = [
   {
     content: './blocks/header/header.js',
     output: './blocks/header/header.css',
+    wrapper: 'header-wrapper'
   },
   {
     content: './blocks/footer/footer.js',
     output: './blocks/footer/footer.css',
+    wrapper: 'footer-wrapper'
   },
   {
     content: './blocks/cards/cards.js',
     output: './blocks/cards/cards.css',
+    wrapper: 'cards-wrapper'
   },
   {
     content: './blocks/hero/hero.js',
     output: './blocks/hero/hero.css',
+    wrapper: 'hero-wrapper'
   },
   {
     content: './blocks/columns/columns.js',
     output: './blocks/columns/columns.css',
+    wrapper: 'columns-wrapper'
   },
 ];
 
