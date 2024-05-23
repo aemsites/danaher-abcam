@@ -7,10 +7,6 @@
   margin-bottom: 0.5rem
 }
 
-.mini-teasers-wrapper :is(.mt-20) {
-  margin-top: 5rem
-}
-
 .mini-teasers-wrapper :is(.block) {
   display: block
 }
@@ -39,6 +35,16 @@
   padding-right: 30px
 }
 
+.mini-teasers-wrapper :is(.py-1) {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem
+}
+
+.mini-teasers-wrapper :is(.py-2) {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem
+}
+
 .mini-teasers-wrapper :is(.py-20) {
   padding-top: 5rem;
   padding-bottom: 5rem
@@ -49,42 +55,18 @@
   padding-bottom: 2.5rem
 }
 
-.mini-teasers-wrapper :is(.py-5) {
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem
+.mini-teasers-wrapper :is(.px-2) {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem
 }
 
-.mini-teasers-wrapper :is(.py-4) {
-  padding-top: 1rem;
-  padding-bottom: 1rem
-}
-
-.mini-teasers-wrapper :is(.py-3) {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem
-}
-
-.mini-teasers-wrapper :is(.py-1) {
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem
-}
-
-.mini-teasers-wrapper :is(.pb-20) {
-  padding-bottom: 5rem
-}
-
-.mini-teasers-wrapper :is(.text-base) {
-  font-size: 1rem;
-  line-height: 1.5rem
+.mini-teasers-wrapper :is(.px-2\.5) {
+  padding-left: 0.625rem;
+  padding-right: 0.625rem
 }
 
 .mini-teasers-wrapper :is(.text-lg) {
   font-size: 1.125rem;
-  line-height: 1.75rem
-}
-
-.mini-teasers-wrapper :is(.text-xl) {
-  font-size: 1.25rem;
   line-height: 1.75rem
 }
 
@@ -112,6 +94,11 @@
     --tw-space-y-reverse: 0;
     margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
     margin-bottom: calc(0px * var(--tw-space-y-reverse))
+  }
+
+  .mini-teasers-wrapper :is(.md\:px-8) {
+    padding-left: 2rem;
+    padding-right: 2rem
   }
 }
 
