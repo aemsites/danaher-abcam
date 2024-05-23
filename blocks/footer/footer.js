@@ -1,8 +1,12 @@
 import { readBlockConfig } from '../../scripts/aem.js';
 import { div, span } from '../../scripts/dom-builder.js';
 
+/**
+ * Adding Hyperlinks to social icons. Links which are authored in the sharepoint
+ * @param {Element} socialIcons Authored content from the Document
+ */
 function callSocialIcons(socialIcons) {
-  const allAnchorTags = div({ class: 'flex items-center gap-x-3 mdu:gap-x-6 [&>a]:p-0' });
+  const allAnchorTags = div({ class: 'flex items-center gap-x-1.5 md:gap-x-4' });
   for (let i = 0; i < socialIcons.children.length; i += 1) {
     const createAtag = document.createElement('a');
     createAtag.appendChild(socialIcons.children[i]?.children[0]?.querySelector('picture'));
@@ -14,22 +18,12 @@ function callSocialIcons(socialIcons) {
   return allAnchorTags;
 }
 
-function showHideFooterLinks(footerLinks) {
-  footerLinks.addEventListener('click', (event) => {
-    event.target.closest('li').querySelector('span').classList.toggle('open-arrow');
-
-    if (event.target.closest('li').querySelector('ul').classList.contains('show-hide')) {
-      event.target.closest('li').querySelector('ul').classList.remove('show-hide');
-    } else { event.target.closest('li').querySelector('ul').classList.add('show-hide'); }
-  });
-}
-
+//Adding classes to the footer links
 function addClassesToListItems(element, depth) {
   for (let i = 0; i < element.length; i += 1) {
     const item = element[i];
-    item.classList.add('hs-menu-item', `hs-menu-depth-${depth}`, 'hs-item-has-children', `menu-num-${i + 1}`);
-    if (depth === 1) {
-      item.prepend(span({ class: 'arrow' }));
+    if (depth > 1) {
+      item.classList.add(...'mt-2 text-white opacity-80 hover:underline'.split(' '));
     }
     const childItems = item.querySelector('ul');
     if (childItems?.children?.length > 0) {
@@ -37,6 +31,18 @@ function addClassesToListItems(element, depth) {
     }
   }
 }
+
+//Show hide in responsive for footer links
+function showHideFooterLinks(footerLinks) {
+  footerLinks.addEventListener('click', (event) => {
+    event.target.closest('li').querySelector('span').classList.toggle('open-arrow');
+
+    if (event.target.closest('li').querySelector('ul').classList.contains('hidden')) {
+      event.target.closest('li').querySelector('ul').classList.remove('hidden');
+    } else { event.target.closest('li').querySelector('ul').classList.add('hidden'); }
+  });
+}
+
 
 /**
  * Create Footer DOM Structure
@@ -56,7 +62,7 @@ function createFooterDOM(mainContainer) {
   const danaharLogoContainer = div({ class: 'shrink-0 h-[84px] w-[72px]' });
 
   const bottomLeftContainer = div({ class: 'flex flex-col items-end gap-y-4' });
-  const privacyTermsContainer = div({ class: 'flex flex-wrap justify-end font-light space-x-4 opacity-80 [&>a]:text-end' });
+  const privacyTermsContainer = div({ class: 'flex flex-wrap justify-end font-light space-x-5 opacity-90' });
 
   const rightsContainer = div({ class: 'font-light text-end opacity-80' });
 
@@ -66,6 +72,7 @@ function createFooterDOM(mainContainer) {
   const danaharLogo = firstChild.children[3];
   [firstChild.children[4]].forEach(elements => {
     [...elements.children].forEach ((element) => {
+      element.classList.add(...'hover:underline after:content-[\'Hello\_World\'] after:text-red-500'.split(' '))
       privacyTermsContainer.append(element)
     });
   });
@@ -79,7 +86,19 @@ function createFooterDOM(mainContainer) {
 
   footerLinks.appendChild(links);
   middleContainer.appendChild(footerLinks);
-
+  middleContainer.children[0].children[0].classList.add(...'flex flex-col md:flex-row gap-x-20 gap-y-4'.split(' '))
+  middleContainer.children[0].children[0].querySelectorAll('strong').forEach ((linksHeading) => {
+    linksHeading.style.display = 'block';
+    linksHeading.style.marginBottom = '0.75rem';
+  });
+  [...middleContainer.children[0].children[0].children].forEach ((liEle) => {
+    const linkDiv = div({class:'link-div'});
+    linkDiv.append(span({class:'arrow'}));
+    linkDiv.append(liEle.querySelector('strong'));
+    liEle.prepend(linkDiv);
+    liEle.querySelector('ul').classList.add(...'hidden md:block mt-4 text-white text-body-medium font-body'.split(' '));
+  })
+  
   showHideFooterLinks(footerLinks);
   addClassesToListItems(footerLinks.children[0].children, 1);
   danaharLogoContainer.appendChild(danaharLogo);
@@ -91,7 +110,9 @@ function createFooterDOM(mainContainer) {
   bottomContainer.appendChild(bottomLeftContainer);
 
   mainContainer.appendChild(topContainer);
+  mainContainer.appendChild(div({class:'my-8 border-t border-white opacity-50 lgu:my-7'}));
   mainContainer.appendChild(middleContainer);
+  mainContainer.appendChild(div({class:'my-6 border-t border-white opacity-50 lgu:my-6'}))
   mainContainer.appendChild(bottomContainer);
   mainContainer.children[0].remove();
   return mainContainer;
@@ -102,14 +123,14 @@ function createFooterDOM(mainContainer) {
  * @param {Element} block The footer block element
  */
 export default async function decorate(block) {
-  block.classList.add(...'pt-8 pb-6 mt-auto text-white bg-black-0 print:hidden'.split(' '));
+  block.classList.add(...'pt-8 pb-8 mt-auto text-white bg-black'.split(' '));
   const cfg = readBlockConfig(block);
   const footerPath = cfg.footer || '/footer';
   const response = await fetch(`${footerPath}.plain.html`, window.location.pathname.endsWith('/footer') ? { cache: 'reload' } : {});
 
   if (response.ok) {
     const html = await response.text();
-    const mainContainer = div({ class: 'flex flex-col mx-auto px-[30px] sm:px-[61px] xlu:px-0 xlu:max-w-[1120px]' });
+    const mainContainer = div({ class: 'flex flex-col mx-auto px-[30px] md:px-32 xl:px-0 xl:max-w-[1120px]' });
     mainContainer.innerHTML = html;
     block.append(createFooterDOM(mainContainer));
   }
