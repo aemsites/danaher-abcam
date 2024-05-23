@@ -18,7 +18,7 @@ function callSocialIcons(socialIcons) {
   return allAnchorTags;
 }
 
-//Adding classes to the footer links
+// Adding classes to the footer links
 function addClassesToListItems(element, depth) {
   for (let i = 0; i < element.length; i += 1) {
     const item = element[i];
@@ -32,7 +32,7 @@ function addClassesToListItems(element, depth) {
   }
 }
 
-//Show hide in responsive for footer links
+// Show hide in responsive for footer links
 function showHideFooterLinks(footerLinks) {
   footerLinks.addEventListener('click', (event) => {
     event.target.closest('li').querySelector('span').classList.toggle('open-arrow');
@@ -42,7 +42,6 @@ function showHideFooterLinks(footerLinks) {
     } else { event.target.closest('li').querySelector('ul').classList.add('hidden'); }
   });
 }
-
 
 /**
  * Create Footer DOM Structure
@@ -70,10 +69,10 @@ function createFooterDOM(mainContainer) {
   const socialIcons = callSocialIcons(firstChild.children[1]);
   const links = firstChild.children[2];
   const danaharLogo = firstChild.children[3];
-  [firstChild.children[4]].forEach(elements => {
-    [...elements.children].forEach ((element) => {
-      element.classList.add(...'hover:underline after:content-[\'Hello\_World\'] after:text-red-500'.split(' '))
-      privacyTermsContainer.append(element)
+  [firstChild.children[4]].forEach((elements) => {
+    [...elements.children].forEach((element) => {
+      element.classList.add(...'hover:underline'.split(' '));
+      privacyTermsContainer.append(element);
     });
   });
   const rights = firstChild.children[5];
@@ -86,23 +85,23 @@ function createFooterDOM(mainContainer) {
 
   footerLinks.appendChild(links);
   middleContainer.appendChild(footerLinks);
-  middleContainer.children[0].children[0].classList.add(...'flex flex-col md:flex-row gap-x-20 gap-y-4'.split(' '))
-  middleContainer.children[0].children[0].querySelectorAll('strong').forEach ((linksHeading) => {
+  middleContainer.children[0].children[0].classList.add(...'flex flex-col md:flex-row gap-x-20 gap-y-4'.split(' '));
+  middleContainer.children[0].children[0].querySelectorAll('strong').forEach((linksHeading) => {
     linksHeading.style.display = 'block';
     linksHeading.style.marginBottom = '0.75rem';
   });
-  [...middleContainer.children[0].children[0].children].forEach ((liEle) => {
-    const linkDiv = div({class:'link-div'});
-    linkDiv.append(span({class:'arrow'}));
+  [...middleContainer.children[0].children[0].children].forEach((liEle) => {
+    const linkDiv = div({ class: 'link-div' });
+    linkDiv.append(span({ class: 'arrow' }));
     linkDiv.append(liEle.querySelector('strong'));
     liEle.prepend(linkDiv);
     liEle.querySelector('ul').classList.add(...'hidden md:block mt-4 text-white text-body-medium font-body'.split(' '));
-  })
-  
+  });
+
   showHideFooterLinks(footerLinks);
   addClassesToListItems(footerLinks.children[0].children, 1);
   danaharLogoContainer.appendChild(danaharLogo);
-  //privacyTermsContainer.appendChild(privacyTerms);
+  // privacyTermsContainer.appendChild(privacyTerms);
   rightsContainer.appendChild(rights);
   bottomLeftContainer.appendChild(privacyTermsContainer);
   bottomLeftContainer.appendChild(rightsContainer);
@@ -110,9 +109,9 @@ function createFooterDOM(mainContainer) {
   bottomContainer.appendChild(bottomLeftContainer);
 
   mainContainer.appendChild(topContainer);
-  mainContainer.appendChild(div({class:'my-8 border-t border-white opacity-50 lgu:my-7'}));
+  mainContainer.appendChild(div({ class: 'my-8 border-t border-white opacity-50 lgu:my-7' }));
   mainContainer.appendChild(middleContainer);
-  mainContainer.appendChild(div({class:'my-6 border-t border-white opacity-50 lgu:my-6'}))
+  mainContainer.appendChild(div({ class: 'my-6 border-t border-white opacity-50 lgu:my-6' }));
   mainContainer.appendChild(bottomContainer);
   mainContainer.children[0].remove();
   return mainContainer;
