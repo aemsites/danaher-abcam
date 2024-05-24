@@ -1,4 +1,4 @@
-import { readBlockConfig } from '../../scripts/aem.js';
+import { readBlockConfig, decorateIcons } from '../../scripts/aem.js';
 import { div, span } from '../../scripts/dom-builder.js';
 
 /**
@@ -9,8 +9,8 @@ function callSocialIcons(socialIcons) {
   const allAnchorTags = div({ class: 'flex items-center gap-x-1.5 md:gap-x-4' });
   for (let i = 0; i < socialIcons.children.length; i += 1) {
     const createAtag = document.createElement('a');
-    createAtag.appendChild(socialIcons.children[i]?.children[0]?.querySelector('picture'));
-    createAtag.setAttribute('href', socialIcons.children[i]?.children[1]?.children[0].href);
+    createAtag.appendChild(socialIcons.children[i]?.firstElementChild?.querySelector('picture'));
+    createAtag.setAttribute('href', socialIcons.children[i]?.children[1]?.firstElementChild.href);
     createAtag.setAttribute('target', '_blank');
     createAtag.setAttribute('aria-label', 'Social Media Link');
     allAnchorTags.appendChild(createAtag);
@@ -23,7 +23,7 @@ function addClassesToListItems(element, depth) {
   for (let i = 0; i < element.length; i += 1) {
     const item = element[i];
     if (depth > 1) {
-      item.classList.add(...'mt-2 text-white opacity-80 hover:underline'.split(' '));
+      item.classList.add(...'mt-2 font-normal text-white opacity-80 hover:underline'.split(' '));
     }
     const childItems = item.querySelector('ul');
     if (childItems?.children?.length > 0) {
@@ -35,11 +35,13 @@ function addClassesToListItems(element, depth) {
 // Show hide in responsive for footer links
 function showHideFooterLinks(footerLinks) {
   footerLinks.addEventListener('click', (event) => {
-    event.target.closest('li').querySelector('span').classList.toggle('open-arrow');
-
     if (event.target.closest('li').querySelector('ul').classList.contains('hidden')) {
       event.target.closest('li').querySelector('ul').classList.remove('hidden');
-    } else { event.target.closest('li').querySelector('ul').classList.add('hidden'); }
+      event.target.closest('li').querySelector('img').style.transform = 'rotate(180deg)';
+    } else {
+      event.target.closest('li').querySelector('ul').classList.add('hidden');
+      event.target.closest('li').querySelector('img').style.transform = 'rotate(0deg)';
+    }
   });
 }
 
@@ -48,7 +50,7 @@ function showHideFooterLinks(footerLinks) {
  * @param {Element} mainContainer Authored content from the Document
  */
 function createFooterDOM(mainContainer) {
-  const firstChild = mainContainer.children[0];
+  const firstChild = mainContainer.firstElementChild;
 
   const topContainer = div({ class: 'flex items-end justify-between' });
   const logoContainer = div({ class: 'logo-container' });
@@ -63,15 +65,15 @@ function createFooterDOM(mainContainer) {
   const bottomLeftContainer = div({ class: 'flex flex-col items-end gap-y-4' });
   const privacyTermsContainer = div({ class: 'flex flex-wrap justify-end font-light space-x-5 opacity-90' });
 
-  const rightsContainer = div({ class: 'font-light text-end opacity-80' });
+  const rightsContainer = div({ class: 'font-normal text-end opacity-80' });
 
-  const logo = firstChild.children[0];
+  const logo = firstChild.firstElementChild;
   const socialIcons = callSocialIcons(firstChild.children[1]);
   const links = firstChild.children[2];
   const danaharLogo = firstChild.children[3];
   [firstChild.children[4]].forEach((elements) => {
     [...elements.children].forEach((element) => {
-      element.classList.add(...'hover:underline'.split(' '));
+      element.classList.add(...'hover:underline font-normal'.split(' '));
       privacyTermsContainer.append(element);
     });
   });
@@ -85,21 +87,24 @@ function createFooterDOM(mainContainer) {
 
   footerLinks.appendChild(links);
   middleContainer.appendChild(footerLinks);
-  middleContainer.children[0].children[0].classList.add(...'flex flex-col md:flex-row gap-x-20 gap-y-4'.split(' '));
-  middleContainer.children[0].children[0].querySelectorAll('strong').forEach((linksHeading) => {
+  middleContainer.firstElementChild.firstElementChild.classList.add(...'flex flex-col md:flex-row gap-x-20 gap-y-4'.split(' '));
+  middleContainer.firstElementChild.firstElementChild.querySelectorAll('strong').forEach((linksHeading) => {
     linksHeading.style.display = 'block';
-    linksHeading.style.marginBottom = '0.75rem';
+    linksHeading.style.marginBottom = '0.4rem';
+    linksHeading.classList.add(...'font-bold text-lg'.split(' '));
   });
-  [...middleContainer.children[0].children[0].children].forEach((liEle) => {
-    const linkDiv = div({ class: 'link-div' });
-    linkDiv.append(span({ class: 'arrow' }));
+  [...middleContainer.firstElementChild.firstElementChild.children].forEach((liEle) => {
+    const linkDiv = div({ class: 'link-div flex flex-row justify-between align-center' });
     linkDiv.append(liEle.querySelector('strong'));
+    const svgSpan = span({ class: 'md:hidden icon icon-chevron-down' });
+    linkDiv.append(svgSpan);
+    decorateIcons(linkDiv);
     liEle.prepend(linkDiv);
     liEle.querySelector('ul').classList.add(...'hidden md:block mt-4 text-white text-body-medium font-body'.split(' '));
   });
 
   showHideFooterLinks(footerLinks);
-  addClassesToListItems(footerLinks.children[0].children, 1);
+  addClassesToListItems(footerLinks.firstElementChild.children, 1);
   danaharLogoContainer.appendChild(danaharLogo);
   // privacyTermsContainer.appendChild(privacyTerms);
   rightsContainer.appendChild(rights);
@@ -109,11 +114,11 @@ function createFooterDOM(mainContainer) {
   bottomContainer.appendChild(bottomLeftContainer);
 
   mainContainer.appendChild(topContainer);
-  mainContainer.appendChild(div({ class: 'my-8 border-t border-white opacity-50 lgu:my-7' }));
+  mainContainer.appendChild(div({ class: 'my-8 border-t border-white opacity-50 lg:my-7' }));
   mainContainer.appendChild(middleContainer);
-  mainContainer.appendChild(div({ class: 'my-6 border-t border-white opacity-50 lgu:my-6' }));
+  mainContainer.appendChild(div({ class: 'my-6 border-t border-white opacity-50 lg:my-6' }));
   mainContainer.appendChild(bottomContainer);
-  mainContainer.children[0].remove();
+  mainContainer.firstElementChild.remove();
   return mainContainer;
 }
 
