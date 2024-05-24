@@ -6,10 +6,6 @@
   margin-bottom: 2rem
 }
 
-.alternating-wrapper :is(.block) {
-  display: block
-}
-
 .alternating-wrapper :is(.w-16) {
   width: 4rem
 }
@@ -34,23 +30,14 @@
   border-radius: 1rem
 }
 
-.alternating-wrapper :is(.bg-neutral-100) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(245 245 245 / var(--tw-bg-opacity))
-}
-
-.alternating-wrapper :is(.bg-teal-600) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(13 148 136 / var(--tw-bg-opacity))
-}
-
 .alternating-wrapper :is(.bg-\[\#378189\]) {
   --tw-bg-opacity: 1;
   background-color: rgb(55 129 137 / var(--tw-bg-opacity))
 }
 
-.alternating-wrapper :is(.bg-gradient-to-br) {
-  background-image: linear-gradient(to bottom right, var(--tw-gradient-stops))
+.alternating-wrapper :is(.bg-neutral-100) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(245 245 245 / var(--tw-bg-opacity))
 }
 
 .alternating-wrapper :is(.bg-gradient-to-b) {
@@ -119,12 +106,12 @@
   font-weight: 600
 }
 
-.alternating-wrapper :is(.leading-4) {
-  line-height: 1rem
-}
-
 .alternating-wrapper :is(.leading-10) {
   line-height: 2.5rem
+}
+
+.alternating-wrapper :is(.leading-4) {
+  line-height: 1rem
 }
 
 .alternating-wrapper :is(.tracking-wider) {
@@ -175,16 +162,6 @@
   }
 }
 
-@media (min-width: 768px) {
-  .alternating-wrapper :is(.md\:m-8) {
-    margin: 2rem
-  }
-
-  .alternating-wrapper :is(.md\:p-8) {
-    padding: 2rem
-  }
-}
-
 @media (min-width: 1024px) {
   .alternating-wrapper :is(.lg\:mx-28) {
     margin-left: 7rem;
@@ -203,16 +180,6 @@
   .alternating-wrapper :is(.lg\:py-20) {
     padding-top: 5rem;
     padding-bottom: 5rem
-  }
-
-  .alternating-wrapper :is(.lg\:px-10) {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem
-  }
-
-  .alternating-wrapper :is(.lg\:py-16) {
-    padding-top: 4rem;
-    padding-bottom: 4rem
   }
 
   .alternating-wrapper :is(.lg\:pl-16) {
