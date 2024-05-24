@@ -31,6 +31,12 @@ const fileMappings = [
     output: './blocks/columns/columns.css',
     wrapper: 'columns-wrapper',
   },
+  {
+    content: './blocks/alternating/alternating.js',
+    output: './blocks/alternating/alternating.css',
+    wrapper: 'alternating-wrapper',
+  },
+
 ];
 
 const watch = process.argv[2];
