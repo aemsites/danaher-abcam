@@ -1,1 +1,7 @@
 helix-importer-ui
+tailwind.config.js
+dist/
+node_modules/
+plugins/
+scripts/scripts.js
+scripts/aem.js
