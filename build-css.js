@@ -32,6 +32,11 @@ const fileMappings = [
     wrapper: 'columns-wrapper',
   },
   {
+    content: './blocks/sticky-right-navigation/sticky-right-navigation.js',
+    output: './blocks/sticky-right-navigation/sticky-right-navigation.css',
+    wrapper: 'sticky-right-navigation-wrapper',
+  },
+  {
     content: './blocks/mini-teasers/mini-teasers.js',
     output: './blocks/mini-teasers/mini-teasers.css',
     wrapper: 'mini-teasers-wrapper',
