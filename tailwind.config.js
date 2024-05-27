@@ -6,8 +6,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {},
-      fontFamily: {},
+      fontFamily: {
+        sans: [
+          'sanchez',
+        ]
+      },
     },
   },
   plugins: [],
 };
+
