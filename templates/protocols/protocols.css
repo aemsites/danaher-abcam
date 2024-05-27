@@ -2,14 +2,6 @@
   position: fixed
 }
 
-.sticky {
-  position: sticky
-}
-
-.top-0 {
-  top: 0px
-}
-
 .m-auto {
   margin: auto
 }
@@ -17,6 +9,11 @@
 .mx-\[15\%\] {
   margin-left: 15%;
   margin-right: 15%
+}
+
+.mx-\[30\.5\%\] {
+  margin-left: 30.5%;
+  margin-right: 30.5%
 }
 
 .my-12 {
@@ -27,21 +24,6 @@
 .my-5 {
   margin-top: 1.25rem;
   margin-bottom: 1.25rem
-}
-
-.mx-auto {
-  margin-left: auto;
-  margin-right: auto
-}
-
-.mx-\[5\.5\%\] {
-  margin-left: 5.5%;
-  margin-right: 5.5%
-}
-
-.mx-\[30\.5\%\] {
-  margin-left: 30.5%;
-  margin-right: 30.5%
 }
 
 .mb-10 {
@@ -56,24 +38,12 @@
   margin-bottom: 1.25rem
 }
 
-.mr-\[-8\%\] {
-  margin-right: -8%
+.mr-\[5\.25\%\] {
+  margin-right: 5.25%
 }
 
 .mt-4 {
   margin-top: 1rem
-}
-
-.ml-\[12\.5\%\] {
-  margin-left: 12.5%
-}
-
-.mr-10 {
-  margin-right: 2.5rem
-}
-
-.mr-\[5\.25\%\] {
-  margin-right: 5.25%
 }
 
 .block {
@@ -98,10 +68,6 @@
 
 .w-full {
   width: 100%
-}
-
-.min-w-\[360px\] {
-  min-width: 360px
 }
 
 .max-w-7xl {
@@ -147,21 +113,6 @@
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
 }
 
-.px-5 {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem
-}
-
-.py-3 {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem
-}
-
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem
-}
-
 .font-sans {
   font-family: sanchez
 }
@@ -181,11 +132,6 @@
   line-height: 1.75rem
 }
 
-.text-xs {
-  font-size: 0.75rem;
-  line-height: 1rem
-}
-
 .font-semibold {
   font-weight: 600
 }
@@ -194,27 +140,9 @@
   letter-spacing: 0em
 }
 
-.text-gray-400 {
-  --tw-text-opacity: 1;
-  color: rgb(156 163 175 / var(--tw-text-opacity))
-}
-
-.text-gray-500 {
-  --tw-text-opacity: 1;
-  color: rgb(107 114 128 / var(--tw-text-opacity))
-}
-
 @media (min-width: 640px) {
   .sm\:mx-\[4\.25\%\] {
     margin-left: 4.25%;
-    margin-right: 4.25%
-  }
-
-  .sm\:ml-\[4\.25\%\] {
-    margin-left: 4.25%
-  }
-
-  .sm\:mr-\[4\.25\%\] {
     margin-right: 4.25%
   }
 }
@@ -229,24 +157,12 @@
     margin-right: -2%
   }
 
-  .md\:ml-\[5\.25\%\] {
-    margin-left: 5.25%
-  }
-
-  .md\:mr-\[5\.25\%\] {
-    margin-right: 5.25%
-  }
-
   .md\:min-w-\[360px\] {
     min-width: 360px
   }
 }
 
 @media (min-width: 1024px) {
-  .lg\:visible {
-    visibility: visible
-  }
-
   .lg\:mx-\[6\.25\%\] {
     margin-left: 6.25%;
     margin-right: 6.25%
@@ -255,38 +171,11 @@
   .lg\:mr-\[-8\%\] {
     margin-right: -8%
   }
-
-  .lg\:mr-\[6\.25\%\] {
-    margin-right: 6.25%
-  }
-
-  .lg\:hidden {
-    display: none
-  }
 }
 
 @media (min-width: 1280px) {
-  .xl\:mx-\[9\.25\%\] {
-    margin-left: 9.25%;
-    margin-right: 9.25%
-  }
-
-  .xl\:mx-\[12\.5\%\] {
-    margin-left: 12.5%;
-    margin-right: 12.5%
-  }
-
-  .xl\:mx-\[7\.5\%\] {
-    margin-left: 7.5%;
-    margin-right: 7.5%
-  }
-
   .xl\:ml-\[7\.5\%\] {
     margin-left: 7.5%
-  }
-
-  .xl\:mr-\[9\.25\%\] {
-    margin-right: 9.25%
   }
 
   .xl\:ml-\[9\.25\%\] {
