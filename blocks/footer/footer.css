@@ -41,25 +41,12 @@
   height: 84px
 }
 
-.footer-wrapper :is(.h-6) {
-  height: 1.5rem
-}
-
 .footer-wrapper :is(.w-\[72px\]) {
   width: 72px
 }
 
-.footer-wrapper :is(.w-6) {
-  width: 1.5rem
-}
-
 .footer-wrapper :is(.shrink-0) {
   flex-shrink: 0
-}
-
-.footer-wrapper :is(.rotate-45) {
-  --tw-rotate: 45deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 
 .footer-wrapper :is(.transform) {
@@ -119,49 +106,13 @@
   margin-left: calc(1.25rem * calc(1 - var(--tw-space-x-reverse)))
 }
 
-.footer-wrapper :is(.rounded-sm) {
-  border-radius: 0.125rem
-}
-
-.footer-wrapper :is(.border-2) {
-  border-width: 2px
-}
-
 .footer-wrapper :is(.border-t) {
   border-top-width: 1px
-}
-
-.footer-wrapper :is(.border-t-2) {
-  border-top-width: 2px
-}
-
-.footer-wrapper :is(.border-r-2) {
-  border-right-width: 2px
-}
-
-.footer-wrapper :is(.border-t-0) {
-  border-top-width: 0px
-}
-
-.footer-wrapper :is(.border-b-0) {
-  border-bottom-width: 0px
-}
-
-.footer-wrapper :is(.border-l-0) {
-  border-left-width: 0px
-}
-
-.footer-wrapper :is(.border-solid) {
-  border-style: solid
 }
 
 .footer-wrapper :is(.border-white) {
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity))
-}
-
-.footer-wrapper :is(.border-current) {
-  border-color: currentColor
 }
 
 .footer-wrapper :is(.bg-black) {
@@ -186,14 +137,13 @@
   text-align: end
 }
 
-.footer-wrapper :is(.text-sm) {
-  font-size: 0.875rem;
-  line-height: 1.25rem
-}
-
 .footer-wrapper :is(.text-lg) {
   font-size: 1.125rem;
   line-height: 1.75rem
+}
+
+.footer-wrapper :is(.font-bold) {
+  font-weight: 700
 }
 
 .footer-wrapper :is(.font-light) {
@@ -204,22 +154,9 @@
   font-weight: 400
 }
 
-.footer-wrapper :is(.font-medium) {
-  font-weight: 500
-}
-
-.footer-wrapper :is(.font-bold) {
-  font-weight: 700
-}
-
 .footer-wrapper :is(.text-white) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity))
-}
-
-.footer-wrapper :is(.text-gray-800) {
-  --tw-text-opacity: 1;
-  color: rgb(31 41 55 / var(--tw-text-opacity))
 }
 
 .footer-wrapper :is(.opacity-50) {
@@ -232,145 +169,6 @@
 
 .footer-wrapper :is(.opacity-90) {
   opacity: 0.9
-}
-
-.footer-wrapper :is(.after\:m-0)::after {
-  content: var(--tw-content);
-  margin: 0px
-}
-
-.footer-wrapper :is(.after\:ml-0)::after {
-  content: var(--tw-content);
-  margin-left: 0px
-}
-
-.footer-wrapper :is(.after\:ml-0\.5)::after {
-  content: var(--tw-content);
-  margin-left: 0.125rem
-}
-
-.footer-wrapper :is(.after\:h-6)::after {
-  content: var(--tw-content);
-  height: 1.5rem
-}
-
-.footer-wrapper :is(.after\:w-6)::after {
-  content: var(--tw-content);
-  width: 1.5rem
-}
-
-.footer-wrapper :is(.after\:rotate-180)::after {
-  content: var(--tw-content);
-  --tw-rotate: 180deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
-}
-
-.footer-wrapper :is(.after\:rotate-0)::after {
-  content: var(--tw-content);
-  --tw-rotate: 0deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
-}
-
-.footer-wrapper :is(.after\:p-0)::after {
-  content: var(--tw-content);
-  padding: 0px
-}
-
-.footer-wrapper :is(.after\:text-red-500)::after {
-  content: var(--tw-content);
-  --tw-text-opacity: 1;
-  color: rgb(239 68 68 / var(--tw-text-opacity))
-}
-
-.footer-wrapper :is(.after\:text-white)::after {
-  content: var(--tw-content);
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity))
-}
-
-.footer-wrapper :is(.after\:content-\[\'\*\'\])::after {
-  --tw-content: '*';
-  content: var(--tw-content)
-}
-
-.footer-wrapper :is(.after\:content-\[\'\\\*\'\])::after {
-  --tw-content: '\*';
-  content: var(--tw-content)
-}
-
-.footer-wrapper :is(.after\:content-\[\'\'\])::after {
-  --tw-content: '';
-  content: var(--tw-content)
-}
-
-.footer-wrapper :is(.after\:content-\[\'\^\'\])::after {
-  --tw-content: '^';
-  content: var(--tw-content)
-}
-
-.footer-wrapper :is(.after\:content-\[\'\\\\\^\'\])::after {
-  --tw-content: '\\^';
-  content: var(--tw-content)
-}
-
-.footer-wrapper :is(.after\:content-\[\'\/\^\'\])::after {
-  --tw-content: '/^';
-  content: var(--tw-content)
-}
-
-.footer-wrapper :is(.after\:content-\[\'\/\\\^\'\])::after {
-  --tw-content: '/\^';
-  content: var(--tw-content)
-}
-
-.footer-wrapper :is(.after\:content-\[\'\\\^\'\])::after {
-  --tw-content: '\^';
-  content: var(--tw-content)
-}
-
-.footer-wrapper :is(.after\:content-\[\'\\\/\^\'\])::after {
-  --tw-content: '\/^';
-  content: var(--tw-content)
-}
-
-.footer-wrapper :is(.after\:content-\[\^\])::after {
-  --tw-content: ^;
-  content: var(--tw-content)
-}
-
-.footer-wrapper :is(.after\:content-\[\'\'\*\'\'\])::after {
-  --tw-content: ''*'';
-  content: var(--tw-content)
-}
-
-.footer-wrapper :is(.after\:content-\[\'\\\\\*\'\])::after {
-  --tw-content: '\\*';
-  content: var(--tw-content)
-}
-
-.footer-wrapper :is(.after\:content-\[\*\])::after {
-  --tw-content: *;
-  content: var(--tw-content)
-}
-
-.footer-wrapper :is(.after\:content-\[\])::after {
-  --tw-content: ;
-  content: var(--tw-content)
-}
-
-.footer-wrapper :is(.after\:content-\[\\\'\*\\\'\])::after {
-  --tw-content: \'*\';
-  content: var(--tw-content)
-}
-
-.footer-wrapper :is(.after\:content-\[\\\'\\\'\])::after {
-  --tw-content: \'\';
-  content: var(--tw-content)
-}
-
-.footer-wrapper :is(.after\:content-\[\\\'\^\\\'\])::after {
-  --tw-content: \'^\';
-  content: var(--tw-content)
 }
 
 .footer-wrapper :is(.hover\:underline:hover) {
@@ -402,14 +200,14 @@
 }
 
 @media (min-width: 1024px) {
-  .footer-wrapper :is(.lg\:my-7) {
-    margin-top: 1.75rem;
-    margin-bottom: 1.75rem
-  }
-
   .footer-wrapper :is(.lg\:my-6) {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem
+  }
+
+  .footer-wrapper :is(.lg\:my-7) {
+    margin-top: 1.75rem;
+    margin-bottom: 1.75rem
   }
 }
 
@@ -421,12 +219,5 @@
   .footer-wrapper :is(.xl\:px-0) {
     padding-left: 0px;
     padding-right: 0px
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .footer-wrapper :is(.dark\:text-white) {
-    --tw-text-opacity: 1;
-    color: rgb(255 255 255 / var(--tw-text-opacity))
   }
 }

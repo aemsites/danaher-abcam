@@ -87,22 +87,24 @@ function createFooterDOM(mainContainer) {
 
   footerLinks.appendChild(links);
   middleContainer.appendChild(footerLinks);
-  middleContainer.firstElementChild.firstElementChild.classList.add(...'flex flex-col md:flex-row gap-x-20 gap-y-4'.split(' '));
-  middleContainer.firstElementChild.firstElementChild.querySelectorAll('strong').forEach((linksHeading) => {
-    linksHeading.style.display = 'block';
-    linksHeading.style.marginBottom = '0.4rem';
-    linksHeading.classList.add(...'font-bold text-lg'.split(' '));
-  });
-  [...middleContainer.firstElementChild.firstElementChild.children].forEach((liEle) => {
-    const linkDiv = div({ class: 'link-div flex flex-row justify-between align-center' });
-    linkDiv.append(liEle.querySelector('strong'));
-    const svgSpan = span({ class: 'md:hidden icon icon-chevron-down' });
-    linkDiv.append(svgSpan);
-    decorateIcons(linkDiv);
-    liEle.prepend(linkDiv);
-    liEle.querySelector('ul').classList.add(...'hidden md:block mt-4 text-white text-body-medium font-body'.split(' '));
-  });
-
+  const ceneterElements = middleContainer.firstElementChild.firstElementChild;
+  if (ceneterElements != undefined) {
+    ceneterElements.classList.add(...'flex flex-col md:flex-row gap-x-20 gap-y-4'.split(' '));
+    ceneterElements.querySelectorAll('strong').forEach((linksHeading) => {
+      linksHeading.style.display = 'block';
+      linksHeading.style.marginBottom = '0.4rem';
+      linksHeading.classList.add(...'font-bold text-lg'.split(' '));
+    });
+    [...ceneterElements.children].forEach((liEle) => {
+      const linkDiv = div({ class: 'link-div flex flex-row justify-between align-center' });
+      linkDiv.append(liEle.querySelector('strong'));
+      const svgSpan = span({ class: 'md:hidden icon icon-chevron-down' });
+      linkDiv.append(svgSpan);
+      decorateIcons(linkDiv);
+      liEle.prepend(linkDiv);
+      liEle.querySelector('ul').classList.add(...'hidden md:block mt-4 text-white text-body-medium font-body'.split(' '));
+    });
+  }
   showHideFooterLinks(footerLinks);
   addClassesToListItems(footerLinks.firstElementChild.children, 1);
   danaharLogoContainer.appendChild(danaharLogo);
