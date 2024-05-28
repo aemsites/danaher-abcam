@@ -1,0 +1,184 @@
+.fixed {
+  position: fixed
+}
+
+.m-auto {
+  margin: auto
+}
+
+.mx-\[15\%\] {
+  margin-left: 15%;
+  margin-right: 15%
+}
+
+.mx-\[30\.5\%\] {
+  margin-left: 30.5%;
+  margin-right: 30.5%
+}
+
+.my-12 {
+  margin-top: 3rem;
+  margin-bottom: 3rem
+}
+
+.my-5 {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem
+}
+
+.mb-10 {
+  margin-bottom: 2.5rem
+}
+
+.mb-16 {
+  margin-bottom: 4rem
+}
+
+.mb-5 {
+  margin-bottom: 1.25rem
+}
+
+.mr-\[5\.25\%\] {
+  margin-right: 5.25%
+}
+
+.mt-4 {
+  margin-top: 1rem
+}
+
+.block {
+  display: block
+}
+
+.flex {
+  display: flex
+}
+
+.h-full {
+  height: 100%
+}
+
+.w-1\/6 {
+  width: 16.666667%
+}
+
+.w-8\/12 {
+  width: 66.666667%
+}
+
+.w-full {
+  width: 100%
+}
+
+.max-w-7xl {
+  max-width: 80rem
+}
+
+.max-w-screen-xl {
+  max-width: 1280px
+}
+
+.resize {
+  resize: both
+}
+
+.flex-col {
+  flex-direction: column
+}
+
+.justify-center {
+  justify-content: center
+}
+
+.border {
+  border-width: 1px
+}
+
+.border-t-4 {
+  border-top-width: 4px
+}
+
+.border-\[\#ff7223\] {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 114 35 / var(--tw-border-opacity))
+}
+
+.border-b-slate-400 {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(148 163 184 / var(--tw-border-opacity))
+}
+
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+}
+
+.font-sans {
+  font-family: sanchez
+}
+
+.text-6xl {
+  font-size: 3.75rem;
+  line-height: 1
+}
+
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem
+}
+
+.font-semibold {
+  font-weight: 600
+}
+
+.tracking-normal {
+  letter-spacing: 0em
+}
+
+@media (min-width: 640px) {
+  .sm\:mx-\[4\.25\%\] {
+    margin-left: 4.25%;
+    margin-right: 4.25%
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:mx-\[5\.25\%\] {
+    margin-left: 5.25%;
+    margin-right: 5.25%
+  }
+
+  .md\:mr-\[-2\%\] {
+    margin-right: -2%
+  }
+
+  .md\:min-w-\[360px\] {
+    min-width: 360px
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:mx-\[6\.25\%\] {
+    margin-left: 6.25%;
+    margin-right: 6.25%
+  }
+
+  .lg\:mr-\[-8\%\] {
+    margin-right: -8%
+  }
+}
+
+@media (min-width: 1280px) {
+  .xl\:ml-\[7\.5\%\] {
+    margin-left: 7.5%
+  }
+
+  .xl\:ml-\[9\.25\%\] {
+    margin-left: 9.25%
+  }
+}
