@@ -36,6 +36,10 @@ const fileMappings = [
     output: './blocks/sticky-right-navigation/sticky-right-navigation.css',
     wrapper: 'sticky-right-navigation-wrapper',
   },
+  {
+    content: './templates/product-category/product-category.js',
+    output: './templates/product-category/product-category.css',
+  },
 ];
 
 const watch = process.argv[2];
