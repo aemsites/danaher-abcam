@@ -57,7 +57,8 @@ async function loadFonts() {
 }
 
 const TEMPLATE_LIST = [
-  'default',
+  'home-page',
+  'protocols',
   'product-category',
 ];
 
@@ -115,7 +116,7 @@ async function loadEager(doc) {
   const main = doc.querySelector('main');
   if (main) {
     decorateMain(main);
-    await decorateTemplates(main);
+	  await decorateTemplates(main);
     document.body.classList.add('appear');
     await waitForLCP(LCP_BLOCKS);
   }

@@ -37,6 +37,14 @@ const fileMappings = [
     wrapper: 'sticky-right-navigation-wrapper',
   },
   {
+    content: './templates/home-page/home-page.js',
+    output: './templates/home-page/home-page.css',
+  },
+  {
+    content: './templates/protocols/protocols.js',
+    output: './templates/protocols/protocols.css',
+  },
+  {
     content: './templates/product-category/product-category.js',
     output: './templates/product-category/product-category.css',
   },
