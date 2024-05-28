@@ -15,7 +15,4 @@ export default function decorate(block) {
       teaser.children[2].classList.add(...'text-sm font-normal'.split(' '));
     });
   });
-  const divEl = document.createElement('div');
-  divEl.setAttribute('class', 'mx-auto xl:max-w-[1120px] xl:px-0 px-[30px]');
-  block.prepend(divEl);
 }
