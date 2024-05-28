@@ -88,7 +88,7 @@ function createFooterDOM(mainContainer) {
   footerLinks.appendChild(links);
   middleContainer.appendChild(footerLinks);
   const ceneterElements = middleContainer.firstElementChild.firstElementChild;
-  if (ceneterElements != undefined) {
+  if (ceneterElements !== undefined) {
     ceneterElements.classList.add(...'flex flex-col md:flex-row gap-x-20 gap-y-4'.split(' '));
     ceneterElements.querySelectorAll('strong').forEach((linksHeading) => {
       linksHeading.style.display = 'block';
