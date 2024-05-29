@@ -36,6 +36,19 @@ const fileMappings = [
     output: './blocks/timeline-steps/timeline-steps.css',
     wrapper: 'timeline-steps-wrapper',
   },
+  {
+    content: './blocks/sticky-right-navigation/sticky-right-navigation.js',
+    output: './blocks/sticky-right-navigation/sticky-right-navigation.css',
+    wrapper: 'sticky-right-navigation-wrapper',
+  },
+  {
+    content: './templates/home-page/home-page.js',
+    output: './templates/home-page/home-page.css',
+  },
+  {
+    content: './templates/protocols/protocols.js',
+    output: './templates/protocols/protocols.css',
+  },
 ];
 
 const watch = process.argv[2];
