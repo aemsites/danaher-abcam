@@ -10,12 +10,12 @@
   margin-bottom: 1.5rem
 }
 
-.timeline-steps-wrapper :is(.mt-1) {
-  margin-top: 0.25rem
-}
-
 .timeline-steps-wrapper :is(.ml-2) {
   margin-left: 0.5rem
+}
+
+.timeline-steps-wrapper :is(.mt-1) {
+  margin-top: 0.25rem
 }
 
 .timeline-steps-wrapper :is(.block) {

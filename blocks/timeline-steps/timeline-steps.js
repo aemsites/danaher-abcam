@@ -1,3 +1,6 @@
+import { decorateIcons } from '../../scripts/aem.js';
+import { div, h5, span } from '../../scripts/dom-builder.js';
+
 let nextElement = [];
 
 function detectNextElements(stepsOl) {
@@ -14,7 +17,7 @@ function detectNextElements(stepsOl) {
  */
 export default async function decorate(block) {
   const timeline = [...block.children].map((element) => {
-    const timelineWrapper = document.createElement('div');
+    const timelineWrapper = div();
     const title = element.querySelector('h2');
     title.className = 'text-3xl mb-6 font-semibold text-heading-large font-header md:pt-20 md:-mt-20';
     timelineWrapper.append(title);
@@ -32,22 +35,16 @@ export default async function decorate(block) {
     const steps = element.querySelectorAll('ol');
     if (steps && steps.length > 0) {
       if (subtitle || subtitleFootnote) timelineWrapper.append(description);
-      const stepEl = document.createElement('div');
-      stepEl.className = 'text-2xl mb-6 font-semibold';
-      stepEl.innerHTML = 'Steps';
+      const stepEl = div({ class: 'text-2xl mb-6 font-semibold' }, 'Steps');
       timelineWrapper.append(stepEl);
       let index = 1;
       [...steps].map((eachStep) => {
         detectNextElements(eachStep);
         [...eachStep.children].forEach((step, stepIndex) => {
           step.className = 'flex gap-x-4 mb-6';
-          const stepIndexElement = document.createElement('h5');
-          stepIndexElement.className = 'size-10 flex items-center text-lg p-3 border-2 border-black rounded-full';
-          stepIndexElement.innerHTML = index;
-          const stepDivider = document.createElement('div');
-          stepDivider.className = 'border border-gray-100';
-          const stepContent = document.createElement('div');
-          stepContent.className = 'flex flex-col gap-y-4 py-2';
+          const stepIndexElement = h5({ class: 'size-10 flex items-center text-lg p-3 border-2 border-black rounded-full' }, index);
+          const stepDivider = div({ class: 'border border-gray-100' });
+          const stepContent = div({ class: 'flex flex-col gap-y-4 py-2' });
           const subPoints = step.querySelector('ul');
           subPoints?.classList.add(...'list-inside list-disc ml-2 text-gray-400'.split(' '));
           stepContent.innerHTML = step.innerHTML;
@@ -56,7 +53,7 @@ export default async function decorate(block) {
               const alert = nxtEl.querySelector('p strong');
               if (alert) {
                 let alertType = '';
-                const alertWrapper = document.createElement('div');
+                const alertWrapper = div({ class: 'flex flex-row gap-1 text-sm font-normal px-6 py-4 rounded-md opacity-65' });
                 if (alert.previousElementSibling) {
                   const svg = alert.previousElementSibling.innerHTML.replaceAll('&lt;', '<').replaceAll('&gt;', '>');
                   let svgImage = new DOMParser().parseFromString(svg, 'text/html');
@@ -64,11 +61,12 @@ export default async function decorate(block) {
                   if (svgImage?.classList.contains('secondary')) alertType = 'bg-gray-200';
                   else if (svgImage?.classList.contains('success')) alertType = 'bg-green-200';
                   svgImage?.classList.add(...'size-4 shrink-0 fill-current mt-1'.split(' '));
-                  alertWrapper.append(svgImage);
+                  if (svgImage.classList) alertWrapper.append(span({ class: `icon ${svgImage.classList}` }));
                 }
                 alertWrapper.append(alert.innerHTML);
                 stepContent.append(alertWrapper);
-                alertWrapper.classList.add(...`flex flex-row gap-1 text-sm font-normal px-6 py-4 rounded-md opacity-65 ${alertType}`.trim().split(' '));
+                if (alertType !== '') alertWrapper.classList.add(alertType);
+                decorateIcons(alertWrapper);
               }
               if (nxtEl.children.length === 0) {
                 nxtEl.classList.add(...'text-lg text-gray-400 tracking-wide'.split(' '));
