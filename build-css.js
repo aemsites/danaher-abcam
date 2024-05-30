@@ -49,6 +49,11 @@ const fileMappings = [
     content: './templates/protocols/protocols.js',
     output: './templates/protocols/protocols.css',
   },
+  {
+    content: './blocks/mini-teasers/mini-teasers.js',
+    output: './blocks/mini-teasers/mini-teasers.css',
+    wrapper: 'mini-teasers-wrapper',
+  },
 ];
 
 const watch = process.argv[2];
