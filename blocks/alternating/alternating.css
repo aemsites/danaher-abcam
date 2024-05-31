@@ -11,6 +11,10 @@
   margin-bottom: 2rem
 }
 
+.alternating-wrapper :is(.h-full) {
+  height: 100%
+}
+
 .alternating-wrapper :is(.w-16) {
   width: 4rem
 }
