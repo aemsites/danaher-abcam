@@ -32,6 +32,11 @@ const fileMappings = [
     wrapper: 'columns-wrapper',
   },
   {
+    content: './blocks/timeline-steps/timeline-steps.js',
+    output: './blocks/timeline-steps/timeline-steps.css',
+    wrapper: 'timeline-steps-wrapper',
+  },
+  {
     content: './blocks/sticky-right-navigation/sticky-right-navigation.js',
     output: './blocks/sticky-right-navigation/sticky-right-navigation.css',
     wrapper: 'sticky-right-navigation-wrapper',
