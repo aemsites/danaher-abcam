@@ -197,6 +197,11 @@
     padding-left: 8rem;
     padding-right: 8rem
   }
+
+  .footer-wrapper :is(.md\:px-12) {
+    padding-left: 3rem;
+    padding-right: 3rem
+  }
 }
 
 @media (min-width: 1024px) {
