@@ -5,7 +5,7 @@ export default function decorate() {
   if (wrapper) {
     const innerWrapper = wrapper.querySelector('div');
     if (innerWrapper) {
-      innerWrapper.classList.add(...'lg:flex align-items: stretch bg-neutral-100 sm:block mx-auto bg-grey-5 max-w-[1120px]'.split(' '));
+      innerWrapper.classList.add(...'lg:flex bg-neutral-100 sm:block mx-auto bg-grey-5 max-w-[1120px]'.split(' '));
       innerWrapper.querySelectorAll('div').forEach((row, index) => {
         row.classList.add('basis-1/2');
         if(index === 0) {
