@@ -136,7 +136,7 @@ export default async function decorate(block) {
 
   if (response.ok) {
     const html = await response.text();
-    const mainContainer = div({ class: 'flex flex-col mx-auto px-[30px] md:px-32 xl:px-0 xl:max-w-[1120px]' });
+    const mainContainer = div({ class: 'flex flex-col max-w-7xl mx-auto lg:px-8 md:px-12 px-4' });
     mainContainer.innerHTML = html;
     block.append(createFooterDOM(mainContainer));
   }
