@@ -22,7 +22,7 @@ export default function decorate() {
           const pictureTag = row.querySelector('picture');
           const imgTag = pictureTag?.querySelector('img');
           if (imgTag) {
-            imgTag.classList.add('max-[799px]:w-full', 'w-full');
+            imgTag.classList.add(...'max-[799px]:w-full w-full h-full'.split(' '));
           }
         }
       });
