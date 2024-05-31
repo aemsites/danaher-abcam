@@ -14,11 +14,11 @@ export default function decorate() {
           row.querySelectorAll('p')?.forEach((p) => {
             if (p.className.includes('button-container')) {
               p.querySelector('a')?.classList.add(...'rounded-2xl text-white text-xs justify-center px-4 font-semibold py-2 w-16 leading-4 items-center tracking-wider leading-10 bg-[#378189] hover:bg-[#2A5F65]'.split(' '));
-            } else{
+            } else {
               p.classList.add(...'description text-lg mb-8 font-normal'.split(' '));
-            }            
+            }
           });
-        } else{          
+        } else {
           const pictureTag = row.querySelector('picture');
           const imgTag = pictureTag?.querySelector('img');
           if (imgTag) {
