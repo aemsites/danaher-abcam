@@ -31,10 +31,6 @@
   flex-basis: 50%
 }
 
-.alternating-wrapper :is(.resize) {
-  resize: both
-}
-
 .alternating-wrapper :is(.items-center) {
   align-items: center
 }
@@ -168,10 +164,6 @@
 @media (min-width: 640px) {
   .alternating-wrapper :is(.sm\:block) {
     display: block
-  }
-
-  .alternating-wrapper :is(.sm\:w-full) {
-    width: 100%
   }
 
   .alternating-wrapper :is(.sm\:px-\[61px\]) {
