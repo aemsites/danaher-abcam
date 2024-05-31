@@ -32,6 +32,16 @@ const fileMappings = [
     wrapper: 'columns-wrapper',
   },
   {
+    content: './blocks/alternating/alternating.js',
+    output: './blocks/alternating/alternating.css',
+    wrapper: 'alternating-wrapper',
+  },
+  {
+    content: './blocks/timeline-steps/timeline-steps.js',
+    output: './blocks/timeline-steps/timeline-steps.css',
+    wrapper: 'timeline-steps-wrapper',
+  },
+  {
     content: './blocks/sticky-right-navigation/sticky-right-navigation.js',
     output: './blocks/sticky-right-navigation/sticky-right-navigation.css',
     wrapper: 'sticky-right-navigation-wrapper',
@@ -43,6 +53,15 @@ const fileMappings = [
   {
     content: './templates/protocols/protocols.js',
     output: './templates/protocols/protocols.css',
+  },
+  {
+    content: './templates/product-category/product-category.js',
+    output: './templates/product-category/product-category.css',
+  },
+  {
+    content: './blocks/mini-teasers/mini-teasers.js',
+    output: './blocks/mini-teasers/mini-teasers.css',
+    wrapper: 'mini-teasers-wrapper',
   },
 ];
 
