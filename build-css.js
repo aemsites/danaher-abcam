@@ -44,7 +44,7 @@ const fileMappings = [
   {
     content: './blocks/sticky-right-navigation/sticky-right-navigation.js',
     output: './blocks/sticky-right-navigation/sticky-right-navigation.css',
-    wrapper: 'sticky-right-navigation-wrapper',
+    wrapper: 'sticky-right-navigation',
   },
   {
     content: './templates/home-page/home-page.js',
