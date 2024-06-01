@@ -35,19 +35,9 @@
   padding-right: 2rem
 }
 
-.mini-teasers-wrapper :is(.px-\[30px\]) {
-  padding-left: 30px;
-  padding-right: 30px
-}
-
 .mini-teasers-wrapper :is(.py-20) {
   padding-top: 5rem;
   padding-bottom: 5rem
-}
-
-.mini-teasers-wrapper :is(.text-base) {
-  font-size: 1rem;
-  line-height: 1.5rem
 }
 
 .mini-teasers-wrapper :is(.text-lg) {

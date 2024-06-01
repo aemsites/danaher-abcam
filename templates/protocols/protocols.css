@@ -6,10 +6,6 @@
   position: sticky
 }
 
-.top-28 {
-  top: 7rem
-}
-
 .top-32 {
   top: 8rem
 }
@@ -18,9 +14,9 @@
   margin: auto
 }
 
-.mx-\[15\%\] {
-  margin-left: 15%;
-  margin-right: 15%
+.mx-12 {
+  margin-left: 3rem;
+  margin-right: 3rem
 }
 
 .mx-\[30\.5\%\] {
@@ -38,11 +34,6 @@
   margin-bottom: 1.25rem
 }
 
-.mx-12 {
-  margin-left: 3rem;
-  margin-right: 3rem
-}
-
 .mb-10 {
   margin-bottom: 2.5rem
 }
@@ -53,10 +44,6 @@
 
 .mb-5 {
   margin-bottom: 1.25rem
-}
-
-.mr-\[5\.25\%\] {
-  margin-right: 5.25%
 }
 
 .mt-4 {
@@ -149,34 +136,10 @@
   letter-spacing: 0em
 }
 
-@media (min-width: 640px) {
-  .sm\:mx-\[4\.25\%\] {
-    margin-left: 4.25%;
-    margin-right: 4.25%
-  }
-}
-
 @media (min-width: 768px) {
-  .md\:mx-\[5\.25\%\] {
-    margin-left: 5.25%;
-    margin-right: 5.25%
-  }
-
   .md\:mx-24 {
     margin-left: 6rem;
     margin-right: 6rem
-  }
-
-  .md\:mr-\[-2\%\] {
-    margin-right: -2%
-  }
-
-  .md\:min-w-\[360px\] {
-    min-width: 360px
-  }
-
-  .md\:min-w-\[768px\] {
-    min-width: 768px
   }
 }
 
@@ -186,60 +149,21 @@
     margin-right: 8rem
   }
 
-  .lg\:ml-32 {
-    margin-left: 8rem
-  }
-
   .lg\:mr-\[-8\%\] {
     margin-right: -8%
-  }
-
-  .lg\:min-w-\[768px\] {
-    min-width: 768px
   }
 }
 
 @media (min-width: 1280px) {
-  .xl\:mx-48 {
-    margin-left: 12rem;
-    margin-right: 12rem
-  }
-
   .xl\:mx-44 {
     margin-left: 11rem;
     margin-right: 11rem
   }
-
-  .xl\:ml-\[5\.25\%\] {
-    margin-left: 5.25%
-  }
-
-  .xl\:ml-\[7\.5\%\] {
-    margin-left: 7.5%
-  }
-
-  .xl\:ml-32 {
-    margin-left: 8rem
-  }
 }
 
 @media (min-width: 1536px) {
-  .\32xl\:mx-32 {
-    margin-left: 8rem;
-    margin-right: 8rem
-  }
-
-  .\32xl\:mx-48 {
-    margin-left: 12rem;
-    margin-right: 12rem
-  }
-
   .\32xl\:mx-80 {
     margin-left: 20rem;
     margin-right: 20rem
-  }
-
-  .\32xl\:ml-32 {
-    margin-left: 8rem
   }
 }

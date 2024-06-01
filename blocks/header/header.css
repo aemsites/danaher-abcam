@@ -1,41 +1,3 @@
-.container {
-  width: 100%
-}
-
-@media (min-width: 640px) {
-  .container {
-    max-width: 640px
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    max-width: 768px
-  }
-}
-
-@media (min-width: 1024px) {
-  .container {
-    max-width: 1024px
-  }
-}
-
-@media (min-width: 1280px) {
-  .container {
-    max-width: 1280px
-  }
-}
-
-@media (min-width: 1536px) {
-  .container {
-    max-width: 1536px
-  }
-}
-
-.header-wrapper :is(.collapse) {
-  visibility: collapse
-}
-
 .header-wrapper :is(.fixed) {
   position: fixed
 }
@@ -188,10 +150,6 @@
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none
-}
-
-.header-wrapper :is(.resize) {
-  resize: both
 }
 
 .header-wrapper :is(.flex-row) {
