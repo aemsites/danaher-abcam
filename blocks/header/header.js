@@ -45,7 +45,7 @@ function buildSearchBlock(headerBlock) {
   extendedSectionBlock.id = 'extended-section';
   const logoPictureBlock = a({ class: '' });
   const logoPictureBlockIcon = span({ class: 'icon icon-logo' });
-  if (window.location.pathname === '/') logoPictureBlock.href = 'https://www.abcam.com/en-in';
+  if (window.location.pathname === '/') logoPictureBlock.href = window.location.href;
 
   const hamburgerIcon = button(
     {
