@@ -25,5 +25,4 @@ export default function decorate(block) {
     alertSection.append(alertBtn);
     alertBanner.appendChild(alertSection);
     block.append(alertBanner);
-
 }
