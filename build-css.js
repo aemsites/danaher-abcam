@@ -42,6 +42,11 @@ const fileMappings = [
     wrapper: 'timeline-steps-wrapper',
   },
   {
+    content: './blocks/accordion/accordion.js',
+    output: './blocks/accordion/accordion.css',
+    wrapper: 'accordion-wrapper',
+  },
+  {
     content: './blocks/sticky-right-navigation/sticky-right-navigation.js',
     output: './blocks/sticky-right-navigation/sticky-right-navigation.css',
     wrapper: 'sticky-right-navigation-wrapper',
