@@ -14,10 +14,6 @@
   display: flex
 }
 
-.alert-banner-wrapper :is(.grid) {
-  display: grid
-}
-
 .alert-banner-wrapper :is(.h-8) {
   height: 2rem
 }
@@ -40,8 +36,8 @@
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 
-.alert-banner-wrapper :is(.grid-cols-2) {
-  grid-template-columns: repeat(2, minmax(0, 1fr))
+.alert-banner-wrapper :is(.flex-col) {
+  flex-direction: column
 }
 
 .alert-banner-wrapper :is(.items-center) {
@@ -52,6 +48,10 @@
   justify-content: space-between
 }
 
+.alert-banner-wrapper :is(.gap-4) {
+  gap: 1rem
+}
+
 .alert-banner-wrapper :is(.justify-self-end) {
   justify-self: end
 }
@@ -60,17 +60,12 @@
   white-space: nowrap
 }
 
-.alert-banner-wrapper :is(.rounded) {
-  border-radius: 0.25rem
-}
-
 .alert-banner-wrapper :is(.rounded-2xl) {
   border-radius: 1rem
 }
 
-.alert-banner-wrapper :is(.bg-\[\#3B3B3B\]) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(59 59 59 / var(--tw-bg-opacity))
+.alert-banner-wrapper :is(.rounded-xl) {
+  border-radius: 0.75rem
 }
 
 .alert-banner-wrapper :is(.bg-\[\#edf6f7\]) {
@@ -128,4 +123,10 @@
 .alert-banner-wrapper :is(.hover\:bg-\[\#3B3B3B\]:hover) {
   --tw-bg-opacity: 1;
   background-color: rgb(59 59 59 / var(--tw-bg-opacity))
+}
+
+@media (min-width: 768px) {
+  .alert-banner-wrapper :is(.md\:flex-row) {
+    flex-direction: row
+  }
 }

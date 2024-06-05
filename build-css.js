@@ -65,7 +65,7 @@ const fileMappings = [
   },
   {
     content: './blocks/alert-banner/alert-banner.js',
-    output: './blocks/alert-banner/mini-teasers.css',
+    output: './blocks/alert-banner/alert-banner.css',
     wrapper: 'alert-banner-wrapper',
   },
 ];
