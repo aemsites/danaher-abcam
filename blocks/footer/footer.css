@@ -45,6 +45,10 @@
   width: 72px
 }
 
+.footer-wrapper :is(.max-w-7xl) {
+  max-width: 80rem
+}
+
 .footer-wrapper :is(.shrink-0) {
   flex-shrink: 0
 }
@@ -120,9 +124,9 @@
   background-color: rgb(0 0 0 / var(--tw-bg-opacity))
 }
 
-.footer-wrapper :is(.px-\[30px\]) {
-  padding-left: 30px;
-  padding-right: 30px
+.footer-wrapper :is(.px-4) {
+  padding-left: 1rem;
+  padding-right: 1rem
 }
 
 .footer-wrapper :is(.pb-8) {
@@ -193,11 +197,6 @@
          column-gap: 1rem
   }
 
-  .footer-wrapper :is(.md\:px-32) {
-    padding-left: 8rem;
-    padding-right: 8rem
-  }
-
   .footer-wrapper :is(.md\:px-12) {
     padding-left: 3rem;
     padding-right: 3rem
@@ -214,15 +213,9 @@
     margin-top: 1.75rem;
     margin-bottom: 1.75rem
   }
-}
 
-@media (min-width: 1280px) {
-  .footer-wrapper :is(.xl\:max-w-\[1120px\]) {
-    max-width: 1120px
-  }
-
-  .footer-wrapper :is(.xl\:px-0) {
-    padding-left: 0px;
-    padding-right: 0px
+  .footer-wrapper :is(.lg\:px-8) {
+    padding-left: 2rem;
+    padding-right: 2rem
   }
 }

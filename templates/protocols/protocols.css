@@ -1,14 +1,22 @@
-.fixed {
-  position: fixed
+.relative {
+  position: relative
+}
+
+.sticky {
+  position: sticky
+}
+
+.top-32 {
+  top: 8rem
 }
 
 .m-auto {
   margin: auto
 }
 
-.mx-\[15\%\] {
-  margin-left: 15%;
-  margin-right: 15%
+.mx-12 {
+  margin-left: 3rem;
+  margin-right: 3rem
 }
 
 .mx-\[30\.5\%\] {
@@ -38,10 +46,6 @@
   margin-bottom: 1.25rem
 }
 
-.mr-\[5\.25\%\] {
-  margin-right: 5.25%
-}
-
 .mt-4 {
   margin-top: 1rem
 }
@@ -62,20 +66,12 @@
   width: 16.666667%
 }
 
-.w-8\/12 {
-  width: 66.666667%
+.w-3\/4 {
+  width: 75%
 }
 
 .w-full {
   width: 100%
-}
-
-.max-w-7xl {
-  max-width: 80rem
-}
-
-.max-w-screen-xl {
-  max-width: 1280px
 }
 
 .resize {
@@ -140,32 +136,17 @@
   letter-spacing: 0em
 }
 
-@media (min-width: 640px) {
-  .sm\:mx-\[4\.25\%\] {
-    margin-left: 4.25%;
-    margin-right: 4.25%
-  }
-}
-
 @media (min-width: 768px) {
-  .md\:mx-\[5\.25\%\] {
-    margin-left: 5.25%;
-    margin-right: 5.25%
-  }
-
-  .md\:mr-\[-2\%\] {
-    margin-right: -2%
-  }
-
-  .md\:min-w-\[360px\] {
-    min-width: 360px
+  .md\:mx-24 {
+    margin-left: 6rem;
+    margin-right: 6rem
   }
 }
 
 @media (min-width: 1024px) {
-  .lg\:mx-\[6\.25\%\] {
-    margin-left: 6.25%;
-    margin-right: 6.25%
+  .lg\:mx-32 {
+    margin-left: 8rem;
+    margin-right: 8rem
   }
 
   .lg\:mr-\[-8\%\] {
@@ -174,11 +155,15 @@
 }
 
 @media (min-width: 1280px) {
-  .xl\:ml-\[7\.5\%\] {
-    margin-left: 7.5%
+  .xl\:mx-44 {
+    margin-left: 11rem;
+    margin-right: 11rem
   }
+}
 
-  .xl\:ml-\[9\.25\%\] {
-    margin-left: 9.25%
+@media (min-width: 1536px) {
+  .\32xl\:mx-80 {
+    margin-left: 20rem;
+    margin-right: 20rem
   }
 }

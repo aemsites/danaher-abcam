@@ -36,11 +36,6 @@
   position: relative
 }
 
-.my-12 {
-  margin-top: 3rem;
-  margin-bottom: 3rem
-}
-
 .mx-auto {
   margin-left: auto;
   margin-right: auto
@@ -51,24 +46,13 @@
   margin-bottom: 2.5rem
 }
 
+.my-12 {
+  margin-top: 3rem;
+  margin-bottom: 3rem
+}
+
 .mb-5 {
   margin-bottom: 1.25rem
-}
-
-.mb-8 {
-  margin-bottom: 2rem
-}
-
-.mt-12 {
-  margin-top: 3rem
-}
-
-.mb-10 {
-  margin-bottom: 2.5rem
-}
-
-.mb-4 {
-  margin-bottom: 1rem
 }
 
 .block {
@@ -83,22 +67,6 @@
   width: 16.666667%
 }
 
-.max-w-screen-md {
-  max-width: 768px
-}
-
-.max-w-screen-sm {
-  max-width: 640px
-}
-
-.max-w-xl {
-  max-width: 36rem
-}
-
-.max-w-4xl {
-  max-width: 56rem
-}
-
 .max-w-3xl {
   max-width: 48rem
 }
@@ -111,40 +79,27 @@
   justify-content: center
 }
 
-.space-y-4 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(1rem * var(--tw-space-y-reverse))
-}
-
-.space-y-5 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(1.25rem * var(--tw-space-y-reverse))
-}
-
 .space-y-6 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.5rem * var(--tw-space-y-reverse))
 }
 
-.border-t-4 {
-  border-top-width: 4px
+.border {
+  border-width: 1px
 }
 
 .border-b {
   border-bottom-width: 1px
 }
 
+.border-t-4 {
+  border-top-width: 4px
+}
+
 .border-\[\#ff7223\] {
   --tw-border-opacity: 1;
   border-color: rgb(255 114 35 / var(--tw-border-opacity))
-}
-
-.border-gray-400 {
-  --tw-border-opacity: 1;
-  border-color: rgb(156 163 175 / var(--tw-border-opacity))
 }
 
 .border-gray-200 {
@@ -155,10 +110,6 @@
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem
-}
-
-.pb-9 {
-  padding-bottom: 2.25rem
 }
 
 .pb-5 {
@@ -178,12 +129,12 @@
   font-weight: 600
 }
 
-.leading-\[3\.5rem\] {
-  line-height: 3.5rem
-}
-
 .leading-6 {
   line-height: 1.5rem
+}
+
+.leading-\[3\.5rem\] {
+  line-height: 3.5rem
 }
 
 .tracking-normal {
@@ -200,29 +151,13 @@
 }
 
 @media (min-width: 768px) {
-  .md\:max-w-5xl {
-    max-width: 64rem
-  }
-
-  .md\:px-0 {
-    padding-left: 0px;
-    padding-right: 0px
+  .md\:px-12 {
+    padding-left: 3rem;
+    padding-right: 3rem
   }
 }
 
 @media (min-width: 1024px) {
-  .lg\:max-w-5xl {
-    max-width: 64rem
-  }
-
-  .lg\:max-w-4xl {
-    max-width: 56rem
-  }
-
-  .lg\:max-w-3xl {
-    max-width: 48rem
-  }
-
   .lg\:max-w-7xl {
     max-width: 80rem
   }
