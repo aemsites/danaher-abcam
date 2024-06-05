@@ -2,8 +2,6 @@ import { createOptimizedPicture } from '../../scripts/aem.js';
 import { div } from '../../scripts/dom-builder.js';
 
 export default function decorate(block) {
-  const cols = [...block.firstElementChild.children];
-
   // setup image columns and other decorations
   [...block.children].forEach((row) => {
     row.classList.add('flex', 'md:grid', 'md:grid-cols-2', 'gap-8');
