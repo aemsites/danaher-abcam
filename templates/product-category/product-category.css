@@ -85,6 +85,10 @@
   margin-bottom: calc(1.5rem * var(--tw-space-y-reverse))
 }
 
+.border {
+  border-width: 1px
+}
+
 .border-b {
   border-bottom-width: 1px
 }
@@ -147,14 +151,14 @@
 }
 
 @media (min-width: 768px) {
-  .md\:px-0 {
-    padding-left: 0px;
-    padding-right: 0px
+  .md\:px-12 {
+    padding-left: 3rem;
+    padding-right: 3rem
   }
 }
 
 @media (min-width: 1024px) {
-  .lg\:max-w-5xl {
-    max-width: 64rem
+  .lg\:max-w-7xl {
+    max-width: 80rem
   }
 }
