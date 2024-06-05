@@ -63,11 +63,6 @@ const fileMappings = [
     output: './blocks/mini-teasers/mini-teasers.css',
     wrapper: 'mini-teasers-wrapper',
   },
-  {
-    content: './blocks/discover-more/discover-more.js',
-    output: './blocks/discover-more/discover-more.css',
-    wrapper: 'discover-more-wrapper',
-  },
 ];
 
 const watch = process.argv[2];
