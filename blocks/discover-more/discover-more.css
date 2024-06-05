@@ -54,6 +54,11 @@
   padding-bottom: 0.625rem
 }
 
+.discover-more-wrapper :is(.px-6) {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem
+}
+
 .discover-more-wrapper :is(.text-3xl) {
   font-size: 1.875rem;
   line-height: 2.25rem
@@ -75,6 +80,11 @@
 
 .discover-more-wrapper :is(.underline) {
   text-decoration-line: underline
+}
+
+.discover-more-wrapper :is(.hover\:bg-\[\#2A5F65\]:hover) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(42 95 101 / var(--tw-bg-opacity))
 }
 
 @media (min-width: 768px) {
