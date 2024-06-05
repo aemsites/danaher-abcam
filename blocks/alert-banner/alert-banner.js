@@ -2,9 +2,9 @@ import {
   div, a, h3,
   span,
 } from '../../scripts/dom-builder.js';
- 
+
 import { decorateIcons, getMetadata } from '../../scripts/aem.js';
- 
+
 export default function decorate(block) {
   const title = getMetadata('og:title');
   const { href } = window.location;
