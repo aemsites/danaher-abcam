@@ -18,6 +18,14 @@ import {
 const LCP_BLOCKS = []; // add your LCP blocks to the list
 
 /**
+ * It will used generate random number to use in ID
+ * @returns 4 digit random numbers
+ */
+export function generateUUID() {
+  return Math.floor(1000 + Math.random() * 9000);
+}
+
+/**
  * Builds hero block and prepends to main in a new section.
  * @param {Element} main The container element
  */
