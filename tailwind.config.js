@@ -8,7 +8,7 @@ module.exports = {
       colors: {},
       fontFamily: {
         sans: [
-          'sanchez',
+          'rockwell',
         ]
       },
     },
