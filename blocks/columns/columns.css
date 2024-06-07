@@ -18,10 +18,6 @@
   flex-direction: column-reverse
 }
 
-.columns-wrapper :is(.gap-5) {
-  gap: 1.25rem
-}
-
 .columns-wrapper :is(.gap-8) {
   gap: 2rem
 }
@@ -39,9 +35,9 @@
   background-color: rgb(55 129 137 / var(--tw-bg-opacity))
 }
 
-.columns-wrapper :is(.px-5) {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem
+.columns-wrapper :is(.px-6) {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem
 }
 
 .columns-wrapper :is(.py-2) {
@@ -52,11 +48,6 @@
 .columns-wrapper :is(.py-2\.5) {
   padding-top: 0.625rem;
   padding-bottom: 0.625rem
-}
-
-.columns-wrapper :is(.px-6) {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem
 }
 
 .columns-wrapper :is(.text-\[\#378189\]) {
@@ -79,11 +70,7 @@
 }
 
 @media (min-width: 768px) {
-  .columns-wrapper :is(.md\:grid) {
-    display: grid
-  }
-
-  .columns-wrapper :is(.md\:grid-cols-2) {
-    grid-template-columns: repeat(2, minmax(0, 1fr))
+  .columns-wrapper :is(.md\:flex-row) {
+    flex-direction: row
   }
 }
