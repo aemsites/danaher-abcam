@@ -22,10 +22,6 @@ export default function buildAutoBlocks(block) {
   contentBlocks.forEach((blocks) => {
     content.appendChild(blocks);
     blocks.style.display = null;
-    const alternating = blocks.querySelector('.alternating-wrapper');
-    if (alternating) {
-        content.appendChild(alternating);
-      }
   })
 
   defaultTemplate.appendChild(content);

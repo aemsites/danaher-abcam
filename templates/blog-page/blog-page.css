@@ -31,14 +31,14 @@
   flex-direction: column
 }
 
-.py-16 {
-  padding-top: 4rem;
-  padding-bottom: 4rem
-}
-
 .px-5 {
   padding-left: 1.25rem;
   padding-right: 1.25rem
+}
+
+.py-16 {
+  padding-top: 4rem;
+  padding-bottom: 4rem
 }
 
 .text-center {
@@ -54,11 +54,6 @@
   line-height: 2.25rem
 }
 
-.text-7xl {
-  font-size: 4.5rem;
-  line-height: 1
-}
-
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem
@@ -67,10 +62,6 @@
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem
-}
-
-.font-black {
-  font-weight: 900
 }
 
 .font-light {
@@ -91,11 +82,6 @@
 }
 
 @media (min-width: 640px) {
-  .sm\:px-5 {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem
-  }
-
   .sm\:px-10 {
     padding-left: 2.5rem;
     padding-right: 2.5rem
@@ -103,30 +89,6 @@
 
   .sm\:pb-\[40px\] {
     padding-bottom: 40px
-  }
-
-  .sm\:pt-\[40px\] {
-    padding-top: 40px
-  }
-
-  .sm\:text-3xl {
-    font-size: 1.875rem;
-    line-height: 2.25rem
-  }
-
-  .sm\:text-xl {
-    font-size: 1.25rem;
-    line-height: 1.75rem
-  }
-
-  .sm\:text-7xl {
-    font-size: 4.5rem;
-    line-height: 1
-  }
-
-  .sm\:text-4xl {
-    font-size: 2.25rem;
-    line-height: 2.5rem
   }
 
   .sm\:text-5xl {
@@ -144,26 +106,6 @@
     padding-left: 1.25rem;
     padding-right: 1.25rem
   }
-
-  .md\:px-16 {
-    padding-left: 4rem;
-    padding-right: 4rem
-  }
-
-  .md\:px-10 {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem
-  }
-
-  .md\:text-3xl {
-    font-size: 1.875rem;
-    line-height: 2.25rem
-  }
-
-  .md\:text-7xl {
-    font-size: 4.5rem;
-    line-height: 1
-  }
 }
 
 @media (min-width: 1024px) {
@@ -180,19 +122,9 @@
     padding-top: 3.5rem
   }
 
-  .lg\:text-3xl {
-    font-size: 1.875rem;
-    line-height: 2.25rem
-  }
-
   .lg\:text-7xl {
     font-size: 4.5rem;
     line-height: 1
-  }
-
-  .lg\:text-xl {
-    font-size: 1.25rem;
-    line-height: 1.75rem
   }
 
   .lg\:text-\[27px\] {
