@@ -73,6 +73,10 @@ const fileMappings = [
     output: './blocks/alert-banner/alert-banner.css',
     wrapper: 'alert-banner-wrapper',
   },
+  {
+    content: './templates/blog-page/blog-page.js',
+    output: './templates/blog-page/blog-page.css',
+  },
 ];
 
 const watch = process.argv[2];

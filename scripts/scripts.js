@@ -68,6 +68,7 @@ const TEMPLATE_LIST = [
   'home-page',
   'protocols',
   'product-category',
+  'blog-page',
 ];
 
 async function decorateTemplates(main) {
