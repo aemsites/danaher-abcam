@@ -28,7 +28,7 @@ function createAccordionBlock(
   uuid,
   index,
   customUUID,
-  isLink
+  isLink,
 ) {
   const divEl = div({ id: `accordion-item-${index}`, class: `accordion-item group relative ${isLink ? 'bg-gray-400/20' : ''} border rounded-2xl box-border text-black-0 max-w-screen-lg [&:has(:focus-visible)]:shadow-interactiveElement cursor-pointer` });
   const summaryInput = input({
@@ -46,7 +46,7 @@ function createAccordionBlock(
       title,
       href: isLink,
       'aria-controls': `accordion-${uuid}-${index}`,
-      class: `flex items-center justify-between w-full text-left font-semibold px-8 py-10`,
+      class: 'flex items-center justify-between w-full text-left font-semibold px-8 py-10',
     },
     prefixedIcon,
     div(
@@ -60,7 +60,7 @@ function createAccordionBlock(
       for: `accordion-${uuid}-${index}`,
       title,
       'aria-controls': `accordion-${uuid}-${index}`,
-      class: `flex items-center justify-between w-full text-left font-semibold px-8 py-10 cursor-pointer`,
+      class: 'flex items-center justify-between w-full text-left font-semibold px-8 py-10 cursor-pointer',
     },
     prefixedIcon,
     div(
@@ -92,7 +92,6 @@ function createAccordionBlock(
  * @param {Element} block The header block element
  */
 export default async function decorate(block) {
-  console.log(block);
   const customUUID = generateUUID();
   const accordionItems = [...block.children].map((el, elIndex) => {
     let isLink;
@@ -149,7 +148,7 @@ export default async function decorate(block) {
       generateUUID(),
       elIndex,
       customUUID,
-      isLink
+      isLink,
     );
   });
   block.innerHTML = '';
