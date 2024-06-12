@@ -40,7 +40,7 @@ function createAccordionBlock(
     'aria-labelledby': title,
   });
   const prefixedIcon = prefixedIconClass ? span({ class: `icon ${prefixedIconClass} flex size-7 absolute left-8 fill-current text-gray-400` }) : '';
-  const openCloseIcon = openCloseIconClass ? span({ class: `icon ${openCloseIconClass} block invert -rotate-90 text-gray-400 fill-current ${isLink ? 'size-5 group-hover:translate-x-0.5' : 'size-6 group-hover:rotate-0'} transform transition-all` }) : '';
+  const openCloseIcon = openCloseIconClass ? span({ class: `icon ${openCloseIconClass} block -rotate-90 text-gray-400 fill-current ${isLink ? 'size-5 group-hover:translate-x-0.5 invert' : 'size-6 group-hover:rotate-0'} transform transition-all` }) : '';
   const summaryContent = isLink ? a(
     {
       title,
@@ -60,7 +60,7 @@ function createAccordionBlock(
       for: `accordion-${uuid}-${index}`,
       title,
       'aria-controls': `accordion-${uuid}-${index}`,
-      class: 'flex items-center justify-between w-full text-left font-semibold px-8 py-10 cursor-pointer',
+      class: 'flex items-center justify-between w-full text-left font-semibold px-8 py-10 cursor-pointer [&_.open-close-icon]:peer-checked:rotate-0',
     },
     prefixedIcon,
     div(
