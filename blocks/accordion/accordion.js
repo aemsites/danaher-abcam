@@ -30,7 +30,7 @@ function createAccordionBlock(
   customUUID,
   isLink,
 ) {
-  const divEl = div({ id: `accordion-item-${index}`, class: `accordion-item group relative ${isLink ? 'bg-gray-400/20' : ''} border rounded-2xl box-border text-black-0 max-w-screen-lg [&:has(:focus-visible)]:shadow-interactiveElement cursor-pointer` });
+  const divEl = div({ id: `accordion-item-${index}`, class: `accordion-item group relative ${isLink ? 'bg-gray-400/10' : 'border'} rounded-2xl box-border text-black-0 max-w-screen-lg [&:has(:focus-visible)]:shadow-interactiveElement cursor-pointer` });
   const summaryInput = input({
     type: 'checkbox',
     class: 'peer hidden absolute',
@@ -40,7 +40,7 @@ function createAccordionBlock(
     'aria-labelledby': title,
   });
   const prefixedIcon = prefixedIconClass ? span({ class: `icon ${prefixedIconClass} flex size-7 absolute left-8 fill-current text-gray-400` }) : '';
-  const openCloseIcon = openCloseIconClass ? span({ class: `icon ${openCloseIconClass} block size-6 -rotate-90 text-gray-400 fill-current ${isLink ? 'group-hover:translate-x-0.5' : 'group-hover:rotate-0'} transform transition-all` }) : '';
+  const openCloseIcon = openCloseIconClass ? span({ class: `icon ${openCloseIconClass} block invert -rotate-90 text-gray-400 fill-current ${isLink ? 'size-5 group-hover:translate-x-0.5' : 'size-6 group-hover:rotate-0'} transform transition-all` }) : '';
   const summaryContent = isLink ? a(
     {
       title,
@@ -51,10 +51,10 @@ function createAccordionBlock(
     prefixedIcon,
     div(
       { class: `space-y-2 ${prefixedIconClass ? 'ms-16' : ''} ${openCloseIconClass ? 'me-20' : ''}` },
-      (title ? h3({ class: 'text-2xl leading-5 group-hover:underline text-teal-800 font-bold tracking-wider', title }, title) : ''),
+      (title ? h3({ class: 'text-2xl leading-5 group-hover:underline text-teal-800/70 font-bold tracking-wider mb-5', title }, title) : ''),
       (subTitle ? h6({ class: 'text-black font-normal tracking-wide', title: subTitle }, subTitle) : ''),
     ),
-    div({ class: 'p-3 rounded-full absolute right-12' }, openCloseIcon),
+    div({ class: 'p-3 rounded-full absolute right-12 bg-teal-700/80 group-hover:bg-teal-700' }, openCloseIcon),
   ) : label(
     {
       for: `accordion-${uuid}-${index}`,
