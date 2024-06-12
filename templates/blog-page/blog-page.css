@@ -41,6 +41,14 @@
   padding-bottom: 4rem
 }
 
+.pb-5 {
+  padding-bottom: 1.25rem
+}
+
+.pb-10 {
+  padding-bottom: 2.5rem
+}
+
 .text-center {
   text-align: center
 }
@@ -91,9 +99,8 @@
     padding-bottom: 40px
   }
 
-  .sm\:text-5xl {
-    font-size: 3rem;
-    line-height: 1
+  .sm\:text-\[50px\] {
+    font-size: 50px
   }
 }
 
