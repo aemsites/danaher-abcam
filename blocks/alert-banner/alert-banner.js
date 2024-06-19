@@ -18,7 +18,7 @@ export default function decorate(block) {
         a(
           { class: 'button bg-black hover:bg-[#3B3B3B] h-8 whitespace-nowrap rounded-2xl flex items-center py-2 px-3 text-white text-xs capitalize justify-self-end w-fit', href },
           title,
-          span({ class: 'arrow-icon icon icon-chevron-down rotate-0' }),
+          span({ class: 'arrow-icon icon icon-chevron-down-white rotate-0' }),
         ),
       ),
     ),

@@ -14,6 +14,7 @@ import {
   toClassName,
   getMetadata,
 } from './aem.js';
+import { div } from './dom-builder.js';
 
 const LCP_BLOCKS = []; // add your LCP blocks to the list
 
@@ -40,18 +41,6 @@ function buildHeroBlock(main) {
   }
 }
 
-// Change to first letter  is Capital in each word
-function capitalizeWords(str) {
-  const words = str.split(' ');
-  const capitalizedWords = words.map((word) => {
-    if (word.length > 0) {
-      return word.charAt(0).toUpperCase() + word.slice(1);
-    }
-    return word;
-  });
-  return capitalizedWords.join(' ');
-}
-
 /**
  * load fonts.css and set a session storage flag
  */
@@ -68,6 +57,7 @@ const TEMPLATE_LIST = [
   'home-page',
   'protocols',
   'product-category',
+  'blog-page',
 ];
 
 async function decorateTemplates(main) {
@@ -101,6 +91,26 @@ function buildAutoBlocks(main) {
 }
 
 /**
+ * Decorates the sticky right navigation block from main element.
+ * @param {Element} main The main element
+ */
+function decorateStickyRightNav(main){
+  const stickySection = main.querySelector('div.sticky-right-navigation-container');
+  if(stickySection){
+    const divEl = div();
+    stickySection.classList.add('flex');
+    const stricyBlock = stickySection.querySelector('.sticky-right-navigation-wrapper')?.firstElementChild;
+    stricyBlock?.classList.add('sticky', 'top-32', 'mt-4', 'ml-20', 'mr-[-8rem]');
+    [...stickySection.children].forEach((child, index, childs) => {
+      if(index !== childs.length - 1){
+        divEl.append(child);
+      }
+    });
+    stickySection.prepend(divEl);
+  }
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -112,6 +122,18 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
+  decorateStickyRightNav(main);
+}
+
+function capitalizeWords(str) {
+  const words = str.split(' ');
+  const capitalizedWords = words.map((word) => {
+    if (word.length > 0) {
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    }
+    return word;
+  });
+  return capitalizedWords.join(' ');
 }
 
 /**
@@ -123,8 +145,9 @@ async function loadEager(doc) {
   decorateTemplateAndTheme();
   const main = doc.querySelector('main');
   if (main) {
+    await decorateTemplates(main);
     decorateMain(main);
-	  await decorateTemplates(main);
+	  
     document.body.classList.add('appear');
     await waitForLCP(LCP_BLOCKS);
   }
@@ -152,11 +175,13 @@ export function formatDateRange(date) {
 // Changes date format from Unix Epoch to date
 export function formatDate(date) {
   const options = {
-    month: 'short', day: '2-digit', year: 'numeric', timeZone: 'UTC',
+    weekday: 'short', day: '2-digit', month: 'short', year: 'numeric', timeZone: 'UTC',
   };
-  const startDate = new Date(Number(date) * 1000).toUTCString();
-  const formattedStartDate = new Date(startDate).toLocaleDateString('en-us', options);
-  return formattedStartDate;
+  const lastModifiedDate = new Date(Number(date) * 1000);
+  console.log(lastModifiedDate);
+  const formattedDate = new Intl.DateTimeFormat('en-us', options).format(lastModifiedDate);
+  const formatDate = formattedDate.replace(/,/g, '');
+  return formatDate;
 }
 /**
  * Loads everything that doesn't need to be delayed.

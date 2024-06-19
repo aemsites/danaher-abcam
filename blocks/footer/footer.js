@@ -98,7 +98,7 @@ function createFooterDOM(mainContainer) {
     [...ceneterElements.children].forEach((liEle) => {
       const linkDiv = div({ class: 'link-div flex flex-row justify-between align-center' });
       linkDiv.append(liEle.querySelector('strong'));
-      const svgSpan = span({ class: 'md:hidden icon icon-chevron-down' });
+      const svgSpan = span({ class: 'md:hidden icon icon-chevron-down-white' });
       linkDiv.append(svgSpan);
       decorateIcons(linkDiv);
       liEle.prepend(linkDiv);
@@ -136,7 +136,7 @@ export default async function decorate(block) {
 
   if (response.ok) {
     const html = await response.text();
-    const mainContainer = div({ class: 'flex flex-col max-w-7xl mx-auto lg:px-8 md:px-12 px-4' });
+    const mainContainer = div({ class: 'flex flex-col max-w-7xl mx-auto lg:px-8 md:px-12 px-4 w-[84%] max-[767px]:w-full' });
     mainContainer.innerHTML = html;
     block.append(createFooterDOM(mainContainer));
   }

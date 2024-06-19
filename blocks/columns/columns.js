@@ -7,7 +7,7 @@ export default function decorate(block) {
 
   // setup image columns and other decorations
   [...block.children].forEach((row) => {
-    row.classList.add('flex', 'md:flex-row', 'gap-8');
+    row.classList.add('flex', 'lg:flex-row', 'gap-8');
     [...row.children].forEach((col) => {
       const pic = col.querySelector('picture');
       if (pic) {

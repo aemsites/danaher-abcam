@@ -1,164 +1,24 @@
-.container {
-  width: 100%
+.m-auto {
+  margin: auto
 }
 
-@media (min-width: 640px) {
-  .container {
-    max-width: 640px
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    max-width: 768px
-  }
-}
-
-@media (min-width: 1024px) {
-  .container {
-    max-width: 1024px
-  }
-}
-
-@media (min-width: 1280px) {
-  .container {
-    max-width: 1280px
-  }
-}
-
-@media (min-width: 1536px) {
-  .container {
-    max-width: 1536px
-  }
-}
-
-.relative {
-  position: relative
-}
-
-.mx-auto {
-  margin-left: auto;
-  margin-right: auto
-}
-
-.my-10 {
-  margin-top: 2.5rem;
+.mb-10 {
   margin-bottom: 2.5rem
 }
 
-.my-12 {
-  margin-top: 3rem;
-  margin-bottom: 3rem
+.mb-8 {
+  margin-bottom: 2rem
 }
 
-.mb-5 {
-  margin-bottom: 1.25rem
-}
-
-.block {
-  display: block
-}
-
-.flex {
-  display: flex
-}
-
-.w-1\/6 {
-  width: 16.666667%
-}
-
-.max-w-3xl {
-  max-width: 48rem
-}
-
-.flex-col {
-  flex-direction: column
-}
-
-.justify-center {
-  justify-content: center
-}
-
-.space-y-6 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse))
+.w-3\/4 {
+  width: 75%
 }
 
 .border {
   border-width: 1px
 }
 
-.border-b {
-  border-bottom-width: 1px
-}
-
-.border-t-4 {
-  border-top-width: 4px
-}
-
-.border-\[\#ff7223\] {
+.border-b-slate-400 {
   --tw-border-opacity: 1;
-  border-color: rgb(255 114 35 / var(--tw-border-opacity))
-}
-
-.border-gray-200 {
-  --tw-border-opacity: 1;
-  border-color: rgb(229 231 235 / var(--tw-border-opacity))
-}
-
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem
-}
-
-.pb-5 {
-  padding-bottom: 1.25rem
-}
-
-.text-\[3\.5rem\] {
-  font-size: 3.5rem
-}
-
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem
-}
-
-.font-semibold {
-  font-weight: 600
-}
-
-.leading-6 {
-  line-height: 1.5rem
-}
-
-.leading-\[3\.5rem\] {
-  line-height: 3.5rem
-}
-
-.tracking-normal {
-  letter-spacing: 0em
-}
-
-.tracking-wide {
-  letter-spacing: 0.025em
-}
-
-.text-black {
-  --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity))
-}
-
-@media (min-width: 768px) {
-  .md\:px-12 {
-    padding-left: 3rem;
-    padding-right: 3rem
-  }
-}
-
-@media (min-width: 1024px) {
-  .lg\:max-w-7xl {
-    max-width: 80rem
-  }
+  border-bottom-color: rgb(148 163 184 / var(--tw-border-opacity))
 }

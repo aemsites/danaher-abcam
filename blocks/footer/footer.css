@@ -45,6 +45,10 @@
   width: 72px
 }
 
+.footer-wrapper :is(.w-\[84\%\]) {
+  width: 84%
+}
+
 .footer-wrapper :is(.max-w-7xl) {
   max-width: 80rem
 }
@@ -177,6 +181,12 @@
 
 .footer-wrapper :is(.hover\:underline:hover) {
   text-decoration-line: underline
+}
+
+@media (max-width: 767px) {
+  .footer-wrapper :is(.max-\[767px\]\:w-full) {
+    width: 100%
+  }
 }
 
 @media (min-width: 768px) {
