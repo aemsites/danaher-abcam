@@ -88,6 +88,11 @@ const fileMappings = [
     output: './blocks/title-card/title-card.css',
     wrapper: 'title-card-wrapper',
   },
+  {
+    content: './blocks/breadcrumb/breadcrumb.js',
+    output: './blocks/breadcrumb/breadcrumb.css',
+    wrapper: 'breadcrumb-wrapper',
+  },
 ];
 
 const watch = process.argv[2];
