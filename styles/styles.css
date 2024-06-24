@@ -588,6 +588,26 @@ video {
   }
 }
 
+.sticky {
+  position: sticky;
+}
+
+.top-32 {
+  top: 8rem;
+}
+
+.ml-20 {
+  margin-left: 5rem;
+}
+
+.mr-\[-8rem\] {
+  margin-right: -8rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
 .block {
   display: block;
 }
