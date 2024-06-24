@@ -1,7 +1,7 @@
 import { ul, li, div } from '../../scripts/dom-builder.js';
 
 export default function decorate(block) {
-  const parentDiv = div({ class: 'cards-container' });
+  const parentDiv = div({ class: 'w-4/5 m-auto mb-8' });
   const cardsUl = ul({ class: 'cards-ul grid grid-cols-3 gap-11 max-[799px]:grid-cols-1' });
 
   [...block.children].forEach((row) => {

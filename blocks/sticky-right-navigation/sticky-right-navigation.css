@@ -45,8 +45,26 @@
   line-height: 1.5rem
 }
 
+.sticky-right-navigation :is(.text-xs) {
+  font-size: 0.75rem;
+  line-height: 1rem
+}
+
 .sticky-right-navigation :is(.font-bold) {
   font-weight: 700
+}
+
+.sticky-right-navigation :is(.leading-normal) {
+  line-height: 1.5
+}
+
+.sticky-right-navigation :is(.tracking-\[\.03125rem\]) {
+  letter-spacing: .03125rem
+}
+
+.sticky-right-navigation :is(.text-\[\#65797c\]) {
+  --tw-text-opacity: 1;
+  color: rgb(101 121 124 / var(--tw-text-opacity))
 }
 
 .sticky-right-navigation :is(.text-black) {

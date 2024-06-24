@@ -36,6 +36,10 @@
   position: relative
 }
 
+.m-auto {
+  margin: auto
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto
@@ -51,6 +55,14 @@
   margin-bottom: 3rem
 }
 
+.mb-10 {
+  margin-bottom: 2.5rem
+}
+
+.mb-8 {
+  margin-bottom: 2rem
+}
+
 .mb-5 {
   margin-bottom: 1.25rem
 }
@@ -61,6 +73,10 @@
 
 .flex {
   display: flex
+}
+
+.w-3\/4 {
+  width: 75%
 }
 
 .w-1\/6 {
@@ -105,6 +121,11 @@
 .border-gray-200 {
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity))
+}
+
+.border-b-slate-400 {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(148 163 184 / var(--tw-border-opacity))
 }
 
 .px-4 {

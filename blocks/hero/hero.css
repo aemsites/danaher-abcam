@@ -275,6 +275,10 @@
   overflow-y: scroll
 }
 
+.hero-wrapper :is(.break-words) {
+  overflow-wrap: break-word
+}
+
 .hero-wrapper :is(.rounded-full) {
   border-radius: 9999px
 }
@@ -387,6 +391,11 @@
 .hero-wrapper :is(.text-2xl) {
   font-size: 1.5rem;
   line-height: 2rem
+}
+
+.hero-wrapper :is(.text-4xl) {
+  font-size: 2.25rem;
+  line-height: 2.5rem
 }
 
 .hero-wrapper :is(.text-5xl) {
@@ -588,6 +597,17 @@
   }
 }
 
+@media (min-width: 1280px) {
+  .hero-wrapper :is(.xl\:text-5xl) {
+    font-size: 3rem;
+    line-height: 1
+  }
+
+  .hero-wrapper :is(.xl\:font-bold) {
+    font-weight: 700
+  }
+}
+
 .hero-wrapper :is(.\[\&_\#search-content\]\:hidden #search-content) {
   display: none
 }
@@ -596,8 +616,16 @@
   display: none
 }
 
+.hero-wrapper :is(.\[\&_img\]\:h-\[496px\] img) {
+  height: 496px
+}
+
 .hero-wrapper :is(.\[\&_img\]\:h-96 img) {
   height: 24rem
+}
+
+.hero-wrapper :is(.\[\&_img\]\:w-full img) {
+  width: 100%
 }
 
 @media (min-width: 768px) {

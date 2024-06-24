@@ -36,14 +36,14 @@
   margin-right: 0.5rem
 }
 
-.header-wrapper :is(.mx-auto) {
-  margin-left: auto;
-  margin-right: auto
-}
-
 .header-wrapper :is(.my-auto) {
   margin-top: auto;
   margin-bottom: auto
+}
+
+.header-wrapper :is(.mx-auto) {
+  margin-left: auto;
+  margin-right: auto
 }
 
 .header-wrapper :is(.mb-2) {
@@ -393,6 +393,11 @@
 }
 
 @media (min-width: 1024px) {
+  .header-wrapper :is(.lg\:mx-auto) {
+    margin-left: auto;
+    margin-right: auto
+  }
+
   .header-wrapper :is(.lg\:block) {
     display: block
   }
@@ -430,6 +435,20 @@
 
   .header-wrapper :is(.lg\:pt-8) {
     padding-top: 2rem
+  }
+}
+
+@media (min-width: 1280px) {
+  .header-wrapper :is(.xl\:gap-x-8) {
+    -moz-column-gap: 2rem;
+         column-gap: 2rem
+  }
+}
+
+@media (min-width: 1536px) {
+  .header-wrapper :is(.\32xl\:mx-24) {
+    margin-left: 6rem;
+    margin-right: 6rem
   }
 }
 
