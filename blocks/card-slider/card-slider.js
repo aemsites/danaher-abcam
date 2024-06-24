@@ -99,9 +99,8 @@ function createHeroComponent(post) {
     a({
       href: post.path,
       title: post.title,
-    }, div({ class: '[&_img]:w-full object-cover'}, createOptimizedPicture(post.image, post.title))),
+    }, div({ class: '[&_img]:w-full object-cover' }, createOptimizedPicture(post.image, post.title))),
   );
-  //hero.querySelector('picture > img')?.classList.add('w-full');
   const pictureTag = image.querySelector('picture');
   const img = pictureTag.querySelector('img');
   img.setAttribute('loading', 'eager');
