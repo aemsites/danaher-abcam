@@ -77,6 +77,11 @@ const fileMappings = [
     content: './templates/blog-page/blog-page.js',
     output: './templates/blog-page/blog-page.css',
   },
+  {
+    content: './blocks/table-block/table-block.js',
+    output: './blocks/table-block/table-block.css',
+    wrapper: 'table-block-wrapper',
+  },
 ];
 
 const watch = process.argv[2];
