@@ -14,6 +14,10 @@
   right: 3rem
 }
 
+.accordion-wrapper :is(.mb-2) {
+  margin-bottom: 0.5rem
+}
+
 .accordion-wrapper :is(.ms-16) {
   margin-inline-start: 4rem
 }
@@ -24,10 +28,6 @@
 
 .accordion-wrapper :is(.mt-2) {
   margin-top: 0.5rem
-}
-
-.accordion-wrapper :is(.mb-2) {
-  margin-bottom: 0.5rem
 }
 
 .accordion-wrapper :is(.box-border) {
@@ -54,19 +54,9 @@
   display: none
 }
 
-.accordion-wrapper :is(.size-12) {
-  width: 3rem;
-  height: 3rem
-}
-
 .accordion-wrapper :is(.size-6) {
   width: 1.5rem;
   height: 1.5rem
-}
-
-.accordion-wrapper :is(.size-8) {
-  width: 2rem;
-  height: 2rem
 }
 
 .accordion-wrapper :is(.size-7) {
@@ -228,10 +218,6 @@
 
 .accordion-wrapper :is(.tracking-wide) {
   letter-spacing: 0.025em
-}
-
-.accordion-wrapper :is(.tracking-wider) {
-  letter-spacing: 0.05em
 }
 
 .accordion-wrapper :is(.text-gray-300) {
