@@ -620,18 +620,8 @@
   height: 496px
 }
 
-.hero-wrapper :is(.\[\&_img\]\:h-96 img) {
-  height: 24rem
-}
-
 .hero-wrapper :is(.\[\&_img\]\:w-full img) {
   width: 100%
-}
-
-@media (min-width: 768px) {
-  .hero-wrapper :is(.md\:\[\&_img\]\:h-full img) {
-    height: 100%
-  }
 }
 
 .hero-wrapper :is(.\[\&_p\]\:leading-4 p) {

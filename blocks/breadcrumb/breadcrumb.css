@@ -22,10 +22,6 @@
   display: flex
 }
 
-.breadcrumb-wrapper :is(.w-4\/5) {
-  width: 80%
-}
-
 .breadcrumb-wrapper :is(.w-3\/4) {
   width: 75%
 }

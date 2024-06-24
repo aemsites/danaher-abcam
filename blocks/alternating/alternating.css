@@ -27,10 +27,6 @@
   width: 100%
 }
 
-.alternating-wrapper :is(.max-w-\[1120px\]) {
-  max-width: 1120px
-}
-
 .alternating-wrapper :is(.basis-1\/2) {
   flex-basis: 50%
 }

@@ -69,12 +69,6 @@
   background-color: rgb(42 95 101 / var(--tw-bg-opacity))
 }
 
-@media (min-width: 768px) {
-  .columns-wrapper :is(.md\:flex-row) {
-    flex-direction: row
-  }
-}
-
 @media (min-width: 1024px) {
   .columns-wrapper :is(.lg\:flex-row) {
     flex-direction: row

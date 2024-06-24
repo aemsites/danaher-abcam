@@ -41,11 +41,6 @@
   margin-bottom: auto
 }
 
-.header-wrapper :is(.mx-auto) {
-  margin-left: auto;
-  margin-right: auto
-}
-
 .header-wrapper :is(.mb-2) {
   margin-bottom: 0.5rem
 }
@@ -408,10 +403,6 @@
 
   .header-wrapper :is(.lg\:hidden) {
     display: none
-  }
-
-  .header-wrapper :is(.lg\:h-\[80px\]) {
-    height: 80px
   }
 
   @media (min-width: 1024px) {
