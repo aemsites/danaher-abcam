@@ -25,6 +25,9 @@ function createAnniversaryBlogCard(post) {
       title: post.title,
     }, createOptimizedPicture(post.image, post.title)),
   );
+  const pictureTag = image.querySelector('picture');
+  const img = pictureTag.querySelector('img');
+  img.setAttribute('loading', 'eager');
   const textContainer = div({ class: 'slider-text py-8' });
   const type = h6(span({ class: 'text-gray-600 text-sm' }, post.category));
   const title = h5(
@@ -96,9 +99,12 @@ function createHeroComponent(post) {
     a({
       href: post.path,
       title: post.title,
-    }, div({ class: '[&_img]:w-full object-cover' }, createOptimizedPicture(post.image, post.title))),
+    }, div({ class: '[&_img]:w-full object-cover'}, createOptimizedPicture(post.image, post.title))),
   );
-  hero.querySelector('picture > img')?.classList.add('w-full');
+  //hero.querySelector('picture > img')?.classList.add('w-full');
+  const pictureTag = image.querySelector('picture');
+  const img = pictureTag.querySelector('img');
+  img.setAttribute('loading', 'eager');
   const textContainer = div({ class: 'text-center' });
   const type = h6(span({ class: 'text-[#999] text-lg' }, post.category));
   const title = h5(
