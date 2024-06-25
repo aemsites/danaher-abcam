@@ -1,0 +1,27 @@
+.tab-component-wrapper :is(.relative) {
+  position: relative
+}
+
+.tab-component-wrapper :is(.mb-10) {
+  margin-bottom: 2.5rem
+}
+
+.tab-component-wrapper :is(.block) {
+  display: block
+}
+
+.tab-component-wrapper :is(.flex) {
+  display: flex
+}
+
+.tab-component-wrapper :is(.overflow-hidden) {
+  overflow: hidden
+}
+
+.tab-component-wrapper :is(.p-5) {
+  padding: 1.25rem
+}
+
+.tab-component-wrapper :is(.opacity-0) {
+  opacity: 0
+}
