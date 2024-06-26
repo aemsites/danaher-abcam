@@ -15,6 +15,10 @@
   height: 60px
 }
 
+.mini-teasers-wrapper :is(.w-4\/5) {
+  width: 80%
+}
+
 .mini-teasers-wrapper :is(.w-\[60px\]) {
   width: 60px
 }
@@ -28,11 +32,6 @@
 .mini-teasers-wrapper :is(.bg-black) {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity))
-}
-
-.mini-teasers-wrapper :is(.px-8) {
-  padding-left: 2rem;
-  padding-right: 2rem
 }
 
 .mini-teasers-wrapper :is(.py-20) {
@@ -78,16 +77,5 @@
     --tw-space-y-reverse: 0;
     margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
     margin-bottom: calc(0px * var(--tw-space-y-reverse))
-  }
-}
-
-@media (min-width: 1280px) {
-  .mini-teasers-wrapper :is(.xl\:max-w-\[1120px\]) {
-    max-width: 1120px
-  }
-
-  .mini-teasers-wrapper :is(.xl\:px-0) {
-    padding-left: 0px;
-    padding-right: 0px
   }
 }

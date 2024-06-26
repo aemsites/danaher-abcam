@@ -24,13 +24,12 @@ function toggleAccordion(blockUUID, activeAccordion) {
 function createAccordionBlock(
   { title, subTitle },
   content,
-  { prefixedIconClass, openCloseIconClass },
+  { prefixedIcon, openCloseIcon },
   uuid,
   index,
   customUUID,
-  isLink,
 ) {
-  const divEl = div({ id: `accordion-item-${index}`, class: `accordion-item group relative ${isLink ? 'bg-gray-400/10' : 'border'} rounded-2xl box-border text-black-0 max-w-screen-lg [&:has(:focus-visible)]:shadow-interactiveElement cursor-pointer` });
+  const divEl = div({ id: `accordion-item-${index}`, class: 'accordion-item relative p-4 border rounded-2xl box-border text-black-0 max-w-screen-lg [&:has(:focus-visible)]:shadow-interactiveElement' });
   const summaryInput = input({
     type: 'checkbox',
     class: 'peer hidden absolute',
@@ -39,36 +38,20 @@ function createAccordionBlock(
     id: `accordion-${uuid}-${index}`,
     'aria-labelledby': title,
   });
-  const prefixedIcon = prefixedIconClass ? span({ class: `icon ${prefixedIconClass} flex size-7 absolute left-8 fill-current text-gray-400` }) : '';
-  const openCloseIcon = openCloseIconClass ? span({ class: `icon ${openCloseIconClass} block -rotate-90 text-gray-400 fill-current ${isLink ? 'size-5 group-hover:translate-x-0.5 invert' : 'size-6 group-hover:rotate-0'} transform transition-all` }) : '';
-  const summaryContent = isLink ? a(
-    {
-      title,
-      href: isLink,
-      'aria-controls': `accordion-${uuid}-${index}`,
-      class: 'flex items-center justify-between w-full text-left font-semibold px-8 py-10',
-    },
-    prefixedIcon,
-    div(
-      { class: `space-y-2 ${prefixedIconClass ? 'ms-16' : ''} ${openCloseIconClass ? 'me-20' : ''}` },
-      (title ? h3({ class: 'text-2xl leading-5 group-hover:underline text-teal-800/70 font-bold tracking-wider mb-5', title }, title) : ''),
-      (subTitle ? h6({ class: 'text-black font-normal tracking-wide', title: subTitle }, subTitle) : ''),
-    ),
-    div({ class: 'p-3 rounded-full absolute right-12 bg-teal-700/80 group-hover:bg-teal-700' }, openCloseIcon),
-  ) : label(
+  const summaryContent = label(
     {
       for: `accordion-${uuid}-${index}`,
       title,
       'aria-controls': `accordion-${uuid}-${index}`,
-      class: 'flex items-center justify-between w-full text-left font-semibold px-8 py-10 cursor-pointer [&_.open-close-icon]:peer-checked:rotate-0',
+      class: 'flex items-center justify-between w-full text-left font-semibold py-2 cursor-pointer peer-[&_span.plus]:opacity-100 peer-checked:[&_span.plus]:opacity-0 peer-checked:[&_span.plus]:rotate-45 peer-checked:[&_span.open-close-icon]:rotate-0',
     },
-    prefixedIcon,
+    span({ class: `icon ${prefixedIcon} flex size-7 absolute left-8 fill-current text-gray-400` }),
     div(
-      { class: `space-y-2 ${prefixedIconClass ? 'ms-16' : ''} ${openCloseIconClass ? 'me-16' : ''}` },
-      (title ? h3({ class: 'text-2xl leading-5 font-semibold', title }, title) : ''),
-      (subTitle ? h6({ class: 'text-gray-300', title: subTitle }, subTitle) : ''),
+      { class: 'ms-16' },
+      h3({ class: 'text-2xl leading-5 font-semibold', title }, title),
+      h6({ class: 'text-gray-300', title: subTitle }, subTitle),
     ),
-    openCloseIcon,
+    span({ class: `icon ${openCloseIcon} size-6 absolute right-12 fill-current -rotate-90 group-hover:rotate-0 text-gray-400  transform transition-all` }),
   );
 
   const panel = div(
@@ -83,7 +66,7 @@ function createAccordionBlock(
   summaryContent.addEventListener('click', () => {
     toggleAccordion(customUUID, divEl);
   });
-  divEl.append((!isLink ? summaryInput : ''), summaryContent, (!isLink ? panel : ''));
+  divEl.append(summaryInput, summaryContent, panel);
   return divEl;
 }
 
@@ -93,8 +76,7 @@ function createAccordionBlock(
  */
 export default async function decorate(block) {
   const customUUID = generateUUID();
-  const accordionItems = [...block.children].map((el, elIndex) => {
-    let isLink;
+  const blockChilds = [...block.children].map((el) => {
     let title;
     let subTitle;
     let openCloseIcon;
@@ -104,9 +86,8 @@ export default async function decorate(block) {
     // LOOP the first children of accordion to extract elements
     // like title, subtitle, prefixed-svgs, open-close-svgs
     [...el.children[0].children].forEach((elChildren) => {
-      if (elChildren.querySelector('strong > u') || elChildren.querySelector('strong > a')) {
-        title = elChildren.querySelector('strong > u')?.innerHTML ?? elChildren.querySelector('strong > a')?.innerHTML;
-        isLink = elChildren.querySelector('strong > a')?.href;
+      if (elChildren.querySelector('strong > u')) {
+        title = elChildren.querySelector('strong > u')?.innerHTML;
       } else if (elChildren.querySelector('u')?.innerHTML) {
         subTitle = elChildren.querySelector('u')?.innerHTML;
       } else if (elChildren.innerHTML.includes('svg')) {
@@ -141,16 +122,25 @@ export default async function decorate(block) {
         contents.push(contentContainer);
       });
     });
-    return createAccordionBlock(
-      { title, subTitle },
-      contents,
-      { prefixedIconClass: prefixedIcon, openCloseIconClass: openCloseIcon },
-      generateUUID(),
-      elIndex,
-      customUUID,
-      isLink,
-    );
+    const packet = {
+      title,
+      subTitle,
+      content: contents,
+      prefixedIcon,
+      openCloseIcon,
+      uuid: generateUUID(),
+    };
+    return packet;
   });
+  const accordionItems = blockChilds
+    .map((question, index) => createAccordionBlock(
+      { title: question.title, subTitle: question.subTitle },
+      question.content,
+      { prefixedIcon: question.prefixedIcon, openCloseIcon: question.openCloseIcon },
+      question.uuid,
+      index,
+      customUUID,
+    ));
   block.innerHTML = '';
   block.classList.add(...'space-y-6'.split(' '));
   block.append(...accordionItems);

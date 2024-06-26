@@ -19,12 +19,12 @@
   width: 4rem
 }
 
-.alternating-wrapper :is(.w-full) {
-  width: 100%
+.alternating-wrapper :is(.w-\[87\%\]) {
+  width: 87%
 }
 
-.alternating-wrapper :is(.max-w-\[1120px\]) {
-  max-width: 1120px
+.alternating-wrapper :is(.w-full) {
+  width: 100%
 }
 
 .alternating-wrapper :is(.basis-1\/2) {
@@ -101,6 +101,11 @@
   padding-bottom: 0.5rem
 }
 
+.alternating-wrapper :is(.py-2\.5) {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem
+}
+
 .alternating-wrapper :is(.py-\[72px\]) {
   padding-top: 72px;
   padding-bottom: 72px
@@ -157,6 +162,12 @@
 
 @media (max-width: 799px) {
   .alternating-wrapper :is(.max-\[799px\]\:w-full) {
+    width: 100%
+  }
+}
+
+@media (max-width: 768px) {
+  .alternating-wrapper :is(.max-\[768px\]\:w-full) {
     width: 100%
   }
 }

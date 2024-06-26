@@ -47,6 +47,11 @@ const fileMappings = [
     wrapper: 'accordion-wrapper',
   },
   {
+    content: './blocks/teasers/teasers.js',
+    output: './blocks/teasers/teasers.css',
+    wrapper: 'teasers-wrapper',
+  },
+  {
     content: './blocks/sticky-right-navigation/sticky-right-navigation.js',
     output: './blocks/sticky-right-navigation/sticky-right-navigation.css',
     wrapper: 'sticky-right-navigation',
@@ -72,6 +77,30 @@ const fileMappings = [
     content: './blocks/alert-banner/alert-banner.js',
     output: './blocks/alert-banner/alert-banner.css',
     wrapper: 'alert-banner-wrapper',
+  },
+  {
+    content: './templates/blog-page/blog-page.js',
+    output: './templates/blog-page/blog-page.css',
+  },
+  {
+    content: './blocks/child-page/child-page.js',
+    output: './blocks/child-page/child-page.css',
+    wrapper: 'child-page-wrapper',
+  },
+  {
+    content: './blocks/table-block/table-block.js',
+    output: './blocks/table-block/table-block.css',
+    wrapper: 'table-block-wrapper',
+  },
+  {
+    content: './blocks/title-card/title-card.js',
+    output: './blocks/title-card/title-card.css',
+    wrapper: 'title-card-wrapper',
+  },
+  {
+    content: './blocks/breadcrumb/breadcrumb.js',
+    output: './blocks/breadcrumb/breadcrumb.css',
+    wrapper: 'breadcrumb-wrapper',
   },
 ];
 
