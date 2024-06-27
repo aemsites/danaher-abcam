@@ -148,25 +148,20 @@ export default function decorate(block) {
   const parentDiv = block.querySelector('div');
   parentDiv.classList.add('main-container');
   parentDiv.classList.add(...'max-w-full flex md:flex-row md:justify-between flex-col'.split(' '));
-  const observer = new IntersectionObserver((entries) => {
-    if (entries.some((e) => e.isIntersecting)) {
-      observer.disconnect();
-      parentDiv.querySelectorAll('div').forEach((divEl, index) => {
-        const link = divEl.querySelector('a');
-        if (link) {
-          parentDiv.append(createModalPopUp(link.href));
-          loadVideo(parentDiv, divEl, link);
-        } else {
-          loadContent(divEl, index === 0);
-        }
-      });
-    }
-    if (block.classList.contains('left-video')) {
-      parentDiv.classList.add('flex-col', 'md:flex-row-reverse');
+
+  parentDiv.querySelectorAll('div').forEach((divEl, index) => {
+    const link = divEl.querySelector('a');
+    if (link) {
+      parentDiv.append(createModalPopUp(link.href));
+      loadVideo(parentDiv, divEl, link);
+    } else {
+      loadContent(divEl, index === 0);
     }
   });
-  observer.observe(block);
 
+  if (block.classList.contains('left-video')) {
+    parentDiv.classList.add('flex-col', 'md:flex-row-reverse');
+  }
   // block.classList.add(...'bg-black text-white'.split(' '));
   // const m = createDOMstructure(block);
   // block.innerHTML = '';
