@@ -104,7 +104,7 @@ const fileMappings = [
   },
   {
     content: './blocks/tab-component/tab-component.js',
-    output: './blocks/tab-component/tab-comonent.css',
+    output: './blocks/tab-component/tab-component.css',
     wrapper: 'tab-component-wrapper',
   },
 ];

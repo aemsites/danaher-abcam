@@ -1,5 +1,9 @@
+import {
+  div, button,
+} from '../../scripts/dom-builder.js';
+
 function removeActiveClasses(content) {
-  const contentElements = content.querySelectorAll('.tabpanel');
+  const contentElements = content.querySelectorAll('.tab-panel');
   [...contentElements].forEach((element) => {
     element.classList.remove('active');
     if(element.classList.contains('active')){
@@ -16,35 +20,33 @@ function removeActiveClasses(content) {
 }
 
 function activeFirstElements(content) {
-  const contentElement = content.querySelector('.tabpanel');
+  const contentElement = content.querySelector('.tab-panel');
   contentElement.classList.add('active');
   const listElement = content.querySelector('button');
   listElement.classList.add('active');
 }
 
 export default function decorate(block) {
-  const tabComponent = document.createElement('div');
-  tabComponent.className = 'mmg-tabs';
-  // tabComponent.classList.add('p-5');
-  const ul = document.createElement('div');
-  ul.className = 'tablist flex mb-10';
-  const tabContent = document.createElement('div');
-  tabContent.className = 'tabpanels overflow-hidden relative';
-  // tabComponent.classList.add('overflow-hidden relative');
+  const tabComponent = div({ class: 'mmg-tabs' });
+  const ul = div({ class: 'tablist flex mb-10' });
+  const tabContent = div({ class: 'tab-panels overflow-hidden relative' });
 
   // Iterate through block's children and create tabs
   [...block.children].forEach((row) => {
     const itemContent = row.children[1];
-    itemContent.className = 'tabpanel';
-    const li = document.createElement('button');
-    li.className = 'tab p-5';
-    li.appendChild(row.children[0]);
+    itemContent.classList.add(...'tab-panel'.split(' '));
+    const li = button(
+      {
+        class: 'tab p-5',
+        onclick: (event) => {
+          removeActiveClasses(tabComponent);
+          event.target.classList.add('active');
+          itemContent.classList.add('active');
+        }
+      },
+      row.children[0]
+    );
 
-    li.addEventListener('click', () => {
-      removeActiveClasses(tabComponent);
-      li.classList.add('active');
-      itemContent.classList.add('active');
-    });
     ul.appendChild(li);
     tabContent.appendChild(itemContent);
   });
