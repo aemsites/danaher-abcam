@@ -151,7 +151,15 @@ export default function decorate(block) {
   parentDiv.querySelectorAll('div').forEach((divEl, index) => {
     const link = divEl.querySelector('a');
     if (link) {
-      parentDiv.append(createModalPopUp(link.href));
+      const observer = new IntersectionObserver((entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          observer.disconnect();
+          setTimeout(() => {
+            parentDiv.append(createModalPopUp(link.href));
+          }, 2000);
+        }
+      });
+      observer.observe(block);
       loadVideo(parentDiv, divEl, link);
     } else {
       loadContent(divEl, index === 0);
