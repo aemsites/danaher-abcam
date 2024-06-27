@@ -91,7 +91,7 @@ function createModalPopUp(videoLink) {
 //   return mainContainer;
 // }
 
-function toggleModalPopUp(parentDiv){
+function toggleModalPopUp(parentDiv) {
   parentDiv.querySelector('.modal').classList.toggle('hidden');
 }
 
@@ -104,13 +104,13 @@ function loadVideo(parentDiv, divEl, link) {
   const playButton = divEl.querySelector('img[alt="play button"]')?.closest('p');
   playButton.addEventListener('click', (e) => {
     e.preventDefault();
-    toggleModalPopUp(parentDiv)
+    toggleModalPopUp(parentDiv);
   });
   console.log(playButton);
   thumbnailImage?.querySelector('a')?.remove();
   thumbnailImage?.classList.add('h-full');
   playButton?.closest('p')?.classList.add('absolute');
-  const divCenter = div({class: 'flex flex-col items-center justify-center max-[767px]:h-[28.563rem] max-[767px]:w-full h-full'});
+  const divCenter = div({ class: 'flex flex-col items-center justify-center max-[767px]:h-[28.563rem] max-[767px]:w-full h-full' });
   divCenter.append(thumbnailImage, playButton);
   link.append(divCenter);
   divEl.append(link);
@@ -118,12 +118,12 @@ function loadVideo(parentDiv, divEl, link) {
 
 function loadContent(divEl) {
   divEl.classList.add('p-8', 'md:basis-1/2');
-  const divCenter = div({class: 'py-6 px-24 max-[1024px]:px-0 text-center'});
+  const divCenter = div({ class: 'py-6 px-24 max-[1024px]:px-0 text-center' });
   const h2El = divEl.querySelector('h2');
   const pEl = divEl.querySelector('p:not(:first-child)');
-  h2El.classList.add(...'pb-6 text-[83px] leading-[70px] max-[480px]:text-[24px] max-[480px]:leading-[24px] max-[640px]:text-[35px] max-[767px]:text-[45px] max-[767px]:leading-[45px] max-[992px]:text-[55px] max-[992px]:leading-[45px] max-[1199px]:text-[69px] max-[1199px]:leading-[50px]'.split(' ')); 
+  h2El.classList.add(...'pb-6 text-[83px] leading-[70px] max-[480px]:text-[24px] max-[480px]:leading-[24px] max-[640px]:text-[35px] max-[767px]:text-[45px] max-[767px]:leading-[45px] max-[992px]:text-[55px] max-[992px]:leading-[45px] max-[1199px]:text-[69px] max-[1199px]:leading-[50px]'.split(' '));
   pEl.classList.add(...'font-light text-[24px] leading-[1.9rem] max-[480px]:text-[20px] max-[480px]:leading-[27px] max-[767px]:text-[24px] max-[767px]:leading-[31px] max-[991px]:text-3xl max-[1200px]:text-[30px] max-[1200px]:leading-[1.9rem]'.split(' '));
-  divCenter.append(h2El, pEl);  
+  divCenter.append(h2El, pEl);
   divEl.querySelector('img[alt="top image"]')?.closest('p').after(divCenter);
   divEl.querySelector('img[alt="top image"]')?.closest('p')?.classList.add(...'flex flex-row justify-start max-[767px]:justify-center h-64'.split(' '));
   divEl.querySelector('img[alt="bottom image"]')?.closest('p')?.classList.add(...'flex flex-row justify-end max-[767px]:justify-center h-64'.split(' '));
@@ -136,15 +136,15 @@ export default function decorate(block) {
   parentDiv.classList.add(...'max-w-full flex md:flex-row md:justify-between flex-col'.split(' '));
   parentDiv.querySelectorAll('div').forEach((divEl, index) => {
     const link = divEl.querySelector('a');
-    if(link){
+    if (link) {
       parentDiv.append(createModalPopUp(link.href));
       loadVideo(parentDiv, divEl, link);
-    }else{
-      loadContent(divEl, index === 0)
+    } else {
+      loadContent(divEl, index === 0);
     }
   });
 
-  if(block.classList.contains('left-video')){
+  if (block.classList.contains('left-video')) {
     parentDiv.classList.add('flex-col', 'md:flex-row-reverse');
   }
   // block.classList.add(...'bg-black text-white'.split(' '));
