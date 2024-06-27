@@ -47,7 +47,7 @@ function createAnniversaryBlogCard(post) {
 }
 
 function createAnniversaryBlogs(posts) {
-  const container = div({ class: 'slider-wrapper flex transition-transform duration-300 ease-in-out overflow-x-auto snap-x snap-mandatory' });
+  const container = div({ class: 'slider-wrapper flex transition-transform duration-300 ease-in-out' });
   posts.forEach((post) => {
     const card = createAnniversaryBlogCard(post);
     container.appendChild(card);

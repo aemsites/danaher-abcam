@@ -118,14 +118,6 @@
   resize: both
 }
 
-.card-slider-wrapper :is(.snap-x) {
-  scroll-snap-type: x var(--tw-scroll-snap-strictness)
-}
-
-.card-slider-wrapper :is(.snap-mandatory) {
-  --tw-scroll-snap-strictness: mandatory
-}
-
 .card-slider-wrapper :is(.items-center) {
   align-items: center
 }
@@ -144,10 +136,6 @@
 
 .card-slider-wrapper :is(.overflow-hidden) {
   overflow: hidden
-}
-
-.card-slider-wrapper :is(.overflow-x-auto) {
-  overflow-x: auto
 }
 
 .card-slider-wrapper :is(.bg-white) {
