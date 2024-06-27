@@ -151,25 +151,22 @@ export default function decorate(block) {
   const observer = new IntersectionObserver((entries) => {
     if (entries.some((e) => e.isIntersecting)) {
       observer.disconnect();
-      setTimeout(() => {
-        parentDiv.querySelectorAll('div').forEach((divEl, index) => {
-          const link = divEl.querySelector('a');
-          if (link) {
-            parentDiv.append(createModalPopUp(link.href));
-            loadVideo(parentDiv, divEl, link);
-          } else {
-            loadContent(divEl, index === 0);
-          }
-        });
-      
-        if (block.classList.contains('left-video')) {
-          parentDiv.classList.add('flex-col', 'md:flex-row-reverse');
+      parentDiv.querySelectorAll('div').forEach((divEl, index) => {
+        const link = divEl.querySelector('a');
+        if (link) {
+          parentDiv.append(createModalPopUp(link.href));
+          loadVideo(parentDiv, divEl, link);
+        } else {
+          loadContent(divEl, index === 0);
         }
-      }, 2000);
+      });
+    }
+    if (block.classList.contains('left-video')) {
+      parentDiv.classList.add('flex-col', 'md:flex-row-reverse');
     }
   });
   observer.observe(block);
-  
+
   // block.classList.add(...'bg-black text-white'.split(' '));
   // const m = createDOMstructure(block);
   // block.innerHTML = '';
