@@ -72,13 +72,13 @@ export default function decorate(block) {
   parentDiv.classList.add('main-container');
   parentDiv.classList.add(...'max-w-full flex md:flex-row md:justify-between flex-col'.split(' '));
 
-  parentDiv.querySelectorAll('div').forEach((divEl, index) => {
+  parentDiv.querySelectorAll('div').forEach((divEl) => {
     const link = divEl.querySelector('a');
     if (link) {
       parentDiv.append(createModalPopUp(link.href));
       loadVideo(parentDiv, divEl, link);
     } else {
-      loadContent(divEl, index === 0);
+      loadContent(divEl);
     }
   });
 
