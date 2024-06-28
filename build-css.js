@@ -101,6 +101,11 @@ const fileMappings = [
     output: './blocks/breadcrumb/breadcrumb.css',
     wrapper: 'breadcrumb-wrapper',
   },
+  {
+    content: './blocks/marketo-form/marketo-form.js',
+    output: './blocks/marketo-form/marketo-form.css',
+    wrapper: 'marketo-form-wrapper',
+  },
 ];
 
 const watch = process.argv[2];
