@@ -38,7 +38,16 @@ function createModalPopUp(videoLink) {
       div(
         { class: 'youtube-frame h-3/4 md:h-full' },
         span({ class: 'close-btn float-right icon icon-close' }),
-        iframe({ class: 'm-0 p-0 w-full h-full', src: videoLink }),
+        iframe({
+          class: 'm-0 p-0 w-full h-full',
+          src: videoLink,
+          loading: 'lazy',
+          style: 'border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;',
+          allow: 'autoplay; fullscreen; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture',
+          allowfullscreen: '',
+          scrolling: 'no',
+          title: 'Content from Youtube',
+        }),
       ),
 
     ),
