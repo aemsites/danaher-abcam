@@ -6,10 +6,6 @@
   z-index: 9
 }
 
-.marketo-form-wrapper :is(.z-0) {
-  z-index: 0
-}
-
 .marketo-form-wrapper :is(.mx-auto) {
   margin-left: auto;
   margin-right: auto
@@ -67,10 +63,6 @@
   justify-content: center
 }
 
-.marketo-form-wrapper :is(.break-all) {
-  word-break: break-all
-}
-
 .marketo-form-wrapper :is(.bg-white) {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
@@ -99,51 +91,8 @@
   color: rgb(55 65 81 / var(--tw-text-opacity))
 }
 
-.marketo-form-wrapper :is(.underline) {
-  text-decoration-line: underline
-}
-
-.marketo-form-wrapper :is(.decoration-\[\#7523FF\]) {
-  text-decoration-color: #7523FF
-}
-
-.marketo-form-wrapper :is(.decoration-\[3px\]) {
-  text-decoration-thickness: 3px
-}
-
-.marketo-form-wrapper :is(.transition) {
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms
-}
-
-.marketo-form-wrapper :is(.duration-700) {
-  transition-duration: 700ms
-}
-
-.marketo-form-wrapper :is(.ease-in-out) {
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)
-}
-
-.marketo-form-wrapper :is(.hover\:bg-\[\#7523FF\]:hover) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(117 35 255 / var(--tw-bg-opacity))
-}
-
-.marketo-form-wrapper :is(.hover\:text-white:hover) {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity))
-}
-
 @media (min-width: 768px) {
   .marketo-form-wrapper :is(.md\:mb-16) {
     margin-bottom: 4rem
-  }
-
-  .marketo-form-wrapper :is(.md\:break-normal) {
-    overflow-wrap: normal;
-    word-break: normal
   }
 }

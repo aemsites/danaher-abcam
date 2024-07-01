@@ -6,8 +6,6 @@ import {
 async function loadMarketo(block) {
   const tmpFormName = block?.firstElementChild;
   const formName = tmpFormName?.firstElementChild?.nextElementSibling?.textContent;
-  const tmpThankYou = tmpFormName?.nextElementSibling;
-  const thankYou = tmpThankYou?.firstElementChild?.nextElementSibling?.textContent;
   const formId = formName.split('_')[1];
 
   await loadScript('//439-KNJ-322.mktoweb.com/js/forms2/js/forms2.min.js');
@@ -34,7 +32,7 @@ async function loadMarketo(block) {
 
     mktoform.onSuccess(() => {
       mktoform.getFormElem().hide();
-      block.innerHTML = `<h2>${formName}</h2><strong>${thankYou}</strong><p>Thank you for your submission.</p>`;
+      block.innerHTML = '<p style="text-align: center; height: 80px; background: white; font-weight: bold;">Thank you for your submission.</p>';
       return false;
     });
   });
