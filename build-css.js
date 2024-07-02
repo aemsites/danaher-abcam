@@ -101,6 +101,11 @@ const fileMappings = [
     output: './blocks/breadcrumb/breadcrumb.css',
     wrapper: 'breadcrumb-wrapper',
   },
+  {
+    content: './blocks/episodes/episodes.js',
+    output: './blocks/episodes/episodes.css',
+    wrapper: 'episodes-wrapper',
+  },
 ];
 
 const watch = process.argv[2];
