@@ -118,12 +118,14 @@ function initializeSlider(sliderContainer, wrapper, prevButton, nextButton) {
 
 function createHeroComponent(post) {
   const hero = div({ class: 'hero p-5 mb-5' });
+  const picture = createOptimizedPicture(post.image, post.title);
+  picture.querySelector('img')?.classList.add(...'max-[767px]:h-[400px] max-[767px]:w-auto object-cover h-full'.split(' '));
   const image = div(
-    { class: 'hero-image w-full h-auto bg-center mb-5' },
+    { class: 'hero-image w-full h-[391px] lg:h-[1070px] bg-center mb-5' },
     a({
       href: post.path,
       title: post.title,
-    }, div({ class: '[&_img]:w-full object-cover' }, createOptimizedPicture(post.image, post.title))),
+    }, div({ class: '[&_img]:w-full h-full object-cover' }, picture)),
   );
   const img = image.querySelector('picture > img');
   img.setAttribute('loading', 'eager');
