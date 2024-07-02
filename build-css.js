@@ -47,6 +47,11 @@ const fileMappings = [
     wrapper: 'accordion-wrapper',
   },
   {
+    content: './blocks/teasers/teasers.js',
+    output: './blocks/teasers/teasers.css',
+    wrapper: 'teasers-wrapper',
+  },
+  {
     content: './blocks/sticky-right-navigation/sticky-right-navigation.js',
     output: './blocks/sticky-right-navigation/sticky-right-navigation.css',
     wrapper: 'sticky-right-navigation',
@@ -100,6 +105,11 @@ const fileMappings = [
     content: './blocks/breadcrumb/breadcrumb.js',
     output: './blocks/breadcrumb/breadcrumb.css',
     wrapper: 'breadcrumb-wrapper',
+  },
+  {
+    content: './blocks/card-slider/card-slider.js',
+    output: './blocks/card-slider/card-slider.css',
+    wrapper: 'card-slider-wrapper',
   },
   {
     content: './blocks/episodes/episodes.js',
