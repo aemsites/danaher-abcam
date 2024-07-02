@@ -47,7 +47,7 @@ function createAnniversaryBlogCard(post) {
 }
 
 function createAnniversaryBlogs(posts) {
-  const container = div({ class: 'slider-wrapper flex transition-transform duration-300 ease-in-out' });
+  const container = div({ class: 'slider-wrapper flex group relative transition-transform duration-300 ease-in-out' });
   posts.forEach((post) => {
     const card = createAnniversaryBlogCard(post);
     container.appendChild(card);
@@ -83,17 +83,17 @@ function initializeSlider(sliderContainer, wrapper, prevButton, nextButton) {
     // Update button states based on index
     if (index === 0) {
       prevButton.classList.remove('cursor-pointer');
-      prevButton.classList.add('cursor-default');
+      prevButton.classList.add('cursor-default', 'opacity-50');
     } else {
-      prevButton.classList.remove('cursor-default');
+      prevButton.classList.remove('cursor-default', 'opacity-50');
       prevButton.classList.add('cursor-pointer');
     }
 
     if (index === totalSlides - 1) {
       nextButton.classList.remove('cursor-pointer');
-      nextButton.classList.add('cursor-default');
+      nextButton.classList.add('cursor-default', 'opacity-50');
     } else {
-      nextButton.classList.remove('cursor-default');
+      nextButton.classList.remove('cursor-default', 'opacity-50');
       nextButton.classList.add('cursor-pointer');
     }
   }
@@ -118,12 +118,14 @@ function initializeSlider(sliderContainer, wrapper, prevButton, nextButton) {
 
 function createHeroComponent(post) {
   const hero = div({ class: 'hero p-5 mb-5' });
+  const picture = createOptimizedPicture(post.image, post.title);
+  picture.querySelector('img')?.classList.add(...'max-[767px]:h-[400px] max-[767px]:w-auto object-cover h-full'.split(' '));
   const image = div(
-    { class: 'hero-image w-full h-auto bg-center mb-5' },
+    { class: 'hero-image w-full h-[391px] lg:h-[1070px] bg-center mb-5' },
     a({
       href: post.path,
       title: post.title,
-    }, div({ class: '[&_img]:w-full object-cover' }, createOptimizedPicture(post.image, post.title))),
+    }, div({ class: '[&_img]:w-full h-full object-cover' }, picture)),
   );
   const img = image.querySelector('picture > img');
   img.setAttribute('loading', 'eager');
