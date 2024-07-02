@@ -64,8 +64,8 @@ function loadContent(divEl) {
   divEl.querySelector('img[alt="top image"]')?.classList.add(...'w-[500px] h-[220px] object-contain max-[767px]:w-[8.438rem] max-[767px]:h-[4.375rem] max-[1199px]:w-[300px] max-[767px]:h-[200px]'.split(' '));
   divEl.querySelector('img[alt="bottom image"]')?.classList.add(...'w-[500px] h-[220px] object-contain max-[767px]:w-[8.438rem] max-[767px]:h-[4.375rem] max-[1199px]:w-[300px] max-[767px]:h-[200px]'.split(' '));
   divEl.querySelector('img[alt="top image"]')?.closest('p').after(divCenter);
-  divEl.querySelector('img[alt="top image"]')?.closest('p')?.classList.add(...'flex flex-row justify-start max-[767px]:justify-center h-64'.split(' '));
-  divEl.querySelector('img[alt="bottom image"]')?.closest('p')?.classList.add(...'flex flex-row justify-end max-[767px]:justify-center h-64'.split(' '));
+  divEl.querySelector('img[alt="top image"]')?.closest('p')?.classList.add(...'flex flex-row justify-start max-[767px]:justify-center'.split(' '));
+  divEl.querySelector('img[alt="bottom image"]')?.closest('p')?.classList.add(...'flex flex-row justify-end max-[767px]:justify-center'.split(' '));
 }
 
 export default function decorate(block) {
