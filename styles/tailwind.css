@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-}
 
 @layer components {
     main .section > div.episodes-wrapper {
@@ -13,7 +11,4 @@
     main .section > div.episodes-wrapper > div.episode-heading {
         @apply text-center text-4xl font-semibold py-8;
     }
-}
-
-@layer utilities {
 }
