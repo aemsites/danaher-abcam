@@ -37,15 +37,15 @@ function loadVideo(parentDiv, divEl, link) {
   divEl.classList.add('md:basis-1/2');
   link.classList.add('relative', 'hover:scale-125');
   link.textContent = '';
-  divEl.querySelector('img[alt="thumbnail"]')?.classList.add('h-full');
+  divEl.querySelector('img[alt="thumbnail"]')?.classList.add(...'max-[767px]:h-[457px] max-[767px]:w-auto object-cover h-full'.split(' '));
   const thumbnailImage = divEl.querySelector('img[alt="thumbnail"]')?.closest('p');
   const playButton = divEl.querySelector('img[alt="play button"]')?.closest('p');
   playButton.addEventListener('click', (e) => {
     e.preventDefault();
     toggleModalPopUp(parentDiv);
   });
+  thumbnailImage?.classList.add('relative', 'h-full');
   thumbnailImage?.querySelector('a')?.remove();
-  thumbnailImage?.classList.add('h-full');
   playButton?.closest('p')?.classList.add('absolute');
   const divCenter = div({ class: 'flex flex-col items-center justify-center max-[767px]:h-[28.563rem] max-[767px]:w-full h-full' });
   divCenter.append(thumbnailImage, playButton);
@@ -61,6 +61,8 @@ function loadContent(divEl) {
   h2El.classList.add(...'pb-6 text-[83px] leading-[70px] max-[480px]:text-[24px] max-[480px]:leading-[24px] max-[640px]:text-[35px] max-[767px]:text-[45px] max-[767px]:leading-[45px] max-[992px]:text-[55px] max-[992px]:leading-[45px] max-[1199px]:text-[69px] max-[1199px]:leading-[50px]'.split(' '));
   pEl.classList.add(...'font-light text-[24px] leading-[1.9rem] max-[480px]:text-[20px] max-[480px]:leading-[27px] max-[767px]:text-[24px] max-[767px]:leading-[31px] max-[991px]:text-3xl max-[1200px]:text-[30px] max-[1200px]:leading-[1.9rem]'.split(' '));
   divCenter.append(h2El, pEl);
+  divEl.querySelector('img[alt="top image"]')?.classList.add(...'w-[500px] h-[220px] object-contain max-[767px]:w-[8.438rem] max-[767px]:h-[4.375rem] max-[1199px]:w-[300px] max-[767px]:h-[200px]'.split(' '));
+  divEl.querySelector('img[alt="bottom image"]')?.classList.add(...'w-[500px] h-[220px] object-contain max-[767px]:w-[8.438rem] max-[767px]:h-[4.375rem] max-[1199px]:w-[300px] max-[767px]:h-[200px]'.split(' '));
   divEl.querySelector('img[alt="top image"]')?.closest('p').after(divCenter);
   divEl.querySelector('img[alt="top image"]')?.closest('p')?.classList.add(...'flex flex-row justify-start max-[767px]:justify-center h-64'.split(' '));
   divEl.querySelector('img[alt="bottom image"]')?.closest('p')?.classList.add(...'flex flex-row justify-end max-[767px]:justify-center h-64'.split(' '));
