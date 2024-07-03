@@ -1,0 +1,60 @@
+.contact-info-wrapper :is(.mx-auto) {
+  margin-left: auto;
+  margin-right: auto
+}
+
+.contact-info-wrapper :is(.mb-2) {
+  margin-bottom: 0.5rem
+}
+
+.contact-info-wrapper :is(.box-content) {
+  box-sizing: content-box
+}
+
+.contact-info-wrapper :is(.block) {
+  display: block
+}
+
+.contact-info-wrapper :is(.flex) {
+  display: flex
+}
+
+.contact-info-wrapper :is(.max-w-7xl) {
+  max-width: 80rem
+}
+
+.contact-info-wrapper :is(.flex-col) {
+  flex-direction: column
+}
+
+.contact-info-wrapper :is(.justify-center) {
+  justify-content: center
+}
+
+.contact-info-wrapper :is(.px-\[6\.25\%\]) {
+  padding-left: 6.25%;
+  padding-right: 6.25%
+}
+
+.contact-info-wrapper :is(.py-10) {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem
+}
+
+.contact-info-wrapper :is(.text-xs\/6) {
+  font-size: 0.75rem;
+  line-height: 1.5rem
+}
+
+.contact-info-wrapper :is(.font-normal) {
+  font-weight: 400
+}
+
+.contact-info-wrapper :is(.tracking-wider) {
+  letter-spacing: 0.05em
+}
+
+.contact-info-wrapper :is(.text-\[\#65797C\]) {
+  --tw-text-opacity: 1;
+  color: rgb(101 121 124 / var(--tw-text-opacity))
+}
