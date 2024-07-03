@@ -1,4 +1,10 @@
 import {
+  div,
+  form,
+  p,
+  section,
+} from '../../scripts/dom-builder.js';
+import {
   loadScript,
 } from '../../scripts/aem.js';
 
@@ -6,11 +12,51 @@ import {
 async function loadMarketo(block) {
   const tmpFormName = block?.firstElementChild;
   const formName = tmpFormName?.firstElementChild?.nextElementSibling?.textContent;
+  const tmpThankYou = tmpFormName?.nextElementSibling;
+  const thankYou = tmpThankYou?.firstElementChild?.nextElementSibling?.textContent;
   const formId = formName.split('_')[1];
 
+  const p1El = block?.querySelector('h2');
+  const p2El = block?.querySelector('strong');
+  const formEl = div(
+    { class: 'mt-0 mb-0 md:mb-16 ml-0 mr-4' },
+    form({
+      id: `${formName}`,
+      class: 'relative',
+    }),
+    section(
+      div(
+        { class: 'form-container mb-8' },
+        div(
+          { class: 'relative z-[9]' },
+          div(
+            { class: 'mktoForm' },
+            form(
+              { id: `${thankYou}` },
+            ),
+            div(
+              {
+                class: 'max-w-7xl mx-auto flex flex-col items-center justify-center h-80 bg-white',
+                style: 'display:none',
+                id: 'thankyou',
+              },
+              p(
+                { class: 'font-bold text-3xl text-gray-700 mb-4' },
+                `${p1El?.textContent}`,
+              ),
+              p(
+                { class: 'font-normal text-lg text-gray-700' },
+                `${p2El?.textContent}`,
+              ),
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
   await loadScript('//439-KNJ-322.mktoweb.com/js/forms2/js/forms2.min.js');
   block.innerHTML = '';
-
+  block.append(formEl);
   window.MktoForms2.loadForm('//439-KNJ-322.mktoweb.com', '439-KNJ-322', `${formId}`, (mktoform) => {
     const formElement = mktoform.getFormElem();
     block.append(formElement[0]);
@@ -32,7 +78,7 @@ async function loadMarketo(block) {
 
     mktoform.onSuccess(() => {
       mktoform.getFormElem().hide();
-      block.innerHTML = '<p style="text-align: center; height: 80px; background: white; font-weight: bold;">Thank you for your submission.</p>';
+      document.getElementById('thankyou').style.display = 'block';
       return false;
     });
   });
