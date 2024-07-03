@@ -275,8 +275,10 @@
   overflow-y: scroll
 }
 
-.hero-wrapper :is(.break-words) {
-  overflow-wrap: break-word
+.hero-wrapper :is(.truncate) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
 }
 
 .hero-wrapper :is(.rounded-full) {
@@ -418,6 +420,11 @@
   line-height: 1.25rem
 }
 
+.hero-wrapper :is(.text-xl) {
+  font-size: 1.25rem;
+  line-height: 1.75rem
+}
+
 .hero-wrapper :is(.font-bold) {
   font-weight: 700
 }
@@ -443,11 +450,6 @@
   color: rgb(0 0 0 / var(--tw-text-opacity))
 }
 
-.hero-wrapper :is(.text-gray-400) {
-  --tw-text-opacity: 1;
-  color: rgb(156 163 175 / var(--tw-text-opacity))
-}
-
 .hero-wrapper :is(.text-gray-600\/70) {
   color: rgb(75 85 99 / 0.7)
 }
@@ -455,6 +457,16 @@
 .hero-wrapper :is(.text-white) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+
+.hero-wrapper :is(.placeholder-black)::-moz-placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-placeholder-opacity))
+}
+
+.hero-wrapper :is(.placeholder-black)::placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-placeholder-opacity))
 }
 
 .hero-wrapper :is(.opacity-100) {
@@ -622,6 +634,11 @@
 
 .hero-wrapper :is(.\[\&_img\]\:w-full img) {
   width: 100%
+}
+
+.hero-wrapper :is(.\[\&_img\]\:object-cover img) {
+  -o-object-fit: cover;
+     object-fit: cover
 }
 
 .hero-wrapper :is(.\[\&_p\]\:leading-4 p) {
