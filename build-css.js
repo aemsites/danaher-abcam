@@ -112,9 +112,9 @@ const fileMappings = [
     wrapper: 'card-slider-wrapper',
   },
   {
-    content: './blocks/contact-info/contact-info.js',
-    output: './blocks/contact-info/contact-info.css',
-    wrapper: 'contact-info-wrapper',
+    content: './blocks/disclaimer/disclaimer.js',
+    output: './blocks/disclaimer/disclaimer.css',
+    wrapper: 'disclaimer-wrapper',
   },
 ];
 
