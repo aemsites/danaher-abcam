@@ -111,6 +111,11 @@ const fileMappings = [
     output: './blocks/card-slider/card-slider.css',
     wrapper: 'card-slider-wrapper',
   },
+  {
+    content: './blocks/download-block/download-block.js',
+    output: './blocks/download-block/download-block.css',
+    wrapper: 'download-block-wrapper',
+  },
 ];
 
 const watch = process.argv[2];
