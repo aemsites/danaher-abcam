@@ -1,6 +1,4 @@
-import {
-  section, h6, a, p,
-} from '../../scripts/dom-builder.js';
+import { section, h6, a, p, } from '../../scripts/dom-builder.js';
 import { getMetadata } from '../../scripts/aem.js';
 
 export default function decorate(block) {
@@ -17,4 +15,5 @@ export default function decorate(block) {
   );
   block.append(downloadBlock);
 }
+
 
