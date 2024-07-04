@@ -1,60 +1,44 @@
-import {
-  div, button,
-} from '../../scripts/dom-builder.js';
-
-function removeActiveClasses(content) {
-  const contentElements = content.querySelectorAll('.tab-panel');
-  [...contentElements].forEach((element) => {
-    element.classList.remove('active');
-    if(element.classList.contains('active')){
-      element.classList.add('opacity-0');
-    }
-  });
-  const listElements = content.querySelectorAll('button');
-  [...listElements].forEach((element) => {
-    element.classList.remove('active');
-    if(element.classList.contains('active')){
-      element.classList.add('opacity-0');
-    }
-  });
-}
-
-function activeFirstElements(content) {
-  const contentElement = content.querySelector('.tab-panel');
-  contentElement.classList.add('active');
-  const listElement = content.querySelector('button');
-  listElement.classList.add('active');
-}
-
+import { div, button } from '../../scripts/dom-builder.js';
 export default function decorate(block) {
-  const tabComponent = div({ class: 'mmg-tabs' });
-  const ul = div({ class: 'tablist flex mb-10' });
-  const tabContent = div({ class: 'tab-panels overflow-hidden relative' });
-
-  // Iterate through block's children and create tabs
-  [...block.children].forEach((row) => {
+  const tabComponent = div({ class: 'mmg-tabs lg:w-2/5 w-full' });
+  const ul = div({ class: 'tablist text-center inline-flex border-b' });
+  const tabContent = div({ class: 'tabpanels p-5' });
+  let activeTabIndex = 0;
+  const updateTabStyles = () => {
+    ul.querySelectorAll('button.tab').forEach((tab, index) => {
+      if (index === activeTabIndex) {
+        tab.classList.add('active', 'border-b-4', 'border-[#ff7223]');
+        tab.classList.remove(...'hover:border-b-4 shadow-slate-300'.split(' '));
+      } else {
+        tab.classList.remove('active', 'border-b-4', 'border-[#ff7223]');
+        tab.classList.add(...'hover:border-b-4 shadow-slate-300'.split(' '));
+      }
+    });
+  };
+  [...block.children].forEach((row, index) => {
     const itemContent = row.children[1];
-    itemContent.classList.add(...'tab-panel'.split(' '));
-    const li = button(
-      {
-        class: 'tab p-5',
-        onclick: (event) => {
-          removeActiveClasses(tabComponent);
-          event.target.classList.add('active');
-          itemContent.classList.add('active');
-        }
-      },
-      row.children[0]
-    );
-
+    itemContent.classList.add('tabpanel', 'hidden');
+    const li = button({ class: 'tab py-2 lg:mx-10 mx-3.5' }, row.children[0]);
+    li.addEventListener('click', () => {
+      if (activeTabIndex !== index) {
+        tabContent.children[activeTabIndex].classList.add('hidden');
+        itemContent.classList.remove('hidden');
+        activeTabIndex = index;
+        updateTabStyles();
+      }
+    });
     ul.appendChild(li);
     tabContent.appendChild(itemContent);
+    if (index === 0) {
+      itemContent.classList.remove('hidden');
+      li.classList.add('active', 'border-b-4', 'border-[#ff7223]');
+    } else {
+      li.classList.add(...'hover:border-b-4 shadow-slate-300'.split(' '));
+    }
   });
-
-  // Set the first tab as active by default
-  block.textContent = '';
   tabComponent.appendChild(ul);
   tabComponent.appendChild(tabContent);
+  block.textContent = '';
   block.appendChild(tabComponent);
-  activeFirstElements(tabComponent);
+  updateTabStyles();
 }
