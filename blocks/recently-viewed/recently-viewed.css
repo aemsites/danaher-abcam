@@ -1,0 +1,3 @@
+.recently-viewed-wrapper :is(.block) {
+  display: block
+}

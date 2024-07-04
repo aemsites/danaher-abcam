@@ -10,10 +10,6 @@
   height: 100%
 }
 
-.product-buybox-wrapper :is(.w-\[30\%\]) {
-  width: 30%
-}
-
 .product-buybox-wrapper :is(.bg-teal-100) {
   --tw-bg-opacity: 1;
   background-color: rgb(204 251 241 / var(--tw-bg-opacity))

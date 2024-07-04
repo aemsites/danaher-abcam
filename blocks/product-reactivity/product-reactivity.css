@@ -1,0 +1,3 @@
+.product-reactivity-wrapper :is(.block) {
+  display: block
+}

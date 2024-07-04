@@ -1,0 +1,3 @@
+.recommended-products-wrapper :is(.block) {
+  display: block
+}

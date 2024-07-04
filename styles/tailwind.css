@@ -11,4 +11,28 @@
     main .section > div.episodes-wrapper > div.episode-heading {
         @apply text-center text-4xl font-semibold py-8;
     }
+
+    main .section > .product-overview-wrapper {
+        @apply py-8 col-span-8;
+    }
+
+    main .section > .product-buybox-wrapper {
+        @apply py-8 col-start-10 col-span-3;
+    }
+
+    main .section > .product-reactivity-wrapper {
+        @apply mx-auto w-[87%] max-[768px]:w-full px-28;
+    }
+
+    main .section > .product-target-data-wrapper {
+        @apply mx-auto w-[87%] max-[768px]:w-full px-28;
+    }
+
+    main .section > .recommended-products-wrapper {
+        @apply mx-auto w-[87%] max-[768px]:w-full px-28;
+    }
+
+    main .section > .recently-viewed-wrapper {
+        @apply mx-auto w-[87%] max-[768px]:w-full px-28;
+    }
 }

@@ -10,10 +10,6 @@
   height: 100%
 }
 
-.product-overview-wrapper :is(.w-\[60\%\]) {
-  width: 60%
-}
-
 .product-overview-wrapper :is(.bg-slate-300) {
   --tw-bg-opacity: 1;
   background-color: rgb(203 213 225 / var(--tw-bg-opacity))

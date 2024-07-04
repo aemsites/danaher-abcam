@@ -611,6 +611,75 @@ main .section > div.episodes-wrapper > div.episode-heading {
   font-weight: 600;
 }
 
+main .section > .product-overview-wrapper {
+  grid-column: span 8 / span 8;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+main .section > .product-buybox-wrapper {
+  grid-column: span 3 / span 3;
+  grid-column-start: 10;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+main .section > .product-reactivity-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  width: 87%;
+  padding-left: 7rem;
+  padding-right: 7rem;
+}
+
+@media (max-width: 768px) {
+  main .section > .product-reactivity-wrapper {
+    width: 100%;
+  }
+}
+
+main .section > .product-target-data-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  width: 87%;
+  padding-left: 7rem;
+  padding-right: 7rem;
+}
+
+@media (max-width: 768px) {
+  main .section > .product-target-data-wrapper {
+    width: 100%;
+  }
+}
+
+main .section > .recommended-products-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  width: 87%;
+  padding-left: 7rem;
+  padding-right: 7rem;
+}
+
+@media (max-width: 768px) {
+  main .section > .recommended-products-wrapper {
+    width: 100%;
+  }
+}
+
+main .section > .recently-viewed-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  width: 87%;
+  padding-left: 7rem;
+  padding-right: 7rem;
+}
+
+@media (max-width: 768px) {
+  main .section > .recently-viewed-wrapper {
+    width: 100%;
+  }
+}
+
 .sticky {
   position: sticky;
 }

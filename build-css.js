@@ -136,6 +136,26 @@ const fileMappings = [
     output: './blocks/product-buybox/product-buybox.css',
     wrapper: 'product-buybox-wrapper',
   },
+  {
+    content: './blocks/product-reactivity/product-reactivity.js',
+    output: './blocks/product-reactivity/product-reactivity.css',
+    wrapper: 'product-reactivity-wrapper',
+  },
+  {
+    content: './blocks/product-target-data/product-target-data.js',
+    output: './blocks/product-target-data/product-target-data.css',
+    wrapper: 'product-target-data-wrapper',
+  },
+  {
+    content: './blocks/recommended-products/recommended-products.js',
+    output: './blocks/recommended-products/recommended-products.css',
+    wrapper: 'recommended-products-wrapper',
+  },
+  {
+    content: './blocks/recently-viewed/recently-viewed.js',
+    output: './blocks/recently-viewed/recently-viewed.css',
+    wrapper: 'recently-viewed-wrapper',
+  },
 ];
 
 const watch = process.argv[2];

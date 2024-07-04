@@ -1,0 +1,3 @@
+.product-target-data-wrapper :is(.block) {
+  display: block
+}
