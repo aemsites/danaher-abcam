@@ -1,0 +1,20 @@
+.product-buybox-wrapper :is(.col-span-4) {
+  grid-column: span 4 / span 4
+}
+
+.product-buybox-wrapper :is(.block) {
+  display: block
+}
+
+.product-buybox-wrapper :is(.h-full) {
+  height: 100%
+}
+
+.product-buybox-wrapper :is(.w-\[30\%\]) {
+  width: 30%
+}
+
+.product-buybox-wrapper :is(.bg-teal-100) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(204 251 241 / var(--tw-bg-opacity))
+}

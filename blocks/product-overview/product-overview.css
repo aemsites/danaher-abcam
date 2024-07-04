@@ -1,0 +1,20 @@
+.product-overview-wrapper :is(.col-span-7) {
+  grid-column: span 7 / span 7
+}
+
+.product-overview-wrapper :is(.block) {
+  display: block
+}
+
+.product-overview-wrapper :is(.h-full) {
+  height: 100%
+}
+
+.product-overview-wrapper :is(.w-\[60\%\]) {
+  width: 60%
+}
+
+.product-overview-wrapper :is(.bg-slate-300) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(203 213 225 / var(--tw-bg-opacity))
+}

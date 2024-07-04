@@ -1,0 +1,7 @@
+.product-tabs-wrapper :is(.block) {
+  display: block
+}
+
+.product-tabs-wrapper :is(.border-b-4) {
+  border-bottom-width: 4px
+}

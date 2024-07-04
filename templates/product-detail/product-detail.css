@@ -1,0 +1,40 @@
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto
+}
+
+.grid {
+  display: grid
+}
+
+.w-\[87\%\] {
+  width: 87%
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr))
+}
+
+.grid-cols-12 {
+  grid-template-columns: repeat(12, minmax(0, 1fr))
+}
+
+.gap-8 {
+  gap: 2rem
+}
+
+.px-32 {
+  padding-left: 8rem;
+  padding-right: 8rem
+}
+
+.py-16 {
+  padding-top: 4rem;
+  padding-bottom: 4rem
+}
+
+@media (max-width: 768px) {
+  .max-\[768px\]\:w-full {
+    width: 100%
+  }
+}
