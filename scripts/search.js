@@ -20,9 +20,9 @@ export function getSKU() {
 /* eslint consistent-return: off */
 export async function getProductResponse() {
   try {
-    let response = JSON.parse(localStorage.getItem('product-details'));
+    let response = JSON.parse(localStorage.getItem('optimus-product-details'));
     const sku = getSKU();
-    if (response && response.at(0)?.raw.sku === sku) {
+    if (response && response.at(0)?.raw.productslug === sku) {
       return response;
     }
     localStorage.removeItem('product-details');
@@ -43,7 +43,7 @@ export async function getProductResponse() {
 
     if (fullResponse.results.length > 0) {
       response = fullResponse.results;
-      localStorage.setItem('product-details', JSON.stringify(fullResponse.results));
+      localStorage.setItem('optimus-product-details', JSON.stringify(fullResponse.results));
       return response;
     }
 
