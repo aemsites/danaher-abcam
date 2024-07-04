@@ -1,4 +1,5 @@
 import { div, button } from '../../scripts/dom-builder.js';
+
 export default function decorate(block) {
   const tabComponent = div({ class: 'mmg-tabs lg:w-2/5 w-full' });
   const ul = div({ class: 'tablist text-center inline-flex border-b' });
