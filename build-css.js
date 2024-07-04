@@ -112,6 +112,11 @@ const fileMappings = [
     wrapper: 'card-slider-wrapper',
   },
   {
+    content: './blocks/episodes/episodes.js',
+    output: './blocks/episodes/episodes.css',
+    wrapper: 'episodes-wrapper',
+  },
+  {
     content: './blocks/disclaimer/disclaimer.js',
     output: './blocks/disclaimer/disclaimer.css',
     wrapper: 'disclaimer-wrapper',
