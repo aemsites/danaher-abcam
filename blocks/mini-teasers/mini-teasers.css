@@ -39,11 +39,6 @@
   padding-bottom: 5rem
 }
 
-.mini-teasers-wrapper :is(.px-8) {
-  padding-left: 2rem;
-  padding-right: 2rem
-}
-
 .mini-teasers-wrapper :is(.text-lg) {
   font-size: 1.125rem;
   line-height: 1.75rem
@@ -82,16 +77,5 @@
     --tw-space-y-reverse: 0;
     margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
     margin-bottom: calc(0px * var(--tw-space-y-reverse))
-  }
-}
-
-@media (min-width: 1280px) {
-  .mini-teasers-wrapper :is(.xl\:max-w-\[1120px\]) {
-    max-width: 1120px
-  }
-
-  .mini-teasers-wrapper :is(.xl\:px-0) {
-    padding-left: 0px;
-    padding-right: 0px
   }
 }

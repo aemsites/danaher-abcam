@@ -13,13 +13,12 @@ export default function decorate(block) {
         { class: 'font-sans text-base flex flex-col text-center m-auto max-w-[800px]' },
         h1({ class: 'my-5 text-black-0 lg:text-7xl sm:text-5xl mb-8 font-semibold tracking-normal text-3xl' }, title),
         p({ class: 'tracking-normal lg:text-[27px] font-light text-slate-800 text-xl md:max-w-[800px] w-full' }, description),
-
       ),
     );
     block.append(headTitle);
   } else {
     const headTitle = div(
-      h1({ class: 'my-5 text-black-0 text-6xl font-semibold tracking-normal' }, title),
+      h1({ class: 'my-5 text-black-0 text-5xl md:text-6xl font-semibold tracking-normal' }, title),
       div({ class: 'w-1/6 mb-5 border-t-4 border-[#ff7223]' }),
       div({ class: 'text-xl tracking-normal' }, description),
     );
