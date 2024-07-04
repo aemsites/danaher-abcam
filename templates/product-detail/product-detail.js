@@ -1,4 +1,5 @@
 import { buildBlock } from '../../scripts/aem.js';
+import { div } from '../../scripts/dom-builder.js';
 
 export default async function buildAutoBlocks() {
   const main = document.querySelector('main');
@@ -17,6 +18,6 @@ export default async function buildAutoBlocks() {
   recentlyViewedSection.classList.add('p-8');
 
   main.append(
-    buildBlock('disclaimer', { elems: [] }),
+    div(buildBlock('disclaimer', { elems: [] })),
   );
 }
