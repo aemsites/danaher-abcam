@@ -1,12 +1,12 @@
 import {
-  section, h6, a, p,
+  div, h6, a, p,
 } from '../../scripts/dom-builder.js';
 import { getMetadata } from '../../scripts/aem.js';
 
 export default function decorate(block) {
   const title = getMetadata('og:title');
   const { href } = window.location;
-  const downloadBlock = section(
+  const downloadBlock = div(
     { class: 'flex flex-col bg-[#f2f2f2] rounded-lg p-6 max-w-[544px] mb-10' },
     h6({ class: 'download-title' }, `${title}`),
     a({
