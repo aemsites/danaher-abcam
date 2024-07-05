@@ -7,4 +7,5 @@ export default async function decorate(block) {
   main.querySelectorAll('div.section[data-tabname="Downloads"], div.section[data-tabname="Datasheet"]').forEach((section) => {
     section.classList.add('hide-section');
   });
+  block.innerHTML = response?.at(0).raw.productslug;
 }
