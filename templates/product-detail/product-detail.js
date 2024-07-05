@@ -17,6 +17,12 @@ export default async function buildAutoBlocks() {
   const recentlyViewedSection = main.querySelector(':scope > div:nth-child(6)');
   recentlyViewedSection.classList.add('p-8');
 
+  const datasheetSection = main.querySelector(':scope > div:nth-child(7)');
+  datasheetSection.classList.add(...'mx-auto w-[87%] max-[768px]:w-full px-32'.split(' '));
+
+  const downloadSection = main.querySelector(':scope > div:nth-child(8)');
+  downloadSection.classList.add(...'mx-auto w-[87%] max-[768px]:w-full px-32'.split(' '));
+
   main.append(
     div(buildBlock('disclaimer', { elems: [] })),
   );

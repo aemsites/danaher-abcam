@@ -25,7 +25,7 @@ export async function getProductResponse() {
     if (response && response.at(0)?.raw.productslug === sku) {
       return response;
     }
-    localStorage.removeItem('product-details');
+    localStorage.removeItem('optimus-product-details');
 
     const url = `https://${orgId}.org.coveo.com/rest/search/v2`;
     const body = {
@@ -56,8 +56,7 @@ export async function getProductResponse() {
           document.head.innerHTML = doc.head.innerHTML;
           document.querySelector('main').innerHTML = doc.querySelector('main')?.innerHTML;
           document.title = 'Product Not Found';
-          document.querySelector('h1.heading-text').innerText = 'Product Not Found';
-          document.querySelector('p.description-text').innerText = 'The product you are looking for is not available. Please try again later.';
+          document.querySelector('h2.error-message').innerText = 'Product Not Found';
           window.addEventListener('load', () => sampleRUM('404', { source: document.referrer, target: window.location.href }));
         })
         .catch((error) => {

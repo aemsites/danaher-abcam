@@ -1,0 +1,7 @@
+.product-downloads-wrapper :is(.block) {
+  display: block
+}
+
+.product-downloads-wrapper :is(.border-t-4) {
+  border-top-width: 4px
+}

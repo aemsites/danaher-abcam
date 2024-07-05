@@ -156,6 +156,21 @@ const fileMappings = [
     output: './blocks/recently-viewed/recently-viewed.css',
     wrapper: 'recently-viewed-wrapper',
   },
+  {
+    content: './blocks/product-datasheet/product-datasheet.js',
+    output: './blocks/product-datasheet/product-datasheet.css',
+    wrapper: 'product-datasheet-wrapper',
+  },
+  {
+    content: './blocks/product-downloads/product-downloads.js',
+    output: './blocks/product-downloads/product-downloads.css',
+    wrapper: 'product-downloads-wrapper',
+  },
+  {
+    content: './blocks/product-protocols/product-protocols.js',
+    output: './blocks/product-protocols/product-protocols.css',
+    wrapper: 'product-protocols-wrapper',
+  },
 ];
 
 const watch = process.argv[2];

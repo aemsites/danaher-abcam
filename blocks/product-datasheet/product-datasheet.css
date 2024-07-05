@@ -1,0 +1,7 @@
+.product-datasheet-wrapper :is(.block) {
+  display: block
+}
+
+.product-datasheet-wrapper :is(.border-t-4) {
+  border-top-width: 4px
+}

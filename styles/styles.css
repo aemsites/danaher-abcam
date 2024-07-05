@@ -588,6 +588,10 @@ video {
   }
 }
 
+main .section.hide-section {
+  display: none !important;
+}
+
 main .section > div.episodes-wrapper {
   height: 2205px;
   --tw-bg-opacity: 1;
