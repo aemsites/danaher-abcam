@@ -112,6 +112,11 @@ const fileMappings = [
     wrapper: 'card-slider-wrapper',
   },
   {
+    content: './blocks/tab-component/tab-component.js',
+    output: './blocks/tab-component/tab-component.css',
+    wrapper: 'tab-component-wrapper',
+  },
+  {
     content: './blocks/episodes/episodes.js',
     output: './blocks/episodes/episodes.css',
     wrapper: 'episodes-wrapper',
