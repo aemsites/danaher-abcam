@@ -281,6 +281,10 @@
   white-space: nowrap
 }
 
+.hero-wrapper :is(.break-words) {
+  overflow-wrap: break-word
+}
+
 .hero-wrapper :is(.rounded-full) {
   border-radius: 9999px
 }
@@ -457,6 +461,11 @@
 .hero-wrapper :is(.text-white) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+
+.hero-wrapper :is(.text-gray-400) {
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity))
 }
 
 .hero-wrapper :is(.placeholder-black)::-moz-placeholder {
