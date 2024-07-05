@@ -116,6 +116,21 @@ const fileMappings = [
     output: './blocks/download-block/download-block.css',
     wrapper: 'download-block-wrapper',
   },
+  {
+    content: './blocks/tab-component/tab-component.js',
+    output: './blocks/tab-component/tab-component.css',
+    wrapper: 'tab-component-wrapper',
+  },
+  {
+    content: './blocks/episodes/episodes.js',
+    output: './blocks/episodes/episodes.css',
+    wrapper: 'episodes-wrapper',
+  },
+  {
+    content: './blocks/hero-video/hero-video.js',
+    output: './blocks/hero-video/hero-video.css',
+    wrapper: 'hero-video-wrapper',
+  }
 ];
 
 const watch = process.argv[2];
