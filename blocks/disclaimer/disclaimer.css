@@ -23,6 +23,14 @@
   max-width: 80rem
 }
 
+.disclaimer-wrapper :is(.max-w-\[88rem\]) {
+  max-width: 88rem
+}
+
+.disclaimer-wrapper :is(.max-w-\[87rem\]) {
+  max-width: 87rem
+}
+
 .disclaimer-wrapper :is(.flex-col) {
   flex-direction: column
 }
@@ -39,6 +47,16 @@
 .disclaimer-wrapper :is(.py-10) {
   padding-top: 2.5rem;
   padding-bottom: 2.5rem
+}
+
+.disclaimer-wrapper :is(.py-0) {
+  padding-top: 0px;
+  padding-bottom: 0px
+}
+
+.disclaimer-wrapper :is(.px-0) {
+  padding-left: 0px;
+  padding-right: 0px
 }
 
 .disclaimer-wrapper :is(.text-xs\/6) {
