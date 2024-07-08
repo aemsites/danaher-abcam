@@ -1,0 +1,98 @@
+.download-block-wrapper :is(.my-4) {
+  margin-top: 1rem;
+  margin-bottom: 1rem
+}
+
+.download-block-wrapper :is(.mb-10) {
+  margin-bottom: 2.5rem
+}
+
+.download-block-wrapper :is(.block) {
+  display: block
+}
+
+.download-block-wrapper :is(.flex) {
+  display: flex
+}
+
+.download-block-wrapper :is(.h-10) {
+  height: 2.5rem
+}
+
+.download-block-wrapper :is(.w-fit) {
+  width: -moz-fit-content;
+  width: fit-content
+}
+
+.download-block-wrapper :is(.max-w-\[544px\]) {
+  max-width: 544px
+}
+
+.download-block-wrapper :is(.flex-col) {
+  flex-direction: column
+}
+
+.download-block-wrapper :is(.whitespace-nowrap) {
+  white-space: nowrap
+}
+
+.download-block-wrapper :is(.rounded-\[28px\]) {
+  border-radius: 28px
+}
+
+.download-block-wrapper :is(.rounded-lg) {
+  border-radius: 0.5rem
+}
+
+.download-block-wrapper :is(.bg-\[\#f2f2f2\]) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(242 242 242 / var(--tw-bg-opacity))
+}
+
+.download-block-wrapper :is(.bg-black) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity))
+}
+
+.download-block-wrapper :is(.p-6) {
+  padding: 1.5rem
+}
+
+.download-block-wrapper :is(.px-5) {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem
+}
+
+.download-block-wrapper :is(.py-2) {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem
+}
+
+.download-block-wrapper :is(.py-2\.5) {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem
+}
+
+.download-block-wrapper :is(.text-sm) {
+  font-size: 0.875rem;
+  line-height: 1.25rem
+}
+
+.download-block-wrapper :is(.text-xs) {
+  font-size: 0.75rem;
+  line-height: 1rem
+}
+
+.download-block-wrapper :is(.capitalize) {
+  text-transform: capitalize
+}
+
+.download-block-wrapper :is(.text-white) {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+
+.download-block-wrapper :is(.hover\:bg-\[\#3B3B3B\]:hover) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 59 59 / var(--tw-bg-opacity))
+}

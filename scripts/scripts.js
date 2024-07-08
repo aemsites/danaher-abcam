@@ -16,7 +16,7 @@ import {
 } from './aem.js';
 import { div } from './dom-builder.js';
 
-const LCP_BLOCKS = []; // add your LCP blocks to the list
+const LCP_BLOCKS = ['hero', 'hero-video']; // add your LCP blocks to the list
 
 /**
  * 

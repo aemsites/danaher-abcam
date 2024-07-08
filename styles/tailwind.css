@@ -4,6 +4,14 @@
 
 
 @layer components {
+    header {
+        @apply h-11 lg:h-[74px];
+    }
+
+    .home-page main .section > div.hero-wrapper {
+        @apply h-[496px];
+    }
+
 
     main .section.hide-section {
         @apply !hidden;
