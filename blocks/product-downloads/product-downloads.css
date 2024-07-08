@@ -1,7 +1,128 @@
+.product-downloads-wrapper :is(.my-6) {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem
+}
+
+.product-downloads-wrapper :is(.mb-11) {
+  margin-bottom: 2.75rem
+}
+
+.product-downloads-wrapper :is(.mb-2) {
+  margin-bottom: 0.5rem
+}
+
+.product-downloads-wrapper :is(.mb-4) {
+  margin-bottom: 1rem
+}
+
+.product-downloads-wrapper :is(.mt-0) {
+  margin-top: 0px
+}
+
+.product-downloads-wrapper :is(.mt-6) {
+  margin-top: 1.5rem
+}
+
+.product-downloads-wrapper :is(.mb-10) {
+  margin-bottom: 2.5rem
+}
+
 .product-downloads-wrapper :is(.block) {
   display: block
 }
 
+.product-downloads-wrapper :is(.flex) {
+  display: flex
+}
+
+.product-downloads-wrapper :is(.grid) {
+  display: grid
+}
+
+.product-downloads-wrapper :is(.h-32) {
+  height: 8rem
+}
+
+.product-downloads-wrapper :is(.h-\[1px\]) {
+  height: 1px
+}
+
+.product-downloads-wrapper :is(.w-32) {
+  width: 8rem
+}
+
+.product-downloads-wrapper :is(.grid-cols-2) {
+  grid-template-columns: repeat(2, minmax(0, 1fr))
+}
+
+.product-downloads-wrapper :is(.flex-row) {
+  flex-direction: row
+}
+
+.product-downloads-wrapper :is(.flex-col) {
+  flex-direction: column
+}
+
+.product-downloads-wrapper :is(.flex-wrap) {
+  flex-wrap: wrap
+}
+
+.product-downloads-wrapper :is(.justify-between) {
+  justify-content: space-between
+}
+
+.product-downloads-wrapper :is(.gap-4) {
+  gap: 1rem
+}
+
+.product-downloads-wrapper :is(.gap-x-3) {
+  -moz-column-gap: 0.75rem;
+       column-gap: 0.75rem
+}
+
+.product-downloads-wrapper :is(.gap-y-10) {
+  row-gap: 2.5rem
+}
+
+.product-downloads-wrapper :is(.border) {
+  border-width: 1px
+}
+
 .product-downloads-wrapper :is(.border-t-4) {
   border-top-width: 4px
+}
+
+.product-downloads-wrapper :is(.pl-4) {
+  padding-left: 1rem
+}
+
+.product-downloads-wrapper :is(.pt-0) {
+  padding-top: 0px
+}
+
+.product-downloads-wrapper :is(.pt-4) {
+  padding-top: 1rem
+}
+
+.product-downloads-wrapper :is(.text-2xl) {
+  font-size: 1.5rem;
+  line-height: 2rem
+}
+
+.product-downloads-wrapper :is(.text-xs) {
+  font-size: 0.75rem;
+  line-height: 1rem
+}
+
+.product-downloads-wrapper :is(.font-semibold) {
+  font-weight: 600
+}
+
+.product-downloads-wrapper :is(.text-\[\#2a3c3c\]) {
+  --tw-text-opacity: 1;
+  color: rgb(42 60 60 / var(--tw-text-opacity))
+}
+
+.product-downloads-wrapper :is(.hover\:no-underline:hover) {
+  text-decoration-line: none
 }
