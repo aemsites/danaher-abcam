@@ -33,6 +33,11 @@
   padding-right: 8rem
 }
 
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem
+}
+
 .pb-16 {
   padding-bottom: 4rem
 }
@@ -44,5 +49,12 @@
 @media (max-width: 768px) {
   .max-\[768px\]\:w-full {
     width: 100%
+  }
+}
+
+@media (min-width: 640px) {
+  .sm\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem
   }
 }
