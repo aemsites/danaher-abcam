@@ -18,11 +18,10 @@ const getReactivityStatus = (reactivityType) => {
   if (reactivityType === 'EXPECTED_TO_REACT"') {
     return 'Predicted';
   }
-  if (reactivityType === 'DOES_NOT_REACT') {
+  else {
     return 'Not recommended';
   }
 
-  return 'Not available';
 };
 
 function productPromise() {
