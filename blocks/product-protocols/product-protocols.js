@@ -8,8 +8,6 @@ import {
 
 export default async function decorate(block) {
   block.classList.add('border-t-4');
-  block.textContent = 'Product protocols Placeholder';
-
   const { origin } = window.location;
   const productProtocols = div(
     { class: 'product-protocols' },
