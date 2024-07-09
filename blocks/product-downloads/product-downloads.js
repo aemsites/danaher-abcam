@@ -9,7 +9,7 @@ export default async function decorate(block) {
   buttonsList.forEach((item) => {
     const button = document.createElement('button');
     button.classList.add(...'flex flex-col justify-between w-32 h-32 p-2 text-[#2a3c3c] text-xs font-semibold border rounded-4px border-grey-0 hover:no-underline'.split(' '));
-    button.appendChild(div({ class: 'pt-0 mb-2'}, span({ class: 'icon icon-download' })));
+    button.appendChild(div({ class: 'pt-0 mb-2' }, span({ class: 'icon icon-download' })));
     button.appendChild(span({ class: 'pt-0' }, item));
     decorateIcons(button);
     downloadButtons.appendChild(button);
