@@ -1,6 +1,25 @@
 import { getProductResponse } from '../../scripts/search.js';
 import { div, button } from '../../scripts/dom-builder.js';
 
+function toggleTabs(tabId, mmgTabs) {
+  const contentSections = document.querySelectorAll('[data-tabname]');
+  contentSections.forEach((section) => {
+    if (section.dataset.tabname === tabId) {
+      section.classList.remove('hide-section');
+    } else {
+      section.classList.add('hide-section');
+    }
+  });
+  const tabss = mmgTabs.querySelectorAll('.tab');
+  tabss.forEach((tab) => {
+    if (tab.textContent.trim() === tabId) {
+      tab.classList.add('active', 'border-b-8', 'border-[#ff7223]');
+    } else {
+      tab.classList.remove('active', 'border-b-8', 'border-[#ff7223]');
+    }
+  });
+}
+
 export default async function decorate(block) {
   const response = await getProductResponse();
   block.classList.add(...'md:border-b sm:border-b flex flex-col md:flex-col md:relative text-xl text-[#65797C]'.split(' '));
@@ -17,7 +36,7 @@ export default async function decorate(block) {
     li.innerHTML = tab.name;
     mmgTabs.appendChild(li);
     li.addEventListener('click', () => {
-      toggleTabs(tab.tabId);
+      toggleTabs(tab.tabId, mmgTabs);
     });
   });
   const productTabs = div({ class: 'product-tabs-productID md:mt-0 mt-6 order-2' });
@@ -25,23 +44,6 @@ export default async function decorate(block) {
   block.innerHTML = '';
   block.appendChild(productTabs);
   block.appendChild(mmgTabs);
-  function toggleTabs(tabId) {
-    const contentSections = document.querySelectorAll('[data-tabname]');
-    contentSections.forEach((section) => {
-      if (section.dataset.tabname === tabId) {
-        section.classList.remove('hide-section');
-      } else {
-        section.classList.add('hide-section');
-      }
-    });
-    const tabss = mmgTabs.querySelectorAll('.tab');
-    tabss.forEach((tab) => {
-      if (tab.textContent.trim() === tabId) {
-        tab.classList.add('active', 'border-b-8', 'border-[#ff7223]');
-      } else {
-        tab.classList.remove('active', 'border-b-8', 'border-[#ff7223]');
-      }
-    });
-  }
-  toggleTabs(tabs[0].tabId);
+
+  toggleTabs(tabs[0].tabId, mmgTabs);
 }
