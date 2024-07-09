@@ -5,7 +5,7 @@ export default async function buildAutoBlocks() {
   const main = document.querySelector('main');
   main.classList.add('pb-16');
   const producttabsSection = main.querySelector(':scope > div:nth-child(1)');
-  producttabsSection.classList.add(...'mx-auto w-[87%] max-[768px]:w-full px-32 pt-16'.split(' '));
+  producttabsSection.classList.add(...'mx-auto w-[87%] max-[768px]:w-full px-4 lg:px-[6.25%] pt-16'.split(' '));
   const productOverviewSection = main.querySelector(':scope > div:nth-child(2)');
   productOverviewSection.classList.add(...'mx-auto w-[87%] max-[768px]:w-full px-32 grid grid-cols-12'.split(' '));
   const reactivitySection = main.querySelector(':scope > div:nth-child(3)');

@@ -1,7 +1,133 @@
+.product-tabs-wrapper :is(.order-1) {
+  order: 1
+}
+
+.product-tabs-wrapper :is(.order-2) {
+  order: 2
+}
+
+.product-tabs-wrapper :is(.mr-8) {
+  margin-right: 2rem
+}
+
+.product-tabs-wrapper :is(.mt-6) {
+  margin-top: 1.5rem
+}
+
 .product-tabs-wrapper :is(.block) {
   display: block
 }
 
-.product-tabs-wrapper :is(.border-b-4) {
-  border-bottom-width: 4px
+.product-tabs-wrapper :is(.flex) {
+  display: flex
+}
+
+.product-tabs-wrapper :is(.flex-col) {
+  flex-direction: column
+}
+
+.product-tabs-wrapper :is(.border-b) {
+  border-bottom-width: 1px
+}
+
+.product-tabs-wrapper :is(.border-b-8) {
+  border-bottom-width: 8px
+}
+
+.product-tabs-wrapper :is(.border-\[\#ff7223\]) {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 114 35 / var(--tw-border-opacity))
+}
+
+.product-tabs-wrapper :is(.pb-4) {
+  padding-bottom: 1rem
+}
+
+.product-tabs-wrapper :is(.text-base) {
+  font-size: 1rem;
+  line-height: 1.5rem
+}
+
+.product-tabs-wrapper :is(.text-xl) {
+  font-size: 1.25rem;
+  line-height: 1.75rem
+}
+
+.product-tabs-wrapper :is(.font-semibold) {
+  font-weight: 600
+}
+
+.product-tabs-wrapper :is(.text-\[\#65797C\]) {
+  --tw-text-opacity: 1;
+  color: rgb(101 121 124 / var(--tw-text-opacity))
+}
+
+.product-tabs-wrapper :is(.text-black) {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity))
+}
+
+@media (min-width: 640px) {
+  .product-tabs-wrapper :is(.sm\:border-b) {
+    border-bottom-width: 1px
+  }
+
+  .product-tabs-wrapper :is(.sm\:border-none) {
+    border-style: none
+  }
+}
+
+@media (min-width: 768px) {
+  .product-tabs-wrapper :is(.md\:absolute) {
+    position: absolute
+  }
+
+  .product-tabs-wrapper :is(.md\:relative) {
+    position: relative
+  }
+
+  .product-tabs-wrapper :is(.md\:right-0) {
+    right: 0px
+  }
+
+  .product-tabs-wrapper :is(.md\:top-\[-15px\]) {
+    top: -15px
+  }
+
+  .product-tabs-wrapper :is(.md\:mt-0) {
+    margin-top: 0px
+  }
+
+  .product-tabs-wrapper :is(.md\:block) {
+    display: block
+  }
+
+  .product-tabs-wrapper :is(.md\:flex-col) {
+    flex-direction: column
+  }
+
+  .product-tabs-wrapper :is(.md\:border-b) {
+    border-bottom-width: 1px
+  }
+
+  .product-tabs-wrapper :is(.md\:border-none) {
+    border-style: none
+  }
+
+  .product-tabs-wrapper :is(.md\:py-1) {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem
+  }
+
+  .product-tabs-wrapper :is(.md\:py-1\.5) {
+    padding-top: 0.375rem;
+    padding-bottom: 0.375rem
+  }
+}
+
+@media (min-width: 1024px) {
+  .product-tabs-wrapper :is(.lg\:mx-8) {
+    margin-left: 2rem;
+    margin-right: 2rem
+  }
 }
