@@ -12,7 +12,6 @@ function toggleTabs(tabId, mmgTabs) {
   });
   const tabss = mmgTabs.querySelectorAll('.tab');
   tabss.forEach((tab) => {
-    console.log(tab.id, tabId);
     if (tab.id === tabId) {
       tab.classList.add('active', 'border-b-8', 'border-[#ff7223]');
     } else {
