@@ -5,24 +5,6 @@ export default async function decorate(block) {
   const response = await getProductResponse();
   block.classList.add(...'md:border-b sm:border-b flex flex-col md:flex-col md:relative text-xl text-[#65797C]'.split(' '));
   const mmgTabs = div({ class: 'md:border-none border-b sm:border-none mmg-tabs md:absolute md:right-0 md:top-[-15px] font-semibold text-base text-black md:block flex order-1' });
-  function toggleTabs(tabId) {
-    const contentSections = document.querySelectorAll('[data-tabname]');
-    contentSections.forEach((section) => {
-      if (section.dataset.tabname === tabId) {
-        section.classList.remove('hide-section');
-      } else {
-        section.classList.add('hide-section');
-      }
-    });
-    const tabss = mmgTabs.querySelectorAll('.tab');
-    tabss.forEach((tab) => {
-      if (tab.textContent.trim() === tabId) {
-        tab.classList.add('active', 'border-b-8', 'border-[#ff7223]');
-      } else {
-        tab.classList.remove('active', 'border-b-8', 'border-[#ff7223]');
-      }
-    });
-  }
   const tabs = [
     { name: 'Overview', tabId: 'Overview' },
     { name: 'Datasheet', tabId: 'Datasheet' },
@@ -43,5 +25,23 @@ export default async function decorate(block) {
   block.innerHTML = '';
   block.appendChild(productTabs);
   block.appendChild(mmgTabs);
+  function toggleTabs(tabId) {
+    const contentSections = document.querySelectorAll('[data-tabname]');
+    contentSections.forEach((section) => {
+      if (section.dataset.tabname === tabId) {
+        section.classList.remove('hide-section');
+      } else {
+        section.classList.add('hide-section');
+      }
+    });
+    const tabss = mmgTabs.querySelectorAll('.tab');
+    tabss.forEach((tab) => {
+      if (tab.textContent.trim() === tabId) {
+        tab.classList.add('active', 'border-b-8', 'border-[#ff7223]');
+      } else {
+        tab.classList.remove('active', 'border-b-8', 'border-[#ff7223]');
+      }
+    });
+  }
   toggleTabs(tabs[0].tabId);
 }
