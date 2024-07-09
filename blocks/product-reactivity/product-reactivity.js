@@ -49,9 +49,7 @@ function productPromise() {
 function publicationsAndImageSection(images, publicationArray) {
   const pubandimagesection = div({ class: 'flex col-span-4' });
   const publicationsection = div({ class: 'lg:w-1/2' }, div({ class: 'flex items-center justify-between' }, h2({ class: 'text-[#2A3C3C] font-semibold text-lg' }, 'Publications')));
-  console.log('full response');
-  console.log(publicationArray);
-  const publicationsContent = div();
+   const publicationsContent = div();
   publicationArray.forEach((pub) => {
     const publicationData = JSON.parse(pub);
     const publicationJournalAndVolume = div({ class: 'flex text-gray-400 font-semibold text-xs justify-between' },
@@ -96,10 +94,6 @@ export default async function decorate(block) {
   const reactivityHeadingButtons = jsonData[0].raw.reactivityapplications;
   const reactivityApplication = JSON.parse(jsonData[0].raw.reactivityjson);
   const { speciesReactivity } = reactivityApplication;
-  console.log('application data');
-  console.log(reactivityApplication.applications);
-  console.log('speciesReactivity');
-  console.log(speciesReactivity);
   const images = jsonData[0].raw.images.slice(0, 3);
   const { applications } = reactivityApplication;
   const tableHeading = thead();
@@ -147,8 +141,6 @@ export default async function decorate(block) {
       });
     });
   });
-  console.log('Application Table');
-  console.log(applicationTable);
   console.log('tableData');
   console.log(tableData);
   // tablecontent logic end
