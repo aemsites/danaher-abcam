@@ -38,6 +38,11 @@
   padding-right: 1rem
 }
 
+.px-\[6\.25\%\] {
+  padding-left: 6.25%;
+  padding-right: 6.25%
+}
+
 .pb-16 {
   padding-bottom: 4rem
 }
@@ -56,5 +61,34 @@
   .sm\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:px-32 {
+    padding-left: 8rem;
+    padding-right: 8rem
+  }
+
+  .lg\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem
+  }
+
+  .lg\:px-28 {
+    padding-left: 7rem;
+    padding-right: 7rem
+  }
+
+  .lg\:px-\[6\.25\%\] {
+    padding-left: 6.25%;
+    padding-right: 6.25%
   }
 }
