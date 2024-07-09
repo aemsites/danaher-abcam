@@ -34,6 +34,10 @@
   border-bottom-width: 8px
 }
 
+.product-tabs-wrapper :is(.border-b-4) {
+  border-bottom-width: 4px
+}
+
 .product-tabs-wrapper :is(.border-\[\#ff7223\]) {
   --tw-border-opacity: 1;
   border-color: rgb(255 114 35 / var(--tw-border-opacity))

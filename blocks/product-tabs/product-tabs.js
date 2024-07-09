@@ -2,8 +2,10 @@ import { getProductResponse } from '../../scripts/search.js';
 import { div, button } from '../../scripts/dom-builder.js';
 
 function toggleTabs(tabId, mmgTabs) {
+  console.log(tabId, mmgTabs);
   const contentSections = document.querySelectorAll('[data-tabname]');
   contentSections.forEach((section) => {
+    console.log(section.dataset.tabname);
     if (section.dataset.tabname === tabId) {
       section.classList.remove('hide-section');
     } else {
@@ -27,7 +29,7 @@ export default async function decorate(block) {
   const tabs = [
     { name: 'Overview', tabId: 'Overview' },
     { name: 'Datasheet', tabId: 'Datasheet' },
-    { name: 'Support & Download', tabId: 'Support & Download' },
+    { name: 'Support & Downloads', tabId: 'Downloads' },
   ];
   tabs.forEach((tab) => {
     const li = button({
