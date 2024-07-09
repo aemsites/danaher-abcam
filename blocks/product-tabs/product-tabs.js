@@ -8,10 +8,10 @@ export default async function decorate(block) {
   const tabs = [
     { name: 'Overview', tabId: 'Overview' },
     { name: 'Datasheet', tabId: 'Datasheet' },
-    { name: 'Support & Download', tabId: 'Support & Download' }
+    { name: 'Support & Download', tabId: 'Support & Download' },
   ];
-  tabs.forEach(tab => {
-    const li = button({ 
+  tabs.forEach((tab) => {
+    const li = button({
       class: 'tab md:py-1.5 pb-4 lg:mx-8 mr-8',
     });
     li.innerHTML = tab.name;
@@ -26,8 +26,8 @@ export default async function decorate(block) {
   block.appendChild(productTabs);
   block.appendChild(mmgTabs);
   function toggleTabs(tabId) {
-    const contentSections = document.querySelectorAll(`[data-tabname]`);
-    contentSections.forEach(section => {
+    const contentSections = document.querySelectorAll('[data-tabname]');
+    contentSections.forEach((section) => {
       if (section.dataset.tabname === tabId) {
         section.classList.remove('hide-section');
       } else {
@@ -35,7 +35,7 @@ export default async function decorate(block) {
       }
     });
     const tabs = mmgTabs.querySelectorAll('.tab');
-    tabs.forEach(tab => {
+    tabs.forEach((tab) => {
       if (tab.textContent.trim() === tabId) {
         tab.classList.add('active', 'border-b-8', 'border-[#ff7223]');
       } else {
