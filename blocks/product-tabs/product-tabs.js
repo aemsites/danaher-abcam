@@ -2,10 +2,8 @@ import { getProductResponse } from '../../scripts/search.js';
 import { div, button } from '../../scripts/dom-builder.js';
 
 function toggleTabs(tabId, mmgTabs) {
-  console.log(tabId, mmgTabs);
   const contentSections = document.querySelectorAll('[data-tabname]');
   contentSections.forEach((section) => {
-    console.log(section.dataset.tabname);
     if (section.dataset.tabname === tabId) {
       section.classList.remove('hide-section');
     } else {
@@ -14,7 +12,8 @@ function toggleTabs(tabId, mmgTabs) {
   });
   const tabss = mmgTabs.querySelectorAll('.tab');
   tabss.forEach((tab) => {
-    if (tab.textContent.trim() === tabId) {
+    console.log(tab.id, tabId);
+    if (tab.id === tabId) {
       tab.classList.add('active', 'border-b-8', 'border-[#ff7223]');
     } else {
       tab.classList.remove('active', 'border-b-8', 'border-[#ff7223]');
@@ -34,6 +33,7 @@ export default async function decorate(block) {
   tabs.forEach((tab) => {
     const li = button({
       class: 'tab md:py-1.5 pb-4 lg:mx-8 mr-8',
+      id: tab.tabId,
     });
     li.innerHTML = tab.name;
     mmgTabs.appendChild(li);
