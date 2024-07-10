@@ -1,7 +1,7 @@
 import { button, div, span } from '../../scripts/dom-builder.js';
 
 export default async function decorate(block) {
-  block.classList.add(...'hidden lg:block h-1/3 rounded-lg w-auto bg-[#edf7f6] col-span-4 p-4'.split(' '));
+  block.classList.add(...'hidden lg:block h-1/2 rounded-lg w-auto bg-[#edf7f6] col-span-4 p-4'.split(' '));
   const buyBoxContainer = div(
     { class: 'asset-info-buy-ProductContainer text-center p-6 tracking-wide' },
     div(

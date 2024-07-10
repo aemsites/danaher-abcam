@@ -630,8 +630,14 @@ main .section > div.episodes-wrapper > div.episode-heading {
 }
 
 main .section > .product-overview-wrapper {
-  grid-column: span 8 / span 8;
+  grid-column: span 12 / span 12;
   padding-top: 2rem;
+}
+
+@media (min-width: 1024px) {
+  main .section > .product-overview-wrapper {
+    grid-column: span 8 / span 8;
+  }
 }
 
 main .section > .product-buybox-wrapper {
@@ -644,7 +650,6 @@ main .section > .product-buybox-wrapper {
 main .section > .product-reactivity-wrapper {
   margin-left: auto;
   margin-right: auto;
-  width: 87%;
   padding-left: 7rem;
   padding-right: 7rem;
 }
@@ -658,7 +663,6 @@ main .section > .product-reactivity-wrapper {
 main .section > .product-target-data-wrapper {
   margin-left: auto;
   margin-right: auto;
-  width: 87%;
   padding-left: 7rem;
   padding-right: 7rem;
 }
@@ -672,7 +676,6 @@ main .section > .product-target-data-wrapper {
 main .section > .recommended-products-wrapper {
   margin-left: auto;
   margin-right: auto;
-  width: 87%;
   padding-left: 7rem;
   padding-right: 7rem;
 }
@@ -686,7 +689,6 @@ main .section > .recommended-products-wrapper {
 main .section > .recently-viewed-wrapper {
   margin-left: auto;
   margin-right: auto;
-  width: 87%;
   padding-left: 7rem;
   padding-right: 7rem;
 }

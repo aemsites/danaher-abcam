@@ -47,6 +47,11 @@
   padding-bottom: 2rem
 }
 
+.px-32 {
+  padding-left: 8rem;
+  padding-right: 8rem
+}
+
 .pb-16 {
   padding-bottom: 4rem
 }

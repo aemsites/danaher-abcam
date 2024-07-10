@@ -3,6 +3,10 @@
   margin-bottom: 1.5rem
 }
 
+.product-downloads-wrapper :is(.mb-10) {
+  margin-bottom: 2.5rem
+}
+
 .product-downloads-wrapper :is(.mb-11) {
   margin-bottom: 2.75rem
 }
@@ -21,14 +25,6 @@
 
 .product-downloads-wrapper :is(.mt-6) {
   margin-top: 1.5rem
-}
-
-.product-downloads-wrapper :is(.mb-10) {
-  margin-bottom: 2.5rem
-}
-
-.product-downloads-wrapper :is(.mt-4) {
-  margin-top: 1rem
 }
 
 .product-downloads-wrapper :is(.block) {
@@ -92,36 +88,12 @@
   border-width: 1px
 }
 
-.product-downloads-wrapper :is(.border-t-4) {
-  border-top-width: 4px
-}
-
 .product-downloads-wrapper :is(.p-2) {
   padding: 0.5rem
 }
 
-.product-downloads-wrapper :is(.pl-4) {
-  padding-left: 1rem
-}
-
 .product-downloads-wrapper :is(.pt-0) {
   padding-top: 0px
-}
-
-.product-downloads-wrapper :is(.pt-4) {
-  padding-top: 1rem
-}
-
-.product-downloads-wrapper :is(.pt-14) {
-  padding-top: 3.5rem
-}
-
-.product-downloads-wrapper :is(.pt-12) {
-  padding-top: 3rem
-}
-
-.product-downloads-wrapper :is(.pl-2) {
-  padding-left: 0.5rem
 }
 
 .product-downloads-wrapper :is(.text-2xl) {
@@ -145,4 +117,14 @@
 
 .product-downloads-wrapper :is(.hover\:no-underline:hover) {
   text-decoration-line: none
+}
+
+@media (min-width: 1024px) {
+  .product-downloads-wrapper :is(.lg\:grid-cols-5) {
+    grid-template-columns: repeat(5, minmax(0, 1fr))
+  }
+
+  .product-downloads-wrapper :is(.lg\:grid-cols-8) {
+    grid-template-columns: repeat(8, minmax(0, 1fr))
+  }
 }

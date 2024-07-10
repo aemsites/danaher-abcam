@@ -5,7 +5,7 @@ import {
 
 export default async function decorate(block) {
   const buttonsList = ['Datasheet', 'Safety Datasheet', 'COC'];
-  const downloadButtons = div({ class: 'flex flex-row flex-wrap mb-11 gap-4' });
+  const downloadButtons = div({ class: 'grid grid-cols-2 lg:grid-cols-8 gap-y-10 mb-11 gap-4' });
   buttonsList.forEach((item) => {
     const button = document.createElement('button');
     button.classList.add(...'flex flex-col justify-between w-32 h-32 p-2 text-[#2a3c3c] text-xs font-semibold border rounded-4px border-grey-0 hover:no-underline'.split(' '));
@@ -19,7 +19,7 @@ export default async function decorate(block) {
     { class: 'pt-0 mt-0' },
     hr({ class: 'h-[1px] my-6 bg-interactive-grey-active mb-10' }),
     h2({ class: 'mt-6 mb-4 text-2xl font-semibold text-[#2a3c3c]' }, 'Downloads'),
-    div({ class: 'grid grid-cols-2 gap-x-3 gap-y-10' }, downloadButtons),
+    downloadButtons
   );
   block.append(downloadEl);
 }
