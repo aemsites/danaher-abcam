@@ -14,6 +14,10 @@
   height: 25%
 }
 
+.product-buybox-wrapper :is(.h-full) {
+  height: 100%
+}
+
 .product-buybox-wrapper :is(.w-auto) {
   width: auto
 }
@@ -21,6 +25,15 @@
 .product-buybox-wrapper :is(.bg-teal-100) {
   --tw-bg-opacity: 1;
   background-color: rgb(204 251 241 / var(--tw-bg-opacity))
+}
+
+.product-buybox-wrapper :is(.bg-\[\#edf7f6\]) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(237 247 246 / var(--tw-bg-opacity))
+}
+
+.product-buybox-wrapper :is(.p-6) {
+  padding: 1.5rem
 }
 
 @media (min-width: 1024px) {
