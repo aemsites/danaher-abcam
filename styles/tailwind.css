@@ -4,11 +4,6 @@
 
 
 @layer components {
-
-    main .section.hide-section {
-        @apply !hidden;
-    }
-    
     header {
         @apply h-11 lg:h-[74px];
     }
