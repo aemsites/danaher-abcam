@@ -1,6 +1,6 @@
 import { decorateIcons } from '../../scripts/aem.js';
 import {
-  div, h6, p, h3, h5, ul, li, span, button,
+  div, h6, p, h3, h5, ul, li, span,
 } from '../../scripts/dom-builder.js';
 import { getProductResponse } from '../../scripts/search.js';
 
@@ -12,6 +12,27 @@ function createKeyFactElement(key, value) {
   );
 }
 
+// Function to generate star ratings based on aggregatedRating
+function getStarRatings(ratings, numOfReviews) {
+  const starButton = document.createElement('button');
+  starButton.classList.add(...'flex items-end appearance-none'.split(' '));
+  starButton.appendChild(span({ class: 'relative pr-2 font-semibold top-[3px] text-black text-3xl' }, ratings));
+  /* eslint-disable no-plusplus */
+  for (let i = 1; i <= 5; i++) {
+    const spanEl = document.createElement('span');
+    if (i <= ratings) {
+      spanEl.classList.add(...'icon icon-star-rating'.split(' '));
+    } else {
+      spanEl.classList.add(...'icon icon-star-rating-empty'.split(' '));
+    }
+    decorateIcons(spanEl);
+    starButton.append(spanEl);
+  }
+  starButton.appendChild(span({ class: 'pl-2 underline text-xl text-[rgb(55,129,137)] font-lighter' }, `(${numOfReviews} Reviews)`));
+  return starButton;
+}
+
+// Function to generate alternative button
 function getButtonAlternative(rawData, title) {
   const buttonAlternative = document.createElement('button');
   const titleDiv = document.createElement('div');
@@ -112,11 +133,7 @@ export default async function decorate(block) {
       { class: 'font-sans' },
       div({ class: 'text-black text-5xl pb-4 font-bold' }, title),
       div({ class: 'text-black text-xl font-normal tracking-wide' }, description),
-      button(
-        { class: 'flex items-end appearance-none my-4' },
-        span({ class: 'relative pr-2 font-semibold top-[3px] text-black text-3xl' }, aggregatedRating),
-        span({ class: 'pl-2 underline text-xl text-blue-950 font-lighter' }, `(${numberOfReviews} Reviews)`),
-      ),
+      getStarRatings(aggregatedRating, numberOfReviews),
       div({ class: 'border-t-[1px] border-[#dde1e1] my-6' }),
       productTagsDiv,
       div({ class: 'text-[#9ca0a0] font-thin break-words' }, (`Alternative names=${alternativeNames}`)),
