@@ -592,6 +592,20 @@ main .section.hide-section {
   display: none !important;
 }
 
+header {
+  height: 2.75rem;
+}
+
+@media (min-width: 1024px) {
+  header {
+    height: 74px;
+  }
+}
+
+.home-page main .section > div.hero-wrapper {
+  height: 496px;
+}
+
 main .section > div.episodes-wrapper {
   height: 2205px;
   --tw-bg-opacity: 1;
