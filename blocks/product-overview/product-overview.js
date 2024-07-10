@@ -36,8 +36,7 @@ function getButtonAlternative(rawData, title) {
         { class: 'w-full h-44 bg-white' },
         buttonAlternative,
       ),
-    ),
-    );
+    ));
     return titleDiv;
   }
   return '';

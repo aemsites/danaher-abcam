@@ -185,11 +185,6 @@ const fileMappings = [
     content: './blocks/product-protocols/product-protocols.js',
     output: './blocks/product-protocols/product-protocols.css',
     wrapper: 'product-protocols-wrapper',
-=========
-    content: './blocks/hero-video/hero-video.js',
-    output: './blocks/hero-video/hero-video.css',
-    wrapper: 'hero-video-wrapper',
->>>>>>>>> Temporary merge branch 2
   },
 ];
 

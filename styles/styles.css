@@ -588,6 +588,10 @@ video {
   }
 }
 
+main .section.hide-section {
+  display: none !important;
+}
+
 header {
   height: 2.75rem;
 }

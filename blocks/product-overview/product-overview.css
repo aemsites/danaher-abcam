@@ -87,22 +87,6 @@
   margin-top: 2rem
 }
 
-.product-overview-wrapper :is(.mb-0) {
-  margin-bottom: 0px
-}
-
-.product-overview-wrapper :is(.mb-10) {
-  margin-bottom: 2.5rem
-}
-
-.product-overview-wrapper :is(.mt-0) {
-  margin-top: 0px
-}
-
-.product-overview-wrapper :is(.mt-6) {
-  margin-top: 1.5rem
-}
-
 .product-overview-wrapper :is(.block) {
   display: block
 }
@@ -125,10 +109,6 @@
 
 .product-overview-wrapper :is(.h-full) {
   height: 100%
-}
-
-.product-overview-wrapper :is(.h-\[1px\]) {
-  height: 1px
 }
 
 .product-overview-wrapper :is(.w-fit) {
@@ -177,12 +157,12 @@
   align-items: flex-end
 }
 
-.product-overview-wrapper :is(.gap-4) {
-  gap: 1rem
-}
-
 .product-overview-wrapper :is(.gap-2) {
   gap: 0.5rem
+}
+
+.product-overview-wrapper :is(.gap-4) {
+  gap: 1rem
 }
 
 .product-overview-wrapper :is(.gap-x-3) {
@@ -242,14 +222,14 @@
   background-color: rgb(237 246 247 / var(--tw-bg-opacity))
 }
 
-.product-overview-wrapper :is(.bg-white) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity))
-}
-
 .product-overview-wrapper :is(.bg-\[rgb\(237\2c 246\2c 247\)\]) {
   --tw-bg-opacity: 1;
   background-color: rgb(237 246 247 / var(--tw-bg-opacity))
+}
+
+.product-overview-wrapper :is(.bg-white) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity))
 }
 
 .product-overview-wrapper :is(.px-2) {
@@ -274,12 +254,12 @@
   padding-right: 0.5rem
 }
 
-.product-overview-wrapper :is(.pt-10) {
-  padding-top: 2.5rem
-}
-
 .product-overview-wrapper :is(.pt-0) {
   padding-top: 0px
+}
+
+.product-overview-wrapper :is(.pt-10) {
+  padding-top: 2.5rem
 }
 
 .product-overview-wrapper :is(.text-left) {
@@ -323,11 +303,6 @@
 .product-overview-wrapper :is(.text-xs) {
   font-size: 0.75rem;
   line-height: 1rem
-}
-
-.product-overview-wrapper :is(.text-4xl) {
-  font-size: 2.25rem;
-  line-height: 2.5rem
 }
 
 .product-overview-wrapper :is(.font-bold) {
@@ -374,6 +349,11 @@
   color: rgb(156 160 160 / var(--tw-text-opacity))
 }
 
+.product-overview-wrapper :is(.text-\[rgb\(44\2c 101\2c 107\)\]) {
+  --tw-text-opacity: 1;
+  color: rgb(44 101 107 / var(--tw-text-opacity))
+}
+
 .product-overview-wrapper :is(.text-black) {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity))
@@ -382,11 +362,6 @@
 .product-overview-wrapper :is(.text-blue-950) {
   --tw-text-opacity: 1;
   color: rgb(23 37 84 / var(--tw-text-opacity))
-}
-
-.product-overview-wrapper :is(.text-\[rgb\(44\2c 101\2c 107\)\]) {
-  --tw-text-opacity: 1;
-  color: rgb(44 101 107 / var(--tw-text-opacity))
 }
 
 .product-overview-wrapper :is(.underline) {
