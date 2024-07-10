@@ -4,7 +4,6 @@
 
 
 @layer components {
-
     main .section.hide-section {
         @apply !hidden;
     }

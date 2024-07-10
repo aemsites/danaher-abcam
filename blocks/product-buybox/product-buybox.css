@@ -6,18 +6,6 @@
   display: block
 }
 
-.product-buybox-wrapper :is(.h-1\/2) {
-  height: 50%
-}
-
-.product-buybox-wrapper :is(.h-auto) {
-  height: auto
-}
-
-.product-buybox-wrapper :is(.h-3\/4) {
-  height: 75%
-}
-
 .product-buybox-wrapper :is(.h-1\/4) {
   height: 25%
 }
