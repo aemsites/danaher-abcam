@@ -26,6 +26,36 @@ export function generateUUID() {
   return Math.floor(1000 + Math.random() * 9000);
 }
 
+export function debounce(func, timeout = 300) {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => { func.apply(this, args); }, timeout);
+  };
+}
+
+export function createRequest(config) {
+  const {
+    url,
+    method = 'GET',
+    authToken,
+    type = 'application/json',
+    body,
+  } = config;
+  const headers = {
+    'Content-Type': type,
+    Accept: 'application/json',
+  };
+  const configuration = { method, headers };
+  if (body) {
+    configuration.body = body;
+  }
+  if (authToken && authToken.trim() !== '') {
+    headers.Authorization = `Bearer ${authToken}`;
+  }
+  return fetch(url, configuration);
+}
+
 /**
  * Builds hero block and prepends to main in a new section.
  * @param {Element} main The container element
@@ -58,7 +88,8 @@ const TEMPLATE_LIST = [
   'protocols',
   'product-category',
   'blog-page',
-  'product-detail'
+  'product-detail',
+  'search-results'
 ];
 
 async function decorateTemplates(main) {
