@@ -636,7 +636,6 @@ main .section > div.episodes-wrapper > div.episode-heading {
 main .section > .product-overview-wrapper {
   grid-column: span 8 / span 8;
   padding-top: 2rem;
-  padding-bottom: 2rem;
 }
 
 main .section > .product-buybox-wrapper {

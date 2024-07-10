@@ -91,8 +91,23 @@ export default async function decorate(block) {
   });
 
   // Constructing the container with title, description, alternative names, and key-value pairs
-  const main = document.querySelector('main');
-  if (main.querySelectorAll('div.section[data-tabname="Overview"]')) {
+  if (block.classList.contains('datasheet')) {
+    const datasheetContainer = div(
+      { class: 'font-sans' },
+      div({ class: 'text-black text-5xl pb-4 font-bold' }, title),
+      div({ class: 'text-black text-xl font-normal' }, description),
+      productTagsDiv,
+      div({ class: 'text-[#9ca0a0] font-thin break-words' }, (`Alternative names=${alternativeNames}`)),
+    );
+    block.appendChild(datasheetContainer);
+  } else if (block.classList.contains('download')) {
+    const supportContainer = div(
+      { class: 'font-sans' },
+      div({ class: 'text-black text-5xl pb-4 font-bold' }, title),
+      productTagsDiv,
+    );
+    block.appendChild(supportContainer);
+  } else {
     const overviewContainer = div(
       { class: 'font-sans' },
       div({ class: 'text-black text-5xl pb-4 font-bold' }, title),
@@ -115,22 +130,5 @@ export default async function decorate(block) {
     );
     decorateIcons(overviewContainer);
     block.appendChild(overviewContainer);
-  } else if (main.querySelectorAll('div.section[data-tabname="Datasheet"]')) {
-    const datasheetContainer = div(
-      { class: 'font-sans' },
-      div({ class: 'text-black text-5xl pb-4 font-bold' }, title),
-      div({ class: 'text-black text-xl font-normal' }, description),
-      div({ class: 'border-t-[1px] border-[#dde1e1] my-6' }),
-      div({ class: 'text-[#9ca0a0] font-thin break-words' }, (`Alternative names=${alternativeNames}`)),
-    );
-    block.appendChild(datasheetContainer);
-  } else {
-    const supportContainer = div(
-      { class: 'font-sans' },
-      div({ class: 'text-black text-5xl pb-4 font-bold' }, title),
-      div({ class: 'text-black text-xl font-normal' }, description),
-      div({ class: 'border-t-[1px] border-[#dde1e1] my-6' }),
-    );
-    block.appendChild(supportContainer);
   }
 }

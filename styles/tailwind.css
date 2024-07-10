@@ -17,7 +17,6 @@
         @apply h-[496px];
     }
 
-
     main .section.hide-section {
         @apply !hidden;
     }
@@ -31,7 +30,7 @@
     }
 
     main .section > .product-overview-wrapper {
-        @apply py-8 col-span-8;
+        @apply pt-8 col-span-8;
     }
 
     main .section > .product-buybox-wrapper {

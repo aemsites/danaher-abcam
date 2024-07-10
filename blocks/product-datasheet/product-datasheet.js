@@ -84,7 +84,7 @@ export default async function decorate(block) {
   }
 
   const productKeyfacts = div(
-    { class: 'product-keyfacts grid grid-cols-[320px_minmax(auto,_1fr)] border-t-[2px] border-[#dde1e1] pt-10 mt-10 max-[799px]:grid-cols-1' },
+    { class: 'product-keyfacts grid grid-cols-[320px_minmax(auto,_1fr)] border-t-[1px] border-[#dde1e1] pt-10 mt-10 max-[799px]:grid-cols-1' },
     h2({ class: 'text-2xl font-semibold text-[#2a3c3c] mb-6' }, 'Key Facts'),
     div(
       { class: 'keyfacts-content grid grid-cols-2 gap-x-3 gap-y-10' },

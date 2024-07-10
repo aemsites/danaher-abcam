@@ -43,8 +43,16 @@
   row-gap: 2.5rem
 }
 
+.product-datasheet-wrapper :is(.border-t-4) {
+  border-top-width: 4px
+}
+
 .product-datasheet-wrapper :is(.border-t-\[2px\]) {
   border-top-width: 2px
+}
+
+.product-datasheet-wrapper :is(.border-t-\[1px\]) {
+  border-top-width: 1px
 }
 
 .product-datasheet-wrapper :is(.border-\[\#dde1e1\]) {
