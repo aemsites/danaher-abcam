@@ -85,10 +85,10 @@ export default async function decorate(block) {
   // Constructing the product tags
   const productTagsDiv = div({ class: 'flex flex-wrap pb-4 gap-2' });
   productTags?.forEach((item) => {
-    // const button = document.createElement('button');
-    button.classList.add(...'appearance-none px-2 py-1 rounded-e text-xs font-semibold tracking-wider break-keep bg-[rgb(237,246,247)] text-[rgb(44,101,107)] border-[rgb(44,101,107)] border'.split(' '));
-    button.appendChild(span({ class: 'pt-0' }, item));
-    productTagsDiv.appendChild(button);
+    const productTagsButton = document.createElement('button');
+    productTagsButton.classList.add(...'appearance-none px-2 py-1 rounded-e text-xs font-semibold tracking-wider break-keep bg-[rgb(237,246,247)] text-[rgb(44,101,107)] border-[rgb(44,101,107)] border'.split(' '));
+    productTagsButton.appendChild(span({ class: 'pt-0' }, item));
+    productTagsDiv.appendChild(productTagsButton);
   });
 
   // Constructing the container with title, description, alternative names, and key-value pairs
