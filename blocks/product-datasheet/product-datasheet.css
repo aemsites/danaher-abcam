@@ -1,7 +1,100 @@
+.product-datasheet-wrapper :is(.mb-2) {
+  margin-bottom: 0.5rem
+}
+
+.product-datasheet-wrapper :is(.mb-4) {
+  margin-bottom: 1rem
+}
+
+.product-datasheet-wrapper :is(.mb-6) {
+  margin-bottom: 1.5rem
+}
+
+.product-datasheet-wrapper :is(.mt-10) {
+  margin-top: 2.5rem
+}
+
 .product-datasheet-wrapper :is(.block) {
   display: block
 }
 
-.product-datasheet-wrapper :is(.border-t-4) {
-  border-top-width: 4px
+.product-datasheet-wrapper :is(.grid) {
+  display: grid
+}
+
+.product-datasheet-wrapper :is(.grid-cols-1) {
+  grid-template-columns: repeat(1, minmax(0, 1fr))
+}
+
+.product-datasheet-wrapper :is(.grid-cols-2) {
+  grid-template-columns: repeat(2, minmax(0, 1fr))
+}
+
+.product-datasheet-wrapper :is(.grid-cols-\[320px_minmax\(auto\2c _1fr\)\]) {
+  grid-template-columns: 320px minmax(auto, 1fr)
+}
+
+.product-datasheet-wrapper :is(.gap-x-3) {
+  -moz-column-gap: 0.75rem;
+       column-gap: 0.75rem
+}
+
+.product-datasheet-wrapper :is(.gap-y-10) {
+  row-gap: 2.5rem
+}
+
+.product-datasheet-wrapper :is(.border-t-\[2px\]) {
+  border-top-width: 2px
+}
+
+.product-datasheet-wrapper :is(.border-\[\#dde1e1\]) {
+  --tw-border-opacity: 1;
+  border-color: rgb(221 225 225 / var(--tw-border-opacity))
+}
+
+.product-datasheet-wrapper :is(.pt-10) {
+  padding-top: 2.5rem
+}
+
+.product-datasheet-wrapper :is(.text-2xl) {
+  font-size: 1.5rem;
+  line-height: 2rem
+}
+
+.product-datasheet-wrapper :is(.text-base) {
+  font-size: 1rem;
+  line-height: 1.5rem
+}
+
+.product-datasheet-wrapper :is(.font-normal) {
+  font-weight: 400
+}
+
+.product-datasheet-wrapper :is(.font-semibold) {
+  font-weight: 600
+}
+
+.product-datasheet-wrapper :is(.text-\[\#2a3c3c\]) {
+  --tw-text-opacity: 1;
+  color: rgb(42 60 60 / var(--tw-text-opacity))
+}
+
+.product-datasheet-wrapper :is(.text-\[\#378189\]) {
+  --tw-text-opacity: 1;
+  color: rgb(55 129 137 / var(--tw-text-opacity))
+}
+
+.product-datasheet-wrapper :is(.text-black) {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity))
+}
+
+.product-datasheet-wrapper :is(.hover\:underline:hover) {
+  text-decoration-line: underline
+}
+
+@media (max-width: 799px) {
+  .product-datasheet-wrapper :is(.max-\[799px\]\:grid-cols-1) {
+    grid-template-columns: repeat(1, minmax(0, 1fr))
+  }
 }
