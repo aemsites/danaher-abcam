@@ -5,7 +5,7 @@ import {
 
 export default async function decorate(block) {
   const buttonsList = ['Datasheet', 'Safety Datasheet', 'COC'];
-  const downloadButtons = div({ class: 'grid grid-cols-2 lg:grid-cols-8 gap-y-10 mb-11 gap-4' });
+  const downloadButtons = div({ class: 'flex flex-row flex-wrap mb-11 gap-4' });
   buttonsList.forEach((item) => {
     const button = document.createElement('button');
     button.classList.add(...'flex flex-col justify-between w-32 h-32 p-2 text-[#2a3c3c] text-xs font-semibold border rounded-4px border-grey-0 hover:no-underline'.split(' '));

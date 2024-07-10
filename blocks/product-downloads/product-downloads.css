@@ -75,6 +75,10 @@
   gap: 1rem
 }
 
+.product-downloads-wrapper :is(.gap-8) {
+  gap: 2rem
+}
+
 .product-downloads-wrapper :is(.gap-x-3) {
   -moz-column-gap: 0.75rem;
        column-gap: 0.75rem
@@ -119,6 +123,16 @@
   text-decoration-line: none
 }
 
+@media (min-width: 768px) {
+  .product-downloads-wrapper :is(.md\:grid-cols-8) {
+    grid-template-columns: repeat(8, minmax(0, 1fr))
+  }
+
+  .product-downloads-wrapper :is(.md\:grid-cols-6) {
+    grid-template-columns: repeat(6, minmax(0, 1fr))
+  }
+}
+
 @media (min-width: 1024px) {
   .product-downloads-wrapper :is(.lg\:grid-cols-5) {
     grid-template-columns: repeat(5, minmax(0, 1fr))
@@ -126,5 +140,13 @@
 
   .product-downloads-wrapper :is(.lg\:grid-cols-8) {
     grid-template-columns: repeat(8, minmax(0, 1fr))
+  }
+
+  .product-downloads-wrapper :is(.lg\:grid-cols-9) {
+    grid-template-columns: repeat(9, minmax(0, 1fr))
+  }
+
+  .product-downloads-wrapper :is(.lg\:grid-cols-12) {
+    grid-template-columns: repeat(12, minmax(0, 1fr))
   }
 }
