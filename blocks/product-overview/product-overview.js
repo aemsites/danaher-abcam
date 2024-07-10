@@ -16,7 +16,7 @@ function createKeyFactElement(key, value) {
 function getStarRatings(ratings, numOfReviews) {
   const starButton = document.createElement('button');
   starButton.classList.add(...'flex items-end appearance-none'.split(' '));
-  starButton.appendChild(span({ class: 'relative pr-2 font-semibold top-[3px] text-black text-3xl' }, ratings));
+  starButton.appendChild(span({ class: 'relative pr-2 font-semibold top-[3px] text-black text-2xl' }, ratings));
   /* eslint-disable no-plusplus */
   for (let i = 1; i <= 5; i++) {
     const spanEl = document.createElement('span');
@@ -115,7 +115,7 @@ export default async function decorate(block) {
   if (block.classList.contains('datasheet')) {
     const datasheetContainer = div(
       { class: 'font-sans' },
-      div({ class: 'text-black text-5xl pb-4 font-bold' }, title),
+      div({ class: 'text-black text-4xl pb-4 font-bold' }, title),
       div({ class: 'text-black text-xl font-normal' }, description),
       productTagsDiv,
       div({ class: 'text-[#9ca0a0] font-thin break-words' }, (`Alternative names=${alternativeNames}`)),
@@ -124,14 +124,14 @@ export default async function decorate(block) {
   } else if (block.classList.contains('download')) {
     const supportContainer = div(
       { class: 'font-sans' },
-      div({ class: 'text-black text-5xl pb-4 font-bold' }, title),
+      div({ class: 'text-black text-4xl pb-4 font-bold' }, title),
       productTagsDiv,
     );
     block.appendChild(supportContainer);
   } else {
     const overviewContainer = div(
       { class: 'font-sans' },
-      div({ class: 'text-black text-5xl pb-4 font-bold' }, title),
+      div({ class: 'text-black text-4xl pb-4 font-bold' }, title),
       div({ class: 'text-black text-xl font-normal tracking-wide' }, description),
       getStarRatings(aggregatedRating, numberOfReviews),
       div({ class: 'border-t-[1px] border-[#dde1e1] my-6' }),
