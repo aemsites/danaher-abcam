@@ -17,6 +17,11 @@
         @apply h-[496px];
     }
 
+
+    main .section.hide-section {
+        @apply !hidden;
+    }
+
     main .section > div.episodes-wrapper {
         @apply h-[2205px] lg:h-[1182px] bg-black text-white;
     }

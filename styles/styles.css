@@ -588,10 +588,6 @@ video {
   }
 }
 
-main .section.hide-section {
-  display: none !important;
-}
-
 header {
   height: 2.75rem;
 }
@@ -604,6 +600,10 @@ header {
 
 .home-page main .section > div.hero-wrapper {
   height: 496px;
+}
+
+main .section.hide-section {
+  display: none !important;
 }
 
 main .section > div.episodes-wrapper {
