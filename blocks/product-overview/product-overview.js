@@ -11,23 +11,27 @@ function createKeyFactElement(key, value) {
     p({ class: 'text-base text-black' }, value),
   );
 }
+export function starRating(rating, starParent, width = 'w-7') {
+  const starRating = div();
+  for (let i = 1; i <= 5; i++) {
+    const spanEl = span();
+    if (i <= rating) {
+      spanEl.classList.add('icon', 'icon-star-rating', `${width}`, 'h-auto');
+    } else {
+      spanEl.classList.add('icon', 'icon-star-rating-empty', `${width}`, 'h-auto');
+    }
+    decorateIcons(spanEl);
+    starParent.append(spanEl);
+  }
+  return starParent;
+}
 
 // Function to generate star ratings based on aggregatedRating
-function getStarRatings(ratings, numOfReviews) {
+function getReviewsRatings(ratings, numOfReviews) {
   const starButton = document.createElement('button');
   starButton.classList.add(...'flex items-end appearance-none'.split(' '));
   starButton.appendChild(span({ class: 'relative pr-2 font-semibold top-[3px] text-black text-2xl' }, ratings));
-  /* eslint-disable no-plusplus */
-  for (let i = 1; i <= 5; i++) {
-    const spanEl = document.createElement('span');
-    if (i <= ratings) {
-      spanEl.classList.add(...'icon icon-star-rating'.split(' '));
-    } else {
-      spanEl.classList.add(...'icon icon-star-rating-empty'.split(' '));
-    }
-    decorateIcons(spanEl);
-    starButton.append(spanEl);
-  }
+  starRating(ratings, starButton);
   starButton.appendChild(span({ class: 'pl-2 underline text-xl text-[rgb(55,129,137)] font-lighter' }, `(${numOfReviews} Reviews)`));
   return starButton;
 }
@@ -133,7 +137,7 @@ export default async function decorate(block) {
       { class: 'font-sans py-6' },
       div({ class: 'text-black text-4xl pb-4 font-bold' }, title),
       div({ class: 'text-black text-xl font-normal tracking-wide' }, description),
-      getStarRatings(aggregatedRating, numberOfReviews),
+      getReviewsRatings(aggregatedRating, numberOfReviews),
       div({ class: 'border-t-[1px] border-[#dde1e1] my-6' }),
       productTagsDiv,
       div({ class: 'text-[#9ca0a0] font-thin break-words' }, (`Alternative names=${alternativeNames}`)),

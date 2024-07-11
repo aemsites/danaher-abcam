@@ -665,6 +665,8 @@ main .section > .product-target-data-wrapper {
   margin-right: auto;
   padding-left: 7rem;
   padding-right: 7rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 @media (max-width: 768px) {
@@ -678,6 +680,8 @@ main .section > .recommended-products-wrapper {
   margin-right: auto;
   padding-left: 7rem;
   padding-right: 7rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 @media (max-width: 768px) {

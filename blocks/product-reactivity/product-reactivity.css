@@ -18,16 +18,16 @@
   margin-left: 1.25rem
 }
 
+.product-reactivity-wrapper :is(.mt-1) {
+  margin-top: 0.25rem
+}
+
 .product-reactivity-wrapper :is(.mt-4) {
   margin-top: 1rem
 }
 
 .product-reactivity-wrapper :is(.mt-6) {
   margin-top: 1.5rem
-}
-
-.product-reactivity-wrapper :is(.mt-1) {
-  margin-top: 0.25rem
 }
 
 .product-reactivity-wrapper :is(.box-content) {
@@ -58,6 +58,10 @@
   min-height: 8rem
 }
 
+.product-reactivity-wrapper :is(.w-1\/5) {
+  width: 20%
+}
+
 .product-reactivity-wrapper :is(.w-3) {
   width: 0.75rem
 }
@@ -72,14 +76,6 @@
 
 .product-reactivity-wrapper :is(.w-full) {
   width: 100%
-}
-
-.product-reactivity-wrapper :is(.w-1) {
-  width: 0.25rem
-}
-
-.product-reactivity-wrapper :is(.w-2) {
-  width: 0.5rem
 }
 
 .product-reactivity-wrapper :is(.max-w-7xl) {
@@ -130,6 +126,11 @@
   gap: 2rem
 }
 
+.product-reactivity-wrapper :is(.gap-x-1) {
+  -moz-column-gap: 0.25rem;
+       column-gap: 0.25rem
+}
+
 .product-reactivity-wrapper :is(.gap-x-2) {
   -moz-column-gap: 0.5rem;
        column-gap: 0.5rem
@@ -142,11 +143,6 @@
 
 .product-reactivity-wrapper :is(.gap-y-4) {
   row-gap: 1rem
-}
-
-.product-reactivity-wrapper :is(.gap-x-1) {
-  -moz-column-gap: 0.25rem;
-       column-gap: 0.25rem
 }
 
 .product-reactivity-wrapper :is(.overflow-hidden) {
@@ -165,12 +161,12 @@
   border-radius: 0.5rem
 }
 
-.product-reactivity-wrapper :is(.border-8) {
-  border-width: 8px
+.product-reactivity-wrapper :is(.border) {
+  border-width: 1px
 }
 
-.product-reactivity-wrapper :is(.border-4) {
-  border-width: 4px
+.product-reactivity-wrapper :is(.border-b-2) {
+  border-bottom-width: 2px
 }
 
 .product-reactivity-wrapper :is(.border-t-\[1px\]) {
@@ -196,21 +192,8 @@
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
 }
 
-.product-reactivity-wrapper :is(.bg-inherit) {
-  background-color: inherit
-}
-
-.product-reactivity-wrapper :is(.bg-red-600) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(220 38 38 / var(--tw-bg-opacity))
-}
-
 .product-reactivity-wrapper :is(.p-4) {
   padding: 1rem
-}
-
-.product-reactivity-wrapper :is(.p-2) {
-  padding: 0.5rem
 }
 
 .product-reactivity-wrapper :is(.px-3) {
@@ -277,12 +260,12 @@
   line-height: 1rem
 }
 
-.product-reactivity-wrapper :is(.font-semibold) {
-  font-weight: 600
-}
-
 .product-reactivity-wrapper :is(.font-normal) {
   font-weight: 400
+}
+
+.product-reactivity-wrapper :is(.font-semibold) {
+  font-weight: 600
 }
 
 .product-reactivity-wrapper :is(.leading-\[1\.33\]) {
@@ -309,6 +292,10 @@
   letter-spacing: 0.025em
 }
 
+.product-reactivity-wrapper :is(.text-\[\#00000080\]) {
+  color: #00000080
+}
+
 .product-reactivity-wrapper :is(.text-\[\#2A3C3C\]) {
   --tw-text-opacity: 1;
   color: rgb(42 60 60 / var(--tw-text-opacity))
@@ -319,22 +306,14 @@
   color: rgb(0 0 0 / var(--tw-text-opacity))
 }
 
-.product-reactivity-wrapper :is(.text-white) {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity))
-}
-
 .product-reactivity-wrapper :is(.text-gray-400) {
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity))
 }
 
-.product-reactivity-wrapper :is(.text-\[\#00000080\]) {
-  color: #00000080
-}
-
-.product-reactivity-wrapper :is(.underline) {
-  text-decoration-line: underline
+.product-reactivity-wrapper :is(.text-white) {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity))
 }
 
 .product-reactivity-wrapper :is(.opacity-100) {
@@ -347,10 +326,6 @@
 
 .product-reactivity-wrapper :is(.hover\:underline:hover) {
   text-decoration-line: underline
-}
-
-.product-reactivity-wrapper :is(.hover\:opacity-100:hover) {
-  opacity: 1
 }
 
 .product-reactivity-wrapper :is(.focus\:outline-none:focus) {
