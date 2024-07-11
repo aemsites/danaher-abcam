@@ -19,7 +19,7 @@ export default async function decorate(block) {
     { class: 'pt-0 mt-0' },
     hr({ class: 'h-[1px] my-6 bg-interactive-grey-active mb-10' }),
     h2({ class: 'mt-6 mb-4 text-2xl font-semibold text-[#2a3c3c]' }, 'Downloads'),
-    downloadButtons
+    downloadButtons,
   );
   block.append(downloadEl);
 }
