@@ -6,6 +6,7 @@ import { getProductResponse } from '../../scripts/search.js';
 import { getStarRating } from '../product-overview/product-overview.js';
 
 export default async function decorate(block) {
+  block.classList.add(...'mx-auto w-[87%] max-[768px]:w-full'.split(' '));
   const response = await getProductResponse();
   const allRecommendations = response?.at(0)?.raw?.crosssellrecommendationsjson;
   if (!allRecommendations) block.closest('.section').remove();
