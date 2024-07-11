@@ -82,6 +82,10 @@
   width: 1.25rem
 }
 
+.recommended-products-wrapper :is(.min-w-72) {
+  min-width: 18rem
+}
+
 .recommended-products-wrapper :is(.basis-1\/4) {
   flex-basis: 25%
 }
