@@ -130,7 +130,7 @@ export default async function decorate(block) {
     block.appendChild(supportContainer);
   } else {
     const overviewContainer = div(
-      { class: 'font-sans' },
+      { class: 'font-sans py-6' },
       div({ class: 'text-black text-4xl pb-4 font-bold' }, title),
       div({ class: 'text-black text-xl font-normal tracking-wide' }, description),
       getStarRatings(aggregatedRating, numberOfReviews),
@@ -142,7 +142,6 @@ export default async function decorate(block) {
         div({ class: 'grid grid-cols-3 gap-x-3 gap-y-10' }, ...keyFactsElements),
       ),
       div({ class: 'mt-8 mb-2' }, createKeyFactElement('Immunogen', dataImmunogen)),
-      div({ class: 'border-t-[1px] border-[#dde1e1] my-6' }),
       buttonAlternative,
     );
     decorateIcons(overviewContainer);

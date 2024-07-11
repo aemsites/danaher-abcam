@@ -111,10 +111,6 @@
   height: 100%
 }
 
-.product-overview-wrapper :is(.h-6) {
-  height: 1.5rem
-}
-
 .product-overview-wrapper :is(.w-fit) {
   width: -moz-fit-content;
   width: fit-content
@@ -122,10 +118,6 @@
 
 .product-overview-wrapper :is(.w-full) {
   width: 100%
-}
-
-.product-overview-wrapper :is(.w-6) {
-  width: 1.5rem
 }
 
 .product-overview-wrapper :is(.cursor-pointer) {
@@ -240,8 +232,9 @@
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
 }
 
-.product-overview-wrapper :is(.fill-current) {
-  fill: currentColor
+.product-overview-wrapper :is(.bg-slate-300) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(203 213 225 / var(--tw-bg-opacity))
 }
 
 .product-overview-wrapper :is(.px-2) {
@@ -252,6 +245,16 @@
 .product-overview-wrapper :is(.py-1) {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem
+}
+
+.product-overview-wrapper :is(.px-6) {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem
+}
+
+.product-overview-wrapper :is(.py-6) {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem
 }
 
 .product-overview-wrapper :is(.pb-4) {
@@ -379,11 +382,6 @@
 .product-overview-wrapper :is(.text-blue-950) {
   --tw-text-opacity: 1;
   color: rgb(23 37 84 / var(--tw-text-opacity))
-}
-
-.product-overview-wrapper :is(.text-yellow-500) {
-  --tw-text-opacity: 1;
-  color: rgb(234 179 8 / var(--tw-text-opacity))
 }
 
 .product-overview-wrapper :is(.text-\[rgb\(55\2c 129\2c 137\)\]) {
