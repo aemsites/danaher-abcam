@@ -19,7 +19,7 @@ const getReactivityStatus = (reactivityType) => {
 const getTableCSS = (reactivityType) => {
   if (reactivityType === 'Tested') {
     return 'w-6';
-  } 
+  }
   return 'w-3';
 };
 
@@ -47,9 +47,9 @@ function productPromise() {
       { class: 'text-xs tracking-[.0125em] gap-x-2 flex items-center' },
       span(img({ class: 'w-3', src: '/icons/not-recommended.svg' })),
       span('Not recommended'),
-    )
+    ),
   );
-  const  tablebutton=button({ class: 'flex-wrap h-8 rounded-[16px] flex pl-3 px-3 py-2 text-xs tracking-[.0125rem] border border-black' }, span({ class: 'learnmore' }, 'Learn more'));
+  const tablebutton = button({ class: 'flex-wrap h-8 rounded-[16px] flex pl-3 px-3 py-2 text-xs tracking-[.0125rem] border border-black' }, span({ class: 'learnmore' }, 'Learn more'));
   productNotes.appendChild(productNotesColumn);
   productNotes.appendChild(tablebutton);
   return productNotes;
@@ -99,7 +99,7 @@ function allApplicationTableData(reacttable, data, heading) {
     const tablerow = tr();
     tablerow.appendChild(th({ class: 'p-4 font-normal text-left bg-white w-1/5' }, rowObj.species));
     heading.forEach((name) => {
-     const tableCell = td(
+      const tableCell = td(
         { class: 'p-4 font-normal text-left bg-white w-1/5' },
         img({ class: getTableCSS(rowObj[name]), src: getReactivityStatus(rowObj[name]) }),
       );
