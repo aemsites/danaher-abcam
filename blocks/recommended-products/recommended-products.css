@@ -75,6 +75,10 @@
   height: 1.25rem
 }
 
+.recommended-products-wrapper :is(.h-52) {
+  height: 13rem
+}
+
 .recommended-products-wrapper :is(.w-4) {
   width: 1rem
 }
@@ -93,6 +97,14 @@
 
 .recommended-products-wrapper :is(.min-w-72) {
   min-width: 18rem
+}
+
+.recommended-products-wrapper :is(.min-w-64) {
+  min-width: 16rem
+}
+
+.recommended-products-wrapper :is(.min-w-60) {
+  min-width: 15rem
 }
 
 .recommended-products-wrapper :is(.basis-1\/4) {
@@ -184,6 +196,11 @@
 .recommended-products-wrapper :is(.text-xs) {
   font-size: 0.75rem;
   line-height: 1rem
+}
+
+.recommended-products-wrapper :is(.text-sm) {
+  font-size: 0.875rem;
+  line-height: 1.25rem
 }
 
 .recommended-products-wrapper :is(.font-semibold) {
