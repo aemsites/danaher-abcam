@@ -20,17 +20,10 @@ export default async function decorate(block) {
 
   const dataNotesObj = dataResponse.notesjson ? JSON.parse(dataResponse.notesjson) : [];
 
-  const dataNotes = [];
-
+  let strToHtml = '';
   dataNotesObj.forEach((noteObj) => {
     const statementText = noteObj.statement;
-
-    statementText.split(/<\/?(?:p|a|ul|li|sup)>/).forEach((ele) => {
-      const updated = ele.replace('<p>', '').trim();
-      if (updated.length > 0) {
-        dataNotes.push(createParagraph('Note', updated, true));
-      }
-    });
+    strToHtml += statementText;
   });
 
   const { href } = window.location;
@@ -126,7 +119,6 @@ export default async function decorate(block) {
     h2({ class: 'text-2xl font-semibold text-[#2a3c3c] mb-6' }, 'Notes'),
     div(
       { class: 'notes-content' },
-      ...dataNotes,
     ),
   );
 
@@ -149,4 +141,24 @@ export default async function decorate(block) {
   block.appendChild(productStorage);
   block.appendChild(productNotesSection);
   block.appendChild(productPromise);
+
+  const notesContent = block.querySelector('.notes-content');
+  if (notesContent) {
+    notesContent.innerHTML = strToHtml;
+
+    const notesLinks = notesContent.querySelectorAll('a');
+    notesLinks.forEach((link) => {
+      link.classList.add('hover:underline', 'mr-2', 'text-[#378189]');
+    });
+
+    const notesLists = notesContent.querySelectorAll('ul');
+    notesLists.forEach((list) => {
+      list.classList.add('my-2', 'pl-5');
+    });
+
+    const notesParagraphs = notesContent.querySelectorAll('p');
+    notesParagraphs.forEach((notesPara) => {
+      notesPara.classList.add('mb-2');
+    });
+  }
 }
