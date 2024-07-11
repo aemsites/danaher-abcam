@@ -11,8 +11,8 @@ function createKeyFactElement(key, value) {
     p({ class: 'text-base text-black' }, value),
   );
 }
-export function starRating(rating, starParent, width = 'w-7') {
-  const starRating = div();
+export function getStarRating(rating, starParent, width = 'w-7') {
+  // eslint-disable-next-line no-plusplus
   for (let i = 1; i <= 5; i++) {
     const spanEl = span();
     if (i <= rating) {
@@ -31,7 +31,7 @@ function getReviewsRatings(ratings, numOfReviews) {
   const starButton = document.createElement('button');
   starButton.classList.add(...'flex items-end appearance-none'.split(' '));
   starButton.appendChild(span({ class: 'relative pr-2 font-semibold top-[3px] text-black text-2xl' }, ratings));
-  starRating(ratings, starButton);
+  getStarRating(ratings, starButton);
   starButton.appendChild(span({ class: 'pl-2 underline text-xl text-[rgb(55,129,137)] font-lighter' }, `(${numOfReviews} Reviews)`));
   return starButton;
 }
