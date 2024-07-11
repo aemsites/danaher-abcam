@@ -11,6 +11,10 @@
   width: 87%
 }
 
+.w-full {
+  width: 100%
+}
+
 .grid-cols-12 {
   grid-template-columns: repeat(12, minmax(0, 1fr))
 }
@@ -24,19 +28,6 @@
   background-color: rgb(241 245 249 / var(--tw-bg-opacity))
 }
 
-.p-8 {
-  padding: 2rem
-}
-
-.p-0 {
-  padding: 0px
-}
-
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem
-}
-
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem
@@ -45,11 +36,6 @@
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem
-}
-
-.px-32 {
-  padding-left: 8rem;
-  padding-right: 8rem
 }
 
 .pb-16 {
@@ -63,12 +49,5 @@
 @media (max-width: 768px) {
   .max-\[768px\]\:w-full {
     width: 100%
-  }
-}
-
-@media (min-width: 1024px) {
-  .lg\:px-\[6\.25\%\] {
-    padding-left: 6.25%;
-    padding-right: 6.25%
   }
 }
