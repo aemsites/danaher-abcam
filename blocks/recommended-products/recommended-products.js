@@ -6,7 +6,7 @@ import { starRating } from '../../blocks/product-overview/product-overview.js';
 export default async function decorate(block) {
   const response = await getProductResponse();
   const allRecommendations = response?.at(0)?.raw?.crosssellrecommendationsjson;
-  if(!allRecommendations) block.parentElement.remove();
+  if(!allRecommendations) block.closest('.section').remove();
   else{
     try {
       const heading = h2({ class: 'text-lg mb-3  text-black-0' }, 'Recommended Products');
