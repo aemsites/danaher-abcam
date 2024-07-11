@@ -16,6 +16,13 @@ const getReactivityStatus = (reactivityType) => {
   return '/icons/not-recommended.svg';
 };
 
+const getTableCSS = (reactivityType) => {
+  if (reactivityType === 'Tested') {
+    return 'w-6';
+  } 
+  return 'w-3';
+};
+
 function productPromise() {
   const productNotes = div({ class: 'product-promise-section font-semibold text-sm p-4 bg-white gap-y-4 justify-between flex items-center mb-4 ' });
   const productNotesColumn = div(
@@ -40,16 +47,17 @@ function productPromise() {
       { class: 'text-xs tracking-[.0125em] gap-x-2 flex items-center' },
       span(img({ class: 'w-3', src: '/icons/not-recommended.svg' })),
       span('Not recommended'),
-    ),
-    button({ class: 'h-8 rounded-2xl flex pl-40 px-3 py-2 text-xs tracking-[.0125rem] border-black' }, span({ class: 'learnmore' }, 'learn more')),
+    )
   );
+  const  tablebutton=button({ class: 'flex-wrap h-8 rounded-[16px] flex pl-3 px-3 py-2 text-xs tracking-[.0125rem] border border-black' }, span({ class: 'learnmore' }, 'Learn more'));
   productNotes.appendChild(productNotesColumn);
+  productNotes.appendChild(tablebutton);
   return productNotes;
 }
 
 function publicationsAndImageSection(images, publicationArray) {
-  const pubandimagesection = div({ class: 'flex col-span-4' });
-  const publicationsection = div({ class: 'lg:w-1/2' }, div({ class: 'flex items-center justify-between' }, h2({ class: 'text-[#2A3C3C] font-semibold text-lg' }, 'Publications')));
+  const pubandimagesection = div({ class: 'col-span-4 lg:flex lg:space-x-8' });
+  const publicationsection = div({ class: 'w-1/2 sm:w-full md:w-full' }, div({ class: 'flex items-center justify-between' }, h2({ class: 'text-[#2A3C3C] font-semibold text-lg' }, 'Publications')));
   const publicationsContent = div();
   publicationArray.forEach((pub) => {
     const publicationData = JSON.parse(pub);
@@ -74,7 +82,7 @@ function publicationsAndImageSection(images, publicationArray) {
     ulimage.append(li({ class: 'bg-white hover:cursor-pointer opacity-100 text-[#00000080] bg-black focus:outline-none' }, img({ src: image })));
   });
   const imagecolumn = div({ class: 'mt-1 mb-6 py-2' }, div({ class: 'flex gap-4 border-1 border-solid' }, ulimage));
-  const imagesection = div({ class: 'lg:w-1/2 ml-5' }, h2({ class: 'text-[#2A3C3C] font-semibold text-lg ' }, 'Images'), imagecolumn);
+  const imagesection = div({ class: 'w-1/2 sm:w-full md:w-full' }, h2({ class: 'text-[#2A3C3C] font-semibold text-lg ' }, 'Images'), imagecolumn);
   publicationsection.appendChild(publicationsContent);
   pubandimagesection.appendChild(publicationsection);
   pubandimagesection.appendChild(imagesection);
@@ -91,9 +99,9 @@ function allApplicationTableData(reacttable, data, heading) {
     const tablerow = tr();
     tablerow.appendChild(th({ class: 'p-4 font-normal text-left bg-white w-1/5' }, rowObj.species));
     heading.forEach((name) => {
-      const tableCell = td(
+     const tableCell = td(
         { class: 'p-4 font-normal text-left bg-white w-1/5' },
-        img({ class: 'w-3', src: getReactivityStatus(rowObj[name]) }),
+        img({ class: getTableCSS(rowObj[name]), src: getReactivityStatus(rowObj[name]) }),
       );
       tablerow.appendChild(tableCell);
     });
@@ -106,19 +114,19 @@ function allApplicationTableData(reacttable, data, heading) {
 export default async function decorate(block) {
   const response = await getProductResponse();
   const reactivityData = div(
-    { class: 'relative max-w-7xl box-content' },
+    { class: 'relative w-full box-content ' },
     h2({ class: 'font-semibold text-black text-[24px] leading-[1.33] tracking-[-.03125rem]' }, 'Reactivity Data'),
     span({ class: 'text-base tracking-wide mb-4' }, 'Select an application'),
   );
-  const buttonsPanel = div({ class: 'flex gap-2 text-black tracking-[2px] font-semibold text-sm pb-5' });
-  buttonsPanel.appendChild(button({ class: 'px-6 py-3 border-black boarder-solid  bg-black text-white font-semibold rounded-[28px]' }, 'All applications'));
+  const buttonsPanel = div({ class: 'flex gap-2 flex-wrap text-black tracking-[2px] font-semibold text-sm pb-5' });
+  buttonsPanel.appendChild(button({ class: 'px-6 py-3 border-black boarder-solid  bg-black text-white font-semibold rounded-[28px] tracking-[.2px]' }, 'All applications'));
   const reactivityApplication = response[0].raw.reactivityapplications;
   const images = response[0].raw.images.slice(0, 3);
   const tableHeading = thead();
   const tablerow = tr(th({ class: 'font-semibold text-black text-sm text-left bg-white p-4 border-b-2' }));
   reactivityApplication.forEach((name) => {
     tablerow.appendChild(th({ class: 'font-semibold text-black text-sm text-left bg-white p-4 border-b-2' }, name));
-    buttonsPanel.appendChild(button({ class: 'px-6 py-3 border border-black text-black  bg-white  font-semibold rounded-[28px]' }, name));
+    buttonsPanel.appendChild(button({ class: 'px-6 py-3 border border-black text-black font-semibold rounded-[28px] tracking-[.2px]' }, name));
   });
 
   const reactivityTable = table({ class: 'reactivityTable w-full' });
