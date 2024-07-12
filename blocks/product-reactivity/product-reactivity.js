@@ -77,7 +77,7 @@ function publicationsAndImageSection(images, publicationArray) {
       ),
     ));
   });
-  const ulimage = ul({ class: 'flex gap-2 justify-center overflow-hidden hover:cursor-pointer opacity-100' });
+  const ulimage = ul({ class: 'flex gap-2 overflow-hidden hover:cursor-pointer opacity-100' });
   images.forEach((image) => {
     ulimage.append(li({ class: 'bg-white w-1/3 aspect-square hover:cursor-pointer opacity-100 text-[#00000080] bg-black focus:outline-none' }, img({ src: image })));
   });
