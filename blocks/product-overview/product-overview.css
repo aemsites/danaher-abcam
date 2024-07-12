@@ -102,12 +102,16 @@
   height: 5px
 }
 
+.product-overview-wrapper :is(.h-auto) {
+  height: auto
+}
+
 .product-overview-wrapper :is(.h-full) {
   height: 100%
 }
 
-.product-overview-wrapper :is(.h-auto) {
-  height: auto
+.product-overview-wrapper :is(.w-7) {
+  width: 1.75rem
 }
 
 .product-overview-wrapper :is(.w-fit) {
@@ -117,10 +121,6 @@
 
 .product-overview-wrapper :is(.w-full) {
   width: 100%
-}
-
-.product-overview-wrapper :is(.w-7) {
-  width: 1.75rem
 }
 
 .product-overview-wrapper :is(.cursor-pointer) {

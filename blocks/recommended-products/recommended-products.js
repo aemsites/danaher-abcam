@@ -13,7 +13,7 @@ export default async function decorate(block) {
   else {
     try {
       const heading = h2({ class: 'text-lg mb-3  text-black-0' }, 'Recommended Products');
-      const recommendations = ol({ class: 'flex flex-wrap mt-5 gap-4' });
+      const recommendations = ol({ class: 'flex flex-col lg:flex-row mt-5 gap-4' });
       allRecommendations.forEach((recommendation) => {
         const { product } = JSON.parse(recommendation);
         const {

@@ -11,10 +11,6 @@
   width: 87%
 }
 
-.w-full {
-  width: 100%
-}
-
 .grid-cols-12 {
   grid-template-columns: repeat(12, minmax(0, 1fr))
 }
