@@ -13,7 +13,7 @@ export default async function decorate(block) {
   else {
     try {
       const heading = h2({ class: 'text-lg mb-3  text-black-0' }, 'Recommended Products');
-      const recommendations = ol({ class: 'flex flex-wrap mt-5 gap-4' });
+      const recommendations = ol({ class: 'flex flex-col lg:flex-row mt-5 gap-4' });
       allRecommendations.forEach((recommendation) => {
         const { product } = JSON.parse(recommendation);
         const {
@@ -25,9 +25,9 @@ export default async function decorate(block) {
         rating.append(span({ class: 'text-xs text-[#65797c]' }, `(${numberOfReviews} Reviews)`));
 
         const list = li(
-          { class: 'basis-[23.5%] min-w-72' },
+          { class: 'basis-[23.5%] min-w-60' },
           button(
-            { class: 'h-44 p-4 bg-white w-full border border-interactive-grey-transparent-active rounded-4px hover:bg-interactive-black-transparent-hover cursor-pointer text-left' },
+            { class: 'h-52 p-4 bg-white w-full border border-interactive-grey-transparent-active rounded-4px hover:bg-interactive-black-transparent-hover cursor-pointer text-left' },
             div(
               { class: 'h-5/6' },
               span(
@@ -36,8 +36,8 @@ export default async function decorate(block) {
               ),
               span(
                 { class: 'flex flex-col font-semibold' },
-                span({ class: 'mt-2 text-ui-small text-[#65797c]' }, productCode.toLowerCase()),
-                span({ class: 'pb-4 mt-2 text-ui-medium text-black-0 line-clamp-2' }, name),
+                span({ class: 'mt-2 text-sm text-[#65797c]' }, productCode.toLowerCase()),
+                span({ class: 'pb-4 mt-2 text-sm text-black-0 line-clamp-2' }, name),
               ),
             ),
             div(

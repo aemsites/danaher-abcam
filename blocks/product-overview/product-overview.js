@@ -1,6 +1,7 @@
 import { decorateIcons } from '../../scripts/aem.js';
 import {
   div, h6, p, h3, h5, ul, li, span,
+  a,
 } from '../../scripts/dom-builder.js';
 import { getProductResponse } from '../../scripts/search.js';
 
@@ -28,6 +29,16 @@ export function getStarRating(rating, starParent, width = 'w-7') {
 
 // Function to generate star ratings based on aggregatedRating
 function getReviewsRatings(ratings, numOfReviews) {
+  if (ratings === 0) {
+    const noReviewsDiv = div(
+      { class: 'mt-4' },
+      span({ class: 'font-normal text-grey-dark' }, 'This product has no reviews yet! '),
+      a({
+        class: 'text-[#378189] underline font-normal', href: '#',
+      }, ' Submit a review'),
+    );
+    return noReviewsDiv;
+  }
   const starButton = document.createElement('button');
   starButton.classList.add(...'flex items-end appearance-none'.split(' '));
   starButton.appendChild(span({ class: 'relative pr-2 font-semibold top-[3px] text-black text-2xl' }, ratings));

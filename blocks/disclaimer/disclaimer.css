@@ -19,8 +19,8 @@
   display: flex
 }
 
-.disclaimer-wrapper :is(.max-w-\[87rem\]) {
-  max-width: 87rem
+.disclaimer-wrapper :is(.w-\[87\%\]) {
+  width: 87%
 }
 
 .disclaimer-wrapper :is(.flex-col) {
@@ -41,6 +41,21 @@
   padding-bottom: 2.5rem
 }
 
+.disclaimer-wrapper :is(.py-8) {
+  padding-top: 2rem;
+  padding-bottom: 2rem
+}
+
+.disclaimer-wrapper :is(.px-2) {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem
+}
+
+.disclaimer-wrapper :is(.px-4) {
+  padding-left: 1rem;
+  padding-right: 1rem
+}
+
 .disclaimer-wrapper :is(.text-xs\/6) {
   font-size: 0.75rem;
   line-height: 1.5rem
@@ -57,4 +72,10 @@
 .disclaimer-wrapper :is(.text-\[\#65797C\]) {
   --tw-text-opacity: 1;
   color: rgb(101 121 124 / var(--tw-text-opacity))
+}
+
+@media (max-width: 768px) {
+  .disclaimer-wrapper :is(.max-\[768px\]\:w-full) {
+    width: 100%
+  }
 }
