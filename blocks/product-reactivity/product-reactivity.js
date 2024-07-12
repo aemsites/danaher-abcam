@@ -92,7 +92,6 @@ function publicationsAndImageSection(images, publicationArray) {
 function allApplicationTableData(reacttable, data, heading) {
   const tbodyContent = tbody();
   // eslint-disable-next-line no-console
-  console.log(data);
   const tableHeading = table({ class: 'w-full border-separate indent-2' }, reacttable);
   data.forEach((row) => {
     const rowObj = JSON.parse(row);

@@ -14,10 +14,10 @@ export default async function buildAutoBlocks() {
   reactivitySection.classList.add('bg-slate-100', 'px-6', 'py-8', 'rounded-lg', 'max-[768px]:w-full');
 
   const targetDataSection = main.querySelector(':scope > div:nth-child(4)');
-  targetDataSection.classList.add('px-6');
+  targetDataSection.classList.add(...'mx-auto w-[87%] max-[768px]:w-full px-6'.split(' '));
 
   const recommendedProductSection = main.querySelector(':scope > div:nth-child(5)');
-  recommendedProductSection.classList.add('bg-slate-100', 'px-6', 'py-8', 'rounded-lg');
+  recommendedProductSection.classList.add(...'bg-slate-100 px-6 py-8 rounded-lg'.split(' '));
 
   const recentlyViewedSection = main.querySelector(':scope > div:nth-child(6)');
   recentlyViewedSection.classList.add('px-6', 'py-8');

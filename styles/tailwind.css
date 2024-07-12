@@ -37,11 +37,11 @@
     }
 
     main .section > .product-target-data-wrapper {
-        @apply mx-auto max-[768px]:w-full px-28;
+        @apply mx-auto max-[768px]:w-full py-8;
     }
 
     main .section > .recommended-products-wrapper {
-        @apply mx-auto  max-[768px]:w-full px-28;
+        @apply mx-auto  max-[768px]:w-full py-8;
     }
 
     main .section > .recently-viewed-wrapper {

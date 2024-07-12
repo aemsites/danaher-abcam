@@ -49,11 +49,6 @@
   margin-right: 1rem
 }
 
-.product-overview-wrapper :is(.my-4) {
-  margin-top: 1rem;
-  margin-bottom: 1rem
-}
-
 .product-overview-wrapper :is(.my-6) {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem
@@ -111,6 +106,10 @@
   height: 100%
 }
 
+.product-overview-wrapper :is(.h-auto) {
+  height: auto
+}
+
 .product-overview-wrapper :is(.w-fit) {
   width: -moz-fit-content;
   width: fit-content
@@ -118,6 +117,10 @@
 
 .product-overview-wrapper :is(.w-full) {
   width: 100%
+}
+
+.product-overview-wrapper :is(.w-7) {
+  width: 1.75rem
 }
 
 .product-overview-wrapper :is(.cursor-pointer) {
@@ -232,11 +235,6 @@
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
 }
 
-.product-overview-wrapper :is(.bg-slate-300) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(203 213 225 / var(--tw-bg-opacity))
-}
-
 .product-overview-wrapper :is(.px-2) {
   padding-left: 0.5rem;
   padding-right: 0.5rem
@@ -245,11 +243,6 @@
 .product-overview-wrapper :is(.py-1) {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem
-}
-
-.product-overview-wrapper :is(.px-6) {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem
 }
 
 .product-overview-wrapper :is(.py-6) {
@@ -290,14 +283,9 @@
   line-height: 2rem
 }
 
-.product-overview-wrapper :is(.text-3xl) {
-  font-size: 1.875rem;
-  line-height: 2.25rem
-}
-
-.product-overview-wrapper :is(.text-5xl) {
-  font-size: 3rem;
-  line-height: 1
+.product-overview-wrapper :is(.text-4xl) {
+  font-size: 2.25rem;
+  line-height: 2.5rem
 }
 
 .product-overview-wrapper :is(.text-base) {
@@ -318,11 +306,6 @@
 .product-overview-wrapper :is(.text-xs) {
   font-size: 0.75rem;
   line-height: 1rem
-}
-
-.product-overview-wrapper :is(.text-4xl) {
-  font-size: 2.25rem;
-  line-height: 2.5rem
 }
 
 .product-overview-wrapper :is(.font-bold) {
@@ -374,19 +357,14 @@
   color: rgb(44 101 107 / var(--tw-text-opacity))
 }
 
-.product-overview-wrapper :is(.text-black) {
-  --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity))
-}
-
-.product-overview-wrapper :is(.text-blue-950) {
-  --tw-text-opacity: 1;
-  color: rgb(23 37 84 / var(--tw-text-opacity))
-}
-
 .product-overview-wrapper :is(.text-\[rgb\(55\2c 129\2c 137\)\]) {
   --tw-text-opacity: 1;
   color: rgb(55 129 137 / var(--tw-text-opacity))
+}
+
+.product-overview-wrapper :is(.text-black) {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity))
 }
 
 .product-overview-wrapper :is(.underline) {
