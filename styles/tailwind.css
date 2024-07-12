@@ -33,7 +33,7 @@
     }
 
     main .section > .product-reactivity-wrapper {
-        @apply mx-auto max-[768px]:w-full px-28;
+        @apply mx-auto max-[768px]:w-full py-8;
     }
 
     main .section > .product-target-data-wrapper {
@@ -45,6 +45,6 @@
     }
 
     main .section > .recently-viewed-wrapper {
-        @apply mx-auto max-[768px]:w-full px-28;
+        @apply mx-auto max-[768px]:w-full py-8;
     }
 }
