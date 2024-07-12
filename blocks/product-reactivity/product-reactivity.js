@@ -49,7 +49,7 @@ function productPromise() {
       span('Not recommended'),
     ),
   );
-  const tablebutton = button({ class: 'flex-wrap h-8 rounded-[16px] flex pl-3 px-3 py-2 text-xs tracking-[.0125rem] border border-black max-[959px]:w-fit' }, span({ class: 'learnmore' }, 'Learn more'),span(img({ class: 'w-3', src: '/icons/plus.svg' })));
+  const tablebutton = button({ class: 'flex-wrap h-8 rounded-[16px] flex pl-3 px-3 py-2 text-xs tracking-[.0125rem] border border-black max-[959px]:w-fit' }, span({ class: 'learnmore' }, 'Learn more'), span(img({ class: 'w-3', src: '/icons/plus.svg' })));
   productNotes.appendChild(productNotesColumn);
   productNotes.appendChild(tablebutton);
   return productNotes;
