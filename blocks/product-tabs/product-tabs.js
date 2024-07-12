@@ -41,7 +41,7 @@ export default async function decorate(block) {
     });
   });
   const productTabs = div({ class: 'product-tabs-productID md:mt-0 mt-6 order-2' });
-  productTabs.innerHTML = response?.at(0).raw.productslug.split('-').slice(-1);;
+  productTabs.innerHTML = response?.at(0).raw.productslug.split('-').slice(-1);
   block.innerHTML = '';
   block.appendChild(productTabs);
   block.appendChild(mmgTabs);
