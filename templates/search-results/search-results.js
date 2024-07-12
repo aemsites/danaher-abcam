@@ -5,39 +5,20 @@ function buildCoveo() {
   const hash = window.location.hash.substr(1);
   const params = new URLSearchParams(hash);
   const cType = params.get('f-categorytype');
-  console.log(params.get('f-categorytype'));
   
   const coveoTower = `
     <atomic-search-interface localization-compatibility-version="v4"
-      fields-to-include='["title", "productslug", "images", "reviewsrating", "numpublications", "reactivityapplications", "source", "conjugations", "target", "hostspecies", "categorytype"]'>
-      <style>
-        atomic-search-layout atomic-layout-section[section='pagination']{
-          flex-direction:column;
-          justify-content: space-around;
-          align-items: normal;
-        }
-        atomic-search-layout atomic-layout-section[section='pagination']>* {
-          margin-top: 0;
-        }
-        atomic-result-list::part(result-list) {
-          gap: 0.0rem;
-          row-gap: 0.25rem;
-        }
-        atomic-facet:has(atomic-facet::part(facet)) {
-          background-color: red;
-          // border-radius: 0.5rem;
-        }
-        .pagination {
-          display: flex;
-          flex-wrap: wrap;
-          margin-top: 1rem;
-          margin-bottom: 1rem;
-          justify-content: center;
-          align-items: center;
-        }
-      </style>
-      <div class="container overflow-scroll mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-8 gap-4">
+      fields-to-include='["title", "productslug", "images", "reviewsrating", "numpublications", "reactivityapplications", 
+                          "source", "conjugations", "target", "hostspecies", "categorytype"]'>
+      <atomic-search-layout>
+
+        <atomic-layout-section section="search">
+          <atomic-search-box>
+              <atomic-search-box-query-suggestions></atomic-search-box-query-suggestions>
+          </atomic-search-box>
+        </atomic-layout-section>
+
+        <atomic-layout-section section="facets">
           <div class="col-span-2">
             <atomic-facet-manager class="space-y-4 [&_atomic-facet::part(facet)]:rounded-md">
               <atomic-facet label="Category Type" field="categorytype" with-search="false"></atomic-facet>
@@ -49,47 +30,66 @@ function buildCoveo() {
               <atomic-facet label="Sample Type" field="sampletype" with-search="false"></atomic-facet>
             </atomic-facet-manager>
           </div>
-          <div class="col-span-6">
-            <atomic-result-list display="table" class="[&_table]:table">
-              <atomic-result-template>
-                <template>
-                  <atomic-table-element label="Product name">
-                    <atomic-result-text field="title"></atomic-result-text>
-                  </atomic-table-element>
-                  <atomic-table-element label="Star Rating">
-                    <atomic-result-number field="reviewsrating"></atomic-result-number>
-                  </atomic-table-element>
-                  <atomic-table-element label="Images">
-                    <atomic-result-image field="images"></atomic-result-image>
-                  </atomic-table-element>
-                  <atomic-table-element label="Publications">
-                    <atomic-result-number field="numpublications"></atomic-result-number>
-                  </atomic-table-element>
-                  ${ cType === null ? `
-                  <atomic-table-element label="Target">
-                    <atomic-result-text field="target"></atomic-result-text>
-                  </atomic-table-element> ` : ''}
-                  <atomic-table-element label="Application">
-                    <atomic-result-multi-value-text field="reactivityapplications"  delimiter=", "></atomic-result-multi-value-text>
-                  </atomic-table-element>
-                  ${cType === 'Secondary Antibodies' ? `
-                  <atomic-table-element label="Host species">
-                    <atomic-result-text field="hostspecies"></atomic-result-text>
-                  </atomic-table-element> ` : 
-                  !cType || cType === 'Primary Antibodies' ? `
-                  <atomic-table-element label="Reactive Species">
-                      <atomic-result-text field="title"></atomic-result-text>
-                  </atomic-table-element> ` : ''}
-                  ${ cType ? `
-                  <atomic-table-element label="Conjugation">
-                    <atomic-result-multi-value-text field="conjugations"></atomic-result-multi-value-text>
-                  </atomic-table-element> ` : ''}
-                </template>
-              </atomic-result-template>
-            </atomic-result-list>
-          </div>
-        </div>
-      </div>
+        </atomic-layout-section>
+
+        <atomic-layout-section section="main">
+          <atomic-layout-section section="pagination">
+          
+            <div class="flex flex-col">
+              <div class="flex flex-row gap-[40rem] pb-6 items-baseline">
+                <atomic-layout-section section="status">
+                  <atomic-query-summary></atomic-query-summary>
+                </atomic-layout-section>
+                <atomic-results-per-page></atomic-results-per-page>
+              </div>
+              <div class="border-2 rounded-2xl">
+                <atomic-result-list display="table">
+                  <atomic-result-template>
+                    <template>
+                      <atomic-table-element label="Product name">
+                        <atomic-result-text field="title"></atomic-result-text>
+                      </atomic-table-element>
+                      <atomic-table-element label="Star Rating">
+                        <atomic-result-number field="reviewsrating"></atomic-result-number>
+                      </atomic-table-element>
+                      <atomic-table-element label="Images">
+                        <atomic-result-image field="images"></atomic-result-image>
+                      </atomic-table-element>
+                      <atomic-table-element label="Publications">
+                        <atomic-result-number field="numpublications"></atomic-result-number>
+                      </atomic-table-element>
+                      ${ cType === null ? `
+                      <atomic-table-element label="Target">
+                        <atomic-result-text field="target"></atomic-result-text>
+                      </atomic-table-element> ` : ''}
+                      <atomic-table-element label="Application">
+                        <atomic-result-multi-value-text field="reactivityapplications"  delimiter=", "></atomic-result-multi-value-text>
+                      </atomic-table-element>
+                      ${cType === 'Secondary Antibodies' ? `
+                      <atomic-table-element label="Host species">
+                        <atomic-result-text field="hostspecies"></atomic-result-text>
+                      </atomic-table-element> ` : 
+                      !cType || cType === 'Primary Antibodies' ? `
+                      <atomic-table-element label="Reactive Species">
+                          <atomic-result-text field="title"></atomic-result-text>
+                      </atomic-table-element> ` : ''}
+                      ${ cType ? `
+                      <atomic-table-element label="Conjugation">
+                        <atomic-result-multi-value-text field="conjugations"></atomic-result-multi-value-text>
+                      </atomic-table-element> ` : ''}
+                    </template>
+                  </atomic-result-template>
+                </atomic-result-list>
+              </div>
+              <div class="pt-6 m-auto">
+                <atomic-pager></atomic-pager>
+              </div>
+            </div>
+          </atomic-layout-section>
+          <atomic-query-error class="mb-28"></atomic-query-error>
+          <atomic-no-results class="mb-28"></atomic-no-results>
+        </atomic-layout-section>
+      </atomic-search-layout>
     </atomic-search-interface>
   `;
   return coveoTower;
