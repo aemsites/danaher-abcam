@@ -19,10 +19,6 @@
   display: flex
 }
 
-.disclaimer-wrapper :is(.max-w-\[87rem\]) {
-  max-width: 87rem
-}
-
 .disclaimer-wrapper :is(.flex-col) {
   flex-direction: column
 }

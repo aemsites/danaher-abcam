@@ -11,7 +11,7 @@ export default async function buildAutoBlocks() {
   productOverviewSection.classList.add(...'mx-auto w-[87%] max-[768px]:w-full px-6 grid grid-cols-12'.split(' '));
 
   const reactivitySection = main.querySelector(':scope > div:nth-child(3)');
-  reactivitySection.classList.add('bg-slate-100', 'px-6', 'py-8', 'rounded-lg');
+  reactivitySection.classList.add('bg-slate-100', 'px-6', 'py-8', 'rounded-lg', 'max-[768px]:w-full');
 
   const targetDataSection = main.querySelector(':scope > div:nth-child(4)');
   targetDataSection.classList.add(...'mx-auto w-[87%] max-[768px]:w-full px-6'.split(' '));
