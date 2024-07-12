@@ -1,11 +1,9 @@
 /* eslint-disable import/no-unresolved */
 import { loadCSS } from '../../scripts/aem.js';
 
+let cType;
+
 function buildCoveo() {
-  const hash = window.location.hash.substr(1);
-  const params = new URLSearchParams(hash);
-  const cType = params.get('f-categorytype');
-  
   const coveoTower = `
     <atomic-search-interface localization-compatibility-version="v4"
       fields-to-include='["title", "productslug", "images", "reviewsrating", "numpublications", "reactivityapplications", 
@@ -13,7 +11,7 @@ function buildCoveo() {
       <atomic-search-layout>
 
         <atomic-layout-section section="search">
-          <atomic-search-box>
+          <atomic-search-box textarea="true">
               <atomic-search-box-query-suggestions></atomic-search-box-query-suggestions>
           </atomic-search-box>
         </atomic-layout-section>
@@ -36,7 +34,7 @@ function buildCoveo() {
           <atomic-layout-section section="pagination">
           
             <div class="flex flex-col">
-              <div class="flex flex-row gap-[40rem] pb-6 items-baseline">
+              <div class="flex flex-row gap-8 pb-6 items-baseline">
                 <atomic-layout-section section="status">
                   <atomic-query-summary></atomic-query-summary>
                 </atomic-layout-section>
@@ -47,18 +45,22 @@ function buildCoveo() {
                   <atomic-result-template>
                     <template>
                       <atomic-table-element label="Product name">
-                        <atomic-result-text field="title"></atomic-result-text>
+                        <atomic-field-condition must-match-categorytype="Primary Antibodies">
+                          <atomic-result-text field="title"></atomic-result-text>
+                        </atomic-field-condition>
                       </atomic-table-element>
-                      <atomic-table-element label="Star Rating">
-                        <atomic-result-number field="reviewsrating"></atomic-result-number>
-                      </atomic-table-element>
+                      <atomic-field-condition must-match-categorytype="Primary Antibodies">
+                        <atomic-table-element label="Star Rating">
+                          <atomic-result-number field="reviewsrating"></atomic-result-number>
+                        </atomic-table-element>
+                      </atomic-field-condition>
                       <atomic-table-element label="Images">
                         <atomic-result-image field="images"></atomic-result-image>
                       </atomic-table-element>
                       <atomic-table-element label="Publications">
                         <atomic-result-number field="numpublications"></atomic-result-number>
                       </atomic-table-element>
-                      ${ cType === null ? `
+                      ${ !cType ? `
                       <atomic-table-element label="Target">
                         <atomic-result-text field="target"></atomic-result-text>
                       </atomic-table-element> ` : ''}
@@ -113,6 +115,14 @@ async function loadAtomic() {
 }
 
 export default async function buildAutoBlocks() {
+  window.addEventListener('hashchange', function() {
+    const newHash = window.location.hash;
+    const params = new URLSearchParams(newHash.substring(1));
+    cType = params.get('f-categorytype');
+    console.log(cType);
+  });
+  window.dispatchEvent(new Event('hashchange'));
+  
   const mainEl = document.querySelector('main');
   mainEl.classList.add(...'py-8'.split(' '));
   mainEl.innerHTML = buildCoveo();
