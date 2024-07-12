@@ -71,7 +71,7 @@ function publicationsAndImageSection(images, publicationArray) {
   });
   const ulimage = ul({ class: 'flex gap-2 justify-center overflow-hidden hover:cursor-pointer opacity-100' });
   images.forEach((image) => {
-    ulimage.append(li({ class: 'bg-white hover:cursor-pointer opacity-100 text-[#00000080] bg-black focus:outline-none' }, img({ src: image })));
+    ulimage.append(li({ class: 'bg-white hover:cursor-pointer opacity-100 text-[#00000080] bg-black focus:outline-none' }, img({ src: image, style: 'width: 100%; height: auto;' })));
   });
   const imagecolumn = div({ class: 'mt-1 mb-6 py-2' }, div({ class: 'flex gap-4 border-1 border-solid' }, ulimage));
   const imagesection = div({ class: 'lg:w-1/2 ml-5' }, h2({ class: 'text-[#2A3C3C] font-semibold text-lg ' }, 'Images'), imagecolumn);
