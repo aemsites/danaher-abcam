@@ -114,6 +114,7 @@ function allApplicationTableData(reacttable, data, heading) {
 }
 
 export default async function decorate(block) {
+  block.classList.add(...'mx-auto w-[87%] max-[768px]:w-full'.split(' '));
   const response = await getProductResponse();
   const reactivityData = div(
     { class: 'relative w-full box-content ' },
