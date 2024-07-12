@@ -9,7 +9,7 @@ function buildCoveo() {
   
   const coveoTower = `
     <atomic-search-interface localization-compatibility-version="v4"
-      fields-to-include='["title", "productslug", "images", "numpublications", "reactivityapplications", "source", "conjugations", "target", "hostspecies", "categorytype"]'>
+      fields-to-include='["title", "productslug", "images", "reviewsrating", "numpublications", "reactivityapplications", "source", "conjugations", "target", "hostspecies", "categorytype"]'>
       <style>
         atomic-search-layout atomic-layout-section[section='pagination']{
           flex-direction:column;
@@ -57,7 +57,7 @@ function buildCoveo() {
                     <atomic-result-text field="title"></atomic-result-text>
                   </atomic-table-element>
                   <atomic-table-element label="Star Rating">
-                    <atomic-result-number field="score"></atomic-result-number>
+                    <atomic-result-number field="reviewsrating"></atomic-result-number>
                   </atomic-table-element>
                   <atomic-table-element label="Images">
                     <atomic-result-image field="images"></atomic-result-image>
