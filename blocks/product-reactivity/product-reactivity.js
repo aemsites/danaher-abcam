@@ -49,7 +49,7 @@ function productPromise() {
       span('Not recommended'),
     ),
   );
-  const tablebutton = button({ class: 'flex-wrap h-8 rounded-[16px] flex pl-3 px-3 py-2 text-xs tracking-[.0125rem] border border-black max-[959px]:w-fit' }, span({ class: 'learnmore' }, 'Learn more'));
+  const tablebutton = button({ class: 'flex-wrap h-8 rounded-[16px] flex pl-3 px-3 py-2 text-xs tracking-[.0125rem] border border-black max-[959px]:w-fit' }, span({ class: 'learnmore' }, 'Learn more'),span(img({ class: 'w-3', src: '/icons/plus.svg' })));
   productNotes.appendChild(productNotesColumn);
   productNotes.appendChild(tablebutton);
   return productNotes;
@@ -79,7 +79,7 @@ function publicationsAndImageSection(images, publicationArray) {
   });
   const ulimage = ul({ class: 'flex gap-2 justify-center overflow-hidden hover:cursor-pointer opacity-100' });
   images.forEach((image) => {
-    ulimage.append(li({ class: 'bg-white hover:cursor-pointer opacity-100 text-[#00000080] bg-black focus:outline-none' }, img({ src: image })));
+    ulimage.append(li({ class: 'bg-white w-1/3 aspect-square hover:cursor-pointer opacity-100 text-[#00000080] bg-black focus:outline-none' }, img({ src: image })));
   });
   const imagecolumn = div({ class: 'mt-1 mb-6 py-2' }, div({ class: 'flex gap-4 border-1 border-solid' }, ulimage));
   const imagesection = div({ class: 'w-1/2 max-[959px]:w-[100%]' }, h2({ class: 'text-[#2A3C3C] font-semibold text-lg mt-4' }, 'Images'), imagecolumn);
