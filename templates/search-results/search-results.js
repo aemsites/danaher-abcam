@@ -45,15 +45,11 @@ function buildCoveo() {
                   <atomic-result-template>
                     <template>
                       <atomic-table-element label="Product name">
-                        <atomic-field-condition must-match-categorytype="Primary Antibodies">
                           <atomic-result-text field="title"></atomic-result-text>
-                        </atomic-field-condition>
                       </atomic-table-element>
-                      <atomic-field-condition must-match-categorytype="Primary Antibodies">
                         <atomic-table-element label="Star Rating">
                           <atomic-result-number field="reviewsrating"></atomic-result-number>
                         </atomic-table-element>
-                      </atomic-field-condition>
                       <atomic-table-element label="Images">
                         <atomic-result-image field="images"></atomic-result-image>
                       </atomic-table-element>
