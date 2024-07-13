@@ -1,13 +1,12 @@
 import { decorateIcons } from '../../scripts/aem.js';
-import { facetSelect, finishType, suggestions } from '../../scripts/coveo-body-requests.js';
+import { facetSelect, finishType, searchFacetTerms } from '../../scripts/coveo-body-requests.js';
 import {
   a, div, input, li, p, span, ul, h3,
+  label,
 } from '../../scripts/dom-builder.js';
 import { createRequest, debounce } from '../../scripts/scripts.js';
 
-const mockServerId = 'f5a32f9c-fe85-4232-a9db-a89470a1b066';
 let searchString = '';
-// let payload = {};
 let payload = { ...finishType };
 const facetsCollection = {};
 
@@ -15,11 +14,30 @@ let disclaimers;
 let totalResultCount;
 let emptySearchbar;
 let searchContent;
-let searchSuggestions;
 let searchInput;
 
-// const organizationId = window.DanaherConfig.searchOrg;
-const bearerToken = 'f5aa9db-32c0a0-4232-32f9-a8947a32f9c';
+const organizationId = 'danahernonproduction1892f3fhz';
+const bearerToken = 'xx27ea823a-e994-4d71-97f6-403174ec592a';
+
+function updateFacetList(facetLists) {
+  const newFacets = payload.facets.map((fac) => {
+    const findFacetField = facetLists.filter((facList) => facList.field === fac.field);
+    if (findFacetField && findFacetField.length > -1) {
+      return {
+        ...fac,
+        currentValues: findFacetField[0]
+          .values.map(
+            (facValue) => ({ value: facValue.value, state: facValue.state }),
+          ),
+      };
+    }
+    return null;
+  });
+  payload = {
+    ...payload,
+    facets: newFacets,
+  };
+}
 
 async function makeCoveoSearchRequest(url, stringifiedPayload) {
   const request = await createRequest({
@@ -30,6 +48,7 @@ async function makeCoveoSearchRequest(url, stringifiedPayload) {
   });
   // eslint-disable-next-line no-unused-vars
   const response = await request.json();
+  updateFacetList(response.facets);
   return response;
 }
 
@@ -43,7 +62,7 @@ function decorateViewResultsURL() {
     || Object.keys(facetsCollection).length > 0
   ) {
     if (Object.keys(payload).length > 0 && payload.q && payload.q !== '') {
-      queryParam.append('q', encodeURI(payload.q));
+      queryParam.append('keywords', encodeURI(payload.q));
     }
     if (Object.keys(facetsCollection).length > 0) {
       Object.keys(facetsCollection).forEach((facetCollectKey) => {
@@ -54,31 +73,31 @@ function decorateViewResultsURL() {
     const queryParameters = queryParam.toString().replaceAll('25', '').replaceAll('%2C', ',');
     if (allSearchResultAnchors.length > 0) {
       allSearchResultAnchors.forEach((searchResultAnchors) => {
-        searchResultAnchors.href = `https://abcam.com/en-in/search/page?facets.application=${queryParameters}`;
+        searchResultAnchors.href = `https://abcam.com/en-nl/search/page?${queryParameters}`;
       });
-      document.querySelector('#search-container .icon-search').addEventListener('click', () => {
-        window.location = `https://abcam.com/en-in/search/page?facets.application=${queryParameters}`;
+      document.querySelector('#search-container .icon-search')?.addEventListener('click', () => {
+        window.location = `https://abcam.com/en-nl/search/page?facets.application=${queryParameters}`;
       });
     }
   }
 }
 
 const facetAction = debounce(async (selected, listType, mode) => {
-  const url = `https://${mockServerId}.mock.pstmn.io/select-content-term`;
+  const url = `https://${organizationId}.org.coveo.com/rest/search/v2`;
   const query = searchInput?.value;
   const payloadJSON = {
     ...payload,
     ...{
-      facets: payload?.facets.map((facet) => {
+      facets: listType ? payload?.facets.map((facet) => {
         if (facet.facetId === listType) {
           facet.currentValues.forEach((curFacVal, curFacValIndex) => {
             if (curFacVal.value === selected.value) {
-              facet.currentValues[curFacValIndex].state = (mode === 'select') ? 'selected' : 'idle';
+              facet.currentValues[curFacValIndex].state = (mode && mode === 'select') ? 'selected' : 'idle';
             }
           });
         }
         return facet;
-      }),
+      }) : payload?.facets,
       q: query,
       fieldsToInclude: facetSelect.fieldsToInclude,
       pipeline: facetSelect.pipeline,
@@ -88,10 +107,44 @@ const facetAction = debounce(async (selected, listType, mode) => {
     },
   };
   const { facets, totalCount = 0 } = await makeCoveoSearchRequest(url, JSON.stringify(payloadJSON));
-  payload = { ...payload, ...{ q: query, facets: payloadJSON?.facets } };
+  payload = { ...payload, ...{ q: query } };
   // eslint-disable-next-line no-use-before-define
   decorateSearchPopup(facets, totalCount);
 }, 100);
+
+function handleFacetList(listType, facetValues, facetIndex) {
+  facetsCollection[listType] = Object.keys(facetsCollection).length > 0
+      && listType in facetsCollection ? facetsCollection[listType] : [];
+  facetsCollection[listType].push(facetValues[facetIndex].value);
+  facetAction(facetValues[facetIndex], listType, 'select');
+  const selectedFacet = span(
+    {
+      id: `facet-${facetValues[facetIndex].value.replace(' ', '_')}`,
+      class: 'flex gap-x-2 pr-[5px] py-[5px] pl-4 text-white bg-slate-200/20 rounded-full select-none cursor-pointer facet-selected group',
+      title: facetValues[facetIndex].value,
+      onclick: () => {
+        if (listType in facetsCollection) {
+          if (facetsCollection[listType].length === 0) {
+            delete facetsCollection[listType];
+          } else {
+            // eslint-disable-next-line max-len
+            const facetItemIndex = facetsCollection[listType].indexOf(facetValues[facetIndex].value);
+            facetsCollection[listType].splice(facetItemIndex, 1);
+          }
+        }
+        facetAction(facetValues[facetIndex], listType, 'idle');
+        searchInput.parentElement.removeChild(selectedFacet);
+      },
+    },
+    span(
+      { class: 'max-w-32 text-2xl truncate' },
+      facetValues[facetIndex].value,
+    ),
+    span({ class: 'icon icon-close size-7 my-auto p-1 text-black fill-current cursor-pointer bg-purple-50/20 group-hover:bg-purple-50/40 rounded-full transition-transform group-hover:scale-110' }),
+  );
+  decorateIcons(selectedFacet);
+  searchInput.parentElement.insertBefore(selectedFacet, searchInput);
+}
 
 function decorateSearchPopup(facets, totalCount) {
   searchContent.innerHTML = '';
@@ -104,8 +157,19 @@ function decorateSearchPopup(facets, totalCount) {
     ) {
       const { values: facetValues, facetId } = facetWithContent[facetCategoryIndex];
       const listType = facetId;
+      const facetName = facetId.replace(/([A-Z])/g, ' $&');
       const facetGroup = div({ class: 'flex flex-col' });
-      const facetList = ul({ class: 'flex flex-row flex-wrap md:flex-col gap-x-2 gap-y-3 pl-3 border-l-0 md:border-l border-neutral/60' });
+      const facetListContainer = div({ class: 'relative flex flex-col justify-center' });
+      const facetListBtn = label({
+        'data-dropdown-toggle': facetName,
+        for: `${facetName}_${facetWithContent.length}`,
+        class: 'w-full block bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2.5 cursor-pointer',
+      }, 'Please Select', span({ class: 'icon icon-chevron-down' }));
+      facetListContainer.append(
+        input({ type: 'checkbox', class: 'peer hidden', id: `${facetName}_${facetWithContent.length}` }),
+        facetListBtn,
+      );
+      const facetList = ul({ class: 'absolute max-h-60 overflow-scroll p-3 space-y-1 text-sm text-gray-700 z-10 bg-white rounded-lg shadow' });
       if (facetValues.length > 0) {
         for (let facetIndex = 0; facetIndex < facetValues.length; facetIndex += 1) {
           const searchExistingFacet = listType in facetsCollection
@@ -118,58 +182,19 @@ function decorateSearchPopup(facets, totalCount) {
           ) {
             const facetElement = li(
               {
-                class: 'w-max px-4 py-2 rounded-full select-none bg-slate-200/30 hover:bg-slate-200/40 text-base leading-5 text-white font-normal flex items-center gap-x-2 cursor-pointer',
+                class: 'flex items-center p-2 rounded hover:bg-gray-100 cursor-pointer',
                 title: facetValues[facetIndex].value,
-                // eslint-disable-next-line no-loop-func
-                onclick: () => {
-                  facetsCollection[listType] = Object.keys(facetsCollection).length > 0
-                    && listType in facetsCollection ? facetsCollection[listType] : [];
-                  facetsCollection[listType].push(facetValues[facetIndex].value);
-                  facetAction(facetValues[facetIndex], listType, 'select');
-                  const selectedFacet = span(
-                    {
-                      id: `facet-${facetValues[facetIndex].value}`,
-                      class: 'flex gap-x-2 pr-[5px] py-[5px] pl-4 text-white bg-slate-200/20 rounded-full select-none cursor-pointer facet-selected group',
-                      title: facetValues[facetIndex].value,
-                      onclick: () => {
-                        if (listType in facetsCollection) {
-                          if (facetsCollection[listType].length === 0) {
-                            delete facetsCollection[listType];
-                          } else {
-                            // eslint-disable-next-line max-len
-                            const facetItemIndex = facetsCollection[listType].indexOf(facetValues[facetIndex].value);
-                            facetsCollection[listType].splice(facetItemIndex, 1);
-                          }
-                        }
-                        facetAction(facetValues[facetIndex], listType, 'idle');
-                        searchInput.parentElement.removeChild(selectedFacet);
-                      },
-                    },
-                    span(
-                      { class: 'max-w-32 text-2xl truncate' },
-                      facetValues[facetIndex].value,
-                    ),
-                    span({ class: 'icon icon-close size-7 my-auto p-1 text-black fill-current cursor-pointer bg-purple-50/20 group-hover:bg-purple-50/40 rounded-full transition-transform group-hover:scale-110' }),
-                  );
-                  decorateIcons(selectedFacet);
-                  searchInput.parentElement.insertBefore(selectedFacet, searchInput);
-                },
+                onclick: () => handleFacetList(listType, facetValues, facetIndex),
               },
-              span(
-                { class: 'max-w-[7rem] truncate' },
-                facetValues[facetIndex].value,
-              ),
-              span(
-                { class: 'text-xs font-normal bg-slate-200/20 rounded-full py-1 px-2' },
-                facetValues[facetIndex]?.numberOfResults,
-              ),
+              `${facetValues[facetIndex].value} ( ${facetValues[facetIndex].numberOfResults} )`,
             );
             facetList.append(facetElement);
           }
         }
         if (facetList.children.length > 0) {
-          facetGroup.append(h3({ class: 'font-medium text-slate-200/40 text-2xl leading-8 mb-2 pl-3 md:pl-0' }, facetId.replace(/([A-Z])/g, ' $&')));
-          facetGroup.append(facetList);
+          facetListContainer.append(div({ class: 'w-48 hidden peer-checked:block' }, facetList));
+          facetGroup.append(h3({ class: 'font-medium text-white/80 text-2xl leading-8 mb-2 pl-3 md:pl-0' }, searchFacetTerms[facetName]));
+          facetGroup.append(facetListContainer);
           searchContent.append(facetGroup);
         }
       }
@@ -180,66 +205,17 @@ function decorateSearchPopup(facets, totalCount) {
 }
 
 const fetchFinishType = debounce(async (value) => {
-  const url = `https://${mockServerId}.mock.pstmn.io/search-content?search-term=${value}`;
+  const url = `https://${organizationId}.org.coveo.com/rest/search/v2`;
   let facetContainer = [];
-  if (value.trim() === '') {
-    // eslint-disable-next-line no-use-before-define
-    fetchSearchHistory();
-    disclaimers.classList.add('hidden');
-  } else {
-    if (payload.facets) facetContainer = [...payload.facets];
-    else facetContainer = [...finishType.facets];
-    const selectedFacets = { ...finishType, q: value, facets: facetContainer };
-    // eslint-disable-next-line max-len
-    const { facets, totalCount = 0 } = await makeCoveoSearchRequest(url, JSON.stringify(selectedFacets));
-    payload = { ...payload, ...{ q: value, facets: facetContainer } };
-    disclaimers.classList.remove('hidden');
-    // CREATING THE LAYOUT
-    decorateSearchPopup(facets, totalCount);
-  }
+  if (payload.facets) facetContainer = [...payload.facets];
+  else facetContainer = [...finishType.facets];
+  const selectedFacets = { ...finishType, q: value, facets: facetContainer };
+  // eslint-disable-next-line max-len
+  const { facets, totalCount = 0 } = await makeCoveoSearchRequest(url, JSON.stringify(selectedFacets));
+  payload = { ...payload, ...{ q: value } };
+  // CREATING THE LAYOUT
+  decorateSearchPopup(facets, totalCount);
 }, 800);
-
-const fetchSuggestions = debounce(async (value) => {
-  try {
-    const url = `https://${mockServerId}.mock.pstmn.io/search-suggestion?search-term=${value}`;
-    suggestions.q = value;
-    const { completions } = await makeCoveoSearchRequest(url, JSON.stringify(suggestions));
-    // CREATING THE LAYOUT
-    searchSuggestions.innerHTML = '';
-    if (completions && completions.length > 0) {
-      for (
-        let suggestionIndex = 0;
-        suggestionIndex < completions.length;
-        suggestionIndex += 1
-      ) {
-        const suggestionRes = completions[suggestionIndex];
-        const suggestion = li(
-          {
-            class: 'flex items-center gap-x-3 px-1 py-1 select-none cursor-pointer hover:bg-gray-600/40',
-            // eslint-disable-next-line no-loop-func
-            onclick: () => {
-              searchInput.value = suggestionRes.expression;
-              fetchFinishType(suggestionRes.expression);
-              searchSuggestions.innerHTML = '';
-            },
-          },
-          span({ class: 'icon w-min h-min icon-arrow-right -rotate-90 size-5 fill-current' }),
-          span({ class: 'text-base tracking-wider' }, suggestionRes.expression),
-        );
-        searchSuggestions.append(suggestion);
-      }
-    } else {
-      searchSuggestions.append(li({ class: 'text-center' }, 'No Results Found'));
-      setTimeout(() => {
-        searchSuggestions.innerHTML = '';
-      }, 1500);
-    }
-    decorateIcons(searchSuggestions);
-  } catch (e) {
-    // eslint-disable-next-line no-console
-    console.error('Something happenned during request submission', e);
-  }
-});
 
 /**
  * Populate the search-suggestions & search-content API on user-input after specific time-interval
@@ -250,10 +226,8 @@ function handleSearchTyping(event) {
   value = value.trim();
   if (value === '' && value !== searchString) {
     searchContent.innerHTML = '';
-    searchSuggestions.innerHTML = '';
   }
   if (value !== searchString) {
-    fetchSuggestions(value);
     fetchFinishType(value);
   }
   searchString = value;
@@ -262,115 +236,10 @@ function handleSearchTyping(event) {
 }
 
 /**
- * Nullify the shown suggestions
- */
-function handleSearchBlur() {
-  setTimeout(() => {
-    searchSuggestions.innerHTML = '';
-  }, 200);
-}
-
-function handleSelectHistory(searchPacket) {
-  const { terms } = searchPacket;
-  terms.forEach((eachTerm) => {
-    if (eachTerm.type === 'facet') {
-      let currentFacet;
-      facetsCollection[eachTerm.listType] = Object.keys(facetsCollection).length > 0
-      && eachTerm.listType in facetsCollection ? facetsCollection[eachTerm.listType] : [];
-      facetsCollection[eachTerm.listType].push(eachTerm.name);
-      payload.facets = payload?.facets.map((facet) => {
-        if (facet.facetId === eachTerm.listType) {
-          facet.currentValues.forEach((curFacVal, curFacValIndex) => {
-            if (curFacVal.value === eachTerm.name) {
-              facet.currentValues[curFacValIndex].state = 'selected';
-              currentFacet = facet.currentValues[curFacValIndex];
-            }
-          });
-        }
-        return facet;
-      });
-      const selectedFacet = span(
-        {
-          id: `facet-${eachTerm.name}`,
-          class: 'flex gap-x-2 pr-[5px] py-[5px] pl-4 text-white bg-slate-200/20 rounded-full select-none cursor-pointer facet-selected group',
-          title: eachTerm.name,
-          onclick: () => {
-            if (eachTerm.listType in facetsCollection) {
-              if (facetsCollection[eachTerm.listType].length === 0) {
-                delete facetsCollection[eachTerm.listType];
-              } else {
-                // eslint-disable-next-line max-len
-                const facetItemIndex = facetsCollection[eachTerm.listType].indexOf(eachTerm.name);
-                facetsCollection[eachTerm.listType].splice(facetItemIndex, 1);
-              }
-            }
-            facetAction(currentFacet, eachTerm.listType, 'idle');
-            searchInput.parentElement.removeChild(selectedFacet);
-          },
-        },
-        span(
-          { class: 'max-w-32 text-2xl truncate' },
-          eachTerm.name,
-        ),
-        span({ class: 'icon icon-close size-7 my-auto p-1 text-black fill-current cursor-pointer bg-purple-50/20 group-hover:bg-purple-50/40 rounded-full transition-transform group-hover:scale-110' }),
-      );
-      decorateIcons(selectedFacet);
-      searchInput.parentElement.insertBefore(selectedFacet, searchInput);
-    } else if (eachTerm.type === 'text') {
-      searchInput.value = eachTerm.name;
-    }
-  });
-  fetchFinishType(searchInput.value);
-}
-
-function decorateSearchHistory(searchHistory) {
-  searchContent.innerHTML = '';
-  if (searchHistory && searchHistory.length > 0) {
-    const facetGroup = div(
-      { class: 'flex flex-col' },
-      h3({ class: 'font-medium text-slate-200/40 text-2xl leading-8 mb-2 pl-3 md:pl-0' }, 'Previous searches'),
-    );
-    const facetList = ul({ class: 'flex flex-row flex-wrap md:flex-col gap-x-2 gap-y-5' });
-    for (let historyIndex = 0; historyIndex < searchHistory.length; historyIndex += 1) {
-      if ('terms' in searchHistory[historyIndex] && searchHistory[historyIndex].terms.length > 0) {
-        const searchHistoryElement = li(
-          {
-            class: 'w-max select-none text-lg text-white leading-5 flex items-center gap-x-3 tracking-wider cursor-pointer',
-            onclick: () => handleSelectHistory(searchHistory[historyIndex]),
-          },
-          span({ class: 'icon icon-search size-8 block [&_img]:invert cursor-pointer p-2 bg-slate-100/20 hover:bg-slate-100/40 rounded-full' }),
-        );
-        searchHistory[historyIndex].terms.forEach((eachTerm) => {
-          if (eachTerm.type === 'facet') {
-            searchHistoryElement.appendChild(
-              span({ class: 'bg-slate-200/30 hover:bg-slate-200/40 px-4 py-2 rounded-full font-normal' }, eachTerm.name),
-            );
-          } else searchHistoryElement.appendChild(span(eachTerm.name));
-          return span(eachTerm.name);
-        });
-        facetList.append(searchHistoryElement);
-      }
-    }
-    facetGroup.append(facetList);
-    searchContent.append(facetGroup);
-    decorateIcons(searchContent);
-  }
-}
-
-async function fetchSearchHistory() {
-  const url = `https://${mockServerId}.mock.pstmn.io/search-term-history?limit=10`;
-  // eslint-disable-next-line max-len
-  const { history } = await makeCoveoSearchRequest(url);
-  // CREATING THE LAYOUT
-  decorateSearchHistory(history);
-}
-
-/**
  * Clear out the search-term & all the selected facets
  */
 function handleEmptySearchTerms() {
   searchInput.value = '';
-  searchSuggestions.innerHTML = '';
   const allSelectedFacets = document.querySelectorAll('#search-product span.facet-selected');
   if (allSelectedFacets.length > 0) {
     allSelectedFacets.forEach((selectedFacet) => selectedFacet.remove());
@@ -386,41 +255,28 @@ function handleEmptySearchTerms() {
       },
     };
   }
-  fetchSearchHistory();
 }
 
 function buildSearchBackdrop() {
-  fetchSearchHistory();
+  facetAction();
   totalResultCount = p({ id: 'total-result-count', class: 'text-5xl md:text-7xl lg:text-8xl' }, '0');
   disclaimers = div(
-    { class: 'w-full fixed bottom-0 text-black font-normal hidden' },
+    { class: 'w-full fixed bottom-0 text-black font-normal' },
     div(
-      { class: 'grid grid-cols-5' },
+      { class: 'w-max flex justify-between gap-24 ml-auto px-8 py-5 text-white' },
       div(
-        { class: 'hidden md:col-span-2 lg:col-span-3 md:flex flex-col bg-purple-50 px-8 py-3 text-purple-800 text-sm place-content-center' },
-        'Spotlight',
+        { class: 'flex flex-col place-content-center [&_p]:leading-4' },
+        p({ class: 'text-2xl md:text-3xl' }, 'Total results'),
         a(
-          { class: 'flex items-center text-base text-black' },
-          'Discover the all new CellXpress.ai Automated Cell Culture System',
-          span({ class: 'icon icon-arrow-right size-5 ml-2 shrink-0' }),
+          {
+            href: '#',
+            class: 'flex items-center text-base font-bold mt-4',
+          },
+          'Visit Results',
+          span({ class: 'icon icon-arrow-right size-5 [&_img]:invert ml-2' }),
         ),
       ),
-      div(
-        { class: 'col-span-5 md:col-span-3 lg:col-span-2 bg-purple-500 px-8 py-3 text-white flex justify-between' },
-        div(
-          { class: 'flex flex-col place-content-center [&_p]:leading-4' },
-          p({ class: 'text-2xl md:text-3xl' }, 'Total results'),
-          a(
-            {
-              href: '#',
-              class: 'flex items-center text-base font-bold mt-4',
-            },
-            'Visit Results',
-            span({ class: 'icon icon-arrow-right size-5 [&_img]:invert ml-2' }),
-          ),
-        ),
-        totalResultCount,
-      ),
+      totalResultCount,
     ),
   );
   emptySearchbar = span({
@@ -432,10 +288,6 @@ function buildSearchBackdrop() {
     id: 'search-content',
     class: 'container h-3/4 md:h-4/6 overflow-y-scroll mt-4 mx-auto mb-3 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 auto-rows-max gap-x-12 gap-y-3',
   });
-  searchSuggestions = ul({
-    id: 'search-suggestions',
-    class: 'min-w-80 max-w-xl flex flex-col gap-y-2 px-4 py-2 empty:hidden',
-  });
   searchInput = input({
     class: 'w-auto relative py-1 pl-2 md:pl-0 flex flex-grow text-white font-medium bg-transparent tracking-wider text-lg sm:text-xl placeholder-grey-300 outline-none',
     id: 'search-input',
@@ -443,7 +295,6 @@ function buildSearchBackdrop() {
     type: 'text',
     autocomplete: 'off',
     onkeyup: handleSearchTyping,
-    onblur: handleSearchBlur,
   });
   const searchBackdropContainer = div(
     {
@@ -469,7 +320,6 @@ function buildSearchBackdrop() {
               onclick: () => {
                 const searchContainer = document.querySelector('#search-container');
                 if (searchContainer) searchContainer.classList.add(...'-translate-y-full [&_#search-product]:hidden [&_#search-content]:hidden'.split(' '));
-                if (searchContainer) searchContainer.nextElementSibling.classList.add(...'transition-all -translate-y-full'.split(' '));
               },
             }),
             searchInput,
@@ -481,7 +331,6 @@ function buildSearchBackdrop() {
               onclick: () => {
                 const searchContainer = document.querySelector('#search-container');
                 if (searchContainer) searchContainer.classList.add(...'-translate-y-full [&_#search-product]:hidden [&_#search-content]:hidden'.split(' '));
-                if (searchContainer) searchContainer.nextElementSibling.classList.add(...'transition-all -translate-y-full'.split(' '));
               },
             },
             span({ class: 'text-base hidden lg:block group-hover:underline' }, 'Close'),
@@ -490,10 +339,6 @@ function buildSearchBackdrop() {
               class: 'icon icon-close size-8 p-1 group-hover:rotate-90 transition-transform',
             }),
           ),
-        ),
-        div(
-          { class: 'absolute bg-black text-white z-10' },
-          searchSuggestions,
         ),
       ),
     ),
