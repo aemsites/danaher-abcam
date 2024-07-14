@@ -7,7 +7,7 @@ function buildCoveo() {
   const coveoTower = `
     <atomic-search-interface localization-compatibility-version="v4"
       fields-to-include='["title", "productslug", "images", "reviewsrating", "numpublications", "reactivityapplications", 
-                          "source", "conjugations", "target", "hostspecies", "categorytype"]'>
+                          "source", "conjugations", "target", "hostspecies", "categorytype", "productcode", "uri"]'>
       <atomic-search-layout>
 
         <atomic-layout-section section="search">
@@ -18,8 +18,8 @@ function buildCoveo() {
 
         <atomic-layout-section section="facets">
           <div class="col-span-2">
+            <atomic-facet label="Category Type" field="categorytype" with-search="false" display-values-as="link"></atomic-facet>
             <atomic-facet-manager class="space-y-4 [&_atomic-facet::part(facet)]:rounded-md">
-              <atomic-facet label="Category Type" field="categorytype" with-search="false"></atomic-facet>
               <atomic-facet label="Applications" field="reactivityapplications" with-search="false"></atomic-facet>
               <atomic-facet label="Reactive Species" field="reactivespecies" with-search="false"></atomic-facet>
               <atomic-facet label="Target" field="target" with-search="false"></atomic-facet>
@@ -45,7 +45,12 @@ function buildCoveo() {
                   <atomic-result-template>
                     <template>
                       <atomic-table-element label="Product name">
+                        <div class="flex flex-col">
+                          <atomic-result-link href-template="\${clickUri}">
+                            <atomic-result-text field="productcode"></atomic-result-text>
+                          </atomic-result-link>
                           <atomic-result-text field="title"></atomic-result-text>
+                        </div>
                       </atomic-table-element>
                         <atomic-table-element label="Star Rating">
                           <atomic-result-number field="reviewsrating"></atomic-result-number>
@@ -115,7 +120,6 @@ export default async function buildAutoBlocks() {
     const newHash = window.location.hash;
     const params = new URLSearchParams(newHash.substring(1));
     cType = params.get('f-categorytype');
-    console.log(cType);
   });
   window.dispatchEvent(new Event('hashchange'));
   
