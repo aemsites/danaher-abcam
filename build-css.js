@@ -131,6 +131,61 @@ const fileMappings = [
     output: './blocks/hero-video/hero-video.css',
     wrapper: 'hero-video-wrapper',
   },
+  {
+    content: './blocks/disclaimer/disclaimer.js',
+    output: './blocks/disclaimer/disclaimer.css',
+    wrapper: 'disclaimer-wrapper',
+  },
+  {
+    content: './blocks/product-tabs/product-tabs.js',
+    output: './blocks/product-tabs/product-tabs.css',
+    wrapper: 'product-tabs-wrapper',
+  },
+  {
+    content: './blocks/product-overview/product-overview.js',
+    output: './blocks/product-overview/product-overview.css',
+    wrapper: 'product-overview-wrapper',
+  },
+  {
+    content: './blocks/product-buybox/product-buybox.js',
+    output: './blocks/product-buybox/product-buybox.css',
+    wrapper: 'product-buybox-wrapper',
+  },
+  {
+    content: './blocks/product-reactivity/product-reactivity.js',
+    output: './blocks/product-reactivity/product-reactivity.css',
+    wrapper: 'product-reactivity-wrapper',
+  },
+  {
+    content: './blocks/product-target-data/product-target-data.js',
+    output: './blocks/product-target-data/product-target-data.css',
+    wrapper: 'product-target-data-wrapper',
+  },
+  {
+    content: './blocks/recommended-products/recommended-products.js',
+    output: './blocks/recommended-products/recommended-products.css',
+    wrapper: 'recommended-products-wrapper',
+  },
+  {
+    content: './blocks/recently-viewed/recently-viewed.js',
+    output: './blocks/recently-viewed/recently-viewed.css',
+    wrapper: 'recently-viewed-wrapper',
+  },
+  {
+    content: './blocks/product-datasheet/product-datasheet.js',
+    output: './blocks/product-datasheet/product-datasheet.css',
+    wrapper: 'product-datasheet-wrapper',
+  },
+  {
+    content: './blocks/product-downloads/product-downloads.js',
+    output: './blocks/product-downloads/product-downloads.css',
+    wrapper: 'product-downloads-wrapper',
+  },
+  {
+    content: './blocks/product-protocols/product-protocols.js',
+    output: './blocks/product-protocols/product-protocols.css',
+    wrapper: 'product-protocols-wrapper',
+  },
 ];
 
 const watch = process.argv[2];

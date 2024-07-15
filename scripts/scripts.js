@@ -19,6 +19,41 @@ import { div } from './dom-builder.js';
 const LCP_BLOCKS = ['hero', 'hero-video']; // add your LCP blocks to the list
 
 /**
+ * 
+ * @param {*} config 
+ * @returns response JSON
+ */
+export async function fetchResponse(config) {
+  const {
+    url,
+    method,
+    authToken,
+    type = 'application/json',
+    body,
+  } = config;
+  const headers = {
+    'Content-Type': type,
+    Accept: 'application/json',
+  };
+  const configuration = { method, headers };
+  if (body) {
+    configuration.body = body;
+  }
+  if (authToken && authToken.trim() !== '') {
+    headers.Authorization = `Bearer ${authToken}`;
+  }
+  const response = await fetch(url, configuration)
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }  
+      throw new Error('Sorry, network error, not able to render response.');
+  });
+  return response;
+}
+
+
+/**
  * It will used generate random number to use in ID
  * @returns 4 digit random numbers
  */
