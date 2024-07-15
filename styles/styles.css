@@ -627,7 +627,7 @@ main .section > div.episodes-wrapper > div.episode-heading {
 
 .search-results main {
   height: auto;
-  max-height: 24rem;
+  min-height: 91rem;
   width: 100%;
 }
 
