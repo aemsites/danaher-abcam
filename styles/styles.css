@@ -625,6 +625,11 @@ main .section > div.episodes-wrapper > div.episode-heading {
   font-weight: 600;
 }
 
+.search-results main {
+  height: 190rem;
+  width: 100%;
+}
+
 .sticky {
   position: sticky;
 }

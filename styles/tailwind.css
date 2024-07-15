@@ -19,4 +19,8 @@
     main .section > div.episodes-wrapper > div.episode-heading {
         @apply text-center text-4xl font-semibold py-8;
     }
+
+    .search-results main {
+        @apply h-[190rem] w-full;
+    }
 }
