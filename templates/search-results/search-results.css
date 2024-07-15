@@ -44,9 +44,17 @@
   grid-column: span 6 / span 6
 }
 
+.m-auto {
+  margin: auto
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto
+}
+
+.mb-28 {
+  margin-bottom: 7rem
 }
 
 .flex {
@@ -65,8 +73,24 @@
   grid-template-columns: repeat(1, minmax(0, 1fr))
 }
 
+.flex-row {
+  flex-direction: row
+}
+
+.flex-col {
+  flex-direction: column
+}
+
 .flex-wrap {
   flex-wrap: wrap
+}
+
+.items-baseline {
+  align-items: baseline
+}
+
+.gap-8 {
+  gap: 2rem
 }
 
 .gap-4 {
@@ -83,9 +107,25 @@
   overflow: scroll
 }
 
+.rounded-2xl {
+  border-radius: 1rem
+}
+
+.border-2 {
+  border-width: 2px
+}
+
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem
+}
+
+.pb-6 {
+  padding-bottom: 1.5rem
+}
+
+.pt-6 {
+  padding-top: 1.5rem
 }
 
 @media (min-width: 768px) {
