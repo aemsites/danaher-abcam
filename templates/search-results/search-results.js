@@ -10,7 +10,7 @@ function buildCoveo() {
                           "source", "conjugations", "target", "hostspecies", "categorytype", "productcode", "uri"]'>
       <atomic-search-layout>
 
-        <atomic-layout-section section="search">
+        <atomic-layout-section section="search" class="h-20">
           <atomic-search-box textarea="true">
               <atomic-search-box-query-suggestions></atomic-search-box-query-suggestions>
           </atomic-search-box>
@@ -30,17 +30,17 @@ function buildCoveo() {
           </div>
         </atomic-layout-section>
 
-        <atomic-layout-section section="main">
+        <atomic-layout-section section="main" class="h-96">
           <atomic-layout-section section="pagination">
           
             <div class="flex flex-col">
-              <div class="flex flex-row gap-8 pb-6 items-baseline">
+              <div class="flex flex-row gap-8 pb-6 h-28 items-baseline">
                 <atomic-layout-section section="status">
                   <atomic-query-summary></atomic-query-summary>
                 </atomic-layout-section>
                 <atomic-results-per-page></atomic-results-per-page>
               </div>
-              <div class="border-2 rounded-2xl">
+              <div class="border-2 rounded-2xl h-full">
                 <atomic-result-list display="table">
                   <atomic-result-template>
                     <template>

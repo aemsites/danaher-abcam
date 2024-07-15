@@ -22,6 +22,22 @@
   display: table
 }
 
+.h-20 {
+  height: 5rem
+}
+
+.h-28 {
+  height: 7rem
+}
+
+.h-96 {
+  height: 24rem
+}
+
+.h-full {
+  height: 100%
+}
+
 .flex-row {
   flex-direction: row
 }
