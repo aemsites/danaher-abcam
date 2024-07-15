@@ -3,54 +3,47 @@
   margin-right: auto
 }
 
-.mb-2 {
-  margin-bottom: 0.5rem
+.grid {
+  display: grid
 }
 
-.box-content {
-  box-sizing: content-box
+.w-\[87\%\] {
+  width: 87%
 }
 
-.flex {
-  display: flex
+.grid-cols-12 {
+  grid-template-columns: repeat(12, minmax(0, 1fr))
 }
 
-.max-w-7xl {
-  max-width: 80rem
+.rounded-lg {
+  border-radius: 0.5rem
 }
 
-.flex-col {
-  flex-direction: column
+.bg-slate-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(241 245 249 / var(--tw-bg-opacity))
 }
 
-.justify-center {
-  justify-content: center
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem
 }
 
-.px-\[6\.25\%\] {
-  padding-left: 6.25%;
-  padding-right: 6.25%
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem
 }
 
-.py-10 {
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem
+.pb-16 {
+  padding-bottom: 4rem
 }
 
-.text-xs\/6 {
-  font-size: 0.75rem;
-  line-height: 1.5rem
+.pt-16 {
+  padding-top: 4rem
 }
 
-.font-normal {
-  font-weight: 400
-}
-
-.tracking-wider {
-  letter-spacing: 0.05em
-}
-
-.text-\[\#65797C\] {
-  --tw-text-opacity: 1;
-  color: rgb(101 121 124 / var(--tw-text-opacity))
+@media (max-width: 768px) {
+  .max-\[768px\]\:w-full {
+    width: 100%
+  }
 }

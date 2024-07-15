@@ -314,14 +314,6 @@
   white-space: nowrap
 }
 
-.hero-wrapper :is(.break-words) {
-  overflow-wrap: break-word
-}
-
-.hero-wrapper :is(.rounded) {
-  border-radius: 0.25rem
-}
-
 .hero-wrapper :is(.rounded-full) {
   border-radius: 9999px
 }
@@ -549,14 +541,6 @@
 .hero-wrapper :is(.text-white) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity))
-}
-
-.hero-wrapper :is(.text-white\/80) {
-  color: rgb(255 255 255 / 0.8)
-}
-
-.hero-wrapper :is(.opacity-60) {
-  opacity: 0.6
 }
 
 .hero-wrapper :is(.shadow) {
