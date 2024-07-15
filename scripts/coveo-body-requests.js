@@ -1,8 +1,8 @@
 export const searchFacetTerms = {
+  categorytype: 'Category Type',
   hostspecies: 'Host Species',
   sampletype: 'Sample Type',
   reactivespecies: 'Reactive Species',
-  categorytype: 'Category Type',
   target: 'Target',
   conjugations: 'Conjugations',
   reactivityapplications: 'Reactivity Applications',

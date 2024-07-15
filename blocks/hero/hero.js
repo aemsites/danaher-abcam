@@ -78,6 +78,9 @@ function decorateViewResultsURL() {
       document.querySelector('#search-container .icon-search')?.addEventListener('click', () => {
         window.location = `/en-us/search?facets.application=${queryParameters}`;
       });
+      document.querySelector('#search-container input')?.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.keyCode === 13) window.location = `/en-us/search#${queryParameters}`;
+      });
     }
   }
 }
@@ -144,6 +147,7 @@ function handleFacetList(listType, facetValues, facetIndex) {
   );
   decorateIcons(selectedFacet);
   searchInput.parentElement.insertBefore(selectedFacet, searchInput);
+  searchInput.focus();
 }
 
 function decorateSearchPopup(facets, totalCount) {
@@ -155,6 +159,12 @@ function decorateSearchPopup(facets, totalCount) {
       facetCategoryIndex < facetWithContent.length;
       facetCategoryIndex += 1
     ) {
+      facetWithContent.sort((a, b) => {
+        if (a.facetId < b.facetId) return -1;
+        if (a.facetId > b.facetId) return 1;
+        return 0;
+      });
+
       const { values: facetValues, facetId } = facetWithContent[facetCategoryIndex];
       const listType = facetId;
       const facetName = facetId.replace(/([A-Z])/g, ' $&');
@@ -286,7 +296,7 @@ function buildSearchBackdrop() {
   });
   searchContent = div({
     id: 'search-content',
-    class: 'container h-3/4 md:h-4/6 overflow-y-scroll mt-4 mx-auto mb-3 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 auto-rows-max gap-x-12 gap-y-3',
+    class: 'container h-3/4 md:h-4/6 mt-4 mx-auto mb-3 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 auto-rows-max gap-x-12 gap-y-3',
   });
   searchInput = input({
     class: 'w-auto relative py-1 pl-2 md:pl-0 flex flex-grow text-white font-medium bg-transparent tracking-wider text-lg sm:text-xl placeholder-grey-300 outline-none',
@@ -299,7 +309,7 @@ function buildSearchBackdrop() {
   const searchBackdropContainer = div(
     {
       id: 'search-container',
-      class: 'w-screen h-screen fixed top-0 left-0 z-50 transition-all -translate-y-full [&_#search-product]:hidden [&_#search-content]:hidden',
+      class: 'h-screen fixed top-0 left-0 z-50 transition-all -translate-y-full [&_#search-product]:hidden [&_#search-content]:hidden',
     },
     div(
       {
@@ -319,7 +329,11 @@ function buildSearchBackdrop() {
               class: 'icon icon-chevron-down size-7 rotate-90 block md:hidden bg-transparent text-white absolute flex ms-3 p-1 md:p-0 inset-y-0 start-0 my-auto [&_img]:invert cursor-pointer',
               onclick: () => {
                 const searchContainer = document.querySelector('#search-container');
-                if (searchContainer) searchContainer.classList.add(...'-translate-y-full [&_#search-product]:hidden [&_#search-content]:hidden'.split(' '));
+                if (searchContainer) {
+                  searchContainer.classList.add(...'-translate-y-full [&_#search-product]:hidden [&_#search-content]:hidden'.split(' '));
+                  searchContainer.classList.remove('w-screen');
+                  document.querySelector('#search-container-child')?.classList.remove('w-screen');
+                }
               },
             }),
             searchInput,
@@ -330,7 +344,11 @@ function buildSearchBackdrop() {
               class: 'hidden md:inline-flex items-center cursor-pointer ml-2 group',
               onclick: () => {
                 const searchContainer = document.querySelector('#search-container');
-                if (searchContainer) searchContainer.classList.add(...'-translate-y-full [&_#search-product]:hidden [&_#search-content]:hidden'.split(' '));
+                if (searchContainer) {
+                  searchContainer.classList.add(...'-translate-y-full [&_#search-product]:hidden [&_#search-content]:hidden'.split(' '));
+                  searchContainer.classList.remove('w-screen');
+                  document.querySelector('#search-container-child')?.classList.remove('w-screen');
+                }
               },
             },
             span({ class: 'text-base hidden lg:block group-hover:underline' }, 'Close'),
@@ -367,7 +385,11 @@ export default function decorate(block) {
         id: 'search-by-coveo',
         onclick: () => {
           const searchContainer = document.querySelector('#search-container');
-          if (searchContainer) searchContainer.classList.remove(...'-translate-y-full [&_#search-product]:hidden [&_#search-content]:hidden'.split(' '));
+          if (searchContainer) {
+            searchContainer.classList.remove(...'-translate-y-full [&_#search-product]:hidden [&_#search-content]:hidden'.split(' '));
+            searchContainer.classList.add('w-screen');
+            document.querySelector('#search-container-child')?.classList.add('w-screen');
+          }
           if (searchContainer) searchContainer.nextElementSibling.classList.remove(...'transition-all -translate-y-full'.split(' '));
           if (searchInput) searchInput.focus();
         },
@@ -383,7 +405,7 @@ export default function decorate(block) {
     );
     parentWrapper.append(searchBar);
     parentWrapper.append(buildSearchBackdrop());
-    parentWrapper.append(div({ class: 'w-screen h-screen fixed top-0 left-0 bg-gradient-to-bl from-black to-gray-800 opacity-60 z-40 transition-all -translate-y-full' }));
+    parentWrapper.append(div({ id: 'search-container-child', class: 'h-screen fixed top-0 left-0 bg-gradient-to-bl from-black to-gray-800 opacity-60 z-40 transition-all -translate-y-full' }));
     decorateIcons(parentWrapper);
   }
   block.append(pictureTag);

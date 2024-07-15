@@ -86,6 +86,10 @@
   z-index: 50
 }
 
+.hero-wrapper :is(.col-span-5) {
+  grid-column: span 5 / span 5
+}
+
 .hero-wrapper :is(.mx-auto) {
   margin-left: auto;
   margin-right: auto
@@ -132,6 +136,14 @@
   margin-top: 1rem
 }
 
+.hero-wrapper :is(.me-2) {
+  margin-inline-end: 0.5rem
+}
+
+.hero-wrapper :is(.mt-2) {
+  margin-top: 0.5rem
+}
+
 .hero-wrapper :is(.block) {
   display: block
 }
@@ -175,6 +187,18 @@
   height: 100vh
 }
 
+.hero-wrapper :is(.h-12) {
+  height: 3rem
+}
+
+.hero-wrapper :is(.h-4\/6) {
+  height: 66.666667%
+}
+
+.hero-wrapper :is(.h-7) {
+  height: 1.75rem
+}
+
 .hero-wrapper :is(.max-h-60) {
   max-height: 15rem
 }
@@ -204,12 +228,28 @@
   width: 100vw
 }
 
+.hero-wrapper :is(.w-12) {
+  width: 3rem
+}
+
+.hero-wrapper :is(.w-7) {
+  width: 1.75rem
+}
+
+.hero-wrapper :is(.min-w-80) {
+  min-width: 20rem
+}
+
 .hero-wrapper :is(.max-w-2xl) {
   max-width: 42rem
 }
 
 .hero-wrapper :is(.max-w-32) {
   max-width: 8rem
+}
+
+.hero-wrapper :is(.max-w-xl) {
+  max-width: 36rem
 }
 
 .hero-wrapper :is(.flex-grow) {
@@ -242,6 +282,10 @@
 
 .hero-wrapper :is(.grid-cols-1) {
   grid-template-columns: repeat(1, minmax(0, 1fr))
+}
+
+.hero-wrapper :is(.grid-cols-5) {
+  grid-template-columns: repeat(5, minmax(0, 1fr))
 }
 
 .hero-wrapper :is(.flex-col) {
@@ -294,6 +338,10 @@
   row-gap: 1rem
 }
 
+.hero-wrapper :is(.gap-y-2) {
+  row-gap: 0.5rem
+}
+
 .hero-wrapper :is(.space-y-1 > :not([hidden]) ~ :not([hidden])) {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
@@ -312,6 +360,14 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap
+}
+
+.hero-wrapper :is(.break-words) {
+  overflow-wrap: break-word
+}
+
+.hero-wrapper :is(.rounded) {
+  border-radius: 0.25rem
 }
 
 .hero-wrapper :is(.rounded-full) {
@@ -364,6 +420,11 @@
 .hero-wrapper :is(.bg-white) {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+}
+
+.hero-wrapper :is(.bg-black) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity))
 }
 
 .hero-wrapper :is(.bg-gradient-to-bl) {
@@ -440,6 +501,16 @@
   padding-bottom: 5px
 }
 
+.hero-wrapper :is(.px-4) {
+  padding-left: 1rem;
+  padding-right: 1rem
+}
+
+.hero-wrapper :is(.py-3) {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem
+}
+
 .hero-wrapper :is(.pl-2) {
   padding-left: 0.5rem
 }
@@ -494,6 +565,11 @@
   line-height: 1.25rem
 }
 
+.hero-wrapper :is(.text-xl) {
+  font-size: 1.25rem;
+  line-height: 1.75rem
+}
+
 .hero-wrapper :is(.font-bold) {
   font-weight: 700
 }
@@ -543,6 +619,32 @@
   color: rgb(255 255 255 / var(--tw-text-opacity))
 }
 
+.hero-wrapper :is(.text-white\/80) {
+  color: rgb(255 255 255 / 0.8)
+}
+
+.hero-wrapper :is(.text-gray-600\/70) {
+  color: rgb(75 85 99 / 0.7)
+}
+
+.hero-wrapper :is(.placeholder-black)::-moz-placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-placeholder-opacity))
+}
+
+.hero-wrapper :is(.placeholder-black)::placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-placeholder-opacity))
+}
+
+.hero-wrapper :is(.opacity-60) {
+  opacity: 0.6
+}
+
+.hero-wrapper :is(.opacity-100) {
+  opacity: 1
+}
+
 .hero-wrapper :is(.shadow) {
   --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
@@ -568,6 +670,10 @@
   transition-property: transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms
+}
+
+.hero-wrapper :is(.empty\:hidden:empty) {
+  display: none
 }
 
 .hero-wrapper :is(.hover\:bg-gray-100:hover) {
@@ -611,6 +717,10 @@
     padding-top: 0.5rem
   }
 
+  .hero-wrapper :is(.sm\:pt-7) {
+    padding-top: 1.75rem
+  }
+
   .hero-wrapper :is(.sm\:text-xl) {
     font-size: 1.25rem;
     line-height: 1.75rem
@@ -618,8 +728,24 @@
 }
 
 @media (min-width: 768px) {
+  .hero-wrapper :is(.md\:col-span-2) {
+    grid-column: span 2 / span 2
+  }
+
+  .hero-wrapper :is(.md\:col-span-3) {
+    grid-column: span 3 / span 3
+  }
+
+  .hero-wrapper :is(.md\:me-1) {
+    margin-inline-end: 0.25rem
+  }
+
   .hero-wrapper :is(.md\:block) {
     display: block
+  }
+
+  .hero-wrapper :is(.md\:flex) {
+    display: flex
   }
 
   .hero-wrapper :is(.md\:inline-flex) {
@@ -632,6 +758,10 @@
 
   .hero-wrapper :is(.md\:h-4\/6) {
     height: 66.666667%
+  }
+
+  .hero-wrapper :is(.md\:h-3\/5) {
+    height: 60%
   }
 
   .hero-wrapper :is(.md\:grid-cols-3) {
@@ -686,6 +816,14 @@
 }
 
 @media (min-width: 1024px) {
+  .hero-wrapper :is(.lg\:col-span-2) {
+    grid-column: span 2 / span 2
+  }
+
+  .hero-wrapper :is(.lg\:col-span-3) {
+    grid-column: span 3 / span 3
+  }
+
   .hero-wrapper :is(.lg\:block) {
     display: block
   }
@@ -727,6 +865,11 @@
   width: 100%
 }
 
+.hero-wrapper :is(.\[\&_img\]\:object-cover img) {
+  -o-object-fit: cover;
+     object-fit: cover
+}
+
 .hero-wrapper :is(.\[\&_img\]\:invert img) {
   --tw-invert: invert(100%);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
@@ -736,6 +879,22 @@
   line-height: 1rem
 }
 
+.hero-wrapper :is(.\[\&_svg\]\:h-4 svg) {
+  height: 1rem
+}
+
+.hero-wrapper :is(.\[\&_svg\]\:w-4 svg) {
+  width: 1rem
+}
+
 .hero-wrapper :is(.\[\&_svg\]\:fill-current svg) {
   fill: currentColor
+}
+
+.hero-wrapper :is(.\[\&_svg\]\:fill-white svg) {
+  fill: #fff
+}
+
+.hero-wrapper :is(.\[\&_svg\]\:stroke-1 svg) {
+  stroke-width: 1
 }
