@@ -159,9 +159,9 @@ function decorateSearchPopup(facets, totalCount) {
       facetCategoryIndex < facetWithContent.length;
       facetCategoryIndex += 1
     ) {
-      facetWithContent.sort((a, b) => {
-        if (a.facetId < b.facetId) return -1;
-        if (a.facetId > b.facetId) return 1;
+      facetWithContent.sort((a1, b1) => {
+        if (a1.facetId < b1.facetId) return -1;
+        if (a1.facetId > b1.facetId) return 1;
         return 0;
       });
 
