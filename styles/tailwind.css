@@ -21,6 +21,6 @@
     }
 
     .search-results main {
-        @apply h-auto w-full;
+        @apply max-h-96 h-auto w-full;
     }
 }
