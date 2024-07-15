@@ -112,25 +112,22 @@ async function loadAtomic() {
   });
 
   // Trigger a first search
-  searchInterface.executeFirstSearch()
-    .then (() =>{
-      const engine = searchInterface.engine;
-      engine.subscribe(() => {
-        if (engine?.state?.search?.response?.totalCount > 0) {
-          const facets = engine?.state?.search?.response?.facets;
-          for (let facet of facets) {
-            if (facet.field === 'categorytype') {
-              let selectedValue = facet.values.find(value => value.state === "selected");
-              if (selectedValue) {
-                  cType = selectedValue.value;
-                  break;
-              }
-            }
-            
-          }
-        }
-      });
-    });
+  searchInterface.executeFirstSearch();
+  // const { engine } = searchInterface;
+  // engine.subscribe(() => {
+  //   if (engine?.state?.search?.response?.totalCount > 0) {
+  //     const facets = engine?.state?.search?.response?.facets;
+  //     for (const facet of facets) {
+  //       if (facet.field === 'categorytype') {
+  //         const selectedValue = facet.values.find((value) => value.state === 'selected');
+  //         if (selectedValue) {
+  //           cType = selectedValue.value;
+  //           break;
+  //         }
+  //       }
+  //     }
+  //   }
+  // });
 }
 
 export default async function buildAutoBlocks() {
