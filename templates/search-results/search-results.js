@@ -61,7 +61,7 @@ function buildCoveo() {
                       <atomic-table-element label="Publications">
                         <atomic-result-number field="numpublications"></atomic-result-number>
                       </atomic-table-element>
-                      ${ !cType ? `
+                      ${!cType ? `
                       <atomic-table-element label="Target">
                         <atomic-result-text field="target"></atomic-result-text>
                       </atomic-table-element> ` : ''}
@@ -71,12 +71,12 @@ function buildCoveo() {
                       ${cType === 'Secondary Antibodies' ? `
                       <atomic-table-element label="Host species">
                         <atomic-result-text field="hostspecies"></atomic-result-text>
-                      </atomic-table-element> ` : 
-                      !cType || cType === 'Primary Antibodies' ? `
+                      </atomic-table-element> ` : ''}
+                      ${!cType || cType === 'Primary Antibodies' ? `
                       <atomic-table-element label="Reactive Species">
                           <atomic-result-text field="title"></atomic-result-text>
                       </atomic-table-element> ` : ''}
-                      ${ cType ? `
+                      ${cType ? `
                       <atomic-table-element label="Conjugation">
                         <atomic-result-multi-value-text field="conjugations"></atomic-result-multi-value-text>
                       </atomic-table-element> ` : ''}
@@ -116,13 +116,13 @@ async function loadAtomic() {
 }
 
 export default async function buildAutoBlocks() {
-  window.addEventListener('hashchange', function() {
+  window.addEventListener('hashchange', () => {
     const newHash = window.location.hash;
     const params = new URLSearchParams(newHash.substring(1));
     cType = params.get('f-categorytype');
   });
   window.dispatchEvent(new Event('hashchange'));
-  
+
   const mainEl = document.querySelector('main');
   mainEl.classList.add(...'py-8'.split(' '));
   mainEl.innerHTML = buildCoveo();
