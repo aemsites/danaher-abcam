@@ -22,6 +22,11 @@ function toggleTabs(tabId, mmgTabs) {
 
 export default async function decorate(block) {
   const response = await getProductResponse();
+  const rawData = response?.at(0)?.raw;
+  const { title } = rawData;
+  if (title !== undefined || title === ' ') {
+    document.title = title;
+  }
   block.classList.add(...'md:border-b sm:border-b flex flex-col md:flex-col md:relative text-xl text-[#65797C]'.split(' '));
   const mmgTabs = div({ class: 'md:border-none border-b sm:border-none mmg-tabs md:absolute md:right-0 md:top-[-15px] font-semibold text-base text-black md:block flex order-1' });
   const tabs = [
