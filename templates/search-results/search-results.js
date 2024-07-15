@@ -31,6 +31,7 @@ function buildCoveo() {
         </atomic-layout-section>
 
         <atomic-layout-section section="main">
+          <atomic-did-you-mean></atomic-did-you-mean>
           <atomic-layout-section section="pagination">
           
             <div class="flex flex-col">
