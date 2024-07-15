@@ -78,6 +78,10 @@
   z-index: 10
 }
 
+.hero-wrapper :is(.z-40) {
+  z-index: 40
+}
+
 .hero-wrapper :is(.z-50) {
   z-index: 50
 }
@@ -96,32 +100,48 @@
   margin-bottom: auto
 }
 
+.hero-wrapper :is(.mb-2) {
+  margin-bottom: 0.5rem
+}
+
 .hero-wrapper :is(.mb-3) {
   margin-bottom: 0.75rem
 }
 
-.hero-wrapper :is(.me-2) {
-  margin-inline-end: 0.5rem
+.hero-wrapper :is(.me-3) {
+  margin-inline-end: 0.75rem
 }
 
 .hero-wrapper :is(.ml-2) {
   margin-left: 0.5rem
 }
 
+.hero-wrapper :is(.ml-auto) {
+  margin-left: auto
+}
+
 .hero-wrapper :is(.ms-2) {
   margin-inline-start: 0.5rem
+}
+
+.hero-wrapper :is(.ms-3) {
+  margin-inline-start: 0.75rem
 }
 
 .hero-wrapper :is(.ms-4) {
   margin-inline-start: 1rem
 }
 
-.hero-wrapper :is(.mt-2) {
-  margin-top: 0.5rem
-}
-
 .hero-wrapper :is(.mt-4) {
   margin-top: 1rem
+}
+
+.hero-wrapper :is(.me-2) {
+  margin-inline-end: 0.5rem
+}
+
+.hero-wrapper :is(.mt-2) {
+  margin-top: 0.5rem
 }
 
 .hero-wrapper :is(.block) {
@@ -140,6 +160,33 @@
   display: none
 }
 
+.hero-wrapper :is(.size-5) {
+  width: 1.25rem;
+  height: 1.25rem
+}
+
+.hero-wrapper :is(.size-7) {
+  width: 1.75rem;
+  height: 1.75rem
+}
+
+.hero-wrapper :is(.size-8) {
+  width: 2rem;
+  height: 2rem
+}
+
+.hero-wrapper :is(.h-3\/4) {
+  height: 75%
+}
+
+.hero-wrapper :is(.h-6) {
+  height: 1.5rem
+}
+
+.hero-wrapper :is(.h-screen) {
+  height: 100vh
+}
+
 .hero-wrapper :is(.h-12) {
   height: 3rem
 }
@@ -148,28 +195,20 @@
   height: 66.666667%
 }
 
-.hero-wrapper :is(.h-6) {
-  height: 1.5rem
-}
-
 .hero-wrapper :is(.h-7) {
   height: 1.75rem
 }
 
-.hero-wrapper :is(.h-screen) {
-  height: 100vh
+.hero-wrapper :is(.max-h-60) {
+  max-height: 15rem
 }
 
-.hero-wrapper :is(.w-12) {
-  width: 3rem
+.hero-wrapper :is(.w-48) {
+  width: 12rem
 }
 
 .hero-wrapper :is(.w-6) {
   width: 1.5rem
-}
-
-.hero-wrapper :is(.w-7) {
-  width: 1.75rem
 }
 
 .hero-wrapper :is(.w-auto) {
@@ -180,8 +219,21 @@
   width: 100%
 }
 
+.hero-wrapper :is(.w-max) {
+  width: -moz-max-content;
+  width: max-content
+}
+
 .hero-wrapper :is(.w-screen) {
   width: 100vw
+}
+
+.hero-wrapper :is(.w-12) {
+  width: 3rem
+}
+
+.hero-wrapper :is(.w-7) {
+  width: 1.75rem
 }
 
 .hero-wrapper :is(.min-w-80) {
@@ -190,6 +242,10 @@
 
 .hero-wrapper :is(.max-w-2xl) {
   max-width: 42rem
+}
+
+.hero-wrapper :is(.max-w-32) {
+  max-width: 8rem
 }
 
 .hero-wrapper :is(.max-w-xl) {
@@ -205,8 +261,19 @@
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 
+.hero-wrapper :is(.rotate-90) {
+  --tw-rotate: 90deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+
 .hero-wrapper :is(.cursor-pointer) {
   cursor: pointer
+}
+
+.hero-wrapper :is(.select-none) {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none
 }
 
 .hero-wrapper :is(.auto-rows-max) {
@@ -249,6 +316,10 @@
   gap: 0.25rem
 }
 
+.hero-wrapper :is(.gap-24) {
+  gap: 6rem
+}
+
 .hero-wrapper :is(.gap-x-12) {
   -moz-column-gap: 3rem;
        column-gap: 3rem
@@ -259,16 +330,26 @@
        column-gap: 0.5rem
 }
 
-.hero-wrapper :is(.gap-y-2) {
-  row-gap: 0.5rem
-}
-
 .hero-wrapper :is(.gap-y-3) {
   row-gap: 0.75rem
 }
 
 .hero-wrapper :is(.gap-y-4) {
   row-gap: 1rem
+}
+
+.hero-wrapper :is(.gap-y-2) {
+  row-gap: 0.5rem
+}
+
+.hero-wrapper :is(.space-y-1 > :not([hidden]) ~ :not([hidden])) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.25rem * var(--tw-space-y-reverse))
+}
+
+.hero-wrapper :is(.overflow-scroll) {
+  overflow: scroll
 }
 
 .hero-wrapper :is(.overflow-y-scroll) {
@@ -281,12 +362,28 @@
   white-space: nowrap
 }
 
+.hero-wrapper :is(.break-words) {
+  overflow-wrap: break-word
+}
+
+.hero-wrapper :is(.rounded) {
+  border-radius: 0.25rem
+}
+
 .hero-wrapper :is(.rounded-full) {
   border-radius: 9999px
 }
 
+.hero-wrapper :is(.rounded-lg) {
+  border-radius: 0.5rem
+}
+
 .hero-wrapper :is(.rounded-none) {
   border-radius: 0px
+}
+
+.hero-wrapper :is(.border) {
+  border-width: 1px
 }
 
 .hero-wrapper :is(.border-b) {
@@ -298,9 +395,22 @@
   border-color: rgb(8 145 178 / var(--tw-border-opacity))
 }
 
-.hero-wrapper :is(.bg-black) {
+.hero-wrapper :is(.border-gray-300) {
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity))
+}
+
+.hero-wrapper :is(.bg-gray-50) {
   --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity))
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity))
+}
+
+.hero-wrapper :is(.bg-purple-50\/20) {
+  background-color: rgb(250 245 255 / 0.2)
+}
+
+.hero-wrapper :is(.bg-slate-200\/20) {
+  background-color: rgb(226 232 240 / 0.2)
 }
 
 .hero-wrapper :is(.bg-transparent) {
@@ -310,6 +420,11 @@
 .hero-wrapper :is(.bg-white) {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+}
+
+.hero-wrapper :is(.bg-black) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity))
 }
 
 .hero-wrapper :is(.bg-gradient-to-bl) {
@@ -334,6 +449,14 @@
   padding: 0.25rem
 }
 
+.hero-wrapper :is(.p-2) {
+  padding: 0.5rem
+}
+
+.hero-wrapper :is(.p-2\.5) {
+  padding: 0.625rem
+}
+
 .hero-wrapper :is(.p-3) {
   padding: 0.75rem
 }
@@ -341,11 +464,6 @@
 .hero-wrapper :is(.px-0) {
   padding-left: 0px;
   padding-right: 0px
-}
-
-.hero-wrapper :is(.px-4) {
-  padding-left: 1rem;
-  padding-right: 1rem
 }
 
 .hero-wrapper :is(.px-6) {
@@ -368,18 +486,41 @@
   padding-bottom: 0.5rem
 }
 
-.hero-wrapper :is(.py-3) {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem
-}
-
 .hero-wrapper :is(.py-4) {
   padding-top: 1rem;
   padding-bottom: 1rem
 }
 
+.hero-wrapper :is(.py-5) {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem
+}
+
+.hero-wrapper :is(.py-\[5px\]) {
+  padding-top: 5px;
+  padding-bottom: 5px
+}
+
+.hero-wrapper :is(.px-4) {
+  padding-left: 1rem;
+  padding-right: 1rem
+}
+
+.hero-wrapper :is(.py-3) {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem
+}
+
 .hero-wrapper :is(.pl-2) {
   padding-left: 0.5rem
+}
+
+.hero-wrapper :is(.pl-3) {
+  padding-left: 0.75rem
+}
+
+.hero-wrapper :is(.pl-4) {
+  padding-left: 1rem
 }
 
 .hero-wrapper :is(.pl-8) {
@@ -388,6 +529,10 @@
 
 .hero-wrapper :is(.pr-0) {
   padding-right: 0px
+}
+
+.hero-wrapper :is(.pr-\[5px\]) {
+  padding-right: 5px
 }
 
 .hero-wrapper :is(.text-2xl) {
@@ -441,6 +586,10 @@
   font-weight: 600
 }
 
+.hero-wrapper :is(.leading-8) {
+  line-height: 2rem
+}
+
 .hero-wrapper :is(.tracking-wider) {
   letter-spacing: 0.05em
 }
@@ -450,13 +599,32 @@
   color: rgb(0 0 0 / var(--tw-text-opacity))
 }
 
-.hero-wrapper :is(.text-gray-600\/70) {
-  color: rgb(75 85 99 / 0.7)
+.hero-wrapper :is(.text-gray-400) {
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity))
+}
+
+.hero-wrapper :is(.text-gray-700) {
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity))
+}
+
+.hero-wrapper :is(.text-gray-900) {
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity))
 }
 
 .hero-wrapper :is(.text-white) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+
+.hero-wrapper :is(.text-white\/80) {
+  color: rgb(255 255 255 / 0.8)
+}
+
+.hero-wrapper :is(.text-gray-600\/70) {
+  color: rgb(75 85 99 / 0.7)
 }
 
 .hero-wrapper :is(.placeholder-black)::-moz-placeholder {
@@ -469,13 +637,27 @@
   color: rgb(0 0 0 / var(--tw-placeholder-opacity))
 }
 
+.hero-wrapper :is(.opacity-60) {
+  opacity: 0.6
+}
+
 .hero-wrapper :is(.opacity-100) {
   opacity: 1
+}
+
+.hero-wrapper :is(.shadow) {
+  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
 }
 
 .hero-wrapper :is(.outline-none) {
   outline: 2px solid transparent;
   outline-offset: 2px
+}
+
+.hero-wrapper :is(.filter) {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
 }
 
 .hero-wrapper :is(.transition-all) {
@@ -484,8 +666,42 @@
   transition-duration: 150ms
 }
 
+.hero-wrapper :is(.transition-transform) {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms
+}
+
 .hero-wrapper :is(.empty\:hidden:empty) {
   display: none
+}
+
+.hero-wrapper :is(.hover\:bg-gray-100:hover) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity))
+}
+
+.hero-wrapper :is(.group:hover .group-hover\:rotate-90) {
+  --tw-rotate: 90deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+
+.hero-wrapper :is(.group:hover .group-hover\:scale-110) {
+  --tw-scale-x: 1.1;
+  --tw-scale-y: 1.1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+
+.hero-wrapper :is(.group:hover .group-hover\:bg-purple-50\/40) {
+  background-color: rgb(250 245 255 / 0.4)
+}
+
+.hero-wrapper :is(.group:hover .group-hover\:underline) {
+  text-decoration-line: underline
+}
+
+.hero-wrapper :is(.peer:checked ~ .peer-checked\:block) {
+  display: block
 }
 
 @media (min-width: 640px) {
@@ -495,6 +711,10 @@
 
   .hero-wrapper :is(.sm\:border-solid) {
     border-style: solid
+  }
+
+  .hero-wrapper :is(.sm\:pt-2) {
+    padding-top: 0.5rem
   }
 
   .hero-wrapper :is(.sm\:pt-7) {
@@ -536,6 +756,10 @@
     display: none
   }
 
+  .hero-wrapper :is(.md\:h-4\/6) {
+    height: 66.666667%
+  }
+
   .hero-wrapper :is(.md\:h-3\/5) {
     height: 60%
   }
@@ -564,6 +788,11 @@
   .hero-wrapper :is(.md\:px-0) {
     padding-left: 0px;
     padding-right: 0px
+  }
+
+  .hero-wrapper :is(.md\:px-12) {
+    padding-left: 3rem;
+    padding-right: 3rem
   }
 
   .hero-wrapper :is(.md\:px-14) {
@@ -639,6 +868,11 @@
 .hero-wrapper :is(.\[\&_img\]\:object-cover img) {
   -o-object-fit: cover;
      object-fit: cover
+}
+
+.hero-wrapper :is(.\[\&_img\]\:invert img) {
+  --tw-invert: invert(100%);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
 }
 
 .hero-wrapper :is(.\[\&_p\]\:leading-4 p) {

@@ -47,4 +47,8 @@
     main .section > .recently-viewed-wrapper {
         @apply mx-auto max-[768px]:w-full py-8;
     }
+
+    .search-results main {
+        @apply min-h-[91rem] h-auto w-full;
+    }
 }
