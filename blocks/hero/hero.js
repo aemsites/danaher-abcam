@@ -73,7 +73,7 @@ function decorateViewResultsURL() {
     const queryParameters = queryParam.toString().replaceAll('25', '').replaceAll('%2C', ',');
     if (allSearchResultAnchors.length > 0) {
       allSearchResultAnchors.forEach((searchResultAnchors) => {
-        searchResultAnchors.href = `/en-us/search?${queryParameters}`;
+        searchResultAnchors.href = `/en-us/search#${queryParameters}`;
       });
       document.querySelector('#search-container .icon-search')?.addEventListener('click', () => {
         window.location = `/en-us/search?facets.application=${queryParameters}`;
