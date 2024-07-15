@@ -62,7 +62,7 @@ function decorateViewResultsURL() {
     || Object.keys(facetsCollection).length > 0
   ) {
     if (Object.keys(payload).length > 0 && payload.q && payload.q !== '') {
-      queryParam.append('keywords', encodeURI(payload.q));
+      queryParam.append('q', encodeURI(payload.q));
     }
     if (Object.keys(facetsCollection).length > 0) {
       Object.keys(facetsCollection).forEach((facetCollectKey) => {
