@@ -76,7 +76,7 @@ function decorateViewResultsURL() {
         searchResultAnchors.href = `https://abcam.com/en-nl/search/page?${queryParameters}`;
       });
       document.querySelector('#search-container .icon-search')?.addEventListener('click', () => {
-        window.location = `https://abcam.com/en-nl/search/page?facets.application=${queryParameters}`;
+        window.location = `/en-us/search?facets.application=${queryParameters}`;
       });
     }
   }
