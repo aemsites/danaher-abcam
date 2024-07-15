@@ -73,7 +73,7 @@ function decorateViewResultsURL() {
     const queryParameters = queryParam.toString().replaceAll('25', '').replaceAll('%2C', ',');
     if (allSearchResultAnchors.length > 0) {
       allSearchResultAnchors.forEach((searchResultAnchors) => {
-        searchResultAnchors.href = `https://abcam.com/en-nl/search/page?${queryParameters}`;
+        searchResultAnchors.href = `/en-us/search?${queryParameters}`;
       });
       document.querySelector('#search-container .icon-search')?.addEventListener('click', () => {
         window.location = `/en-us/search?facets.application=${queryParameters}`;
@@ -269,7 +269,7 @@ function buildSearchBackdrop() {
         p({ class: 'text-2xl md:text-3xl' }, 'Total results'),
         a(
           {
-            href: '#',
+            href: '/en-us/search',
             class: 'flex items-center text-base font-bold mt-4',
           },
           'Visit Results',
