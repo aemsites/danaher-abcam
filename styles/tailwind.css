@@ -21,6 +21,6 @@
     }
 
     .search-results main {
-        @apply h-[190rem] w-full;
+        @apply h-auto w-full;
     }
 }

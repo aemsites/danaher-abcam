@@ -626,7 +626,7 @@ main .section > div.episodes-wrapper > div.episode-heading {
 }
 
 .search-results main {
-  height: 190rem;
+  height: auto;
   width: 100%;
 }
 
