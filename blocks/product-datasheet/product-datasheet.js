@@ -36,7 +36,8 @@ export default async function decorate(block) {
   const purificationObject = JSON.parse(dataResponse.purityjson);
   const dataPurity = purificationObject.purificationTechnique;
   const dataReagent = purificationObject.purificationTechniqueReagent;
-  const antibodyAttributesObj = dataResponse?.antibodyattributesjson ? JSON.parse(dataResponse.antibodyattributesjson) : {};
+  const antibodyAttributesObj = dataResponse?.antibodyattributesjson
+    ? JSON.parse(dataResponse.antibodyattributesjson) : {};
   const specificityHTML = antibodyAttributesObj.specificity;
   const domParser = new DOMParser();
   const docConvert = domParser.parseFromString(specificityHTML, 'text/html');
