@@ -417,7 +417,7 @@ export default function decorate(block) {
     );
     parentWrapper.append(searchBar);
     parentWrapper.append(buildSearchBackdrop());
-    parentWrapper.append(div({ id: 'search-container-child', class: 'h-screen fixed top-0 left-0 bg-gradient-to-bl from-black to-gray-800 opacity-60 z-40 transition-all -translate-y-full' }));
+    parentWrapper.append(div({ id: 'search-container-child', class: 'h-screen fixed top-0 left-0 bg-black z-40 transition-all -translate-y-full' }));
     decorateIcons(parentWrapper);
   }
   block.append(pictureTag);
