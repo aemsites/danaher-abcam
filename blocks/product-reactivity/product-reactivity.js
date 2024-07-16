@@ -59,7 +59,7 @@ function publicationsAndImageSection(images, publicationArray) {
   const pubandimagesection = div({ class: 'col-span-4 lg:flex lg:space-x-8' });
   const publicationsection = div({ class: 'w-1/2 max-[959px]:w-[100%]' }, div({ class: 'flex items-center justify-between' }, h2({ class: 'text-[#2A3C3C] font-semibold text-lg mt-4' }, 'Publications')));
   const publicationsContent = div();
-  if(publicationArray) {
+  if (publicationArray) {
     publicationArray.forEach((pub) => {
       const publicationData = JSON.parse(pub);
       const publicationJournalAndVolume = div(
