@@ -95,7 +95,7 @@ export default async function decorate(block) {
   const storageBuffer = rawData.formulation;
   const dataForm = rawData.form;
   const dataClonality = rawData.clonality;
-  const immunogenObject = JSON.parse(rawData.immunogenjson);
+  const immunogenObject = rawData?.immunogenjson ? JSON.parse(rawData.immunogenjson) : {};
   const dataImmunogen = immunogenObject.sensitivity;
   const buttonAlternative = getButtonAlternative(rawData.directreplacementproductjson, 'Consider this alternative');
   const productTags = rawData?.producttags;

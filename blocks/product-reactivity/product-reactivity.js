@@ -59,24 +59,26 @@ function publicationsAndImageSection(images, publicationArray) {
   const pubandimagesection = div({ class: 'col-span-4 lg:flex lg:space-x-8' });
   const publicationsection = div({ class: 'w-1/2 max-[959px]:w-[100%]' }, div({ class: 'flex items-center justify-between' }, h2({ class: 'text-[#2A3C3C] font-semibold text-lg mt-4' }, 'Publications')));
   const publicationsContent = div();
-  publicationArray.forEach((pub) => {
-    const publicationData = JSON.parse(pub);
-    const publicationJournalAndVolume = div(
-      { class: 'flex text-gray-400 font-semibold text-xs justify-between' },
-      span(`${publicationData.journal}:${publicationData.volume}:${publicationData.pages}`),
-      span({ class: 'text-right' }, publicationData.publicationDate.substring(0, 4)),
-    );
-    publicationsContent.appendChild(div(
-      { class: 'py-2 gap-4' },
-      div(
-        { class: ' flex-col font-normal text-sm p-4 border-t-[1px] bg-white rounded-lg justify-between min-h-32' },
-        publicationJournalAndVolume,
-        div({ class: 'text-black py-2' }, publicationData.name),
-        div({ class: 'flex text-gray-400 font-semibold text-xs' }, publicationData.authors),
-        a({ class: 'flex gap-x-1 text-gray-400 py-2 hover:underline', target: '_blank', href: `https://pubmed.ncbi.nlm.nih.gov/37192628/${publicationData.pubmedId}` }, img({ class: 'w-3', src: '/icons/share-icon.svg' }), `PubMed ${publicationData.pubmedId}`),
-      ),
-    ));
-  });
+  if(publicationArray) {
+    publicationArray.forEach((pub) => {
+      const publicationData = JSON.parse(pub);
+      const publicationJournalAndVolume = div(
+        { class: 'flex text-gray-400 font-semibold text-xs justify-between' },
+        span(`${publicationData.journal}:${publicationData.volume}:${publicationData.pages}`),
+        span({ class: 'text-right' }, publicationData.publicationDate.substring(0, 4)),
+      );
+      publicationsContent.appendChild(div(
+        { class: 'py-2 gap-4' },
+        div(
+          { class: ' flex-col font-normal text-sm p-4 border-t-[1px] bg-white rounded-lg justify-between min-h-32' },
+          publicationJournalAndVolume,
+          div({ class: 'text-black py-2' }, publicationData.name),
+          div({ class: 'flex text-gray-400 font-semibold text-xs' }, publicationData.authors),
+          a({ class: 'flex gap-x-1 text-gray-400 py-2 hover:underline', target: '_blank', href: `https://pubmed.ncbi.nlm.nih.gov/37192628/${publicationData.pubmedId}` }, img({ class: 'w-3', src: '/icons/share-icon.svg' }), `PubMed ${publicationData.pubmedId}`),
+        ),
+      ));
+    });
+  }
   const ulimage = ul({ class: 'flex gap-2 overflow-hidden hover:cursor-pointer opacity-100' });
   images.forEach((image) => {
     ulimage.append(li({ class: 'bg-white w-1/3 aspect-square hover:cursor-pointer opacity-100 text-[#00000080] bg-black focus:outline-none' }, img({ src: image, style: 'width: 100%; height: auto;' })));
@@ -146,7 +148,7 @@ export default async function decorate(block) {
   const reactivityJson = response[0].raw.reactivitytabledata;
   const tableContent = allApplicationTableData(tableHeading, reactivityJson, reactivityApplication);
   reactivityApplicationWrapper.appendChild(tableContent);
-  const publicationArray = response[0].raw.publicationsjson.slice(0, 2);
+  const publicationArray = response[0]?.raw?.publicationsjson?.slice(0, 2);
   const images = response[0].raw.images.slice(0, 3);
   const pubandimagesection = publicationsAndImageSection(images, publicationArray);
   reactivityApplicationWrapper.appendChild(pubandimagesection);
