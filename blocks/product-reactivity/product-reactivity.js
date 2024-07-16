@@ -30,22 +30,22 @@ function productPromise() {
     span({ class: 'text-xs tracking-[.0125rem] gap-x-2 flex items-center max-[959px]:w-full' }, 'Product promise'),
     span(
       { class: 'text-xs tracking-[.0125rem] gap-x-2 flex items-center' },
-      span(img({ class: 'w-8', src: '/icons/tested.svg' })),
+      span(img({ class: 'w-8', src: '/icons/tested.svg', alt: 'Reactivity Tested' })),
       span('Tested'),
     ),
     span(
       { class: 'text-xs tracking-[.0125rem] gap-x-2 flex items-center' },
-      span(img({ class: 'w-4', src: '/icons/expected.svg' })),
+      span(img({ class: 'w-4', src: '/icons/expected.svg', alt: 'Reactivity Expected' })),
       span('Expected'),
     ),
     span(
       { class: 'text-xs tracking-[.0125rem] gap-x-2 flex items-center' },
-      span(img({ class: 'w-3', src: '/icons/predicted.svg' })),
+      span(img({ class: 'w-3', src: '/icons/predicted.svg', alt: 'Reactivity Predicted' })),
       span('Predicted'),
     ),
     span(
       { class: 'text-xs tracking-[.0125em] gap-x-2 flex items-center' },
-      span(img({ class: 'w-3', src: '/icons/not-recommended.svg' })),
+      span(img({ class: 'w-3', src: '/icons/not-recommended.svg', alt: 'Reactivity Not Recommended' })),
       span('Not recommended'),
     ),
   );
@@ -63,7 +63,7 @@ function publicationsAndImageSection(images, publicationArray) {
     publicationArray.forEach((pub) => {
       const publicationData = JSON.parse(pub);
       const publicationJournalAndVolume = div(
-        { class: 'flex text-gray-400 font-semibold text-xs justify-between' },
+        { class: 'flex text-gray-700 font-semibold text-xs justify-between' },
         span(`${publicationData.journal}:${publicationData.volume}:${publicationData.pages}`),
         span({ class: 'text-right' }, publicationData.publicationDate.substring(0, 4)),
       );
@@ -73,15 +73,15 @@ function publicationsAndImageSection(images, publicationArray) {
           { class: ' flex-col font-normal text-sm p-4 border-t-[1px] bg-white rounded-lg justify-between min-h-32' },
           publicationJournalAndVolume,
           div({ class: 'text-black py-2' }, publicationData.name),
-          div({ class: 'flex text-gray-400 font-semibold text-xs' }, publicationData.authors),
-          a({ class: 'flex gap-x-1 text-gray-400 py-2 hover:underline', target: '_blank', href: `https://pubmed.ncbi.nlm.nih.gov/37192628/${publicationData.pubmedId}` }, img({ class: 'w-3', src: '/icons/share-icon.svg' }), `PubMed ${publicationData.pubmedId}`),
+          div({ class: 'flex text-gray-700 font-semibold text-xs' }, publicationData.authors),
+          a({ class: 'flex gap-x-1 text-gray-700 py-2 hover:underline', target: '_blank', href: `https://pubmed.ncbi.nlm.nih.gov/37192628/${publicationData.pubmedId}` }, img({ class: 'w-3', src: '/icons/share-icon.svg', alt: 'Share Link' }), `PubMed ${publicationData.pubmedId}`),
         ),
       ));
     });
   }
   const ulimage = ul({ class: 'flex gap-2 overflow-hidden hover:cursor-pointer opacity-100' });
   images.forEach((image) => {
-    ulimage.append(li({ class: 'bg-white w-1/3 aspect-square hover:cursor-pointer opacity-100 text-[#00000080] bg-black focus:outline-none' }, img({ src: image, style: 'width: 100%; height: auto;' })));
+    ulimage.append(li({ class: 'bg-white w-1/3 aspect-square hover:cursor-pointer opacity-100 text-[#00000080] bg-black focus:outline-none' }, img({ src: image, alt: 'Product Detail Graphic', style: 'width: 100%; height: auto;' })));
   });
   const imagecolumn = div({ class: 'mt-1 mb-6 py-2' }, div({ class: 'flex gap-4 border-1 border-solid' }, ulimage));
   const imagesection = div({ class: 'w-1/2 max-[959px]:w-[100%]' }, h2({ class: 'text-[#2A3C3C] font-semibold text-lg mt-4' }, 'Images'), imagecolumn);
