@@ -155,8 +155,8 @@ export const facets = [
   {
     filterFacetCount: true,
     injectionDepth: 1000,
-    numberOfValues: 8,
-    sortCriteria: 'automatic',
+    numberOfValues: 10,
+    sortCriteria: 'occurrences',
     resultsMustMatch: 'atLeastOneValue',
     type: 'specific',
     currentValues: [],

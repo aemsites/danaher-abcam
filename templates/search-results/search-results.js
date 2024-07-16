@@ -18,14 +18,14 @@ function buildCoveo() {
 
         <atomic-layout-section section="facets">
           <div class="col-span-2">
-            <atomic-facet label="Category Type" field="categorytype" with-search="false" display-values-as="link"></atomic-facet>
+            <atomic-facet label="Category Type" field="categorytype" with-search="false" display-values-as="link" sort-criteria="occurrences"></atomic-facet>
             <atomic-facet-manager class="space-y-4 [&_atomic-facet::part(facet)]:rounded-md">
-              <atomic-facet label="Applications" field="reactivityapplications" with-search="false"></atomic-facet>
-              <atomic-facet label="Reactive Species" field="reactivespecies" with-search="false"></atomic-facet>
-              <atomic-facet label="Target" field="target" with-search="false"></atomic-facet>
-              <atomic-facet label="Host Species" field="hostspecies" with-search="false"></atomic-facet>
-              <atomic-facet label="Conjugation" field="conjugations" with-search="false"></atomic-facet>
-              <atomic-facet label="Sample Type" field="sampletype" with-search="false"></atomic-facet>
+              <atomic-facet label="Applications" field="reactivityapplications" with-search="false" sort-criteria="occurrences"></atomic-facet>
+              <atomic-facet label="Reactive Species" field="reactivespecies" with-search="false" sort-criteria="occurrences"></atomic-facet>
+              <atomic-facet label="Target" field="target" with-search="false" sort-criteria="occurrences"></atomic-facet>
+              <atomic-facet label="Host Species" field="hostspecies" with-search="false" sort-criteria="occurrences"></atomic-facet>
+              <atomic-facet label="Conjugation" field="conjugations" with-search="false" sort-criteria="occurrences"></atomic-facet>
+              <atomic-facet label="Sample Type" field="sampletype" with-search="false" sort-criteria="occurrences"></atomic-facet>
             </atomic-facet-manager>
           </div>
         </atomic-layout-section>
