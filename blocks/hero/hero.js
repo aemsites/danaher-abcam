@@ -154,18 +154,31 @@ function decorateSearchPopup(facets, totalCount) {
   searchContent.innerHTML = '';
   if (facets && facets.length > 0) {
     const facetWithContent = facets.filter((facet) => facet.values.length > 0);
+    facetWithContent.sort((a1, b1) => {
+      if (a1.facetId < b1.facetId) return -1;
+      if (a1.facetId > b1.facetId) return 1;
+      return 0;
+    });
+    const limitedFacetValues = [];
+    limitedFacetValues.push(facetWithContent?.at(0));
+    facetWithContent.forEach((facet) => {
+      if (searchInput.parentElement.querySelector('#facet-Primary_Antibodies')) {
+        if (facet.facetId === 'reactivityapplications' || facet.facetId === 'target') {
+          limitedFacetValues.push(facet);
+        }
+      } else if (searchInput.parentElement.querySelector('#facet-Secondary_Antibodies')) {
+        if (facet.facetId === 'hostspecies' || facet.facetId === 'conjugations') {
+          limitedFacetValues.push(facet);
+        }
+      }
+    });
     for (
       let facetCategoryIndex = 0;
-      facetCategoryIndex < facetWithContent.length;
+      facetCategoryIndex < limitedFacetValues.length;
       facetCategoryIndex += 1
     ) {
-      facetWithContent.sort((a1, b1) => {
-        if (a1.facetId < b1.facetId) return -1;
-        if (a1.facetId > b1.facetId) return 1;
-        return 0;
-      });
 
-      const { values: facetValues, facetId } = facetWithContent[facetCategoryIndex];
+      const { values: facetValues, facetId } = limitedFacetValues[facetCategoryIndex];
       const listType = facetId;
       const facetName = facetId.replace(/([A-Z])/g, ' $&');
       const facetGroup = div({ class: 'flex flex-col' });
