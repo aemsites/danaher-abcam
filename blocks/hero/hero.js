@@ -154,18 +154,30 @@ function decorateSearchPopup(facets, totalCount) {
   searchContent.innerHTML = '';
   if (facets && facets.length > 0) {
     const facetWithContent = facets.filter((facet) => facet.values.length > 0);
+    facetWithContent.sort((a1, b1) => {
+      if (a1.facetId < b1.facetId) return -1;
+      if (a1.facetId > b1.facetId) return 1;
+      return 0;
+    });
+    const limitedFacetValues = [];
+    limitedFacetValues.push(facetWithContent?.at(0));
+    facetWithContent.forEach((facet) => {
+      if (searchInput.parentElement.querySelector('#facet-Primary_Antibodies')) {
+        if (facet.facetId === 'reactivityapplications' || facet.facetId === 'target') {
+          limitedFacetValues.push(facet);
+        }
+      } else if (searchInput.parentElement.querySelector('#facet-Secondary_Antibodies')) {
+        if (facet.facetId === 'hostspecies' || facet.facetId === 'conjugations') {
+          limitedFacetValues.push(facet);
+        }
+      }
+    });
     for (
       let facetCategoryIndex = 0;
-      facetCategoryIndex < facetWithContent.length;
+      facetCategoryIndex < limitedFacetValues.length;
       facetCategoryIndex += 1
     ) {
-      facetWithContent.sort((a1, b1) => {
-        if (a1.facetId < b1.facetId) return -1;
-        if (a1.facetId > b1.facetId) return 1;
-        return 0;
-      });
-
-      const { values: facetValues, facetId } = facetWithContent[facetCategoryIndex];
+      const { values: facetValues, facetId } = limitedFacetValues[facetCategoryIndex];
       const listType = facetId;
       const facetName = facetId.replace(/([A-Z])/g, ' $&');
       const facetGroup = div({ class: 'flex flex-col' });
@@ -321,7 +333,7 @@ function buildSearchBackdrop() {
         div(
           { class: 'flex flex-col md:flex-row justify-center gap-x-2 gap-y-4 px-0 text-white' },
           div(
-            { class: 'w-full relative sm:border border-b sm:border-solid rounded-none md:rounded-full flex flex-wrap gap-1 py-2 pl-8 pr-0 md:px-12 border-cyan-600 md:border-white' },
+            { class: 'w-full relative sm:border border-b sm:border-solid rounded-none md:rounded-full flex flex-wrap gap-1 py-2 pl-8 pr-0 md:px-12 border-cyan-600 md:border-white bg-black' },
             span({
               class: 'icon icon-search size-7 hidden md:block bg-transparent text-white absolute flex ms-3 p-1 md:p-0 inset-y-0 start-0 my-auto [&_img]:invert cursor-pointer',
             }),
