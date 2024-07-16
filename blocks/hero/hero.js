@@ -3,6 +3,7 @@ import { facetSelect, finishType, searchFacetTerms } from '../../scripts/coveo-b
 import {
   a, div, input, li, p, span, ul, h3,
   label,
+  hr,
 } from '../../scripts/dom-builder.js';
 import { createRequest, debounce } from '../../scripts/scripts.js';
 
@@ -172,55 +173,76 @@ function decorateSearchPopup(facets, totalCount) {
         }
       }
     });
-    for (
-      let facetCategoryIndex = 0;
-      facetCategoryIndex < limitedFacetValues.length;
-      facetCategoryIndex += 1
-    ) {
-      const { values: facetValues, facetId } = limitedFacetValues[facetCategoryIndex];
-      const listType = facetId;
-      const facetName = facetId.replace(/([A-Z])/g, ' $&');
-      const facetGroup = div({ class: 'flex flex-col' });
-      const facetListContainer = div({ class: 'relative flex flex-col justify-center' });
-      const facetListBtn = label({
-        'data-dropdown-toggle': facetName,
-        for: `${facetName}_${facetWithContent.length}`,
-        class: 'w-full block bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2.5 cursor-pointer',
-      }, 'Please Select', span({ class: 'icon icon-chevron-down' }));
-      facetListContainer.append(
-        input({ type: 'checkbox', class: 'peer hidden', id: `${facetName}_${facetWithContent.length}` }),
-        facetListBtn,
-      );
-      const facetList = ul({ class: 'absolute max-h-60 overflow-scroll p-3 space-y-1 text-sm text-gray-700 z-10 bg-white rounded-lg shadow' });
-      if (facetValues.length > 0) {
-        for (let facetIndex = 0; facetIndex < facetValues.length; facetIndex += 1) {
-          const searchExistingFacet = listType in facetsCollection
-            && facetsCollection[listType].includes(facetValues[facetIndex].value);
-          if (
-            facetValues[facetIndex].value
-            && (!searchExistingFacet)
-            && facetValues[facetIndex].numberOfResults
-            && facetValues[facetIndex].numberOfResults > 0
-          ) {
-            const facetElement = li(
-              {
-                class: 'flex items-center p-2 rounded hover:bg-gray-100 cursor-pointer',
-                title: facetValues[facetIndex].value,
-                onclick: () => handleFacetList(listType, facetValues, facetIndex),
-              },
-              `${facetValues[facetIndex].value} ( ${facetValues[facetIndex].numberOfResults} )`,
-            );
-            facetList.append(facetElement);
+    const dropdownContainer = div({ class: 'grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 auto-rows-max gap-x-12 gap-y-3' });
+    const facetBadge = div({ class: 'flex flex-row gap-4 flex-wrap' });
+    if (limitedFacetValues.length > 0) {
+      for (
+        let facetCategoryIndex = 0;
+        facetCategoryIndex < limitedFacetValues.length;
+        facetCategoryIndex += 1
+      ) {
+        const { values: facetValues, facetId } = limitedFacetValues[facetCategoryIndex];
+        const listType = facetId;
+        const facetName = facetId.replace(/([A-Z])/g, ' $&');
+        const facetGroup = div({ class: 'flex flex-col' });
+        const facetListContainer = div({ class: 'relative flex flex-col justify-center' });
+        const facetListBtn = label({
+          'data-dropdown-toggle': facetName,
+          for: `${facetName}_${facetWithContent.length}`,
+          class: 'w-full block bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded p-2.5 cursor-pointer',
+        }, 'Please Select', span({ class: 'icon icon-chevron-down' }));
+        facetListContainer.append(
+          input({ type: 'checkbox', class: 'peer hidden', id: `${facetName}_${facetWithContent.length}` }),
+          facetListBtn,
+        );
+        const facetList = ul({ class: 'absolute max-h-60 overflow-scroll p-3 space-y-1 text-sm text-gray-700 z-10 bg-white rounded shadow' });
+        if (facetValues.length > 0) {
+          for (let facetIndex = 0; facetIndex < facetValues.length; facetIndex += 1) {
+            const searchExistingFacet = listType in facetsCollection
+              && facetsCollection[listType].includes(facetValues[facetIndex].value);
+            if (
+              facetValues[facetIndex].value
+              && (!searchExistingFacet)
+              && facetValues[facetIndex].numberOfResults
+              && facetValues[facetIndex].numberOfResults > 0
+            ) {
+              if (listType === 'categorytype') {
+                facetBadge.append(
+                  div(
+                    {
+                      class: 'w-max flex items-center px-5 py-2.5 text-base font-medium text-center text-white bg-gray-100 hover:bg-gray-200 text-gray-800 rounded cursor-pointer',
+                      title: facetValues[facetIndex].value,
+                      onclick: () => handleFacetList(listType, facetValues, facetIndex),
+                    },
+                    span({ class: 'w-3/4 truncate' }, facetValues[facetIndex].value),
+                    span({ class: 'inline-flex items-center justify-center h-6 px-2 ms-2 text-xs font-semibold text-gray-800 bg-gray-200 rounded-md' }, facetValues[facetIndex].numberOfResults),
+                  ),
+                );
+              } else {
+                const facetElement = li(
+                  {
+                    class: 'flex items-center p-2 rounded hover:bg-gray-100 cursor-pointer',
+                    title: facetValues[facetIndex].value,
+                    onclick: () => handleFacetList(listType, facetValues, facetIndex),
+                  },
+                  `${facetValues[facetIndex].value} ( ${facetValues[facetIndex].numberOfResults} )`,
+                );
+                facetList.append(facetElement);
+              }
+            }
           }
-        }
-        if (facetList.children.length > 0) {
-          facetListContainer.append(div({ class: 'w-48 hidden peer-checked:block' }, facetList));
-          facetGroup.append(h3({ class: 'font-medium text-white/80 text-2xl leading-8 mb-2 pl-3 md:pl-0' }, searchFacetTerms[facetName]));
-          facetGroup.append(facetListContainer);
-          searchContent.append(facetGroup);
+          if (facetList.children.length > 0) {
+            facetListContainer.append(div({ class: 'w-48 hidden peer-checked:block' }, facetList));
+            facetGroup.append(h3({ class: 'font-medium text-white/80 text-2xl leading-8 mb-2 pl-3 md:pl-0' }, searchFacetTerms[facetName]));
+            facetGroup.append(facetListContainer);
+            dropdownContainer.append(facetGroup);
+          } else if (facetBadge.children.length > 0) searchContent.append(facetBadge);
         }
       }
     }
+    searchContent.append(facetBadge);
+    searchContent.append(hr({ class: 'w-100 my-4' }));
+    searchContent.append(dropdownContainer);
     decorateViewResultsURL();
   }
   totalResultCount.innerHTML = totalCount;
@@ -308,7 +330,7 @@ function buildSearchBackdrop() {
   });
   searchContent = div({
     id: 'search-content',
-    class: 'container h-3/4 md:h-4/6 mt-4 mx-auto mb-3 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 auto-rows-max gap-x-12 gap-y-3',
+    class: 'container h-3/4 md:h-4/6 mt-4 mx-auto mb-3',
   });
   searchInput = input({
     class: 'w-auto relative py-1 pl-2 md:pl-0 flex flex-grow text-white font-medium bg-transparent tracking-wider text-lg sm:text-xl placeholder-grey-300 outline-none',
