@@ -177,7 +177,6 @@ function decorateSearchPopup(facets, totalCount) {
       facetCategoryIndex < limitedFacetValues.length;
       facetCategoryIndex += 1
     ) {
-
       const { values: facetValues, facetId } = limitedFacetValues[facetCategoryIndex];
       const listType = facetId;
       const facetName = facetId.replace(/([A-Z])/g, ' $&');
