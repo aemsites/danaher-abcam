@@ -95,7 +95,7 @@ export default async function decorate(block) {
   const storageBuffer = rawData.formulation;
   const dataForm = rawData.form;
   const dataClonality = rawData.clonality;
-  const immunogenObject = JSON.parse(rawData.immunogenjson);
+  const immunogenObject = rawData?.immunogenjson ? JSON.parse(rawData.immunogenjson) : {};
   const dataImmunogen = immunogenObject.sensitivity;
   const buttonAlternative = getButtonAlternative(rawData.directreplacementproductjson, 'Consider this alternative');
   const productTags = rawData?.producttags;
@@ -133,7 +133,7 @@ export default async function decorate(block) {
       div({ class: 'text-black text-4xl pb-4 font-bold' }, title),
       div({ class: 'text-black text-xl font-normal' }, description),
       productTagsDiv,
-      div({ class: 'text-[#9ca0a0] font-thin break-words' }, (`Alternative names=${alternativeNames}`)),
+      div({ class: 'text-[#575757] font-thin break-words' }, (`Alternative names=${alternativeNames}`)),
     );
     block.appendChild(datasheetContainer);
   } else if (block.classList.contains('download')) {
@@ -151,7 +151,7 @@ export default async function decorate(block) {
       getReviewsRatings(aggregatedRating, numberOfReviews),
       div({ class: 'border-t-[1px] border-[#dde1e1] my-6' }),
       productTagsDiv,
-      div({ class: 'text-[#9ca0a0] font-thin break-words' }, (`Alternative names=${alternativeNames}`)),
+      div({ class: 'text-[#575757] font-thin break-words' }, (`Alternative names=${alternativeNames}`)),
       div(
         { class: 'grid pt-10 max-[799px]:grid-cols-1' },
         div({ class: 'grid grid-cols-3 gap-x-3 gap-y-10' }, ...keyFactsElements),
