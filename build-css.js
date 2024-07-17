@@ -190,6 +190,11 @@ const fileMappings = [
     output: './blocks/product-protocols/product-protocols.css',
     wrapper: 'product-protocols-wrapper',
   },
+  {
+    content: './blocks/page-navigation/page-navigation.js',
+    output: './blocks/page-navigation/page-navigation.css',
+    wrapper: 'page-navigation-wrapper',
+  },
 ];
 
 const watch = process.argv[2];
