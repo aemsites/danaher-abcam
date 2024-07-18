@@ -91,18 +91,24 @@ function publicationsAndImageSection(images, publicationArray) {
   return pubandimagesection;
 }
 
-function allApplicationTableData(reacttable, data, heading) {
+function allApplicationTableData(tableData, application) {
+  const allTabData = div({ class: 'individualdata' });
+  const tableColumn = thead();
+  const tableHeadingRow = tr(th({ class: 'font-semibold text-black text-sm text-left bg-white p-4 boarder border-b-2 max-[959px]:p-2' }));
+  application.forEach((name) => {
+    tableHeadingRow.appendChild(th({ class: 'font-semibold text-black text-sm text-left bg-white p-4 boarder border-b-2 max-[959px]:p-2' }, name));
+  });
+  tableColumn.appendChild(tableHeadingRow);
   const tbodyContent = tbody();
-  // eslint-disable-next-line no-console
-  const tableHeading = table({ class: 'w-full border-separate indent-2' }, reacttable);
-  data.forEach((row) => {
+  const tableHeading = table({ class: 'w-full border-separate indent-2' }, tableColumn);
+  tableData.forEach((row) => {
     const rowObj = JSON.parse(row);
     const tablerow = tr();
     tablerow.appendChild(th(
       { class: 'p-4 font-normal text-left bg-white w-1/5 max-[959px]:p-2' },
       span({ class: 'text-sm font-semibold' }, rowObj.species),
     ));
-    heading.forEach((name) => {
+    application.forEach((name) => {
       const tableCell = td(
         { class: 'p-4 font-normal text-left bg-white w-1/5' },
         img({ class: getTableCSS(rowObj[name]), src: getReactivityStatus(rowObj[name]) }),
@@ -112,7 +118,8 @@ function allApplicationTableData(reacttable, data, heading) {
     tbodyContent.appendChild(tablerow);
     tableHeading.appendChild(tbodyContent);
   });
-  return tableHeading;
+  allTabData.appendChild(tableHeading);
+  return allTabData;
 }
 
 export default async function decorate(block) {
@@ -126,29 +133,18 @@ export default async function decorate(block) {
   const buttonsPanel = div({ class: 'flex gap-2 flex-wrap text-black tracking-[2px] font-semibold text-sm pb-5 max-[959px]:w-[100%]' });
   buttonsPanel.appendChild(button({ class: 'px-6 py-3 border-black boarder-solid  bg-black text-white font-semibold rounded-[28px] tracking-[.2px]' }, 'All applications'));
   const reactivityApplication = response[0].raw.reactivityapplications;
-  const tableHeading = thead();
-  const tablerow = tr(th({ class: 'font-semibold text-black text-sm text-left bg-white p-4 boarder border-b-2 max-[959px]:p-2' }));
   reactivityApplication.forEach((name) => {
-    tablerow.appendChild(th({ class: 'font-semibold text-black text-sm text-left bg-white p-4 boarder border-b-2 max-[959px]:p-2' }, name));
     buttonsPanel.appendChild(button({ class: 'px-6 py-3 border border-black text-black font-semibold rounded-[28px] tracking-[.2px]' }, name));
   });
 
   const reactivityApplicationWrapper = div({ class: 'reactivityApplicationWrapper w-full mt-4' });
   reactivityApplicationWrapper.appendChild(buttonsPanel);
-  tableHeading.appendChild(tablerow);
-  const tablePanel = div({ class: 'tablePanel' });
-  const tabPanel = div({ class: 'tabPanel gap-8 grid-cols-4 auto-rows-auto grid mt-6' });
-  const tabPanelInfo = div({ class: 'mt-4 col-span-4' });
   const productInfo = productPromise();
-  tabPanel.appendChild(tabPanelInfo);
-  tablePanel.appendChild(tabPanel);
-  tabPanelInfo.appendChild(productInfo);
-  tabPanel.appendChild(tabPanelInfo);
   reactivityApplicationWrapper.appendChild(productInfo);
   const reactivityJson = response[0].raw.reactivitytabledata;
-  const tableContent = allApplicationTableData(tableHeading, reactivityJson, reactivityApplication);
+  const tableContent = allApplicationTableData(reactivityJson, reactivityApplication);
   reactivityApplicationWrapper.appendChild(tableContent);
-  const publicationArray = response[0]?.raw?.publicationsjson?.slice(0, 2);
+  const publicationArray = response[0].raw.publicationsjson.slice(0, 2);
   const images = response[0].raw.images.slice(0, 3);
   const pubandimagesection = publicationsAndImageSection(images, publicationArray);
   reactivityApplicationWrapper.appendChild(pubandimagesection);
