@@ -97,6 +97,8 @@ const facetAction = debounce(async (selected, listType, mode) => {
           facet.currentValues.forEach((curFacVal, curFacValIndex) => {
             if (curFacVal.value === selected.value) {
               facet.currentValues[curFacValIndex].state = (mode && mode === 'select') ? 'selected' : 'idle';
+            } else if (listType === 'categorytype') {
+              facet.currentValues[curFacValIndex].state = 'idle';
             }
           });
         }
@@ -117,9 +119,17 @@ const facetAction = debounce(async (selected, listType, mode) => {
 }, 100);
 
 function handleFacetList(listType, facetValues, facetIndex) {
+  const searchProductInputGroup = searchInput.parentElement;
   facetsCollection[listType] = Object.keys(facetsCollection).length > 0
       && listType in facetsCollection ? facetsCollection[listType] : [];
   facetsCollection[listType].push(facetValues[facetIndex].value);
+  if (listType in facetsCollection) {
+    const existingSelectedFacet = searchProductInputGroup.querySelector(`.facet-selected[title="${facetsCollection[listType][0]}"]`);
+    if (existingSelectedFacet) {
+      existingSelectedFacet.remove();
+      facetsCollection[listType].shift();
+    }
+  }
   facetAction(facetValues[facetIndex], listType, 'select');
   const selectedFacet = span(
     {
@@ -137,7 +147,7 @@ function handleFacetList(listType, facetValues, facetIndex) {
           }
         }
         facetAction(facetValues[facetIndex], listType, 'idle');
-        searchInput.parentElement.removeChild(selectedFacet);
+        searchProductInputGroup.removeChild(selectedFacet);
       },
     },
     span(
@@ -147,7 +157,8 @@ function handleFacetList(listType, facetValues, facetIndex) {
     span({ class: 'icon icon-close size-7 my-auto p-1 text-black fill-current cursor-pointer bg-purple-50/20 group-hover:bg-purple-50/40 rounded-full transition-transform group-hover:scale-110' }),
   );
   decorateIcons(selectedFacet);
-  searchInput.parentElement.insertBefore(selectedFacet, searchInput);
+  // searchProductInputGroup.querySelectorAll()
+  searchProductInputGroup.insertBefore(selectedFacet, searchInput);
   searchInput.focus();
 }
 
