@@ -83,6 +83,10 @@ const fileMappings = [
     output: './templates/blog-page/blog-page.css',
   },
   {
+    content: './templates/pathways/pathways.js',
+    output: './templates/pathways/pathways.css',
+  },
+  {
     content: './templates/product-detail/product-detail.js',
     output: './templates/product-detail/product-detail.css',
   },

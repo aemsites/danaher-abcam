@@ -31,10 +31,6 @@
   margin-top: 1.5rem
 }
 
-.product-reactivity-wrapper :is(.ml-5) {
-  margin-left: 1.25rem
-}
-
 .product-reactivity-wrapper :is(.box-content) {
   box-sizing: content-box
 }
@@ -95,16 +91,12 @@
   width: 2rem
 }
 
-.product-reactivity-wrapper :is(.w-full) {
-  width: 100%
-}
-
 .product-reactivity-wrapper :is(.w-\[87\%\]) {
   width: 87%
 }
 
-.product-reactivity-wrapper :is(.max-w-7xl) {
-  max-width: 80rem
+.product-reactivity-wrapper :is(.w-full) {
+  width: 100%
 }
 
 .product-reactivity-wrapper :is(.border-separate) {
@@ -129,10 +121,6 @@
 
 .product-reactivity-wrapper :is(.items-center) {
   align-items: center
-}
-
-.product-reactivity-wrapper :is(.justify-center) {
-  justify-content: center
 }
 
 .product-reactivity-wrapper :is(.justify-between) {
@@ -184,10 +172,6 @@
 
 .product-reactivity-wrapper :is(.rounded-lg) {
   border-radius: 0.5rem
-}
-
-.product-reactivity-wrapper :is(.rounded-2xl) {
-  border-radius: 1rem
 }
 
 .product-reactivity-wrapper :is(.border) {
@@ -253,10 +237,6 @@
   padding-left: 0.75rem
 }
 
-.product-reactivity-wrapper :is(.pl-40) {
-  padding-left: 10rem
-}
-
 .product-reactivity-wrapper :is(.text-left) {
   text-align: left
 }
@@ -267,10 +247,6 @@
 
 .product-reactivity-wrapper :is(.indent-2) {
   text-indent: 0.5rem
-}
-
-.product-reactivity-wrapper :is(.indent-0) {
-  text-indent: 0px
 }
 
 .product-reactivity-wrapper :is(.text-\[24px\]) {
@@ -410,10 +386,6 @@
 @media (min-width: 1024px) {
   .product-reactivity-wrapper :is(.lg\:flex) {
     display: flex
-  }
-
-  .product-reactivity-wrapper :is(.lg\:w-1\/2) {
-    width: 50%
   }
 
   .product-reactivity-wrapper :is(.lg\:space-x-8 > :not([hidden]) ~ :not([hidden])) {

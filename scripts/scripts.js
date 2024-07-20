@@ -124,7 +124,8 @@ const TEMPLATE_LIST = [
   'product-category',
   'blog-page',
   'product-detail',
-  'search-results'
+  'search-results',
+  'pathways',
 ];
 
 async function decorateTemplates(main) {
