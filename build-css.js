@@ -190,6 +190,11 @@ const fileMappings = [
     output: './blocks/product-protocols/product-protocols.css',
     wrapper: 'product-protocols-wrapper',
   },
+  {
+    content: './blocks/cta/cta.js',
+    output: './blocks/cta/cta.css',
+    wrapper: 'cta-wrapper',
+  },
 ];
 
 const watch = process.argv[2];
