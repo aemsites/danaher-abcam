@@ -24,7 +24,7 @@ function buildCoveo() {
               <atomic-facet label="Reactive Species" field="reactivespecies" with-search="false" sort-criteria="occurrences"></atomic-facet>
               <atomic-facet label="Target" field="target" with-search="true" sort-criteria="occurrences"></atomic-facet>
               <atomic-facet label="Host Species" field="hostspecies" with-search="true" sort-criteria="occurrences"></atomic-facet>
-              <atomic-facet label="Conjugation" field="conjugations" with-search="false" sort-criteria="occurrences"></atomic-facet>
+              <atomic-facet label="Conjugation" field="conjugations" with-search="true" sort-criteria="occurrences"></atomic-facet>
               <atomic-facet label="Sample Type" field="sampletype" with-search="false" sort-criteria="occurrences"></atomic-facet>
             </atomic-facet-manager>
           </div>
