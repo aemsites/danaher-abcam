@@ -75,16 +75,8 @@
   cursor: pointer
 }
 
-.recommended-products-wrapper :is(.flex-row) {
-  flex-direction: row
-}
-
 .recommended-products-wrapper :is(.flex-col) {
   flex-direction: column
-}
-
-.recommended-products-wrapper :is(.flex-wrap) {
-  flex-wrap: wrap
 }
 
 .recommended-products-wrapper :is(.items-center) {
