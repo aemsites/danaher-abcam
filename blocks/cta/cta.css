@@ -16,6 +16,10 @@
   margin-bottom: 1.25rem
 }
 
+.cta-wrapper :is(.block) {
+  display: block
+}
+
 .cta-wrapper :is(.w-auto) {
   width: auto
 }
@@ -104,10 +108,5 @@
   .cta-wrapper :is(.lg\:text-5xl) {
     font-size: 3rem;
     line-height: 1
-  }
-
-  .cta-wrapper :is(.lg\:text-xl) {
-    font-size: 1.25rem;
-    line-height: 1.75rem
   }
 }
