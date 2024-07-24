@@ -2,8 +2,8 @@ mountpoints:
   /: https://adobe.sharepoint.com/:f:/r/sites/HelixProjects/Shared%20Documents/sites/optimus
 
 folders:
-  /drafts/products/secondary-antibodies/: /drafts/products/dynamic-products
-  /drafts/products/primary-antibodies/: /drafts/products/dynamic-products
+  /en-nl/products/secondary-antibodies/: /drafts/products/dynamic-products
+  /en-nl/products/primary-antibodies/: /drafts/products/dynamic-products
   /en-us/products/primary-antibodies/: /drafts/products/dynamic-products
   /en-us/products/secondary-antibodies/: /drafts/products/dynamic-products
   /products/detail/: /drafts/products/dynamic-products
