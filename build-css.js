@@ -195,6 +195,11 @@ const fileMappings = [
     output: './blocks/cta/cta.css',
     wrapper: 'cta-wrapper',
   },
+  {
+    content: './blocks/page-navigation/page-navigation.js',
+    output: './blocks/page-navigation/page-navigation.css',
+    wrapper: 'page-navigation-wrapper',
+  },
 ];
 
 const watch = process.argv[2];
