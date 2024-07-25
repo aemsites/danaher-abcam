@@ -70,22 +70,23 @@ export default async function decorate(block) {
   if (dataPurity) {
     keyFactsElements.push(createParagraph('Purification technique', `${dataPurity} ${dataReagent}`));
   }
-  if (specificityText && specificityText.trim() !== 'null' && specificityText.trim() !== '') {
+  if (specificityText && specificityText.trim() !== 'null' && specificityText.trim() !== '' && specificityText.trim() !== 'undefined') {
     keyFactsElements.push(createParagraph('Specificity', specificityText));
   }
   if (dataConcentration) {
     keyFactsElements.push(createParagraph('Concentration', dataConcentration));
   }
-
-  const productKeyfacts = div(
-    { class: 'product-keyfacts grid grid-cols-[320px_minmax(auto,_1fr)] border-t-[1px] border-[#dde1e1] pt-10 mt-10 max-[799px]:grid-cols-1' },
-    h2({ class: 'text-2xl font-semibold text-[#2a3c3c] mb-6' }, 'Key Facts'),
-    div(
-      { class: 'keyfacts-content grid grid-cols-2 gap-x-3 gap-y-10' },
-      ...keyFactsElements,
-    ),
-  );
-
+  if (keyFactsElements.length) {
+    const productKeyfacts = div(
+      { class: 'product-keyfacts grid grid-cols-[320px_minmax(auto,_1fr)] border-t-[1px] border-[#dde1e1] pt-10 mt-10 max-[799px]:grid-cols-1' },
+      h2({ class: 'text-2xl font-semibold text-[#2a3c3c] mb-6' }, 'Key Facts'),
+      div(
+        { class: 'keyfacts-content grid grid-cols-2 gap-x-3 gap-y-10' },
+        ...keyFactsElements,
+      ),
+    );
+    block.appendChild(productKeyfacts);
+  }
   const storageElements = [];
   if (dataStorage) {
     storageElements.push(createParagraph('Shipped at conditions', dataStorage));
@@ -138,7 +139,7 @@ export default async function decorate(block) {
     ),
   );
 
-  block.appendChild(productKeyfacts);
+  // block.appendChild(productKeyfacts);
   block.appendChild(productStorage);
   block.appendChild(productNotesSection);
   block.appendChild(productPromise);
