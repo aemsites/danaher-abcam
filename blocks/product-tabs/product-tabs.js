@@ -1,16 +1,15 @@
 import { getProductResponse } from '../../scripts/search.js';
 import { div, button } from '../../scripts/dom-builder.js';
-import { fetchPlaceholders } from '/scripts/aem.js';
+import { fetchPlaceholders } from '../../scripts/aem.js';
 
 const path = window.location.pathname;
-const langRegex = /^\/([a-z]{2}-[a-z]{2})\//;
-const match = path.match(langRegex);
+const match = path.match(/\/([a-z]{2}-[a-z]{2})\//i);
 let languageCode = 'en-us';
 if (match) {
-  languageCode = match[1];
-}  
-const placeholders = await fetchPlaceholders('/' + languageCode);
-const { productOverview, productDatasheet, productSupportdownloads  } = placeholders;
+  languageCode = match?.at(1);
+}
+const placeholders = await fetchPlaceholders(`/${languageCode}`);
+const { productOverview, productDatasheet, productSupportdownloads } = placeholders;
 
 function toggleTabs(tabId, mmgTabs) {
   const contentSections = document.querySelectorAll('[data-tabname]');
