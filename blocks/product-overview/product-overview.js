@@ -84,7 +84,7 @@ export default async function decorate(block) {
   const targetJson = rawData?.targetjson;
 
   // Extracting alternativeNames array
-  const data = JSON.parse(targetJson);
+  const data = targetJson ? JSON.parse(targetJson) : [];
   const { alternativeNames } = data;
   const { title } = rawData;
   const { description } = rawData;
