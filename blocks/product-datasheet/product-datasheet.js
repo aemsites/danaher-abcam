@@ -1,4 +1,5 @@
 import { getProductResponse } from '../../scripts/search.js';
+import { isValidProperty } from '../../scripts/scripts.js';
 import {
   div, h2, h6, p, a,
 } from '../../scripts/dom-builder.js';
@@ -64,13 +65,13 @@ export default async function decorate(block) {
   if (dataImmunogen) {
     keyFactsElements.push(createParagraph('Immunogen', dataImmunogen));
   }
-  if (dataCloneNumber && dataCloneNumber.trim() !== 'null' && dataCloneNumber.trim() !== '' && dataCloneNumber.trim() !== 'undefined') {
+  if (isValidProperty(dataCloneNumber)) {
     keyFactsElements.push(createParagraph('Clone number', dataCloneNumber));
   }
   if (dataPurity) {
     keyFactsElements.push(createParagraph('Purification technique', `${dataPurity} ${dataReagent}`));
   }
-  if (specificityText && specificityText.trim() !== 'null' && specificityText.trim() !== '' && specificityText.trim() !== 'undefined') {
+  if (isValidProperty(specificityText)) {
     keyFactsElements.push(createParagraph('Specificity', specificityText));
   }
   if (dataConcentration) {
@@ -94,7 +95,7 @@ export default async function decorate(block) {
   if (dataStorageDuration && String(dataStorageDuration).trim() !== '' && String(dataStorageDuration).trim() !== 'null' && String(dataStorageDuration).trim() !== 'undefined') {
     storageElements.push(createParagraph('Appropriate short-term storage duration', dataStorageDuration));
   }
-  if (dataShorttermDuration && String(dataShorttermDuration).trim() !== '' && String(dataShorttermDuration).trim() !== 'null' && String(dataShorttermDuration).trim() !== 'undefined') {
+  if (isValidProperty(dataShorttermDuration)) {
     storageElements.push(createParagraph('Appropriate short-term storage conditions', dataShorttermDuration));
   }
   if (dataStorageConditions) {
@@ -117,7 +118,7 @@ export default async function decorate(block) {
     );
     block.appendChild(productStorage);
   }
-  if (strToHtml && String(strToHtml).trim() !== '' && strToHtml.trim() !== 'undefined') {
+  if (isValidProperty(strToHtml)) {
     const productNotesSection = div(
       { class: 'product-notes grid grid-cols-[320px_minmax(auto,_1fr)] border-t-[2px] border-[#dde1e1] pt-10 mt-10 max-[799px]:grid-cols-1' },
       h2({ class: 'text-2xl font-semibold text-[#2a3c3c] mb-6' }, 'Notes'),
