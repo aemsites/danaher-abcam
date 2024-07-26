@@ -92,7 +92,7 @@ export default async function decorate(block) {
   if (dataStorage) {
     storageElements.push(createParagraph('Shipped at conditions', dataStorage));
   }
-  if (dataStorageDuration && String(dataStorageDuration).trim() !== '' && String(dataStorageDuration).trim() !== 'null' && String(dataStorageDuration).trim() !== 'undefined') {
+  if (isValidProperty(dataStorageDuration)) {
     storageElements.push(createParagraph('Appropriate short-term storage duration', dataStorageDuration));
   }
   if (isValidProperty(dataShorttermDuration)) {
