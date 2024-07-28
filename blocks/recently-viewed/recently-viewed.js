@@ -1,6 +1,6 @@
 import { getProductResponse } from '../../scripts/search.js';
 import {
-  ul, li, h3, h6, p, button, div, span, hr,
+  h3, h6, p, button, div, span, hr,
 } from '../../scripts/dom-builder.js';
 import { decorateIcons } from '../../scripts/aem.js';
 import { getStarRating } from '../product-overview/product-overview.js';
@@ -8,11 +8,11 @@ import { getStarRating } from '../product-overview/product-overview.js';
 function createSliderNavigation() {
   const prevButton = div(
     { class: 'slider-button absolute z-[1] left-[4%] top-[44%] cursor-pointer prev hidden rotate-90' },
-    span({ class: 'icon icon-chevron-down' })
+    span({ class: 'icon icon-chevron-down' }),
   );
   const nextButton = div(
     { class: 'slider-button absolute z-[1] right-[4%] top-[44%] cursor-pointer next hidden rotate-[270deg]' },
-    span({ class: 'icon icon-chevron-down' })
+    span({ class: 'icon icon-chevron-down' }),
   );
   decorateIcons(prevButton);
   decorateIcons(nextButton);
@@ -24,10 +24,10 @@ function createSlides(productsArray) {
     class: 'slider-wrapper flex gap-4 group transition-transform duration-300 ease-in-out w-full pl-[5px] pr-[6px] max-[768px]:pl-[7px] max-[768px]:pr-[8px] max-[1024px]:pr-[10px]',
   });
 
-  productsArray.forEach(product => {
+  productsArray.forEach((product) => {
     const slide = div({
       class: 'slide-item flex-none bg-white',
-      style: window.matchMedia("(max-width: 768px)").matches ? 'width: 100%' : 'width: calc((100% - 3rem) / 4)',
+      style: window.matchMedia('(max-width: 768px)').matches ? 'width: 100%' : 'width: calc((100% - 3rem) / 4)',
     });
 
     const ratingContainer = div({ class: 'flex items-center mt-2 gap-x-1' });
@@ -40,21 +40,26 @@ function createSlides(productsArray) {
       ratingContainer.style.display = 'none';
     }
 
-    const recentlyContainer = button({
-      class: 'h-full flex flex-col align-center p-4 bg-white w-full border border-interactive-grey-transparent-active rounded-4px hover:bg-[#0000000d] cursor-pointer text-left',
-    },
-      div({ class: 'h-5/6' },
-        div({ class: 'flex gap-2' },
+    const recentlyContainer = button(
+      {
+        class: 'h-full flex flex-col align-center p-4 bg-white w-full border border-interactive-grey-transparent-active rounded-4px hover:bg-[#0000000d] cursor-pointer text-left',
+      },
+      div(
+        { class: 'h-5/6' },
+        div(
+          { class: 'flex gap-2' },
           p({ class: 'w-fit px-2 py-1 rounded-4px text-xs font-semibold bg-[#edf6f7] text-[#2c656b] border-blue-70 border' }, `${product.category}`),
         ),
-        div({ class: 'flex flex-col font-semibold' },
+        div(
+          { class: 'flex flex-col font-semibold' },
           h6({ class: 'mt-4 text-xs text-[#65797c]' }, `${product.code}`),
           p({ class: 'mb-4 mt-2 text-sm text-black-0' }, `${product.title}`),
         ),
       ),
-      div({ class: 'rating-section h-1/5 w-full' },
+      div(
+        { class: 'rating-section h-1/5 w-full' },
         hr({ class: 'h-[1px] bg-interactive-grey-active my-0' }),
-        ratingContainer
+        ratingContainer,
       ),
     );
 
@@ -67,8 +72,8 @@ function createSlides(productsArray) {
 
 function createDots(totalSlides) {
   const dotsContainer = div({ class: 'dots flex justify-center gap-2 mt-8' });
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
-  const isTablet = window.matchMedia("(min-width: 769px) and (max-width: 1024px)").matches;
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+  const isTablet = window.matchMedia('(min-width: 769px) and (max-width: 1024px)').matches;
 
   if (totalSlides <= 1) {
     dotsContainer.style.display = 'none';
@@ -90,7 +95,6 @@ function createDots(totalSlides) {
   return dotsContainer;
 }
 
-
 function updateDots(dotsContainer, currentIndex) {
   const dots = dotsContainer.children;
   for (let i = 0; i < dots.length; i++) {
@@ -108,18 +112,18 @@ function initializeSlider(sliderContainer, wrapper, prevButton, nextButton, dots
     if (totalSlides === 0) return;
 
     let slideWidth;
-    if (window.matchMedia("(max-width: 768px)").matches) {
+    if (window.matchMedia('(max-width: 768px)').matches) {
       slideWidth = wrapper.clientWidth / 1;
-    } else if (window.matchMedia("(min-width: 769px) and (max-width: 1024px)").matches) {
+    } else if (window.matchMedia('(min-width: 769px) and (max-width: 1024px)').matches) {
       slideWidth = wrapper.clientWidth / 2;
-    } else if (window.matchMedia("(min-width: 1025px) and (max-width: 1280px)").matches) {
+    } else if (window.matchMedia('(min-width: 1025px) and (max-width: 1280px)').matches) {
       slideWidth = wrapper.clientWidth / 3;
     } else {
       slideWidth = wrapper.clientWidth / 4;
     }
 
     if (index === 0) {
-      wrapper.style.transform = `translateX(0)`;
+      wrapper.style.transform = 'translateX(0)';
     } else {
       wrapper.style.transform = `translateX(-${index * slideWidth}px)`;
     }
@@ -128,9 +132,9 @@ function initializeSlider(sliderContainer, wrapper, prevButton, nextButton, dots
   }
 
   function updateButtonsVisibility() {
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
-    const isTablet = window.matchMedia("(min-width: 769px) and (max-width: 1024px)").matches;
-    const isMedium = window.matchMedia("(min-width: 1025px) and (max-width: 1280px)").matches;
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    const isTablet = window.matchMedia('(min-width: 769px) and (max-width: 1024px)').matches;
+    const isMedium = window.matchMedia('(min-width: 1025px) and (max-width: 1280px)').matches;
 
     if ((isMobile && totalSlides <= 1) || (!isMobile && totalSlides <= 4)) {
       prevButton.style.display = 'none';
@@ -161,7 +165,7 @@ function initializeSlider(sliderContainer, wrapper, prevButton, nextButton, dots
   });
 
   nextButton.addEventListener('click', () => {
-    if (index < totalSlides - (window.matchMedia("(max-width: 768px)").matches ? 1 : 4)) {
+    if (index < totalSlides - (window.matchMedia('(max-width: 768px)').matches ? 1 : 4)) {
       index += 1;
       updateSlider();
       updateButtonsVisibility();
@@ -185,15 +189,14 @@ function initializeSlider(sliderContainer, wrapper, prevButton, nextButton, dots
   updateButtonsVisibility();
 }
 
-
 function applyResponsiveStyles() {
-  const mediaQuery768 = window.matchMedia("(max-width: 768px)");
-  const mediaQuery1024 = window.matchMedia("(min-width: 769px) and (max-width: 1024px)");
-  const mediaQuery1280 = window.matchMedia("(min-width: 1025px) and (max-width: 1280px)");
+  const mediaQuery768 = window.matchMedia('(max-width: 768px)');
+  const mediaQuery1024 = window.matchMedia('(min-width: 769px) and (max-width: 1024px)');
+  const mediaQuery1280 = window.matchMedia('(min-width: 1025px) and (max-width: 1280px)');
 
   function handleMediaQueryChange() {
     const slideItems = document.querySelectorAll('.slide-item');
-    slideItems.forEach(item => {
+    slideItems.forEach((item) => {
       if (mediaQuery768.matches) {
         item.style.width = '100%';
       } else if (mediaQuery1024.matches) {
@@ -222,7 +225,6 @@ function applyResponsiveStyles() {
   mediaQuery1280.addListener(handleMediaQueryChange);
   handleMediaQueryChange();
 }
-
 
 export default async function decorate(block) {
   const response = await getProductResponse();
@@ -257,7 +259,7 @@ export default async function decorate(block) {
     numOfReviews = reviewSummary.numberOfReviews;
   }
 
-  const existingProduct = productsArray.find(product => product.code === productCode);
+  const existingProduct = productsArray.find((product) => product.code === productCode);
 
   if (!existingProduct) {
     productsArray.push({
@@ -271,11 +273,9 @@ export default async function decorate(block) {
     localStorage.setItem('products', JSON.stringify(productsArray));
   }
 
-  productsArray = productsArray.filter((product, index, self) =>
-    index === self.findIndex((productIndex) => productIndex.code === product.code)
-  );
+  productsArray = productsArray.filter((product, index, self) => index === self.findIndex((productIndex) => productIndex.code === product.code));
 
-  const filteredProductsArray = productsArray.filter(product => product.code !== productCode);
+  const filteredProductsArray = productsArray.filter((product) => product.code !== productCode);
 
   const blogsCardContainer = createSlides(filteredProductsArray);
   sliderContainer.appendChild(blogsCardContainer);
@@ -283,7 +283,6 @@ export default async function decorate(block) {
 
   const sliderWrapper = sliderContainer.querySelector('.slider-wrapper');
   if (!sliderWrapper) {
-    console.error('Slider wrapper element not found');
     return;
   }
 
