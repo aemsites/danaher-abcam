@@ -196,6 +196,11 @@ const fileMappings = [
     wrapper: 'product-protocols-wrapper',
   },
   {
+    content: './blocks/cta/cta.js',
+    output: './blocks/cta/cta.css',
+    wrapper: 'cta-wrapper',
+  },
+  {
     content: './blocks/page-navigation/page-navigation.js',
     output: './blocks/page-navigation/page-navigation.css',
     wrapper: 'page-navigation-wrapper',

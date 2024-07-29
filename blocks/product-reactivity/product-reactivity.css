@@ -27,10 +27,6 @@
   margin-top: 1rem
 }
 
-.product-reactivity-wrapper :is(.mt-6) {
-  margin-top: 1.5rem
-}
-
 .product-reactivity-wrapper :is(.box-content) {
   box-sizing: content-box
 }
@@ -45,10 +41,6 @@
 
 .product-reactivity-wrapper :is(.table) {
   display: table
-}
-
-.product-reactivity-wrapper :is(.grid) {
-  display: grid
 }
 
 .product-reactivity-wrapper :is(.aspect-square) {
@@ -103,14 +95,6 @@
   border-collapse: separate
 }
 
-.product-reactivity-wrapper :is(.auto-rows-auto) {
-  grid-auto-rows: auto
-}
-
-.product-reactivity-wrapper :is(.grid-cols-4) {
-  grid-template-columns: repeat(4, minmax(0, 1fr))
-}
-
 .product-reactivity-wrapper :is(.flex-col) {
   flex-direction: column
 }
@@ -133,10 +117,6 @@
 
 .product-reactivity-wrapper :is(.gap-4) {
   gap: 1rem
-}
-
-.product-reactivity-wrapper :is(.gap-8) {
-  gap: 2rem
 }
 
 .product-reactivity-wrapper :is(.gap-x-1) {
@@ -323,19 +303,14 @@
   color: rgb(0 0 0 / var(--tw-text-opacity))
 }
 
-.product-reactivity-wrapper :is(.text-gray-400) {
+.product-reactivity-wrapper :is(.text-gray-700) {
   --tw-text-opacity: 1;
-  color: rgb(156 163 175 / var(--tw-text-opacity))
+  color: rgb(55 65 81 / var(--tw-text-opacity))
 }
 
 .product-reactivity-wrapper :is(.text-white) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity))
-}
-
-.product-reactivity-wrapper :is(.text-gray-700) {
-  --tw-text-opacity: 1;
-  color: rgb(55 65 81 / var(--tw-text-opacity))
 }
 
 .product-reactivity-wrapper :is(.opacity-100) {

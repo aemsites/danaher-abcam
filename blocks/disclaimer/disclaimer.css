@@ -31,29 +31,14 @@
   justify-content: center
 }
 
-.disclaimer-wrapper :is(.px-\[6\.25\%\]) {
-  padding-left: 6.25%;
-  padding-right: 6.25%
-}
-
-.disclaimer-wrapper :is(.py-10) {
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem
+.disclaimer-wrapper :is(.px-4) {
+  padding-left: 1rem;
+  padding-right: 1rem
 }
 
 .disclaimer-wrapper :is(.py-8) {
   padding-top: 2rem;
   padding-bottom: 2rem
-}
-
-.disclaimer-wrapper :is(.px-2) {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem
-}
-
-.disclaimer-wrapper :is(.px-4) {
-  padding-left: 1rem;
-  padding-right: 1rem
 }
 
 .disclaimer-wrapper :is(.text-xs\/6) {

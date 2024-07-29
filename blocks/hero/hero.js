@@ -17,27 +17,31 @@ let emptySearchbar;
 let searchContent;
 let searchInput;
 
+let requestStatus;
+
 const organizationId = 'danahernonproduction1892f3fhz';
 const bearerToken = 'xx27ea823a-e994-4d71-97f6-403174ec592a';
 
 function updateFacetList(facetLists) {
-  const newFacets = payload.facets.map((fac) => {
-    const findFacetField = facetLists.filter((facList) => facList.field === fac.field);
-    if (findFacetField && findFacetField.length > -1) {
-      return {
-        ...fac,
-        currentValues: findFacetField[0]
-          .values.map(
-            (facValue) => ({ value: facValue.value, state: facValue.state }),
-          ),
-      };
-    }
-    return null;
-  });
-  payload = {
-    ...payload,
-    facets: newFacets,
-  };
+  if (facetLists && facetLists.length > 0) {
+    const newFacets = payload.facets.map((fac) => {
+      const findFacetField = facetLists.filter((facList) => facList.field === fac.field);
+      if (findFacetField && findFacetField.length > -1) {
+        return {
+          ...fac,
+          currentValues: findFacetField[0]
+            .values.map(
+              (facValue) => ({ value: facValue.value, state: facValue.state }),
+            ),
+        };
+      }
+      return null;
+    });
+    payload = {
+      ...payload,
+      facets: newFacets,
+    };
+  }
 }
 
 async function makeCoveoSearchRequest(url, stringifiedPayload) {
@@ -49,44 +53,56 @@ async function makeCoveoSearchRequest(url, stringifiedPayload) {
   });
   // eslint-disable-next-line no-unused-vars
   const response = await request.json();
+  requestStatus = false;
   updateFacetList(response.facets);
   return response;
 }
 
+function updateLink(el) {
+  const interval = setTimeout(() => {
+    if (requestStatus) updateLink(el);
+    else {
+      clearTimeout(interval);
+      const queryParam = new URLSearchParams('');
+      if (
+        (
+          Object.keys(payload).length > 0
+          && payload.q && payload.q !== ''
+        )
+        || Object.keys(facetsCollection).length > 0
+      ) {
+        if (Object.keys(payload).length > 0 && payload.q && payload.q !== '') {
+          queryParam.append('q', encodeURI(payload.q));
+        }
+        if (Object.keys(facetsCollection).length > 0) {
+          Object.keys(facetsCollection).forEach((facetCollectKey) => {
+            queryParam.append(`f-${facetCollectKey}`, encodeURI(facetsCollection[facetCollectKey].join(',')));
+          });
+        }
+
+        const queryParameters = queryParam.toString().replaceAll('25', '').replaceAll('%2C', ',');
+        if (el === 'path') window.location = `/en-us/search#${queryParameters}`;
+        else el.href = `/en-us/search#${queryParameters}`;
+      }
+    }
+  }, 1000);
+}
+
 function decorateViewResultsURL() {
-  const queryParam = new URLSearchParams('');
-  if (
-    (
-      Object.keys(payload).length > 0
-      && payload.q && payload.q !== ''
-    )
-    || Object.keys(facetsCollection).length > 0
-  ) {
-    if (Object.keys(payload).length > 0 && payload.q && payload.q !== '') {
-      queryParam.append('q', encodeURI(payload.q));
-    }
-    if (Object.keys(facetsCollection).length > 0) {
-      Object.keys(facetsCollection).forEach((facetCollectKey) => {
-        queryParam.append(`f-${facetCollectKey}`, encodeURI(facetsCollection[facetCollectKey].join(',')));
-      });
-    }
-    const allSearchResultAnchors = document.querySelectorAll('#search-container a');
-    const queryParameters = queryParam.toString().replaceAll('25', '').replaceAll('%2C', ',');
-    if (allSearchResultAnchors.length > 0) {
-      allSearchResultAnchors.forEach((searchResultAnchors) => {
-        searchResultAnchors.href = `/en-us/search#${queryParameters}`;
-      });
-      document.querySelector('#search-container .icon-search')?.addEventListener('click', () => {
-        window.location = `/en-us/search?facets.application=${queryParameters}`;
-      });
-      document.querySelector('#search-container input')?.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter' || event.keyCode === 13) window.location = `/en-us/search#${queryParameters}`;
-      });
-    }
+  const searchResultAnchor = document.querySelector('#search-container a');
+  if (searchResultAnchor) {
+    updateLink(searchResultAnchor);
+    document.querySelector('#search-container .icon-search')?.addEventListener('click', () => {
+      updateLink('path');
+    });
+    document.querySelector('#search-container input')?.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.keyCode === 13) updateLink('path');
+    });
   }
 }
 
 const facetAction = debounce(async (selected, listType, mode) => {
+  requestStatus = true;
   const url = `https://${organizationId}.org.coveo.com/rest/search/v2`;
   const query = searchInput?.value;
   const payloadJSON = {
@@ -221,7 +237,7 @@ function decorateSearchPopup(facets, totalCount) {
                 facetBadge.append(
                   div(
                     {
-                      class: 'w-max flex items-center px-5 py-2.5 text-base font-medium text-center text-white bg-gray-100 hover:bg-gray-200 text-gray-800 rounded cursor-pointer',
+                      class: 'w-max flex items-center px-5 py-2.5 text-base font-medium text-center text-white bg-gray-300 hover:bg-gray-400 text-gray-800 rounded cursor-pointer',
                       title: facetValues[facetIndex].value,
                       onclick: () => handleFacetList(listType, facetValues, facetIndex),
                     },
@@ -260,6 +276,7 @@ function decorateSearchPopup(facets, totalCount) {
 }
 
 const fetchFinishType = debounce(async (value) => {
+  requestStatus = true;
   const url = `https://${organizationId}.org.coveo.com/rest/search/v2`;
   let facetContainer = [];
   if (payload.facets) facetContainer = [...payload.facets];
@@ -354,7 +371,7 @@ function buildSearchBackdrop() {
   const searchBackdropContainer = div(
     {
       id: 'search-container',
-      class: 'h-screen fixed top-0 left-0 z-50 transition-all -translate-y-full [&_#search-product]:hidden [&_#search-content]:hidden',
+      class: 'h-screen fixed top-0 left-0 z-50 transition-all duration-150 -translate-y-full [&_#search-product]:hidden [&_#search-content]:hidden',
     },
     div(
       {
@@ -450,7 +467,7 @@ export default function decorate(block) {
     );
     parentWrapper.append(searchBar);
     parentWrapper.append(buildSearchBackdrop());
-    parentWrapper.append(div({ id: 'search-container-child', class: 'h-screen fixed top-0 left-0 bg-black z-40 transition-all -translate-y-full' }));
+    parentWrapper.append(div({ id: 'search-container-child', class: 'h-screen fixed top-0 left-0 bg-black opacity-75 z-40 transition-all -translate-y-full' }));
     decorateIcons(parentWrapper);
   }
   block.append(pictureTag);
