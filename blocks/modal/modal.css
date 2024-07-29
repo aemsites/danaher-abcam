@@ -1,0 +1,71 @@
+.modal-wrapper :is(.float-right) {
+  float: right
+}
+
+.modal-wrapper :is(.ml-auto) {
+  margin-left: auto
+}
+
+.modal-wrapper :is(.block) {
+  display: block
+}
+
+.modal-wrapper :is(.flex) {
+  display: flex
+}
+
+.modal-wrapper :is(.inline-flex) {
+  display: inline-flex
+}
+
+.modal-wrapper :is(.w-max) {
+  width: -moz-max-content;
+  width: max-content
+}
+
+.modal-wrapper :is(.transform) {
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+
+.modal-wrapper :is(.flex-col) {
+  flex-direction: column
+}
+
+.modal-wrapper :is(.flex-col-reverse) {
+  flex-direction: column-reverse
+}
+
+.modal-wrapper :is(.rounded) {
+  border-radius: 0.25rem
+}
+
+.modal-wrapper :is(.rounded-full) {
+  border-radius: 9999px
+}
+
+.modal-wrapper :is(.border) {
+  border-width: 1px
+}
+
+.modal-wrapper :is(.border-\[\#378189\]) {
+  --tw-border-opacity: 1;
+  border-color: rgb(55 129 137 / var(--tw-border-opacity))
+}
+
+.modal-wrapper :is(.bg-white) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+}
+
+.modal-wrapper :is(.p-0) {
+  padding: 0px
+}
+
+.modal-wrapper :is(.p-3) {
+  padding: 0.75rem
+}
+
+.modal-wrapper :is(.invert) {
+  --tw-invert: invert(100%);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
+}

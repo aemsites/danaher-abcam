@@ -205,6 +205,16 @@ const fileMappings = [
     output: './blocks/page-navigation/page-navigation.css',
     wrapper: 'page-navigation-wrapper',
   },
+  {
+    content: './blocks/modal/modal.js',
+    output: './blocks/modal/modal.css',
+    wrapper: 'modal-wrapper',
+  },
+  {
+    content: './blocks/learn-more/learn-more.js',
+    output: './blocks/learn-more/learn-more.css',
+    wrapper: 'learn-more-wrapper',
+  },
 ];
 
 const watch = process.argv[2];
