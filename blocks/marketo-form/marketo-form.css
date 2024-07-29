@@ -1,0 +1,98 @@
+.marketo-form-wrapper :is(.relative) {
+  position: relative
+}
+
+.marketo-form-wrapper :is(.z-\[9\]) {
+  z-index: 9
+}
+
+.marketo-form-wrapper :is(.mx-auto) {
+  margin-left: auto;
+  margin-right: auto
+}
+
+.marketo-form-wrapper :is(.mb-0) {
+  margin-bottom: 0px
+}
+
+.marketo-form-wrapper :is(.mb-4) {
+  margin-bottom: 1rem
+}
+
+.marketo-form-wrapper :is(.mb-8) {
+  margin-bottom: 2rem
+}
+
+.marketo-form-wrapper :is(.ml-0) {
+  margin-left: 0px
+}
+
+.marketo-form-wrapper :is(.mr-4) {
+  margin-right: 1rem
+}
+
+.marketo-form-wrapper :is(.mt-0) {
+  margin-top: 0px
+}
+
+.marketo-form-wrapper :is(.block) {
+  display: block
+}
+
+.marketo-form-wrapper :is(.flex) {
+  display: flex
+}
+
+.marketo-form-wrapper :is(.h-80) {
+  height: 20rem
+}
+
+.marketo-form-wrapper :is(.max-w-7xl) {
+  max-width: 80rem
+}
+
+.marketo-form-wrapper :is(.flex-col) {
+  flex-direction: column
+}
+
+.marketo-form-wrapper :is(.items-center) {
+  align-items: center
+}
+
+.marketo-form-wrapper :is(.justify-center) {
+  justify-content: center
+}
+
+.marketo-form-wrapper :is(.bg-white) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+}
+
+.marketo-form-wrapper :is(.text-3xl) {
+  font-size: 1.875rem;
+  line-height: 2.25rem
+}
+
+.marketo-form-wrapper :is(.text-lg) {
+  font-size: 1.125rem;
+  line-height: 1.75rem
+}
+
+.marketo-form-wrapper :is(.font-bold) {
+  font-weight: 700
+}
+
+.marketo-form-wrapper :is(.font-normal) {
+  font-weight: 400
+}
+
+.marketo-form-wrapper :is(.text-gray-700) {
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity))
+}
+
+@media (min-width: 768px) {
+  .marketo-form-wrapper :is(.md\:mb-16) {
+    margin-bottom: 4rem
+  }
+}
