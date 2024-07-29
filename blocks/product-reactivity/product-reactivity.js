@@ -57,7 +57,6 @@ function productPromise() {
 
 function publicationsAndImageSection(images, publicationArray) {
   const pubandimagesection = div({ class: 'col-span-4 lg:flex lg:space-x-8' });
-  const publicationsection = div({ class: 'w-1/2 max-[959px]:w-[100%]' }, div({ class: 'flex items-center justify-between' }, h2({ class: 'text-[#2A3C3C] font-semibold text-lg mt-4' }, 'Publications')));
   const publicationsContent = div();
   if (publicationArray) {
     publicationArray.forEach((pub) => {
@@ -85,8 +84,11 @@ function publicationsAndImageSection(images, publicationArray) {
   });
   const imagecolumn = div({ class: 'mt-1 mb-6 py-2' }, div({ class: 'flex gap-4 border-1 border-solid' }, ulimage));
   const imagesection = div({ class: 'w-1/2 max-[959px]:w-[100%]' }, h2({ class: 'text-[#2A3C3C] font-semibold text-lg mt-4' }, 'Images'), imagecolumn);
-  publicationsection.appendChild(publicationsContent);
-  pubandimagesection.appendChild(publicationsection);
+  if (publicationArray.length) {
+    const publicationsection = div({ class: 'w-1/2 max-[959px]:w-[100%]' }, div({ class: 'flex items-center justify-between' }, h2({ class: 'text-[#2A3C3C] font-semibold text-lg mt-4' }, 'Publications')));
+    publicationsection.appendChild(publicationsContent);
+    pubandimagesection.appendChild(publicationsection);
+  }
   pubandimagesection.appendChild(imagesection);
   return pubandimagesection;
 }
@@ -133,23 +135,25 @@ export default async function decorate(block) {
   const buttonsPanel = div({ class: 'flex gap-2 flex-wrap text-black tracking-[2px] font-semibold text-sm pb-5 max-[959px]:w-[100%]' });
   buttonsPanel.appendChild(button({ class: 'px-6 py-3 border-black boarder-solid  bg-black text-white font-semibold rounded-[28px] tracking-[.2px]' }, 'All applications'));
   const reactivityApplication = response[0].raw.reactivityapplications;
-  reactivityApplication.forEach((name) => {
-    buttonsPanel.appendChild(button({ class: 'px-6 py-3 border border-black text-black font-semibold rounded-[28px] tracking-[.2px]' }, name));
-  });
+  if (reactivityApplication) {
+    reactivityApplication.forEach((name) => {
+      buttonsPanel.appendChild(button({ class: 'px-6 py-3 border border-black text-black font-semibold rounded-[28px] tracking-[.2px]' }, name));
+    });
 
-  const reactivityApplicationWrapper = div({ class: 'reactivityApplicationWrapper w-full mt-4' });
-  reactivityApplicationWrapper.appendChild(buttonsPanel);
-  const productInfo = productPromise();
-  reactivityApplicationWrapper.appendChild(productInfo);
-  const reactivityJson = response[0].raw.reactivitytabledata
-    ? response[0].raw.reactivitytabledata : [];
-  const tableContent = allApplicationTableData(reactivityJson, reactivityApplication);
-  reactivityApplicationWrapper.appendChild(tableContent);
-  const publicationArray = response[0].raw.publicationsjson
-    ? response[0].raw.publicationsjson.slice(0, 2) : [];
-  const images = response[0].raw.images ? response[0].raw.images.slice(0, 3) : [];
-  const pubandimagesection = publicationsAndImageSection(images, publicationArray);
-  reactivityApplicationWrapper.appendChild(pubandimagesection);
-  block.append(reactivityData);
-  block.appendChild(reactivityApplicationWrapper);
+    const reactivityApplicationWrapper = div({ class: 'reactivityApplicationWrapper w-full mt-4' });
+    reactivityApplicationWrapper.appendChild(buttonsPanel);
+    const productInfo = productPromise();
+    reactivityApplicationWrapper.appendChild(productInfo);
+    const reactivityJson = response[0].raw.reactivitytabledata
+      ? response[0].raw.reactivitytabledata : [];
+    const tableContent = allApplicationTableData(reactivityJson, reactivityApplication);
+    reactivityApplicationWrapper.appendChild(tableContent);
+    const publicationArray = response[0].raw.publicationsjson
+      ? response[0].raw.publicationsjson.slice(0, 2) : [];
+    const images = response[0].raw.images ? response[0].raw.images.slice(0, 3) : [];
+    const pubandimagesection = publicationsAndImageSection(images, publicationArray);
+    reactivityApplicationWrapper.appendChild(pubandimagesection);
+    block.append(reactivityData);
+    block.appendChild(reactivityApplicationWrapper);
+  }
 }
