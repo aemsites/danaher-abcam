@@ -50,7 +50,12 @@ function productPromise() {
       span('Not recommended'),
     ),
   );
-  const tablebutton = button({ class: 'flex h-8 items-center rounded-[16px] pl-3 px-3 py-2 text-xs tracking-[.0125rem] border border-black max-[959px]:w-fit' }, a({ class: 'text-base', href: '/modals/learn-more' }, span({ class: 'learnmore align-center' }, 'Learn more')), span(img({ class: 'w-4', src: '/icons/plus.svg' })));
+  const tablebutton = a(
+    { class: 'button h-8 flex items-center rounded-[16px] px-3 py-2 text-base tracking-[.0125rem] border border-black max-[959px]:w-fit', href: '/modals/learn-more' },
+    span({ class: 'learnmore align-center' }, 'Learn more'),
+    span({ class: 'arrow-icon icon icon-chevron-down-white rotate-0' }),
+    span(img({ class: 'w-4', src: '/icons/plus.svg' })),
+  );
   decorateModals(tablebutton);
   productNotes.appendChild(productNotesColumn);
   productNotes.appendChild(tablebutton);

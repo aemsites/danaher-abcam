@@ -91,8 +91,18 @@
   width: 100%
 }
 
+.product-reactivity-wrapper :is(.w-fit) {
+  width: -moz-fit-content;
+  width: fit-content
+}
+
 .product-reactivity-wrapper :is(.border-separate) {
   border-collapse: separate
+}
+
+.product-reactivity-wrapper :is(.rotate-0) {
+  --tw-rotate: 0deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 
 .product-reactivity-wrapper :is(.flex-col) {
@@ -138,8 +148,16 @@
   row-gap: 1rem
 }
 
+.product-reactivity-wrapper :is(.justify-self-end) {
+  justify-self: end
+}
+
 .product-reactivity-wrapper :is(.overflow-hidden) {
   overflow: hidden
+}
+
+.product-reactivity-wrapper :is(.whitespace-nowrap) {
+  white-space: nowrap
 }
 
 .product-reactivity-wrapper :is(.rounded-\[16px\]) {
@@ -152,6 +170,10 @@
 
 .product-reactivity-wrapper :is(.rounded-lg) {
   border-radius: 0.5rem
+}
+
+.product-reactivity-wrapper :is(.rounded-2xl) {
+  border-radius: 1rem
 }
 
 .product-reactivity-wrapper :is(.border) {
@@ -261,6 +283,10 @@
   font-weight: 600
 }
 
+.product-reactivity-wrapper :is(.capitalize) {
+  text-transform: capitalize
+}
+
 .product-reactivity-wrapper :is(.leading-\[1\.33\]) {
   line-height: 1.33
 }
@@ -319,6 +345,11 @@
 
 .product-reactivity-wrapper :is(.hover\:cursor-pointer:hover) {
   cursor: pointer
+}
+
+.product-reactivity-wrapper :is(.hover\:bg-\[\#3B3B3B\]:hover) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 59 59 / var(--tw-bg-opacity))
 }
 
 .product-reactivity-wrapper :is(.hover\:underline:hover) {
