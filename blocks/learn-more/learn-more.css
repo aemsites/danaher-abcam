@@ -72,6 +72,26 @@
   margin-top: 0.25rem
 }
 
+.learn-more-wrapper :is(.mt-\[10px\]) {
+  margin-top: 10px
+}
+
+.learn-more-wrapper :is(.mt-\[8px\]) {
+  margin-top: 8px
+}
+
+.learn-more-wrapper :is(.mt-\[6px\]) {
+  margin-top: 6px
+}
+
+.learn-more-wrapper :is(.mt-\[4px\]) {
+  margin-top: 4px
+}
+
+.learn-more-wrapper :is(.mt-\[2px\]) {
+  margin-top: 2px
+}
+
 .learn-more-wrapper :is(.block) {
   display: block
 }
@@ -181,9 +201,17 @@
   gap: 1rem
 }
 
+.learn-more-wrapper :is(.gap-2) {
+  gap: 0.5rem
+}
+
 .learn-more-wrapper :is(.bg-\[\#edf6f7\]) {
   --tw-bg-opacity: 1;
   background-color: rgb(237 246 247 / var(--tw-bg-opacity))
+}
+
+.learn-more-wrapper :is(.p-2) {
+  padding: 0.5rem
 }
 
 .learn-more-wrapper :is(.text-xl) {

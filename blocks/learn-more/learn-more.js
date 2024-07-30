@@ -1,7 +1,7 @@
 import { div, hr } from '../../scripts/dom-builder.js';
 
 export default function decorate(block) {
-  block.classList.add(...'flex flex-col md:flex-row justify-between gap-4 max-w-[600px] m-2'.split(' '));
+  block.classList.add(...'flex flex-col md:flex-row justify-between gap-4 max-w-[600px] m-2 p-2'.split(' '));
   [...block.children].forEach((row) => {
     let type = '';
     const h3Heading = row.querySelector('h3');
@@ -16,14 +16,14 @@ export default function decorate(block) {
       img.src = `/icons/${type}.svg`;
       img.alt = type;
       if (type === 'tested') {
-        img.classList.add(...'w-5 h-5'.split(' '));
+        img.classList.add(...'w-6 h-6 mt-[2px]'.split(' '));
       } else {
-        img.classList.add(...'w-3 h-3'.split(' '));
+        img.classList.add(...'w-3 h-3 mt-[8px]'.split(' '));
       }
       imgContainer.appendChild(img);
     }
     row.prepend(imgContainer);
-    row?.classList.add(...'flex'.split(' '));
+    row?.classList.add(...'flex gap-2'.split(' '));
     row.querySelectorAll('h4').forEach((el) => {
       el.classList.add(...'font-semibold mb-1 mt-1'.split(' '));
     });
