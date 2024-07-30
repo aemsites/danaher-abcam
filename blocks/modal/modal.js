@@ -11,14 +11,14 @@ import { span, button } from '../../scripts/dom-builder.js';
 export async function createModal(contentNodes) {
   await loadCSS(`${window.hlx.codeBasePath}/blocks/modal/modal.css`);
   const dialog = document.createElement('dialog');
-  dialog.classList.add(...'p-0 border rounded transform flex flex-col-reverse'.split(' '));
+  dialog.classList.add(...'border rounded transform flex flex-col-reverse'.split(' '));
   const dialogContent = document.createElement('div');
   dialogContent.classList.add(...'modal-content flex flex-col'.split(' '));
   dialogContent.append(...contentNodes);
   dialog.append(dialogContent);
   const closeButton = button(
     {
-      class: 'close-btn float-right bg-white rounded-full p-3 ml-auto w-max inline-flex',
+      class: 'close-btn float-right bg-white rounded-full p-4 ml-auto w-max inline-flex',
       'aria-label': 'Close',
       type: 'button',
       onclick: () => dialog.close(),

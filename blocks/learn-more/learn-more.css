@@ -1,3 +1,15 @@
+.learn-more-wrapper :is(.top-1) {
+  top: 0.25rem
+}
+
+.learn-more-wrapper :is(.top-0) {
+  top: 0px
+}
+
+.learn-more-wrapper :is(.top-2) {
+  top: 0.5rem
+}
+
 .learn-more-wrapper :is(.m-2) {
   margin: 0.5rem
 }
@@ -5,6 +17,11 @@
 .learn-more-wrapper :is(.my-6) {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem
+}
+
+.learn-more-wrapper :is(.my-2) {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem
 }
 
 .learn-more-wrapper :is(.mb-10) {
@@ -25,6 +42,34 @@
 
 .learn-more-wrapper :is(.ml-2) {
   margin-left: 0.5rem
+}
+
+.learn-more-wrapper :is(.mb-0) {
+  margin-bottom: 0px
+}
+
+.learn-more-wrapper :is(.mb-2) {
+  margin-bottom: 0.5rem
+}
+
+.learn-more-wrapper :is(.ml-6) {
+  margin-left: 1.5rem
+}
+
+.learn-more-wrapper :is(.ml-1) {
+  margin-left: 0.25rem
+}
+
+.learn-more-wrapper :is(.mb-40) {
+  margin-bottom: 10rem
+}
+
+.learn-more-wrapper :is(.mb-1) {
+  margin-bottom: 0.25rem
+}
+
+.learn-more-wrapper :is(.mt-1) {
+  margin-top: 0.25rem
 }
 
 .learn-more-wrapper :is(.block) {
@@ -55,6 +100,18 @@
   height: 1px
 }
 
+.learn-more-wrapper :is(.h-2) {
+  height: 0.5rem
+}
+
+.learn-more-wrapper :is(.h-4) {
+  height: 1rem
+}
+
+.learn-more-wrapper :is(.h-5) {
+  height: 1.25rem
+}
+
 .learn-more-wrapper :is(.w-3) {
   width: 0.75rem
 }
@@ -68,8 +125,40 @@
   width: fit-content
 }
 
+.learn-more-wrapper :is(.w-2) {
+  width: 0.5rem
+}
+
+.learn-more-wrapper :is(.w-4) {
+  width: 1rem
+}
+
+.learn-more-wrapper :is(.w-5) {
+  width: 1.25rem
+}
+
+.learn-more-wrapper :is(.w-8) {
+  width: 2rem
+}
+
+.learn-more-wrapper :is(.min-w-8) {
+  min-width: 2rem
+}
+
 .learn-more-wrapper :is(.max-w-\[544px\]) {
   max-width: 544px
+}
+
+.learn-more-wrapper :is(.max-w-\[500px\]) {
+  max-width: 500px
+}
+
+.learn-more-wrapper :is(.max-w-\[600px\]) {
+  max-width: 600px
+}
+
+.learn-more-wrapper :is(.max-w-\[550px\]) {
+  max-width: 550px
 }
 
 .learn-more-wrapper :is(.grid-cols-2) {
@@ -92,18 +181,61 @@
   gap: 1rem
 }
 
+.learn-more-wrapper :is(.bg-\[\#edf6f7\]) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(237 246 247 / var(--tw-bg-opacity))
+}
+
 .learn-more-wrapper :is(.text-xl) {
   font-size: 1.25rem;
   line-height: 1.75rem
+}
+
+.learn-more-wrapper :is(.text-sm) {
+  font-size: 0.875rem;
+  line-height: 1.25rem
+}
+
+.learn-more-wrapper :is(.text-lg) {
+  font-size: 1.125rem;
+  line-height: 1.75rem
+}
+
+.learn-more-wrapper :is(.text-xs) {
+  font-size: 0.75rem;
+  line-height: 1rem
 }
 
 .learn-more-wrapper :is(.font-bold) {
   font-weight: 700
 }
 
+.learn-more-wrapper :is(.font-normal) {
+  font-weight: 400
+}
+
+.learn-more-wrapper :is(.font-semibold) {
+  font-weight: 600
+}
+
 .learn-more-wrapper :is(.text-\[\#378189\]) {
   --tw-text-opacity: 1;
   color: rgb(55 129 137 / var(--tw-text-opacity))
+}
+
+.learn-more-wrapper :is(.text-blue-600) {
+  --tw-text-opacity: 1;
+  color: rgb(37 99 235 / var(--tw-text-opacity))
+}
+
+.learn-more-wrapper :is(.text-gray-400) {
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity))
+}
+
+.learn-more-wrapper :is(.text-cyan-700) {
+  --tw-text-opacity: 1;
+  color: rgb(14 116 144 / var(--tw-text-opacity))
 }
 
 .learn-more-wrapper :is(.underline) {
