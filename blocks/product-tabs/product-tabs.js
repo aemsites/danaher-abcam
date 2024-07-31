@@ -1,5 +1,15 @@
 import { getProductResponse } from '../../scripts/search.js';
 import { div, button } from '../../scripts/dom-builder.js';
+import { fetchPlaceholders } from '../../scripts/aem.js';
+
+const path = window.location.pathname;
+const match = path.match(/\/([a-z]{2}-[a-z]{2})\//i);
+let languageCode = 'en-us';
+if (match) {
+  languageCode = match?.at(1);
+}
+const placeholders = await fetchPlaceholders(`/${languageCode}`);
+const { productOverview, productDatasheet, productSupportdownloads } = placeholders;
 
 function toggleTabs(tabId, mmgTabs) {
   const contentSections = document.querySelectorAll('[data-tabname]');
@@ -30,9 +40,9 @@ export default async function decorate(block) {
   block.classList.add(...'md:border-b sm:border-b flex flex-col md:flex-col md:relative text-xl text-[#65797C]'.split(' '));
   const mmgTabs = div({ class: 'md:border-none border-b sm:border-none mmg-tabs md:absolute md:right-0 md:top-[-15px] font-semibold text-base text-black md:block flex order-1' });
   const tabs = [
-    { name: 'Overview', tabId: 'Overview' },
-    { name: 'Datasheet', tabId: 'Datasheet' },
-    { name: 'Support & Downloads', tabId: 'Downloads' },
+    { name: productOverview, tabId: 'Overview' },
+    { name: productDatasheet, tabId: 'Datasheet' },
+    { name: productSupportdownloads, tabId: 'Downloads' },
   ];
   tabs.forEach((tab) => {
     const li = button({

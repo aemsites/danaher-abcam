@@ -96,6 +96,11 @@
   margin-bottom: auto
 }
 
+.hero-wrapper :is(.my-4) {
+  margin-top: 1rem;
+  margin-bottom: 1rem
+}
+
 .hero-wrapper :is(.mb-2) {
   margin-bottom: 0.5rem
 }
@@ -138,6 +143,10 @@
 
 .hero-wrapper :is(.flex) {
   display: flex
+}
+
+.hero-wrapper :is(.inline-flex) {
+  display: inline-flex
 }
 
 .hero-wrapper :is(.grid) {
@@ -204,6 +213,10 @@
   width: 100vw
 }
 
+.hero-wrapper :is(.w-3\/4) {
+  width: 75%
+}
+
 .hero-wrapper :is(.max-w-2xl) {
   max-width: 42rem
 }
@@ -244,6 +257,10 @@
   grid-template-columns: repeat(1, minmax(0, 1fr))
 }
 
+.hero-wrapper :is(.flex-row) {
+  flex-direction: row
+}
+
 .hero-wrapper :is(.flex-col) {
   flex-direction: column
 }
@@ -274,6 +291,10 @@
 
 .hero-wrapper :is(.gap-24) {
   gap: 6rem
+}
+
+.hero-wrapper :is(.gap-4) {
+  gap: 1rem
 }
 
 .hero-wrapper :is(.gap-x-12) {
@@ -330,6 +351,10 @@
   border-radius: 0px
 }
 
+.hero-wrapper :is(.rounded-md) {
+  border-radius: 0.375rem
+}
+
 .hero-wrapper :is(.border) {
   border-width: 1px
 }
@@ -373,6 +398,16 @@
 .hero-wrapper :is(.bg-white) {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+}
+
+.hero-wrapper :is(.bg-gray-200) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity))
+}
+
+.hero-wrapper :is(.bg-gray-300) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(209 213 219 / var(--tw-bg-opacity))
 }
 
 .hero-wrapper :is(.bg-gradient-to-bl) {
@@ -449,6 +484,21 @@
   padding-bottom: 5px
 }
 
+.hero-wrapper :is(.px-2) {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem
+}
+
+.hero-wrapper :is(.px-5) {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem
+}
+
+.hero-wrapper :is(.py-2\.5) {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem
+}
+
 .hero-wrapper :is(.pl-2) {
   padding-left: 0.5rem
 }
@@ -471,6 +521,10 @@
 
 .hero-wrapper :is(.pr-\[5px\]) {
   padding-right: 5px
+}
+
+.hero-wrapper :is(.text-center) {
+  text-align: center
 }
 
 .hero-wrapper :is(.text-2xl) {
@@ -501,6 +555,11 @@
 .hero-wrapper :is(.text-sm) {
   font-size: 0.875rem;
   line-height: 1.25rem
+}
+
+.hero-wrapper :is(.text-xs) {
+  font-size: 0.75rem;
+  line-height: 1rem
 }
 
 .hero-wrapper :is(.font-bold) {
@@ -556,8 +615,17 @@
   color: rgb(255 255 255 / 0.8)
 }
 
+.hero-wrapper :is(.text-gray-800) {
+  --tw-text-opacity: 1;
+  color: rgb(31 41 55 / var(--tw-text-opacity))
+}
+
 .hero-wrapper :is(.opacity-60) {
   opacity: 0.6
+}
+
+.hero-wrapper :is(.opacity-75) {
+  opacity: 0.75
 }
 
 .hero-wrapper :is(.shadow) {
@@ -587,9 +655,18 @@
   transition-duration: 150ms
 }
 
+.hero-wrapper :is(.duration-150) {
+  transition-duration: 150ms
+}
+
 .hero-wrapper :is(.hover\:bg-gray-100:hover) {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity))
+}
+
+.hero-wrapper :is(.hover\:bg-gray-400:hover) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(156 163 175 / var(--tw-bg-opacity))
 }
 
 .hero-wrapper :is(.group:hover .group-hover\:rotate-90) {

@@ -372,6 +372,11 @@
   color: rgb(0 0 0 / var(--tw-text-opacity))
 }
 
+.product-overview-wrapper :is(.text-\[\#575757\]) {
+  --tw-text-opacity: 1;
+  color: rgb(87 87 87 / var(--tw-text-opacity))
+}
+
 .product-overview-wrapper :is(.underline) {
   text-decoration-line: underline
 }

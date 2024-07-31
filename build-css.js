@@ -145,6 +145,11 @@ const fileMappings = [
     wrapper: 'hero-video-wrapper',
   },
   {
+    content: './blocks/marketo-form/marketo-form.js',
+    output: './blocks/marketo-form/marketo-form.css',
+    wrapper: 'marketo-form-wrapper',
+  },
+  {
     content: './blocks/disclaimer/disclaimer.js',
     output: './blocks/disclaimer/disclaimer.css',
     wrapper: 'disclaimer-wrapper',
@@ -198,6 +203,16 @@ const fileMappings = [
     content: './blocks/product-protocols/product-protocols.js',
     output: './blocks/product-protocols/product-protocols.css',
     wrapper: 'product-protocols-wrapper',
+  },
+  {
+    content: './blocks/cta/cta.js',
+    output: './blocks/cta/cta.css',
+    wrapper: 'cta-wrapper',
+  },
+  {
+    content: './blocks/page-navigation/page-navigation.js',
+    output: './blocks/page-navigation/page-navigation.css',
+    wrapper: 'page-navigation-wrapper',
   },
 ];
 

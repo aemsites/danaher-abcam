@@ -3,6 +3,7 @@ import { facetSelect, finishType, searchFacetTerms } from '../../scripts/coveo-b
 import {
   a, div, input, li, p, span, ul, h3,
   label,
+  hr,
 } from '../../scripts/dom-builder.js';
 import { createRequest, debounce } from '../../scripts/scripts.js';
 
@@ -16,27 +17,31 @@ let emptySearchbar;
 let searchContent;
 let searchInput;
 
+let requestStatus;
+
 const organizationId = 'danahernonproduction1892f3fhz';
 const bearerToken = 'xx27ea823a-e994-4d71-97f6-403174ec592a';
 
 function updateFacetList(facetLists) {
-  const newFacets = payload.facets.map((fac) => {
-    const findFacetField = facetLists.filter((facList) => facList.field === fac.field);
-    if (findFacetField && findFacetField.length > -1) {
-      return {
-        ...fac,
-        currentValues: findFacetField[0]
-          .values.map(
-            (facValue) => ({ value: facValue.value, state: facValue.state }),
-          ),
-      };
-    }
-    return null;
-  });
-  payload = {
-    ...payload,
-    facets: newFacets,
-  };
+  if (facetLists && facetLists.length > 0) {
+    const newFacets = payload.facets.map((fac) => {
+      const findFacetField = facetLists.filter((facList) => facList.field === fac.field);
+      if (findFacetField && findFacetField.length > -1) {
+        return {
+          ...fac,
+          currentValues: findFacetField[0]
+            .values.map(
+              (facValue) => ({ value: facValue.value, state: facValue.state }),
+            ),
+        };
+      }
+      return null;
+    });
+    payload = {
+      ...payload,
+      facets: newFacets,
+    };
+  }
 }
 
 async function makeCoveoSearchRequest(url, stringifiedPayload) {
@@ -48,44 +53,56 @@ async function makeCoveoSearchRequest(url, stringifiedPayload) {
   });
   // eslint-disable-next-line no-unused-vars
   const response = await request.json();
+  requestStatus = false;
   updateFacetList(response.facets);
   return response;
 }
 
+function updateLink(el) {
+  const interval = setTimeout(() => {
+    if (requestStatus) updateLink(el);
+    else {
+      clearTimeout(interval);
+      const queryParam = new URLSearchParams('');
+      if (
+        (
+          Object.keys(payload).length > 0
+          && payload.q && payload.q !== ''
+        )
+        || Object.keys(facetsCollection).length > 0
+      ) {
+        if (Object.keys(payload).length > 0 && payload.q && payload.q !== '') {
+          queryParam.append('q', encodeURI(payload.q));
+        }
+        if (Object.keys(facetsCollection).length > 0) {
+          Object.keys(facetsCollection).forEach((facetCollectKey) => {
+            queryParam.append(`f-${facetCollectKey}`, encodeURI(facetsCollection[facetCollectKey].join(',')));
+          });
+        }
+
+        const queryParameters = queryParam.toString().replaceAll('25', '').replaceAll('%2C', ',');
+        if (el === 'path') window.location = `/en-us/search#${queryParameters}`;
+        else el.href = `/en-us/search#${queryParameters}`;
+      }
+    }
+  }, 1000);
+}
+
 function decorateViewResultsURL() {
-  const queryParam = new URLSearchParams('');
-  if (
-    (
-      Object.keys(payload).length > 0
-      && payload.q && payload.q !== ''
-    )
-    || Object.keys(facetsCollection).length > 0
-  ) {
-    if (Object.keys(payload).length > 0 && payload.q && payload.q !== '') {
-      queryParam.append('q', encodeURI(payload.q));
-    }
-    if (Object.keys(facetsCollection).length > 0) {
-      Object.keys(facetsCollection).forEach((facetCollectKey) => {
-        queryParam.append(`f-${facetCollectKey}`, encodeURI(facetsCollection[facetCollectKey].join(',')));
-      });
-    }
-    const allSearchResultAnchors = document.querySelectorAll('#search-container a');
-    const queryParameters = queryParam.toString().replaceAll('25', '').replaceAll('%2C', ',');
-    if (allSearchResultAnchors.length > 0) {
-      allSearchResultAnchors.forEach((searchResultAnchors) => {
-        searchResultAnchors.href = `/en-us/search#${queryParameters}`;
-      });
-      document.querySelector('#search-container .icon-search')?.addEventListener('click', () => {
-        window.location = `/en-us/search?facets.application=${queryParameters}`;
-      });
-      document.querySelector('#search-container input')?.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter' || event.keyCode === 13) window.location = `/en-us/search#${queryParameters}`;
-      });
-    }
+  const searchResultAnchor = document.querySelector('#search-container a');
+  if (searchResultAnchor) {
+    updateLink(searchResultAnchor);
+    document.querySelector('#search-container .icon-search')?.addEventListener('click', () => {
+      updateLink('path');
+    });
+    document.querySelector('#search-container input')?.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.keyCode === 13) updateLink('path');
+    });
   }
 }
 
 const facetAction = debounce(async (selected, listType, mode) => {
+  requestStatus = true;
   const url = `https://${organizationId}.org.coveo.com/rest/search/v2`;
   const query = searchInput?.value;
   const payloadJSON = {
@@ -96,6 +113,8 @@ const facetAction = debounce(async (selected, listType, mode) => {
           facet.currentValues.forEach((curFacVal, curFacValIndex) => {
             if (curFacVal.value === selected.value) {
               facet.currentValues[curFacValIndex].state = (mode && mode === 'select') ? 'selected' : 'idle';
+            } else if (listType === 'categorytype') {
+              facet.currentValues[curFacValIndex].state = 'idle';
             }
           });
         }
@@ -116,9 +135,17 @@ const facetAction = debounce(async (selected, listType, mode) => {
 }, 100);
 
 function handleFacetList(listType, facetValues, facetIndex) {
+  const searchProductInputGroup = searchInput.parentElement;
   facetsCollection[listType] = Object.keys(facetsCollection).length > 0
       && listType in facetsCollection ? facetsCollection[listType] : [];
   facetsCollection[listType].push(facetValues[facetIndex].value);
+  if (listType in facetsCollection) {
+    const existingSelectedFacet = searchProductInputGroup.querySelector(`.facet-selected[title="${facetsCollection[listType][0]}"]`);
+    if (existingSelectedFacet) {
+      existingSelectedFacet.remove();
+      facetsCollection[listType].shift();
+    }
+  }
   facetAction(facetValues[facetIndex], listType, 'select');
   const selectedFacet = span(
     {
@@ -136,7 +163,7 @@ function handleFacetList(listType, facetValues, facetIndex) {
           }
         }
         facetAction(facetValues[facetIndex], listType, 'idle');
-        searchInput.parentElement.removeChild(selectedFacet);
+        searchProductInputGroup.removeChild(selectedFacet);
       },
     },
     span(
@@ -146,7 +173,8 @@ function handleFacetList(listType, facetValues, facetIndex) {
     span({ class: 'icon icon-close size-7 my-auto p-1 text-black fill-current cursor-pointer bg-purple-50/20 group-hover:bg-purple-50/40 rounded-full transition-transform group-hover:scale-110' }),
   );
   decorateIcons(selectedFacet);
-  searchInput.parentElement.insertBefore(selectedFacet, searchInput);
+  // searchProductInputGroup.querySelectorAll()
+  searchProductInputGroup.insertBefore(selectedFacet, searchInput);
   searchInput.focus();
 }
 
@@ -172,61 +200,83 @@ function decorateSearchPopup(facets, totalCount) {
         }
       }
     });
-    for (
-      let facetCategoryIndex = 0;
-      facetCategoryIndex < limitedFacetValues.length;
-      facetCategoryIndex += 1
-    ) {
-      const { values: facetValues, facetId } = limitedFacetValues[facetCategoryIndex];
-      const listType = facetId;
-      const facetName = facetId.replace(/([A-Z])/g, ' $&');
-      const facetGroup = div({ class: 'flex flex-col' });
-      const facetListContainer = div({ class: 'relative flex flex-col justify-center' });
-      const facetListBtn = label({
-        'data-dropdown-toggle': facetName,
-        for: `${facetName}_${facetWithContent.length}`,
-        class: 'w-full block bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2.5 cursor-pointer',
-      }, 'Please Select', span({ class: 'icon icon-chevron-down' }));
-      facetListContainer.append(
-        input({ type: 'checkbox', class: 'peer hidden', id: `${facetName}_${facetWithContent.length}` }),
-        facetListBtn,
-      );
-      const facetList = ul({ class: 'absolute max-h-60 overflow-scroll p-3 space-y-1 text-sm text-gray-700 z-10 bg-white rounded-lg shadow' });
-      if (facetValues.length > 0) {
-        for (let facetIndex = 0; facetIndex < facetValues.length; facetIndex += 1) {
-          const searchExistingFacet = listType in facetsCollection
-            && facetsCollection[listType].includes(facetValues[facetIndex].value);
-          if (
-            facetValues[facetIndex].value
-            && (!searchExistingFacet)
-            && facetValues[facetIndex].numberOfResults
-            && facetValues[facetIndex].numberOfResults > 0
-          ) {
-            const facetElement = li(
-              {
-                class: 'flex items-center p-2 rounded hover:bg-gray-100 cursor-pointer',
-                title: facetValues[facetIndex].value,
-                onclick: () => handleFacetList(listType, facetValues, facetIndex),
-              },
-              `${facetValues[facetIndex].value} ( ${facetValues[facetIndex].numberOfResults} )`,
-            );
-            facetList.append(facetElement);
+    const dropdownContainer = div({ class: 'grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 auto-rows-max gap-x-12 gap-y-3' });
+    const facetBadge = div({ class: 'flex flex-row gap-4 flex-wrap' });
+    if (limitedFacetValues.length > 0) {
+      for (
+        let facetCategoryIndex = 0;
+        facetCategoryIndex < limitedFacetValues.length;
+        facetCategoryIndex += 1
+      ) {
+        const { values: facetValues, facetId } = limitedFacetValues[facetCategoryIndex];
+        const listType = facetId;
+        const facetName = facetId.replace(/([A-Z])/g, ' $&');
+        const facetGroup = div({ class: 'flex flex-col' });
+        const facetListContainer = div({ class: 'relative flex flex-col justify-center' });
+        const facetListBtn = label({
+          'data-dropdown-toggle': facetName,
+          for: `${facetName}_${facetWithContent.length}`,
+          class: 'w-full block bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded p-2.5 cursor-pointer',
+        }, 'Please Select', span({ class: 'icon icon-chevron-down' }));
+        facetListContainer.append(
+          input({ type: 'checkbox', class: 'peer hidden', id: `${facetName}_${facetWithContent.length}` }),
+          facetListBtn,
+        );
+        const facetList = ul({ class: 'absolute max-h-60 overflow-scroll p-3 space-y-1 text-sm text-gray-700 z-10 bg-white rounded shadow' });
+        if (facetValues.length > 0) {
+          for (let facetIndex = 0; facetIndex < facetValues.length; facetIndex += 1) {
+            const searchExistingFacet = listType in facetsCollection
+              && facetsCollection[listType].includes(facetValues[facetIndex].value);
+            if (
+              facetValues[facetIndex].value
+              && (!searchExistingFacet)
+              && facetValues[facetIndex].numberOfResults
+              && facetValues[facetIndex].numberOfResults > 0
+            ) {
+              if (listType === 'categorytype') {
+                facetBadge.append(
+                  div(
+                    {
+                      class: 'w-max flex items-center px-5 py-2.5 text-base font-medium text-center text-white bg-gray-300 hover:bg-gray-400 text-gray-800 rounded cursor-pointer',
+                      title: facetValues[facetIndex].value,
+                      onclick: () => handleFacetList(listType, facetValues, facetIndex),
+                    },
+                    span({ class: 'w-3/4 truncate' }, facetValues[facetIndex].value),
+                    span({ class: 'inline-flex items-center justify-center h-6 px-2 ms-2 text-xs font-semibold text-gray-800 bg-gray-200 rounded-md' }, facetValues[facetIndex].numberOfResults),
+                  ),
+                );
+              } else {
+                const facetElement = li(
+                  {
+                    class: 'flex items-center p-2 rounded hover:bg-gray-100 cursor-pointer',
+                    title: facetValues[facetIndex].value,
+                    onclick: () => handleFacetList(listType, facetValues, facetIndex),
+                  },
+                  `${facetValues[facetIndex].value} ( ${facetValues[facetIndex].numberOfResults} )`,
+                );
+                facetList.append(facetElement);
+              }
+            }
           }
-        }
-        if (facetList.children.length > 0) {
-          facetListContainer.append(div({ class: 'w-48 hidden peer-checked:block' }, facetList));
-          facetGroup.append(h3({ class: 'font-medium text-white/80 text-2xl leading-8 mb-2 pl-3 md:pl-0' }, searchFacetTerms[facetName]));
-          facetGroup.append(facetListContainer);
-          searchContent.append(facetGroup);
+          if (facetList.children.length > 0) {
+            facetListContainer.append(div({ class: 'w-48 hidden peer-checked:block' }, facetList));
+            facetGroup.append(h3({ class: 'font-medium text-white/80 text-2xl leading-8 mb-2 pl-3 md:pl-0' }, searchFacetTerms[facetName]));
+            facetGroup.append(facetListContainer);
+            dropdownContainer.append(facetGroup);
+          } else if (facetBadge.children.length > 0) searchContent.append(facetBadge);
         }
       }
     }
+    searchContent.append(facetBadge);
+    searchContent.append(hr({ class: 'w-100 my-4' }));
+    searchContent.append(dropdownContainer);
     decorateViewResultsURL();
   }
   totalResultCount.innerHTML = totalCount;
 }
 
 const fetchFinishType = debounce(async (value) => {
+  requestStatus = true;
   const url = `https://${organizationId}.org.coveo.com/rest/search/v2`;
   let facetContainer = [];
   if (payload.facets) facetContainer = [...payload.facets];
@@ -308,7 +358,7 @@ function buildSearchBackdrop() {
   });
   searchContent = div({
     id: 'search-content',
-    class: 'container h-3/4 md:h-4/6 mt-4 mx-auto mb-3 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 auto-rows-max gap-x-12 gap-y-3',
+    class: 'container h-3/4 md:h-4/6 mt-4 mx-auto mb-3',
   });
   searchInput = input({
     class: 'w-auto relative py-1 pl-2 md:pl-0 flex flex-grow text-white font-medium bg-transparent tracking-wider text-lg sm:text-xl placeholder-grey-300 outline-none',
@@ -321,7 +371,7 @@ function buildSearchBackdrop() {
   const searchBackdropContainer = div(
     {
       id: 'search-container',
-      class: 'h-screen fixed top-0 left-0 z-50 transition-all -translate-y-full [&_#search-product]:hidden [&_#search-content]:hidden',
+      class: 'h-screen fixed top-0 left-0 z-50 transition-all duration-150 -translate-y-full [&_#search-product]:hidden [&_#search-content]:hidden',
     },
     div(
       {
@@ -417,7 +467,7 @@ export default function decorate(block) {
     );
     parentWrapper.append(searchBar);
     parentWrapper.append(buildSearchBackdrop());
-    parentWrapper.append(div({ id: 'search-container-child', class: 'h-screen fixed top-0 left-0 bg-gradient-to-bl from-black to-gray-800 opacity-60 z-40 transition-all -translate-y-full' }));
+    parentWrapper.append(div({ id: 'search-container-child', class: 'h-screen fixed top-0 left-0 bg-black opacity-75 z-40 transition-all -translate-y-full' }));
     decorateIcons(parentWrapper);
   }
   block.append(pictureTag);
