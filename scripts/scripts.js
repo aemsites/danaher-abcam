@@ -381,3 +381,10 @@ async function loadPage() {
 }
 
 loadPage();
+
+
+// Optimus Config - Start
+window.OptimusConfig = {
+  organizationId: 'danahernonproduction1892f3fhz',
+  bearerToken: 'xx27ea823a-e994-4d71-97f6-403174ec592a'
+};

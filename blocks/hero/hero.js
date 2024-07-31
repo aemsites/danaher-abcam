@@ -19,8 +19,8 @@ let searchInput;
 
 let requestStatus;
 
-const organizationId = 'danahernonproduction1892f3fhz';
-const bearerToken = 'xx27ea823a-e994-4d71-97f6-403174ec592a';
+const organizationId = window.OptimusConfig !== undefined ? window.OptimusConfig.organizationId : 'danahernonproduction1892f3fhz';
+const bearerToken = window.OptimusConfig !== undefined ? window.OptimusConfig.bearerToken : 'xx27ea823a-e994-4d71-97f6-403174ec592a';
 
 function localSessionStorage() {
   const allStoredPaths = localStorage.getItem('past-coveo-history');
