@@ -52,6 +52,10 @@
   height: 1.75rem
 }
 
+.teasers-wrapper :is(.w-\[90\%\]) {
+  width: 90%
+}
+
 .teasers-wrapper :is(.w-full) {
   width: 100%
 }
@@ -182,11 +186,6 @@
   color: rgb(17 94 89 / 0.7)
 }
 
-.teasers-wrapper :is(.invert) {
-  --tw-invert: invert(100%);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
-}
-
 .teasers-wrapper :is(.transition-all) {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -210,4 +209,20 @@
 
 .teasers-wrapper :is(.group:hover .group-hover\:underline) {
   text-decoration-line: underline
+}
+
+@media (max-width: 767px) {
+  .teasers-wrapper :is(.max-\[767px\]\:right-8) {
+    right: 2rem
+  }
+
+  .teasers-wrapper :is(.max-\[767px\]\:w-\[75\%\]) {
+    width: 75%
+  }
+}
+
+@media (max-width: 375px) {
+  .teasers-wrapper :is(.max-\[375px\]\:break-words) {
+    overflow-wrap: break-word
+  }
 }
