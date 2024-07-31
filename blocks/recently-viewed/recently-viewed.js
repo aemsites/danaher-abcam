@@ -259,10 +259,8 @@ export default async function decorate(block) {
     );
   }
 
-  productsArray = productsArray.filter((product, index, self) => 
-    index === self.findIndex((productIndex) => productIndex.code === product.code)
-  );
-  
+  productsArray = productsArray.filter((product, index, self) => index === self.findIndex((productIndex) => productIndex.code === product.code));
+
   const filteredProductsArray = productsArray.filter((product) => product.code !== productCode);
 
   if (filteredProductsArray.length > 0) {
@@ -284,4 +282,3 @@ export default async function decorate(block) {
     initializeSlider(sliderContainer, sliderWrapper, prevButton, nextButton, dotsContainer);
   }
 }
-
