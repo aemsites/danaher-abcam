@@ -1,3 +1,54 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components {
+    header {
+        @apply h-11 lg:h-[74px];
+    }
+
+    .home-page main .section > div.hero-wrapper {
+        @apply h-[496px];
+    }
+
+    main .section.hide-section {
+        @apply !hidden;
+    }
+
+    main .section > div.episodes-wrapper {
+        @apply h-[2205px] lg:h-[1182px] bg-black text-white;
+    }
+
+    main .section > div.episodes-wrapper > div.episode-heading {
+        @apply text-center text-4xl font-semibold py-8;
+    }
+
+    main .section > .product-overview-wrapper {
+        @apply pt-8 col-span-12 lg:col-span-8;
+    }
+
+    main .section > .product-buybox-wrapper {
+        @apply py-8 col-start-10 col-span-3;
+    }
+
+    main .section > .product-reactivity-wrapper {
+        @apply mx-auto max-[768px]:w-full py-8;
+    }
+
+    main .section > .product-target-data-wrapper {
+        @apply mx-auto max-[768px]:w-full py-8;
+    }
+
+    main .section > .recommended-products-wrapper {
+        @apply mx-auto  max-[768px]:w-full py-8;
+    }
+
+    main .section > .recently-viewed-wrapper {
+        @apply mx-auto max-[768px]:w-full py-8;
+    }
+
+    .search-results main {
+        @apply min-h-[91rem] h-auto w-full;
+    }
+}

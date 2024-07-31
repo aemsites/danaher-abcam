@@ -47,6 +47,11 @@ const fileMappings = [
     wrapper: 'accordion-wrapper',
   },
   {
+    content: './blocks/teasers/teasers.js',
+    output: './blocks/teasers/teasers.css',
+    wrapper: 'teasers-wrapper',
+  },
+  {
     content: './blocks/sticky-right-navigation/sticky-right-navigation.js',
     output: './blocks/sticky-right-navigation/sticky-right-navigation.css',
     wrapper: 'sticky-right-navigation',
@@ -82,6 +87,10 @@ const fileMappings = [
     output: './templates/product-detail/product-detail.css',
   },
   {
+    content: './templates/search-results/search-results.js',
+    output: './templates/search-results/search-results.css',
+  },
+  {
     content: './blocks/child-page/child-page.js',
     output: './blocks/child-page/child-page.css',
     wrapper: 'child-page-wrapper',
@@ -100,6 +109,101 @@ const fileMappings = [
     content: './blocks/breadcrumb/breadcrumb.js',
     output: './blocks/breadcrumb/breadcrumb.css',
     wrapper: 'breadcrumb-wrapper',
+  },
+  {
+    content: './blocks/card-slider/card-slider.js',
+    output: './blocks/card-slider/card-slider.css',
+    wrapper: 'card-slider-wrapper',
+  },
+  {
+    content: './blocks/download-block/download-block.js',
+    output: './blocks/download-block/download-block.css',
+    wrapper: 'download-block-wrapper',
+  },
+  {
+    content: './blocks/tab-component/tab-component.js',
+    output: './blocks/tab-component/tab-component.css',
+    wrapper: 'tab-component-wrapper',
+  },
+  {
+    content: './blocks/episodes/episodes.js',
+    output: './blocks/episodes/episodes.css',
+    wrapper: 'episodes-wrapper',
+  },
+  {
+    content: './blocks/hero-video/hero-video.js',
+    output: './blocks/hero-video/hero-video.css',
+    wrapper: 'hero-video-wrapper',
+  },
+  {
+    content: './blocks/marketo-form/marketo-form.js',
+    output: './blocks/marketo-form/marketo-form.css',
+    wrapper: 'marketo-form-wrapper',
+  },
+  {
+    content: './blocks/disclaimer/disclaimer.js',
+    output: './blocks/disclaimer/disclaimer.css',
+    wrapper: 'disclaimer-wrapper',
+  },
+  {
+    content: './blocks/product-tabs/product-tabs.js',
+    output: './blocks/product-tabs/product-tabs.css',
+    wrapper: 'product-tabs-wrapper',
+  },
+  {
+    content: './blocks/product-overview/product-overview.js',
+    output: './blocks/product-overview/product-overview.css',
+    wrapper: 'product-overview-wrapper',
+  },
+  {
+    content: './blocks/product-buybox/product-buybox.js',
+    output: './blocks/product-buybox/product-buybox.css',
+    wrapper: 'product-buybox-wrapper',
+  },
+  {
+    content: './blocks/product-reactivity/product-reactivity.js',
+    output: './blocks/product-reactivity/product-reactivity.css',
+    wrapper: 'product-reactivity-wrapper',
+  },
+  {
+    content: './blocks/product-target-data/product-target-data.js',
+    output: './blocks/product-target-data/product-target-data.css',
+    wrapper: 'product-target-data-wrapper',
+  },
+  {
+    content: './blocks/recommended-products/recommended-products.js',
+    output: './blocks/recommended-products/recommended-products.css',
+    wrapper: 'recommended-products-wrapper',
+  },
+  {
+    content: './blocks/recently-viewed/recently-viewed.js',
+    output: './blocks/recently-viewed/recently-viewed.css',
+    wrapper: 'recently-viewed-wrapper',
+  },
+  {
+    content: './blocks/product-datasheet/product-datasheet.js',
+    output: './blocks/product-datasheet/product-datasheet.css',
+    wrapper: 'product-datasheet-wrapper',
+  },
+  {
+    content: './blocks/product-downloads/product-downloads.js',
+    output: './blocks/product-downloads/product-downloads.css',
+    wrapper: 'product-downloads-wrapper',
+  },
+  {
+    content: './blocks/product-protocols/product-protocols.js',
+    output: './blocks/product-protocols/product-protocols.css',
+    wrapper: 'product-protocols-wrapper',
+  },
+  {
+    content: './blocks/cta/cta.js',
+    output: './blocks/cta/cta.css',
+    wrapper: 'cta-wrapper',
+  },
+  {
+    content: './blocks/page-navigation/page-navigation.js',
+    output: './blocks/page-navigation/page-navigation.css',
+    wrapper: 'page-navigation-wrapper',
   },
 ];
 

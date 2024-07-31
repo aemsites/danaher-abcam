@@ -1,0 +1,66 @@
+.disclaimer-wrapper :is(.mx-auto) {
+  margin-left: auto;
+  margin-right: auto
+}
+
+.disclaimer-wrapper :is(.mb-2) {
+  margin-bottom: 0.5rem
+}
+
+.disclaimer-wrapper :is(.box-content) {
+  box-sizing: content-box
+}
+
+.disclaimer-wrapper :is(.block) {
+  display: block
+}
+
+.disclaimer-wrapper :is(.flex) {
+  display: flex
+}
+
+.disclaimer-wrapper :is(.w-\[87\%\]) {
+  width: 87%
+}
+
+.disclaimer-wrapper :is(.flex-col) {
+  flex-direction: column
+}
+
+.disclaimer-wrapper :is(.justify-center) {
+  justify-content: center
+}
+
+.disclaimer-wrapper :is(.px-4) {
+  padding-left: 1rem;
+  padding-right: 1rem
+}
+
+.disclaimer-wrapper :is(.py-8) {
+  padding-top: 2rem;
+  padding-bottom: 2rem
+}
+
+.disclaimer-wrapper :is(.text-xs\/6) {
+  font-size: 0.75rem;
+  line-height: 1.5rem
+}
+
+.disclaimer-wrapper :is(.font-normal) {
+  font-weight: 400
+}
+
+.disclaimer-wrapper :is(.tracking-wider) {
+  letter-spacing: 0.05em
+}
+
+.disclaimer-wrapper :is(.text-\[\#65797C\]) {
+  --tw-text-opacity: 1;
+  color: rgb(101 121 124 / var(--tw-text-opacity))
+}
+
+@media (max-width: 768px) {
+  .disclaimer-wrapper :is(.max-\[768px\]\:w-full) {
+    width: 100%
+  }
+}

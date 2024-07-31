@@ -1,0 +1,150 @@
+.episodes-wrapper :is(.row-span-2) {
+  grid-row: span 2 / span 2
+}
+
+.episodes-wrapper :is(.m-auto) {
+  margin: auto
+}
+
+.episodes-wrapper :is(.block) {
+  display: block
+}
+
+.episodes-wrapper :is(.flex) {
+  display: flex
+}
+
+.episodes-wrapper :is(.grid) {
+  display: grid
+}
+
+.episodes-wrapper :is(.h-full) {
+  height: 100%
+}
+
+.episodes-wrapper :is(.w-40) {
+  width: 10rem
+}
+
+.episodes-wrapper :is(.w-80) {
+  width: 20rem
+}
+
+.episodes-wrapper :is(.w-\[50\%\]) {
+  width: 50%
+}
+
+.episodes-wrapper :is(.max-w-52) {
+  max-width: 13rem
+}
+
+.episodes-wrapper :is(.transform) {
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+
+.episodes-wrapper :is(.grid-cols-1) {
+  grid-template-columns: repeat(1, minmax(0, 1fr))
+}
+
+.episodes-wrapper :is(.items-center) {
+  align-items: center
+}
+
+.episodes-wrapper :is(.justify-center) {
+  justify-content: center
+}
+
+.episodes-wrapper :is(.rounded-2xl) {
+  border-radius: 1rem
+}
+
+.episodes-wrapper :is(.border) {
+  border-width: 1px
+}
+
+.episodes-wrapper :is(.border-white) {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity))
+}
+
+.episodes-wrapper :is(.object-cover) {
+  -o-object-fit: cover;
+     object-fit: cover
+}
+
+.episodes-wrapper :is(.p-2) {
+  padding: 0.5rem
+}
+
+.episodes-wrapper :is(.p-20) {
+  padding: 5rem
+}
+
+.episodes-wrapper :is(.py-4) {
+  padding-top: 1rem;
+  padding-bottom: 1rem
+}
+
+.episodes-wrapper :is(.pb-2) {
+  padding-bottom: 0.5rem
+}
+
+.episodes-wrapper :is(.pb-8) {
+  padding-bottom: 2rem
+}
+
+.episodes-wrapper :is(.text-center) {
+  text-align: center
+}
+
+.episodes-wrapper :is(.text-4xl) {
+  font-size: 2.25rem;
+  line-height: 2.5rem
+}
+
+.episodes-wrapper :is(.text-base) {
+  font-size: 1rem;
+  line-height: 1.5rem
+}
+
+.episodes-wrapper :is(.font-light) {
+  font-weight: 300
+}
+
+.episodes-wrapper :is(.transition) {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms
+}
+
+.episodes-wrapper :is(.duration-500) {
+  transition-duration: 500ms
+}
+
+.episodes-wrapper :is(.hover\:scale-105:hover) {
+  --tw-scale-x: 1.05;
+  --tw-scale-y: 1.05;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+
+@media (max-width: 767px) {
+  .episodes-wrapper :is(.max-\[767px\]\:h-\[400px\]) {
+    height: 400px
+  }
+
+  .episodes-wrapper :is(.max-\[767px\]\:w-auto) {
+    width: auto
+  }
+}
+
+@media (min-width: 1024px) {
+  .episodes-wrapper :is(.lg\:grid-cols-3) {
+    grid-template-columns: repeat(3, minmax(0, 1fr))
+  }
+
+  .episodes-wrapper :is(.lg\:p-0) {
+    padding: 0px
+  }
+}

@@ -51,6 +51,7 @@ function buildSearchBlock(headerBlock) {
   } else {
     logoPictureBlock.href = 'https://main--danaher-optimus--aemsites.hlx.page/';
   }
+  logoPictureBlock.setAttribute('aria-label', 'Abcam Logo');
 
   const hamburgerIcon = button(
     {
