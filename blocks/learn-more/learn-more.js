@@ -1,7 +1,7 @@
 import { div, hr } from '../../scripts/dom-builder.js';
 
 export default function decorate(block) {
-  block.classList.add(...'flex flex-col md:flex-row justify-between gap-4 max-w-[600px] m-2 p-2'.split(' '));
+  block.classList.add(...'flex flex-col justify-between gap-4 max-w-[600px] m-2 px-6 py-2'.split(' '));
   [...block.children].forEach((row) => {
     let type = '';
     const h3Heading = row.querySelector('h3');

@@ -1,20 +1,19 @@
-import { loadFragment } from '../fragment/fragment.js';
+import { loadFragment } from '../blocks/fragment/fragment.js';
 import {
-  buildBlock, decorateBlock, decorateIcons, loadBlock, loadCSS,
-} from '../../scripts/aem.js';
-import { span, button } from '../../scripts/dom-builder.js';
+  buildBlock, decorateIcons,
+} from './aem.js';
+import { span, button } from './dom-builder.js';
 
 // This is not a traditional block, so there is no decorate function. Instead, links to
 // a */modals/* path  are automatically transformed into a modal. Other blocks can also use
 // the createModal() and openModal() functions.
 
 export async function createModal(contentNodes) {
-  await loadCSS(`${window.hlx.codeBasePath}/blocks/modal/modal.css`);
   const dialog = document.createElement('dialog');
   dialog.classList.add(...'border rounded transform flex flex-col-reverse'.split(' '));
   const dialogContent = document.createElement('div');
   dialogContent.classList.add(...'modal-content flex flex-col'.split(' '));
-  dialogContent.append(...contentNodes);
+  dialogContent.append(contentNodes);
   dialog.append(dialogContent);
   const closeButton = button(
     {
@@ -38,15 +37,14 @@ export async function createModal(contentNodes) {
 
   const block = buildBlock('modal', '');
   document.querySelector('main').append(block);
-  decorateBlock(block);
-  await loadBlock(block);
+  // decorateBlock(block);
+  // await loadBlock(block);
   decorateIcons(closeButton);
 
   dialog.addEventListener('close', () => {
     document.body.classList.remove('modal-open');
     block.remove();
   });
-
   block.append(dialog);
   return {
     block,
@@ -55,7 +53,6 @@ export async function createModal(contentNodes) {
       // Google Chrome restores the scroll position when the dialog is reopened,
       // so we need to reset it.
       setTimeout(() => { dialogContent.scrollTop = 0; }, 0);
-
       document.body.classList.add('modal-open');
     },
   };
@@ -65,8 +62,9 @@ export async function openModal(fragmentUrl) {
   const path = fragmentUrl.startsWith('http')
     ? new URL(fragmentUrl, window.location).pathname
     : fragmentUrl;
-
+  console.log('openModal : ', path);
   const fragment = await loadFragment(path);
-  const { showModal } = await createModal(fragment.childNodes);
-  showModal();
+  console.log('fragment : ', fragment.childNodes);
+  const customModal = await createModal(path);
+  customModal.showModal();
 }

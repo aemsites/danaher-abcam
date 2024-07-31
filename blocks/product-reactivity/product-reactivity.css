@@ -91,11 +91,6 @@
   width: 100%
 }
 
-.product-reactivity-wrapper :is(.w-fit) {
-  width: -moz-fit-content;
-  width: fit-content
-}
-
 .product-reactivity-wrapper :is(.border-separate) {
   border-collapse: separate
 }
@@ -148,16 +143,8 @@
   row-gap: 1rem
 }
 
-.product-reactivity-wrapper :is(.justify-self-end) {
-  justify-self: end
-}
-
 .product-reactivity-wrapper :is(.overflow-hidden) {
   overflow: hidden
-}
-
-.product-reactivity-wrapper :is(.whitespace-nowrap) {
-  white-space: nowrap
 }
 
 .product-reactivity-wrapper :is(.rounded-\[16px\]) {
@@ -170,10 +157,6 @@
 
 .product-reactivity-wrapper :is(.rounded-lg) {
   border-radius: 0.5rem
-}
-
-.product-reactivity-wrapper :is(.rounded-2xl) {
-  border-radius: 1rem
 }
 
 .product-reactivity-wrapper :is(.border) {
@@ -235,10 +218,6 @@
   padding-bottom: 1.25rem
 }
 
-.product-reactivity-wrapper :is(.pl-3) {
-  padding-left: 0.75rem
-}
-
 .product-reactivity-wrapper :is(.text-left) {
   text-align: left
 }
@@ -281,10 +260,6 @@
 
 .product-reactivity-wrapper :is(.font-semibold) {
   font-weight: 600
-}
-
-.product-reactivity-wrapper :is(.capitalize) {
-  text-transform: capitalize
 }
 
 .product-reactivity-wrapper :is(.leading-\[1\.33\]) {
@@ -345,11 +320,6 @@
 
 .product-reactivity-wrapper :is(.hover\:cursor-pointer:hover) {
   cursor: pointer
-}
-
-.product-reactivity-wrapper :is(.hover\:bg-\[\#3B3B3B\]:hover) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(59 59 59 / var(--tw-bg-opacity))
 }
 
 .product-reactivity-wrapper :is(.hover\:underline:hover) {
