@@ -1,5 +1,8 @@
 mountpoints:
-  /: https://author-p93411-e849602.adobeaemcloud.com/bin/franklin.delivery/aemsites/danaher-abcam/main
+  /:
+    https://author-p93411-e849602.adobeaemcloud.com/bin/franklin.delivery/aemsites/danaher-abcam/main
+    type: "markup"
+    suffix: ".html"
 
 folders:
   /en-nl/products/reagents/: /products/dynamic-products
