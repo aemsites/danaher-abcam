@@ -259,7 +259,20 @@ export default async function decorate(block) {
     );
   }
 
-  productsArray = productsArray.filter((product, index, self) => index === self.findIndex((productIndex) => productIndex.code === product.code));
+  function findFirstIndex(product, self) {
+    return self.findIndex((productIndex) => productIndex.code === product.code);
+  }
+
+  function isFirstOccurrence(product, index, self) {
+    const firstIndex = findFirstIndex(product, self);
+    return index === firstIndex;
+  }
+
+  function filterUniqueProducts(products) {
+    return products.filter((product, index, self) => isFirstOccurrence(product, index, self));
+  }
+
+  productsArray = filterUniqueProducts(productsArray);
 
   const filteredProductsArray = productsArray.filter((product) => product.code !== productCode);
 
