@@ -82,12 +82,13 @@ export default async function decorate(block) {
   const response = await getProductResponse();
   const rawData = response?.at(0)?.raw;
   const targetJson = rawData?.targetjson;
-
   // Extracting alternativeNames array
-  const data = targetJson ? JSON.parse(targetJson) : [];
-  const { alternativeNames } = data;
+  const targetJsonData = targetJson ? JSON.parse(targetJson) : [];
+  const alternativeNames = targetJsonData.alternativeNames
+    ? div({ class: 'text-[#575757] font-thin break-words' }, (`Alternative names=${targetJsonData.alternativeNames}`)) : '';
   const { title } = rawData;
-  const { description } = rawData;
+  const description = rawData.description
+    ? div({ class: 'text-black text-xl font-normal' }, rawData.description) : '';
   const reviewSummary = JSON.parse(rawData.reviewssummaryjson);
   const { aggregatedRating, numberOfReviews } = reviewSummary;
   const dataIsotype = rawData.isotype;
@@ -96,7 +97,8 @@ export default async function decorate(block) {
   const dataForm = rawData.form;
   const dataClonality = rawData.clonality;
   const immunogenObject = rawData?.immunogenjson ? JSON.parse(rawData.immunogenjson) : {};
-  const dataImmunogen = immunogenObject.sensitivity;
+  const dataImmunogen = immunogenObject.sensitivity
+    ? div({ class: 'mt-8 mb-2' }, createKeyFactElement('Immunogen', immunogenObject.sensitivity)) : '';
   const buttonAlternative = getButtonAlternative(rawData.directreplacementproductjson, 'Consider this alternative');
   const productTags = rawData?.producttags;
   const keyFactsElements = [];
@@ -133,7 +135,7 @@ export default async function decorate(block) {
       div({ class: 'text-black text-4xl pb-4 font-bold' }, title),
       div({ class: 'text-black text-xl font-normal' }, description),
       productTagsDiv,
-      div({ class: 'text-[#575757] font-thin break-words' }, (`Alternative names=${alternativeNames}`)),
+      alternativeNames,
     );
     block.appendChild(datasheetContainer);
   } else if (block.classList.contains('download')) {
@@ -151,12 +153,12 @@ export default async function decorate(block) {
       getReviewsRatings(aggregatedRating, numberOfReviews),
       div({ class: 'border-t-[1px] border-[#dde1e1] my-6' }),
       productTagsDiv,
-      div({ class: 'text-[#575757] font-thin break-words' }, (`Alternative names=${alternativeNames}`)),
+      alternativeNames,
       div(
         { class: 'grid pt-10 max-[799px]:grid-cols-1' },
         div({ class: 'grid grid-cols-3 gap-x-3 gap-y-10' }, ...keyFactsElements),
       ),
-      div({ class: 'mt-8 mb-2' }, createKeyFactElement('Immunogen', dataImmunogen)),
+      dataImmunogen,
       buttonAlternative,
     );
     decorateIcons(overviewContainer);

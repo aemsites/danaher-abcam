@@ -69,6 +69,13 @@ export function debounce(func, timeout = 300) {
   };
 }
 
+export function isValidProperty(property) {
+  if (property && String(property).trim() !== '' && String(property).trim() !== 'null' && String(property).trim() !== 'undefined') {
+    return true;
+  }
+  return false;
+}
+
 export function createRequest(config) {
   const {
     url,

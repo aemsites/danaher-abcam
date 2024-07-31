@@ -1,4 +1,5 @@
 import { getProductResponse } from '../../scripts/search.js';
+import { isValidProperty } from '../../scripts/scripts.js';
 import {
   div, h2, h6, p, a,
 } from '../../scripts/dom-builder.js';
@@ -64,36 +65,37 @@ export default async function decorate(block) {
   if (dataImmunogen) {
     keyFactsElements.push(createParagraph('Immunogen', dataImmunogen));
   }
-  if (dataCloneNumber && dataCloneNumber.trim() !== 'null' && dataCloneNumber.trim() !== '') {
+  if (isValidProperty(dataCloneNumber)) {
     keyFactsElements.push(createParagraph('Clone number', dataCloneNumber));
   }
   if (dataPurity) {
     keyFactsElements.push(createParagraph('Purification technique', `${dataPurity} ${dataReagent}`));
   }
-  if (specificityText && specificityText.trim() !== 'null' && specificityText.trim() !== '') {
+  if (isValidProperty(specificityText)) {
     keyFactsElements.push(createParagraph('Specificity', specificityText));
   }
   if (dataConcentration) {
     keyFactsElements.push(createParagraph('Concentration', dataConcentration));
   }
-
-  const productKeyfacts = div(
-    { class: 'product-keyfacts grid grid-cols-[320px_minmax(auto,_1fr)] border-t-[1px] border-[#dde1e1] pt-10 mt-10 max-[799px]:grid-cols-1' },
-    h2({ class: 'text-2xl font-semibold text-[#2a3c3c] mb-6' }, 'Key Facts'),
-    div(
-      { class: 'keyfacts-content grid grid-cols-2 gap-x-3 gap-y-10' },
-      ...keyFactsElements,
-    ),
-  );
-
+  if (keyFactsElements.length) {
+    const productKeyfacts = div(
+      { class: 'product-keyfacts grid grid-cols-[320px_minmax(auto,_1fr)] border-t-[1px] border-[#dde1e1] pt-10 mt-10 max-[799px]:grid-cols-1' },
+      h2({ class: 'text-2xl font-semibold text-[#2a3c3c] mb-6' }, 'Key Facts'),
+      div(
+        { class: 'keyfacts-content grid grid-cols-2 gap-x-3 gap-y-10' },
+        ...keyFactsElements,
+      ),
+    );
+    block.appendChild(productKeyfacts);
+  }
   const storageElements = [];
   if (dataStorage) {
     storageElements.push(createParagraph('Shipped at conditions', dataStorage));
   }
-  if (dataStorageDuration && String(dataStorageDuration).trim() !== '' && String(dataStorageDuration).trim() !== 'null') {
+  if (isValidProperty(dataStorageDuration)) {
     storageElements.push(createParagraph('Appropriate short-term storage duration', dataStorageDuration));
   }
-  if (dataShorttermDuration && String(dataShorttermDuration).trim() !== '' && String(dataShorttermDuration).trim() !== 'null') {
+  if (isValidProperty(dataShorttermDuration)) {
     storageElements.push(createParagraph('Appropriate short-term storage conditions', dataShorttermDuration));
   }
   if (dataStorageConditions) {
@@ -105,24 +107,27 @@ export default async function decorate(block) {
   if (dataStorageInformation) {
     storageElements.push(createParagraph('Storage information', dataStorageInformation));
   }
-
-  const productStorage = div(
-    { class: 'product-storage grid grid-cols-[320px_minmax(auto,_1fr)] border-t-[2px] border-[#dde1e1] pt-10 mt-10 max-[799px]:grid-cols-1' },
-    h2({ class: 'text-2xl font-semibold text-[#2a3c3c] mb-6' }, 'Storage'),
-    div(
-      { class: 'keyfacts-content grid grid-cols-2 gap-x-3 gap-y-10' },
-      ...storageElements,
-    ),
-  );
-
-  const productNotesSection = div(
-    { class: 'product-notes grid grid-cols-[320px_minmax(auto,_1fr)] border-t-[2px] border-[#dde1e1] pt-10 mt-10 max-[799px]:grid-cols-1' },
-    h2({ class: 'text-2xl font-semibold text-[#2a3c3c] mb-6' }, 'Notes'),
-    div(
-      { class: 'notes-content' },
-    ),
-  );
-
+  if (storageElements.length) {
+    const productStorage = div(
+      { class: 'product-storage grid grid-cols-[320px_minmax(auto,_1fr)] border-t-[2px] border-[#dde1e1] pt-10 mt-10 max-[799px]:grid-cols-1' },
+      h2({ class: 'text-2xl font-semibold text-[#2a3c3c] mb-6' }, 'Storage'),
+      div(
+        { class: 'keyfacts-content grid grid-cols-2 gap-x-3 gap-y-10' },
+        ...storageElements,
+      ),
+    );
+    block.appendChild(productStorage);
+  }
+  if (isValidProperty(strToHtml)) {
+    const productNotesSection = div(
+      { class: 'product-notes grid grid-cols-[320px_minmax(auto,_1fr)] border-t-[2px] border-[#dde1e1] pt-10 mt-10 max-[799px]:grid-cols-1' },
+      h2({ class: 'text-2xl font-semibold text-[#2a3c3c] mb-6' }, 'Notes'),
+      div(
+        { class: 'notes-content' },
+      ),
+    );
+    block.appendChild(productNotesSection);
+  }
   const productPromise = div(
     { class: 'product-promise grid grid-cols-[320px_minmax(auto,_1fr)] border-t-[2px] border-[#dde1e1] pt-10 mt-10 max-[799px]:grid-cols-1' },
     h2({ class: 'section-title text-2xl font-semibold text-[#2a3c3c] mb-6' }, 'Product Promise'),
@@ -137,10 +142,6 @@ export default async function decorate(block) {
       ),
     ),
   );
-
-  block.appendChild(productKeyfacts);
-  block.appendChild(productStorage);
-  block.appendChild(productNotesSection);
   block.appendChild(productPromise);
 
   const notesContent = block.querySelector('.notes-content');
