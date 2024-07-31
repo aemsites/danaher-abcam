@@ -327,6 +327,16 @@ async function loadEager(doc) {
   }
 }
 
+export function fetchLocaleCode(){
+  const path = window.location.pathname;
+  const match = path.match(/\/([a-z]{2}-[a-z]{2})\//i);
+  let languageCode = 'en-us';
+  if (match) {
+    languageCode = match?.at(1);
+  }
+  return languageCode;
+}
+
 // Changes date format from excel general format to date
 export function formatDateRange(date) {
   const options = {

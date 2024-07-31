@@ -2,6 +2,7 @@ import {
   div, button, span, a, ul, li, h4,
 } from '../../scripts/dom-builder.js';
 import { decorateIcons } from '../../scripts/aem.js';
+import { fetchLocaleCode } from '../../scripts/scripts.js';
 
 function showFlyoutMenu() {
   document.querySelector('#menu-flyout')?.classList.remove('hidden');
@@ -213,7 +214,8 @@ function handleScroll() {
 }
 
 export default async function decorate(block) {
-  const resp = await fetch('/nav.plain.html');
+  const locale = fetchLocaleCode();
+  const resp = await fetch(`${locale}/nav.plain.html`);
 
   if (resp.ok) {
     const html = await resp.text();

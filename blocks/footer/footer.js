@@ -1,5 +1,6 @@
 import { readBlockConfig, decorateIcons } from '../../scripts/aem.js';
 import { div, span } from '../../scripts/dom-builder.js';
+import { fetchLocaleCode } from '../../scripts/scripts.js';
 
 /**
  * Adding Hyperlinks to social icons. Links which are authored in the sharepoint
@@ -129,10 +130,11 @@ function createFooterDOM(mainContainer) {
  * @param {Element} block The footer block element
  */
 export default async function decorate(block) {
+  const locale = fetchLocaleCode();
   block.classList.add(...'pt-8 pb-8 mt-auto text-white bg-black'.split(' '));
   const cfg = readBlockConfig(block);
   const footerPath = cfg.footer || '/footer';
-  const response = await fetch(`${footerPath}.plain.html`, window.location.pathname.endsWith('/footer') ? { cache: 'reload' } : {});
+  const response = await fetch(`${locale}${footerPath}.plain.html`, window.location.pathname.endsWith('/footer') ? { cache: 'reload' } : {});
 
   if (response.ok) {
     const html = await response.text();
