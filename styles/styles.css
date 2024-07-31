@@ -806,18 +806,9 @@ main .section > .recently-viewed-wrapper {
   border-width: 1px;
 }
 
-.border-\[\#378189\] {
-  --tw-border-opacity: 1;
-  border-color: rgb(55 129 137 / var(--tw-border-opacity));
-}
-
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.p-4 {
-  padding: 1rem;
 }
 
 .p-0 {
