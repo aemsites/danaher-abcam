@@ -115,6 +115,11 @@ const fileMappings = [
     wrapper: 'breadcrumb-wrapper',
   },
   {
+    content: './blocks/pagination/pagination.js',
+    output: './blocks/pagination/pagination.css',
+    wrapper: 'pagination-wrapper',
+  },
+  {
     content: './blocks/card-slider/card-slider.js',
     output: './blocks/card-slider/card-slider.css',
     wrapper: 'card-slider-wrapper',

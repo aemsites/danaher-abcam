@@ -6,7 +6,7 @@ import {
 import { getMetadata } from '../../scripts/aem.js';
 import { formatDate } from '../../scripts/scripts.js';
 
-async function fetchPostData() {
+export async function fetchPostData() {
   try {
     const response = await fetch('/drafts/query-index.json');
     const jsonData = await response.json();
