@@ -6,8 +6,6 @@
     "/content/danaher/abcam/metadata:/metadata.json"
   ],
   "includes": [
-    "/content/danaher/abcam/en-us",
-    "/content/danaher/abcam/configuration",
-    "/content/danaher/abcam/metadata"
+    "/content/danaher/abcam"
   ]
 }
