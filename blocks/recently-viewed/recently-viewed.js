@@ -233,7 +233,10 @@ export default async function decorate(block) {
   let agrRating = null;
   let numOfReviews;
 
-  const reviewSummary = responseData.reviewssummaryjson ? JSON.parse(responseData.reviewssummaryjson) : null;
+  const reviewSummary = responseData.reviewssummaryjson
+    ? JSON.parse(responseData.reviewssummaryjson)
+    : null;
+
   if (reviewSummary) {
     agrRating = reviewSummary.aggregatedRating;
     numOfReviews = reviewSummary.numberOfReviews;
@@ -250,10 +253,16 @@ export default async function decorate(block) {
       numberOfReviews: numOfReviews,
     });
 
-    localStorage.setItem('products', JSON.stringify(productsArray));
+    localStorage.setItem(
+      'products',
+      JSON.stringify(productsArray),
+    );
   }
 
-  productsArray = productsArray.filter((product, index, self) => index === self.findIndex((productIndex) => productIndex.code === product.code));
+  productsArray =
+    productsArray.filter((product, index, self) =>
+      index === self.findIndex((productIndex) => productIndex.code === product.code)
+    );
 
   const filteredProductsArray = productsArray.filter((product) => product.code !== productCode);
 
