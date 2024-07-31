@@ -10,14 +10,14 @@ import { span, button } from './dom-builder.js';
 
 export async function createModal(contentNodes) {
   const dialog = document.createElement('dialog');
-  dialog.classList.add(...'border rounded transform flex flex-col-reverse'.split(' '));
+  dialog.classList.add(...'p-0 border rounded transform flex flex-col-reverse'.split(' '));
   const dialogContent = document.createElement('div');
   dialogContent.classList.add(...'modal-content flex flex-col'.split(' '));
-  dialogContent.append(contentNodes);
+  dialogContent.append(...contentNodes);
   dialog.append(dialogContent);
   const closeButton = button(
     {
-      class: 'close-btn float-right bg-white rounded-full p-4 ml-auto w-max inline-flex',
+      class: 'close-btn float-right bg-white rounded-full p-3 ml-auto w-max inline-flex',
       'aria-label': 'Close',
       type: 'button',
       onclick: () => dialog.close(),
@@ -45,6 +45,7 @@ export async function createModal(contentNodes) {
     document.body.classList.remove('modal-open');
     block.remove();
   });
+
   block.append(dialog);
   return {
     block,
@@ -53,6 +54,7 @@ export async function createModal(contentNodes) {
       // Google Chrome restores the scroll position when the dialog is reopened,
       // so we need to reset it.
       setTimeout(() => { dialogContent.scrollTop = 0; }, 0);
+
       document.body.classList.add('modal-open');
     },
   };
@@ -62,9 +64,8 @@ export async function openModal(fragmentUrl) {
   const path = fragmentUrl.startsWith('http')
     ? new URL(fragmentUrl, window.location).pathname
     : fragmentUrl;
-  console.log('openModal : ', path);
+
   const fragment = await loadFragment(path);
-  console.log('fragment : ', fragment.childNodes);
-  const customModal = await createModal(path);
-  customModal.showModal();
+  const { showModal } = await createModal(fragment.childNodes);
+  showModal();
 }
