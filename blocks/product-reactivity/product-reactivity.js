@@ -51,7 +51,7 @@ function productPromise() {
     ),
   );
   const tablebutton = a(
-    { class: 'button h-8 flex items-center rounded-[16px] px-3 py-2 text-base tracking-[.0125rem] border border-black max-[959px]:w-fit', href: '/modals/learn-more' },
+    { class: 'button h-8 flex items-center rounded-[16px] px-3 py-2 text-base tracking-[.0125rem] border border-black max-[959px]:w-fit', href: '/modals/product-promise' },
     span({ class: 'learnmore align-center' }, 'Learn more'),
     span({ class: 'arrow-icon icon icon-chevron-down-white rotate-0' }),
     span(img({ class: 'w-4', src: '/icons/plus.svg' })),

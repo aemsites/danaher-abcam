@@ -206,9 +206,9 @@ const fileMappings = [
     wrapper: 'page-navigation-wrapper',
   },
   {
-    content: './blocks/learn-more/learn-more.js',
-    output: './blocks/learn-more/learn-more.css',
-    wrapper: 'learn-more-wrapper',
+    content: './blocks/product-promise/product-promise.js',
+    output: './blocks/product-promise/product-promise.css',
+    wrapper: 'product-promise-wrapper',
   },
 ];
 
