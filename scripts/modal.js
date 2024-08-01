@@ -69,3 +69,13 @@ export async function openModal(fragmentUrl) {
   const { showModal } = await createModal(fragment.childNodes);
   showModal();
 }
+
+export function decorateModals(element) {
+  element.addEventListener('click', async (e) => {
+    const origin = e.target.closest('a');
+    if (origin && origin.href && origin.href.includes('/modals/')) {
+      e.preventDefault();
+      openModal(origin.href);
+    }
+  });
+}

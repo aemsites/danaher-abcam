@@ -2,7 +2,7 @@ import { getProductResponse } from '../../scripts/search.js';
 import {
   div, h2, span, button, img, li, ul, thead, tr, table, th, a, tbody, td,
 } from '../../scripts/dom-builder.js';
-import { decorateModals } from '../../scripts/scripts.js';
+import { decorateModals } from '../../scripts/modal.js';
 
 const getReactivityStatus = (reactivityType) => {
   if (reactivityType === 'Tested') {
