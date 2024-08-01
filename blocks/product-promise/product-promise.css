@@ -1,0 +1,129 @@
+.product-promise-wrapper :is(.m-2) {
+  margin: 0.5rem
+}
+
+.product-promise-wrapper :is(.my-2) {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem
+}
+
+.product-promise-wrapper :is(.mb-0) {
+  margin-bottom: 0px
+}
+
+.product-promise-wrapper :is(.mb-1) {
+  margin-bottom: 0.25rem
+}
+
+.product-promise-wrapper :is(.mb-2) {
+  margin-bottom: 0.5rem
+}
+
+.product-promise-wrapper :is(.mb-4) {
+  margin-bottom: 1rem
+}
+
+.product-promise-wrapper :is(.mt-1) {
+  margin-top: 0.25rem
+}
+
+.product-promise-wrapper :is(.mt-\[2px\]) {
+  margin-top: 2px
+}
+
+.product-promise-wrapper :is(.mt-\[8px\]) {
+  margin-top: 8px
+}
+
+.product-promise-wrapper :is(.block) {
+  display: block
+}
+
+.product-promise-wrapper :is(.flex) {
+  display: flex
+}
+
+.product-promise-wrapper :is(.h-3) {
+  height: 0.75rem
+}
+
+.product-promise-wrapper :is(.h-6) {
+  height: 1.5rem
+}
+
+.product-promise-wrapper :is(.h-\[1px\]) {
+  height: 1px
+}
+
+.product-promise-wrapper :is(.w-3) {
+  width: 0.75rem
+}
+
+.product-promise-wrapper :is(.w-6) {
+  width: 1.5rem
+}
+
+.product-promise-wrapper :is(.min-w-8) {
+  min-width: 2rem
+}
+
+.product-promise-wrapper :is(.max-w-\[600px\]) {
+  max-width: 600px
+}
+
+.product-promise-wrapper :is(.flex-col) {
+  flex-direction: column
+}
+
+.product-promise-wrapper :is(.justify-between) {
+  justify-content: space-between
+}
+
+.product-promise-wrapper :is(.gap-2) {
+  gap: 0.5rem
+}
+
+.product-promise-wrapper :is(.gap-4) {
+  gap: 1rem
+}
+
+.product-promise-wrapper :is(.px-6) {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem
+}
+
+.product-promise-wrapper :is(.py-2) {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem
+}
+
+.product-promise-wrapper :is(.text-sm) {
+  font-size: 0.875rem;
+  line-height: 1.25rem
+}
+
+.product-promise-wrapper :is(.text-xl) {
+  font-size: 1.25rem;
+  line-height: 1.75rem
+}
+
+.product-promise-wrapper :is(.font-bold) {
+  font-weight: 700
+}
+
+.product-promise-wrapper :is(.font-normal) {
+  font-weight: 400
+}
+
+.product-promise-wrapper :is(.font-semibold) {
+  font-weight: 600
+}
+
+.product-promise-wrapper :is(.text-\[\#378189\]) {
+  --tw-text-opacity: 1;
+  color: rgb(55 129 137 / var(--tw-text-opacity))
+}
+
+.product-promise-wrapper :is(.underline) {
+  text-decoration-line: underline
+}
