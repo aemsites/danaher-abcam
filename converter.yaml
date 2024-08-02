@@ -1,0 +1,11 @@
+# the origin to fetch content from
+origin: https://www.abcam.com
+internalHost: https://main--danaher-abcam--aemsites.aem.live
+# the live urls of the content
+# this is used to make absolute links to the urls domain reliatve
+# it may be an array, if there are mutliple urls possible like
+# - https://stage.example.com
+# - https://www.example.com
+# - https://example.com
+liveUrls:
+  - https://www.beta.abcam.com
