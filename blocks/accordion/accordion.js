@@ -48,7 +48,7 @@ function createAccordionBlock(
     div(
       { class: 'ms-16 max-[374px]:ms-12' },
       h3({ class: 'w-[90%] text-2xl leading-5 font-semibold max-[767px]:w-[75%]', title }, title),
-      h6({ class: 'w-[90%] text-gray-300 max-[767px]:w-[75%]', title: subTitle }, subTitle),
+      h6({ class: 'text-gray-300 max-[767px]:w-[75%] mt-4', title: subTitle }, subTitle),
     ),
     span({ class: `icon ${openCloseIcon} size-6 absolute right-12 max-[767px]:right-4 fill-current -rotate-90 group-hover:rotate-0 text-gray-400  transform transition-all` }),
   );
