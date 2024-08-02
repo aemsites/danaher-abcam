@@ -75,7 +75,6 @@ function buildSearchBlock(headerBlock) {
   searchHtmlBlock.append(searchNewBlock);
   searchHtmlBlock.append(borderBottom);
   searchHtmlBlock.append(borderBottom);
-  // searchHtmlBlock.innerHTML = searchNewBlock.outerHTML;
   searchHtmlBlock.querySelector('#nav-hamburger').addEventListener('click', (e) => {
     e.preventDefault();
     showFlyoutMenu();
