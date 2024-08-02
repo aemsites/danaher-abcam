@@ -20,7 +20,6 @@ function toggleAccordion(blockUUID, activeAccordion) {
     }
   });
 }
-
 function createAccordionBlock(
   { title, subTitle },
   content,
@@ -45,31 +44,27 @@ function createAccordionBlock(
       'aria-controls': `accordion-${uuid}-${index}`,
       class: 'flex items-center justify-between w-full text-left font-semibold py-2 cursor-pointer peer-[&_span.plus]:opacity-100 peer-checked:[&_span.plus]:opacity-0 peer-checked:[&_span.plus]:rotate-45 peer-checked:[&_span.open-close-icon]:rotate-0',
     },
-    span({ class: `icon ${prefixedIcon} flex size-7 absolute left-8 fill-current text-gray-400` }),
+    span({ class: `icon ${prefixedIcon} flex size-7 max-[374px]:size-5 absolute left-8 fill-current text-gray-400` }),
     div(
-      { class: 'ms-16' },
-      h3({ class: 'text-2xl leading-5 font-semibold', title }, title),
-      h6({ class: 'text-gray-300', title: subTitle }, subTitle),
+      { class: 'ms-16 max-[374px]:ms-12' },
+      h3({ class: 'w-[90%] text-2xl leading-5 font-semibold max-[767px]:w-[75%]', title }, title),
+      h6({ class: 'text-gray-300 max-[767px]:w-[75%] mt-4', title: subTitle }, subTitle),
     ),
-    span({ class: `icon ${openCloseIcon} size-6 absolute right-12 fill-current -rotate-90 group-hover:rotate-0 text-gray-400  transform transition-all` }),
+    span({ class: `icon ${openCloseIcon} size-6 absolute right-12 max-[767px]:right-4 fill-current -rotate-90 group-hover:rotate-0 text-gray-400  transform transition-all` }),
   );
-
   const panel = div(
-    { class: 'grid overflow-hidden transition-all duration-300 ease-in-out grid-rows-[0fr] opacity-0 peer-checked:py-2 pl-16 peer-checked:grid-rows-[1fr] peer-checked:opacity-100' },
+    { class: 'grid overflow-hidden transition-all duration-300 ease-in-out grid-rows-[0fr] opacity-0 peer-checked:py-2 pl-16 max-[767px]:pl-4 peer-checked:grid-rows-[1fr] peer-checked:opacity-100' },
     div({ class: 'accordion-content text-base leading-7 overflow-hidden space-y-4' }),
   );
-
   content.forEach((element) => {
     panel.querySelector('.accordion-content')?.append(element);
   });
-
   summaryContent.addEventListener('click', () => {
     toggleAccordion(customUUID, divEl);
   });
   divEl.append(summaryInput, summaryContent, panel);
   return divEl;
 }
-
 /**
  * loads and decorates the header, mainly the nav
  * @param {Element} block The header block element

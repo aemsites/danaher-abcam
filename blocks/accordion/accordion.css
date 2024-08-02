@@ -64,6 +64,10 @@
   height: 1.75rem
 }
 
+.accordion-wrapper :is(.w-\[90\%\]) {
+  width: 90%
+}
+
 .accordion-wrapper :is(.w-full) {
   width: 100%
 }
@@ -282,6 +286,31 @@
 
 .accordion-wrapper :is(.peer ~ .peer-\[\&_span\.plus\]\:opacity-100 span.plus) {
   opacity: 1
+}
+
+@media (max-width: 767px) {
+  .accordion-wrapper :is(.max-\[767px\]\:right-4) {
+    right: 1rem
+  }
+
+  .accordion-wrapper :is(.max-\[767px\]\:w-\[75\%\]) {
+    width: 75%
+  }
+
+  .accordion-wrapper :is(.max-\[767px\]\:pl-4) {
+    padding-left: 1rem
+  }
+}
+
+@media (max-width: 374px) {
+  .accordion-wrapper :is(.max-\[374px\]\:ms-12) {
+    margin-inline-start: 3rem
+  }
+
+  .accordion-wrapper :is(.max-\[374px\]\:size-5) {
+    width: 1.25rem;
+    height: 1.25rem
+  }
 }
 
 .accordion-wrapper :is(.peer:checked ~ .peer-checked\:\[\&_span\.open-close-icon\]\:rotate-0 span.open-close-icon) {
