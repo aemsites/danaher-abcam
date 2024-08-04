@@ -24,6 +24,12 @@ export default function decorate(block) {
         row.classList.add('flex-col');
       }
 
+      if (!col.querySelector('picture')) {
+        col.classList.add('flex', 'flex-col', 'gap-[18px]');
+      } else {
+        col.classList.add(...'max-w-96 grow-0 shrink-0'.split(' '));
+      }
+
       col.classList.add('flex', 'flex-col', 'gap-[18px]');
       col.querySelectorAll('.button-container').forEach((anchorTag) => {
         anchorTag.classList.add('text-[#378189]', 'underline');

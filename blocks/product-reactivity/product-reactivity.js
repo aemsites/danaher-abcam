@@ -2,6 +2,7 @@ import { getProductResponse } from '../../scripts/search.js';
 import {
   div, h2, span, button, img, li, ul, thead, tr, table, th, a, tbody, td,
 } from '../../scripts/dom-builder.js';
+import { decorateModals } from '../../scripts/modal.js';
 
 const getReactivityStatus = (reactivityType) => {
   if (reactivityType === 'Tested') {
@@ -49,7 +50,13 @@ function productPromise() {
       span('Not recommended'),
     ),
   );
-  const tablebutton = button({ class: 'flex-wrap h-8 rounded-[16px] flex pl-3 px-3 py-2 text-xs tracking-[.0125rem] border border-black max-[959px]:w-fit' }, span({ class: 'learnmore' }, 'Learn more'), span(img({ class: 'w-3', src: '/icons/plus.svg' })));
+  const tablebutton = a(
+    { class: 'button h-8 flex items-center rounded-[16px] px-3 py-2 text-base tracking-[.0125rem] border border-black max-[959px]:w-fit', href: '/modals/product-promise' },
+    span({ class: 'learnmore align-center' }, 'Learn more'),
+    span({ class: 'arrow-icon icon icon-chevron-down-white rotate-0' }),
+    span(img({ class: 'w-4', src: '/icons/plus.svg' })),
+  );
+  decorateModals(tablebutton);
   productNotes.appendChild(productNotesColumn);
   productNotes.appendChild(tablebutton);
   return productNotes;
