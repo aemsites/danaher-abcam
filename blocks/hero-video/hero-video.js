@@ -3,6 +3,18 @@ import {
   div, iframe, span,
 } from '../../scripts/dom-builder.js';
 
+function toggleModalPopUp(parentDiv) {
+  parentDiv.querySelector('.modal').classList.toggle('hidden');
+}
+
+function toggleModalPopUp1(modalPopUp) {
+  modalPopUp.classList.toggle('hidden');
+  const iframe1 = modalPopUp.querySelector('iframe');
+  if (iframe1) {
+    iframe1.src = '';
+  }
+}
+
 function createModalPopUp(videoLink) {
   const modalPopUp = div(
     { class: 'modal hidden fixed z-30 m-0 p-0 w-full h-full' },
@@ -10,7 +22,7 @@ function createModalPopUp(videoLink) {
       { class: 'modal-content bg-black m-auto p-10 max-[576px]:px-2.5 max-[767px]:px-3.5 h-full w-full left-0 text-center' },
       div(
         { class: 'youtube-frame h-3/4 md:h-full' },
-        span({ class: 'close-btn float-right icon icon-close' }),
+        span({ class: 'bg-black close-btn float-right icon icon-close absolute right-[0px] top-[-30px] cursor-pointer p-[10px]', onclick: () => toggleModalPopUp1(modalPopUp) }),
         iframe({
           class: 'm-0 p-0 w-full h-full',
           src: videoLink,
@@ -27,10 +39,6 @@ function createModalPopUp(videoLink) {
   );
   decorateIcons(modalPopUp);
   return modalPopUp;
-}
-
-function toggleModalPopUp(parentDiv) {
-  parentDiv.querySelector('.modal').classList.toggle('hidden');
 }
 
 function loadVideo(parentDiv, divEl, link) {

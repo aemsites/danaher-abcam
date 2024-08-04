@@ -56,6 +56,10 @@
   width: 100%
 }
 
+.teasers-wrapper :is(.w-\[90\%\]) {
+  width: 90%
+}
+
 .teasers-wrapper :is(.max-w-screen-lg) {
   max-width: 1024px
 }
@@ -210,4 +214,20 @@
 
 .teasers-wrapper :is(.group:hover .group-hover\:underline) {
   text-decoration-line: underline
+}
+
+@media (max-width: 767px) {
+  .teasers-wrapper :is(.max-\[767px\]\:right-8) {
+    right: 2rem
+  }
+
+  .teasers-wrapper :is(.max-\[767px\]\:w-\[75\%\]) {
+    width: 75%
+  }
+}
+
+@media (max-width: 375px) {
+  .teasers-wrapper :is(.max-\[375px\]\:break-words) {
+    overflow-wrap: break-word
+  }
 }

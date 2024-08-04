@@ -349,6 +349,7 @@ export function formatDate(date) {
   const formatDate = formattedDate.replace(/,/g, '');
   return formatDate;
 }
+
 /**
  * Loads everything that doesn't need to be delayed.
  * @param {Element} doc The container element

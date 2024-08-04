@@ -26,7 +26,7 @@ function updatedPaginateIndexes(currentPage, existedIndexes) {
   });
 }
 
-function decoratePaginateIndexes(currentPage) {
+function decoratePaginateIndexes(currentPage, element) {
   return [...Array(Math.ceil(allPathways.length / perPageList)).keys()].map((indexNum) => {
     const newIndex = indexNum + 1;
     return li(
@@ -34,7 +34,7 @@ function decoratePaginateIndexes(currentPage) {
         class: `px-4 py-2 rounded-full cursor-pointer ${currentPage === newIndex ? 'active' : ''}`,
         title: newIndex,
         // eslint-disable-next-line no-use-before-define
-        onclick: () => decorateLists(allPathways, newIndex, perPageList),
+        onclick: () => decorateLists({ currentPage: newIndex, tagEl: element }),
       },
       indexNum + 1,
     );
@@ -42,9 +42,9 @@ function decoratePaginateIndexes(currentPage) {
 }
 
 function decorateLists({
-  lists, currentPage = 1, perPage = perPageList, tagEl,
+  currentPage = 1, perPage = perPageList, tagEl,
 }) {
-  const paginatedList = paginate(lists, currentPage, perPage);
+  const paginatedList = paginate(allPathways, currentPage, perPage);
   const ulTag = body.querySelector('ul');
   ulTag.innerHTML = '';
   ulTag.append(
@@ -66,29 +66,29 @@ function decorateLists({
       );
     }),
   );
-  if (tagEl.querySelectorAll('li.px-4')?.length === 0) prevBtn.after(...decoratePaginateIndexes(currentPage));
+  if (tagEl.querySelectorAll('li.px-4')?.length === 0) prevBtn.after(...decoratePaginateIndexes(currentPage, tagEl));
   else updatedPaginateIndexes(currentPage, tagEl.querySelectorAll('li.px-4'));
   if (currentPage === 1) {
-    prevBtn.classList.remove(...'cursor-pointer'.split(' '));
-    prevBtn.classList.add(...'cursor-not-allowed'.split(' '));
+    prevBtn.classList.remove('cursor-pointer');
+    prevBtn.classList.add('cursor-not-allowed');
   } else {
-    prevBtn.classList.remove(...'cursor-not-allowed'.split(' '));
-    prevBtn.classList.add(...'cursor-pointer'.split(' '));
+    prevBtn.classList.remove('cursor-not-allowed');
+    prevBtn.classList.add('cursor-pointer');
     prevBtn.addEventListener('click', () => {
       decorateLists({
-        lists: allPathways, currentPage: (currentPage - 1), perPage: perPageList, tagEl,
+        currentPage: (currentPage - 1), perPage: perPageList, tagEl,
       });
     });
   }
   if (Math.ceil(allPathways.length / perPageList) === currentPage) {
-    nextBtn.classList.remove(...'cursor-pointer'.split(' '));
-    nextBtn.classList.add(...'cursor-not-allowed'.split(' '));
+    nextBtn.classList.remove('cursor-pointer');
+    nextBtn.classList.add('cursor-not-allowed');
   } else {
-    nextBtn.classList.remove(...'cursor-not-allowed'.split(' '));
-    nextBtn.classList.add(...'cursor-pointer'.split(' '));
+    nextBtn.classList.remove('cursor-not-allowed');
+    nextBtn.classList.add('cursor-pointer');
     nextBtn.addEventListener('click', () => {
       decorateLists({
-        lists: allPathways, currentPage: (currentPage + 1), perPage: perPageList, tagEl,
+        currentPage: (currentPage + 1), perPage: perPageList, tagEl,
       });
     });
   }
@@ -99,6 +99,6 @@ export default async function decorate(block) {
   const metaType = getMetadata('type');
   const postData = await fetchPostData();
   allPathways = postData.filter((item) => item.path.includes('/technical-resources/pathways/') && metaType === item.type);
-  decorateLists({ lists: allPathways, tagEl: block });
+  decorateLists({ tagEl: block });
   decorateIcons(body);
 }

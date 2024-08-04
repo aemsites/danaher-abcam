@@ -11,6 +11,10 @@
   margin-right: auto
 }
 
+.product-reactivity-wrapper :is(.mb-10) {
+  margin-bottom: 2.5rem
+}
+
 .product-reactivity-wrapper :is(.mb-4) {
   margin-bottom: 1rem
 }
@@ -19,16 +23,16 @@
   margin-bottom: 1.5rem
 }
 
+.product-reactivity-wrapper :is(.ms-2) {
+  margin-inline-start: 0.5rem
+}
+
 .product-reactivity-wrapper :is(.mt-1) {
   margin-top: 0.25rem
 }
 
 .product-reactivity-wrapper :is(.mt-4) {
   margin-top: 1rem
-}
-
-.product-reactivity-wrapper :is(.mt-6) {
-  margin-top: 1.5rem
 }
 
 .product-reactivity-wrapper :is(.box-content) {
@@ -43,16 +47,20 @@
   display: flex
 }
 
+.product-reactivity-wrapper :is(.inline-flex) {
+  display: inline-flex
+}
+
 .product-reactivity-wrapper :is(.table) {
   display: table
 }
 
-.product-reactivity-wrapper :is(.grid) {
-  display: grid
-}
-
 .product-reactivity-wrapper :is(.aspect-square) {
   aspect-ratio: 1 / 1
+}
+
+.product-reactivity-wrapper :is(.h-4) {
+  height: 1rem
 }
 
 .product-reactivity-wrapper :is(.h-8) {
@@ -103,12 +111,9 @@
   border-collapse: separate
 }
 
-.product-reactivity-wrapper :is(.auto-rows-auto) {
-  grid-auto-rows: auto
-}
-
-.product-reactivity-wrapper :is(.grid-cols-4) {
-  grid-template-columns: repeat(4, minmax(0, 1fr))
+.product-reactivity-wrapper :is(.rotate-0) {
+  --tw-rotate: 0deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 
 .product-reactivity-wrapper :is(.flex-col) {
@@ -123,6 +128,10 @@
   align-items: center
 }
 
+.product-reactivity-wrapper :is(.justify-center) {
+  justify-content: center
+}
+
 .product-reactivity-wrapper :is(.justify-between) {
   justify-content: space-between
 }
@@ -133,10 +142,6 @@
 
 .product-reactivity-wrapper :is(.gap-4) {
   gap: 1rem
-}
-
-.product-reactivity-wrapper :is(.gap-8) {
-  gap: 2rem
 }
 
 .product-reactivity-wrapper :is(.gap-x-1) {
@@ -158,6 +163,12 @@
   row-gap: 1rem
 }
 
+.product-reactivity-wrapper :is(.space-y-4 > :not([hidden]) ~ :not([hidden])) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1rem * var(--tw-space-y-reverse))
+}
+
 .product-reactivity-wrapper :is(.overflow-hidden) {
   overflow: hidden
 }
@@ -168,6 +179,10 @@
 
 .product-reactivity-wrapper :is(.rounded-\[28px\]) {
   border-radius: 28px
+}
+
+.product-reactivity-wrapper :is(.rounded-full) {
+  border-radius: 9999px
 }
 
 .product-reactivity-wrapper :is(.rounded-lg) {
@@ -195,14 +210,31 @@
   border-color: rgb(0 0 0 / var(--tw-border-opacity))
 }
 
+.product-reactivity-wrapper :is(.border-b-slate-400) {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(148 163 184 / var(--tw-border-opacity))
+}
+
 .product-reactivity-wrapper :is(.bg-black) {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity))
 }
 
+.product-reactivity-wrapper :is(.bg-black\/80) {
+  background-color: rgb(0 0 0 / 0.8)
+}
+
+.product-reactivity-wrapper :is(.bg-neutral-500\/50) {
+  background-color: rgb(115 115 115 / 0.5)
+}
+
 .product-reactivity-wrapper :is(.bg-white) {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+}
+
+.product-reactivity-wrapper :is(.p-1) {
+  padding: 0.25rem
 }
 
 .product-reactivity-wrapper :is(.p-4) {
@@ -214,9 +246,24 @@
   padding-right: 0.75rem
 }
 
+.product-reactivity-wrapper :is(.px-4) {
+  padding-left: 1rem;
+  padding-right: 1rem
+}
+
 .product-reactivity-wrapper :is(.px-6) {
   padding-left: 1.5rem;
   padding-right: 1.5rem
+}
+
+.product-reactivity-wrapper :is(.py-1) {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem
+}
+
+.product-reactivity-wrapper :is(.py-1\.5) {
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem
 }
 
 .product-reactivity-wrapper :is(.py-2) {
@@ -239,6 +286,10 @@
 
 .product-reactivity-wrapper :is(.text-left) {
   text-align: left
+}
+
+.product-reactivity-wrapper :is(.text-center) {
+  text-align: center
 }
 
 .product-reactivity-wrapper :is(.text-right) {
@@ -271,6 +322,10 @@
 .product-reactivity-wrapper :is(.text-xs) {
   font-size: 0.75rem;
   line-height: 1rem
+}
+
+.product-reactivity-wrapper :is(.font-medium) {
+  font-weight: 500
 }
 
 .product-reactivity-wrapper :is(.font-normal) {
@@ -309,6 +364,10 @@
   letter-spacing: 0.025em
 }
 
+.product-reactivity-wrapper :is(.tracking-wider) {
+  letter-spacing: 0.05em
+}
+
 .product-reactivity-wrapper :is(.text-\[\#00000080\]) {
   color: #00000080
 }
@@ -323,19 +382,14 @@
   color: rgb(0 0 0 / var(--tw-text-opacity))
 }
 
-.product-reactivity-wrapper :is(.text-gray-400) {
+.product-reactivity-wrapper :is(.text-gray-700) {
   --tw-text-opacity: 1;
-  color: rgb(156 163 175 / var(--tw-text-opacity))
+  color: rgb(55 65 81 / var(--tw-text-opacity))
 }
 
 .product-reactivity-wrapper :is(.text-white) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity))
-}
-
-.product-reactivity-wrapper :is(.text-gray-700) {
-  --tw-text-opacity: 1;
-  color: rgb(55 65 81 / var(--tw-text-opacity))
 }
 
 .product-reactivity-wrapper :is(.opacity-100) {
@@ -344,6 +398,10 @@
 
 .product-reactivity-wrapper :is(.hover\:cursor-pointer:hover) {
   cursor: pointer
+}
+
+.product-reactivity-wrapper :is(.hover\:bg-black\/90:hover) {
+  background-color: rgb(0 0 0 / 0.9)
 }
 
 .product-reactivity-wrapper :is(.hover\:underline:hover) {
