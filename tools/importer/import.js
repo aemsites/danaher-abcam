@@ -48,16 +48,28 @@ import {
         );
         await Promise.all(xfAsyncTransformers.map((fn) => fn(main, document, params, url)));
       }
-  
+
       // use helper method to remove header, footer, etc.
       WebImporter.DOMUtils.remove(main, [
         'header',
         'footer',
         'component',
+        'nav',
+        'noscript',
         'div.social',
         'div.cloudservice.testandtarget',
+        'div.z-feedbackPanel',
+        'div#header-container',
+        'div[data-title="products"]',
+        'div[data-title="resources"]',
+        'div[data-title="support"]',
+        'div[data-title="about-us"]',
+        'span[data-cy="header-search-input"]',
+        'p.sr-only',
       ]);
   
+
+
       // create the metadata block and append it to the main element
       postTransformers.forEach(
         (fn) => fn.call(this, main, document, html, params, url),
