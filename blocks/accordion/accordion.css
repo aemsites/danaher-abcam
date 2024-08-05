@@ -68,6 +68,10 @@
   height: 1.75rem
 }
 
+.accordion-wrapper :is(.w-\[90\%\]) {
+  width: 90%
+}
+
 .accordion-wrapper :is(.w-full) {
   width: 100%
 }
@@ -75,10 +79,6 @@
 .accordion-wrapper :is(.w-max) {
   width: -moz-max-content;
   width: max-content
-}
-
-.accordion-wrapper :is(.w-\[90\%\]) {
-  width: 90%
 }
 
 .accordion-wrapper :is(.max-w-screen-lg) {
