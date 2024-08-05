@@ -8,17 +8,15 @@ const cards = (main, document) => {
             strongEl.textContent = h2.textContent;
             const h2El = document.createElement('h2');
             h2El.append(strongEl);
-            const card = [h2El];
-            cells.push(card);
             const cardsEl = h2.parentElement;
             cardsEl.querySelectorAll('div.flex.flex-col.h-full').forEach((cardEl) => {
-                const leftEl = [];
+                const leftEl = document.createElement('div');
                 const imgEl = document.createElement('img');
                 imgEl.src = '/images/placeholder.png';
                 const divLeft = document.createElement('div');
                 divLeft.append(imgEl);
-                leftEl.push(divLeft);
-                const rightEl = [];
+                leftEl.append(divLeft);
+                const rightEl = document.createElement('div');
                 const title = cardEl.querySelector('span').textContent;
                 const titleEl = document.createElement('h2');
                 titleEl.textContent = title;
@@ -28,8 +26,8 @@ const cards = (main, document) => {
                 const linkEl = document.createElement('a');
                 linkEl.href = link;
                 linkEl.textContent = linkText;
-                rightEl.push(titleEl, descriptions, linkEl);
-                card.push([...leftEl , ...rightEl]);
+                rightEl.append(titleEl, descriptions, linkEl);
+                cells.push([leftEl , rightEl]);
             });
             if (cells.length > 0) {
                 const block = WebImporter.DOMUtils.createTable(cells, document);
