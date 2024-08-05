@@ -9,7 +9,7 @@ import { createRequest, debounce } from '../../scripts/scripts.js';
 
 let searchString = '';
 let payload = { ...finishType };
-const facetsCollection = {};
+let facetsCollection = {};
 
 let disclaimers;
 let totalResultCount;
@@ -19,8 +19,19 @@ let searchInput;
 
 let requestStatus;
 
-const organizationId = 'danahernonproduction1892f3fhz';
-const bearerToken = 'xx27ea823a-e994-4d71-97f6-403174ec592a';
+const organizationId = window.OptimusConfig !== undefined ? window.OptimusConfig.organizationId : 'danahernonproduction1892f3fhz';
+const bearerToken = window.OptimusConfig !== undefined ? window.OptimusConfig.bearerToken : 'xx27ea823a-e994-4d71-97f6-403174ec592a';
+
+function localSessionStorage() {
+  const allStoredPaths = localStorage.getItem('past-coveo-history');
+  let stringifiedLocalSession;
+  const updatedPath = { q: payload.q, facets: facetsCollection, created_at: Date.now() };
+  if (allStoredPaths) {
+    const updatedAllStoredPaths = JSON.parse(allStoredPaths);
+    stringifiedLocalSession = JSON.stringify([...updatedAllStoredPaths, updatedPath]);
+  } else stringifiedLocalSession = JSON.stringify([updatedPath]);
+  localStorage.setItem('past-coveo-history', stringifiedLocalSession);
+}
 
 function updateFacetList(facetLists) {
   if (facetLists && facetLists.length > 0) {
@@ -81,8 +92,13 @@ function updateLink(el) {
         }
 
         const queryParameters = queryParam.toString().replaceAll('25', '').replaceAll('%2C', ',');
-        if (el === 'path') window.location = `/en-us/search#${queryParameters}`;
-        else el.href = `/en-us/search#${queryParameters}`;
+        const fullPath = `/en-us/search#${queryParameters}`;
+        if (el === 'path') {
+          localSessionStorage();
+          setTimeout(() => {
+            window.location = fullPath;
+          }, 1500);
+        } else el.href = fullPath;
       }
     }
   }, 1000);
@@ -90,15 +106,7 @@ function updateLink(el) {
 
 function decorateViewResultsURL() {
   const searchResultAnchor = document.querySelector('#search-container a');
-  if (searchResultAnchor) {
-    updateLink(searchResultAnchor);
-    document.querySelector('#search-container .icon-search')?.addEventListener('click', () => {
-      updateLink('path');
-    });
-    document.querySelector('#search-container input')?.addEventListener('keydown', (event) => {
-      if (event.key === 'Enter' || event.keyCode === 13) updateLink('path');
-    });
-  }
+  if (searchResultAnchor) updateLink(searchResultAnchor);
 }
 
 const facetAction = debounce(async (selected, listType, mode) => {
@@ -327,6 +335,8 @@ function handleEmptySearchTerms() {
       },
     };
   }
+  facetsCollection = {};
+  fetchFinishType('');
 }
 
 function buildSearchBackdrop() {
@@ -343,6 +353,7 @@ function buildSearchBackdrop() {
           {
             href: '/en-us/search',
             class: 'flex items-center text-base font-bold mt-4',
+            onclick: localSessionStorage,
           },
           'Visit Results',
           span({ class: 'icon icon-arrow-right size-5 [&_img]:invert ml-2' }),
@@ -367,6 +378,9 @@ function buildSearchBackdrop() {
     type: 'text',
     autocomplete: 'off',
     onkeyup: handleSearchTyping,
+    onkeydown: (event) => {
+      if (event.key === 'Enter' || event.keyCode === 13) updateLink('path');
+    },
   });
   const searchBackdropContainer = div(
     {
@@ -386,6 +400,7 @@ function buildSearchBackdrop() {
             { class: 'w-full relative sm:border border-b sm:border-solid rounded-none md:rounded-full flex flex-wrap gap-1 py-2 pl-8 pr-0 md:px-12 border-cyan-600 md:border-white bg-black' },
             span({
               class: 'icon icon-search size-7 hidden md:block bg-transparent text-white absolute flex ms-3 p-1 md:p-0 inset-y-0 start-0 my-auto [&_img]:invert cursor-pointer',
+              onclick: () => updateLink('path'),
             }),
             span({
               class: 'icon icon-chevron-down size-7 rotate-90 block md:hidden bg-transparent text-white absolute flex ms-3 p-1 md:p-0 inset-y-0 start-0 my-auto [&_img]:invert cursor-pointer',

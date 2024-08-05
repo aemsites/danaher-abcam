@@ -187,6 +187,11 @@
   .footer-wrapper :is(.max-\[767px\]\:w-full) {
     width: 100%
   }
+
+  .footer-wrapper :is(.max-\[767px\]\:px-2) {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem
+  }
 }
 
 @media (min-width: 768px) {
