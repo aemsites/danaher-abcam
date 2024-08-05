@@ -52,12 +52,12 @@
   height: 1.75rem
 }
 
-.teasers-wrapper :is(.w-\[90\%\]) {
-  width: 90%
-}
-
 .teasers-wrapper :is(.w-full) {
   width: 100%
+}
+
+.teasers-wrapper :is(.w-\[90\%\]) {
+  width: 90%
 }
 
 .teasers-wrapper :is(.max-w-screen-lg) {
@@ -184,6 +184,11 @@
 
 .teasers-wrapper :is(.text-teal-800\/70) {
   color: rgb(17 94 89 / 0.7)
+}
+
+.teasers-wrapper :is(.invert) {
+  --tw-invert: invert(100%);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
 }
 
 .teasers-wrapper :is(.transition-all) {

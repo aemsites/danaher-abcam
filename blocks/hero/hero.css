@@ -91,14 +91,14 @@
   margin-right: auto
 }
 
-.hero-wrapper :is(.my-4) {
-  margin-top: 1rem;
-  margin-bottom: 1rem
-}
-
 .hero-wrapper :is(.my-auto) {
   margin-top: auto;
   margin-bottom: auto
+}
+
+.hero-wrapper :is(.my-4) {
+  margin-top: 1rem;
+  margin-bottom: 1rem
 }
 
 .hero-wrapper :is(.mb-2) {
@@ -188,10 +188,6 @@
   max-height: 15rem
 }
 
-.hero-wrapper :is(.w-3\/4) {
-  width: 75%
-}
-
 .hero-wrapper :is(.w-48) {
   width: 12rem
 }
@@ -215,6 +211,10 @@
 
 .hero-wrapper :is(.w-screen) {
   width: 100vw
+}
+
+.hero-wrapper :is(.w-3\/4) {
+  width: 75%
 }
 
 .hero-wrapper :is(.max-w-2xl) {
@@ -343,12 +343,16 @@
   border-radius: 9999px
 }
 
-.hero-wrapper :is(.rounded-md) {
-  border-radius: 0.375rem
+.hero-wrapper :is(.rounded-lg) {
+  border-radius: 0.5rem
 }
 
 .hero-wrapper :is(.rounded-none) {
   border-radius: 0px
+}
+
+.hero-wrapper :is(.rounded-md) {
+  border-radius: 0.375rem
 }
 
 .hero-wrapper :is(.border) {
@@ -406,6 +410,30 @@
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
 }
 
+.hero-wrapper :is(.bg-gray-200) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity))
+}
+
+.hero-wrapper :is(.bg-gray-300) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(209 213 219 / var(--tw-bg-opacity))
+}
+
+.hero-wrapper :is(.bg-gradient-to-bl) {
+  background-image: linear-gradient(to bottom left, var(--tw-gradient-stops))
+}
+
+.hero-wrapper :is(.from-black) {
+  --tw-gradient-from: #000 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(0 0 0 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
+}
+
+.hero-wrapper :is(.to-gray-800) {
+  --tw-gradient-to: #1f2937 var(--tw-gradient-to-position)
+}
+
 .hero-wrapper :is(.fill-current) {
   fill: currentColor
 }
@@ -431,16 +459,6 @@
   padding-right: 0px
 }
 
-.hero-wrapper :is(.px-2) {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem
-}
-
-.hero-wrapper :is(.px-5) {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem
-}
-
 .hero-wrapper :is(.px-6) {
   padding-left: 1.5rem;
   padding-right: 1.5rem
@@ -461,11 +479,6 @@
   padding-bottom: 0.5rem
 }
 
-.hero-wrapper :is(.py-2\.5) {
-  padding-top: 0.625rem;
-  padding-bottom: 0.625rem
-}
-
 .hero-wrapper :is(.py-4) {
   padding-top: 1rem;
   padding-bottom: 1rem
@@ -479,6 +492,21 @@
 .hero-wrapper :is(.py-\[5px\]) {
   padding-top: 5px;
   padding-bottom: 5px
+}
+
+.hero-wrapper :is(.px-2) {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem
+}
+
+.hero-wrapper :is(.px-5) {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem
+}
+
+.hero-wrapper :is(.py-2\.5) {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem
 }
 
 .hero-wrapper :is(.pl-2) {
@@ -583,11 +611,6 @@
   color: rgb(55 65 81 / var(--tw-text-opacity))
 }
 
-.hero-wrapper :is(.text-gray-800) {
-  --tw-text-opacity: 1;
-  color: rgb(31 41 55 / var(--tw-text-opacity))
-}
-
 .hero-wrapper :is(.text-gray-900) {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity))
@@ -600,6 +623,15 @@
 
 .hero-wrapper :is(.text-white\/80) {
   color: rgb(255 255 255 / 0.8)
+}
+
+.hero-wrapper :is(.text-gray-800) {
+  --tw-text-opacity: 1;
+  color: rgb(31 41 55 / var(--tw-text-opacity))
+}
+
+.hero-wrapper :is(.opacity-60) {
+  opacity: 0.6
 }
 
 .hero-wrapper :is(.opacity-75) {

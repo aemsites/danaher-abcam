@@ -347,14 +347,14 @@
   color: rgb(55 129 137 / var(--tw-text-opacity))
 }
 
-.product-overview-wrapper :is(.text-\[\#575757\]) {
-  --tw-text-opacity: 1;
-  color: rgb(87 87 87 / var(--tw-text-opacity))
-}
-
 .product-overview-wrapper :is(.text-\[\#65797c\]) {
   --tw-text-opacity: 1;
   color: rgb(101 121 124 / var(--tw-text-opacity))
+}
+
+.product-overview-wrapper :is(.text-\[\#9ca0a0\]) {
+  --tw-text-opacity: 1;
+  color: rgb(156 160 160 / var(--tw-text-opacity))
 }
 
 .product-overview-wrapper :is(.text-\[rgb\(44\2c 101\2c 107\)\]) {
@@ -370,6 +370,11 @@
 .product-overview-wrapper :is(.text-black) {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity))
+}
+
+.product-overview-wrapper :is(.text-\[\#575757\]) {
+  --tw-text-opacity: 1;
+  color: rgb(87 87 87 / var(--tw-text-opacity))
 }
 
 .product-overview-wrapper :is(.underline) {

@@ -30,6 +30,10 @@
   margin-top: 0.5rem
 }
 
+.accordion-wrapper :is(.mt-4) {
+  margin-top: 1rem
+}
+
 .accordion-wrapper :is(.box-border) {
   box-sizing: border-box
 }
@@ -64,10 +68,6 @@
   height: 1.75rem
 }
 
-.accordion-wrapper :is(.w-\[90\%\]) {
-  width: 90%
-}
-
 .accordion-wrapper :is(.w-full) {
   width: 100%
 }
@@ -75,6 +75,10 @@
 .accordion-wrapper :is(.w-max) {
   width: -moz-max-content;
   width: max-content
+}
+
+.accordion-wrapper :is(.w-\[90\%\]) {
+  width: 90%
 }
 
 .accordion-wrapper :is(.max-w-screen-lg) {
