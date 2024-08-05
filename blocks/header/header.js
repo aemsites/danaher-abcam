@@ -38,8 +38,9 @@ function sortFlyoutMenus(menuPath) {
 
 function buildSearchBlock(headerBlock) {
   const searchHtmlBlock = headerBlock.children[0];
-  searchHtmlBlock.classList.add(...'navbar-wrapper justify-center bg-black z-50 py-2 md:py-4 lg:pt-8'.split(' '));
+  searchHtmlBlock.classList.add(...'navbar-wrapper justify-center bg-black z-50 pt-2 lg:pt-4'.split(' '));
   searchHtmlBlock.id = 'sticky-header';
+  const borderBottom = div({ class: 'h-0.5 mt-3', style: 'background: linear-gradient(90deg, #4ba6b3 0, #c9d3b7 35%, #ff8730 70%, #c54428)' });
   const searchNewBlock = div({ class: 'bg-black flex gap-x-4 xl:gap-x-8 lg:mx-auto 2xl:mx-24 lg:px-8 md:px-12 px-4 pr-4 max-w-7xl flex-row' });
   const extendedSectionBlock = div({ class: 'extended-section md:w-full ml-auto md:ml-14 mr-2 md:mr-4 hidden lg:flex items-center gap-x-4 lg:block' });
   extendedSectionBlock.id = 'extended-section';
@@ -71,7 +72,9 @@ function buildSearchBlock(headerBlock) {
   decorateIcons(logoPictureBlock);
   decorateIcons(hamburgerIcon);
   searchNewBlock.append(extendedSectionBlock);
-  searchHtmlBlock.innerHTML = searchNewBlock.outerHTML;
+  searchHtmlBlock.append(searchNewBlock);
+  searchHtmlBlock.append(borderBottom);
+  searchHtmlBlock.append(borderBottom);
   searchHtmlBlock.querySelector('#nav-hamburger').addEventListener('click', (e) => {
     e.preventDefault();
     showFlyoutMenu();
@@ -188,7 +191,7 @@ function handleScroll() {
   const extendedSection = document.getElementById('extended-section');
   const brandLogo = stickyHeader.querySelector('.brand-logo');
   if (window.scrollY >= 95) {
-    stickyHeader.classList.add('remove-descedents', 'fixed', 'inset-x-0', 'top-0', 'w-full', 'lg:!pb-4', 'shadow-lg');
+    stickyHeader.classList.add('remove-descedents', 'fixed', 'inset-x-0', 'top-0', 'w-full', 'shadow-lg');
     stickyHeader.firstElementChild.classList.add('bg-black');
     hamburgerIcon?.classList.remove('lg:hidden');
     hamburgerIcon?.classList.add('lg:block');
@@ -199,7 +202,7 @@ function handleScroll() {
     brandLogo?.classList.remove('h-full');
     brandLogo?.classList.add('h-10');
   } else if (window.scrollY < 95) {
-    stickyHeader.classList.remove('remove-descedents', 'fixed', 'inset-x-0', 'top-0', 'w-full', 'lg:!pb-4', 'shadow-lg');
+    stickyHeader.classList.remove('remove-descedents', 'fixed', 'inset-x-0', 'top-0', 'w-full', 'shadow-lg');
     stickyHeader.firstElementChild.classList.remove('bg-danaherblue-600');
     hamburgerIcon?.classList.add('lg:hidden');
     hamburgerIcon?.classList.remove('lg:block');
@@ -219,7 +222,7 @@ export default async function decorate(block) {
     const html = await resp.text();
 
     // build header DOM
-    const headerBlock = div({ class: 'nav-container pt-0 pb-0 md:p-0 bg-black relative z-20' });
+    const headerBlock = div({ class: 'nav-container pt-0 pb-0 md:p-0 relative z-20' });
     headerBlock.innerHTML = html;
     buildSearchBlock(headerBlock);
     buildNavBlock(headerBlock);
@@ -230,8 +233,6 @@ export default async function decorate(block) {
     block.innerHTML = '';
     block.append(headerBlock);
     block.append(flyout);
-    const borderBottom = div({ class: 'h-0.5', style: 'background: linear-gradient(90deg, #4ba6b3 0, #c9d3b7 35%, #ff8730 70%, #c54428)' });
-    block.append(borderBottom);
   }
 
   return block;

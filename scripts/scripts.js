@@ -348,6 +348,7 @@ export function formatDate(date) {
   const formatDate = formattedDate.replace(/,/g, '');
   return formatDate;
 }
+
 /**
  * Loads everything that doesn't need to be delayed.
  * @param {Element} doc The container element
@@ -389,3 +390,10 @@ async function loadPage() {
 }
 
 loadPage();
+
+
+// Optimus Config - Start
+window.OptimusConfig = {
+  organizationId: 'danahernonproduction1892f3fhz',
+  bearerToken: 'xx27ea823a-e994-4d71-97f6-403174ec592a'
+};
