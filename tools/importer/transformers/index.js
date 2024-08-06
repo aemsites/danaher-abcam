@@ -6,7 +6,7 @@ import postProcessSVGIcons from './postProcessSVGIcons.js';
 // eslint-disable-next-line import/prefer-default-export
 export const transformers = [
   titlecard,
-  productlist,
+  list,
 ];
 
 export const asyncTransformers = [
