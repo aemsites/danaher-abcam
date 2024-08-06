@@ -14,8 +14,7 @@ function addProductTags(productTagsArray) {
 
   const productTagsDiv = div({ class: 'flex flex-wrap pb-4 gap-2' });
   productTagsArray.forEach((item) => {
-    const productTagsButton = button({class:'product-tags appearance-none px-2 py-1 rounded-e text-xs font-semibold tracking-wider break-keep bg-[rgb(237,246,247)] text-[rgb(44,101,107)] border-[rgb(44,101,107)] border' })
-    //productTagsButton.classList.add('appearance-none', 'px-2', 'py-1', 'rounded-e', 'text-xs', 'font-semibold', 'tracking-wider', 'break-keep', 'bg-[rgb(237,246,247)]', 'text-[rgb(44,101,107)]', 'border-[rgb(44,101,107)]', 'border');
+    const productTagsButton = button({ class: 'product-tags appearance-none px-2 py-1 rounded-e text-xs font-semibold tracking-wider break-keep bg-[rgb(237,246,247)] text-[rgb(44,101,107)] border-[rgb(44,101,107)] border' });
     productTagsButton.appendChild(span({ class: 'pt-0' }, item));
     productTagsDiv.appendChild(productTagsButton);
   });
@@ -31,34 +30,34 @@ function renderRecords(records, block) {
     h3({ class: 'mb-3 font-semibold text-xl' }, 'Product'),
   );
 
-    if (records.length > 0) {
-        records.forEach((product) => {
-        const productContainer = div(
-          { class: 'product-container pb-4 mb-4 border-b border-gray flex flex-col' },
-          p({ class: 'font-bold text-gray-400 text-body-small' }, product.raw?.productslug.split('-').slice(-1)),
-          p(
-            { class: 'font-bold' },
-            a({ class: 'product-link', href: `${window.location.origin}/products/detail/${product.raw.productslug}` }, product.raw?.title),
-          ),
-        );
-        if (product.raw?.producttags) {
-          if (addProductTags !== null) {
-            productContainer.append(addProductTags(product.raw.producttags));
-          }
+  if (records.length > 0) {
+    records.forEach((product) => {
+      const productContainer = div(
+        { class: 'product-container pb-4 mb-4 border-b border-gray flex flex-col' },
+        p({ class: 'font-bold text-gray-400 text-body-small' }, product.raw?.productslug.split('-').slice(-1)),
+        p(
+          { class: 'font-bold' },
+          a({ class: 'product-link', href: `${window.location.origin}/products/detail/${product.raw.productslug}` }, product.raw?.title),
+        ),
+      );
+      if (product.raw?.producttags) {
+        if (addProductTags !== null) {
+          productContainer.append(addProductTags(product.raw.producttags));
         }
-        parentContainer.append(productContainer);
-      });
-      block.append(parentContainer);
-    }
+      }
+      parentContainer.append(productContainer);
+    });
+    block.append(parentContainer);
+  }
 }
 // Function to load a specific page of records
 async function loadPage(page, block) {
-  currentPage = page;  
-  const result = (page - 1) * pageSize; 
+  currentPage = page;
+  const result = (page - 1) * pageSize;
   const productFullResponse = await getProductsListResponse(result);
   const parsedJson = JSON.parse(productFullResponse);
   const productsListResponse = parsedJson.results;
-  
+
   renderRecords(productsListResponse, block);
   const totalRecords = parsedJson.totalCount;
   const totalPages = Math.ceil(totalRecords / pageSize);
@@ -84,14 +83,15 @@ async function loadPage(page, block) {
 
   // Show dots after the first number if there are more pages
   if (page > 7) {
-    const ellipsisButton = span({class:'ellipsis-button'},'. . .');
+    const ellipsisButton = span({ class: 'ellipsis-button' }, '. . .');
     paginationContainer.appendChild(ellipsisButton);
   }
 
   // Calculate the range of page numbers to show
   const maxVisiblePages = 13;
   const middlePage = Math.floor(maxVisiblePages / 2);
-  let startPage, endPage;
+  let startPage; let
+    endPage;
 
   if (totalPages <= maxVisiblePages) {
     // If total pages is less than or equal to maxVisiblePages, show all pages
@@ -126,13 +126,13 @@ async function loadPage(page, block) {
 
   // Show dots before the last number if there are more pages
   if (totalPages > 1 && totalPages - page > middlePage) {
-    const ellipsisButton = span({class:'ellipsis-button'},'. . .');
+    const ellipsisButton = span({ class: 'ellipsis-button' }, '. . .');
     paginationContainer.appendChild(ellipsisButton);
   }
 
-  if(totalPages !== page && totalPages - page > middlePage) {
+  if (totalPages !== page && totalPages - page > middlePage) {
     const lastPageButton = button({ class: 'hover:underline hover:bg-gray-400/30 px-4 py-2 rounded-full cursor-pointer' }, totalPages);
-    lastPageButton.onclick = () => loadPage(totalPages,block);
+    lastPageButton.onclick = () => loadPage(totalPages, block);
     paginationContainer.appendChild(lastPageButton);
   }
 
@@ -141,9 +141,8 @@ async function loadPage(page, block) {
   paginationContainer.appendChild(nextButton);
   if (currentPage < totalPages) {
     nextButton.onclick = () => loadPage(currentPage + 1, block);
-  }
-  else {
-    nextButton.classList.add('cursor-not-allowed')
+  } else {
+    nextButton.classList.add('cursor-not-allowed');
   }
   decorateIcons(paginationContainer);
 }
