@@ -1,5 +1,5 @@
 import titlecard from './titlecard.js';
-import productlist from './productlist.js';
+import list from './list.js';
 import metadata from './metadata.js';
 import postProcessSVGIcons from './postProcessSVGIcons.js';
 
