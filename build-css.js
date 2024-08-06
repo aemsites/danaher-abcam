@@ -219,6 +219,11 @@ const fileMappings = [
     output: './blocks/product-promise/product-promise.css',
     wrapper: 'product-promise-wrapper',
   },
+  {
+    content: './blocks/product-list/product-list.js',
+    output: './blocks/product-list/product-list.css',
+    wrapper: 'product-list-wrapper',
+  },
 ];
 
 const watch = process.argv[2];
