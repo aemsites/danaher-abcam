@@ -1,6 +1,6 @@
 import { getProductResponse } from '../../scripts/search.js';
 import {
-  h3, h6, p, button, div, span, hr,
+  h3, h6, p, button, div, span, hr, ul, li,
 } from '../../scripts/dom-builder.js';
 import { decorateIcons } from '../../scripts/aem.js';
 import { getStarRating } from '../product-overview/product-overview.js';
@@ -26,7 +26,7 @@ function createSlides(productsArray) {
 
   productsArray.forEach((product) => {
     const slide = div({
-      class: 'slide-item flex-none bg-white w-[25%] max-[768px]:w-full',
+      class: 'slide-item flex-none bg-white w-full lg:w-[49%] xl:w-[25%]',
     });
 
     const ratingContainer = div({ class: 'flex items-center mt-2 gap-x-1' });
@@ -70,7 +70,7 @@ function createSlides(productsArray) {
 }
 
 function createDots(totalSlides) {
-  const dotsContainer = div({ class: 'dots flex justify-center gap-2 mt-8' });
+  const dotsContainer = ul({ class: 'dots flex justify-center gap-2 mt-8' });
   const isMobile = window.matchMedia('(max-width: 768px)').matches;
   const isTablet = window.matchMedia('(min-width: 769px) and (max-width: 1024px)').matches;
 
@@ -87,7 +87,7 @@ function createDots(totalSlides) {
   }
 
   Array.from({ length: totalDots }).forEach(() => {
-    const dot = div({ class: 'dot w-[10px] h-[10px] rounded-full bg-gray-400 cursor-pointer' });
+    const dot = li({ class: 'dot w-[10px] h-[10px] rounded-full bg-gray-400 cursor-pointer' });
     dotsContainer.appendChild(dot);
   });
 
@@ -136,10 +136,10 @@ function initializeSlider(sliderContainer, wrapper, prevButton, nextButton, dots
       wrapper.style.transform = `translateX(-${index * slideWidth}px)`;
     }
 
-    if ((isMobile && totalSlides <= 1) || (!isMobile && totalSlides <= 4)) {
-      prevButton.classList.add('hidden');
-      nextButton.classList.add('hidden');
-    } else if (isTablet) {
+    const isSingleSlideMobile = isMobile && totalSlides <= 1;
+    const isFewSlidesDesktop = !isMobile && totalSlides <= 4;
+
+    if (isSingleSlideMobile || isFewSlidesDesktop || isMobile || isTablet) {
       prevButton.classList.add('hidden');
       nextButton.classList.add('hidden');
     } else if (isMedium) {
@@ -150,34 +150,11 @@ function initializeSlider(sliderContainer, wrapper, prevButton, nextButton, dots
       prevButton.classList.toggle('cursor-default', index === 0);
       prevButton.classList.toggle('hidden', index === 0);
 
-      nextButton.classList.toggle('cursor-pointer', index < totalSlides - (isMobile ? 1 : 4));
-      nextButton.classList.toggle('cursor-default', index >= totalSlides - (isMobile ? 1 : 4));
-      nextButton.classList.toggle('hidden', index >= totalSlides - (isMobile ? 1 : 4));
+      const slidesToShow = isMobile ? 1 : 4;
+      nextButton.classList.toggle('cursor-pointer', index < totalSlides - slidesToShow);
+      nextButton.classList.toggle('cursor-default', index >= totalSlides - slidesToShow);
+      nextButton.classList.toggle('hidden', index >= totalSlides - slidesToShow);
     }
-
-    function handleMediaQueryChange() {
-      const slideItems = document.querySelectorAll('.slide-item');
-      slideItems.forEach((item) => {
-        if (isMobile) {
-          item.classList.add('w-full');
-        } else if (isTablet) {
-          item.classList.add('w-[49%]');
-        } else if (isMedium) {
-          item.classList.add('w-[32.33%]');
-        } else {
-          item.classList.add('w-[25%]');
-        }
-      });
-
-      const prevButtonSlide = document.querySelector('.slider-button.prev');
-      const nextButtonSlide = document.querySelector('.slider-button.next');
-
-      if (isMobile || isTablet) {
-        prevButtonSlide.classList.add('hidden');
-        nextButtonSlide.classList.add('hidden');
-      }
-    }
-    handleMediaQueryChange();
 
     updateDots(dotsContainer, index);
   }
