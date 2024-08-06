@@ -331,10 +331,6 @@
   white-space: nowrap
 }
 
-.hero-wrapper :is(.break-words) {
-  overflow-wrap: break-word
-}
-
 .hero-wrapper :is(.rounded) {
   border-radius: 0.25rem
 }
