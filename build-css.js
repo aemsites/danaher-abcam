@@ -83,6 +83,10 @@ const fileMappings = [
     output: './templates/blog-page/blog-page.css',
   },
   {
+    content: './templates/pathways/pathways.js',
+    output: './templates/pathways/pathways.css',
+  },
+  {
     content: './templates/product-detail/product-detail.js',
     output: './templates/product-detail/product-detail.css',
   },
@@ -109,6 +113,11 @@ const fileMappings = [
     content: './blocks/breadcrumb/breadcrumb.js',
     output: './blocks/breadcrumb/breadcrumb.css',
     wrapper: 'breadcrumb-wrapper',
+  },
+  {
+    content: './blocks/pagination/pagination.js',
+    output: './blocks/pagination/pagination.css',
+    wrapper: 'pagination-wrapper',
   },
   {
     content: './blocks/card-slider/card-slider.js',

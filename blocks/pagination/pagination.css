@@ -1,0 +1,178 @@
+.container {
+  width: 100%
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px
+  }
+}
+
+.pagination-wrapper :is(.mx-auto) {
+  margin-left: auto;
+  margin-right: auto
+}
+
+.pagination-wrapper :is(.mb-2) {
+  margin-bottom: 0.5rem
+}
+
+.pagination-wrapper :is(.mt-3) {
+  margin-top: 0.75rem
+}
+
+.pagination-wrapper :is(.mt-8) {
+  margin-top: 2rem
+}
+
+.pagination-wrapper :is(.block) {
+  display: block
+}
+
+.pagination-wrapper :is(.flex) {
+  display: flex
+}
+
+.pagination-wrapper :is(.-rotate-90) {
+  --tw-rotate: -90deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+
+.pagination-wrapper :is(.rotate-90) {
+  --tw-rotate: 90deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+
+.pagination-wrapper :is(.cursor-not-allowed) {
+  cursor: not-allowed
+}
+
+.pagination-wrapper :is(.cursor-pointer) {
+  cursor: pointer
+}
+
+.pagination-wrapper :is(.items-center) {
+  align-items: center
+}
+
+.pagination-wrapper :is(.justify-center) {
+  justify-content: center
+}
+
+.pagination-wrapper :is(.gap-2) {
+  gap: 0.5rem
+}
+
+.pagination-wrapper :is(.space-y-8 > :not([hidden]) ~ :not([hidden])) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(2rem * var(--tw-space-y-reverse))
+}
+
+.pagination-wrapper :is(.rounded-full) {
+  border-radius: 9999px
+}
+
+.pagination-wrapper :is(.p-2) {
+  padding: 0.5rem
+}
+
+.pagination-wrapper :is(.px-4) {
+  padding-left: 1rem;
+  padding-right: 1rem
+}
+
+.pagination-wrapper :is(.px-8) {
+  padding-left: 2rem;
+  padding-right: 2rem
+}
+
+.pagination-wrapper :is(.py-16) {
+  padding-top: 4rem;
+  padding-bottom: 4rem
+}
+
+.pagination-wrapper :is(.py-2) {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem
+}
+
+.pagination-wrapper :is(.py-8) {
+  padding-top: 2rem;
+  padding-bottom: 2rem
+}
+
+.pagination-wrapper :is(.text-base) {
+  font-size: 1rem;
+  line-height: 1.5rem
+}
+
+.pagination-wrapper :is(.text-lg) {
+  font-size: 1.125rem;
+  line-height: 1.75rem
+}
+
+.pagination-wrapper :is(.text-sm) {
+  font-size: 0.875rem;
+  line-height: 1.25rem
+}
+
+.pagination-wrapper :is(.font-semibold) {
+  font-weight: 600
+}
+
+.pagination-wrapper :is(.tracking-wide) {
+  letter-spacing: 0.025em
+}
+
+.pagination-wrapper :is(.tracking-wider) {
+  letter-spacing: 0.05em
+}
+
+.pagination-wrapper :is(.text-black\/30) {
+  color: rgb(0 0 0 / 0.3)
+}
+
+.pagination-wrapper :is(.text-black\/90) {
+  color: rgb(0 0 0 / 0.9)
+}
+
+.pagination-wrapper :is(.text-teal-600\/90) {
+  color: rgb(13 148 136 / 0.9)
+}
+
+.pagination-wrapper :is(.filter) {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
+}
+
+.pagination-wrapper :is(.\[\&_\.active\]\:bg-gray-400\/30 .active) {
+  background-color: rgb(156 163 175 / 0.3)
+}
+
+.pagination-wrapper :is(.hover\:\[\&_li\]\:bg-gray-400\/30 li:hover) {
+  background-color: rgb(156 163 175 / 0.3)
+}
