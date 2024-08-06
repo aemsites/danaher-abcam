@@ -1,5 +1,5 @@
 import { fetchResponse } from './scripts.js';
-import { sampleRUM,getMetadata } from './aem.js';
+import { sampleRUM, getMetadata } from './aem.js';
 
 const bearerToken = 'xx8911235c-5e72-43cc-b401-bd85e9072adc';
 const orgId = 'danahernonproduction1892f3fhz';
@@ -21,49 +21,50 @@ export function getSKU() {
  * @returns Selected Product category
  */
 export function getSelectedProductCategory() {
- return getMetadata('category-type');
+  return getMetadata('category-type');
 }
 
-async function getFullResponse(sku, selectedProductCategory,selectedPage) {
+async function getFullResponse(sku, selectedProductCategory, selectedPage) {
   const url = `https://${orgId}.org.coveo.com/rest/search/v2`;
   let body = {};
-    if (sku !== undefined && sku !== null) {
-      if (!isFetchCalled) {
-        body = {
-          aq: `@productslug==${sku}`,
-          pipeline: 'Abcam Product Details',
-          searchHub: 'AbcamProductDetails',
-        };
-  }
+  if (sku !== undefined && sku !== null) {
+    if (!isFetchCalled) {
+      body = {
+        aq: `@productslug==${sku}`,
+        pipeline: 'Abcam Product Details',
+        searchHub: 'AbcamProductDetails',
+      };
+    }
     isFetchCalled = true;
   }
-  if (selectedProductCategory !== undefined && selectedProductCategory !== null && selectedPage !== null) {
+  if (selectedProductCategory !== undefined && selectedProductCategory !== null
+    && selectedPage !== null) {
     body = {
-      pipeline:"Abcam Category Product Listing",
-      searchHub:"AbcamCategoryProductListing",
+      pipeline: 'Abcam Category Product Listing',
+      searchHub: 'AbcamCategoryProductListing',
       numberOfResults: 20,
-      firstResult:selectedPage,
-      facets:[
+      firstResult: selectedPage,
+      facets: [
         {
-            currentValues: [
-                {
-                    value: selectedProductCategory,
-                    state: "selected"
-                }
-            ],
-            facetId: "categorytype",
-            field: "categorytype"
-        }
-      ]
+          currentValues: [
+            {
+              value: selectedProductCategory,
+              state: 'selected',
+            },
+          ],
+          facetId: 'categorytype',
+          field: 'categorytype',
+        },
+      ],
     };
   }
-    const config = {
-      url,
-      method: 'POST',
-      authToken: bearerToken,
-      body: JSON.stringify(body),
-    };
-    results = await fetchResponse(config);
+  const config = {
+    url,
+    method: 'POST',
+    authToken: bearerToken,
+    body: JSON.stringify(body),
+  };
+  results = await fetchResponse(config);
   return results;
 }
 
@@ -124,9 +125,8 @@ export async function getProductResponse() {
 /* eslint consistent-return: off */
 export async function getProductsListResponse(page) {
   try {
-    let response;
     const productCategory = getSelectedProductCategory();
-    const fullResponse = await getFullResponse(null, productCategory,page);
+    const fullResponse = await getFullResponse(null, productCategory, page);
 
     if (fullResponse.results.length > 0) {
       return JSON.stringify(fullResponse);
