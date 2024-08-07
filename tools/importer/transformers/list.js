@@ -10,10 +10,10 @@ const list = (main, document) => {
         }
     });
     
-    if(url && url.includes('/product/')) {
+    if(url && url.includes('/products/')) {
         const block = WebImporter.DOMUtils.createTable([['product-list']], document);
         productDivEl.append(block);
-    } else if (url && url.includes('/technical-resource/')){
+    } else if (url && url.includes('/technical-resources/')){
         const block = WebImporter.DOMUtils.createTable([['page-list']], document);
         productDivEl.append(block);
     }
