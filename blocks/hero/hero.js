@@ -445,10 +445,10 @@
 // }
 
 export default function decorate(block) {
-  // const pictureTag = block.querySelector('picture');
-  // const img = pictureTag.querySelector('img');
-  // img.setAttribute('loading', 'eager');
-  // pictureTag.classList.add(...'[&_img]:h-[496px] [&_img]:w-full'.split(' '));
+  const pictureTag = block.querySelector('picture');
+  const img = pictureTag.querySelector('img');
+  img.setAttribute('loading', 'eager');
+  pictureTag.classList.add(...'[&_img]:h-[496px] [&_img]:w-full'.split(' '));
   // const title = block.querySelector('div > div > p');
   // const parentWrapper = div({ class: 'absolute w-full inset-x-auto inset-y-0 flex flex-col items-center justify-center gap-y-4 text-5xl px-6 md:px-0' });
   // const headingTag = block.querySelector('h1');

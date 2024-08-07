@@ -188,7 +188,7 @@
           "component": "select",
           "name": "hero_titleType",
           "value": "h1",
-          "label": "Hero Tiele Type",
+          "label": "Hero Title Type",
           "valueType": "string",
           "options": [
             {
