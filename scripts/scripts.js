@@ -128,10 +128,11 @@ async function loadFonts() {
 const TEMPLATE_LIST = [
   'home-page',
   'protocols',
+  'pathways',
   'product-category',
   'blog-page',
   'product-detail',
-  'search-results'
+  'search-results',
 ];
 
 async function decorateTemplates(main) {
