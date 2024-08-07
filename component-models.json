@@ -185,7 +185,7 @@
           "label": "Title"
         },
         {
-          "component": "text",
+          "component": "select",
           "name": "hero_titleType",
           "value": "h1",
           "label": "",
