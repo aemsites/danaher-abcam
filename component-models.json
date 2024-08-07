@@ -173,7 +173,7 @@
         {
           "component": "text",
           "valueType": "string",
-          "name": "imageAlt",
+          "name": "fileReferenceAlt",
           "label": "Alt",
           "value": ""
         },
