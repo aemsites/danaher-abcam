@@ -166,14 +166,14 @@
         {
           "component": "reference",
           "valueType": "string",
-          "name": "fileReference",
+          "name": "hero_image",
           "label": "Hero Image",
           "multi": false
         },
         {
           "component": "text",
           "valueType": "string",
-          "name": "fileReferenceAlt",
+          "name": "hero_imageAlt",
           "label": "Alt",
           "value": ""
         },
