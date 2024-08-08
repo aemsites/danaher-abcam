@@ -4,13 +4,13 @@ const list = (main, document) => {
     let allContent = productDivEl?.firstElementChild;
     if(url && url.includes('/technical-resources/')) allContent?.remove();
     else allContent = productDivEl?.firstElementChild?.firstElementChild;
-    [...allContent.children].forEach((el, index) => {
-        if (index !== 0) {
-            el.remove();
-        }
-    });
     
     if(url && url.includes('/products/')) {
+        [...allContent.children].forEach((el, index) => {
+            if (index !== 0) {
+                el.remove();
+            }
+        });
         const block = WebImporter.DOMUtils.createTable([['product-list']], document);
         productDivEl.append(block);
     } else if (url && url.includes('/technical-resources/')){
