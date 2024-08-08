@@ -1,4 +1,5 @@
 const titlecard = (main, document) => {
+  const titleCardDivEl = document.createElement('div');
   const headDivEl = document.getElementById('main-content').nextElementSibling;
   const heading = headDivEl.querySelector('h1')?.textContent;
   const headingEl = document.createElement('h1');
@@ -7,7 +8,8 @@ const titlecard = (main, document) => {
   const descriptionEl = document.createElement('p');
   descriptionEl.textContent = description;
   const cells = [['title-card']];
-  cells.push([headingEl, descriptionEl]);
+  titleCardDivEl.append(headingEl, descriptionEl);
+  cells.push([titleCardDivEl]);
   if (cells.length > 0) {
     headDivEl.innerHTML = '';
     const block = WebImporter.DOMUtils.createTable(cells, document);
