@@ -166,23 +166,56 @@
         {
           "component": "reference",
           "valueType": "string",
-          "name": "image",
-          "label": "Image",
+          "name": "hero_image",
+          "label": "Hero Image",
           "multi": false
         },
         {
           "component": "text",
           "valueType": "string",
-          "name": "imageAlt",
+          "name": "hero_imageAlt",
           "label": "Alt",
           "value": ""
         },
         {
-          "component": "richtext",
-          "name": "text",
+          "component": "text",
+          "valueType": "string",
+          "name": "hero_title",
           "value": "",
-          "label": "Text",
-          "valueType": "string"
+          "label": "Title"
+        },
+        {
+          "component": "select",
+          "name": "hero_titleType",
+          "value": "h1",
+          "label": "Hero Title Type",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "h1",
+              "value": "h1"
+            },
+            {
+              "name": "h2",
+              "value": "h2"
+            },
+            {
+              "name": "h3",
+              "value": "h3"
+            },
+            {
+              "name": "h4",
+              "value": "h4"
+            },
+            {
+              "name": "h5",
+              "value": "h5"
+            },
+            {
+              "name": "h6",
+              "value": "h6"
+            }
+          ]
         }
       ]
     },

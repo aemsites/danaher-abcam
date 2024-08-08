@@ -128,10 +128,11 @@ async function loadFonts() {
 const TEMPLATE_LIST = [
   'home-page',
   'protocols',
+  'pathways',
   'product-category',
   'blog-page',
   'product-detail',
-  'search-results'
+  'search-results',
 ];
 
 async function decorateTemplates(main) {
@@ -157,7 +158,7 @@ async function decorateTemplates(main) {
  */
 function buildAutoBlocks(main) {
   try {
-    buildHeroBlock(main);
+    // buildHeroBlock(main);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
