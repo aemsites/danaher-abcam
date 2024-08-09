@@ -43,6 +43,7 @@
     {
       "id": "cards",
       "components": [
+        "title",
         "card"
       ]
     },
