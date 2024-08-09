@@ -67,7 +67,8 @@ function createFooterDOM(mainContainer) {
 
   const rightsContainer = div({ class: 'font-normal text-end opacity-80' });
 
-  const logo = firstChild.firstElementChild;
+  const logo = firstChild?.firstElementChild?.firstElementChild;
+  console.log(firstChild);
   const socialIcons = callSocialIcons(firstChild.children[1]);
   const links = firstChild.children[2];
   const danaharLogo = firstChild.children[3];
@@ -131,7 +132,7 @@ function createFooterDOM(mainContainer) {
 export default async function decorate(block) {
   block.classList.add(...'pt-8 pb-8 mt-auto text-white bg-black'.split(' '));
   const cfg = readBlockConfig(block);
-  const footerPath = cfg.footer || '/footer';
+  const footerPath = cfg.footer || '/en/us/footer';
   const response = await fetch(`${footerPath}.plain.html`, window.location.pathname.endsWith('/footer') ? { cache: 'reload' } : {});
 
   if (response.ok) {
