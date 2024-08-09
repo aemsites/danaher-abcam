@@ -133,6 +133,46 @@
       "id": "card",
       "fields": [
         {
+          "component": "text",
+          "valueType": "string",
+          "name": "card_heading",
+          "value": "",
+          "label": "Headline"
+        },
+        {
+          "component": "select",
+          "name": "card_headingType",
+          "value": "h2",
+          "label": "Card Heading Type",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "h1",
+              "value": "h1"
+            },
+            {
+              "name": "h2",
+              "value": "h2"
+            },
+            {
+              "name": "h3",
+              "value": "h3"
+            },
+            {
+              "name": "h4",
+              "value": "h4"
+            },
+            {
+              "name": "h5",
+              "value": "h5"
+            },
+            {
+              "name": "h6",
+              "value": "h6"
+            }
+          ]
+        },
+        {
           "component": "reference",
           "valueType": "string",
           "name": "card_image",
@@ -196,27 +236,27 @@
         {
           "component": "text",
           "valueType": "string",
-          "name": "href",
+          "name": "card_buttonhref",
           "value": "",
           "label": "Link"
         },
         {
           "component": "text",
           "valueType": "string",
-          "name": "text",
+          "name": "card_buttontext",
           "value": "",
           "label": "Text"
         },
         {
           "component": "text",
           "valueType": "string",
-          "name": "title",
+          "name": "card_buttontitle",
           "value": "",
           "label": "Title"
         },
         {
           "component": "select",
-          "name": "type",
+          "name": "card_buttontype",
           "value": "",
           "label": "Type",
           "valueType": "string",
