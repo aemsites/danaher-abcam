@@ -7,17 +7,17 @@ export default function decorate(block) {
   const innerofdiv = innerDiv.querySelector('div');
   if (innerofdiv) {
     innerofdiv.classList.add('second-box');
-     const headings = innerofdiv.querySelectorAll('h1, h3');
-     headings.forEach(heading => {
-       if (heading.tagName === 'H1') {
-         heading.classList.add('font-bold', 'text-2xl','mb-4');
-       } else if (heading.tagName === 'H3') {
-         heading.classList.add('font-bold','text-sm');
-       }
-     });
-  const paragraphs = innerofdiv.querySelectorAll('p');
-  paragraphs.forEach(paragraph => {
-    paragraph.classList.add('text-sm', 'mb-4','text-gray-800');
-  });
+    const headings = innerofdiv.querySelectorAll('h1, h3');
+    headings.forEach((heading) => {
+      if (heading.tagName === 'H1') {
+        heading.classList.add('font-bold', 'text-2xl', 'mb-4');
+      } else if (heading.tagName === 'H3') {
+        heading.classList.add('font-bold', 'text-sm');
+      }
+    });
+    const paragraphs = innerofdiv.querySelectorAll('p');
+    paragraphs.forEach((paragraph) => {
+      paragraph.classList.add('text-sm', 'mb-4', 'text-gray-800');
+    });
   }
 }
