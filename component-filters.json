@@ -28,6 +28,8 @@
         "hero",
         "cards",
         "columns",
+        "mini-teasers",
+        "alternating",
         "fragment",
         "container"
       ]
@@ -41,7 +43,14 @@
     {
       "id": "cards",
       "components": [
+        "text",
         "card"
+      ]
+    },
+    {
+      "id": "mini-teasers",
+      "components": [
+        "mini-teaser"
       ]
     }
   ]
