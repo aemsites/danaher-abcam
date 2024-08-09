@@ -28,8 +28,15 @@
         "hero",
         "cards",
         "columns",
-        "fragment"
+        "fragment",
+        "container"
       ]
+    },
+    {
+      "id": "container",
+      "components": [
+        "text",
+        "image"      ]
     },
     {
       "id": "cards",
