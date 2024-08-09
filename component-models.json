@@ -135,16 +135,105 @@
         {
           "component": "reference",
           "valueType": "string",
-          "name": "image",
-          "label": "Image",
+          "name": "card_image",
+          "label": "Card Image",
           "multi": false
         },
         {
+          "component": "text",
+          "valueType": "string",
+          "name": "card_imageAlt",
+          "label": "Alt",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "card_title",
+          "value": "",
+          "label": "Title"
+        },
+        {
+          "component": "select",
+          "name": "card_titleType",
+          "value": "h2",
+          "label": "Card Title Type",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "h1",
+              "value": "h1"
+            },
+            {
+              "name": "h2",
+              "value": "h2"
+            },
+            {
+              "name": "h3",
+              "value": "h3"
+            },
+            {
+              "name": "h4",
+              "value": "h4"
+            },
+            {
+              "name": "h5",
+              "value": "h5"
+            },
+            {
+              "name": "h6",
+              "value": "h6"
+            }
+          ]
+        },
+        {
           "component": "richtext",
+          "name": "card_description",
+          "value": "",
+          "label": "Description",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "href",
+          "value": "",
+          "label": "Link"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
           "name": "text",
           "value": "",
-          "label": "Text",
-          "valueType": "string"
+          "label": "Text"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "title",
+          "value": "",
+          "label": "Title"
+        },
+        {
+          "component": "select",
+          "name": "type",
+          "value": "",
+          "label": "Type",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "default",
+              "value": ""
+            },
+            {
+              "name": "primary",
+              "value": "primary"
+            },
+            {
+              "name": "secondary",
+              "value": "secondary"
+            }
+          ]
         }
       ]
     },
@@ -214,6 +303,147 @@
             {
               "name": "h6",
               "value": "h6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mini-teaser",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "mini-teaser_image",
+          "label": "Mini-Teaser Image",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "mini-teaser_imageAlt",
+          "label": "Alt",
+          "value": ""
+        },
+        {
+          "component": "richtext",
+          "name": "mini-teaser_text",
+          "value": "",
+          "label": "Text",
+          "valueType": "string"
+        },
+        {
+          "component": "richtext",
+          "name": "mini-teaser_description",
+          "value": "",
+          "label": "Description",
+          "valueType": "string"
+        }
+      ]
+    },
+    {
+      "id": "alternating",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "alternating_image",
+          "label": "Alternating Image",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "alternating_imageAlt",
+          "label": "Alt",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "alternating_title",
+          "value": "",
+          "label": "Title"
+        },
+        {
+          "component": "select",
+          "name": "alternating_titleType",
+          "value": "h2",
+          "label": "Alternating Title Type",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "h1",
+              "value": "h1"
+            },
+            {
+              "name": "h2",
+              "value": "h2"
+            },
+            {
+              "name": "h3",
+              "value": "h3"
+            },
+            {
+              "name": "h4",
+              "value": "h4"
+            },
+            {
+              "name": "h5",
+              "value": "h5"
+            },
+            {
+              "name": "h6",
+              "value": "h6"
+            }
+          ]
+        },
+        {
+          "component": "richtext",
+          "name": "alternating_description",
+          "value": "",
+          "label": "Description",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "href",
+          "value": "",
+          "label": "Link"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "text",
+          "value": "",
+          "label": "Text"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "title",
+          "value": "",
+          "label": "Title"
+        },
+        {
+          "component": "select",
+          "name": "type",
+          "value": "",
+          "label": "Type",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "default",
+              "value": ""
+            },
+            {
+              "name": "primary",
+              "value": "primary"
+            },
+            {
+              "name": "secondary",
+              "value": "secondary"
             }
           ]
         }
