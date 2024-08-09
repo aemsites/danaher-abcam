@@ -236,29 +236,29 @@
         {
           "component": "text",
           "valueType": "string",
-          "name": "card_buttonhref",
+          "name": "card_CTAhref",
           "value": "",
-          "label": "Link"
+          "label": "CTA Link"
         },
         {
           "component": "text",
           "valueType": "string",
-          "name": "card_buttontext",
+          "name": "card_CTAhrefText",
           "value": "",
-          "label": "Text"
+          "label": "CTA Text"
         },
         {
           "component": "text",
           "valueType": "string",
-          "name": "card_buttontitle",
+          "name": "card_CTAhrefTitle",
           "value": "",
-          "label": "Title"
+          "label": "CTA Title"
         },
         {
           "component": "select",
-          "name": "card_buttontype",
+          "name": "card_CTAhrefType",
           "value": "",
-          "label": "Type",
+          "label": "CTA Type",
           "valueType": "string",
           "options": [
             {
