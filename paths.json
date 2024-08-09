@@ -2,6 +2,8 @@
   "mappings": [
     "/content/danaher/abcam/en/us:/",
     "/content/danaher/abcam/en/us/:/en/us/",
+    "/content/danaher/abcam/nav:/nav",
+    "/content/danaher/abcam/footer:/footer",
     "/content/danaher/abcam/configuration:/.helix/config.json",
     "/content/danaher/abcam/metadata:/metadata.json"
   ],
