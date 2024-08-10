@@ -326,11 +326,44 @@
           "value": ""
         },
         {
-          "component": "richtext",
-          "name": "mini-teaser_text",
+          "component": "text",
+          "valueType": "string",
+          "name": "mini-teaser_title",
           "value": "",
-          "label": "Text",
-          "valueType": "string"
+          "label": "Title"
+        },
+        {
+          "component": "select",
+          "name": "mini-teaser_titleType",
+          "value": "h3",
+          "label": "Hero Title Type",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "h1",
+              "value": "h1"
+            },
+            {
+              "name": "h2",
+              "value": "h2"
+            },
+            {
+              "name": "h3",
+              "value": "h3"
+            },
+            {
+              "name": "h4",
+              "value": "h4"
+            },
+            {
+              "name": "h5",
+              "value": "h5"
+            },
+            {
+              "name": "h6",
+              "value": "h6"
+            }
+          ]
         },
         {
           "component": "richtext",
@@ -408,29 +441,29 @@
         {
           "component": "text",
           "valueType": "string",
-          "name": "href",
+          "name": "cta_href",
           "value": "",
-          "label": "Link"
+          "label": "CTA Link"
         },
         {
           "component": "text",
           "valueType": "string",
-          "name": "text",
+          "name": "cta_hrefText",
           "value": "",
-          "label": "Text"
+          "label": "CTA Text"
         },
         {
           "component": "text",
           "valueType": "string",
-          "name": "title",
+          "name": "cta_hrefTitle",
           "value": "",
-          "label": "Title"
+          "label": "CTA Link"
         },
         {
           "component": "select",
-          "name": "type",
+          "name": "cta_hrefType",
           "value": "",
-          "label": "Type",
+          "label": "CTA Type",
           "valueType": "string",
           "options": [
             {
