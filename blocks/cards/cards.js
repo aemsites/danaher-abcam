@@ -14,9 +14,10 @@ export default function decorate(block) {
     } else {
       const cardWrapper = row.querySelector('div');
       cardWrapper.className = 'cards-li flex flex-col bg-[#e5e7eb]';
-        if (row.querySelector('picture, img')) {
-          row.className = 'cards-card-image';
-        } else {
+      const image = row.querySelector('picture, img')
+      if(image) {
+        image.className = 'cards-card-image';
+      } else {
           row.className = 'cards-card-body py-9 px-8 flex flex-col grow';
         }
         if (row?.querySelector('h3')) row.querySelector('h3').className = 'card-heading text-2xl tracking-[-0.03em]';
