@@ -51,7 +51,7 @@ export default function decorate(block) {
   block.classList.add(...'w-4/5 m-auto mb-8'.split(' '));
   [...block.children].forEach((row) => {
     let type = '';
-    block.classList.add(...''.split('cards-ul grid grid-cols-3 gap-11 max-[799px]:grid-cols-1'));
+    block.classList.add(...'cards-ul grid grid-cols-3 gap-11 max-[799px]:grid-cols-1'.split(' '));
     const heading = row.querySelector('h2');
     if (heading) heading.className = 'card-title text-gray-900 my-2 font-extrabold text-3xl py-2';
     const h3Heading = row.querySelector('h3');
