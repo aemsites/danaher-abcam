@@ -46,7 +46,7 @@ export default function decorate(block) {
         cardContainer.appendChild(cardHeading);
         cardContainer.appendChild(cardDescription);
         cardContainer.appendChild(cardLink);
-        row.append(cardContainer);
+        elem.append(cardContainer);
       });
     }
   });
