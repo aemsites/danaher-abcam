@@ -11,6 +11,11 @@ export default function decorate(block) {
   [...block.children].forEach((row) => {
     const li = document.createElement('li');
     li.classList.add(...'cards-li flex flex-col bg-[#e5e7eb]'.split(' '));
+    while (row.firstElementChild) li.append(row.firstElementChild);
+    [...li.children].forEach((div) => {
+      if (div.children.length === 1 && div.querySelector('picture')) div.className = 'cards-card-image';
+      else div.className = 'cards-card-body py-9 px-8 flex flex-col grow';
+    });
     const pictureTag = row.querySelector('picture');
     const imgTag = pictureTag.querySelector('img');
     if (imgTag) {
@@ -27,11 +32,6 @@ export default function decorate(block) {
     if (cardLink) {
       cardLink.classList.add(...'card-link w-fit text-sm text-white bg-[#2A5F65] hover:bg-[#255159] py-2.5 px-5 rounded-[28px]'.split(' '));
     }
-    while (row.firstElementChild) li.append(row.firstElementChild);
-    [...li.children].forEach((div) => {
-      if (div.children.length === 1 && div.querySelector('picture')) div.className = 'cards-card-image';
-      else div.className = 'cards-card-body py-9 px-8 flex flex-col grow';
-    });
     ul.append(li);
   });
   ul.querySelectorAll('li > picture > img').forEach((img) => img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])));
