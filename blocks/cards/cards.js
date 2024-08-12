@@ -9,6 +9,7 @@ export default function decorate(block) {
   cardsTitle.classList.add(...'text-5xl mb-8 mt-[72px]'.split(' '));
   [...block.children].forEach((row) => {
     const heading = row.querySelector('h3');
+    heading.classList.add(...'card-heading text-2xl tracking-[-0.03em]'.split(' '));
     console.log(heading);
 
   });
