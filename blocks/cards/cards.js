@@ -11,14 +11,16 @@ export default function decorate(block) {
   [...block.children].forEach((row) => {
     const li = document.createElement('li');
     li.classList.add(...'cards-li flex flex-col bg-[#e5e7eb]'.split(' '));
-    const pictureTag = row.querySelector('p > picture');
-    const imgTag = pictureTag.querySelector('img');
-    if (imgTag) {
-      imgTag.classList.add('max-[799px]:w-full');
-    }
+    //const pictureTag = row.querySelector('p > picture');
     while (row.firstElementChild) li.append(row.firstElementChild);
     [...li.children].forEach((div) => {
-      if (div.children.length === 1 && div.querySelector('p > picture')) div.className = 'cards-card-image';
+      if (div.children.length === 1 && div.querySelector('p > picture')) {
+        div.className = 'cards-card-image';
+        const imgTag = pictureTag.querySelector('img');
+          if (imgTag) {
+            imgTag.classList.add('max-[799px]:w-full');
+          }
+      }
       else div.className = 'cards-card-body py-9 px-8 flex flex-col grow';
     });
     // const cardHeading = row.querySelector('li > div > h2');
