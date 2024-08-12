@@ -20,7 +20,7 @@ export default function decorate(block) {
       }
       const divContainer = document.createElement('div');
       div.classList.add(...'cards-card-body py-9 px-8 flex flex-col grow'.split(' '));
-      const cardHeading = row.querySelector('li > div > h2');
+      const cardHeading = row.querySelector('h2');
       cardHeading.classList.add(...'card-heading text-2xl tracking-[-0.03em]'.split(' '));
 
       const cardDescription = row.querySelector('p');
