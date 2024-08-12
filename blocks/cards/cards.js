@@ -43,9 +43,9 @@ export default function decorate(block) {
         if (cardLink) {
           cardLink.classList.add(...'card-link w-fit text-sm text-white bg-[#2A5F65] hover:bg-[#255159] py-2.5 px-5 rounded-[28px]'.split(' '));
         }
-        cardContainer.appendChild(cardHeading);
-        cardContainer.appendChild(cardDescription);
-        cardContainer.appendChild(cardLink);
+        cardContainer.append(cardHeading);
+        cardContainer.append(cardDescription);
+        cardContainer.append(cardLink);
         elem.append(cardContainer);
       });
     }
