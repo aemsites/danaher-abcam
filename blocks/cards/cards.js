@@ -55,7 +55,7 @@ export default function decorate(block) {
   if (block.classList.contains('cols-4')) block.classList.add('lg:grid-cols-4');
   else block.classList.add('lg:grid-cols-3');
   [...block.children].forEach((row) => {
-    let type = '';
+    let type = 'DIV';
     const heading = row.querySelector('h2');
     if (heading) heading.className = 'card-title text-gray-900 my-2 font-extrabold text-3xl py-2';
     const h3Heading = row.querySelector('h3');
