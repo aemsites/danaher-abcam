@@ -10,7 +10,7 @@ export default function decorate(block) {
   [...block.children].forEach((row) => {
     const cardWrapper = row.querySelector('div');
     console.log(row);
-    cardWrapper.classList.add(...''.split('cards-ul grid grid-cols-3 gap-11 max-[799px]:grid-cols-1'));
+    //cardWrapper.classList.add(...''.split('cards-ul grid grid-cols-3 gap-11 max-[799px]:grid-cols-1'));
     [...row.children].forEach((elem) => {
       cardWrapper.append(elem);
       if (elem.querySelector('picture, img')) {
