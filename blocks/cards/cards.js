@@ -1,48 +1,41 @@
-import { ul, li, div } from '../../scripts/dom-builder.js';
+import { createOptimizedPicture } from '../../scripts/aem.js';
 
 export default function decorate(block) {
-  const parentDiv = div({ class: 'w-4/5 m-auto mb-8' });
-  const cardsUl = ul({ class: 'cards-ul grid grid-cols-3 gap-11 max-[799px]:grid-cols-1' });
-
+  const cardBlocks = document.querySelectorAll('.cards');
+  cardBlocks.forEach((parentDiv) => {
+    parentDiv.classList.add(...'w-4/5 m-auto mb-8'.split(' '));
+  });
+  /* change to ul, li */
+  const ul = document.createElement('ul');
+  ul.classList.add(...'cards-ul grid grid-cols-3 gap-11 max-[799px]:grid-cols-1'.split(' '));
   [...block.children].forEach((row) => {
-    const pictureTag = row.querySelector('picture');
-    const cardHeading = row.querySelector('h2');
-    cardHeading.classList.add(...'card-heading text-2xl tracking-[-0.03em]'.split(' '));
+    const li = document.createElement('li');
+    li.classList.add(...'cards-li flex flex-col bg-[#e5e7eb]'.split(' '));
+    // const pictureTag = row.querySelector('p > picture');
+    while (row.firstElementChild) li.append(row.firstElementChild);
+    [...li.children].forEach((div) => {
+      if (div.children.length === 1 && div.querySelector('p > picture')) {
+        div.className = 'cards-card-image';
+        const imgTag = div.querySelector('p > picture > img');
+        if (imgTag) {
+          imgTag.classList.add('max-[799px]:w-full');
+        }
+      } else div.className = 'cards-card-body py-9 px-8 flex flex-col grow';
+    });
+    // const cardHeading = row.querySelector('li > div > h2');
+    // cardHeading.classList.add(...'card-heading text-2xl tracking-[-0.03em]'.split(' '));
 
     const cardDescription = row.querySelector('p');
     if (cardDescription) {
       cardDescription.classList.add(...'card-description h-full mt-2.5 mb-3 text-base tracking-wide'.split(' '));
     }
-
-    const cardLink = row.querySelector('p a');
+    const cardLink = row.querySelector('.button-container');
     if (cardLink) {
       cardLink.classList.add(...'card-link w-fit text-sm text-white bg-[#2A5F65] hover:bg-[#255159] py-2.5 px-5 rounded-[28px]'.split(' '));
     }
-
-    if (!pictureTag) {
-      cardHeading.classList.add(...'text-5xl mb-8 mt-[72px]'.split(' '));
-      parentDiv.appendChild(cardHeading);
-    } else {
-      const cardsLi = li({ class: 'cards-li flex flex-col bg-[#e5e7eb]' });
-
-      const cardContentDiv = div({ class: 'cards-card-body py-9 px-8 flex flex-col grow' });
-
-      cardContentDiv.appendChild(cardHeading);
-      cardContentDiv.appendChild(cardDescription);
-      cardContentDiv.appendChild(cardLink);
-
-      const imgTag = pictureTag.querySelector('img');
-      if (imgTag) {
-        imgTag.classList.add('max-[799px]:w-full');
-      }
-
-      cardsLi.appendChild(pictureTag);
-      cardsLi.appendChild(cardContentDiv);
-      cardsUl.appendChild(cardsLi);
-    }
+    ul.append(li);
   });
-
+  ul.querySelectorAll('li > picture > img').forEach((img) => img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])));
   block.textContent = '';
-  block.appendChild(parentDiv);
-  parentDiv.appendChild(cardsUl);
+  block.append(ul);
 }
