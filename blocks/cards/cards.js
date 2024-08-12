@@ -63,7 +63,7 @@ export default function decorate(block) {
     if (typeP) {
       type = typeP.textContent;
       typeP.remove();
-      row.classList.add(type.toLowerCase());
+      //row.classList.add(type.toLowerCase());
     }
     const readMoreLink = row.querySelector('a');
     const cardWrapper = (readMoreLink)
