@@ -50,10 +50,29 @@ export default function decorate(block) {
     const pTag = picture.closest('p');
     pTag.classList.add('cards-card-image');
     const cardImage = createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]);
-    cardImage.classList.add('max-[799px]:w-full');
+    const imgTag = div.querySelector('p > picture > img');
+    imgTag.classList.add('max-[799px]:w-full');
     if (picture) picture.replaceWith(cardImage);
   });
-  [...block.children].forEach((row) => {
-
+  [...block.children].forEach((row, index) => {
+    if (index === 0) {
+          const heading = row.querySelector('h2');
+        if (heading) heading.className = 'card-title text-5xl mb-8 mt-[72px]';
+        } else {
+          const cardWrapper = row.querySelector('div');
+          cardWrapper.className = 'cards-li flex flex-col bg-[#e5e7eb]';
+          [...row.children].forEach((elem) => {
+            cardWrapper.append(elem);
+            if (elem.querySelector('.cards-card-image')) {
+              elem.className = 'cards-card-image';
+            } else {
+              elem.className = 'cards-card-body py-9 px-8 flex flex-col grow';
+            }
+            if (row?.querySelector('h3')) row.querySelector('h3').className = 'card-heading text-2xl tracking-[-0.03em]';
+            if (row?.querySelector('p')) row.querySelector('p').className = 'card-description h-full mt-2.5 mb-3 text-base tracking-wide';
+            if (row?.querySelector('p a')) row.querySelector('p a').className = 'card-link w-fit text-sm text-white bg-[#2A5F65] hover:bg-[#255159] py-2.5 px-5 rounded-[28px]';
+            row.append(cardWrapper);
+          });
+        }
   });
 }
