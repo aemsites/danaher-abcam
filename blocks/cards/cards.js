@@ -1,4 +1,8 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
+import {
+  a, div,
+} from '../../scripts/dom-builder.js';
+import { makePublicUrl } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
   const cardBlocks = document.querySelectorAll('.cards');
