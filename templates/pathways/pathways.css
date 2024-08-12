@@ -14,27 +14,8 @@
   width: 75%
 }
 
-.border {
-  border-width: 1px
-}
-
 .border-b {
   border-bottom-width: 1px
-}
-
-.border-b-slate-400 {
-  --tw-border-opacity: 1;
-  border-bottom-color: rgb(148 163 184 / var(--tw-border-opacity))
-}
-
-.border-b-slate-200 {
-  --tw-border-opacity: 1;
-  border-bottom-color: rgb(226 232 240 / var(--tw-border-opacity))
-}
-
-.border-b-slate-300 {
-  --tw-border-opacity: 1;
-  border-bottom-color: rgb(203 213 225 / var(--tw-border-opacity))
 }
 
 .border-b-slate-300\/70 {
