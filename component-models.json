@@ -130,7 +130,65 @@
     ]
   },
   {
-    "id": "card",
+    "id": "cards",
+    "fields": [
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "value": "",
+        "label": "Block Options",
+        "options": [
+          {
+            "name": "3 Columns",
+            "value": "cols-3"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "cards_title",
+        "value": "",
+        "label": " Cards Title"
+      },
+      {
+        "component": "select",
+        "name": "cards_titleType",
+        "value": "h2",
+        "label": "Type",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "h1",
+            "value": "h1"
+          },
+          {
+            "name": "h2",
+            "value": "h2"
+          },
+          {
+            "name": "h3",
+            "value": "h3"
+          },
+          {
+            "name": "h4",
+            "value": "h4"
+          },
+          {
+            "name": "h5",
+            "value": "h5"
+          },
+          {
+            "name": "h6",
+            "value": "h6"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cards-item",
     "fields": [
       {
         "component": "reference",
@@ -156,7 +214,7 @@
       {
         "component": "select",
         "name": "card_titleType",
-        "value": "h1",
+        "value": "h3",
         "label": "Card Title Type",
         "valueType": "string",
         "options": [
@@ -206,34 +264,6 @@
         "name": "card_CTAhrefText",
         "value": "",
         "label": "CTA Text"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "card_CTAhrefTitle",
-        "value": "",
-        "label": "CTA Title"
-      },
-      {
-        "component": "select",
-        "name": "card_CTAhrefType",
-        "value": "",
-        "label": "CTA Type",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "default",
-            "value": ""
-          },
-          {
-            "name": "primary",
-            "value": "primary"
-          },
-          {
-            "name": "secondary",
-            "value": "secondary"
-          }
-        ]
       }
     ]
   },
