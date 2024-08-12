@@ -59,9 +59,18 @@ export default function decorate(block) {
           const heading = row.querySelector('h2');
         if (heading) heading.className = 'card-title text-5xl mb-8 mt-[72px]';
         } else {
-          const cardWrapper = row.querySelector('div');
-          cardWrapper.className = 'cards-li flex flex-col bg-[#e5e7eb]';
+          const cardWrapper = row.querySelectorAll('div');
+          cardWrapper.forEach((parentDiv) => {
+            parentDiv.className = 'cards-li flex flex-col bg-[#e5e7eb]';
+          });
           [...row.children].forEach((elem) => {
+            if(elem.querySelector('.cards-card-image')){
+              const pContainer = row.querySelector('p');
+              const divContainer = div({});
+              divContainer.innerHTML = pContainer.innerHTML;
+              pContainer.replaceWith(divContainer);
+              
+            }
             //cardWrapper.append(elem);
             // if (elem.querySelector('.cards-card-image')) {
             //   elem.className = '';
