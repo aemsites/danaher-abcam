@@ -9,7 +9,7 @@ export default function decorate(block) {
   cardsTitle.classList.add(...'text-5xl mb-8 mt-[72px]'.split(' '));
   [...block.children].forEach((row) => {
     const cardWrapper = row.querySelector('div');
-    console.log(cardWrapper);
+    console.log(row);
     cardWrapper.classList.add(...''.split('cards-ul grid grid-cols-3 gap-11 max-[799px]:grid-cols-1'));
   });
   block.querySelectorAll('img').forEach((img) => {
