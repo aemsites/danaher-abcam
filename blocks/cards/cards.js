@@ -10,7 +10,7 @@ export default function decorate(block) {
   [...block.children].forEach((row) => {
     let type = '';
     const h3Heading = row.querySelector('h3');
-    h3Heading.className = 'card-heading text-2xl tracking-[-0.03em]';
+    h3Heading.classList.add(...'card-heading text-2xl tracking-[-0.03em]'.split(' '));
     const typeP = h3Heading?.previousElementSibling;
     if (typeP) {
       type = typeP.textContent;
