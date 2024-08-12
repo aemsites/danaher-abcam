@@ -48,14 +48,10 @@ export default function decorate(block) {
   // block.querySelectorAll('img').forEach((img) => {
   //   img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]));
   // });
-  if (block.parentElement.parentElement.classList.contains('cards-container')) {
-    block.parentElement.parentElement.classList.remove(...'bg-danaherlightblue-50'.split(' '));
-  }
-  block.classList.add(...'list-none m-0 p-0 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-16'.split(' '));
-  if (block.classList.contains('cols-4')) block.classList.add('lg:grid-cols-4');
-  else block.classList.add('lg:grid-cols-3');
+  block.classList.add(...'w-4/5 m-auto mb-8'.split(' '));
   [...block.children].forEach((row) => {
-    let type = 'DIV';
+    let type = '';
+    block.classList.add(...''.split('cards-ul grid grid-cols-3 gap-11 max-[799px]:grid-cols-1'));
     const heading = row.querySelector('h2');
     if (heading) heading.className = 'card-title text-gray-900 my-2 font-extrabold text-3xl py-2';
     const h3Heading = row.querySelector('h3');
@@ -75,6 +71,7 @@ export default function decorate(block) {
     row.append((heading) || '');
     [...row.children].forEach((elem) => {
       cardWrapper.append(elem);
+      if(index !== 0) {
       if (elem.querySelector('picture, img')) {
         elem.className = 'cards-card-image h-52 leading-5';
       } else {
@@ -85,6 +82,7 @@ export default function decorate(block) {
       if (elem?.querySelector('p')) elem.querySelector('p').className = 'mb-4 text-sm !h-20 !line-clamp-4 !break-words';
       if (elem?.querySelector('p') && !block.classList.contains('opco')) elem.querySelector('p').className = 'pl-2 mb-4 text-sm !h-20 !line-clamp-4 !break-words';
       row.append(cardWrapper);
+    }
     });
     if (readMoreLink) {
       readMoreLink.innerHTML += ' &rarr;';
