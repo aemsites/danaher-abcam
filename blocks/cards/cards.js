@@ -21,7 +21,7 @@ export default function decorate(block) {
           row.className = 'cards-card-body py-9 px-8 flex flex-col grow';
         }
         if (row?.querySelector('h3')) row.querySelector('h3').className = 'card-heading text-2xl tracking-[-0.03em]';
-        if (row?.querySelector('div > div > p')) row.querySelector('div > div > p').className = 'card-description h-full mt-2.5 mb-3 text-base tracking-wide';
+        if (row?.querySelector('div > div > div > p')) row.querySelector('div > div > div change> p').className = 'card-description h-full mt-2.5 mb-3 text-base tracking-wide';
         if (row?.querySelector('div > p')) row.querySelector('p a').className = 'card-link w-fit text-sm text-white bg-[#2A5F65] hover:bg-[#255159] py-2.5 px-5 rounded-[28px]';
       }
     });
