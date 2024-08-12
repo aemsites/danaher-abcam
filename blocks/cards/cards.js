@@ -14,14 +14,12 @@ export default function decorate(block) {
     [...row.children].forEach((elem) => {
       //cardWrapper.append(elem);
       if (elem.querySelector('picture, img')) {
-        elem.className = 'cards-card-image h-52 leading-5';
+        elem.className = 'cards-card-image';
       } else {
-        elem.className = 'cards-card-body p-4 bg-white rounded-b px-0 py-2';
+        elem.className = 'cards-card-body py-9 px-8 flex flex-col grow';
       }
-      if (elem?.querySelector('h3')) elem.querySelector('h3').className = '!line-clamp-2 !h-16';
-      if (elem?.querySelector('h3') && !block.classList.contains('opco')) elem.querySelector('h3').className = 'pl-2 text-lg font-semibold text-danahergray-900 !line-clamp-3 !break-words !h-24';
-      if (elem?.querySelector('p')) elem.querySelector('p').className = 'mb-4 text-sm !h-20 !line-clamp-4 !break-words';
-      if (elem?.querySelector('p') && !block.classList.contains('opco')) elem.querySelector('p').className = 'pl-2 mb-4 text-sm !h-20 !line-clamp-4 !break-words';
+      if (elem?.querySelector('h3')) elem.querySelector('h3').className = 'card-heading text-2xl tracking-[-0.03em]';
+      if (elem?.querySelector('div > p')) elem.querySelector('div > p').className = 'card-description h-full mt-2.5 mb-3 text-base tracking-wide';
       //row.append(cardWrapper);
     });
   });
