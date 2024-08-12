@@ -5,4 +5,6 @@ export default function decorate(block) {
   cardBlocks.forEach((parentDiv) => {
     parentDiv.classList.add(...'w-4/5 m-auto mb-8'.split(' '));
   });
+  const cardsTitle = cardBlocks.querySelectorAll('h2');
+  cardsTitle.classList.add(...'text-5xl mb-8 mt-[72px]'.split(' '));
 }
