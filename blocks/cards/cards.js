@@ -16,8 +16,8 @@ export default function decorate(block) {
       if (div.children.length === 1 && div.querySelector('picture')) div.className = 'cards-card-image';
       else div.className = 'cards-card-body py-9 px-8 flex flex-col grow';
     });
-    const pictureTag = row.querySelector('picture');
-    const imgTag = pictureTag.querySelector('img');
+    const pictureTag = row.querySelector('div > picture');
+    const imgTag = pictureTag.querySelector('div > picture > img');
     if (imgTag) {
       imgTag.classList.add('max-[799px]:w-full');
     }
