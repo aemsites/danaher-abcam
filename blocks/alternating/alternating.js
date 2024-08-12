@@ -27,7 +27,7 @@ export default function decorate() {
         }
       });
     }
-    wrapper.appendChild(innerWrapper);
+    // wrapper.appendChild(innerWrapper);
   }
   section.appendChild(wrapper);
 }

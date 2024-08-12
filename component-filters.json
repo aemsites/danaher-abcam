@@ -1,47 +1,57 @@
 [
-    {
-      "id": "main",
-      "components": [
-        "section"
-      ]
-    },
-    {
-      "id": "columns",
-      "components": []
-    },
-    {
-      "id": "column",
-      "components": [
-        "text",
-        "image",
-        "button",
-        "title"
-      ]
-    },
-    {
-      "id": "section",
-      "components": [
-        "text",
-        "image",
-        "button",
-        "title",
-        "hero",
-        "cards",
-        "columns",
-        "fragment",
-        "container"
-      ]
-    },
-    {
-      "id": "container",
-      "components": [
-        "text",
-        "image"      ]
-    },
-    {
-      "id": "cards",
-      "components": [
-        "card"
-      ]
-    }
-  ]
+  {
+    "id": "main",
+    "components": [
+      "section"
+    ]
+  },
+  {
+    "id": "columns",
+    "components": []
+  },
+  {
+    "id": "column",
+    "components": [
+      "text",
+      "image",
+      "button",
+      "title"
+    ]
+  },
+  {
+    "id": "section",
+    "components": [
+      "text",
+      "image",
+      "button",
+      "title",
+      "hero",
+      "cards",
+      "columns",
+      "mini-teasers",
+      "alternating",
+      "fragment",
+      "container"
+    ]
+  },
+  {
+    "id": "container",
+    "components": [
+      "text",
+      "image"      ]
+  },
+  {
+    "id": "cards",
+    "components": [
+      "text",
+      "card"
+    ]
+  },
+  {
+    "id": "mini-teasers",
+    "components": [
+      "mini-teaser"
+    ]
+  }
+]
+

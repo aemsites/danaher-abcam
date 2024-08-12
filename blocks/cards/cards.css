@@ -18,10 +18,6 @@
   margin-top: 0.625rem
 }
 
-.cards-wrapper :is(.mt-\[72px\]) {
-  margin-top: 72px
-}
-
 .cards-wrapper :is(.block) {
   display: block
 }
@@ -105,11 +101,6 @@
 .cards-wrapper :is(.text-2xl) {
   font-size: 1.5rem;
   line-height: 2rem
-}
-
-.cards-wrapper :is(.text-5xl) {
-  font-size: 3rem;
-  line-height: 1
 }
 
 .cards-wrapper :is(.text-base) {
