@@ -34,7 +34,7 @@ export default function decorate(block) {
         const cardHeading = row.querySelector('h3');
         cardHeading.classList.add(...'card-heading text-2xl tracking-[-0.03em]'.split(' '));
 
-        const cardDescription = row.querySelector('p');
+        const cardDescription = row.querySelector('div > p');
         if (cardDescription) {
           cardDescription.classList.add(...'card-description h-full mt-2.5 mb-3 text-base tracking-wide'.split(' '));
         }
