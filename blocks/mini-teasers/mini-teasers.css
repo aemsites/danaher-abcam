@@ -1,3 +1,7 @@
+.mini-teasers-wrapper :is(.m-auto) {
+  margin: auto
+}
+
 .mini-teasers-wrapper :is(.mx-auto) {
   margin-left: auto;
   margin-right: auto
@@ -5,6 +9,10 @@
 
 .mini-teasers-wrapper :is(.mb-2) {
   margin-bottom: 0.5rem
+}
+
+.mini-teasers-wrapper :is(.mb-8) {
+  margin-bottom: 2rem
 }
 
 .mini-teasers-wrapper :is(.block) {
