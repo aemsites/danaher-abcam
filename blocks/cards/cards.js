@@ -16,7 +16,7 @@ export default function decorate(block) {
       cardWrapper.className = 'cards-li flex flex-col bg-[#e5e7eb]';
       const image = row.querySelector('picture, img')
       if(image) {
-        row.querySelector('p').replaceWith('div');
+        image.closest('p').replaceWith('div');
         image.className = 'cards-card-image';
       } else {
           row.className = 'cards-card-body py-9 px-8 flex flex-col grow';
