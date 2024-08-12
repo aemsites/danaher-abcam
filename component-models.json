@@ -156,7 +156,7 @@
       {
         "component": "select",
         "name": "card_titleType",
-        "value": "h2",
+        "value": "h1",
         "label": "Card Title Type",
         "valueType": "string",
         "options": [
