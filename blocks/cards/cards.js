@@ -45,12 +45,15 @@ export default function decorate(block) {
   //   img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]));
   // });
   block.classList.add(...'w-4/5 m-auto mb-8'.split(' '));
-  [...block.children].forEach((row) => {
-
-  });
   block.querySelectorAll('img').forEach((img) => {
     const picture = img.closest('picture');
+    const pTag = picture.closest('p');
+    pTag.classList.add('cards-card-image');
     const cardImage = createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]);
+    cardImage.classList.add('max-[799px]:w-full');
     if (picture) picture.replaceWith(cardImage);
+  });
+  [...block.children].forEach((row) => {
+
   });
 }
