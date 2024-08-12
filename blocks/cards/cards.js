@@ -5,11 +5,19 @@ export default function decorate(block) {
   cardBlocks.forEach((parentDiv) => {
     parentDiv.classList.add(...'w-4/5 m-auto mb-8'.split(' '));
   });
-  const cardsTitle = document.querySelector('h2');
-  cardsTitle.classList.add(...'text-5xl mb-8 mt-[72px]'.split(' '));
+  // const cardsTitle = document.querySelector('h2');
+  // cardsTitle.classList.add(...'text-5xl mb-8 mt-[72px]'.split(' '));
   [...block.children].forEach((row) => {
-    const cardWrapper = row.querySelector('div');
-    console.log(row);
+    let type = '';
+    const heading = row.querySelector('h2');
+    if (heading) heading.className = 'card-title text-5xl mb-8 mt-[72px]';
+    const h3Heading = row.querySelector('h3');
+    const typeP = h3Heading?.previousElementSibling;
+    if (typeP) {
+      type = typeP.textContent;
+      typeP.remove();
+      block.classList.add(type.toLowerCase());
+    }
     //cardWrapper.classList.add(...''.split('cards-ul grid grid-cols-3 gap-11 max-[799px]:grid-cols-1'));
     [...row.children].forEach((elem) => {
       //cardWrapper.append(elem);
