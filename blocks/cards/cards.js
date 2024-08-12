@@ -69,7 +69,7 @@ export default function decorate(block) {
     if (!block.classList.contains('opco')) cardWrapper.classList.remove(...'border-l-[0.5px] border-gray-300 pl-8 pr-2 transform transition duration-500 hover:scale-105'.split(' '));
     if (!type) cardWrapper.classList.add('...cursor-pointer relative transform transition duration-500 border hover:scale-105 shadow-lg rounded-lg'.split(' '));
     row.append((heading) || '');
-    [...row.children].forEach((elem) => {
+    [...row.children].forEach((elem, index) => {
       cardWrapper.append(elem);
       if(index !== 0) {
       if (elem.querySelector('picture, img')) {
