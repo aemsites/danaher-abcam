@@ -62,7 +62,7 @@ export default function decorate(block) {
           const cardWrapper = row.querySelector('div');
           cardWrapper.className = 'cards-li flex flex-col bg-[#e5e7eb]';
           [...row.children].forEach((elem) => {
-            cardWrapper.append(elem);
+            //cardWrapper.append(elem);
             if (elem.querySelector('.cards-card-image')) {
               elem.className = 'cards-card-image';
             } else {
