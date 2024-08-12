@@ -42,6 +42,7 @@ export default function decorate(block) {
     }
   });
 
+  block.textContent = '';
   block.appendChild(parentDiv);
   parentDiv.appendChild(cardsUl);
 }
