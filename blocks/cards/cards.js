@@ -8,10 +8,8 @@ export default function decorate(block) {
   const cardsTitle = document.querySelector('h2');
   cardsTitle.classList.add(...'text-5xl mb-8 mt-[72px]'.split(' '));
   [...block.children].forEach((row) => {
-    const heading = row.querySelector('h3');
-    heading.classList.add(...'card-heading text-2xl tracking-[-0.03em]'.split(' '));
-    console.log(heading);
-
+    const cardWrapper = row.querySelector('div');
+    cardWrapper.classList.add(...''.split('cards-ul grid grid-cols-3 gap-11 max-[799px]:grid-cols-1'));
   });
   block.querySelectorAll('img').forEach((img) => {
     img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]));
