@@ -24,7 +24,7 @@ export default function decorate(block) {
             parentDiv.className = 'cards-ul grid grid-cols-3 gap-11 max-[799px]:grid-cols-1';
           });
           const liContainer = div({class: 'cards-li flex flex-col bg-[#e5e7eb]'});
-          ulContainer.append(liContainer);
+          //ulContainer.append(liContainer);
           [...row.children].forEach((elem) => {
             if(elem.querySelector('.cards-card-image')){
               const pContainer = row.querySelector('p');
