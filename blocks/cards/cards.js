@@ -50,7 +50,7 @@ export default function decorate(block) {
     const pTag = picture.closest('p');
     pTag.classList.add('cards-card-image');
     const cardImage = createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]);
-    const imgTag = div.querySelector('p > picture > img');
+    const imgTag = cardImage.querySelector('img');
     imgTag.classList.add('max-[799px]:w-full');
     if (picture) picture.replaceWith(cardImage);
   });
