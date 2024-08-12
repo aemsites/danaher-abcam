@@ -705,6 +705,44 @@ main .section > .recently-viewed-wrapper {
   width: 100%;
 }
 
+dialog .modal-content .section > .default-content-wrapper {
+  margin: 0.5rem;
+  display: flex;
+  max-height: -moz-max-content;
+  max-height: max-content;
+  max-width: 600px;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+dialog .modal-content .section > .default-content-wrapper h2 {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 700;
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+
+dialog .modal-content .section > .default-content-wrapper h3 {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 700;
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+
+dialog .modal-content .section > .default-content-wrapper p {
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+
 .visible {
   visibility: visible;
 }

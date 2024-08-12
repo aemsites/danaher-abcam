@@ -75,7 +75,7 @@ function getButtonAlternative(rawData, title) {
       ),
     ));
     const insteadbtn = titleDiv.appendChild(a(
-      { class: 'font-2xl mt-4', href: '/modals/popup-alternative' },
+      { class: 'font-2xl mt-4', href: '/modals/consider-this-alternative' },
       span({ class: 'learnmore align-center mt-4 underline text-[#378189]' }, 'why should I try this instead?'),
     ));
     decorateModals(insteadbtn);
