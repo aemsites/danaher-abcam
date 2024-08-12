@@ -8,6 +8,8 @@ export default function decorate(block) {
   const cardsTitle = document.querySelector('h2');
   cardsTitle.classList.add(...'text-5xl mb-8 mt-[72px]'.split(' '));
   [...block.children].forEach((row) => {
+    const heading = row.querySelector('h3');
+    console.log(heading);
 
   });
   block.querySelectorAll('img').forEach((img) => {
