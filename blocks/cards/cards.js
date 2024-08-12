@@ -6,8 +6,8 @@ export default function decorate(block) {
 
   [...block.children].forEach((row) => {
     const pictureTag = row.querySelector('picture');
-    const cardHeading = row.querySelector('h2');
-    cardHeading.classList.add(...'card-heading text-2xl tracking-[-0.03em]'.split(' '));
+    // const cardHeading = row.querySelector('h2');
+    // cardHeading.classList.add(...'card-heading text-2xl tracking-[-0.03em]'.split(' '));
 
     const cardDescription = row.querySelector('p');
     if (cardDescription) {
