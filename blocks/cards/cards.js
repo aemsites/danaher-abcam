@@ -48,7 +48,12 @@ export default function decorate(block) {
   // block.querySelectorAll('img').forEach((img) => {
   //   img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]));
   // });
-
+  if (block.parentElement.parentElement.classList.contains('cards-container')) {
+    block.parentElement.parentElement.classList.remove(...'bg-danaherlightblue-50'.split(' '));
+  }
+  block.classList.add(...'list-none m-0 p-0 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-16'.split(' '));
+  if (block.classList.contains('cols-4')) block.classList.add('lg:grid-cols-4');
+  else block.classList.add('lg:grid-cols-3');
   [...block.children].forEach((row) => {
     let type = '';
     const heading = row.querySelector('h2');
