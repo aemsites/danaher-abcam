@@ -28,7 +28,7 @@ export default function decorate(block) {
     if (cardDescription) {
       cardDescription.classList.add(...'card-description h-full mt-2.5 mb-3 text-base tracking-wide'.split(' '));
     }
-    const cardLink = row.querySelector('p a');
+    const cardLink = row.querySelector('.button-container');
     if (cardLink) {
       cardLink.classList.add(...'card-link w-fit text-sm text-white bg-[#2A5F65] hover:bg-[#255159] py-2.5 px-5 rounded-[28px]'.split(' '));
     }
