@@ -1,5 +1,4 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
-import { div } from '../../scripts/dom-builder.js';
 
 export default function decorate(block) {
   const cardBlocks = document.querySelectorAll('.cards');
@@ -12,14 +11,15 @@ export default function decorate(block) {
   [...block.children].forEach((row) => {
     const li = document.createElement('li');
     li.classList.add(...'cards-li flex flex-col bg-[#e5e7eb]'.split(' '));
-    // 
+    //
     while (row.firstElementChild) li.append(row.firstElementChild);
     [...li.children].forEach((div) => {
       const pictureTag = div.querySelector('picture');
-      if(pictureTag) {
-        div.className = 'cards-card-image';  
+      if (pictureTag) {
+        div.className = 'cards-card-image';
       }
-      const divContainer = div({ class: 'cards-card-body py-9 px-8 flex flex-col grow' });
+      const divContainer = document.createElement('div');
+      div.classList.add(...'cards-card-body py-9 px-8 flex flex-col grow'.split(' '));
       const cardHeading = row.querySelector('li > div > h2');
       cardHeading.classList.add(...'card-heading text-2xl tracking-[-0.03em]'.split(' '));
 
@@ -33,15 +33,15 @@ export default function decorate(block) {
       }
       divContainer.append(cardHeading);
 
-      //if (div.children.length === 1 && div.querySelector('picture')) {
-        // div.className = 'cards-card-image';
-        // const imgTag = div.querySelector('p > picture > img');
-        // if (imgTag) {
-        //   imgTag.classList.add('max-[799px]:w-full');
-        // }
-      //} else div.className = 'cards-card-body py-9 px-8 flex flex-col grow';
+      // if (div.children.length === 1 && div.querySelector('picture')) {
+      // div.className = 'cards-card-image';
+      // const imgTag = div.querySelector('p > picture > img');
+      // if (imgTag) {
+      //   imgTag.classList.add('max-[799px]:w-full');
+      // }
+      // } else div.className = 'cards-card-body py-9 px-8 flex flex-col grow';
     });
-    
+
     ul.append(li);
   });
   ul.querySelectorAll('li > picture > img').forEach((img) => img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])));
