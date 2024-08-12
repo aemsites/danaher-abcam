@@ -5,7 +5,7 @@ export default function decorate(block) {
   teasersBlocks.forEach((parentDiv) => {
     parentDiv.classList.add(...'bg-black mt-72px pb-88px pt-66px'.split(' '));
   });
-  const div = document.createElement('div');
+  const container = document.createElement('div');
   div.classList.add(...'mx-auto bg-black w-4/5 py-20 space-y-11 min-[800px]:flex min-[800px]:space-x-11 min-[800px]:space-y-0'.split(' '));
   [...block.children].forEach((teasers) => {
     [...teasers.children].forEach((teaser) => {
@@ -20,4 +20,5 @@ export default function decorate(block) {
       teaser.children[2].classList.add(...'text-sm font-normal'.split(' '));
     });
   });
+  block.append(container);
 }
