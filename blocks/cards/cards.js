@@ -31,15 +31,15 @@ export default function decorate(block) {
           pContainer.replaceWith(divContainer);
         }
         const cardContainer = div({ class: 'cards-card-body py-9 px-8 flex flex-col grow' });
-        const cardHeading = row.querySelector('h3');
+        const cardHeading = elem.querySelector('h3');
         cardHeading.classList.add(...'card-heading text-2xl tracking-[-0.03em]'.split(' '));
 
-        const cardDescription = row.querySelector('div > p');
+        const cardDescription = elem.querySelector('div > p');
         if (cardDescription) {
           cardDescription.classList.add(...'card-description h-full mt-2.5 mb-3 text-base tracking-wide'.split(' '));
         }
 
-        const cardLink = row.querySelector('p a');
+        const cardLink = elem.querySelector('p a');
         if (cardLink) {
           cardLink.classList.add(...'card-link w-fit text-sm text-white bg-[#2A5F65] hover:bg-[#255159] py-2.5 px-5 rounded-[28px]'.split(' '));
         }
