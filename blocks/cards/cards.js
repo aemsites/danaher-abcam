@@ -16,6 +16,7 @@ export default function decorate(block) {
       cardWrapper.className = 'cards-ul grid grid-cols-3 gap-11 max-[799px]:grid-cols-1';
       const cardContainer = document.createElement('div');
       cardContainer.className = 'cards-li flex flex-col bg-[#e5e7eb]';
+      cardWrapper.append(cardContainer);
       const image = row.querySelector('picture, img')
       if(image) {
         image.closest('p').replaceWith('div');
@@ -27,7 +28,6 @@ export default function decorate(block) {
         //if (row?.querySelector('div > div > div > p')) row.querySelector('div > div > div change> p').className = 'card-description h-full mt-2.5 mb-3 text-base tracking-wide';
         if (row?.querySelector('div > p')) row.querySelector('p a').className = 'card-link w-fit text-sm text-white bg-[#2A5F65] hover:bg-[#255159] py-2.5 px-5 rounded-[28px]';
       }
-      cardWrapper.append(cardContainer);
     });
   block.querySelectorAll('img').forEach((img) => {
     img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]));
