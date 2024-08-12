@@ -21,7 +21,7 @@ export default function decorate(block) {
       if (div.children.length === 1 && div.querySelector('picture')) div.className = 'cards-card-image';
       else div.className = 'cards-card-body py-9 px-8 flex flex-col grow';
     });
-    const cardHeading = row.querySelector('div > h2');
+    const cardHeading = row.querySelector('h2');
     cardHeading.classList.add(...'card-heading text-2xl tracking-[-0.03em]'.split(' '));
 
     const cardDescription = row.querySelector('p');
