@@ -64,7 +64,7 @@ export default function decorate(block) {
           [...row.children].forEach((elem) => {
             //cardWrapper.append(elem);
             if (elem.querySelector('.cards-card-image')) {
-              elem.className = 'cards-card-image';
+              elem.className = '';
             } else {
               elem.className = 'cards-card-body py-9 px-8 flex flex-col grow';
             }
