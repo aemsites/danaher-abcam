@@ -1,8 +1,7 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
-import { div } from '../../scripts/dom-builder.js';
 
 export default function decorate(block) {
-  const divContainer = div({ class: 'mx-auto bg-black w-4/5 py-20 space-y-11 min-[800px]:flex min-[800px]:space-x-11 min-[800px]:space-y-0' });
+  block.firstElementChild.classList.add(...'mx-auto bg-black w-4/5 py-20 space-y-11 min-[800px]:flex min-[800px]:space-x-11 min-[800px]:space-y-0'.split(' '));
   [...block.children].forEach((teasers) => {
     [...teasers.children].forEach((teaser) => {
       teaser.classList.add('text-white');
@@ -16,5 +15,4 @@ export default function decorate(block) {
       teaser.children[2].classList.add(...'text-sm font-normal'.split(' '));
     });
   });
-  block.append(divContainer);
 }
