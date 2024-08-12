@@ -18,9 +18,19 @@ export default function decorate(block) {
       if(pictureTag) {
         div.className = 'cards-card-image';  
       }
-      else {
-        div.className = 'cards-card-body py-9 px-8 flex flex-col grow';
+      const divContainer = div({ class: 'cards-card-body py-9 px-8 flex flex-col grow' });
+      const cardHeading = row.querySelector('li > div > h2');
+      cardHeading.classList.add(...'card-heading text-2xl tracking-[-0.03em]'.split(' '));
+
+      const cardDescription = row.querySelector('p');
+      if (cardDescription) {
+        cardDescription.classList.add(...'card-description h-full mt-2.5 mb-3 text-base tracking-wide'.split(' '));
       }
+      const cardLink = row.querySelector('.button-container');
+      if (cardLink) {
+        cardLink.classList.add(...'card-link w-fit text-sm text-white bg-[#2A5F65] hover:bg-[#255159] py-2.5 px-5 rounded-[28px]'.split(' '));
+      }
+      divContainer.append(cardHeading);
 
       //if (div.children.length === 1 && div.querySelector('picture')) {
         // div.className = 'cards-card-image';
@@ -30,17 +40,7 @@ export default function decorate(block) {
         // }
       //} else div.className = 'cards-card-body py-9 px-8 flex flex-col grow';
     });
-    // const cardHeading = row.querySelector('li > div > h2');
-    // cardHeading.classList.add(...'card-heading text-2xl tracking-[-0.03em]'.split(' '));
-
-    // const cardDescription = row.querySelector('p');
-    // if (cardDescription) {
-    //   cardDescription.classList.add(...'card-description h-full mt-2.5 mb-3 text-base tracking-wide'.split(' '));
-    // }
-    // const cardLink = row.querySelector('.button-container');
-    // if (cardLink) {
-    //   cardLink.classList.add(...'card-link w-fit text-sm text-white bg-[#2A5F65] hover:bg-[#255159] py-2.5 px-5 rounded-[28px]'.split(' '));
-    // }
+    
     ul.append(li);
   });
   ul.querySelectorAll('li > picture > img').forEach((img) => img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])));
