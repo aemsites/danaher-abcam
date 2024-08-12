@@ -46,6 +46,11 @@ export default function decorate(block) {
   // });
   block.classList.add(...'w-4/5 m-auto mb-8'.split(' '));
   [...block.children].forEach((row) => {
-    
+
+  });
+  block.querySelectorAll('img').forEach((img) => {
+    const picture = img.closest('picture');
+    const cardImage = createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]);
+    if (picture) picture.replaceWith(cardImage);
   });
 }
