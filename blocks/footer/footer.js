@@ -7,14 +7,16 @@ import { div, span } from '../../scripts/dom-builder.js';
  */
 function callSocialIcons(socialIcons) {
   const allAnchorTags = div({ class: 'flex items-center gap-x-1.5 md:gap-x-4' });
-  for (let i = 0; i < socialIcons.children.length; i += 1) {
-    const createAtag = document.createElement('a');
-    createAtag.appendChild(socialIcons.children[i]?.firstElementChild?.querySelector('picture'));
-    createAtag.setAttribute('href', socialIcons.children[i]?.children[1]?.firstElementChild.href);
-    createAtag.setAttribute('target', '_blank');
-    createAtag.setAttribute('aria-label', 'Social Media Link');
-    allAnchorTags.appendChild(createAtag);
-  }
+  [...socialIcons.children].forEach((element) => {
+    const ancTag = element.querySelector('a');
+    const iconName = ancTag.textContent;
+    ancTag.textContent = '';
+    ancTag.append(span({ class: `icon icon-${iconName}` }));
+    ancTag.setAttribute('target', '_blank');
+    ancTag.setAttribute('aria-label', 'Social Media Link');
+    allAnchorTags.appendChild(ancTag);
+  });
+  decorateIcons(allAnchorTags);
   return allAnchorTags;
 }
 
@@ -68,7 +70,6 @@ function createFooterDOM(mainContainer) {
   const rightsContainer = div({ class: 'font-normal text-end opacity-80' });
 
   const logo = firstChild?.firstElementChild?.firstElementChild;
-  console.log(firstChild);
   const socialIcons = callSocialIcons(firstChild.children[1]);
   const links = firstChild.children[2];
   const danaharLogo = firstChild.children[3];
@@ -98,7 +99,6 @@ function createFooterDOM(mainContainer) {
     });
     [...ceneterElements.children].forEach((liEle) => {
       const linkDiv = div({ class: 'link-div flex flex-row justify-between align-center' });
-      linkDiv.append(liEle.querySelector('strong'));
       const svgSpan = span({ class: 'md:hidden icon icon-chevron-down-white' });
       linkDiv.append(svgSpan);
       decorateIcons(linkDiv);
@@ -109,7 +109,6 @@ function createFooterDOM(mainContainer) {
   showHideFooterLinks(footerLinks);
   addClassesToListItems(footerLinks.firstElementChild.children, 1);
   danaharLogoContainer.appendChild(danaharLogo);
-  // privacyTermsContainer.appendChild(privacyTerms);
   rightsContainer.appendChild(rights);
   bottomLeftContainer.appendChild(privacyTermsContainer);
   bottomLeftContainer.appendChild(rightsContainer);
