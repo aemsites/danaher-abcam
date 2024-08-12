@@ -21,14 +21,12 @@ export default function decorate(block) {
         } else {
           const ulContainer = row.querySelectorAll('div');
           ulContainer.forEach((parentDiv) => {
-            parentDiv.className = 'cards-ul grid grid-cols-3 gap-11 max-[799px]:grid-cols-1';
+            parentDiv.className = 'flex flex-col bg-[#e5e7eb]';
           });
-          const liContainer = div({class: 'cards-li flex flex-col bg-[#e5e7eb]'});
-          //ulContainer.append(liContainer);
           [...row.children].forEach((elem) => {
             if(elem.querySelector('.cards-card-image')){
               const pContainer = row.querySelector('p');
-              const divContainer = div({});
+              const divContainer = div({class : 'cards-card-image' });
               divContainer.innerHTML = pContainer.innerHTML;
               pContainer.replaceWith(divContainer);             
             }
