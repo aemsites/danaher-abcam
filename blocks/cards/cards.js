@@ -16,8 +16,8 @@ export default function decorate(block) {
     if (imgTag) {
       imgTag.classList.add('max-[799px]:w-full');
     }
-    // const cardHeading = row.querySelector('div > h2');
-    // cardHeading.classList.add(...'card-heading text-2xl tracking-[-0.03em]'.split(' '));
+    const cardHeading = row.querySelector('div > h2');
+    cardHeading.classList.add(...'card-heading text-2xl tracking-[-0.03em]'.split(' '));
 
     const cardDescription = row.querySelector('p');
     if (cardDescription) {
