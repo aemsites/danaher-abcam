@@ -148,7 +148,7 @@
     ]
   },
   {
-    "id": "cards-item",
+    "id": "card",
     "fields": [
       {
         "component": "reference",
@@ -172,17 +172,11 @@
         "label": "Title"
       },
       {
-        "component": "select",
+        "component": "text",
         "name": "card_titleType",
-        "value": "h3",
-        "label": "Title Type",
+        "label": "",
         "valueType": "string",
-        "options": [
-          {
-            "name": "h3",
-            "value": "h3"
-          }
-        ]
+        "hidden": true
       },
       {
         "component": "richtext",

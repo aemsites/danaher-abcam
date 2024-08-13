@@ -123,15 +123,16 @@
           }
         },
         {
-          "title": "Cards-Item",
-          "id": "cards-item",
+          "title": "Card",
+          "id": "card",
           "plugins": {
             "xwalk": {
               "page": {
                 "resourceType": "core/franklin/components/block/v1/block/item",
                 "template": {
-                  "name": "Cards-Item",
-                  "model": "cards-item"
+                  "name": "Card",
+                  "model": "card",
+                  "card_titleType": "h3"
                 }
               }
             }
