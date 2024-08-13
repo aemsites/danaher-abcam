@@ -23,7 +23,7 @@ function addProductTags(productTagsArray) {
 
 // Function to render records on the page
 function renderRecords(records, block) {
-  block.innerHTML = ''; // Clear previous content
+  block.replaceChildren(); // Clear previous content
   const parentContainer = div(
     { class: 'products-parent-container flex flex-col w-full' },
     h2({ class: 'mb-6 font-bold text-2xl' }, 'Products'),
@@ -63,7 +63,7 @@ async function loadPage(page, block) {
   const totalPages = Math.ceil(totalRecords / pageSize);
 
   const paginationContainer = div({ class: 'pagination-controls flex flex-wrap justify-center items-center gap-2 mt-8' });
-  paginationContainer.innerHTML = '';
+  paginationContainer.replaceChildren();
   block.append(paginationContainer); // Clear previous pagination
 
   const prevButton = button({ class: 'previous-button cursor-not-allowed hover:bg-gray-400/30 p-2 rounded-full rotate-90', title: 'Next' }, span({ class: 'icon icon-chevron-down' }));
