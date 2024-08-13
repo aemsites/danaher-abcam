@@ -154,15 +154,9 @@ export default async function decorate(block) {
     const reactivityJson = response[0].raw.reactivitytabledata
       ? response[0].raw.reactivitytabledata : [];
     const tableContent = allApplicationTableData(reactivityJson, reactivityApplication);
-    console.log('reactivityJson');
-    console.log(reactivityJson);
     reactivityApplicationWrapper.appendChild(tableContent);
     const publicationArray = response[0].raw.publicationsjson
       ? response[0].raw.publicationsjson.slice(0, 2) : [];
-      console.log('Images:');
-      console.log(response[0].raw.images);
-      console.log('individual application:');
-      console.log(JSON.parse(response[0].raw.reactivityjson).applications);
     const images = response[0].raw.images ? response[0].raw.images.slice(0, 3) : [];
     const pubandimagesection = publicationsAndImageSection(images, publicationArray);
     reactivityApplicationWrapper.appendChild(pubandimagesection);
