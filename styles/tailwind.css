@@ -5,7 +5,7 @@
 
 @layer components {
     header {
-        @apply h-11 lg:h-[74px];
+        @apply h-11 lg:h-[54px];
     }
 
     .home-page main .section > div.hero-wrapper {
