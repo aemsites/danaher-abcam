@@ -175,7 +175,7 @@
         "component": "select",
         "name": "card_titleType",
         "value": "h3",
-        "label": "Card Title Type",
+        "label": "Title Type",
         "valueType": "string",
         "options": [
           {
@@ -247,7 +247,7 @@
         "component": "select",
         "name": "hero_titleType",
         "value": "h1",
-        "label": "Hero Title Type",
+        "label": "Title Type",
         "valueType": "string",
         "options": [
           {
@@ -257,6 +257,28 @@
           {
             "name": "h2",
             "value": "h2"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mini-teasers",
+    "fields": [
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "value": "",
+        "label": "Block Options",
+        "options": [
+          {
+            "name": "3 Columns",
+            "value": "cols-3"
+          },
+          {
+            "name": "4 Columns",
+            "value": "cols-4"
           }
         ]
       }
