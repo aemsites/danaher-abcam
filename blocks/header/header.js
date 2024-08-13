@@ -40,6 +40,7 @@ function buildSearchBlock(headerBlock) {
   const searchHtmlBlock = headerBlock.children[0];
   searchHtmlBlock.classList.add(...'navbar-wrapper justify-center bg-black z-50 pt-2 lg:pt-4'.split(' '));
   searchHtmlBlock.id = 'sticky-header';
+  searchHtmlBlock.querySelector('p').classList.add('hidden');
   const borderBottom = div({ class: 'h-0.5 mt-3', style: 'background: linear-gradient(90deg, #4ba6b3 0, #c9d3b7 35%, #ff8730 70%, #c54428)' });
   const searchNewBlock = div({ class: 'bg-black flex gap-x-4 xl:gap-x-8 lg:mx-auto 2xl:mx-24 lg:px-8 md:px-12 px-4 pr-4 max-w-7xl flex-row' });
   const extendedSectionBlock = div({ class: 'extended-section md:w-full ml-auto md:ml-14 mr-2 md:mr-4 hidden lg:flex items-center gap-x-4 lg:block' });
@@ -216,7 +217,7 @@ function handleScroll() {
 }
 
 export default async function decorate(block) {
-  const resp = await fetch('/nav.plain.html');
+  const resp = await fetch('/en/us/nav.plain.html');
 
   if (resp.ok) {
     const html = await resp.text();
