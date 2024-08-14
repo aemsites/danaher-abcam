@@ -49,5 +49,11 @@
   {
     "id": "alternating",
     "components": []
+  },
+  {
+    "id": "teasers",
+    "components": [
+      "teaser"
+    ]
   }
 ]
