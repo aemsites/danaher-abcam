@@ -403,17 +403,6 @@
     ]
   },
   {
-    "id": "teasers",
-    "fields": [
-      {
-        "component": "multiselect",
-        "valueType": "string",
-        "name": "classes",
-        "value": ""
-      }
-    ]
-  },
-  {
     "id": "teaser",
     "fields": [
       {
@@ -432,16 +421,16 @@
       },
       {
         "component": "text",
-        "name": "foreground_title",
+        "name": "foreground_pretitle",
         "value": "",
-        "label": "Title",
+        "label": "Pre title",
         "valueType": "string"
       },
       {
-        "component": "richtext",
-        "name": "foreground_description",
+        "component": "text",
+        "name": "foreground_title",
         "value": "",
-        "label": "Description",
+        "label": "Title",
         "valueType": "string"
       }
     ]
