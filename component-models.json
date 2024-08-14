@@ -142,12 +142,7 @@
           {
             "name": "3 Columns",
             "value": "cols-3"
-          },
-          {
-            "name": "4 Columns",
-            "value": "cols-4"
           }
-
         ]
       }
     ]
@@ -221,6 +216,26 @@
   {
     "id": "hero",
     "fields": [
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "value": "",
+        "label": "Search Options",
+        "options": [
+          {
+            "name": "Input Popup",
+            "value": "input-popup"
+          }
+        ]
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "hero_image",
+        "label": "Hero Image",
+        "multi": false
+      },
       {
         "component": "reference",
         "valueType": "string",
