@@ -142,7 +142,12 @@
           {
             "name": "3 Columns",
             "value": "cols-3"
+          },
+          {
+            "name": "4 Columns",
+            "value": "cols-4"
           }
+
         ]
       }
     ]
