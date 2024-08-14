@@ -51,4 +51,20 @@
     .search-results main {
         @apply min-h-[91rem] h-auto w-full;
     }
+
+    dialog .modal-content .section > .default-content-wrapper {
+        @apply flex flex-col justify-between gap-4 max-w-[600px] max-h-max m-2 px-6 py-2;
+    }
+
+    dialog .modal-content .section > .default-content-wrapper h2 {
+        @apply font-bold text-lg text-gray-900;
+    }
+    
+    dialog .modal-content .section > .default-content-wrapper h3 {
+        @apply font-bold text-base text-gray-900;
+    }
+
+    dialog .modal-content .section > .default-content-wrapper p {
+        @apply font-normal text-gray-900 mb-2;
+    }
 }
