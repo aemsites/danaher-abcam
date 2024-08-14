@@ -705,6 +705,18 @@ main .section > .recently-viewed-wrapper {
   width: 100%;
 }
 
+main .section > .default-content-wrapper h2 {
+  margin-bottom: 2rem;
+  margin-top: 72px;
+  font-size: 3rem;
+  line-height: 1;
+}
+
+main .section.section-padding {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
 .visible {
   visibility: visible;
 }

@@ -51,4 +51,12 @@
     .search-results main {
         @apply min-h-[91rem] h-auto w-full;
     }
+
+    main .section > .default-content-wrapper h2 {
+        @apply text-5xl mb-8 mt-[72px];
+    }
+
+    main .section.section-padding {
+        @apply mx-8;
+    }
 }
