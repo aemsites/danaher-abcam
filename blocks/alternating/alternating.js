@@ -19,7 +19,7 @@ export default function decorate() {
             }
           });
         } else {
-          const pictureTag = row.querySelector('picture');
+          const pictureTag = row.querySelector('p > picture');
           const imgTag = pictureTag?.querySelector('img');
           if (imgTag) {
             imgTag.classList.add(...'max-[799px]:w-full w-full h-full'.split(' '));
