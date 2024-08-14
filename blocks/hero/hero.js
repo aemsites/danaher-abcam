@@ -452,7 +452,7 @@ export default function decorate(block) {
   const title = block.querySelector('div > div > p');
   const parentWrapper = div({ class: 'absolute w-full inset-x-auto inset-y-0 flex flex-col items-center justify-center gap-y-4 text-5xl px-6 md:px-0' });
   const headingTag = block.querySelector('h1');
-  headingTag.classList.add(...'hidden lg:block font-semibold xl:font-bold text-4xl xl:text-5xl xxl:text-7xl text-white'.split(' '));
+  headingTag.className = 'hidden lg:block font-semibold xl:font-bold text-4xl xl:text-5xl xxl:text-7xl text-white';
   block.classList.add(...'relative'.split(' '));
   title.append(parentWrapper);
   parentWrapper.append(headingTag);
