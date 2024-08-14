@@ -332,20 +332,6 @@
     "id": "alternating",
     "fields": [
       {
-        "component": "reference",
-        "valueType": "string",
-        "name": "alternating_image",
-        "label": "Image",
-        "multi": false
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "alternating_imageAlt",
-        "label": "Alt",
-        "value": ""
-      },
-      {
         "component": "text",
         "valueType": "string",
         "name": "alternating_title",
@@ -389,6 +375,20 @@
         "name": "cta_hrefText",
         "value": "",
         "label": "CTA Text"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "alternating_image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "alternating_imageAlt",
+        "label": "Alt",
+        "value": ""
       }
     ]
   },
