@@ -78,4 +78,5 @@ export function decorateModals(element) {
       openModal(origin.href);
     }
   });
+  return element;
 }
