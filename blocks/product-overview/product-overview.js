@@ -4,6 +4,7 @@ import {
   a,
 } from '../../scripts/dom-builder.js';
 import { getProductResponse } from '../../scripts/search.js';
+import { decorateModals } from '../../scripts/modal.js';
 import { toolTip } from '../../scripts/scripts.js';
 
 function createKeyFactElement(key, value) {
@@ -74,6 +75,12 @@ function getButtonAlternative(rawData, title) {
         buttonAlternative,
       ),
     ));
+    const insteadbtn = titleDiv.appendChild(a(
+      { class: 'font-2xl mt-4', href: '/modals/consider-this-alternative' },
+      span({ class: 'learnmore align-center mt-4 underline text-[#378189]' }, 'why should I try this instead?'),
+    ));
+    decorateModals(insteadbtn);
+    titleDiv.appendChild(insteadbtn);
     return titleDiv;
   }
   return '';
