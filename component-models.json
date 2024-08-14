@@ -404,7 +404,13 @@
   },
   {
     "id": "teasers",
-    "fields": []
+    "fields": [
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes"
+      }
+    ]
   },
   {
     "id": "teaser",
