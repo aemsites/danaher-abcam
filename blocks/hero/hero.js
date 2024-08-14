@@ -485,5 +485,5 @@ export default function decorate(block) {
   //   parentWrapper.append(buildSearchBackdrop());
   //   parentWrapper.append(div({ id: 'search-container-child', class: 'h-screen fixed top-0 left-0 bg-black opacity-75 z-40 transition-all -translate-y-full' }));
   //   decorateIcons(parentWrapper);
-  }
+  //}
 }
