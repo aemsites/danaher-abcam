@@ -33,11 +33,11 @@ export default function decorate(block) {
       //   imgTag.classList.add('max-[799px]:w-full');
       // }
 
-      cardsLi.appendChild(pictureTag);
-      cardsLi.appendChild(cardContentDiv);
-      cardsUl.appendChild(cardsLi);
+      cardsLi.append(pictureTag);
+      cardsLi.append(cardContentDiv);
+      cardsUl.append(cardsLi);
   });
 
-  block.appendChild(parentDiv);
-  parentDiv.appendChild(cardsUl);
+  block.append(parentDiv);
+  parentDiv.append(cardsUl);
 }
