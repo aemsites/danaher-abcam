@@ -38,6 +38,6 @@ export default function decorate(block) {
       cardsUl.append(cardsLi);
   });
 
-  block.append(parentDiv);
-  parentDiv.append(cardsUl);
+  // block.append(parentDiv);
+  // parentDiv.append(cardsUl);
 }
