@@ -24,9 +24,9 @@ export default function decorate(block) {
 
       const cardContentDiv = div({ class: 'cards-card-body py-9 px-8 flex flex-col grow' });
 
-      cardContentDiv.appendChild(cardHeading);
-      cardContentDiv.appendChild(cardDescription);
-      cardContentDiv.appendChild(cardLink);
+      cardContentDiv.append(cardHeading);
+      cardContentDiv.append(cardDescription);
+      cardContentDiv.append(cardLink);
 
       const imgTag = pictureTag.querySelector('img');
       if (imgTag) {
