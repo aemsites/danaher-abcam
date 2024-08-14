@@ -5,6 +5,7 @@ import {
 } from '../../scripts/dom-builder.js';
 import { getProductResponse } from '../../scripts/search.js';
 import { decorateModals } from '../../scripts/modal.js';
+import { toolTip } from '../../scripts/scripts.js';
 
 function createKeyFactElement(key, value) {
   return div(
@@ -136,10 +137,13 @@ export default async function decorate(block) {
   });
 
   // Constructing the container with title, description, alternative names, and key-value pairs
+  const overviewTitle = toolTip('overviewtitle', 'overviewtooltip', title, null);
+  const datasheetTitle = toolTip('datasheettitle', 'datasheettooltip', title, null);
+  const supportAndDownloadTitle = toolTip('supportanddownloadtitle', 'supportanddownloadtooltip', title, null);
   if (block.classList.contains('datasheet')) {
     const datasheetContainer = div(
       { class: 'font-sans' },
-      div({ class: 'text-black text-4xl pb-4 font-bold' }, title),
+      div({ class: 'text-black text-4xl pb-4 font-bold' }, datasheetTitle),
       div({ class: 'text-black text-xl font-normal' }, description),
       productTagsDiv,
       alternativeNames,
@@ -148,14 +152,14 @@ export default async function decorate(block) {
   } else if (block.classList.contains('download')) {
     const supportContainer = div(
       { class: 'font-sans' },
-      div({ class: 'text-black text-4xl pb-4 font-bold' }, title),
+      div({ class: 'text-black text-4xl pb-4 font-bold' }, supportAndDownloadTitle),
       productTagsDiv,
     );
     block.appendChild(supportContainer);
   } else {
     const overviewContainer = div(
       { class: 'font-sans py-6' },
-      div({ class: 'text-black text-4xl pb-4 font-bold' }, title),
+      div({ class: 'text-black text-4xl pb-4 font-bold' }, overviewTitle),
       div({ class: 'text-black text-xl font-normal tracking-wide' }, description),
       getReviewsRatings(aggregatedRating, numberOfReviews),
       div({ class: 'border-t-[1px] border-[#dde1e1] my-6' }),
