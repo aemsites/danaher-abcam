@@ -403,6 +403,19 @@
     ]
   },
   {
+    "id": "teasers",
+    "fields": [
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "value": "",
+        "label": "Block Options",
+        "options": []
+      }
+    ]
+  },
+  {
     "id": "teaser",
     "fields": [
       {
