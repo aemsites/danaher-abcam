@@ -28,10 +28,10 @@ export default function decorate(block) {
       cardContentDiv.append(cardDescription);
       cardContentDiv.append(cardLink);
 
-      const imgTag = pictureTag.querySelector('img');
-      if (imgTag) {
-        imgTag.classList.add('max-[799px]:w-full');
-      }
+      // const imgTag = pictureTag.querySelector('img');
+      // if (imgTag) {
+      //   imgTag.classList.add('max-[799px]:w-full');
+      // }
 
       cardsLi.appendChild(pictureTag);
       cardsLi.appendChild(cardContentDiv);
