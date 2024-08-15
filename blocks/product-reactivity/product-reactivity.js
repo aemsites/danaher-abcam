@@ -6,13 +6,13 @@ import { decorateModals } from '../../scripts/modal.js';
 import { paginateData } from '../../scripts/scripts.js';
 
 const getReactivityStatus = (reactivityType) => {
-  if (reactivityType === 'Tested') return '/icons/tested.svg';
+  if (reactivityType === 'TESTED_AND_REACTS') return '/icons/tested.svg';
   if (reactivityType === 'REACTS') return '/icons/expected.svg';
   if (reactivityType === 'EXPECTED_TO_REACT') return '/icons/predicted.svg';
   return '/icons/not-recommended.svg';
 };
 
-const getTableCSS = (reactivityType) => (reactivityType === 'Tested' ? 'w-6' : 'w-3');
+const getTableCSS = (reactivityType) => (reactivityType === 'TESTED_AND_REACTS' ? 'w-6' : 'w-3');
 
 function productPromise() {
   return div(
@@ -137,16 +137,18 @@ function allApplicationTableData(tableData, application) {
   const tbodyContent = tbody();
   const tableHeading = table({ class: 'w-full border-separate indent-2' }, tableColumn);
   tableData.forEach((row) => {
-    const rowObj = JSON.parse(row);
     const tablerow = tr();
     tablerow.appendChild(th(
       { class: 'p-4 font-normal text-left bg-white w-1/5 max-[959px]:p-2' },
-      span({ class: 'text-sm font-semibold' }, rowObj.species),
+      span({ class: 'text-sm font-semibold' }, row.species),
     ));
     application.forEach((name) => {
       const tableCell = td(
         { class: 'p-4 font-normal text-left bg-white w-1/5' },
-        img({ class: getTableCSS(rowObj[name]), src: getReactivityStatus(rowObj[name]) }),
+        img({
+          class: getTableCSS(row[name].suitability),
+          src: getReactivityStatus(row[name].suitability),
+        }),
       );
       tablerow.appendChild(tableCell);
     });
@@ -188,7 +190,7 @@ export default async function decorate(block) {
     reactivityApplicationWrapper.appendChild(buttonsPanel);
     const productInfo = productPromise();
     reactivityApplicationWrapper.appendChild(productInfo);
-    const reactivityJson = reactivitytabledata;
+    const reactivityJson = JSON.parse(reactivitytabledata);
     const tableContent = allApplicationTableData(reactivityJson, reactivityapplications);
     reactivityApplicationWrapper.appendChild(tableContent);
     const filteredPublications = paginateData(parsedPublications, 1, 2);
