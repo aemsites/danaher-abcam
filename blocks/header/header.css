@@ -384,11 +384,6 @@
     padding-left: 3rem;
     padding-right: 3rem
   }
-
-  .header-wrapper :is(.md\:py-4) {
-    padding-top: 1rem;
-    padding-bottom: 1rem
-  }
 }
 
 @media (min-width: 1024px) {
@@ -422,14 +417,6 @@
   .header-wrapper :is(.lg\:px-8) {
     padding-left: 2rem;
     padding-right: 2rem
-  }
-
-  .header-wrapper :is(.lg\:\!pb-4) {
-    padding-bottom: 1rem !important
-  }
-
-  .header-wrapper :is(.lg\:pt-8) {
-    padding-top: 2rem
   }
 
   .header-wrapper :is(.lg\:pt-4) {
