@@ -153,14 +153,14 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "card_image",
+        "name": "image",
         "label": "Card Image",
         "multi": false
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "card_imageAlt",
+        "name": "imageAlt",
         "label": "Alt",
         "value": ""
       },
