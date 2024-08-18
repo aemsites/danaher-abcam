@@ -717,6 +717,14 @@ main .section.section-padding {
   margin-right: 2rem;
 }
 
+main .section .mini-teasers-wrapper {
+  margin-top: 72px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+  padding-bottom: 88px;
+  padding-top: 66px;
+}
+
 main .section .mini-teasers-wrapper .cols-4 {
   margin-left: auto;
   margin-right: auto;
