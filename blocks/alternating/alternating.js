@@ -6,6 +6,7 @@ export default function decorate(block) {
     const imageTag = block.querySelector('p > picture');
     const buttonContainer = block.querySelector('.button-container');
     buttonContainer.innerHTML = imageTag.outerHTML;
+    imageTag.outerHTML = buttonContainer.outerHTML;
     console.log(imageTag);
     innerWrapper.querySelectorAll('div').forEach((row, index) => {
       row.classList.add('basis-1/2');
