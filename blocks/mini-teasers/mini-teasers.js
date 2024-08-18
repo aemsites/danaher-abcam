@@ -3,7 +3,7 @@ import { div } from '../../scripts/dom-builder.js';
 
 export default function decorate(block) {
   block.classList.add(...'bg-black mt-72px pb-88px pt-66px'.split(' '));
-  const divContainer = block.querySelectorAll('div > div');
+  const divContainer = block.querySelector('div');
   console.log(divContainer);
   const container = div({ class: 'mx-auto bg-black w-4/5 py-20 space-y-11 min-[800px]:flex min-[800px]:space-x-11 min-[800px]:space-y-0' });
   [...block.children].forEach((teasers) => {
@@ -17,7 +17,7 @@ export default function decorate(block) {
       teaser.firstElementChild.classList.add(...'mb-2 h-[60px] w-[60px]'.split(' '));
       teaser.children[1].classList.add(...'mb-2 text-lg font-semibold'.split(' '));
       teaser.children[2].classList.add(...'text-sm font-normal'.split(' '));
-      container.append(teaser);
+      //container.append(teaser);
     });
   });
   divContainer.append(container);
