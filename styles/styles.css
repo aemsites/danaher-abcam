@@ -717,6 +717,40 @@ main .section.section-padding {
   margin-right: 2rem;
 }
 
+main .section .mini-teasers-wrapper .cols-4 {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+main .section .mini-teasers-wrapper .cols-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(2.75rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(2.75rem * var(--tw-space-y-reverse));
+}
+
+main .section .mini-teasers-wrapper .cols-4 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 800px) {
+  main .section .mini-teasers-wrapper .cols-4 {
+    display: flex;
+  }
+
+  main .section .mini-teasers-wrapper .cols-4 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(2.75rem * var(--tw-space-x-reverse));
+    margin-left: calc(2.75rem * calc(1 - var(--tw-space-x-reverse)));
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(0px * var(--tw-space-y-reverse));
+  }
+}
+
 .visible {
   visibility: visible;
 }
