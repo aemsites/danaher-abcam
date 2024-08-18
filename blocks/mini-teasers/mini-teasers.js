@@ -1,6 +1,8 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 
 export default function decorate(block) {
+  const wrapper = block.querySelector('.mini-teasers-wrapper');
+  wrapper.classList.add(...'bg-black mt-72px pb-88px pt-66px'.split(' '));
   [...block.children].forEach((teasers) => {
     [...teasers.children].forEach((teaser) => {
       teaser.classList.add('text-white');
