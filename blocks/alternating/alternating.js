@@ -8,7 +8,7 @@ export default function decorate() {
       innerWrapper.classList.add(...'lg:flex bg-neutral-100 sm:block mx-auto bg-grey-5 w-[87%] max-[768px]:w-full'.split(' '));
       innerWrapper.querySelectorAll('div').forEach((row, index) => {
         row.classList.add('basis-1/2');
-        if (index === 0) {
+        if (!row.lastElementChild) {
           row.classList.add(...'self-center px-10 py-16 lg:pb-15 md:pl-[62px]'.split(' '));
           row.querySelector('h2')?.classList.add(...'title mb-6 text-4xl font-bold text-heading-large font-header'.split(' '));
           row.querySelectorAll('p')?.forEach((p) => {
