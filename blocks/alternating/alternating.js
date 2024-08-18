@@ -5,7 +5,7 @@ export default function decorate(block) {
     innerWrapper.classList.add(...'lg:flex bg-neutral-100 sm:block mx-auto bg-grey-5 w-[87%] max-[768px]:w-full'.split(' '));
     const imageTag = block.querySelector('p > picture');
     const buttonContainer = block.querySelector('.button-container');
-    imageTag.outerHTML = buttonContainer.innerHTML;
+    buttonContainer.outerHTML = imageTag.outerHTML;
     console.log(imageTag);
     innerWrapper.querySelectorAll('div').forEach((row, index) => {
       row.classList.add('basis-1/2');
