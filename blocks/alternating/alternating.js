@@ -6,6 +6,8 @@ export default function decorate() {
     const innerWrapper = wrapper.querySelector('div');
     if (innerWrapper) {
       innerWrapper.classList.add(...'lg:flex bg-neutral-100 sm:block mx-auto bg-grey-5 w-[87%] max-[768px]:w-full'.split(' '));
+      const buttonContainer = block.querySelector('.button-container');
+      innerWrapper.append(buttonContainer);
       innerWrapper.querySelectorAll('div').forEach((row, index) => {
         row.classList.add('basis-1/2');
         if (!row.lastElementChild) {
