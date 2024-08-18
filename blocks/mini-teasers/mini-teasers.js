@@ -20,4 +20,5 @@ export default function decorate(block) {
       teaser.children[2].classList.add(...'text-sm font-normal'.split(' '));
     });
   });
+  block.append(container);
 }
