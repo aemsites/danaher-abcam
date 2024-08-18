@@ -1,4 +1,4 @@
-export default function decorate() {
+export default function decorate(block) {
   // const section = document.querySelector('.alternating-wrapper');
   const wrapper = document.querySelector('.alternating');
   wrapper.classList.add(...'bg-gradient-to-b from-teal-400 via-gray-300 to-orange-500 mx-auto py-[72px] px-[30px] sm:px-[61px] w-full'.split(' '));
