@@ -9,7 +9,7 @@ export default function decorate(block) {
     console.log(imageTag);
     innerWrapper.querySelectorAll('div').forEach((row, index) => {
       row.classList.add('basis-1/2');
-      row.append(buttonContainer);
+      //row.append(buttonContainer);
       if (index === 0) {
         row.classList.add(...'self-center px-10 py-16 lg:pb-15 md:pl-[62px]'.split(' '));
         row.querySelector('h2')?.classList.add(...'title mb-6 text-4xl font-bold text-heading-large font-header'.split(' '));
