@@ -60,6 +60,10 @@
         @apply mx-8;
     }
 
+    main .section .mini-teasers-wrapper {
+        @apply bg-black mt-72px pb-88px pt-66px;
+    }
+
     main .section .mini-teasers-wrapper .cols-4 {
         @apply mx-auto bg-black w-4/5 py-20 space-y-11 min-[800px]:flex min-[800px]:space-x-11 min-[800px]:space-y-0;
     }
