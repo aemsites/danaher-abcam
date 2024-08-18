@@ -17,6 +17,7 @@ export default function decorate(block) {
       teaser.firstElementChild.classList.add(...'mb-2 h-[60px] w-[60px]'.split(' '));
       teaser.children[1].classList.add(...'mb-2 text-lg font-semibold'.split(' '));
       teaser.children[2].classList.add(...'text-sm font-normal'.split(' '));
+      container.append(teaser);
     });
   });
   divContainer.append(container);
