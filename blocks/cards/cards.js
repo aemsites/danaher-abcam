@@ -11,11 +11,11 @@ export default function decorate(block) {
       else div.className = 'cards-card-body py-9 px-8 flex flex-col grow';
     });
     const cardHeading = row.querySelector('h3');
-    cardHeading.classList.add(...'card-heading text-2xl tracking-[-0.03em]'.split(' '));
+    cardHeading.classList.add(...'card-heading h-12 text-2xl tracking-[-0.03em]'.split(' '));
 
     const cardDescription = row.querySelector('p');
     if (cardDescription) {
-      cardDescription.classList.add(...'card-description h-full mt-2.5 mb-3 text-base tracking-wide'.split(' '));
+      cardDescription.classList.add(...'card-description h-32 mt-2.5 mb-3 text-base tracking-wide'.split(' '));
     }
 
     const cardLink = row.querySelector('p a');

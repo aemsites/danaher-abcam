@@ -29,7 +29,7 @@
     }
 
     main .section .mini-teasers-wrapper {
-        @apply bg-black mt-[72px] pb-[88px] pt-[66px];
+        @apply bg-black;
     }
 
     main .section .mini-teasers-wrapper .cols-4 {

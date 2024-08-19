@@ -1,5 +1,13 @@
+.cards-wrapper :is(.m-auto) {
+  margin: auto
+}
+
 .cards-wrapper :is(.mb-3) {
   margin-bottom: 0.75rem
+}
+
+.cards-wrapper :is(.mb-8) {
+  margin-bottom: 2rem
 }
 
 .cards-wrapper :is(.mt-2) {
@@ -10,6 +18,10 @@
   margin-top: 0.625rem
 }
 
+.cards-wrapper :is(.mt-\[72px\]) {
+  margin-top: 72px
+}
+
 .cards-wrapper :is(.block) {
   display: block
 }
@@ -18,8 +30,32 @@
   display: flex
 }
 
+.cards-wrapper :is(.grid) {
+  display: grid
+}
+
 .cards-wrapper :is(.h-full) {
   height: 100%
+}
+
+.cards-wrapper :is(.h-20) {
+  height: 5rem
+}
+
+.cards-wrapper :is(.h-28) {
+  height: 7rem
+}
+
+.cards-wrapper :is(.h-32) {
+  height: 8rem
+}
+
+.cards-wrapper :is(.h-12) {
+  height: 3rem
+}
+
+.cards-wrapper :is(.h-14) {
+  height: 3.5rem
 }
 
 .cards-wrapper :is(.w-fit) {
@@ -27,12 +63,24 @@
   width: fit-content
 }
 
+.cards-wrapper :is(.w-4\/5) {
+  width: 80%
+}
+
 .cards-wrapper :is(.grow) {
   flex-grow: 1
 }
 
+.cards-wrapper :is(.grid-cols-3) {
+  grid-template-columns: repeat(3, minmax(0, 1fr))
+}
+
 .cards-wrapper :is(.flex-col) {
   flex-direction: column
+}
+
+.cards-wrapper :is(.gap-11) {
+  gap: 2.75rem
 }
 
 .cards-wrapper :is(.rounded-\[28px\]) {
@@ -79,6 +127,11 @@
   line-height: 2rem
 }
 
+.cards-wrapper :is(.text-5xl) {
+  font-size: 3rem;
+  line-height: 1
+}
+
 .cards-wrapper :is(.text-base) {
   font-size: 1rem;
   line-height: 1.5rem
@@ -110,5 +163,9 @@
 @media (max-width: 799px) {
   .cards-wrapper :is(.max-\[799px\]\:w-full) {
     width: 100%
+  }
+
+  .cards-wrapper :is(.max-\[799px\]\:grid-cols-1) {
+    grid-template-columns: repeat(1, minmax(0, 1fr))
   }
 }
