@@ -1,7 +1,7 @@
 /* global WebImporter */
 const teasers = (main, document) => {
   const url = document.querySelector('[hrefLang="x-default"]')?.href;
-  if(url && url.includes('/technical-resources/')){
+  if(url && url.includes('/technical-resources')){
     const mainDivEl = document.getElementById('main-content').nextElementSibling.nextElementSibling;
     const ulElement = mainDivEl?.querySelector('ul');
     const liElements = ulElement?.querySelectorAll('li');
