@@ -30,13 +30,14 @@
       "columns",
       "mini-teasers",
       "alternating",
-      "fragment"
+      "fragment",
+      "teasers"
     ]
   },
   {
     "id": "cards",
     "components": [
-      "cards-item"
+      "card"
     ]
   },
   {
@@ -48,5 +49,11 @@
   {
     "id": "alternating",
     "components": []
+  },
+  {
+    "id": "teasers",
+    "components": [
+      "teaser"
+    ]
   }
 ]

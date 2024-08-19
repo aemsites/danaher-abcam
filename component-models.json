@@ -148,19 +148,19 @@
     ]
   },
   {
-    "id": "cards-item",
+    "id": "card",
     "fields": [
       {
         "component": "reference",
         "valueType": "string",
-        "name": "card_image",
+        "name": "image",
         "label": "Card Image",
         "multi": false
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "card_imageAlt",
+        "name": "imageAlt",
         "label": "Alt",
         "value": ""
       },
@@ -172,17 +172,11 @@
         "label": "Title"
       },
       {
-        "component": "select",
+        "component": "text",
         "name": "card_titleType",
-        "value": "h3",
-        "label": "Title Type",
+        "label": "",
         "valueType": "string",
-        "options": [
-          {
-            "name": "h3",
-            "value": "h3"
-          }
-        ]
+        "hidden": true
       },
       {
         "component": "richtext",
@@ -405,6 +399,49 @@
         "component": "aem-content",
         "name": "reference",
         "label": "Reference"
+      }
+    ]
+  },
+  {
+    "id": "teasers",
+    "fields": [
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes"
+      }
+    ]
+  },
+  {
+    "id": "teaser",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "background_image",
+        "label": "Background Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "background_imageAlt",
+        "value": "",
+        "label": "Image Alt",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "foreground_pretitle",
+        "value": "",
+        "label": "Pre title",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "foreground_title",
+        "value": "",
+        "label": "Title",
+        "valueType": "string"
       }
     ]
   }
