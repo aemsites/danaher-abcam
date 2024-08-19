@@ -1,18 +1,17 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
+import { div } from '../../scripts/dom-builder.js';
 
 export default function decorate(block) {
-  block.firstElementChild.classList.add(...'mx-auto bg-black w-4/5 py-20 space-y-11 min-[800px]:flex min-[800px]:space-x-11 min-[800px]:space-y-0'.split(' '));
-  [...block.children].forEach((teasers) => {
-    [...teasers.children].forEach((teaser) => {
-      teaser.classList.add('text-white');
-      if (teaser.firstChild) {
-        teaser.querySelectorAll('img').forEach((img) => {
-          img.closest('picture').replaceWith(createOptimizedPicture(img.src, 'img-alt', false, [{ width: '750' }]));
-        });
-      }
-      teaser.firstElementChild.classList.add(...'mb-2 h-[60px] w-[60px]'.split(' '));
-      teaser.children[1].classList.add(...'mb-2 text-lg font-semibold'.split(' '));
-      teaser.children[2].classList.add(...'text-sm font-normal'.split(' '));
-    });
+  block.classList.add(...'w-full bg-black'.split(' '));
+  const divEl = div({class: "flex flex-row mx-auto py-20 w-3/4 space-x-8"});
+  [...block.children].forEach((teaser) => {
+      teaser.classList.add(...'text-white w-3/4 px-8'.split(' '));
+      teaser.querySelectorAll('img').forEach((img) => {
+        img.closest('picture').replaceWith(createOptimizedPicture(img.src, 'img-alt', false, [{ width: '750' }]));
+      });
+
+      teaser.querySelector('h3').classList.add(...'my-4 text-lg font-semibold'.split(' '));
+      divEl.appendChild(teaser);
   });
+  block.appendChild(divEl);
 }

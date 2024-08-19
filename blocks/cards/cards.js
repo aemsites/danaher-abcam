@@ -1,12 +1,12 @@
 import { ul, li, div } from '../../scripts/dom-builder.js';
 
 export default function decorate(block) {
-  const parentDiv = div({ class: 'w-4/5 m-auto mb-8' });
+  const parentDiv = div();
   const cardsUl = ul({ class: 'cards-ul grid grid-cols-3 gap-11 max-[799px]:grid-cols-1' });
 
   [...block.children].forEach((row) => {
     const pictureTag = row.querySelector('picture');
-    const cardHeading = row.querySelector('h2');
+    const cardHeading = row.querySelector('h3');
     cardHeading.classList.add(...'card-heading text-2xl tracking-[-0.03em]'.split(' '));
 
     const cardDescription = row.querySelector('p');

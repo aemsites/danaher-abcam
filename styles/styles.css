@@ -602,6 +602,10 @@ header {
   height: 496px;
 }
 
+main .section:not(:last-child) {
+  margin-bottom: 2.5rem;
+}
+
 main .section.hide-section {
   display: none !important;
 }
@@ -703,6 +707,29 @@ main .section > .recently-viewed-wrapper {
   height: auto;
   min-height: 91rem;
   width: 100%;
+}
+
+main .section.section-padding {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+@media (min-width: 1280px) {
+  main .section.section-padding {
+    max-width: 1120px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
+main .section .default-content-wrapper h2 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.25rem;
 }
 
 .visible {
@@ -837,4 +864,4 @@ main .section > .recently-viewed-wrapper {
 
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
+}   
