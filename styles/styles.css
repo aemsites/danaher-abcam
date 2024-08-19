@@ -777,6 +777,30 @@ main .section .mini-teasers-wrapper .cols-4 {
   }
 }
 
+.main .section .alternating-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+  --tw-gradient-from: #2dd4bf var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(45 212 191 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  --tw-gradient-to: rgb(209 213 219 / 0)  var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), #d1d5db var(--tw-gradient-via-position), var(--tw-gradient-to);
+  --tw-gradient-to: #f97316 var(--tw-gradient-to-position);
+  padding-top: 72px;
+  padding-bottom: 72px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+@media (min-width: 640px) {
+  .main .section .alternating-wrapper {
+    padding-left: 61px;
+    padding-right: 61px;
+  }
+}
+
 .visible {
   visibility: visible;
 }

@@ -1,5 +1,3 @@
-import { ul, li, div } from '../../scripts/dom-builder.js';
-
 export default function decorate(block) {
   const liContainer = block.querySelector('div');
   liContainer.className = 'flex flex-col bg-[#e5e7eb]';
