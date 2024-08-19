@@ -217,6 +217,26 @@
     "id": "hero",
     "fields": [
       {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "value": "",
+        "label": "Search Options",
+        "options": [
+          {
+            "name": "Input Popup",
+            "value": "input-popup"
+          }
+        ]
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "hero_image",
+        "label": "Hero Image",
+        "multi": false
+      },
+      {
         "component": "reference",
         "valueType": "string",
         "name": "hero_image",
@@ -361,8 +381,7 @@
         "value": "",
         "label": "Description",
         "valueType": "string"
-      },
-      {
+      },{
         "component": "text",
         "valueType": "string",
         "name": "alternating_ctahref",

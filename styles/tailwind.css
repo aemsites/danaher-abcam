@@ -20,6 +20,26 @@
         @apply !hidden;
     }
 
+    main .section .cards-wrapper {
+        @apply m-auto mb-8;
+    }
+
+    main .section .cards-wrapper .cols-3 {
+        @apply grid grid-cols-3 gap-11 max-[799px]:grid-cols-1;
+    }
+
+    main .section .mini-teasers-wrapper {
+        @apply bg-black;
+    }
+
+    main .section .mini-teasers-wrapper .cols-4 {
+        @apply mx-auto bg-black w-4/5 py-20 space-y-11 min-[800px]:flex min-[800px]:space-x-11 min-[800px]:space-y-0;
+    }
+
+    main .section .alternating-wrapper {
+        @apply bg-gradient-to-b from-teal-400 via-gray-300 to-orange-500 mx-auto py-[72px] px-[30px] sm:px-[61px] w-full;
+    }
+    
     main .section > div.episodes-wrapper {
         @apply h-[2205px] lg:h-[1182px] bg-black text-white;
     }
@@ -71,7 +91,7 @@
     dialog .modal-content .section > .default-content-wrapper p {
         @apply font-normal text-gray-900 mb-2;
     }
-     
+
     main .section.section-padding {
         @apply mx-auto xl:max-w-[1120px] xl:px-0 px-[30px];
     }
@@ -80,7 +100,4 @@
         @apply font-bold leading-8 lg:leading-5 text-4xl py-8;
     }
 
-    main .section .alternating-wrapper {
-        @apply bg-gradient-to-b from-teal-400 via-gray-300 to-orange-500 mx-auto py-[72px] px-[30px] sm:px-[61px] w-full;
-    }
 }   
