@@ -11,6 +11,10 @@
   margin-bottom: 2rem
 }
 
+.alternating-wrapper :is(.block) {
+  display: block
+}
+
 .alternating-wrapper :is(.h-full) {
   height: 100%
 }
@@ -192,5 +196,16 @@
 @media (min-width: 1024px) {
   .alternating-wrapper :is(.lg\:flex) {
     display: flex
+  }
+}
+
+@media (min-width: 1280px) {
+  .alternating-wrapper :is(.xl\:max-w-\[1120px\]) {
+    max-width: 1120px
+  }
+
+  .alternating-wrapper :is(.xl\:px-0) {
+    padding-left: 0px;
+    padding-right: 0px
   }
 }
