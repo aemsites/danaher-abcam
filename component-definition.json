@@ -208,7 +208,6 @@
                 "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
                   "name": "Teasers",
-                  "model": "teasers",
                   "filter": "teasers"
                 }
               }
@@ -224,7 +223,25 @@
                 "resourceType": "core/franklin/components/block/v1/block/item",
                 "template": {
                   "name": "Teaser",
-                  "model": "teaser"
+                  "model": "teaser",
+                  "teaser_titleType": "h3",
+                  "teaser_descriptionType": "h6"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Title Card",
+          "id": "title-card",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Title Card",
+                  "model": "title-card",
+                  "title-card_titleType": "h1"
                 }
               }
             }

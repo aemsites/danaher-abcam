@@ -55,5 +55,9 @@
     "components": [
       "teaser"
     ]
+  },
+  {
+    "id": "title-card",
+    "components": []
   }
 ]
