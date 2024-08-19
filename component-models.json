@@ -334,20 +334,6 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "alternating_ctahref",
-        "value": "",
-        "label": "CTA Link"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "alternating_ctahrefText",
-        "value": "",
-        "label": "CTA Text"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
         "name": "alternating_title",
         "value": "",
         "label": "Title"
@@ -375,6 +361,20 @@
         "value": "",
         "label": "Description",
         "valueType": "string"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "alternating_ctahref",
+        "value": "",
+        "label": "CTA Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "alternating_ctahrefText",
+        "value": "",
+        "label": "CTA Text"
       },
       {
         "component": "reference",
