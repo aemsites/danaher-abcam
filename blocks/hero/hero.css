@@ -766,6 +766,11 @@
     font-size: 6rem;
     line-height: 1
   }
+
+  .hero-wrapper :is(.lg\:text-2xl) {
+    font-size: 1.5rem;
+    line-height: 2rem
+  }
 }
 
 @media (min-width: 1280px) {

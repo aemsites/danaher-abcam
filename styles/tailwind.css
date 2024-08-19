@@ -61,6 +61,6 @@
     }
 
     main .section .default-content-wrapper h2{
-        @apply font-bold leading-5 text-4xl py-8;
+        @apply font-bold leading-8 lg:leading-5 text-4xl py-8;
     }
 }   

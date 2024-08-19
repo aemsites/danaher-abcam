@@ -729,7 +729,13 @@ main .section .default-content-wrapper h2 {
   padding-bottom: 2rem;
   font-size: 2.25rem;
   font-weight: 700;
-  line-height: 1.25rem;
+  line-height: 2rem;
+}
+
+@media (min-width: 1024px) {
+  main .section .default-content-wrapper h2 {
+    line-height: 1.25rem;
+  }
 }
 
 .visible {
