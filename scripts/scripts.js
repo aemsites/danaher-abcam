@@ -14,7 +14,7 @@ import {
   toClassName,
   getMetadata,
 } from './aem.js';
-import { div } from './dom-builder.js';
+import { div, button } from './dom-builder.js';
 
 const LCP_BLOCKS = ['hero', 'hero-video']; // add your LCP blocks to the list
 
@@ -76,6 +76,60 @@ export function isValidProperty(property) {
   return false;
 }
 
+export function clickToCopy(sku) {
+  var copyText = document.getElementById(sku);
+  navigator.clipboard.writeText(copyText.innerText);
+  document.getElementById(sku).previousElementSibling.innerHTML='Copied!';
+}
+export function mouseEnter(msg) {
+  var copyText = document.getElementById(msg);
+  copyText.classList.remove('hidden');
+}
+export function mouseLeave(toolTipClassId,textId) {
+  var copyText = document.getElementById(toolTipClassId);
+  var btn = document.getElementById(textId);
+  copyText.classList.add('hidden');
+  if(!btn.matches(':hover') && !copyText.matches(':hover')){
+    copyText.innerHTML='Click to Copy';
+  } 
+}
+export function toolTip(textId,toolTipClassId,title,skuClass){
+  let buttonDiv;
+  let clickToCopyDiv;
+  if(skuClass&&String(skuClass.trim!==null)){
+    buttonDiv = button({ id: 'skubutton', class: 'product-tabs-productID outline-none md:flex-col' });
+    clickToCopyDiv = div({ class: 'hidden w-auto  px-[3px] pt-[3px] bg-[#378189] text-center text-[white] rounded-t-lg text-sm absolute  -top-[23px] h-6 text-center text-xs break-keep text-wrap max-[768px]:top-[85px] font-normal', id: toolTipClassId }, 'Click to Copy');
+  }
+  else{
+   buttonDiv = button({ class: 'relative text-black text-4xl pb-4 font-bold' });
+   clickToCopyDiv = div({ class: 'hidden w-auto px-[3px] pt-[3px] bg-[#378189] text-center text-[white] rounded-t-lg text-sm absolute right-[10px] -top-[23px] h-6 text-center text-xs break-keep text-wrap font-normal', id: toolTipClassId }, 'Click to Copy');
+  }
+
+  const text = div({ id: textId, class: 'text-left border border-white hover:border-[#378189] rounded-lg ' }, title);
+  buttonDiv.appendChild(clickToCopyDiv);
+  buttonDiv.appendChild(text);
+  text.addEventListener('click', () => {
+    clickToCopy(textId);
+  });
+  text.addEventListener('mouseenter', () => {
+    mouseEnter(toolTipClassId);
+  });
+  
+  text.addEventListener('mouseleave', () => {
+    mouseLeave(toolTipClassId,textId);
+  });
+  clickToCopyDiv.addEventListener('click', () => {
+    clickToCopy(textId);
+  });
+  clickToCopyDiv.addEventListener('mouseenter', () => {
+    mouseEnter(toolTipClassId);
+  });
+  clickToCopyDiv.addEventListener('mouseleave', () => {
+    mouseLeave(toolTipClassId,textId);
+  });
+  
+  return buttonDiv
+}
 export function createRequest(config) {
   const {
     url,
@@ -128,10 +182,11 @@ async function loadFonts() {
 const TEMPLATE_LIST = [
   'home-page',
   'protocols',
+  'pathways',
   'product-category',
   'blog-page',
   'product-detail',
-  'search-results'
+  'search-results',
 ];
 
 async function decorateTemplates(main) {
@@ -157,7 +212,7 @@ async function decorateTemplates(main) {
  */
 function buildAutoBlocks(main) {
   try {
-    buildHeroBlock(main);
+    // buildHeroBlock(main);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
@@ -358,6 +413,7 @@ export function formatDate(date) {
   const formatDate = formattedDate.replace(/,/g, '');
   return formatDate;
 }
+
 /**
  * Loads everything that doesn't need to be delayed.
  * @param {Element} doc The container element
@@ -399,3 +455,10 @@ async function loadPage() {
 }
 
 loadPage();
+
+
+// Optimus Config - Start
+window.OptimusConfig = {
+  organizationId: 'danahernonproduction1892f3fhz',
+  bearerToken: 'xx27ea823a-e994-4d71-97f6-403174ec592a'
+};

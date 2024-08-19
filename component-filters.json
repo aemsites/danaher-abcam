@@ -1,40 +1,59 @@
 [
-    {
-      "id": "main",
-      "components": [
-        "section"
-      ]
-    },
-    {
-      "id": "columns",
-      "components": []
-    },
-    {
-      "id": "column",
-      "components": [
-        "text",
-        "image",
-        "button",
-        "title"
-      ]
-    },
-    {
-      "id": "section",
-      "components": [
-        "text",
-        "image",
-        "button",
-        "title",
-        "hero",
-        "cards",
-        "columns",
-        "fragment"
-      ]
-    },
-    {
-      "id": "cards",
-      "components": [
-        "card"
-      ]
-    }
-  ]
+  {
+    "id": "main",
+    "components": [
+      "section"
+    ]
+  },
+  {
+    "id": "columns",
+    "components": []
+  },
+  {
+    "id": "column",
+    "components": [
+      "text",
+      "image",
+      "button",
+      "title"
+    ]
+  },
+  {
+    "id": "section",
+    "components": [
+      "text",
+      "image",
+      "button",
+      "title",
+      "hero",
+      "cards",
+      "columns",
+      "mini-teasers",
+      "alternating",
+      "fragment",
+      "teasers"
+    ]
+  },
+  {
+    "id": "cards",
+    "components": [
+      "card"
+    ]
+  },
+  {
+    "id": "mini-teasers",
+    "components": [
+      "mini-teaser"
+    ]
+  },
+  {
+    "id": "alternating",
+    "components": []
+  },
+  {
+    "id": "teasers",
+    "components": [
+      "teaser"
+    ]
+  }
+]

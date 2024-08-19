@@ -95,6 +95,11 @@
   border-collapse: separate
 }
 
+.product-reactivity-wrapper :is(.rotate-0) {
+  --tw-rotate: 0deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+
 .product-reactivity-wrapper :is(.flex-col) {
   flex-direction: column
 }
@@ -211,10 +216,6 @@
 
 .product-reactivity-wrapper :is(.pb-5) {
   padding-bottom: 1.25rem
-}
-
-.product-reactivity-wrapper :is(.pl-3) {
-  padding-left: 0.75rem
 }
 
 .product-reactivity-wrapper :is(.text-left) {

@@ -77,8 +77,8 @@
   line-height: 2.25rem
 }
 
-.title-card-wrapper :is(.text-6xl) {
-  font-size: 3.75rem;
+.title-card-wrapper :is(.text-5xl) {
+  font-size: 3rem;
   line-height: 1
 }
 
@@ -119,6 +119,11 @@
 @media (min-width: 768px) {
   .title-card-wrapper :is(.md\:max-w-\[800px\]) {
     max-width: 800px
+  }
+
+  .title-card-wrapper :is(.md\:text-6xl) {
+    font-size: 3.75rem;
+    line-height: 1
   }
 }
 

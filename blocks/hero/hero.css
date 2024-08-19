@@ -331,10 +331,6 @@
   white-space: nowrap
 }
 
-.hero-wrapper :is(.break-words) {
-  overflow-wrap: break-word
-}
-
 .hero-wrapper :is(.rounded) {
   border-radius: 0.25rem
 }
@@ -372,16 +368,6 @@
 .hero-wrapper :is(.bg-black) {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity))
-}
-
-.hero-wrapper :is(.bg-gray-100) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity))
-}
-
-.hero-wrapper :is(.bg-gray-200) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(229 231 235 / var(--tw-bg-opacity))
 }
 
 .hero-wrapper :is(.bg-gray-200) {
@@ -652,11 +638,6 @@
   background-color: rgb(243 244 246 / var(--tw-bg-opacity))
 }
 
-.hero-wrapper :is(.hover\:bg-gray-200:hover) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(229 231 235 / var(--tw-bg-opacity))
-}
-
 .hero-wrapper :is(.hover\:bg-gray-400:hover) {
   --tw-bg-opacity: 1;
   background-color: rgb(156 163 175 / var(--tw-bg-opacity))
@@ -784,6 +765,11 @@
   .hero-wrapper :is(.lg\:text-8xl) {
     font-size: 6rem;
     line-height: 1
+  }
+
+  .hero-wrapper :is(.lg\:text-2xl) {
+    font-size: 1.5rem;
+    line-height: 2rem
   }
 }
 

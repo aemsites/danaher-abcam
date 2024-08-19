@@ -3,12 +3,25 @@
   margin-right: auto
 }
 
+.mini-teasers-wrapper :is(.my-4) {
+  margin-top: 1rem;
+  margin-bottom: 1rem
+}
+
 .mini-teasers-wrapper :is(.mb-2) {
   margin-bottom: 0.5rem
 }
 
+.mini-teasers-wrapper :is(.mb-4) {
+  margin-bottom: 1rem
+}
+
 .mini-teasers-wrapper :is(.block) {
   display: block
+}
+
+.mini-teasers-wrapper :is(.flex) {
+  display: flex
 }
 
 .mini-teasers-wrapper :is(.h-\[60px\]) {
@@ -23,10 +36,48 @@
   width: 60px
 }
 
+.mini-teasers-wrapper :is(.w-full) {
+  width: 100%
+}
+
+.mini-teasers-wrapper :is(.w-3\/4) {
+  width: 75%
+}
+
+.mini-teasers-wrapper :is(.flex-row) {
+  flex-direction: row
+}
+
+.mini-teasers-wrapper :is(.flex-col) {
+  flex-direction: column
+}
+
+.mini-teasers-wrapper :is(.items-center) {
+  align-items: center
+}
+
 .mini-teasers-wrapper :is(.space-y-11 > :not([hidden]) ~ :not([hidden])) {
   --tw-space-y-reverse: 0;
   margin-top: calc(2.75rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(2.75rem * var(--tw-space-y-reverse))
+}
+
+.mini-teasers-wrapper :is(.space-x-11 > :not([hidden]) ~ :not([hidden])) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(2.75rem * var(--tw-space-x-reverse));
+  margin-left: calc(2.75rem * calc(1 - var(--tw-space-x-reverse)))
+}
+
+.mini-teasers-wrapper :is(.space-x-8 > :not([hidden]) ~ :not([hidden])) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(2rem * var(--tw-space-x-reverse));
+  margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)))
+}
+
+.mini-teasers-wrapper :is(.space-x-0 > :not([hidden]) ~ :not([hidden])) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(0px * var(--tw-space-x-reverse));
+  margin-left: calc(0px * calc(1 - var(--tw-space-x-reverse)))
 }
 
 .mini-teasers-wrapper :is(.bg-black) {
@@ -37,6 +88,21 @@
 .mini-teasers-wrapper :is(.py-20) {
   padding-top: 5rem;
   padding-bottom: 5rem
+}
+
+.mini-teasers-wrapper :is(.px-8) {
+  padding-left: 2rem;
+  padding-right: 2rem
+}
+
+.mini-teasers-wrapper :is(.py-12) {
+  padding-top: 3rem;
+  padding-bottom: 3rem
+}
+
+.mini-teasers-wrapper :is(.py-8) {
+  padding-top: 2rem;
+  padding-bottom: 2rem
 }
 
 .mini-teasers-wrapper :is(.text-lg) {
@@ -62,6 +128,12 @@
   color: rgb(255 255 255 / var(--tw-text-opacity))
 }
 
+@media (min-width: 768px) {
+  .mini-teasers-wrapper :is(.md\:w-full) {
+    width: 100%
+  }
+}
+
 @media (min-width: 800px) {
   .mini-teasers-wrapper :is(.min-\[800px\]\:flex) {
     display: flex
@@ -77,5 +149,27 @@
     --tw-space-y-reverse: 0;
     margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
     margin-bottom: calc(0px * var(--tw-space-y-reverse))
+  }
+}
+
+@media (min-width: 1024px) {
+  .mini-teasers-wrapper :is(.lg\:w-3\/4) {
+    width: 75%
+  }
+
+  .mini-teasers-wrapper :is(.lg\:flex-row) {
+    flex-direction: row
+  }
+
+  .mini-teasers-wrapper :is(.lg\:space-x-8 > :not([hidden]) ~ :not([hidden])) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(2rem * var(--tw-space-x-reverse));
+    margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)))
+  }
+}
+
+@media (min-width: 1280px) {
+  .mini-teasers-wrapper :is(.xl\:w-3\/4) {
+    width: 75%
   }
 }
