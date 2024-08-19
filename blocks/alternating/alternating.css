@@ -198,3 +198,14 @@
     display: flex
   }
 }
+
+@media (min-width: 1280px) {
+  .alternating-wrapper :is(.xl\:max-w-\[1120px\]) {
+    max-width: 1120px
+  }
+
+  .alternating-wrapper :is(.xl\:px-0) {
+    padding-left: 0px;
+    padding-right: 0px
+  }
+}

@@ -1,5 +1,5 @@
 export default function decorate(block) {
-  block.classList.add(...'lg:flex bg-neutral-100 sm:block mx-auto bg-grey-5 w-[87%] max-[768px]:w-full'.split(' '));
+  block.classList.add(...'lg:flex bg-neutral-100 sm:block mx-auto xl:max-w-[1120px] xl:px-0 px-[30px]'.split(' '));
   block.querySelectorAll('div').forEach((row, index) => {
     row.classList.add('basis-1/2');
     if (index === 0) {
