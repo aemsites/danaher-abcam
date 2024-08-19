@@ -467,5 +467,31 @@
         "hidden": true
       }
     ]
+  },
+  {
+    "id": "title-card",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title-card_title",
+        "value": "",
+        "label": "Title"
+      },
+      {
+        "component": "select",
+        "name": "title-card_titleType",
+        "hidden": true,
+        "label": "Title Type",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "title-card_description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      }
+    ]
   }
 ]
