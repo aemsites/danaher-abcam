@@ -613,7 +613,6 @@ main .section.hide-section {
 main .section .cards-wrapper {
   margin: auto;
   margin-bottom: 2rem;
-  width: 80%;
 }
 
 main .section .cards-wrapper .cols-3 {

@@ -21,7 +21,7 @@
     }
 
     main .section .cards-wrapper {
-        @apply w-4/5 m-auto mb-8;
+        @apply m-auto mb-8;
     }
 
     main .section .cards-wrapper .cols-3 {
