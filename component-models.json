@@ -153,14 +153,14 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "card_image",
+        "name": "image",
         "label": "Card Image",
         "multi": false
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "card_imageAlt",
+        "name": "imageAlt",
         "label": "Alt",
         "value": ""
       },
@@ -352,20 +352,6 @@
     "id": "alternating",
     "fields": [
       {
-        "component": "reference",
-        "valueType": "string",
-        "name": "alternating_image",
-        "label": "Image",
-        "multi": false
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "alternating_imageAlt",
-        "label": "Alt",
-        "value": ""
-      },
-      {
         "component": "text",
         "valueType": "string",
         "name": "alternating_title",
@@ -398,16 +384,30 @@
       },{
         "component": "text",
         "valueType": "string",
-        "name": "cta_href",
+        "name": "alternating_ctahref",
         "value": "",
         "label": "CTA Link"
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "cta_hrefText",
+        "name": "alternating_ctahrefText",
         "value": "",
         "label": "CTA Text"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Alt",
+        "value": ""
       }
     ]
   },
@@ -418,6 +418,49 @@
         "component": "aem-content",
         "name": "reference",
         "label": "Reference"
+      }
+    ]
+  },
+  {
+    "id": "teasers",
+    "fields": [
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes"
+      }
+    ]
+  },
+  {
+    "id": "teaser",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "background_image",
+        "label": "Background Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "background_imageAlt",
+        "value": "",
+        "label": "Image Alt",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "foreground_pretitle",
+        "value": "",
+        "label": "Pre title",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "foreground_title",
+        "value": "",
+        "label": "Title",
+        "valueType": "string"
       }
     ]
   }

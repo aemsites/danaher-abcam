@@ -1,7 +1,6 @@
 export default function decorate(block) {
-  block.classList.add(...'lg:flex bg-neutral-100 sm:block mx-auto bg-grey-5 w-[87%] max-[768px]:w-full'.split(' '));
-  const innerWrapper = document.querySelector('.alternating');
-  innerWrapper.querySelectorAll('div').forEach((row, index) => {
+  block.classList.add(...'lg:flex bg-neutral-100 sm:block mx-auto xl:max-w-[1120px] xl:px-0 px-[30px]'.split(' '));
+  block.querySelectorAll('div').forEach((row, index) => {
     row.classList.add('basis-1/2');
     if (index === 0) {
       row.classList.add(...'self-center px-10 py-16 lg:pb-15 md:pl-[62px]'.split(' '));
@@ -14,7 +13,7 @@ export default function decorate(block) {
         }
       });
     } else {
-      const pictureTag = row.querySelector('div > div > picture');
+      const pictureTag = row.querySelector('picture');
       const imgTag = pictureTag?.querySelector('img');
       if (imgTag) {
         imgTag.classList.add(...'max-[799px]:w-full w-full h-full'.split(' '));

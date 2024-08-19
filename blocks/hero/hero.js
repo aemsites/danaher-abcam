@@ -476,7 +476,7 @@ export default function decorate(block) {
         class: 'icon icon-search bg-transparent text-black absolute flex ms-2 ms-4 p-1 md:p-0 inset-y-0 start-0 w-6 h-6 my-auto [&_svg]:fill-current cursor-pointer',
       }),
       input({
-        class: 'w-auto truncate relative pl-2 md:pl-0 flex flex-grow text-gray-400 font-medium bg-transparent tracking-wider text-2xl placeholder-grey-300 outline-none',
+        class: 'w-auto truncate relative pl-2 md:pl-0 flex flex-grow text-gray-400 font-medium bg-transparent tracking-wider text-sm lg:text-2xl placeholder-grey-300 outline-none',
         placeholder: 'What can we help you find today?',
         type: 'text',
       }),
