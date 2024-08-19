@@ -38,13 +38,13 @@
   height: 100%
 }
 
-.cards-wrapper :is(.w-4\/5) {
-  width: 80%
-}
-
 .cards-wrapper :is(.w-fit) {
   width: -moz-fit-content;
   width: fit-content
+}
+
+.cards-wrapper :is(.w-4\/5) {
+  width: 80%
 }
 
 .cards-wrapper :is(.grow) {
