@@ -12,6 +12,10 @@
         @apply h-[496px];
     }
 
+    main .section:not(:last-child) {
+        @apply mb-10;
+    }
+
     main .section.hide-section {
         @apply !hidden;
     }
@@ -52,31 +56,31 @@
         @apply min-h-[91rem] h-auto w-full;
     }
 
-    main .section > .default-content-wrapper h2 {
-        @apply text-5xl mb-8 mt-[72px];
+    dialog .modal-content .section > .default-content-wrapper {
+        @apply flex flex-col justify-between gap-4 max-w-[600px] max-h-max m-2 px-6 py-2;
     }
 
+    dialog .modal-content .section > .default-content-wrapper h2 {
+        @apply font-bold text-lg text-gray-900;
+    }
+    
+    dialog .modal-content .section > .default-content-wrapper h3 {
+        @apply font-bold text-base text-gray-900;
+    }
+
+    dialog .modal-content .section > .default-content-wrapper p {
+        @apply font-normal text-gray-900 mb-2;
+    }
+     
     main .section.section-padding {
-        @apply mx-8;
+        @apply mx-auto xl:max-w-[1120px] xl:px-0 px-[30px];
     }
 
-    main .section .mini-teasers-wrapper {
-        @apply bg-black mt-[72px] pb-[88px] pt-[66px];
+    main .section .default-content-wrapper h2{
+        @apply font-bold leading-8 lg:leading-5 text-4xl py-8;
     }
 
-    main .section .mini-teasers-wrapper .cols-4 {
-        @apply mx-auto bg-black w-4/5 py-20 space-y-11 min-[800px]:flex min-[800px]:space-x-11 min-[800px]:space-y-0;
-    }
-
-    .main .section .cards-wrapper {
-        @apply w-4/5 m-auto mb-8;
-    }
-
-    .main .section .cards-wrapper .cols-3 {
-        @apply grid grid-cols-3 gap-11 max-[799px]:grid-cols-1;
-    }
-
-    .main .section .alternating-wrapper {
+    main .section .alternating-wrapper {
         @apply bg-gradient-to-b from-teal-400 via-gray-300 to-orange-500 mx-auto py-[72px] px-[30px] sm:px-[61px] w-full;
     }
-}
+}   

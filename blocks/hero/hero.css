@@ -762,6 +762,11 @@
     grid-template-columns: repeat(4, minmax(0, 1fr))
   }
 
+  .hero-wrapper :is(.lg\:text-2xl) {
+    font-size: 1.5rem;
+    line-height: 2rem
+  }
+
   .hero-wrapper :is(.lg\:text-8xl) {
     font-size: 6rem;
     line-height: 1
