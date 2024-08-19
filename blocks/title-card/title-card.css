@@ -92,6 +92,11 @@
   line-height: 1.75rem
 }
 
+.title-card-wrapper :is(.text-6xl) {
+  font-size: 3.75rem;
+  line-height: 1
+}
+
 .title-card-wrapper :is(.font-light) {
   font-weight: 300
 }

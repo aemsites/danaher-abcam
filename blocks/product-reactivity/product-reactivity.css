@@ -218,6 +218,10 @@
   padding-bottom: 1.25rem
 }
 
+.product-reactivity-wrapper :is(.pl-3) {
+  padding-left: 0.75rem
+}
+
 .product-reactivity-wrapper :is(.text-left) {
   text-align: left
 }
