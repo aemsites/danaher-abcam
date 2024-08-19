@@ -403,45 +403,49 @@
     ]
   },
   {
-    "id": "teasers",
-    "fields": [
-      {
-        "component": "multiselect",
-        "valueType": "string",
-        "name": "classes"
-      }
-    ]
-  },
-  {
     "id": "teaser",
     "fields": [
       {
         "component": "reference",
         "valueType": "string",
-        "name": "background_image",
-        "label": "Background Image",
+        "name": "image",
+        "label": "Image",
         "multi": false
       },
       {
         "component": "text",
-        "name": "background_imageAlt",
+        "name": "imageAlt",
         "value": "",
         "label": "Image Alt",
         "valueType": "string"
       },
       {
         "component": "text",
-        "name": "foreground_pretitle",
+        "name": "teaser_title",
         "value": "",
-        "label": "Pre title",
+        "label": "Title",
         "valueType": "string"
       },
       {
         "component": "text",
-        "name": "foreground_title",
+        "name": "teaser_titleType",
+        "label": "",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "name": "teaser_description",
         "value": "",
-        "label": "Title",
+        "label": "Description",
         "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "teaser_descriptionType",
+        "label": "",
+        "valueType": "string",
+        "hidden": true
       }
     ]
   }
