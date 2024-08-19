@@ -332,18 +332,18 @@
     "id": "alternating",
     "fields": [
       {
-        "component": "reference",
+        "component": "text",
         "valueType": "string",
-        "name": "alternating_image",
-        "label": "Image",
-        "multi": false
+        "name": "alternating_ctahref",
+        "value": "",
+        "label": "CTA Link"
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "alternating_imageAlt",
-        "label": "Alt",
-        "value": ""
+        "name": "alternating_ctahrefText",
+        "value": "",
+        "label": "CTA Text"
       },
       {
         "component": "text",
@@ -377,18 +377,18 @@
         "valueType": "string"
       },
       {
-        "component": "text",
+        "component": "reference",
         "valueType": "string",
-        "name": "cta_href",
-        "value": "",
-        "label": "CTA Link"
+        "name": "image",
+        "label": "Image",
+        "multi": false
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "cta_hrefText",
-        "value": "",
-        "label": "CTA Text"
+        "name": "imageAlt",
+        "label": "Alt",
+        "value": ""
       }
     ]
   },
