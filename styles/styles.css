@@ -759,25 +759,25 @@ main .section .mini-teasers-wrapper .cols-4 {
   }
 }
 
-.main .section .cards-wrapper {
+main .section .cards-wrapper {
   margin: auto;
   margin-bottom: 2rem;
   width: 80%;
 }
 
-.main .section .cards-wrapper .cols-3 {
+main .section .cards-wrapper .cols-3 {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 2.75rem;
 }
 
 @media (max-width: 799px) {
-  .main .section .cards-wrapper .cols-3 {
+  main .section .cards-wrapper .cols-3 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 }
 
-.main .section .alternating-wrapper {
+main .section .alternating-wrapper {
   margin-left: auto;
   margin-right: auto;
   width: 100%;
@@ -795,7 +795,7 @@ main .section .mini-teasers-wrapper .cols-4 {
 }
 
 @media (min-width: 640px) {
-  .main .section .alternating-wrapper {
+  main .section .alternating-wrapper {
     padding-left: 61px;
     padding-right: 61px;
   }

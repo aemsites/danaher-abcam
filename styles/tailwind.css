@@ -68,15 +68,15 @@
         @apply mx-auto bg-black w-4/5 py-20 space-y-11 min-[800px]:flex min-[800px]:space-x-11 min-[800px]:space-y-0;
     }
 
-    .main .section .cards-wrapper {
+    main .section .cards-wrapper {
         @apply w-4/5 m-auto mb-8;
     }
 
-    .main .section .cards-wrapper .cols-3 {
+    main .section .cards-wrapper .cols-3 {
         @apply grid grid-cols-3 gap-11 max-[799px]:grid-cols-1;
     }
 
-    .main .section .alternating-wrapper {
+    main .section .alternating-wrapper {
         @apply bg-gradient-to-b from-teal-400 via-gray-300 to-orange-500 mx-auto py-[72px] px-[30px] sm:px-[61px] w-full;
     }
 }
