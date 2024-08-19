@@ -20,6 +20,14 @@
         @apply !hidden;
     }
 
+    main .section .cards-wrapper {
+        @apply m-auto mb-8;
+    }
+ 
+    main .section .cards-wrapper .cols-3 {
+        @apply grid grid-cols-3 gap-11 max-[799px]:grid-cols-1;
+    }
+
     main .section > div.episodes-wrapper {
         @apply h-[2205px] lg:h-[1182px] bg-black text-white;
     }

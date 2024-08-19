@@ -1,13 +1,14 @@
 export default function decorate(block) {
-  const liContainer = block.querySelector('div');
-  liContainer.className = 'flex flex-col bg-[#e5e7eb]';
-  console.log(liContainer);
+  // const liContainer = block.querySelector('div');
+  // liContainer.className = 'flex flex-col bg-[#e5e7eb]';
+  // console.log(liContainer);
   const pictureTag = block.querySelector('picture');
   const imgTag = pictureTag.querySelector('img');
   if (imgTag) {
     imgTag.classList.add('max-[799px]:w-full');
   }
   [...block.children].forEach((row) => {
+    row.classList.add('bg-[#e5e7eb]');
     [...row.children].forEach((div) => {
       if (div.children.length === 1 && div.querySelector('picture')) div.className = 'cards-card-image';
       else div.className = 'cards-card-body py-9 px-8 flex flex-col grow';

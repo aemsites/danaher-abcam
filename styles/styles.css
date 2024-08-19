@@ -610,6 +610,23 @@ main .section.hide-section {
   display: none !important;
 }
 
+main .section .cards-wrapper {
+  margin: auto;
+  margin-bottom: 2rem;
+}
+
+main .section .cards-wrapper .cols-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2.75rem;
+}
+
+@media (max-width: 799px) {
+  main .section .cards-wrapper .cols-3 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
 main .section > div.episodes-wrapper {
   height: 2205px;
   --tw-bg-opacity: 1;
