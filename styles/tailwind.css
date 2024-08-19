@@ -63,4 +63,8 @@
     main .section .default-content-wrapper h2{
         @apply font-bold leading-8 lg:leading-5 text-4xl py-8;
     }
+
+    main .section .alternating-wrapper {
+        @apply bg-gradient-to-b from-teal-400 via-gray-300 to-orange-500 mx-auto py-[72px] px-[30px] sm:px-[61px] w-full;
+    }
 }   
