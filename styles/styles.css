@@ -604,6 +604,23 @@ main .section .default-content-wrapper a {
   color: rgb(55 129 137 / var(--tw-text-opacity));
 }
 
+main .section .default-content-wrapper:not(.section-padding) {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 1280px) {
+  main .section .default-content-wrapper:not(.section-padding) {
+    max-width: 1120px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
 .home-page main .section > div.hero-wrapper {
   height: 496px;
 }
