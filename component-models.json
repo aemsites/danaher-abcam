@@ -425,20 +425,6 @@
     "id": "teaser",
     "fields": [
       {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image",
-        "label": "Image",
-        "multi": false
-      },
-      {
-        "component": "text",
-        "name": "imageAlt",
-        "value": "",
-        "label": "Image Alt",
-        "valueType": "string"
-      },
-      {
         "component": "text",
         "name": "teaser_title",
         "value": "",
