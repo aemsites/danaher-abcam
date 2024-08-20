@@ -37,6 +37,7 @@ function createTeaserBlock(
 * @param {Element} block The header block element
 */
 export default async function decorate(block) {
+  /*
   const teaserItems = [...block.children].map((el, elIndex) => {
     let isLink;
     let title;
@@ -78,4 +79,6 @@ export default async function decorate(block) {
   block.classList.add(...'space-y-6'.split(' '));
   block.append(...teaserItems);
   decorateIcons(block);
+  
+   */
 }
