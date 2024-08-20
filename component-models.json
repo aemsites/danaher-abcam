@@ -480,6 +480,10 @@
     ]
   },
   {
+    "id": "teasers",
+    "fields": []
+  },
+  {
     "id": "teaser",
     "fields": [
       {
