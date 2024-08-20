@@ -438,7 +438,8 @@
         "value": "",
         "label": "Description",
         "valueType": "string"
-      },{
+      },
+      {
         "component": "text",
         "valueType": "string",
         "name": "alternating_ctahref",
