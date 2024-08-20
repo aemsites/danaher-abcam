@@ -31,7 +31,8 @@
       "mini-teasers",
       "alternating",
       "fragment",
-      "teasers"
+      "teasers",
+      "title-card"
     ]
   },
   {
@@ -53,7 +54,7 @@
   {
     "id": "teasers",
     "components": [
-      "mini-teaser"
+      "teaser"
     ]
   },
   {
