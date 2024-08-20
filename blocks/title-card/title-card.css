@@ -7,6 +7,11 @@
   margin-bottom: 1.25rem
 }
 
+.title-card-wrapper :is(.mx-auto) {
+  margin-left: auto;
+  margin-right: auto
+}
+
 .title-card-wrapper :is(.mb-12) {
   margin-bottom: 3rem
 }
@@ -43,6 +48,14 @@
   width: 100%
 }
 
+.title-card-wrapper :is(.w-\[75\%\]) {
+  width: 75%
+}
+
+.title-card-wrapper :is(.w-\[60\%\]) {
+  width: 60%
+}
+
 .title-card-wrapper :is(.max-w-\[800px\]) {
   max-width: 800px
 }
@@ -59,9 +72,28 @@
   border-top-width: 4px
 }
 
+.title-card-wrapper :is(.border-b) {
+  border-bottom-width: 1px
+}
+
 .title-card-wrapper :is(.border-\[\#ff7223\]) {
   --tw-border-opacity: 1;
   border-color: rgb(255 114 35 / var(--tw-border-opacity))
+}
+
+.title-card-wrapper :is(.bg-white) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+}
+
+.title-card-wrapper :is(.px-\[30px\]) {
+  padding-left: 30px;
+  padding-right: 30px
+}
+
+.title-card-wrapper :is(.py-\[72px\]) {
+  padding-top: 72px;
+  padding-bottom: 72px
 }
 
 .title-card-wrapper :is(.text-center) {
@@ -110,6 +142,11 @@
 }
 
 @media (min-width: 640px) {
+  .title-card-wrapper :is(.sm\:px-\[61px\]) {
+    padding-left: 61px;
+    padding-right: 61px
+  }
+
   .title-card-wrapper :is(.sm\:text-5xl) {
     font-size: 3rem;
     line-height: 1
