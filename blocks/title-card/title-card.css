@@ -1,5 +1,6 @@
-.title-card-wrapper :is(.m-auto) {
-  margin: auto
+.title-card-wrapper :is(.mx-auto) {
+  margin-left: auto;
+  margin-right: auto
 }
 
 .title-card-wrapper :is(.my-5) {
@@ -7,20 +8,8 @@
   margin-bottom: 1.25rem
 }
 
-.title-card-wrapper :is(.mb-12) {
-  margin-bottom: 3rem
-}
-
 .title-card-wrapper :is(.mb-5) {
   margin-bottom: 1.25rem
-}
-
-.title-card-wrapper :is(.mb-8) {
-  margin-bottom: 2rem
-}
-
-.title-card-wrapper :is(.mt-4) {
-  margin-top: 1rem
 }
 
 .title-card-wrapper :is(.block) {
@@ -35,16 +24,8 @@
   width: 16.666667%
 }
 
-.title-card-wrapper :is(.w-3\/4) {
-  width: 75%
-}
-
-.title-card-wrapper :is(.w-full) {
-  width: 100%
-}
-
-.title-card-wrapper :is(.max-w-\[800px\]) {
-  max-width: 800px
+.title-card-wrapper :is(.w-\[60\%\]) {
+  width: 60%
 }
 
 .title-card-wrapper :is(.flex-col) {
@@ -64,17 +45,18 @@
   border-color: rgb(255 114 35 / var(--tw-border-opacity))
 }
 
-.title-card-wrapper :is(.text-center) {
-  text-align: center
+.title-card-wrapper :is(.px-\[30px\]) {
+  padding-left: 30px;
+  padding-right: 30px
+}
+
+.title-card-wrapper :is(.py-\[72px\]) {
+  padding-top: 72px;
+  padding-bottom: 72px
 }
 
 .title-card-wrapper :is(.font-sans) {
   font-family: rockwell
-}
-
-.title-card-wrapper :is(.text-3xl) {
-  font-size: 1.875rem;
-  line-height: 2.25rem
 }
 
 .title-card-wrapper :is(.text-5xl) {
@@ -92,10 +74,6 @@
   line-height: 1.75rem
 }
 
-.title-card-wrapper :is(.font-light) {
-  font-weight: 300
-}
-
 .title-card-wrapper :is(.font-semibold) {
   font-weight: 600
 }
@@ -104,40 +82,16 @@
   letter-spacing: 0em
 }
 
-.title-card-wrapper :is(.text-slate-800) {
-  --tw-text-opacity: 1;
-  color: rgb(30 41 59 / var(--tw-text-opacity))
-}
-
 @media (min-width: 640px) {
-  .title-card-wrapper :is(.sm\:text-5xl) {
-    font-size: 3rem;
-    line-height: 1
+  .title-card-wrapper :is(.sm\:px-\[61px\]) {
+    padding-left: 61px;
+    padding-right: 61px
   }
 }
 
 @media (min-width: 768px) {
-  .title-card-wrapper :is(.md\:max-w-\[800px\]) {
-    max-width: 800px
-  }
-
   .title-card-wrapper :is(.md\:text-6xl) {
     font-size: 3.75rem;
     line-height: 1
-  }
-}
-
-@media (min-width: 1024px) {
-  .title-card-wrapper :is(.lg\:pt-14) {
-    padding-top: 3.5rem
-  }
-
-  .title-card-wrapper :is(.lg\:text-7xl) {
-    font-size: 4.5rem;
-    line-height: 1
-  }
-
-  .title-card-wrapper :is(.lg\:text-\[27px\]) {
-    font-size: 27px
   }
 }

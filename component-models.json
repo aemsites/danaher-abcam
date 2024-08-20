@@ -1,5 +1,62 @@
 [
   {
+    "id": "page-metadata",
+    "fields": [
+      {
+        "component": "container",
+        "label": "Fieldset",
+        "fields": [
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "jcr:title",
+            "label": "Title"
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "jcr:description",
+            "label": "Description"
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "cq:canonicalUrl",
+            "label": "Canonical"
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "keywords",
+            "multi": true,
+            "label": "Keywords"
+          },
+          {
+            "component": "date-time",
+            "valueType": "date-time",
+            "name": "publishDate",
+            "label": "Publish Date",
+            "placeholder": "YYYY-MM-DD",
+            "displayFormat": null,
+            "valueFormat": null
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "navTitle",
+            "label": "Navigation Title"
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "template",
+            "label": "Template"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "title",
     "fields": [
       {
@@ -424,20 +481,6 @@
   {
     "id": "teaser",
     "fields": [
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image",
-        "label": "Image",
-        "multi": false
-      },
-      {
-        "component": "text",
-        "name": "imageAlt",
-        "value": "",
-        "label": "Image Alt",
-        "valueType": "string"
-      },
       {
         "component": "text",
         "name": "teaser_title",

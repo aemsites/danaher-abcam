@@ -7,6 +7,14 @@
     header {
         @apply h-11 lg:h-[54px];
     }
+    
+    main .section .default-content-wrapper a {
+        @apply font-bold text-[#378189];
+    }
+
+    main .section .default-content-wrapper{
+        @apply mx-auto py-[32px] px-[15px] sm:px-[61px] w-[60%];
+    }
 
     .home-page main .section > div.hero-wrapper {
         @apply h-[496px];
@@ -97,7 +105,10 @@
     }
 
     main .section .default-content-wrapper h2{
-        @apply font-bold leading-8 lg:leading-5 text-4xl py-8;
+        @apply font-medium leading-8 lg:leading-5 text-4xl py-8;
     }
 
+    main .section .title-card-wrapper {
+        @apply border-b;
+    }
 }   

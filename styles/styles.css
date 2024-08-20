@@ -598,6 +598,29 @@ header {
   }
 }
 
+main .section .default-content-wrapper a {
+  font-weight: 700;
+  --tw-text-opacity: 1;
+  color: rgb(55 129 137 / var(--tw-text-opacity));
+}
+
+main .section .default-content-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+@media (min-width: 640px) {
+  main .section .default-content-wrapper {
+    padding-left: 61px;
+    padding-right: 61px;
+  }
+}
+
 .home-page main .section > div.hero-wrapper {
   height: 496px;
 }
@@ -846,7 +869,7 @@ main .section .default-content-wrapper h2 {
   padding-top: 2rem;
   padding-bottom: 2rem;
   font-size: 2.25rem;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 2rem;
 }
 
@@ -854,6 +877,10 @@ main .section .default-content-wrapper h2 {
   main .section .default-content-wrapper h2 {
     line-height: 1.25rem;
   }
+}
+
+main .section .title-card-wrapper {
+  border-bottom-width: 1px;
 }
 
 .visible {
