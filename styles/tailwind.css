@@ -12,10 +12,6 @@
         @apply font-bold text-[#378189];
     }
 
-    main .section .default-content-wrapper{
-        @apply mx-auto py-[32px] px-[15px] sm:px-[61px] w-[60%];
-    }
-
     .home-page main .section > div.hero-wrapper {
         @apply h-[496px];
     }
@@ -101,7 +97,7 @@
     }
 
     main .section.section-padding {
-        @apply mx-auto xl:max-w-[1120px] xl:px-0 px-[30px];
+        @apply mx-auto xl:max-w-[1120px] xl:px-0 px-[30px] py-16;
     }
 
     main .section .default-content-wrapper h2{

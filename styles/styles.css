@@ -604,23 +604,6 @@ main .section .default-content-wrapper a {
   color: rgb(55 129 137 / var(--tw-text-opacity));
 }
 
-main .section .default-content-wrapper {
-  margin-left: auto;
-  margin-right: auto;
-  width: 60%;
-  padding-top: 32px;
-  padding-bottom: 32px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-@media (min-width: 640px) {
-  main .section .default-content-wrapper {
-    padding-left: 61px;
-    padding-right: 61px;
-  }
-}
-
 .home-page main .section > div.hero-wrapper {
   height: 496px;
 }
@@ -855,6 +838,8 @@ main .section.section-padding {
   margin-right: auto;
   padding-left: 30px;
   padding-right: 30px;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 @media (min-width: 1280px) {
