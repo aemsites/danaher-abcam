@@ -294,13 +294,6 @@
         "multi": false
       },
       {
-        "component": "reference",
-        "valueType": "string",
-        "name": "hero_image",
-        "label": "Hero Image",
-        "multi": false
-      },
-      {
         "component": "text",
         "valueType": "string",
         "name": "hero_imageAlt",
@@ -438,7 +431,8 @@
         "value": "",
         "label": "Description",
         "valueType": "string"
-      },{
+      },
+      {
         "component": "text",
         "valueType": "string",
         "name": "alternating_ctahref",
@@ -508,6 +502,13 @@
         "label": "",
         "valueType": "string",
         "hidden": true
+      },
+      {
+        "component": "aem-content",
+        "name": "teaser_reference",
+        "value": "",
+        "label": "Select the page to link to",
+        "valueType": "string"
       }
     ]
   },

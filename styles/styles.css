@@ -604,20 +604,20 @@ main .section .default-content-wrapper a {
   color: rgb(55 129 137 / var(--tw-text-opacity));
 }
 
-main .section .default-content-wrapper {
+main .section .default-content-wrapper:not(.section-padding) {
   margin-left: auto;
   margin-right: auto;
-  width: 60%;
-  padding-top: 32px;
-  padding-bottom: 32px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
-@media (min-width: 640px) {
-  main .section .default-content-wrapper {
-    padding-left: 61px;
-    padding-right: 61px;
+@media (min-width: 1280px) {
+  main .section .default-content-wrapper:not(.section-padding) {
+    max-width: 1120px;
+    padding-left: 0px;
+    padding-right: 0px;
   }
 }
 
@@ -855,6 +855,8 @@ main .section.section-padding {
   margin-right: auto;
   padding-left: 30px;
   padding-right: 30px;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 @media (min-width: 1280px) {
