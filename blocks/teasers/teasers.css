@@ -57,6 +57,15 @@
   height: 1.5rem
 }
 
+.teasers-wrapper :is(.size-6) {
+  width: 1.5rem;
+  height: 1.5rem
+}
+
+.teasers-wrapper :is(.h-full) {
+  height: 100%
+}
+
 .teasers-wrapper :is(.w-\[90\%\]) {
   width: 90%
 }
@@ -152,6 +161,25 @@
 .teasers-wrapper :is(.py-6) {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem
+}
+
+.teasers-wrapper :is(.pb-12) {
+  padding-bottom: 3rem
+}
+
+.teasers-wrapper :is(.px-6) {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem
+}
+
+.teasers-wrapper :is(.py-6) {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem
+}
+
+.teasers-wrapper :is(.px-0) {
+  padding-left: 0px;
+  padding-right: 0px
 }
 
 .teasers-wrapper :is(.pb-12) {
