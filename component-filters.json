@@ -31,7 +31,9 @@
       "mini-teasers",
       "alternating",
       "fragment",
-      "teasers"
+      "teasers",
+      "title-card",
+      "alert-banner"
     ]
   },
   {
@@ -58,6 +60,10 @@
   },
   {
     "id": "title-card",
+    "components": []
+  },
+  {
+    "id": "alert-banner",
     "components": []
   }
 ]

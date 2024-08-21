@@ -537,5 +537,38 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "alert-banner",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "alert-banner_title",
+        "value": "",
+        "label": "Title"
+      },
+      {
+        "component": "select",
+        "name": "alert-banner_titleType",
+        "hidden": true,
+        "label": "Title Type",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "alert-banner_ctahref",
+        "value": "",
+        "label": "CTA Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "alert-banner_ctahrefText",
+        "value": "",
+        "label": "CTA Text"
+      }
+    ]
   }
 ]
