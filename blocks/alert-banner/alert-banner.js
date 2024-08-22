@@ -6,25 +6,22 @@ import {
 import { decorateIcons, getMetadata } from '../../scripts/aem.js';
 
 export default function decorate(block) {
-  const title = getMetadata('og:title');
-  const { href } = window.location;
-  const alertBanner = div(
-    { class: 'alert-container p-6 mb-6 rounded-xl bg-[#edf6f7]' },
-    div(
-      { class: 'alert-section flex flex-col md:flex-row gap-4 justify-between' },
-      h3({ class: 'title mt-1 font-bold text-xl text-[#378189]' }, `Search our catalogue of ${title}`),
-      div(
-        { class: 'alert-button' },
-        a(
-          { class: 'button bg-black hover:bg-[#3B3B3B] h-8 whitespace-nowrap rounded-2xl flex items-center py-2 px-3 text-white text-xs capitalize justify-self-end w-fit', href },
-          title,
-          span({ class: 'arrow-icon icon icon-chevron-down-white rotate-0' }),
-        ),
-      ),
-    ),
+  block.classList.add(...'alert-container p-6 mb-6 rounded-xl bg-[#edf6f7]'.split(' '));
+  const container = block.querySelector('div');
+  container.className = 'alert-section flex flex-col md:flex-row gap-4 justify-between';
+  const title = block.querySelector('h3');
+  title.classList.add(...'title mt-1 font-bold text-xl text-[#378189]'.split(' '));
+  const button = block.querySelector('.button-container');
+  const divContainer = button.closest('div');
+  const alertBanner = block.querySelector('p a');
+  alertBanner.classList.add(...'button flex bg-black hover:bg-[#3B3B3B] h-8 whitespace-nowrap rounded-2xl flex items-center py-2 px-3 text-white text-xs capitalize justify-self-end w-fit'.split(' '));
+  const icon = span(
+    { class: 'arrow-icon icon icon-chevron-down-white rotate-0' }
   );
+  alertBanner.append(icon);
   decorateIcons(alertBanner);
   alertBanner.querySelector('img').style.cssText = 'transform: rotate(270deg)';
   alertBanner.querySelector('img').classList.add('w-4');
-  block.append(alertBanner);
+  container.append(title);
+  container.append(divContainer);
 }
