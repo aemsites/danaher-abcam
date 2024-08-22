@@ -582,8 +582,8 @@
         "label": "Block Options",
         "options": [
           {
-            "name": "2 Columns",
-            "value": "cols-2"
+            "name": "Video Position",
+            "value": "right-video"
           }
         ]
       },
