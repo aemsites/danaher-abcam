@@ -1,9 +1,8 @@
 import {
-  div, a, h3,
   span,
 } from '../../scripts/dom-builder.js';
 
-import { decorateIcons, getMetadata } from '../../scripts/aem.js';
+import { decorateIcons } from '../../scripts/aem.js';
 
 export default function decorate(block) {
   block.classList.add(...'alert-container p-6 mb-6 rounded-xl bg-[#edf6f7]'.split(' '));
@@ -16,7 +15,7 @@ export default function decorate(block) {
   const alertBanner = block.querySelector('p a');
   alertBanner.classList.add(...'button flex bg-black hover:bg-[#3B3B3B] h-8 whitespace-nowrap rounded-2xl flex items-center py-2 px-3 text-white text-xs capitalize justify-self-end w-fit'.split(' '));
   const icon = span(
-    { class: 'arrow-icon icon icon-chevron-down-white rotate-0' }
+    { class: 'arrow-icon icon icon-chevron-down-white rotate-0' },
   );
   alertBanner.append(icon);
   decorateIcons(alertBanner);
