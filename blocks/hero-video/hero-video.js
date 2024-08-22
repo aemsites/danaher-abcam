@@ -77,22 +77,22 @@ function loadContent(divEl) {
 }
 
 export default function decorate(block) {
-  block.classList.add('bg-black', 'text-white');
-  const parentDiv = block.querySelector('div');
-  parentDiv.classList.add('main-container');
-  parentDiv.classList.add(...'max-w-full flex md:flex-row md:justify-between flex-col'.split(' '));
+  // block.classList.add('bg-black', 'text-white');
+  // const parentDiv = block.querySelector('div');
+  // parentDiv.classList.add('main-container');
+  // parentDiv.classList.add(...'max-w-full flex md:flex-row md:justify-between flex-col'.split(' '));
 
-  parentDiv.querySelectorAll('div').forEach((divEl) => {
-    const link = divEl.querySelector('a');
-    if (link) {
-      parentDiv.append(createModalPopUp(link.href));
-      loadVideo(parentDiv, divEl, link);
-    } else {
-      loadContent(divEl);
-    }
-  });
+  // parentDiv.querySelectorAll('div').forEach((divEl) => {
+  //   const link = divEl.querySelector('a');
+  //   if (link) {
+  //     parentDiv.append(createModalPopUp(link.href));
+  //     loadVideo(parentDiv, divEl, link);
+  //   } else {
+  //     loadContent(divEl);
+  //   }
+  // });
 
-  if (block.classList.contains('left-video')) {
-    parentDiv.classList.add('flex-col', 'md:flex-row-reverse');
-  }
+  // if (block.classList.contains('left-video')) {
+  //   parentDiv.classList.add('flex-col', 'md:flex-row-reverse');
+  // }
 }
