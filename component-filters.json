@@ -66,5 +66,9 @@
   {
     "id": "alert-banner",
     "components": []
+  },
+  {
+    "id": "hero-video",
+    "components": []
   }
 ]
