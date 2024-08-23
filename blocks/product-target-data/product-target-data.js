@@ -15,7 +15,7 @@ export default async function decorate(block) {
       a(
         { class: 'w-fit inline-flex items-center underline text-[#378189]', href },
         `${targetData}`,
-        span({ class: 'icon icon-share-icon ml-2' }),
+        span({ class: 'icon icon-share-icon size-4 ml-2' }),
       ),
     );
     decorateIcons(targetContainer);

@@ -27,7 +27,7 @@ export default async function decorate(block) {
         const list = li(
           { class: 'basis-[23.5%] min-w-60' },
           button(
-            { class: 'h-52 p-4 bg-white w-full border border-interactive-grey-transparent-active rounded-4px hover:bg-interactive-black-transparent-hover cursor-pointer text-left' },
+            { class: 'size-full flex flex-col align-center text-left p-4 bg-white border border-interactive-grey-transparent-active rounded hover:bg-[#0000000d] cursor-pointer' },
             div(
               { class: 'h-5/6' },
               span(

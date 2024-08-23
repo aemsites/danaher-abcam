@@ -1,6 +1,6 @@
 import { getProductResponse } from '../../scripts/search.js';
 import {
-  h3, h6, p, button, div, span, hr, ul, li,
+  h3, p, button, div, span, hr, ul, li,
 } from '../../scripts/dom-builder.js';
 import { decorateIcons } from '../../scripts/aem.js';
 import { getStarRating } from '../product-overview/product-overview.js';
@@ -33,7 +33,7 @@ function createSlides(productsArray) {
 
     if (product.numberOfReviews > 0) {
       const rating = getStarRating(product.aggregatedRating, ratingContainer, 'w-4');
-      rating.append(span({ class: 'text-xs text-[#65797c]' }, `(${product.numberOfReviews || 0} reviews)`));
+      rating.append(span({ class: 'text-sm text-[#65797c] tracking-wide' }, `(${product.numberOfReviews || 0} reviews)`));
       decorateIcons(ratingContainer);
     } else {
       ratingContainer.classList.add('hidden');
@@ -41,23 +41,14 @@ function createSlides(productsArray) {
 
     const recentlyContainer = button(
       {
-        class: 'h-full flex flex-col align-center p-4 bg-white w-full border border-interactive-grey-transparent-active rounded-4px hover:bg-[#0000000d] cursor-pointer text-left',
+        class: 'size-full flex flex-col align-center text-left p-4 bg-white border border-interactive-grey-transparent-active rounded hover:bg-[#0000000d] cursor-pointer',
       },
       div(
         { class: 'h-5/6' },
-        div(
-          { class: 'flex gap-2' },
-          p({ class: 'w-fit px-2 py-1 rounded-4px text-xs font-semibold bg-[#edf6f7] text-[#2c656b] border-blue-70 border' }, `${product.category}`),
-        ),
-        div(
-          { class: 'flex flex-col font-semibold' },
-          h6({ class: 'mt-4 text-xs text-[#65797c]' }, `${product.code}`),
-          p({ class: 'mb-4 mt-2 text-sm text-black-0' }, `${product.title}`),
-        ),
-      ),
-      div(
-        { class: 'rating-section h-1/5 w-full' },
-        hr({ class: 'h-[1px] bg-interactive-grey-active my-0' }),
+        p({ class: 'w-fit px-2 py-1 rounded text-xs text-emerald-800 border border-emerald-900 bg-[#edf6f7]' }, `${product.category}`),
+        p({ class: 'mt-4 text-xs text-[#65797c] font-medium font-sans lowercase' }, `${product.code}`),
+        p({ class: 'mb-4 mt-2 text-sm text-black font-medium' }, `${product.title}`),
+        hr({ class: 'h-px bg-interactive-grey-active my-0' }),
         ratingContainer,
       ),
     );
