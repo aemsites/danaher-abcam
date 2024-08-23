@@ -217,7 +217,7 @@ function handleScroll() {
 }
 
 export default async function decorate(block) {
-  const resp = await fetch('/en/nav.plain.html');
+  const resp = await fetch('/nav.plain.html');
 
   if (resp.ok) {
     const html = await resp.text();
