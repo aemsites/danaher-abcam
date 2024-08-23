@@ -131,7 +131,7 @@ function createFooterDOM(mainContainer) {
 export default async function decorate(block) {
   block.classList.add(...'pt-8 pb-8 mt-auto text-white bg-black'.split(' '));
   const cfg = readBlockConfig(block);
-  const footerPath = cfg.footer || '/footer';
+  const footerPath = cfg.footer || '/en/footer';
   const response = await fetch(`${footerPath}.plain.html`, window.location.pathname.endsWith('/footer') ? { cache: 'reload' } : {});
 
   if (response.ok) {
