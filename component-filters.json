@@ -31,7 +31,11 @@
       "mini-teasers",
       "alternating",
       "fragment",
-      "teasers"
+      "teasers",
+      "title-card",
+      "alert-banner",
+      "hero-video",
+      "product-tabs"
     ]
   },
   {
@@ -58,6 +62,14 @@
   },
   {
     "id": "title-card",
+    "components": []
+  },
+  {
+    "id": "alert-banner",
+    "components": []
+  },
+  {
+    "id": "hero-video",
     "components": []
   }
 ]
