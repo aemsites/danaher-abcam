@@ -1,16 +1,16 @@
-import titlecard from './titlecard.js';
+// import titlecard from './titlecard.js';
 import list from './list.js';
 import metadata from './metadata.js';
 import teasers from './teasers.js';
-import learnmore from './learnMore.js';
+import articledetails from './articledetails.js';
 import postProcessSVGIcons from './postProcessSVGIcons.js';
 
 // eslint-disable-next-line import/prefer-default-export
 export const transformers = [
-  titlecard,
+  // titlecard,
   list,
   teasers,
-  learnmore,
+  articledetails,
 ];
 
 export const asyncTransformers = [
