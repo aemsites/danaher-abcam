@@ -115,10 +115,6 @@
   height: 100%
 }
 
-.product-overview-wrapper :is(.w-7) {
-  width: 1.75rem
-}
-
 .product-overview-wrapper :is(.w-fit) {
   width: -moz-fit-content;
   width: fit-content

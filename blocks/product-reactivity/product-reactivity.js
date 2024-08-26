@@ -252,7 +252,7 @@ const getReactivityStatus = (reactivityType) => {
   return '/icons/not-recommended.svg';
 };
 
-const getTableCSS = (reactivityType) => (reactivityType === 'TESTED_AND_REACTS' ? 'w-6' : 'w-3');
+const getTableCSS = (reactivityType) => (reactivityType === 'TESTED_AND_REACTS' ? 'size-6' : 'size-3');
 
 function productPromise() {
   return div(
@@ -397,9 +397,9 @@ function publicationsAndImageSection({
 function allApplicationTableData(tableData, application) {
   const allTabData = div({ class: 'individualdata overflow-scroll' });
   const tableColumn = thead();
-  const tableHeadingRow = tr(th({ class: 'font-semibold text-black text-sm bg-white p-4 border border-b-2 px-2 py-3' }));
+  const tableHeadingRow = tr(th({ class: 'font-semibold text-black text-sm bg-white border border-b-2 px-2 py-3' }));
   application.forEach((name) => {
-    tableHeadingRow.appendChild(th({ class: 'font-semibold text-black text-sm bg-white p-4 border border-b-2 px-2 py-3' }, name));
+    tableHeadingRow.appendChild(th({ class: 'font-semibold text-black text-sm bg-white border border-b-2 px-2 py-3' }, name));
   });
   tableColumn.appendChild(tableHeadingRow);
   const tbodyContent = tbody();
@@ -436,31 +436,19 @@ export default async function decorate(block) {
   } = response[0].raw;
   const parsedImages = JSON.parse(imagesjson);
   const parsedPublications = JSON.parse(publicationsjson);
+  const reactivityData = div(
+    { class: 'relative w-full box-content ' },
+    h2({ class: 'font-semibold text-black text-2xl leading-5 tracking-tight mb-4' }, 'Reactivity Data'),
+    span({ class: 'text-base tracking-wide mb-4' }, 'Select an application'),
+  );
+  let imagesBackdropBlockEl;
+  let publicationDrawerBlockEl;
   const reactivityApplicationWrapper = div({ class: 'reactivityApplicationWrapper w-full mt-4' });
 
   if (reactivityapplications && reactivitytabledata.length > 0) {
     const buttonsPanel = div(
       { class: 'w-full flex flex-wrap gap-2 text-black tracking-wide font-semibold text-sm pb-5' },
       button({ class: 'px-6 py-2 border-black boarder-solid  bg-black text-white rounded-full' }, 'All applications'),
-    );
-    reactivityapplications.forEach((name) => {
-      buttonsPanel.appendChild(button({ class: 'px-6 py-2 border border-black text-black rounded-full' }, name));
-    });
-    const reactivityJson = JSON.parse(reactivitytabledata);
-    const tableContent = allApplicationTableData(reactivityJson, reactivityapplications);
-    reactivityApplicationWrapper.appendChild(buttonsPanel);
-    const productInfo = productPromise();
-    reactivityApplicationWrapper.appendChild(productInfo);
-    reactivityApplicationWrapper.appendChild(tableContent);
-  }
-  if (
-    (typeof parsedPublications === 'object' && parsedPublications.length > 0)
-    && (typeof parsedImages === 'object' && parsedImages.length > 0)
-  ) {
-    const reactivityData = div(
-      { class: 'relative w-full box-content ' },
-      h2({ class: 'font-semibold text-black text-2xl leading-5 tracking-tight mb-4' }, 'Reactivity Data'),
-      span({ class: 'text-base tracking-wide mb-4' }, 'Select an application'),
     );
     const filteredPublications = paginateData(parsedPublications, 1, 2);
     const filteredImages = paginateData(parsedImages, 1, 3);
@@ -470,6 +458,18 @@ export default async function decorate(block) {
       allPublicationCount: numpublications,
       allImageCount: parsedImages.length,
     });
+    reactivityapplications.forEach((name) => {
+      buttonsPanel.appendChild(button({ class: 'px-6 py-2 border border-black text-black rounded-full' }, name));
+    });
+    const reactivityJson = JSON.parse(reactivitytabledata);
+    const tableContent = allApplicationTableData(reactivityJson, reactivityapplications);
+    reactivityApplicationWrapper.appendChild(buttonsPanel);
+    const productInfo = productPromise();
+    reactivityApplicationWrapper.appendChild(productInfo);
+    reactivityApplicationWrapper.appendChild(tableContent);
+    reactivityApplicationWrapper.appendChild(blockSection);
+  }
+  if (typeof parsedPublications === 'object' && parsedPublications.length > 0) {
     const searchBar = div(
       { class: 'relative' },
       input({
@@ -483,18 +483,8 @@ export default async function decorate(block) {
     const { block: publicationDrawerBlock, drawerBody, drawerFooter } = await decorateDrawer({
       id: 'drawer-all-publications', title: 'Publications', isBackdrop: true,
     });
-    const { block: imagesBackdropBlock, backdrop: imagesContentContainer } = await decorateDrawer({
-      id: 'drawer-all-images',
-      title: 'Images',
-      isBackdrop: false,
-      isDrawer: false,
-      closeBackdrop: false,
-      isNeeded: false,
-      existedEl: publicationDrawerBlock,
-    });
     publicationDrawerContent = drawerBody;
     publicationDrawerFooter = drawerFooter;
-    imagesBackdropContent = imagesContentContainer;
     if (publicationDrawerContent) {
       publicationDrawerContent.append(searchBar);
       decorateAllPublications({
@@ -504,19 +494,32 @@ export default async function decorate(block) {
       });
       publicationDrawerFooter.append(paginateIndexesTag);
     }
-    reactivityApplicationWrapper.appendChild(blockSection);
+    publicationDrawerBlockEl = publicationDrawerBlock;
+  }
+
+  if (typeof parsedImages === 'object' && parsedImages.length > 0) {
+    const { block: imagesBackdropBlock, backdrop: imagesContentContainer } = await decorateDrawer({
+      id: 'drawer-all-images',
+      title: 'Images',
+      isBackdrop: false,
+      isDrawer: false,
+      closeBackdrop: false,
+      isNeeded: false,
+      existedEl: publicationDrawerBlockEl,
+    });
+    imagesBackdropContent = imagesContentContainer;
     if (imagesBackdropContent) {
       decorateAllImages({ el: imagesBackdropContent, allImages: parsedImages });
     }
-    block.append(
-      div(
-        { class: 'container mx-auto px-6 md:px-0' },
-        publicationDrawerBlock,
-        imagesBackdropBlock,
-        reactivityData,
-        reactivityApplicationWrapper,
-      ),
-    );
-    decorateIcons(block);
+    imagesBackdropBlockEl = imagesBackdropBlock;
   }
+
+  block.classList.add(...'container mx-auto px-6 md:px-0'.split(' '));
+  block.append(
+    publicationDrawerBlockEl,
+    imagesBackdropBlockEl,
+    reactivityData,
+    reactivityApplicationWrapper,
+  );
+  decorateIcons(block);
 }

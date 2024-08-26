@@ -17,10 +17,10 @@ export default async function buildAutoBlocks() {
   targetDataSection.classList.add(...'container mx-auto px-6 md:px-0'.split(' '));
 
   const recommendedProductSection = main.querySelector(':scope > div:nth-child(5)');
-  recommendedProductSection.classList.add(...'bg-slate-100 px-6 py-8 rounded-lg'.split(' '));
+  recommendedProductSection.classList.add(...'bg-slate-100'.split(' '));
 
   const recentlyViewedSection = main.querySelector(':scope > div:nth-child(6)');
-  recentlyViewedSection.classList.add('px-6', 'py-8');
+  recentlyViewedSection.classList.add(...'container mx-auto px-6 md:px-0'.split(' '));
 
   const datasheetSection = main.querySelector(':scope > div:nth-child(7)');
   datasheetSection.classList.add(...'container mx-auto px-6 md:px-0'.split(' '));

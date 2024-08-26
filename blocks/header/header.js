@@ -63,7 +63,7 @@ function buildSearchBlock(headerBlock) {
       'aria-controls': 'mega-menu-icons',
       'data-collapse-toggle': 'mega-menu-icons',
     },
-    span({ class: 'icon icon-Menu' }),
+    span({ class: 'icon icon-Menu flex items-center w-8 h-6' }),
   );
 
   searchNewBlock.append(hamburgerIcon);
@@ -98,12 +98,12 @@ function buildNavBlock(headerBlock) {
     const menuItemName = item.innerText;
     const menuItemEl = a(
       {
-        class: 'btn flex relative bg-black hover:bg-black text-white font-medium ring-0 border-0 ring-offset-0 group',
+        class: 'btn flex items-center relative bg-black hover:bg-black text-white font-medium ring-0 border-0 ring-offset-0 group',
         href: item.querySelector('a')?.href || '/',
       },
       menuItemName,
     );
-    const arrowDownIcon = span({ class: 'icon icon-chevron-down-white flex transition group-hover:rotate-180 ml-1 [&_img]:items-center' });
+    const arrowDownIcon = span({ class: 'icon icon-chevron-down-white size-5 flex transition group-hover:rotate-180 ml-1' });
     menuItemEl.append(arrowDownIcon);
     menuItemEl.addEventListener('click', (e) => {
       e.preventDefault();

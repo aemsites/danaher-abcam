@@ -775,20 +775,20 @@ dialog .modal-content .section > .default-content-wrapper p {
   top: -23px;
 }
 
-.right-\[10px\] {
-  right: 10px;
-}
-
-.top-32 {
-  top: 8rem;
-}
-
 .right-0 {
   right: 0px;
 }
 
+.right-\[10px\] {
+  right: 10px;
+}
+
 .top-0 {
   top: 0px;
+}
+
+.top-32 {
+  top: 8rem;
 }
 
 .z-30 {
@@ -864,6 +864,10 @@ dialog .modal-content .section > .default-content-wrapper p {
   height: 100vh;
 }
 
+.w-\[35rem\] {
+  width: 35rem;
+}
+
 .w-auto {
   width: auto;
 }
@@ -871,10 +875,6 @@ dialog .modal-content .section > .default-content-wrapper p {
 .w-max {
   width: -moz-max-content;
   width: max-content;
-}
-
-.w-\[35rem\] {
-  width: 35rem;
 }
 
 .flex-auto {
@@ -980,11 +980,6 @@ dialog .modal-content .section > .default-content-wrapper p {
   background-color: rgb(55 129 137 / var(--tw-bg-opacity));
 }
 
-.bg-white {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
 .bg-black {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
@@ -999,6 +994,11 @@ dialog .modal-content .section > .default-content-wrapper p {
   background-color: rgb(17 24 39 / 0.5);
 }
 
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
 .p-0 {
   padding: 0px;
 }
@@ -1011,14 +1011,14 @@ dialog .modal-content .section > .default-content-wrapper p {
   padding: 1rem;
 }
 
-.px-\[3px\] {
-  padding-left: 3px;
-  padding-right: 3px;
-}
-
 .px-8 {
   padding-left: 2rem;
   padding-right: 2rem;
+}
+
+.px-\[3px\] {
+  padding-left: 3px;
+  padding-right: 3px;
 }
 
 .py-6 {
@@ -1042,6 +1042,11 @@ dialog .modal-content .section > .default-content-wrapper p {
   text-align: center;
 }
 
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
 .text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
@@ -1055,11 +1060,6 @@ dialog .modal-content .section > .default-content-wrapper p {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
 }
 
 .font-bold {
