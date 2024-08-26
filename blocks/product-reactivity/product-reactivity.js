@@ -56,7 +56,14 @@ function decoratePaginateIndexes({
     return liTag;
   });
 }
-
+/**
+ * decorate allpublications and implement pagination logic.
+ * @param {elContent} all publications
+ * @param {jsonData} all all publications JSON data
+ * @param {jsoncurrentPage} currentpag index
+ * @param {perPage} number of publications per page
+ * @returns {HTMLElement} DOM of the pagination fragment
+ */
 function decorateAllPublications({
   elContent, elFooter, jsonData, currentPage = 1, perPage = perPageList,
 }) {
@@ -124,7 +131,12 @@ function decorateAllPublications({
     }
   }
 }
-
+/**
+ * Loads the selected image properties.
+ * @param {el} details of the selected image
+ * @param {image} details of the selected image
+ * @returns {HTMLElement} The details of the selected image properties
+ */
 function selectImage(el, image) {
   const link = `${baseOriginURL}${image.seoUrl}`;
   const containerEl = el.querySelector('span.icon-close').nextElementSibling;
@@ -150,6 +162,13 @@ function selectImage(el, image) {
   });
 }
 
+/**
+ * Loads the selected image properties.
+ * @param {el} details of the selected image
+ * @param {allImages} details of the selected image including previous
+ * and next element with buttons
+ * @returns {HTMLElement} The details of the selected image properties
+ */
 function decorateAllImages({ el, allImages }) {
   const allImageContainer = ul({
     class: 'carousel grid grid-flow-col grid overflow-x-auto auto-cols-[50%] sm:auto-cols-[33%] md:auto-cols-[25%] lg:auto-cols-[20%] xl:auto-cols-[15%] space-x-2 snap-x snap-mandatory gap-6 rounded-md scroll-smooth',
@@ -215,6 +234,13 @@ function decorateAllImages({ el, allImages }) {
   selectImage(el, allImages[0]);
 }
 
+/**
+ * Loads all publications with details inlcuding paginations
+ * by keypressing on View All button
+ * @param {event} details of the selected image
+ * @param {jsonData} all publications data
+ * @returns {HTMLElement} The root element of publicationdrawercontent
+ */
 const filterPublications = debounce(async (event, jsonData) => {
   const { value } = event.target;
   const filterPublicationData = jsonData.filter((data) => {
@@ -230,6 +256,12 @@ const filterPublications = debounce(async (event, jsonData) => {
   });
 }, 800);
 
+/**
+ * Loads all imagesby keypressing on View All button
+ * @param {allImageCount} number of images
+ * @param {jsonData} all publications data
+ * @returns {HTMLElement} The root element of publicationdrawercontent
+ */
 function showAllImages(allImageCount, image) {
   if (allImageCount > 0) showDrawer('drawer-all-images');
   selectImage(imagesBackdropContent, image);
@@ -245,6 +277,11 @@ function showAllImages(allImageCount, image) {
   });
 }
 
+/**
+ * Loads reactivitytype icon
+ * @param {reactivityType} for fetching svg icon
+ * @returns {HTMLElement} svg icon related to reactivitytype
+ */
 const getReactivityStatus = (reactivityType) => {
   if (reactivityType === 'TESTED_AND_REACTS') return '/icons/tested.svg';
   if (reactivityType === 'REACTS') return '/icons/expected.svg';
@@ -253,7 +290,9 @@ const getReactivityStatus = (reactivityType) => {
 };
 
 const getTableCSS = (reactivityType) => (reactivityType === 'TESTED_AND_REACTS' ? 'size-6' : 'size-3');
-
+/**
+ * Display product promise static content for reactivitytable data
+ */
 function productPromise() {
   return div(
     { class: 'w-full flex flex-col md:flex-row md:items-center gap-3 font-semibold text-sm p-4 bg-white mb-4 tracking-wide' },
@@ -291,7 +330,14 @@ function productPromise() {
     )),
   );
 }
-
+/**
+ * Loads all publications and images for reactivity data
+ * @param {images} fetching image under image section
+ * @param {publications} fetching publications under publications section
+ * @param {allPublicationCount} displaying all publication in View All button
+ * @param {allImageCount} displaying all images in View All button
+ * @returns {HTMLElement} publications and images section in reactivitydata table
+ */
 function publicationsAndImageSection({
   images, publications, allPublicationCount = 0, allImageCount = 0,
 }) {
@@ -394,6 +440,13 @@ function publicationsAndImageSection({
   );
 }
 
+/**
+ * display all application reactivity data for primary-antibodies
+ * @param {tableData} fetching for all reactivitydataf from this JSON
+ * @param {application} Fetching individual application name
+ * for application buttons
+ * @returns {HTMLElement} for reactivitydata for primary-antibodies
+ */
 function allApplicationTableData(tableData, application) {
   const allTabData = div({ class: 'individualdata overflow-scroll' });
   const tableColumn = thead();
