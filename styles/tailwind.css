@@ -101,7 +101,7 @@
     }
 
     main .section.section-padding {
-        @apply mx-auto xl:max-w-[1120px] xl:px-0 px-[30px] py-16;
+        @apply mx-auto xl:max-w-[1120px] xl:px-0 px-[30px] pb-16;
     }
 
     main .section .default-content-wrapper h2{

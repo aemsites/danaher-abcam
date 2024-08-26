@@ -278,6 +278,147 @@
               }
             }
           }
+        },
+        {
+          "title": "Product Tabs",
+          "id": "product-tabs",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Product Tabs"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Product Overview",
+          "id": "product-overview",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Product Overview",
+                  "model": "product-overview"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Product Buybox",
+          "id": "product-buybox",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Product Buybox"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Product Reactivity",
+          "id": "product-reactivity",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Product Reactivity"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Product Target Data",
+          "id": "product-target-data",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Product Target Data"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Recommended Products",
+          "id": "recommended-products",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Recommended Products"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Recently Viewed",
+          "id": "recently-viewed",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Recently Viewed"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Product Datasheet",
+          "id": "product-datasheet",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Product Datasheet"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Product Downloads",
+          "id": "product-downloads",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Product Downloads"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Product Protocols",
+          "id": "product-protocols",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Product Protocols"
+                }
+              }
+            }
+          }
         }
       ]
     }
