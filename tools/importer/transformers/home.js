@@ -1,3 +1,4 @@
+/* global WebImporter */
 const cards = (main, document) => {
   const mainDivEl = document.getElementById('main-content').nextElementSibling;
   const allH2 = mainDivEl.querySelectorAll('h2');

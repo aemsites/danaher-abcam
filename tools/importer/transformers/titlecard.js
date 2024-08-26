@@ -1,3 +1,4 @@
+/* global WebImporter */
 const titlecard = (main, document) => {
   const titleCardDivEl = document.createElement('div');
   const headDivEl = document.getElementById('main-content').nextElementSibling;
