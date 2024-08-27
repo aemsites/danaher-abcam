@@ -267,13 +267,6 @@
         "value": "",
         "label": "Style",
         "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": "tabName",
-        "value": "",
-        "label": "Tab Name",
-        "valueType": "string"
       }
     ]
   },
@@ -546,40 +539,7 @@
     ]
   },
   {
-    "id": "alert-banner",
-    "fields": [
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "alert-banner_title",
-        "value": "",
-        "label": "Title"
-      },
-      {
-        "component": "select",
-        "name": "alert-banner_titleType",
-        "hidden": true,
-        "label": "Title Type",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "alert-banner_ctahref",
-        "value": "",
-        "label": "CTA Link"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "alert-banner_ctahrefText",
-        "value": "",
-        "label": "CTA Text"
-      }
-    ]
-  },
-  {
-    "id": "hero-video",
+    "id": "episodes",
     "fields": [
       {
         "component": "multiselect",
@@ -589,114 +549,64 @@
         "label": "Block Options",
         "options": [
           {
-            "name": "Video Position",
-            "value": "right-video"
+            "name": "3 Columns",
+            "value": "cols-3"
           }
         ]
-      },
+      }
+    ]
+  },
+  {
+    "id": "episode",
+    "fields": [
       {
         "component": "reference",
         "valueType": "string",
-        "name": "image_one",
-        "label": "First Image",
+        "name": "image",
+        "label": "Episode Image",
         "multi": false
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "image_oneAlt",
-        "label": "First Alt",
+        "name": "imageAlt",
+        "label": "Alt",
         "value": ""
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "hero-video_title",
+        "name": "episode_title",
         "value": "",
         "label": "Title"
       },
       {
-        "component": "select",
-        "name": "hero-video_titleType",
-        "hidden": true,
-        "label": "Title Type",
-        "valueType": "string"
+        "component": "text",
+        "name": "episode_titleType",
+        "label": "",
+        "valueType": "string",
+        "hidden": true
       },
       {
         "component": "richtext",
-        "name": "hero-video_description",
+        "name": "episode_description",
         "value": "",
         "label": "Description",
         "valueType": "string"
       },
       {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image_two",
-        "label": "Second Image",
-        "multi": false
-      },
-      {
         "component": "text",
         "valueType": "string",
-        "name": "image_twoAlt",
-        "label": "Second Alt",
-        "value": ""
-      },
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image_three",
-        "label": "Third Image",
-        "multi": false
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "image_threeAlt",
-        "label": "Third Alt",
-        "value": ""
-      },
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image_four",
-        "label": "Fourth Image",
-        "multi": false
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "image_fourAlt",
-        "label": "Fourth Alt",
-        "value": ""
-      }
-    ]
-  },
-  {
-    "id": "product-overview",
-    "fields": [
-      {
-        "component": "multiselect",
-        "valueType": "string",
-        "name": "classes",
+        "name": "episode_CTAhref",
         "value": "",
-        "label": "Options",
-        "options": [
-          {
-            "name": "Overview",
-            "value": "overview",
-            "selected": true
-          },
-          {
-            "name": "Datasheet",
-            "value": "datasheet"
-          },
-          {
-            "name": "Supprot and Download",
-            "value": "download"
-          }
-        ]
+        "label": "CTA Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "episode_CTAhrefText",
+        "value": "",
+        "label": "CTA Text"
       }
     ]
   }

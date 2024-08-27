@@ -32,19 +32,7 @@
       "alternating",
       "fragment",
       "teasers",
-      "title-card",
-      "alert-banner",
-      "hero-video",
-      "product-tabs",
-      "product-overview",
-      "product-buybox",
-      "product-reactivity",
-      "product-target-data",
-      "recommended-products",
-      "recently-viewed",
-      "product-datasheet",
-      "product-downloads",
-      "product-protocols"
+      "episodes"
     ]
   },
   {
@@ -74,11 +62,9 @@
     "components": []
   },
   {
-    "id": "alert-banner",
-    "components": []
-  },
-  {
-    "id": "hero-video",
-    "components": []
+    "id": "episodes",
+    "components": [
+      "episode"
+    ]
   }
 ]
