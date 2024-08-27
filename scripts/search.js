@@ -14,7 +14,7 @@ let results;
 export function getSKU() {
   const skuPath = window.location.pathname.split('/');
   const sku = skuPath.pop();
-  if(sku.includes('.html')) return sku.replace('.html', '');
+  if (sku.includes('.html')) return sku.replace('.html', '');
   return sku;
 }
 
