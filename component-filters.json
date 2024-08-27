@@ -35,7 +35,16 @@
       "title-card",
       "alert-banner",
       "hero-video",
-      "product-tabs"
+      "product-tabs",
+      "product-overview",
+      "product-buybox",
+      "product-reactivity",
+      "product-target-data",
+      "recommended-products",
+      "recently-viewed",
+      "product-datasheet",
+      "product-downloads",
+      "product-protocols"
     ]
   },
   {
