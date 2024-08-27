@@ -604,6 +604,20 @@
       {
         "component": "text",
         "valueType": "string",
+        "name": "hero-video_href",
+        "value": "",
+        "label": "Video Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "hero-video_hrefTitle",
+        "value": "",
+        "label": "Video Title"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
         "name": "hero-video_title",
         "value": "",
         "label": "Title"
