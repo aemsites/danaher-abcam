@@ -32,34 +32,34 @@ function toggleTabs(tabId, mmgTabs) {
 }
 
 export default async function decorate(block) {
-  const response = await getProductResponse();
-  const rawData = response?.at(0)?.raw;
-  const { title } = rawData;
-  if (title !== undefined || title === ' ') {
-    document.title = title;
-  }
-  block.classList.add(...'md:border-b sm:border-b flex-col md:flex-col md:relative text-xl text-[#65797C]'.split(' '));
-  const mmgTabs = div({ class: 'md:border-none border-b sm:border-none mmg-tabs md:absolute md:right-0 md:top-[-15px] font-semibold text-base text-black md:block flex order-1' });
-  const tabs = [
-    { name: productOverview, tabId: 'Overview' },
-    { name: productDatasheet, tabId: 'Datasheet' },
-    { name: productSupportdownloads, tabId: 'Support & Downloads' },
-  ];
-  tabs.forEach((tab) => {
-    const li = button({
-      class: 'tab md:py-1.5 pb-4 lg:mx-8 mr-8',
-      id: tab.tabId,
-    });
-    li.innerHTML = tab.name;
-    mmgTabs.appendChild(li);
-    li.addEventListener('click', () => {
-      toggleTabs(tab.tabId, mmgTabs);
-    });
-  });
-  const skuItem = toolTip('skuitem', 'skutooltip', response?.at(0).raw.productslug.split('-').slice(-1), true);
-  block.innerHTML = '';
-  block.appendChild(skuItem);
-  block.appendChild(mmgTabs);
+  // const response = await getProductResponse();
+  // const rawData = response?.at(0)?.raw;
+  // const { title } = rawData;
+  // if (title !== undefined || title === ' ') {
+  //   document.title = title;
+  // }
+  // block.classList.add(...'md:border-b sm:border-b flex-col md:flex-col md:relative text-xl text-[#65797C]'.split(' '));
+  // const mmgTabs = div({ class: 'md:border-none border-b sm:border-none mmg-tabs md:absolute md:right-0 md:top-[-15px] font-semibold text-base text-black md:block flex order-1' });
+  // const tabs = [
+  //   { name: productOverview, tabId: 'Overview' },
+  //   { name: productDatasheet, tabId: 'Datasheet' },
+  //   { name: productSupportdownloads, tabId: 'Support & Downloads' },
+  // ];
+  // tabs.forEach((tab) => {
+  //   const li = button({
+  //     class: 'tab md:py-1.5 pb-4 lg:mx-8 mr-8',
+  //     id: tab.tabId,
+  //   });
+  //   li.innerHTML = tab.name;
+  //   mmgTabs.appendChild(li);
+  //   li.addEventListener('click', () => {
+  //     toggleTabs(tab.tabId, mmgTabs);
+  //   });
+  // });
+  // const skuItem = toolTip('skuitem', 'skutooltip', response?.at(0).raw.productslug.split('-').slice(-1), true);
+  // block.innerHTML = '';
+  // block.appendChild(skuItem);
+  // block.appendChild(mmgTabs);
 
-  toggleTabs(tabs[0].tabId, mmgTabs);
+  // toggleTabs(tabs[0].tabId, mmgTabs);
 }
