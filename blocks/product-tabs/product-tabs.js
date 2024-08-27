@@ -3,7 +3,7 @@ import { div, button } from '../../scripts/dom-builder.js';
 import { fetchPlaceholders } from '../../scripts/aem.js';
 import { toolTip } from '../../scripts/scripts.js';
 
-const placeholders = await fetchPlaceholders('/');
+const placeholders = await fetchPlaceholders();
 const { productOverview, productDatasheet, productSupportdownloads } = placeholders;
 
 function toggleTabs(tabId, mmgTabs) {
