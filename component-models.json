@@ -589,8 +589,12 @@
         "label": "Block Options",
         "options": [
           {
-            "name": "Video Position",
+            "name": "Right Video",
             "value": "right-video"
+          },
+          {
+            "name": "Left Video",
+            "value": "left-video"
           }
         ]
       },
@@ -607,6 +611,20 @@
         "name": "image_oneAlt",
         "label": "First Alt",
         "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "hero-video_href",
+        "value": "",
+        "label": "Video Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "hero-video_hrefTitle",
+        "value": "",
+        "label": "Video Title"
       },
       {
         "component": "text",

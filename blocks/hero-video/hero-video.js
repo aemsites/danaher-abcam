@@ -41,13 +41,13 @@ function createModalPopUp(videoLink) {
   return modalPopUp;
 }
 
-function loadVideo(parentDiv, divEl, link) {
-  divEl.classList.add('md:basis-1/2');
+function loadVideo(parentDiv, link) {
+  const linkDiv = div({ class: 'md:basis-1/2' });
   link.classList.add('relative', 'hover:scale-125');
   link.textContent = '';
-  divEl.querySelector('img[alt="thumbnail"]')?.classList.add(...'max-[767px]:h-[457px] max-[767px]:w-auto object-cover h-full'.split(' '));
-  const thumbnailImage = divEl.querySelector('img[alt="thumbnail"]')?.closest('p');
-  const playButton = divEl.querySelector('img[alt="play button"]')?.closest('p');
+  parentDiv.querySelector('img[alt="thumbnail"]')?.classList.add(...'max-[767px]:h-[457px] max-[767px]:w-auto object-cover h-full'.split(' '));
+  const thumbnailImage = parentDiv.querySelector('img[alt="thumbnail"]')?.closest('p');
+  const playButton = parentDiv.querySelector('img[alt="play button"]')?.closest('p');
   playButton.addEventListener('click', (e) => {
     e.preventDefault();
     toggleModalPopUp(parentDiv);
@@ -58,17 +58,28 @@ function loadVideo(parentDiv, divEl, link) {
   const divCenter = div({ class: 'flex flex-col items-center justify-center max-[767px]:h-[28.563rem] max-[767px]:w-full h-full' });
   divCenter.append(thumbnailImage, playButton);
   link.append(divCenter);
-  divEl.append(link);
+  linkDiv.append(link);
+  parentDiv.append(linkDiv);
 }
 
-function loadContent(divEl) {
+function loadContent(parentDiv, divEl) {
   divEl.classList.add('p-8', 'md:basis-1/2');
   const divCenter = div({ class: 'py-6 px-24 max-[1024px]:px-0 text-center' });
   const h2El = divEl.querySelector('h2');
-  const pEl = divEl.querySelector('p:not(:first-child)');
-  h2El.classList.add(...'pb-6 text-[83px] leading-[70px] max-[480px]:text-[24px] max-[480px]:leading-[24px] max-[640px]:text-[35px] max-[767px]:text-[45px] max-[767px]:leading-[45px] max-[992px]:text-[55px] max-[992px]:leading-[45px] max-[1199px]:text-[69px] max-[1199px]:leading-[50px]'.split(' '));
-  pEl.classList.add(...'font-light text-[24px] leading-[1.9rem] max-[480px]:text-[20px] max-[480px]:leading-[27px] max-[767px]:text-[24px] max-[767px]:leading-[31px] max-[991px]:text-3xl max-[1200px]:text-[30px] max-[1200px]:leading-[1.9rem]'.split(' '));
-  divCenter.append(h2El, pEl);
+  const h2parentDiv = h2El?.parentElement;
+  if (h2El) {
+    h2El.classList.add(...'pb-6 text-[83px] leading-[70px] max-[480px]:text-[24px] max-[480px]:leading-[24px] max-[640px]:text-[35px] max-[767px]:text-[45px] max-[767px]:leading-[45px] max-[992px]:text-[55px] max-[992px]:leading-[45px] max-[1199px]:text-[69px] max-[1199px]:leading-[50px]'.split(' '));
+  }
+  const allPElements = Array.from(divEl.querySelectorAll('p:not(:first-child)'));
+  const filteredPElements = allPElements.filter((pEl) => {
+    // Check if the next sibling is a <picture> element
+    const nextSibling = pEl.querySelector('picture');
+    return !(nextSibling && nextSibling.tagName === 'PICTURE');
+  });
+  filteredPElements.forEach((pEl) => {
+    pEl.classList.add(...'font-light text-[24px] leading-[1.9rem] max-[480px]:text-[20px] max-[480px]:leading-[27px] max-[767px]:text-[24px] max-[767px]:leading-[31px] max-[991px]:text-3xl max-[1200px]:text-[30px] max-[1200px]:leading-[1.9rem]'.split(' '));
+  });
+  divCenter.append(h2parentDiv);
   divEl.querySelector('img[alt="top image"]')?.classList.add(...'w-[500px] h-[220px] object-contain max-[767px]:w-[8.438rem] max-[767px]:h-[4.375rem] max-[1199px]:w-[300px] max-[767px]:h-[200px]'.split(' '));
   divEl.querySelector('img[alt="bottom image"]')?.classList.add(...'w-[500px] h-[220px] object-contain max-[767px]:w-[8.438rem] max-[767px]:h-[4.375rem] max-[1199px]:w-[300px] max-[767px]:h-[200px]'.split(' '));
   divEl.querySelector('img[alt="top image"]')?.closest('p').after(divCenter);
@@ -77,22 +88,21 @@ function loadContent(divEl) {
 }
 
 export default function decorate(block) {
-  block.classList.add('bg-black', 'text-white');
-  const parentDiv = block.querySelector('div');
-  parentDiv.classList.add('main-container');
-  parentDiv.classList.add(...'max-w-full flex md:flex-row md:justify-between flex-col'.split(' '));
-
-  parentDiv.querySelectorAll('div').forEach((divEl) => {
-    const link = divEl.querySelector('a');
+  const parentDiv = block;
+  block.classList.add('main-container');
+  block.classList.add(...'max-w-full flex md:flex-row md:justify-between flex-col'.split(' '));
+  const divEl = parentDiv.querySelectorAll('div');
+  divEl.forEach((divElement) => {
+    const link = parentDiv.querySelector('div p a');
     if (link) {
+      loadVideo(parentDiv, link);
       parentDiv.append(createModalPopUp(link.href));
-      loadVideo(parentDiv, divEl, link);
     } else {
-      loadContent(divEl);
+      loadContent(parentDiv, divElement);
     }
   });
 
   if (block.classList.contains('left-video')) {
-    parentDiv.classList.add('flex-col', 'md:flex-row-reverse');
+    block.classList.add('flex-col', 'md:flex-row-reverse');
   }
 }

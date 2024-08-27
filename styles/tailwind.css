@@ -111,4 +111,8 @@
     main .section .title-card-wrapper {
         @apply border-b;
     }
+
+    main .section .hero-video-wrapper {
+        @apply bg-black text-white;
+    }
 }   
