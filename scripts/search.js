@@ -12,8 +12,10 @@ let results;
  * @returns Product SKU from requested URL
  */
 export function getSKU() {
-  const sku = window.location.pathname.split('/');
-  return sku.pop();
+  const skuPath = window.location.pathname.split('/');
+  const sku = skuPath.pop();
+  if(sku.includes('.html')) return sku.replace('.html', '');
+  return sku;
 }
 
 async function getFullResponse(sku) {
