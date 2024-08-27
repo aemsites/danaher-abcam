@@ -1,5 +1,7 @@
 /* global WebImporter */
 const teasers = (main, document) => {
+  const urlMyAbcam = new URL(document.querySelector('[property="og:url"]')?.content);
+  if(urlMyAbcam.host === 'go.myabcam.com') return;
   const url = document.querySelector('[hrefLang="x-default"]')?.href;
   if (url && url.includes('/technical-resources')) {
     const mainDivEl = document.getElementById('main-content').nextElementSibling.nextElementSibling;

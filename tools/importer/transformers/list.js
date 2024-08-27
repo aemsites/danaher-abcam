@@ -1,4 +1,6 @@
 const list = (main, document) => {
+    const urlMyAbcam = new URL(document.querySelector('[property="og:url"]')?.content);
+    if(urlMyAbcam.host === 'go.myabcam.com') return;
     const url = document.querySelector('[hrefLang="x-default"]')?.href;
     const productDivEl = document.getElementById('main-content')?.nextElementSibling?.nextElementSibling;
     let allContent = productDivEl?.firstElementChild;

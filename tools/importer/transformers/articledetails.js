@@ -1,5 +1,6 @@
 /* global WebImporter */
 const articledetails = (main, document) => {
+
   let cells = [];
   const mainDiv = document.createElement('div');
   // You may also be interested in
@@ -51,11 +52,17 @@ const articledetails = (main, document) => {
   const learnMoreDiv = document.createElement('div');
   const mainEl = main.querySelector('div.section20');
   const h3Div = mainEl.querySelector('h3');
+  const originalDesc = mainEl.querySelector('p');
   const h3El = document.createElement('h3');
   cells = [['learn-more']];
   if (h3Div) {
     h3El.textContent = h3Div.textContent;
     learnMoreDiv.append(h3El);
+  }
+  if (originalDesc) {
+    const description = document.createElement('p');
+    description.innerHTML = originalDesc.innerHTML;
+    learnMoreDiv.append(description);
   }
   const linkEl = mainEl.querySelector('a');
   if (linkEl) {
