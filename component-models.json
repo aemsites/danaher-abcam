@@ -270,16 +270,9 @@
       },
       {
         "component": "text",
-        "name": "tab_dataKey",
+        "name": "tabName",
         "value": "",
-        "label": "Tab key",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": "tab_dataValue",
-        "value": "",
-        "label": "Tab Value",
+        "label": "Tab Name",
         "valueType": "string"
       }
     ]

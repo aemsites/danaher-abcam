@@ -3,13 +3,7 @@ import { div, button } from '../../scripts/dom-builder.js';
 import { fetchPlaceholders } from '../../scripts/aem.js';
 import { toolTip } from '../../scripts/scripts.js';
 
-const path = window.location.pathname;
-const match = path.match(/\/([a-z]{2}-[a-z]{2})\//i);
-let languageCode = 'en-us';
-if (match) {
-  languageCode = match?.at(1);
-}
-const placeholders = await fetchPlaceholders(`/${languageCode}`);
+const placeholders = await fetchPlaceholders();
 const { productOverview, productDatasheet, productSupportdownloads } = placeholders;
 
 function toggleTabs(tabId, mmgTabs) {
