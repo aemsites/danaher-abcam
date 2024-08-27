@@ -1,7 +1,7 @@
 /* global WebImporter */
 const titlecard = (main, document) => {
   const url = new URL(document.querySelector('[property="og:url"]')?.content);
-  if(url.host === 'go.myabcam.com') return;
+  if (url.host === 'go.myabcam.com') return;
   const titleCardDivEl = document.createElement('div');
   const headDivEl = document.getElementById('main-content').nextElementSibling;
   const heading = headDivEl.querySelector('h1')?.textContent;

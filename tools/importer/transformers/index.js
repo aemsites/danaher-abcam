@@ -2,6 +2,7 @@ import titlecard from './titlecard.js';
 import list from './list.js';
 import metadata from './metadata.js';
 import teasers from './teasers.js';
+import image from './image.js';
 import articledetails from './articledetails.js';
 import postProcessSVGIcons from './postProcessSVGIcons.js';
 
@@ -10,6 +11,7 @@ export const transformers = [
   titlecard,
   list,
   teasers,
+  image,
   articledetails,
 ];
 

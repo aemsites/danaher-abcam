@@ -1,6 +1,5 @@
 /* global WebImporter */
 const articledetails = (main, document) => {
-
   let cells = [];
   const mainDiv = document.createElement('div');
   // You may also be interested in
