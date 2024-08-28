@@ -42,40 +42,26 @@ async function getFullResponse(sku, selectedProductCategory, selectedPage) {
   }
   if (selectedProductCategory !== undefined && selectedProductCategory !== null
     && selectedPage !== null) {
+    common.fieldsToInclude = ['productslug', 'productcode', 'name', 'producttags'];
+    common.numberOfResults = 20;
+    common.firstResult = selectedPage;
+    common.context = {
+      "categorytype": getSKU()
+    },
     body = {
       pipeline: 'Abcam Category Product Listing',
       searchHub: 'AbcamCategoryProductListing',
       ...common,
-      facets: [...facets],
     };
-    console.log(body);
-    // body = {
-    //   pipeline: 'Abcam Category Product Listing',
-    //   searchHub: 'AbcamCategoryProductListing',
-    //   numberOfResults: 20,
-    //   firstResult: selectedPage,
-    //   facets: [
-    //     {
-    //       currentValues: [
-    //         {
-    //           value: selectedProductCategory,
-    //           state: 'selected',
-    //         },
-    //       ],
-    //       facetId: 'categorytype',
-    //       field: 'categorytype',
-    //     },
-    //   ],
-    // };
   }
-  // const config = {
-  //   url,
-  //   method: 'POST',
-  //   authToken: bearerToken,
-  //   body: JSON.stringify(body),
-  // };
-  // results = await fetchResponse(config);
-  // return results;
+  const config = {
+    url,
+    method: 'POST',
+    authToken: bearerToken,
+    body: JSON.stringify(body),
+  };
+  results = await fetchResponse(config);
+  return results;
 }
 
 async function redirect404() {
