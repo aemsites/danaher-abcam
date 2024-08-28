@@ -37,7 +37,7 @@ function renderRecords(records, block) {
         p({ class: 'font-bold text-gray-400 text-body-small' }, product.raw?.productslug.split('-').slice(-1)),
         p(
           { class: 'font-bold' },
-          a({ class: 'product-link', href: `${window.location.origin}/products/detail/${product.raw.productslug}` }, product.raw?.title),
+          a({ class: 'product-link', href: `${window.location.origin}/products/detail/${product.raw.productslug}` }, product.raw?.name),
         ),
       );
       if (product.raw?.producttags) {
@@ -149,5 +149,5 @@ async function loadPage(page, block) {
 
 // Main function to initialize the pagination
 export default async function decorate(block) {
-  // loadPage(currentPage, block);
+  loadPage(currentPage, block);
 }
