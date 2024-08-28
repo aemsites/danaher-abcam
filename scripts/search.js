@@ -1,5 +1,6 @@
 import { fetchResponse } from './scripts.js';
 import { sampleRUM, getMetadata } from './aem.js';
+import { common } from './coveo-body-requests.js';
 
 const bearerToken = 'xx8911235c-5e72-43cc-b401-bd85e9072adc';
 const orgId = 'danahernonproduction1892f3fhz';
@@ -41,23 +42,14 @@ async function getFullResponse(sku, selectedProductCategory, selectedPage) {
   }
   if (selectedProductCategory !== undefined && selectedProductCategory !== null
     && selectedPage !== null) {
+    common.fieldsToInclude = ['productslug', 'productcode', 'name', 'producttags'];
+    common.numberOfResults = 20;
+    common.firstResult = selectedPage;
+    common.context = { categorytype: getSKU() };
     body = {
       pipeline: 'Abcam Category Product Listing',
       searchHub: 'AbcamCategoryProductListing',
-      numberOfResults: 20,
-      firstResult: selectedPage,
-      facets: [
-        {
-          currentValues: [
-            {
-              value: selectedProductCategory,
-              state: 'selected',
-            },
-          ],
-          facetId: 'categorytype',
-          field: 'categorytype',
-        },
-      ],
+      ...common,
     };
   }
   const config = {
@@ -133,7 +125,7 @@ export async function getProductsListResponse(page) {
     if (fullResponse.results.length > 0) {
       return JSON.stringify(fullResponse);
     }
-    await redirect404();
+    // await redirect404();
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error(error);
