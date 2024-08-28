@@ -69,6 +69,22 @@ export function debounce(func, timeout = 300) {
   };
 }
 
+
+/**
+ * Move instrumentation attributes from a given element to another given element.
+ * @param {Element} from the element to copy attributes from
+ * @param {Element} to the element to copy attributes to
+ */
+export function moveInstrumentation(from, to) {
+  moveAttributes(
+    from,
+    to,
+    [...from.attributes]
+      .map(({ nodeName }) => nodeName)
+      .filter((attr) => attr.startsWith('data-aue-') || attr.startsWith('data-richtext-')),
+  );
+}
+
 export function isValidProperty(property) {
   if (property && String(property).trim() !== '' && String(property).trim() !== 'null' && String(property).trim() !== 'undefined') {
     return true;
@@ -187,6 +203,7 @@ const TEMPLATE_LIST = [
   'blog-page',
   'product-detail',
   'search-results',
+  'articles',
 ];
 
 async function decorateTemplates(main) {
