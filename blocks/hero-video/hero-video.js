@@ -62,27 +62,9 @@ function loadVideo(parentDiv, link) {
   parentDiv.append(linkDiv);
 }
 
-function loadContent(parentDiv, divEl) {
-  divEl.classList.add('p-8', 'md:basis-1/2');
-  const divCenter = div({ class: 'py-6 px-24 max-[1024px]:px-0 text-center' });
-  const h2El = divEl.querySelector('h2');
-  const h2parentDiv = h2El?.parentElement;
-  if (h2El) {
-    h2El.classList.add(...'pb-6 text-[83px] leading-[70px] max-[480px]:text-[24px] max-[480px]:leading-[24px] max-[640px]:text-[35px] max-[767px]:text-[45px] max-[767px]:leading-[45px] max-[992px]:text-[55px] max-[992px]:leading-[45px] max-[1199px]:text-[69px] max-[1199px]:leading-[50px]'.split(' '));
-  }
-  const allPElements = Array.from(divEl.querySelectorAll('p:not(:first-child)'));
-  const filteredPElements = allPElements.filter((pEl) => {
-    // Check if the next sibling is a <picture> element
-    const nextSibling = pEl.querySelector('picture');
-    return !(nextSibling && nextSibling.tagName === 'PICTURE');
-  });
-  filteredPElements.forEach((pEl) => {
-    pEl.classList.add(...'font-light text-[24px] leading-[1.9rem] max-[480px]:text-[20px] max-[480px]:leading-[27px] max-[767px]:text-[24px] max-[767px]:leading-[31px] max-[991px]:text-3xl max-[1200px]:text-[30px] max-[1200px]:leading-[1.9rem]'.split(' '));
-  });
-  divCenter.append(h2parentDiv);
+function loadContent(divEl) {
   divEl.querySelector('img[alt="top image"]')?.classList.add(...'w-[500px] h-[220px] object-contain max-[767px]:w-[8.438rem] max-[767px]:h-[4.375rem] max-[1199px]:w-[300px] max-[767px]:h-[200px]'.split(' '));
   divEl.querySelector('img[alt="bottom image"]')?.classList.add(...'w-[500px] h-[220px] object-contain max-[767px]:w-[8.438rem] max-[767px]:h-[4.375rem] max-[1199px]:w-[300px] max-[767px]:h-[200px]'.split(' '));
-  divEl.querySelector('img[alt="top image"]')?.closest('p').after(divCenter);
   divEl.querySelector('img[alt="top image"]')?.closest('p')?.classList.add(...'flex flex-row justify-start max-[767px]:justify-center'.split(' '));
   divEl.querySelector('img[alt="bottom image"]')?.closest('p')?.classList.add(...'flex flex-row justify-end max-[767px]:justify-center'.split(' '));
 }
@@ -91,6 +73,15 @@ export default function decorate(block) {
   const parentDiv = block;
   block.classList.add('main-container');
   block.classList.add(...'max-w-full flex md:flex-row md:justify-between flex-col'.split(' '));
+  const firstDiv = block.querySelector('div');
+  firstDiv.classList.add(...'p-8 md:basis-1/2'.split(' '));
+  const h2 = block.querySelector('h2');
+  const h2Div = h2.closest('div');
+  const description = h2Div.querySelector('p:not(:first-child)');
+  description.classList.add(...'font-light text-[24px] leading-[1.9rem] max-[480px]:text-[20px] max-[480px]:leading-[27px] max-[767px]:text-[24px] max-[767px]:leading-[31px] max-[991px]:text-3xl max-[1200px]:text-[30px] max-[1200px]:leading-[1.9rem]'.split(' '));
+  const divCenter = div({ class: 'py-6 px-24 max-[1024px]:px-0 text-center' });
+  firstDiv.querySelector('img[alt="top image"]')?.closest('p').after(divCenter);
+  divCenter.append(h2, description);
   const divEl = parentDiv.querySelectorAll('div');
   divEl.forEach((divElement) => {
     const link = parentDiv.querySelector('div p a');
@@ -98,7 +89,7 @@ export default function decorate(block) {
       loadVideo(parentDiv, link);
       parentDiv.append(createModalPopUp(link.href));
     } else {
-      loadContent(parentDiv, divElement);
+      loadContent(divElement);
     }
   });
 
