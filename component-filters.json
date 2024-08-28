@@ -45,7 +45,8 @@
       "product-datasheet",
       "product-downloads",
       "product-protocols",
-      "product-list"
+      "product-list",
+      "episodes"
     ]
   },
   {
@@ -81,5 +82,11 @@
   {
     "id": "hero-video",
     "components": []
+  },
+  {
+    "id": "episodes",
+    "components": [
+      "episode"
+    ]
   }
 ]
