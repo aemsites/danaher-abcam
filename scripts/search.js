@@ -141,7 +141,7 @@ export async function getProductsListResponse(page) {
     if (fullResponse.results.length > 0) {
       return JSON.stringify(fullResponse);
     }
-    await redirect404();
+    // await redirect404();
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error(error);

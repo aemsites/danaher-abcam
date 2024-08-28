@@ -149,5 +149,5 @@ async function loadPage(page, block) {
 
 // Main function to initialize the pagination
 export default async function decorate(block) {
-  loadPage(currentPage, block);
+  // loadPage(currentPage, block);
 }
