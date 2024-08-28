@@ -45,9 +45,7 @@ async function getFullResponse(sku, selectedProductCategory, selectedPage) {
     common.fieldsToInclude = ['productslug', 'productcode', 'name', 'producttags'];
     common.numberOfResults = 20;
     common.firstResult = selectedPage;
-    common.context = {
-      categorytype: getSKU(),
-    },
+    common.context = { categorytype: getSKU() };
     body = {
       pipeline: 'Abcam Category Product Listing',
       searchHub: 'AbcamCategoryProductListing',
