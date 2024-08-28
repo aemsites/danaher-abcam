@@ -18,7 +18,7 @@ export const suggestions = {
   visitorId: 'd8c6a2a1-84e4-4d6f-b262-b91ad50a4c44',
 };
 
-const common = {
+export const common = {
   locale: 'en',
   debug: false,
   tab: 'default',
