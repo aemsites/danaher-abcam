@@ -47,6 +47,24 @@
             "label": "Navigation Title"
           },
           {
+            "component": "aem-tag",
+            "valueType": "string",
+            "name": "pageTags",
+            "label": "AEM Tag Picker"
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "authorName",
+            "label": "Author Name"
+          },
+          {
+            "component": "text",
+            "valueType": "number",
+            "name": "readingTime",
+            "label": "Reading Time"
+          },
+          {
             "component": "text",
             "valueType": "string",
             "name": "template",
