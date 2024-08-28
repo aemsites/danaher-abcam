@@ -59,6 +59,13 @@
             "label": "Author Name"
           },
           {
+            "component": "reference",
+            "valueType": "string",
+            "name": "authorImage",
+            "label": "Image",
+            "multi": false
+          },
+          {
             "component": "text",
             "valueType": "number",
             "name": "readingTime",
