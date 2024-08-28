@@ -46,7 +46,7 @@ async function getFullResponse(sku, selectedProductCategory, selectedPage) {
     common.numberOfResults = 20;
     common.firstResult = selectedPage;
     common.context = {
-      "categorytype": getSKU()
+      categorytype: getSKU(),
     },
     body = {
       pipeline: 'Abcam Category Product Listing',
