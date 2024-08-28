@@ -25,7 +25,7 @@ function addProductTags(productTagsArray) {
 function renderRecords(records, block) {
   block.replaceChildren(); // Clear previous content
   const parentContainer = div(
-    { class: 'products-parent-container flex flex-col w-full' },
+    { class: 'products-parent-container flex flex-col w-full px-6' },
     h2({ class: 'mb-6 font-bold text-2xl' }, 'Products'),
     h3({ class: 'mb-3 font-semibold text-xl' }, 'Product'),
   );
@@ -52,6 +52,7 @@ function renderRecords(records, block) {
 }
 // Function to load a specific page of records
 async function loadPage(page, block) {
+  block.classList.add('px-6');
   currentPage = page;
   const result = (page - 1) * pageSize;
   const productFullResponse = await getProductsListResponse(result);
