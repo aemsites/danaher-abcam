@@ -193,6 +193,25 @@
     ]
   },
   {
+    "id": "video",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "video_href",
+        "value": "",
+        "label": "Video Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "video_hrefTitle",
+        "value": "",
+        "label": "Video Title"
+      }
+    ]
+  },
+  {
     "id": "columns",
     "fields": [
       {
