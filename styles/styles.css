@@ -886,9 +886,17 @@ main .section .title-card-wrapper {
 
 .stories main .story-middle-container {
   display: flex;
-  flex-direction: row;
-  -moz-column-gap: 4rem;
-       column-gap: 4rem;
+  flex-direction: column;
+  -moz-column-gap: 0px;
+       column-gap: 0px;
+}
+
+@media (min-width: 1024px) {
+  .stories main .story-middle-container {
+    flex-direction: row;
+    -moz-column-gap: 4rem;
+         column-gap: 4rem;
+  }
 }
 
 .visible {
@@ -927,6 +935,11 @@ main .section .title-card-wrapper {
   float: right;
 }
 
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .ml-20 {
   margin-left: 5rem;
 }
@@ -941,6 +954,18 @@ main .section .title-card-wrapper {
 
 .mt-4 {
   margin-top: 1rem;
+}
+
+.ml-16 {
+  margin-left: 4rem;
+}
+
+.ml-12 {
+  margin-left: 3rem;
+}
+
+.ml-8 {
+  margin-left: 2rem;
 }
 
 .block {
@@ -1158,5 +1183,12 @@ main .section .title-card-wrapper {
 @media (min-width: 768px) {
   .md\:flex-col {
     flex-direction: column;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:py-16 {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
   }
 }   

@@ -113,6 +113,6 @@
     }
 
     .stories main .story-middle-container {
-        @apply flex flex-row gap-x-16;
+        @apply flex flex-col gap-x-0 lg:flex-row lg:gap-x-16;
     }
 }   
