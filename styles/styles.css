@@ -884,6 +884,13 @@ main .section .title-card-wrapper {
   border-bottom-width: 1px;
 }
 
+.stories main .story-middle-container {
+  display: flex;
+  flex-direction: row;
+  -moz-column-gap: 4rem;
+       column-gap: 4rem;
+}
+
 .visible {
   visibility: visible;
 }
@@ -977,6 +984,14 @@ main .section .title-card-wrapper {
   width: max-content;
 }
 
+.\!max-w-4xl {
+  max-width: 56rem !important;
+}
+
+.max-w-56 {
+  max-width: 14rem;
+}
+
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
@@ -1048,6 +1063,11 @@ main .section .title-card-wrapper {
 .px-\[3px\] {
   padding-left: 3px;
   padding-right: 3px;
+}
+
+.py-16 {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 .pb-4 {

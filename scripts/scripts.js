@@ -69,22 +69,6 @@ export function debounce(func, timeout = 300) {
   };
 }
 
-
-/**
- * Move instrumentation attributes from a given element to another given element.
- * @param {Element} from the element to copy attributes from
- * @param {Element} to the element to copy attributes to
- */
-export function moveInstrumentation(from, to) {
-  moveAttributes(
-    from,
-    to,
-    [...from.attributes]
-      .map(({ nodeName }) => nodeName)
-      .filter((attr) => attr.startsWith('data-aue-') || attr.startsWith('data-richtext-')),
-  );
-}
-
 export function isValidProperty(property) {
   if (property && String(property).trim() !== '' && String(property).trim() !== 'null' && String(property).trim() !== 'undefined') {
     return true;
@@ -203,7 +187,7 @@ const TEMPLATE_LIST = [
   'blog-page',
   'product-detail',
   'search-results',
-  'articles',
+  'stories',
 ];
 
 async function decorateTemplates(main) {
@@ -234,6 +218,15 @@ function buildAutoBlocks(main) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
   }
+}
+
+function decorateStoryInfo(main){
+  const divEl = div({class: 'py-16 max-w-56'});
+  const sectionEl = main.querySelector('div.section.story-info-container.social-media-container');
+  divEl.append(sectionEl.querySelector('.story-info-wrapper'));
+  divEl.append(sectionEl.querySelector('.social-media-wrapper'));
+  sectionEl.prepend(divEl);
+  sectionEl.querySelector('.default-content-wrapper')?.classList.add('!max-w-4xl');
 }
 
 /**
@@ -269,6 +262,7 @@ export function decorateMain(main) {
   decorateSections(main);
   decorateBlocks(main);
   decorateStickyRightNav(main);
+  decorateStoryInfo(main);
 }
 
 function capitalizeWords(str) {

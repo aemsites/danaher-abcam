@@ -95,6 +95,10 @@ const fileMappings = [
     output: './templates/search-results/search-results.css',
   },
   {
+    content: './templates/stories/stories.js',
+    output: './templates/stories/stories.css',
+  },
+  {
     content: './blocks/child-page/child-page.js',
     output: './blocks/child-page/child-page.css',
     wrapper: 'child-page-wrapper',
@@ -223,6 +227,16 @@ const fileMappings = [
     content: './blocks/product-list/product-list.js',
     output: './blocks/product-list/product-list.css',
     wrapper: 'product-list-wrapper',
+  },
+  {
+    content: './blocks/story-info/story-info.js',
+    output: './blocks/story-info/story-info.css',
+    wrapper: 'story-info-wrapper',
+  },
+  {
+    content: './blocks/social-media/social-media.js',
+    output: './blocks/social-media/social-media.css',
+    wrapper: 'social-media-wrapper',
   },
 ];
 
