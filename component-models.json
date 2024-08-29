@@ -745,6 +745,46 @@
     ]
   },
   {
+    "id": "learn-more",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "learn-more_title",
+        "value": "",
+        "label": "Title"
+      },
+      {
+        "component": "select",
+        "name": "learn-more_titleType",
+        "hidden": true,
+        "label": "Title Type",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "learn-more_description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "learn-more_ctahref",
+        "value": "",
+        "label": "CTA Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "learn-more_ctahrefText",
+        "value": "",
+        "label": "CTA Text"
+      }
+    ]
+  },
+  {
     "id": "social-share",
     "fields": [
       {
