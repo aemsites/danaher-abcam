@@ -120,11 +120,6 @@
   background-color: rgb(0 0 0 / var(--tw-bg-opacity))
 }
 
-.footer-wrapper :is(.px-\[30px\]) {
-  padding-left: 30px;
-  padding-right: 30px
-}
-
 .footer-wrapper :is(.px-6) {
   padding-left: 1.5rem;
   padding-right: 1.5rem
@@ -209,24 +204,10 @@
     margin-top: 1.75rem;
     margin-bottom: 1.75rem
   }
-
-  .footer-wrapper :is(.lg\:px-0) {
-    padding-left: 0px;
-    padding-right: 0px
-  }
 }
 
 @media (min-width: 1280px) {
-  .footer-wrapper :is(.xl\:max-w-\[1120px\]) {
-    max-width: 1120px
-  }
-
   .footer-wrapper :is(.xl\:max-w-7xl) {
     max-width: 80rem
-  }
-
-  .footer-wrapper :is(.xl\:px-0) {
-    padding-left: 0px;
-    padding-right: 0px
   }
 }

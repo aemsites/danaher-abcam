@@ -636,6 +636,32 @@ main .section .title-card-wrapper {
   border-bottom-width: 1px;
 }
 
+.button-container {
+  height: 2rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  align-items: center;
+  justify-self: end;
+  white-space: nowrap;
+  border-radius: 1rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  text-transform: capitalize;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.button-container:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 59 59 / var(--tw-bg-opacity));
+}
+
 .home-page main .section > div.hero-wrapper {
   height: 496px;
 }
@@ -819,6 +845,11 @@ main .section > .recently-viewed-wrapper {
   main .section > .recently-viewed-wrapper {
     width: 100%;
   }
+}
+
+main .section.border-top {
+  width: 100%;
+  border-top-width: 1px;
 }
 
 .search-results main {
