@@ -1,15 +1,6 @@
-.social-media-wrapper :is(.col-span-12) {
-  grid-column: span 12 / span 12
-}
-
 .social-media-wrapper :is(.mx-auto) {
   margin-left: auto;
   margin-right: auto
-}
-
-.social-media-wrapper :is(.my-auto) {
-  margin-top: auto;
-  margin-bottom: auto
 }
 
 .social-media-wrapper :is(.mb-8) {
@@ -54,10 +45,6 @@
 
 .social-media-wrapper :is(.font-bold) {
   font-weight: 700
-}
-
-.social-media-wrapper :is(.font-semibold) {
-  font-weight: 600
 }
 
 .social-media-wrapper :is(.text-gray-600) {

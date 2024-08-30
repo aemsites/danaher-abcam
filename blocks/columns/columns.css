@@ -36,10 +36,6 @@
   position: absolute
 }
 
-.columns-wrapper :is(.relative) {
-  position: relative
-}
-
 .columns-wrapper :is(.bottom-0) {
   bottom: 0px
 }
@@ -62,10 +58,6 @@
   margin-bottom: 0.5rem
 }
 
-.columns-wrapper :is(.mb-4) {
-  margin-bottom: 1rem
-}
-
 .columns-wrapper :is(.mb-6) {
   margin-bottom: 1.5rem
 }
@@ -82,33 +74,28 @@
   display: grid
 }
 
-.columns-wrapper :is(.h-fit) {
-  height: -moz-fit-content;
-  height: fit-content
-}
-
 .columns-wrapper :is(.h-full) {
   height: 100%
-}
-
-.columns-wrapper :is(.w-72) {
-  width: 18rem
 }
 
 .columns-wrapper :is(.w-1\/2) {
   width: 50%
 }
 
+.columns-wrapper :is(.w-72) {
+  width: 18rem
+}
+
 .columns-wrapper :is(.w-full) {
   width: 100%
 }
 
-.columns-wrapper :is(.max-w-96) {
-  max-width: 24rem
-}
-
 .columns-wrapper :is(.max-w-7xl) {
   max-width: 80rem
+}
+
+.columns-wrapper :is(.max-w-96) {
+  max-width: 24rem
 }
 
 .columns-wrapper :is(.shrink-0) {
@@ -133,10 +120,6 @@
 
 .columns-wrapper :is(.gap-8) {
   gap: 2rem
-}
-
-.columns-wrapper :is(.gap-\[18px\]) {
-  gap: 18px
 }
 
 .columns-wrapper :is(.gap-x-12) {
@@ -171,11 +154,6 @@
 .columns-wrapper :is(.py-2\.5) {
   padding-top: 0.625rem;
   padding-bottom: 0.625rem
-}
-
-.columns-wrapper :is(.py-6) {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem
 }
 
 .columns-wrapper :is(.text-4xl) {
@@ -226,10 +204,6 @@
 }
 
 @media (min-width: 1024px) {
-  .columns-wrapper :is(.lg\:w-1\/2) {
-    width: 50%
-  }
-
   .columns-wrapper :is(.lg\:flex-row) {
     flex-direction: row
   }

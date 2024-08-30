@@ -243,6 +243,11 @@ const fileMappings = [
     output: './blocks/learn-more/learn-more.css',
     wrapper: 'learn-more-wrapper',
   },
+  {
+    content: './blocks/back-navigation/back-navigation.js',
+    output: './blocks/back-navigation/back-navigation.css',
+    wrapper: 'back-navigation-wrapper',
+  },
 ];
 
 const watch = process.argv[2];
