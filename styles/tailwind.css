@@ -120,4 +120,7 @@
         @apply w-full mx-auto lg:h-[28rem] relative;
     }
 
+    .stories main .section.no-section-padding.columns-container {
+        @apply pt-8;
+    }
 }   

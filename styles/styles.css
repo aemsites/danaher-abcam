@@ -919,6 +919,10 @@ dialog .modal-content .section > .default-content-wrapper p {
   }
 }
 
+.stories main .section.no-section-padding.columns-container {
+  padding-top: 2rem;
+}
+
 .visible {
   visibility: visible;
 }
