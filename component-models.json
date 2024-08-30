@@ -575,11 +575,7 @@
         "options": [
           {
             "name": "With Image",
-            "value": ""
-          },
-          {
-            "name": "Without Image",
-            "value": ""
+            "value": "title-image"
           }
         ]
       },
