@@ -221,12 +221,12 @@ function buildAutoBlocks(main) {
 }
 
 function decorateStoryInfo(main){
-  const divEl = div({class: 'lg:py-16 ml-8 max-w-56'});
+  const divEl = div({class: 'ml-8 max-w-56'});
   const sectionEl = main.querySelector('div.section.story-info-container.social-media-container');
-  divEl.append(sectionEl.querySelector('.story-info-wrapper'));
-  divEl.append(sectionEl.querySelector('.social-media-wrapper'));
-  sectionEl.prepend(divEl);
-  sectionEl.querySelector('.default-content-wrapper')?.classList.add('!max-w-4xl');
+  divEl.append(sectionEl?.querySelector('.story-info-wrapper'));
+  divEl.append(sectionEl?.querySelector('.social-media-wrapper'));
+  sectionEl?.prepend(divEl);
+  sectionEl?.querySelector('.default-content-wrapper')?.classList.add('w-full');
 }
 
 /**

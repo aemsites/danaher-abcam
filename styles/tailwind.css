@@ -12,8 +12,16 @@
         @apply font-bold text-[#378189];
     }
 
-    main .section .default-content-wrapper:not(.section-padding) {
-        @apply mx-auto xl:max-w-[1120px] xl:px-0 px-[30px] py-16;
+    main .section:not(.no-section-padding, .title-card-container) {
+        @apply mx-auto xl:max-w-7xl xl:px-0 px-[30px] pb-16;
+    }
+
+    main .section .default-content-wrapper h2{
+        @apply font-medium leading-8 lg:leading-5 text-4xl py-8;
+    }
+
+    main .section .title-card-wrapper {
+        @apply border-b;
     }
 
     .home-page main .section > div.hero-wrapper {
@@ -98,18 +106,6 @@
 
     dialog .modal-content .section > .default-content-wrapper p {
         @apply font-normal text-gray-900 mb-2;
-    }
-
-    main .section.section-padding {
-        @apply mx-auto xl:max-w-[1120px] xl:px-0 px-[30px] pb-16;
-    }
-
-    main .section .default-content-wrapper h2{
-        @apply font-medium leading-8 lg:leading-5 text-4xl py-8;
-    }
-
-    main .section .title-card-wrapper {
-        @apply border-b;
     }
 
     .stories main .story-middle-container {
