@@ -125,6 +125,11 @@
   padding-right: 30px
 }
 
+.footer-wrapper :is(.px-6) {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem
+}
+
 .footer-wrapper :is(.pb-8) {
   padding-bottom: 2rem
 }

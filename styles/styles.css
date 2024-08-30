@@ -607,16 +607,14 @@ main .section .default-content-wrapper a {
 main .section:not(.no-section-padding, .title-card-container) {
   margin-left: auto;
   margin-right: auto;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
   padding-bottom: 4rem;
 }
 
 @media (min-width: 1280px) {
   main .section:not(.no-section-padding, .title-card-container) {
     max-width: 80rem;
-    padding-left: 0px;
-    padding-right: 0px;
   }
 }
 
@@ -974,17 +972,13 @@ dialog .modal-content .section > .default-content-wrapper p {
   width: auto;
 }
 
-.w-max {
-  width: -moz-max-content;
-  width: max-content;
-}
-
 .w-full {
   width: 100%;
 }
 
-.\!max-w-3xl {
-  max-width: 48rem !important;
+.w-max {
+  width: -moz-max-content;
+  width: max-content;
 }
 
 .max-w-56 {
@@ -1152,12 +1146,5 @@ dialog .modal-content .section > .default-content-wrapper p {
 @media (min-width: 768px) {
   .md\:flex-col {
     flex-direction: column;
-  }
-}
-
-@media (min-width: 1024px) {
-  .lg\:py-16 {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
   }
 }   
