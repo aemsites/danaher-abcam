@@ -706,5 +706,38 @@
         ]
       }
     ]
+  },
+  {
+    "id": "social-share",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "fileReference",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "alt",
+        "value": "Default alt",
+        "label": "Alt Text"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "social-share_href",
+        "value": "",
+        "label": "CTA Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "social-share_hrefText",
+        "value": "",
+        "label": "CTA Text"
+      }
+    ]
   }
 ]

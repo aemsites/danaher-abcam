@@ -44,7 +44,8 @@
       "recently-viewed",
       "product-datasheet",
       "product-downloads",
-      "product-protocols"
+      "product-protocols",
+      "social-shares"
     ]
   },
   {
@@ -80,5 +81,11 @@
   {
     "id": "hero-video",
     "components": []
+  },
+  {
+    "id": "social-shares",
+    "components": [
+      "social-share"
+    ]
   }
 ]
