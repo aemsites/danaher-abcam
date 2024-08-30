@@ -112,11 +112,8 @@
         @apply flex flex-col gap-x-0 lg:flex-row lg:gap-x-16;
     }
 
-    .stories main .section .columns-wrapper {
-        @apply max-w-7xl mx-auto w-full lg:h-[28rem] relative;
+    .stories main .section.no-section-padding .columns-wrapper {
+        @apply mx-auto w-full lg:h-[28rem] relative;
     }
 
-    .stories main .section.default-content-wrapper > p {
-        @apply mt-3 leading-7 text-base;
-    }
 }   
