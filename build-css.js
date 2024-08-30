@@ -238,6 +238,11 @@ const fileMappings = [
     output: './blocks/social-media/social-media.css',
     wrapper: 'social-media-wrapper',
   },
+  {
+    content: './blocks/learn-more/learn-more.js',
+    output: './blocks/learn-more/learn-more.css',
+    wrapper: 'learn-more-wrapper',
+  },
 ];
 
 const watch = process.argv[2];

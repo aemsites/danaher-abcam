@@ -419,10 +419,12 @@ function wrapTextNodes(block) {
  * @param {Element} element container element
  */
 function decorateButtons(element) {
+  console.log('decorating buttons', element);
   element.querySelectorAll('a').forEach((a) => {
     a.title = a.title || a.textContent;
     if (a.href !== a.textContent) {
       const up = a.parentElement;
+      console.log('up', up);
       const twoup = a.parentElement.parentElement;
       if (!a.querySelector('img')) {
         if (up.childNodes.length === 1 && (up.tagName === 'P' || up.tagName === 'DIV')) {
