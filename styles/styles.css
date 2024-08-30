@@ -919,26 +919,6 @@ dialog .modal-content .section > .default-content-wrapper p {
   }
 }
 
-.stories main .section .columns-wrapper {
-  position: relative;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  max-width: 80rem;
-}
-
-@media (min-width: 1024px) {
-  .stories main .section .columns-wrapper {
-    height: 28rem;
-  }
-}
-
-.stories main .section.default-content-wrapper > p {
-  margin-top: 0.75rem;
-  font-size: 1rem;
-  line-height: 1.75rem;
-}
-
 .visible {
   visibility: visible;
 }

@@ -117,7 +117,7 @@
     }
 
     .stories main .section.no-section-padding .columns-wrapper {
-        @apply mx-auto w-full lg:h-[28rem] relative;
+        @apply w-full mx-auto lg:h-[28rem] relative;
     }
 
 }   
