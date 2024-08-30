@@ -110,9 +110,9 @@ const fileMappings = [
     wrapper: 'title-card-wrapper',
   },
   {
-    content: './blocks/social-share/social-share.js',
-    output: './blocks/social-share/social-share.css',
-    wrapper: 'social-share-wrapper',
+    content: './blocks/social-shares/social-shares.js',
+    output: './blocks/social-shares/social-shares.css',
+    wrapper: 'social-shares-wrapper',
   },
   {
     content: './blocks/breadcrumb/breadcrumb.js',

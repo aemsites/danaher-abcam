@@ -10,6 +10,7 @@ function goBack() {
 }
 
 export default function decorate(block) {
+  block.classList.add(...'flex flex-col'.split(' '));
   const articleType = getMetadata('template').toLowerCase();
   block.classList.add(...'relative z-10 flex items-center justify-between mb-8 text-gray-600 pt-4 pb-0 md:pb-10'.split(' '));
   // eslint-disable-next-line no-script-url
