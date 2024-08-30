@@ -1,5 +1,9 @@
-import { div, p, ul, li, a, span } from '../../scripts/dom-builder.js';
-import { decorateIcons } from '../../scripts/aem.js';
+import {
+  div, p, ul, li, a, span,
+} from '../../scripts/dom-builder.js';
+import {
+  decorateIcons,
+} from '../../scripts/aem.js';
 
 export default function decorate(block) {
   block.classList.add(...'max-w-4xl mx-auto mb-8 text-gray-600 pt-4 pb-0 md:pb-10'.split(' '));

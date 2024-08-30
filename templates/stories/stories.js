@@ -7,6 +7,6 @@ export default async function buildAutoBlocks() {
   section.prepend(
     buildBlock('back-navigation', { elems: [] }),
     buildBlock('story-info', { elems: [] }),
-    buildBlock('social-media', { elems: [] })
+    buildBlock('social-media', { elems: [] }),
   );
 }
