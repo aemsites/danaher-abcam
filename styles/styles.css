@@ -847,11 +847,6 @@ main .section > .recently-viewed-wrapper {
   }
 }
 
-main .section.border-top {
-  width: 100%;
-  border-top-width: 1px;
-}
-
 .search-results main {
   height: auto;
   min-height: 91rem;
@@ -909,6 +904,26 @@ dialog .modal-content .section > .default-content-wrapper p {
     -moz-column-gap: 4rem;
          column-gap: 4rem;
   }
+}
+
+.stories main .section .columns-wrapper {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 80rem;
+}
+
+@media (min-width: 1024px) {
+  .stories main .section .columns-wrapper {
+    height: 28rem;
+  }
+}
+
+.stories main .section.default-content-wrapper > p {
+  margin-top: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.75rem;
 }
 
 .visible {

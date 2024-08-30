@@ -51,6 +51,11 @@
   margin-bottom: calc(0.5rem * var(--tw-space-y-reverse))
 }
 
+.learn-more-wrapper :is(.border-y) {
+  border-top-width: 1px;
+  border-bottom-width: 1px
+}
+
 .learn-more-wrapper :is(.px-6) {
   padding-left: 1.5rem;
   padding-right: 1.5rem
@@ -72,6 +77,10 @@
 
 .learn-more-wrapper :is(.pb-16) {
   padding-bottom: 4rem
+}
+
+.learn-more-wrapper :is(.pt-8) {
+  padding-top: 2rem
 }
 
 .learn-more-wrapper :is(.text-base) {

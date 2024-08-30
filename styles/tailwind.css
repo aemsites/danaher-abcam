@@ -92,10 +92,6 @@
         @apply mx-auto max-[768px]:w-full py-8;
     }
 
-    main .section.border-top {
-        @apply border-t w-full;
-    }
-
     .search-results main {
         @apply min-h-[91rem] h-auto w-full;
     }
