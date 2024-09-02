@@ -194,7 +194,7 @@ export default async function decorate(block) {
   const responseData = response[0].raw;
 
   block.classList.add('relative');
-  block.classList.add('m-auto', 'w-[87%]', 'max-[768px]:w-[100%]');
+  block.classList.add('max-[768px]:w-[100%]');
 
   const sliderContainer = div({ class: 'slider-container w-full overflow-hidden py-5' });
   const { prevButton, nextButton } = createSliderNavigation();

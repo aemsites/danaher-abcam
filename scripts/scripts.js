@@ -188,6 +188,7 @@ const TEMPLATE_LIST = [
   'blog-page',
   'product-detail',
   'search-results',
+  'stories',
 ];
 
 async function decorateTemplates(main) {
@@ -217,6 +218,25 @@ function buildAutoBlocks(main) {
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
+  }
+}
+
+function decorateStoryPage(main){
+  const sectionEl = main.querySelector(':scope > div.section.story-info-container.social-media-container');
+  if(sectionEl){
+    const toBeRemoved = ['story-info-wrapper', 'social-media-wrapper'];
+    const rightSideElements = div({class: 'w-full'});
+    Array.from(sectionEl?.children).forEach((element) => {
+      if (!toBeRemoved.includes(element.classList[0])) {
+        rightSideElements.append(element);
+      }
+    });
+    sectionEl?.append(rightSideElements);
+  
+    const divEl = div({class: 'ml-8 max-w-56'});
+    divEl.append(sectionEl?.querySelector('.story-info-wrapper'));
+    divEl.append(sectionEl?.querySelector('.social-media-wrapper'));
+    sectionEl?.prepend(divEl);
   }
 }
 
@@ -342,6 +362,7 @@ export function decorateMain(main) {
   decorateSections(main);
   decorateBlocks(main);
   decorateStickyRightNav(main);
+  decorateStoryPage(main);
   decorateVideo(main);
 }
 
