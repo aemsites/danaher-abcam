@@ -221,12 +221,20 @@ function buildAutoBlocks(main) {
 }
 
 function decorateStoryInfo(main){
+  const sectionEl = main.querySelector(':scope > div.section.story-info-container.social-media-container');
+  const toBeRemoved = ['story-info-wrapper', 'social-media-wrapper'];
+  const rightSideElements = div({class: 'w-full'});
+  Array.from(sectionEl.children).forEach((element) => {
+    if (!toBeRemoved.includes(element.classList[0])) {
+      rightSideElements.append(element);
+    }
+  });
+  sectionEl?.append(rightSideElements);
+
   const divEl = div({class: 'ml-8 max-w-56'});
-  const sectionEl = main.querySelector('div.section.story-info-container.social-media-container');
   divEl.append(sectionEl?.querySelector('.story-info-wrapper'));
   divEl.append(sectionEl?.querySelector('.social-media-wrapper'));
   sectionEl?.prepend(divEl);
-  sectionEl?.querySelector('.default-content-wrapper')?.classList.add('w-full');
 }
 
 /**
