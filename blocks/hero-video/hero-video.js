@@ -63,7 +63,6 @@ function loadVideo(parentDiv, link) {
 
 function loadContent(block) {
   const firstDiv = block.querySelector('div');
-  console.log(firstDiv);
   firstDiv.classList.add(...'p-8 md:basis-1/2'.split(' '));
   const h2 = block.querySelector('h2');
   const h2Div = h2.closest('div');
@@ -80,13 +79,12 @@ export default function decorate(block) {
   block.classList.add('main-container');
   block.classList.add(...'max-w-full flex md:flex-row md:justify-between flex-col'.split(' '));
   const link = parentDiv.querySelector('div p a');
-  console.log(link);
   link.textContent = '';
   if (link) {
-      loadVideo(parentDiv, link);
-      parentDiv.append(createModalPopUp(link.href));
-     loadContent(parentDiv);
-    }
+    loadVideo(parentDiv, link);
+    parentDiv.append(createModalPopUp(link.href));
+    loadContent(parentDiv);
+  }
 
   if (block.classList.contains('left-video')) {
     block.classList.add('flex-col', 'md:flex-row-reverse');
