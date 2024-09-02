@@ -61,8 +61,8 @@ export default function decorate(block) {
       }
       if (!col.querySelector('picture')) {
         col.classList.add('flex', 'flex-col');
-      } else {        
-          col.classList.add(...'max-w-96 grow-0 shrink-0'.split(' '));
+      } else {
+        col.classList.add(...'max-w-96 grow-0 shrink-0'.split(' '));
       }
       col.querySelectorAll('.button-container').forEach((anchorTag) => {
         anchorTag.classList.add('text-[#378189]', 'underline');

@@ -2,7 +2,7 @@ import {
   div, input, span,
 } from '../../scripts/dom-builder.js';
 import {
-  createOptimizedPicture, getMetadata,
+  getMetadata,
 } from '../../scripts/aem.js';
 
 export default function decorate(block) {
