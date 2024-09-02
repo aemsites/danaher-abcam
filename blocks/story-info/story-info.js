@@ -17,7 +17,7 @@ export default function decorate(block) {
     div(
       { class: 'storyinfo' },
       div(
-        { class: 'authorimage max-w-4xl mx-auto' },
+        { class: 'max-w-4xl mx-auto' },
         div(
           { class: 'items-center flex justify-start my-4 w-full col-span-2' },
           div(
@@ -42,6 +42,7 @@ export default function decorate(block) {
     ),
   );
 
+  // Add author image
   if (authorImage) {
     const authorimage = block.querySelector('.authorimage');
     authorimage.prepend(createOptimizedPicture(authorImage, authorName, false, [{ width: '750' }]));

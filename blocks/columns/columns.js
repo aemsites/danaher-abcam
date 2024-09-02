@@ -1,4 +1,4 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
+import { createOptimizedPicture, getMetadata } from '../../scripts/aem.js';
 import { div } from '../../scripts/dom-builder.js';
 
 export default function decorate(block) {
@@ -15,6 +15,12 @@ export default function decorate(block) {
       block.classList.add(...'h-full flex flex-col md:flex-row'.split(' '));
       if (window.location.pathname.includes('/en/stories/')) {
         block.firstElementChild?.classList.add(...'container max-w-7xl mx-auto gap-x-12 grid grid-cols-2'.split(' '));
+        const pageTags = getMetadata('pagetags');
+        const tagName = pageTags?.split('/');
+        const tag = tagName.pop();
+        const tagNameDiv = div({ class: 'font-normal text-sm leading-4 text-gray-600' });
+        tagNameDiv.append(tag);
+        block.firstElementChild?.append(tagNameDiv);
       } else {
         row.classList.add(...'flex lg:flex-row gap-8'.split(' '));
       }
@@ -57,8 +63,8 @@ export default function decorate(block) {
       }
       if (!col.querySelector('picture')) {
         col.classList.add('flex', 'flex-col');
-      } else {
-        col.classList.add(...'max-w-96 grow-0 shrink-0'.split(' '));
+      } else {        
+          col.classList.add(...'max-w-96 grow-0 shrink-0'.split(' '));
       }
       col.querySelectorAll('.button-container').forEach((anchorTag) => {
         anchorTag.classList.add('text-[#378189]', 'underline');

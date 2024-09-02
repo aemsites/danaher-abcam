@@ -152,6 +152,10 @@
   padding-bottom: 0.625rem
 }
 
+.columns-wrapper :is(.pr-0) {
+  padding-right: 0px
+}
+
 .columns-wrapper :is(.text-4xl) {
   font-size: 2.25rem;
   line-height: 2.5rem
@@ -162,12 +166,21 @@
   line-height: 1.75rem
 }
 
+.columns-wrapper :is(.text-sm) {
+  font-size: 0.875rem;
+  line-height: 1.25rem
+}
+
 .columns-wrapper :is(.font-bold) {
   font-weight: 700
 }
 
 .columns-wrapper :is(.font-normal) {
   font-weight: 400
+}
+
+.columns-wrapper :is(.leading-4) {
+  line-height: 1rem
 }
 
 .columns-wrapper :is(.text-\[\#378189\]) {
@@ -178,6 +191,16 @@
 .columns-wrapper :is(.text-white) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+
+.columns-wrapper :is(.text-gray-600) {
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity))
+}
+
+.columns-wrapper :is(.text-\[\#65797c\]) {
+  --tw-text-opacity: 1;
+  color: rgb(101 121 124 / var(--tw-text-opacity))
 }
 
 .columns-wrapper :is(.underline) {
