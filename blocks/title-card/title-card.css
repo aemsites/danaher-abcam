@@ -28,6 +28,10 @@
   flex-direction: column
 }
 
+.title-card-wrapper :is(.items-center) {
+  align-items: center
+}
+
 .title-card-wrapper :is(.justify-center) {
   justify-content: center
 }
@@ -51,8 +55,17 @@
   padding-bottom: 3rem
 }
 
+.title-card-wrapper :is(.text-center) {
+  text-align: center
+}
+
 .title-card-wrapper :is(.font-sans) {
   font-family: rockwell
+}
+
+.title-card-wrapper :is(.text-2xl) {
+  font-size: 1.5rem;
+  line-height: 2rem
 }
 
 .title-card-wrapper :is(.text-5xl) {
@@ -70,6 +83,15 @@
   line-height: 1.75rem
 }
 
+.title-card-wrapper :is(.text-3xl) {
+  font-size: 1.875rem;
+  line-height: 2.25rem
+}
+
+.title-card-wrapper :is(.font-light) {
+  font-weight: 300
+}
+
 .title-card-wrapper :is(.font-semibold) {
   font-weight: 600
 }
@@ -82,6 +104,13 @@
   .title-card-wrapper :is(.md\:text-6xl) {
     font-size: 3.75rem;
     line-height: 1
+  }
+}
+
+@media (min-width: 1024px) {
+  .title-card-wrapper :is(.lg\:text-3xl) {
+    font-size: 1.875rem;
+    line-height: 2.25rem
   }
 }
 

@@ -567,6 +567,33 @@
     "id": "title-card",
     "fields": [
       {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "value": "",
+        "label": "Search Options",
+        "options": [
+          {
+            "name": "Podcast",
+            "value": "title-image"
+          }
+        ]
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Alt",
+        "value": ""
+      },
+      {
         "component": "text",
         "valueType": "string",
         "name": "title-card_title",
