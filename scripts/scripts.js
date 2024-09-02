@@ -220,21 +220,23 @@ function buildAutoBlocks(main) {
   }
 }
 
-function decorateStoryInfo(main){
+function decorateStoryPage(main){
   const sectionEl = main.querySelector(':scope > div.section.story-info-container.social-media-container');
-  const toBeRemoved = ['story-info-wrapper', 'social-media-wrapper'];
-  const rightSideElements = div({class: 'w-full'});
-  Array.from(sectionEl.children).forEach((element) => {
-    if (!toBeRemoved.includes(element.classList[0])) {
-      rightSideElements.append(element);
-    }
-  });
-  sectionEl?.append(rightSideElements);
-
-  const divEl = div({class: 'ml-8 max-w-56'});
-  divEl.append(sectionEl?.querySelector('.story-info-wrapper'));
-  divEl.append(sectionEl?.querySelector('.social-media-wrapper'));
-  sectionEl?.prepend(divEl);
+  if(sectionEl){
+    const toBeRemoved = ['story-info-wrapper', 'social-media-wrapper'];
+    const rightSideElements = div({class: 'w-full'});
+    Array.from(sectionEl?.children).forEach((element) => {
+      if (!toBeRemoved.includes(element.classList[0])) {
+        rightSideElements.append(element);
+      }
+    });
+    sectionEl?.append(rightSideElements);
+  
+    const divEl = div({class: 'ml-8 max-w-56'});
+    divEl.append(sectionEl?.querySelector('.story-info-wrapper'));
+    divEl.append(sectionEl?.querySelector('.social-media-wrapper'));
+    sectionEl?.prepend(divEl);
+  }
 }
 
 /**
@@ -270,7 +272,7 @@ export function decorateMain(main) {
   decorateSections(main);
   decorateBlocks(main);
   decorateStickyRightNav(main);
-  decorateStoryInfo(main);
+  decorateStoryPage(main);
 }
 
 function capitalizeWords(str) {
