@@ -139,6 +139,6 @@
     }
 
     main .section .hero-video-wrapper {
-        @apply bg-black text-white;
+        @apply bg-white text-black;
     }
 }   
