@@ -1,0 +1,35 @@
+.back-navigation-wrapper :is(.mx-auto) {
+  margin-left: auto;
+  margin-right: auto
+}
+
+.back-navigation-wrapper :is(.block) {
+  display: block
+}
+
+.back-navigation-wrapper :is(.px-80) {
+  padding-left: 20rem;
+  padding-right: 20rem
+}
+
+.back-navigation-wrapper :is(.pb-16) {
+  padding-bottom: 4rem
+}
+
+.back-navigation-wrapper :is(.text-base) {
+  font-size: 1rem;
+  line-height: 1.5rem
+}
+
+.back-navigation-wrapper :is(.font-semibold) {
+  font-weight: 600
+}
+
+.back-navigation-wrapper :is(.font-bold) {
+  font-weight: 700
+}
+
+.back-navigation-wrapper :is(.text-\[\#65797c\]) {
+  --tw-text-opacity: 1;
+  color: rgb(101 121 124 / var(--tw-text-opacity))
+}

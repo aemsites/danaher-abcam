@@ -187,6 +187,7 @@ const TEMPLATE_LIST = [
   'blog-page',
   'product-detail',
   'search-results',
+  'stories',
 ];
 
 async function decorateTemplates(main) {
@@ -217,6 +218,15 @@ function buildAutoBlocks(main) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
   }
+}
+
+function decorateStoryInfo(main){
+  const divEl = div({class: 'ml-8 max-w-56'});
+  const sectionEl = main.querySelector('div.section.story-info-container.social-media-container');
+  divEl.append(sectionEl?.querySelector('.story-info-wrapper'));
+  divEl.append(sectionEl?.querySelector('.social-media-wrapper'));
+  sectionEl?.prepend(divEl);
+  sectionEl?.querySelector('.default-content-wrapper')?.classList.add('w-full');
 }
 
 /**
@@ -252,6 +262,7 @@ export function decorateMain(main) {
   decorateSections(main);
   decorateBlocks(main);
   decorateStickyRightNav(main);
+  decorateStoryInfo(main);
 }
 
 function capitalizeWords(str) {
