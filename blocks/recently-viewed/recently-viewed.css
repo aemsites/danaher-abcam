@@ -56,10 +56,6 @@
   z-index: 1
 }
 
-.recently-viewed-wrapper :is(.m-auto) {
-  margin: auto
-}
-
 .recently-viewed-wrapper :is(.my-0) {
   margin-top: 0px;
   margin-bottom: 0px
@@ -119,10 +115,6 @@
 
 .recently-viewed-wrapper :is(.w-\[10px\]) {
   width: 10px
-}
-
-.recently-viewed-wrapper :is(.w-\[87\%\]) {
-  width: 87%
 }
 
 .recently-viewed-wrapper :is(.w-fit) {
