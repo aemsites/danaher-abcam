@@ -22,7 +22,7 @@ export async function createModal(contentNodes) {
       type: 'button',
       onclick: () => dialog.close(),
     },
-    span({ class: 'icon icon-close invert' }),
+    span({ class: 'icon icon-close size-10 invert' }),
   );
   dialog.append(closeButton);
 

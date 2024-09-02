@@ -852,6 +852,11 @@ dialog .modal-content .section > .default-content-wrapper p {
   height: 1.5rem;
 }
 
+.size-10 {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
 .h-6 {
   height: 1.5rem;
 }
