@@ -645,20 +645,6 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "hero-video_href",
-        "value": "",
-        "label": "Video Link"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "hero-video_hrefTitle",
-        "value": "",
-        "label": "Video Title"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
         "name": "hero-video_title",
         "value": "",
         "label": "Title"
@@ -678,10 +664,24 @@
         "valueType": "string"
       },
       {
+        "component": "text",
+        "valueType": "string",
+        "name": "hero-video_href",
+        "value": "",
+        "label": "Video Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "hero-video_hrefTitle",
+        "value": "",
+        "label": "Video Title"
+      },
+      {
         "component": "reference",
         "valueType": "string",
         "name": "image",
-        "label": "Image",
+        "label": "Video Image",
         "multi": false
       },
       {
@@ -689,21 +689,21 @@
         "valueType": "string",
         "name": "imageAlt",
         "label": "Alt",
-        "value": "thumbnail"
+        "value": ""
       },
       {
         "component": "reference",
         "valueType": "string",
-        "name": "image_two",
+        "name": "imagePlay",
         "label": "Play Icon",
         "multi": false
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "image_twoAlt",
-        "label": "Play Icon Alt",
-        "value": "play button"
+        "name": "imagePlayAlt",
+        "label": "Icon Alt",
+        "value": ""
       }
     ]
   },
