@@ -1,0 +1,39 @@
+.back-navigation-wrapper :is(.my-auto) {
+  margin-top: auto;
+  margin-bottom: auto
+}
+
+.back-navigation-wrapper :is(.mt-4) {
+  margin-top: 1rem
+}
+
+.back-navigation-wrapper :is(.ml-80) {
+  margin-left: 20rem
+}
+
+.back-navigation-wrapper :is(.ml-\[20rem\]) {
+  margin-left: 20rem
+}
+
+.back-navigation-wrapper :is(.block) {
+  display: block
+}
+
+.back-navigation-wrapper :is(.h-20) {
+  height: 5rem
+}
+
+.back-navigation-wrapper :is(.text-base) {
+  font-size: 1rem;
+  line-height: 1.5rem
+}
+
+.back-navigation-wrapper :is(.font-semibold) {
+  font-weight: 600
+}
+
+@media (min-width: 1024px) {
+  .back-navigation-wrapper :is(.lg\:ml-\[20rem\]) {
+    margin-left: 20rem
+  }
+}

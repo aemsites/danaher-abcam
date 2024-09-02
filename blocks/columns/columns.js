@@ -55,14 +55,10 @@ export default function decorate(block) {
       } else {
         row.classList.add('flex-col');
       }
-      if (window.location.pathname.includes('/en/stories/')) {
-        col.parentElement.classList.add('w-full');
+      if (!col.querySelector('picture')) {
+        col.classList.add('flex', 'flex-col');
       } else {
-        if (!col.querySelector('picture')) {
-          col.classList.add('flex', 'flex-col');
-        } else {
-          col.classList.add(...'max-w-96 grow-0 shrink-0'.split(' '));
-        }
+        col.classList.add(...'max-w-96 grow-0 shrink-0'.split(' '));
       }
       col.querySelectorAll('.button-container').forEach((anchorTag) => {
         anchorTag.classList.add('text-[#378189]', 'underline');
