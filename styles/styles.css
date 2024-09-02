@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.4.3 | MIT License | https://tailwindcss.com
+! tailwindcss v3.4.10 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -46,7 +46,7 @@ html,
   -o-tab-size: 4;
      tab-size: 4;
   /* 3 */
-  font-family: rockwell;
+  font-family: Noto Sans;
   /* 4 */
   font-feature-settings: normal;
   /* 5 */
@@ -444,6 +444,19 @@ video {
 
 [hidden] {
   display: none;
+}
+
+body {
+  font-family: Noto Sans;
+}
+
+h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+  font-family: rockwell;
 }
 
 *, ::before, ::after {

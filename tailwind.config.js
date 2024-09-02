@@ -8,8 +8,11 @@ module.exports = {
       colors: {},
       fontFamily: {
         sans: [
+          'Noto Sans',
+        ],
+        heading: [
           'rockwell',
-        ]
+        ],
       },
     },
   },
