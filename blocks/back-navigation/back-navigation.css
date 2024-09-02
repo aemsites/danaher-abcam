@@ -3,24 +3,44 @@
   margin-bottom: auto
 }
 
-.back-navigation-wrapper :is(.mt-4) {
-  margin-top: 1rem
-}
-
-.back-navigation-wrapper :is(.ml-80) {
-  margin-left: 20rem
-}
-
-.back-navigation-wrapper :is(.ml-\[20rem\]) {
-  margin-left: 20rem
+.back-navigation-wrapper :is(.mx-auto) {
+  margin-left: auto;
+  margin-right: auto
 }
 
 .back-navigation-wrapper :is(.block) {
   display: block
 }
 
-.back-navigation-wrapper :is(.h-20) {
-  height: 5rem
+.back-navigation-wrapper :is(.w-full) {
+  width: 100%
+}
+
+.back-navigation-wrapper :is(.max-w-7xl) {
+  max-width: 80rem
+}
+
+.back-navigation-wrapper :is(.px-6) {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem
+}
+
+.back-navigation-wrapper :is(.px-16) {
+  padding-left: 4rem;
+  padding-right: 4rem
+}
+
+.back-navigation-wrapper :is(.px-80) {
+  padding-left: 20rem;
+  padding-right: 20rem
+}
+
+.back-navigation-wrapper :is(.pb-16) {
+  padding-bottom: 4rem
+}
+
+.back-navigation-wrapper :is(.pl-80) {
+  padding-left: 20rem
 }
 
 .back-navigation-wrapper :is(.text-base) {
@@ -32,8 +52,8 @@
   font-weight: 600
 }
 
-@media (min-width: 1024px) {
-  .back-navigation-wrapper :is(.lg\:ml-\[20rem\]) {
-    margin-left: 20rem
+@media (min-width: 1280px) {
+  .back-navigation-wrapper :is(.xl\:max-w-7xl) {
+    max-width: 80rem
   }
 }
