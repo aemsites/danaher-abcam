@@ -75,7 +75,29 @@ export function isValidProperty(property) {
   }
   return false;
 }
-
+export function paginateData(list, currentPage, perPage) {
+  return list.slice((currentPage - 1) * perPage, currentPage * perPage);
+}
+ 
+export function paginateIndexes({ listLength, currentPage, perPage }) {
+  if (listLength === 0) return [];
+  else if (listLength <= perPage) return [1];
+  const total = Math.ceil(listLength / perPage);
+  const center = [currentPage - 1, currentPage, currentPage + 1],
+    filteredCenter = center.filter((p) => p > 1 && p < total),
+    includeThreeLeft = currentPage === 5,
+    includeThreeRight = currentPage === total - 4,
+    includeLeftDots = currentPage > 5,
+    includeRightDots = currentPage < total - 4;
+ 
+  if (includeThreeLeft) filteredCenter.unshift(2);
+  if (includeThreeRight) filteredCenter.push(total - 1);
+ 
+  if (includeLeftDots) filteredCenter.unshift('...');
+  if (includeRightDots) filteredCenter.push('...');
+ 
+  return [1, ...filteredCenter, total];
+}
 export function clickToCopy(sku) {
   var copyText = document.getElementById(sku);
   navigator.clipboard.writeText(copyText.innerText);

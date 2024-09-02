@@ -2,16 +2,8 @@
   order: 1
 }
 
-.product-tabs-wrapper :is(.order-2) {
-  order: 2
-}
-
 .product-tabs-wrapper :is(.mr-8) {
   margin-right: 2rem
-}
-
-.product-tabs-wrapper :is(.mt-6) {
-  margin-top: 1.5rem
 }
 
 .product-tabs-wrapper :is(.block) {
@@ -92,10 +84,6 @@
 
   .product-tabs-wrapper :is(.md\:top-\[-15px\]) {
     top: -15px
-  }
-
-  .product-tabs-wrapper :is(.md\:mt-0) {
-    margin-top: 0px
   }
 
   .product-tabs-wrapper :is(.md\:block) {

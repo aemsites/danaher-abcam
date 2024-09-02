@@ -56,15 +56,6 @@
   z-index: 1
 }
 
-.recently-viewed-wrapper :is(.m-auto) {
-  margin: auto
-}
-
-.recently-viewed-wrapper :is(.my-0) {
-  margin-top: 0px;
-  margin-bottom: 0px
-}
-
 .recently-viewed-wrapper :is(.mb-4) {
   margin-bottom: 1rem
 }
@@ -81,6 +72,17 @@
   margin-top: 2rem
 }
 
+.recently-viewed-wrapper :is(.mt-auto) {
+  margin-top: auto
+}
+
+.recently-viewed-wrapper :is(.line-clamp-2) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2
+}
+
 .recently-viewed-wrapper :is(.block) {
   display: block
 }
@@ -89,40 +91,43 @@
   display: flex
 }
 
+.recently-viewed-wrapper :is(.grid) {
+  display: grid
+}
+
 .recently-viewed-wrapper :is(.hidden) {
   display: none
 }
 
-.recently-viewed-wrapper :is(.h-1\/5) {
-  height: 20%
+.recently-viewed-wrapper :is(.size-5) {
+  width: 1.25rem;
+  height: 1.25rem
 }
 
-.recently-viewed-wrapper :is(.h-5\/6) {
-  height: 83.333333%
+.recently-viewed-wrapper :is(.size-8) {
+  width: 2rem;
+  height: 2rem
+}
+
+.recently-viewed-wrapper :is(.size-full) {
+  width: 100%;
+  height: 100%
 }
 
 .recently-viewed-wrapper :is(.h-\[10px\]) {
   height: 10px
 }
 
-.recently-viewed-wrapper :is(.h-\[1px\]) {
+.recently-viewed-wrapper :is(.h-auto) {
+  height: auto
+}
+
+.recently-viewed-wrapper :is(.h-px) {
   height: 1px
-}
-
-.recently-viewed-wrapper :is(.h-full) {
-  height: 100%
-}
-
-.recently-viewed-wrapper :is(.w-4) {
-  width: 1rem
 }
 
 .recently-viewed-wrapper :is(.w-\[10px\]) {
   width: 10px
-}
-
-.recently-viewed-wrapper :is(.w-\[87\%\]) {
-  width: 87%
 }
 
 .recently-viewed-wrapper :is(.w-fit) {
@@ -134,17 +139,13 @@
   width: 100%
 }
 
-.recently-viewed-wrapper :is(.flex-none) {
-  flex: none
+.recently-viewed-wrapper :is(.-rotate-90) {
+  --tw-rotate: -90deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 
 .recently-viewed-wrapper :is(.rotate-90) {
   --tw-rotate: 90deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
-}
-
-.recently-viewed-wrapper :is(.rotate-\[270deg\]) {
-  --tw-rotate: 270deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 
@@ -162,6 +163,10 @@
 
 .recently-viewed-wrapper :is(.resize) {
   resize: both
+}
+
+.recently-viewed-wrapper :is(.grid-cols-1) {
+  grid-template-columns: repeat(1, minmax(0, 1fr))
 }
 
 .recently-viewed-wrapper :is(.flex-col) {
@@ -193,12 +198,29 @@
   overflow: hidden
 }
 
+.recently-viewed-wrapper :is(.rounded) {
+  border-radius: 0.25rem
+}
+
 .recently-viewed-wrapper :is(.rounded-full) {
   border-radius: 9999px
 }
 
 .recently-viewed-wrapper :is(.border) {
   border-width: 1px
+}
+
+.recently-viewed-wrapper :is(.border-b) {
+  border-bottom-width: 1px
+}
+
+.recently-viewed-wrapper :is(.border-\[\#0711121a\]) {
+  border-color: #0711121a
+}
+
+.recently-viewed-wrapper :is(.border-emerald-900) {
+  --tw-border-opacity: 1;
+  border-color: rgb(6 78 59 / var(--tw-border-opacity))
 }
 
 .recently-viewed-wrapper :is(.bg-\[\#edf6f7\]) {
@@ -240,20 +262,12 @@
   padding-bottom: 1.25rem
 }
 
-.recently-viewed-wrapper :is(.pl-\[5px\]) {
-  padding-left: 5px
-}
-
-.recently-viewed-wrapper :is(.pr-\[55px\]) {
-  padding-right: 55px
-}
-
 .recently-viewed-wrapper :is(.text-left) {
   text-align: left
 }
 
-.recently-viewed-wrapper :is(.text-\[1\.3125rem\]) {
-  font-size: 1.3125rem
+.recently-viewed-wrapper :is(.font-sans) {
+  font-family: rockwell
 }
 
 .recently-viewed-wrapper :is(.text-sm) {
@@ -261,28 +275,41 @@
   line-height: 1.25rem
 }
 
+.recently-viewed-wrapper :is(.text-xl) {
+  font-size: 1.25rem;
+  line-height: 1.75rem
+}
+
 .recently-viewed-wrapper :is(.text-xs) {
   font-size: 0.75rem;
   line-height: 1rem
 }
 
-.recently-viewed-wrapper :is(.font-semibold) {
-  font-weight: 600
+.recently-viewed-wrapper :is(.font-medium) {
+  font-weight: 500
 }
 
-.recently-viewed-wrapper :is(.text-\[\#2a3c3c\]) {
-  --tw-text-opacity: 1;
-  color: rgb(42 60 60 / var(--tw-text-opacity))
+.recently-viewed-wrapper :is(.lowercase) {
+  text-transform: lowercase
 }
 
-.recently-viewed-wrapper :is(.text-\[\#2c656b\]) {
-  --tw-text-opacity: 1;
-  color: rgb(44 101 107 / var(--tw-text-opacity))
+.recently-viewed-wrapper :is(.tracking-wide) {
+  letter-spacing: 0.025em
 }
 
 .recently-viewed-wrapper :is(.text-\[\#65797c\]) {
   --tw-text-opacity: 1;
   color: rgb(101 121 124 / var(--tw-text-opacity))
+}
+
+.recently-viewed-wrapper :is(.text-black) {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity))
+}
+
+.recently-viewed-wrapper :is(.text-emerald-800) {
+  --tw-text-opacity: 1;
+  color: rgb(6 95 70 / var(--tw-text-opacity))
 }
 
 .recently-viewed-wrapper :is(.filter) {
@@ -307,52 +334,20 @@
   background-color: #0000000d
 }
 
-@media (max-width: 1280px) {
-  .recently-viewed-wrapper :is(.max-\[1280px\]\:pr-\[8px\]) {
-    padding-right: 8px
-  }
-}
-
-@media (max-width: 1215px) {
-  .recently-viewed-wrapper :is(.max-\[1215px\]\:pr-\[15px\]) {
-    padding-right: 15px
-  }
-}
-
-@media (max-width: 1024px) {
-  .recently-viewed-wrapper :is(.max-\[1024px\]\:pr-\[10px\]) {
-    padding-right: 10px
-  }
-}
-
-@media (max-width: 848px) {
-  .recently-viewed-wrapper :is(.max-\[848px\]\:pr-\[15px\]) {
-    padding-right: 15px
-  }
-}
-
-@media (max-width: 768px) {
-  .recently-viewed-wrapper :is(.max-\[768px\]\:w-\[100\%\]) {
-    width: 100%
-  }
-
-  .recently-viewed-wrapper :is(.max-\[768px\]\:pl-\[7px\]) {
-    padding-left: 7px
-  }
-
-  .recently-viewed-wrapper :is(.max-\[768px\]\:pr-\[8px\]) {
-    padding-right: 8px
+@media (min-width: 640px) {
+  .recently-viewed-wrapper :is(.sm\:grid-cols-2) {
+    grid-template-columns: repeat(2, minmax(0, 1fr))
   }
 }
 
 @media (min-width: 1024px) {
-  .recently-viewed-wrapper :is(.lg\:w-\[49\%\]) {
-    width: 49%
+  .recently-viewed-wrapper :is(.lg\:grid-cols-3) {
+    grid-template-columns: repeat(3, minmax(0, 1fr))
   }
 }
 
 @media (min-width: 1280px) {
-  .recently-viewed-wrapper :is(.xl\:w-\[25\%\]) {
-    width: 25%
+  .recently-viewed-wrapper :is(.xl\:grid-cols-4) {
+    grid-template-columns: repeat(4, minmax(0, 1fr))
   }
 }

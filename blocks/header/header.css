@@ -81,6 +81,11 @@
   display: none
 }
 
+.header-wrapper :is(.size-5) {
+  width: 1.25rem;
+  height: 1.25rem
+}
+
 .header-wrapper :is(.h-0) {
   height: 0px
 }
@@ -444,10 +449,6 @@
 
 .header-wrapper :is(.\[\&\>li\.active\]\:font-bold>li.active) {
   font-weight: 700
-}
-
-.header-wrapper :is(.\[\&_img\]\:items-center img) {
-  align-items: center
 }
 
 .header-wrapper :is(.\[\&_svg\>use\]\:bg-white svg>use) {
