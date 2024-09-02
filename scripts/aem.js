@@ -458,7 +458,7 @@ function decorateButtons(element) {
  * @param {string} [prefix] prefix to be added to icon src
  * @param {string} [alt] alt text to be added to icon
  */
-function decorateIcon(span, prefix = '') {
+function decorateIcon(span, width = 100, height = 100, prefix = '') {
   const iconName = Array.from(span.classList)
     .find((c) => c.startsWith('icon-'))
     .substring(5);
@@ -466,8 +466,8 @@ function decorateIcon(span, prefix = '') {
   img.dataset.iconName = iconName;
   img.src = `${window.hlx.codeBasePath}${prefix}/icons/${iconName}.svg`;
   img.alt = iconName;
-  img.width = '100';
-  img.height = '100';
+  img.width = width;
+  img.height = height;
   img.loading = 'lazy';
   span.append(img);
 }
@@ -477,10 +477,10 @@ function decorateIcon(span, prefix = '') {
  * @param {Element} [element] Element containing icons
  * @param {string} [prefix] prefix to be added to icon the src
  */
-function decorateIcons(element, prefix = '') {
+function decorateIcons(element, width = 100, height = 100, prefix = '') {
   const icons = [...element.querySelectorAll('span.icon')];
   icons.forEach((span) => {
-    decorateIcon(span, prefix);
+    decorateIcon(span, width, height, prefix);
   });
 }
 

@@ -195,6 +195,11 @@
   height: 12rem
 }
 
+.product-reactivity-wrapper :is(.size-6) {
+  width: 1.5rem;
+  height: 1.5rem
+}
+
 .product-reactivity-wrapper :is(.size-8) {
   width: 2rem;
   height: 2rem
@@ -203,11 +208,6 @@
 .product-reactivity-wrapper :is(.size-full) {
   width: 100%;
   height: 100%
-}
-
-.product-reactivity-wrapper :is(.size-6) {
-  width: 1.5rem;
-  height: 1.5rem
 }
 
 .product-reactivity-wrapper :is(.h-4) {
@@ -234,6 +234,7 @@
   min-height: 8rem
 }
 
+<<<<<<< HEAD
 .product-reactivity-wrapper :is(.w-1\/3) {
   width: 33.333333%
 }
@@ -266,6 +267,12 @@
   width: 87%
 }
 
+=======
+.product-reactivity-wrapper :is(.w-5) {
+  width: 1.25rem
+}
+
+>>>>>>> da7c05c (recommended changes to make default value for decorateIcons)
 .product-reactivity-wrapper :is(.w-auto) {
   width: auto
 }
