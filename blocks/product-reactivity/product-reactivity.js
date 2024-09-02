@@ -63,11 +63,11 @@ function productPromise() {
 }
 
 function publicationsAndImageSection(images, publicationArray) {
+  const publicationsjson = (JSON.parse(publicationArray)).slice(0, 2);
   const pubandimagesection = div({ class: 'col-span-4 lg:flex lg:space-x-8' });
   const publicationsContent = div();
   if (publicationArray) {
-    publicationArray.forEach((pub) => {
-      const publicationData = JSON.parse(pub);
+    publicationsjson.forEach((publicationData) => {
       const publicationJournalAndVolume = div(
         { class: 'flex text-gray-700 font-semibold text-xs justify-between' },
         span(`${publicationData.journal}:${publicationData.volume}:${publicationData.pages}`),
@@ -101,6 +101,7 @@ function publicationsAndImageSection(images, publicationArray) {
 }
 
 function allApplicationTableData(tableData, application) {
+  const tableDataJSON = JSON.parse(tableData);
   const allTabData = div({ class: 'individualdata' });
   const tableColumn = thead();
   const tableHeadingRow = tr(th({ class: 'font-semibold text-black text-sm text-left bg-white p-4 boarder border-b-2 max-[959px]:p-2' }));
@@ -110,17 +111,17 @@ function allApplicationTableData(tableData, application) {
   tableColumn.appendChild(tableHeadingRow);
   const tbodyContent = tbody();
   const tableHeading = table({ class: 'w-full border-separate indent-2' }, tableColumn);
-  tableData.forEach((row) => {
-    const rowObj = JSON.parse(row);
+  tableDataJSON.forEach((row) => {
+    // const rowObj = JSON.parse(row);
     const tablerow = tr();
     tablerow.appendChild(th(
       { class: 'p-4 font-normal text-left bg-white w-1/5 max-[959px]:p-2' },
-      span({ class: 'text-sm font-semibold' }, rowObj.species),
+      span({ class: 'text-sm font-semibold' }, row.species),
     ));
     application.forEach((name) => {
       const tableCell = td(
         { class: 'p-4 font-normal text-left bg-white w-1/5' },
-        img({ class: getTableCSS(rowObj[name]), src: getReactivityStatus(rowObj[name]) }),
+        img({ class: getTableCSS(row[name]), src: getReactivityStatus(row[name]) }),
       );
       tablerow.appendChild(tableCell);
     });
@@ -132,7 +133,7 @@ function allApplicationTableData(tableData, application) {
 }
 
 export default async function decorate(block) {
-  block.classList.add(...'mx-auto w-[87%] max-[768px]:w-full'.split(' '));
+  block.classList.add(...'mx-auto xl:max-w-7xl px-6 pb-16'.split(' '));
   const response = await getProductResponse();
   const reactivityData = div(
     { class: 'relative w-full box-content ' },
@@ -156,7 +157,7 @@ export default async function decorate(block) {
     const tableContent = allApplicationTableData(reactivityJson, reactivityApplication);
     reactivityApplicationWrapper.appendChild(tableContent);
     const publicationArray = response[0].raw.publicationsjson
-      ? response[0].raw.publicationsjson.slice(0, 2) : [];
+      ? response[0].raw.publicationsjson : [];
     const images = response[0].raw.images ? response[0].raw.images.slice(0, 3) : [];
     const pubandimagesection = publicationsAndImageSection(images, publicationArray);
     reactivityApplicationWrapper.appendChild(pubandimagesection);

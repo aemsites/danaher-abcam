@@ -47,6 +47,31 @@
             "label": "Navigation Title"
           },
           {
+            "component": "aem-tag",
+            "valueType": "string",
+            "name": "pageTags",
+            "label": "AEM Tag Picker"
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "authorName",
+            "label": "Author Name"
+          },
+          {
+            "component": "reference",
+            "valueType": "string",
+            "name": "authorImage",
+            "label": "Image",
+            "multi": false
+          },
+          {
+            "component": "text",
+            "valueType": "number",
+            "name": "readingTime",
+            "label": "Reading Time"
+          },
+          {
             "component": "text",
             "valueType": "string",
             "name": "template",
@@ -164,6 +189,25 @@
             "value": "secondary"
           }
         ]
+      }
+    ]
+  },
+  {
+    "id": "video",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "video_href",
+        "value": "",
+        "label": "Video Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "video_hrefTitle",
+        "value": "",
+        "label": "Video Title"
       }
     ]
   },
@@ -715,6 +759,46 @@
             "value": "download"
           }
         ]
+      }
+    ]
+  },
+  {
+    "id": "learn-more",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "learn-more_title",
+        "value": "",
+        "label": "Title"
+      },
+      {
+        "component": "select",
+        "name": "learn-more_titleType",
+        "hidden": true,
+        "label": "Title Type",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "learn-more_description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "learn-more_ctahref",
+        "value": "",
+        "label": "CTA Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "learn-more_ctahrefText",
+        "value": "",
+        "label": "CTA Text"
       }
     ]
   }

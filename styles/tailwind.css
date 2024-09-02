@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    body {
+        @apply font-sans;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-heading;
+    }
+}
 
 @layer components {
     header {
@@ -12,8 +26,20 @@
         @apply font-bold text-[#378189];
     }
 
-    main .section .default-content-wrapper:not(.section-padding) {
-        @apply mx-auto xl:max-w-[1120px] xl:px-0 px-[30px] py-16;
+    main .section:not(.no-section-padding, .title-card-container) {
+        @apply mx-auto xl:max-w-7xl px-6 pb-16;
+    }
+
+    main .section .default-content-wrapper h2{
+        @apply font-medium leading-8 lg:leading-5 text-4xl py-8;
+    }
+
+    main .section .title-card-wrapper {
+        @apply border-b;
+    }
+
+    .button-container {
+        @apply bg-black hover:bg-[#3B3B3B] h-8 whitespace-nowrap rounded-2xl items-center py-2 px-3 text-white text-xs capitalize justify-self-end w-fit;
     }
 
     .home-page main .section > div.hero-wrapper {
@@ -57,27 +83,27 @@
     }
 
     main .section > .product-overview-wrapper {
-        @apply pt-8 col-span-12 lg:col-span-8;
+        @apply col-span-12 lg:col-span-8;
     }
 
     main .section > .product-buybox-wrapper {
-        @apply py-8 col-start-10 col-span-3;
+        @apply col-start-10 col-span-3;
     }
 
     main .section > .product-reactivity-wrapper {
-        @apply mx-auto max-[768px]:w-full py-8;
+        @apply mx-auto max-[768px]:w-full;
     }
 
     main .section > .product-target-data-wrapper {
-        @apply mx-auto max-[768px]:w-full py-8;
+        @apply mx-auto max-[768px]:w-full;
     }
 
     main .section > .recommended-products-wrapper {
-        @apply mx-auto  max-[768px]:w-full py-8;
+        @apply mx-auto  max-[768px]:w-full;
     }
 
     main .section > .recently-viewed-wrapper {
-        @apply mx-auto max-[768px]:w-full py-8;
+        @apply mx-auto max-[768px]:w-full;
     }
 
     .search-results main {
@@ -100,16 +126,16 @@
         @apply font-normal text-gray-900 mb-2;
     }
 
-    main .section.section-padding {
-        @apply mx-auto xl:max-w-[1120px] xl:px-0 px-[30px] pb-16;
+    .stories main .story-middle-container {
+        @apply flex flex-col gap-x-0 lg:flex-row lg:gap-x-16;
     }
 
-    main .section .default-content-wrapper h2{
-        @apply font-medium leading-8 lg:leading-5 text-4xl py-8;
+    .stories main .section.no-section-padding .columns-wrapper {
+        @apply w-full mx-auto lg:h-[28rem] relative;
     }
 
-    main .section .title-card-wrapper {
-        @apply border-b;
+    .stories main .section.no-section-padding.columns-container {
+        @apply pt-8;
     }
 
     main .section .hero-video-wrapper {
