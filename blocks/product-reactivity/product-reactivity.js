@@ -133,7 +133,7 @@ function allApplicationTableData(tableData, application) {
 }
 
 export default async function decorate(block) {
-  block.classList.add(...'mx-auto w-[87%] max-[768px]:w-full'.split(' '));
+  block.classList.add(...'mx-auto xl:max-w-7xl px-6 pb-16'.split(' '));
   const response = await getProductResponse();
   const reactivityData = div(
     { class: 'relative w-full box-content ' },

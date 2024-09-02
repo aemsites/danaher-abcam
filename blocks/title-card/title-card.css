@@ -41,9 +41,9 @@
   border-color: rgb(255 114 35 / var(--tw-border-opacity))
 }
 
-.title-card-wrapper :is(.px-\[30px\]) {
-  padding-left: 30px;
-  padding-right: 30px
+.title-card-wrapper :is(.px-6) {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem
 }
 
 .title-card-wrapper :is(.py-12) {
@@ -86,12 +86,7 @@
 }
 
 @media (min-width: 1280px) {
-  .title-card-wrapper :is(.xl\:max-w-\[1120px\]) {
-    max-width: 1120px
-  }
-
-  .title-card-wrapper :is(.xl\:px-0) {
-    padding-left: 0px;
-    padding-right: 0px
+  .title-card-wrapper :is(.xl\:max-w-7xl) {
+    max-width: 80rem
   }
 }

@@ -29,17 +29,16 @@
   padding-right: 1.5rem
 }
 
-.py-8 {
-  padding-top: 2rem;
-  padding-bottom: 2rem
-}
-
 .pb-16 {
   padding-bottom: 4rem
 }
 
 .pt-16 {
   padding-top: 4rem
+}
+
+.pt-8 {
+  padding-top: 2rem
 }
 
 @media (max-width: 768px) {

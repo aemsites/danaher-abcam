@@ -83,10 +83,6 @@
   width: 2rem
 }
 
-.product-reactivity-wrapper :is(.w-\[87\%\]) {
-  width: 87%
-}
-
 .product-reactivity-wrapper :is(.w-full) {
   width: 100%
 }
@@ -212,6 +208,10 @@
 .product-reactivity-wrapper :is(.py-3) {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem
+}
+
+.product-reactivity-wrapper :is(.pb-16) {
+  padding-bottom: 4rem
 }
 
 .product-reactivity-wrapper :is(.pb-5) {
@@ -358,12 +358,6 @@
   }
 }
 
-@media (max-width: 768px) {
-  .product-reactivity-wrapper :is(.max-\[768px\]\:w-full) {
-    width: 100%
-  }
-}
-
 @media (min-width: 1024px) {
   .product-reactivity-wrapper :is(.lg\:flex) {
     display: flex
@@ -373,5 +367,11 @@
     --tw-space-x-reverse: 0;
     margin-right: calc(2rem * var(--tw-space-x-reverse));
     margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)))
+  }
+}
+
+@media (min-width: 1280px) {
+  .product-reactivity-wrapper :is(.xl\:max-w-7xl) {
+    max-width: 80rem
   }
 }
