@@ -981,6 +981,10 @@ dialog .modal-content .section > .default-content-wrapper p {
   margin-top: 1rem;
 }
 
+.ml-0 {
+  margin-left: 0px;
+}
+
 .block {
   display: block;
 }
@@ -1189,6 +1193,10 @@ dialog .modal-content .section > .default-content-wrapper p {
 }
 
 @media (min-width: 768px) {
+  .md\:ml-8 {
+    margin-left: 2rem;
+  }
+
   .md\:flex-col {
     flex-direction: column;
   }

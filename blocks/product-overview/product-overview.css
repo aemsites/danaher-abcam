@@ -275,7 +275,7 @@
 }
 
 .product-overview-wrapper :is(.font-sans) {
-  font-family: rockwell
+  font-family: Noto Sans
 }
 
 .product-overview-wrapper :is(.text-2xl) {

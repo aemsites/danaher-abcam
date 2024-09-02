@@ -10,7 +10,6 @@ export default function decorate(block) {
   const authorName = getMetadata('authorname');
   const publishDate = getMetadata('published-time');
   const readingTime = getMetadata('readingtime');
-  const authorImage = getMetadata('authorimage');
   const expectedPublishFormat = new Date(publishDate);
 
   block.append(
@@ -41,12 +40,6 @@ export default function decorate(block) {
       ),
     ),
   );
-
-  // Add author image
-  if (authorImage) {
-    const authorimage = block.querySelector('.authorimage');
-    authorimage.prepend(createOptimizedPicture(authorImage, authorName, false, [{ width: '750' }]));
-  }
 
   block.querySelector('.reading-icon').innerHTML = `
     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
