@@ -42,6 +42,10 @@
   padding-top: 4rem
 }
 
+.pt-8 {
+  padding-top: 2rem
+}
+
 @media (max-width: 768px) {
   .max-\[768px\]\:w-full {
     width: 100%
