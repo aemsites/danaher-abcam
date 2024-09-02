@@ -9,6 +9,6 @@ function goBack() {
 
 export default function decorate(block) {
   const articleType = getMetadata('template').toLowerCase();
-  const goParentBack = a({ class: 'mx-auto px-80 pb-16 text-base text-danaherpurple-500 font-semibold', href: goBack() }, `← Back to ${articleType}`);
+  const goParentBack = a({ class: 'mx-auto px-80 pb-16 text-base text-[#65797c] font-bold', href: goBack() }, `← Back to ${articleType}`);
   block.firstElementChild.append(goParentBack);
 }

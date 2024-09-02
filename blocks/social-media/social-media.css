@@ -1,7 +1,3 @@
-.social-media-wrapper :is(.col-span-12) {
-  grid-column: span 12 / span 12
-}
-
 .social-media-wrapper :is(.mx-auto) {
   margin-left: auto;
   margin-right: auto
