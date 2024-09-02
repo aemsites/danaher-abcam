@@ -175,15 +175,6 @@
   line-height: 70px
 }
 
-.hero-video-wrapper :is(.text-white) {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity))
-}
-
-.hero-video-wrapper :is(.filter) {
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
-}
-
 .hero-video-wrapper :is(.hover\:scale-125:hover) {
   --tw-scale-x: 1.25;
   --tw-scale-y: 1.25;

@@ -643,20 +643,6 @@
         ]
       },
       {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image_one",
-        "label": "First Image",
-        "multi": false
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "image_oneAlt",
-        "label": "First Alt",
-        "value": ""
-      },
-      {
         "component": "text",
         "valueType": "string",
         "name": "hero-video_href",
@@ -694,44 +680,30 @@
       {
         "component": "reference",
         "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Alt",
+        "value": "thumbnail"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
         "name": "image_two",
-        "label": "Second Image",
+        "label": "Play Icon",
         "multi": false
       },
       {
         "component": "text",
         "valueType": "string",
         "name": "image_twoAlt",
-        "label": "Second Alt",
-        "value": ""
-      },
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image_three",
-        "label": "Third Image",
-        "multi": false
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "image_threeAlt",
-        "label": "Third Alt",
-        "value": ""
-      },
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image_four",
-        "label": "Fourth Image",
-        "multi": false
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "image_fourAlt",
-        "label": "Fourth Alt",
-        "value": ""
+        "label": "Play Icon Alt",
+        "value": "play button"
       }
     ]
   },
