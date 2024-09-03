@@ -196,6 +196,13 @@
     "id": "media",
     "fields": [
       {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_href",
+        "value": "",
+        "label": "Media Link"
+      },
+      {
         "component": "radio-group",
         "label": "Media Type",
         "name": "media_hrefType",
@@ -204,13 +211,6 @@
           { "name": "Video", "value": "video" },
           { "name": "Audio", "value": "audio" }
         ]
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "media_href",
-        "value": "",
-        "label": "Media Link"
       },
       {
         "component": "text",
