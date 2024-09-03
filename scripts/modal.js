@@ -12,17 +12,17 @@ export async function createModal(contentNodes) {
   const dialog = document.createElement('dialog');
   dialog.classList.add(...'p-0 border rounded transform flex flex-col-reverse'.split(' '));
   const dialogContent = document.createElement('div');
-  dialogContent.classList.add(...'modal-content flex flex-col'.split(' '));
+  dialogContent.classList.add(...'modal-content flex flex-col relative'.split(' '));
   dialogContent.append(...contentNodes);
   dialog.append(dialogContent);
   const closeButton = button(
     {
-      class: 'close-btn float-right bg-white rounded-full p-3 ml-auto w-max inline-flex',
+      class: 'close-btn float-right bg-white rounded-full p-3 ml-auto w-max inline-flex absolute top-0 right-0',
       'aria-label': 'Close',
       type: 'button',
       onclick: () => dialog.close(),
     },
-    span({ class: 'icon icon-close invert' }),
+    span({ class: 'icon icon-close size-10 invert' }),
   );
   dialog.append(closeButton);
 
@@ -78,4 +78,5 @@ export function decorateModals(element) {
       openModal(origin.href);
     }
   });
+  return element;
 }

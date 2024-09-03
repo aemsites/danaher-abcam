@@ -93,13 +93,17 @@ function createFooterDOM(mainContainer) {
   if (ceneterElements !== undefined) {
     ceneterElements.classList.add(...'flex flex-col md:flex-row gap-x-20 gap-y-4'.split(' '));
     ceneterElements.querySelectorAll('strong').forEach((linksHeading) => {
-      linksHeading.style.display = 'block';
-      linksHeading.style.marginBottom = '0.4rem';
-      linksHeading.classList.add(...'font-bold text-lg'.split(' '));
+      linksHeading.classList.add(...'block font-bold text-lg'.split(' '));
     });
     [...ceneterElements.children].forEach((liEle) => {
+<<<<<<< HEAD
       const linkDiv = div({ class: 'link-div flex flex-row justify-between align-center' });
       const svgSpan = span({ class: 'md:hidden icon icon-chevron-down-white' });
+=======
+      const linkDiv = div({ class: 'link-div flex flex-row justify-between items-center' });
+      linkDiv.append(liEle.querySelector('strong'));
+      const svgSpan = span({ class: 'md:hidden icon icon-chevron-down-white size-5' });
+>>>>>>> optimus/main
       linkDiv.append(svgSpan);
       decorateIcons(linkDiv);
       liEle.prepend(linkDiv);

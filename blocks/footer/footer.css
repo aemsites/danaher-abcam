@@ -37,6 +37,11 @@
   display: none
 }
 
+.footer-wrapper :is(.size-5) {
+  width: 1.25rem;
+  height: 1.25rem
+}
+
 .footer-wrapper :is(.h-\[84px\]) {
   height: 84px
 }
