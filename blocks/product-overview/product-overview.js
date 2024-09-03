@@ -1,10 +1,79 @@
 import { decorateIcons } from '../../scripts/aem.js';
 import {
-  div, h6, p, h3, ul, li, span, a,
+  div, h6, p, h3, ul, li, span, a as anchorElement, button,
 } from '../../scripts/dom-builder.js';
 import { getProductResponse } from '../../scripts/search.js';
 import { decorateModals } from '../../scripts/modal.js';
 import { toolTip } from '../../scripts/scripts.js';
+import { decorateDrawer, showDrawer } from '../../scripts/drawer.js';
+
+function toRGBA(waveLength) {
+  let r; let g; let b; let a;
+
+  if (Number.isNaN(waveLength) || waveLength < 380 || waveLength > 780) {
+    r = 0;
+    g = 0;
+    b = 0;
+    a = 0;
+  } else if (waveLength >= 380 && waveLength < 440) {
+    r = (-1 * (waveLength - 440)) / (440 - 380);
+    g = 0;
+    b = 1;
+  } else if (waveLength >= 440 && waveLength < 490) {
+    r = 0;
+    g = (waveLength - 440) / (490 - 440);
+    b = 1;
+  } else if (waveLength >= 490 && waveLength < 510) {
+    r = 0;
+    g = 1;
+    b = (-1 * (waveLength - 510)) / (510 - 490);
+  } else if (waveLength >= 510 && waveLength < 580) {
+    r = (waveLength - 510) / (580 - 510);
+    g = 1;
+    b = 0;
+  } else if (waveLength >= 580 && waveLength < 645) {
+    r = 1;
+    g = (-1 * (waveLength - 645)) / (645 - 580);
+    b = 0.0;
+  } else if (waveLength >= 645 && waveLength <= 780) {
+    r = 1;
+    g = 0;
+    b = 0;
+  } else {
+    r = 0;
+    g = 0;
+    b = 0;
+  }
+
+  if (waveLength > 780 || waveLength < 380) {
+    a = 0;
+  } else if (waveLength > 700) {
+    a = (780 - waveLength) / (780 - 700);
+  } else if (waveLength < 420) {
+    a = (waveLength - 380) / (420 - 380);
+  } else {
+    a = 1;
+  }
+
+  return {
+    r, g, b, a,
+  };
+}
+
+function createColourIndicator(waveLength) {
+  if (!waveLength) {
+    return span({ class: '' });
+  }
+  const {
+    r, g, b, a,
+  } = toRGBA(waveLength);
+  return span(
+    {
+      class: 'inline-block w-3 h-1 mb-1 mr-1',
+      style: `background-color: rgba(${r * 100}%, ${g * 100}%, ${b * 100}%, ${a});`,
+    },
+  );
+}
 
 function createKeyFactElement(key, value) {
   return div(
@@ -34,7 +103,7 @@ function getReviewsRatings(ratings, numOfReviews) {
     const noReviewsDiv = div(
       { class: 'mt-4' },
       span({ class: 'font-normal text-grey-dark' }, 'This product has no reviews yet! '),
-      a({
+      anchorElement({
         class: 'text-[#378189] underline font-normal', href: '#',
       }, ' Submit a review'),
     );
@@ -74,7 +143,7 @@ function getButtonAlternative(rawData, title) {
         buttonAlternative,
       ),
     ));
-    const insteadbtn = titleDiv.appendChild(a(
+    const insteadbtn = titleDiv.appendChild(anchorElement(
       { class: 'font-2xl mt-4', href: '/modals/consider-this-alternative' },
       span({ class: 'learnmore align-center mt-4 underline text-[#378189]' }, 'why should I try this instead?'),
     ));
@@ -88,11 +157,47 @@ function getButtonAlternative(rawData, title) {
 export default async function decorate(block) {
   const response = await getProductResponse();
   const rawData = response?.at(0)?.raw;
+
+  const variationsObject = rawData.variationsjson;
+  const variationsArray = JSON.parse(variationsObject);
+
+  const conjFormulationLength = variationsArray.length;
+  const variationsContainer = div({ class: 'variations-content h-[90%] overflow-y-auto overflow-x-hidden' });
+  const conjProducts = ul({});
+  variationsArray.forEach((products) => {
+    const { product, relationship } = products;
+    const emission = (product.conjugation && product.conjugation.emission) || '';
+    const colourIndicator = createColourIndicator(emission);
+    const conjProductsLink = anchorElement(
+      { class: 'cursor-pointer hover:underline', href: product.productSlug },
+      span({ class: 'text-sm lowercase text-gray-400' }, product.productCode),
+      span({ class: 'px-3 py-2 text-xs rounded-xs bg-gray-200 text-slate-400 ml-2' }, relationship),
+      div(
+        { class: 'pt-2 font-normal text-black' },
+        colourIndicator,
+        product.name,
+      ),
+    );
+    const listConj = li({ class: 'py-3 pl-8 -mt-px list-none border-t border-b' }, conjProductsLink);
+    conjProducts.appendChild(listConj);
+  });
+  variationsContainer.appendChild(conjProducts);
+
   const targetJson = rawData?.targetjson;
   // Extracting alternativeNames array
   const targetJsonData = targetJson ? JSON.parse(targetJson) : [];
   const alternativeNames = targetJsonData.alternativeNames
     ? div({ class: 'text-[#575757] font-thin break-words' }, (`Alternative names=${targetJsonData.alternativeNames}`)) : '';
+  // for variationLink onclick showDrawer is goes here
+  const variationLink = variationsObject
+    ? button({
+      type: 'button',
+      onclick: () => {
+        showDrawer('conj-formulations');
+      },
+      class: 'text-[#378189] break-words underline',
+    }, (`See all related conjugates and formulations (${conjFormulationLength})`)) : '';
+
   const { title } = rawData;
   const description = rawData.description
     ? div({ class: 'text-black text-xl font-normal' }, rawData.description) : '';
@@ -146,6 +251,7 @@ export default async function decorate(block) {
       div({ class: 'text-black text-xl font-normal' }, description),
       productTagsDiv,
       alternativeNames,
+      variationLink,
     );
     block.appendChild(datasheetContainer);
   } else if (block.classList.contains('download')) {
@@ -164,6 +270,7 @@ export default async function decorate(block) {
       div({ class: 'border-t-[1px] border-[#dde1e1] my-6' }),
       productTagsDiv,
       alternativeNames,
+      variationLink,
       div(
         { class: 'grid pt-10 max-[799px]:grid-cols-1' },
         div({ class: 'grid grid-cols-3 gap-x-3 gap-y-10' }, ...keyFactsElements),
@@ -171,6 +278,14 @@ export default async function decorate(block) {
       dataImmunogen,
       buttonAlternative,
     );
+    // conjugates and formulations integration with drawer
+    const { block: publicationDrawerBlock, drawerBody } = await decorateDrawer({
+      id: 'conj-formulations', title: 'Related conjugates and formulations', isBackdrop: true,
+    });
+    drawerBody.append(variationsContainer);
+    decorateIcons(publicationDrawerBlock);
+    block.append(publicationDrawerBlock);
+
     decorateIcons(overviewContainer);
     block.appendChild(overviewContainer);
   }
