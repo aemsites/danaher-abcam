@@ -32,6 +32,11 @@
   display: none
 }
 
+.story-info-wrapper :is(.size-6) {
+  width: 1.5rem;
+  height: 1.5rem
+}
+
 .story-info-wrapper :is(.w-full) {
   width: 100%
 }
@@ -65,6 +70,10 @@
 
 .story-info-wrapper :is(.pl-1) {
   padding-left: 0.25rem
+}
+
+.story-info-wrapper :is(.pb-\[\.25rem\]) {
+  padding-bottom: .25rem
 }
 
 .story-info-wrapper :is(.text-lg) {
