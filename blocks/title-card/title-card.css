@@ -60,7 +60,7 @@
 }
 
 .title-card-wrapper :is(.font-sans) {
-  font-family: rockwell
+  font-family: Noto Sans
 }
 
 .title-card-wrapper :is(.text-2xl) {

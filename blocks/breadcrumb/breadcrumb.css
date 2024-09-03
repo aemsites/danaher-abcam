@@ -48,7 +48,7 @@
 }
 
 .breadcrumb-wrapper :is(.font-sans) {
-  font-family: rockwell
+  font-family: Noto Sans
 }
 
 .breadcrumb-wrapper :is(.text-base) {

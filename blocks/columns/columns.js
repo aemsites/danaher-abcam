@@ -1,4 +1,4 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
+import { createOptimizedPicture, getMetadata } from '../../scripts/aem.js';
 import { div } from '../../scripts/dom-builder.js';
 
 export default function decorate(block) {
@@ -12,9 +12,13 @@ export default function decorate(block) {
   let img;
   [...block.children].forEach((row) => {
     if (block.className.includes('columns-2-cols')) {
-      block.classList.add(...'h-full flex flex-col md:flex-row'.split(' '));
+      block.classList.add(...'h-full flex flex-col md:flex-row gap-y-6 px-6 md:px-0'.split(' '));
       if (window.location.pathname.includes('/en/stories/')) {
-        block.firstElementChild?.classList.add(...'container max-w-7xl mx-auto gap-x-12 grid grid-cols-2'.split(' '));
+        block.firstElementChild?.classList.add(...'container max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2'.split(' '));
+        const pageTags = getMetadata('pagetags');
+        const tagName = pageTags?.split('/');
+        const tag = tagName.pop();
+        block.firstElementChild?.firstElementChild?.prepend(div({ class: 'font-normal text-sm leading-4 text-[#8B8B8B] capitalize mb-2' }, tag));
       } else {
         row.classList.add(...'flex lg:flex-row gap-8'.split(' '));
       }
@@ -25,7 +29,7 @@ export default function decorate(block) {
         img = pic;
         const moreStoriesImg = pic.querySelector('img');
         if (moreStoriesImg && window.location.pathname.includes('/en/stories/')) {
-          moreStoriesImg.classList.add(...'absolute w-1/2 h-full object-cover right-0 bottom-0'.split(' '));
+          moreStoriesImg.classList.add(...'relative md:absolute w-full md:w-1/2 h-full object-cover md:right-0 md:bottom-6'.split(' '));
           // eslint-disable-next-line func-names
           moreStoriesImg.onerror = function () {
             moreStoriesImg.width = this.width;

@@ -2,7 +2,7 @@ import {
   div, input, span,
 } from '../../scripts/dom-builder.js';
 import {
-  createOptimizedPicture, getMetadata,
+  getMetadata,
 } from '../../scripts/aem.js';
 
 export default function decorate(block) {
@@ -10,14 +10,13 @@ export default function decorate(block) {
   const authorName = getMetadata('authorname');
   const publishDate = getMetadata('published-time');
   const readingTime = getMetadata('readingtime');
-  const authorImage = getMetadata('authorimage');
   const expectedPublishFormat = new Date(publishDate);
 
   block.append(
     div(
       { class: 'storyinfo' },
       div(
-        { class: 'authorimage max-w-4xl mx-auto' },
+        { class: 'max-w-4xl mx-auto' },
         div(
           { class: 'items-center flex justify-start my-4 w-full col-span-2' },
           div(
@@ -41,11 +40,6 @@ export default function decorate(block) {
       ),
     ),
   );
-
-  if (authorImage) {
-    const authorimage = block.querySelector('.authorimage');
-    authorimage.prepend(createOptimizedPicture(authorImage, authorName, false, [{ width: '750' }]));
-  }
 
   block.querySelector('.reading-icon').innerHTML = `
     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">

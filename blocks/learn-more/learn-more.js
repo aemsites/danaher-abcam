@@ -11,7 +11,7 @@ export default function decorate(block) {
   block.querySelector('h3')?.classList.add('text-xl', 'font-bold', 'mb-4');
   block.querySelector('p')?.classList.add('text-base', 'font-normal', 'mb-4');
 
-  const socialLinksDiv = div({ class: 'max-w-56' });
+  const socialLinksDiv = div({ class: 'max-w-56 pt-10 lg:pt-0' });
   socialLinksDiv.prepend(
     p(
       { class: 'text-base font-bold' },
