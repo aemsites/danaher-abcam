@@ -178,10 +178,6 @@ export default async function decorate(block) {
   const responseData = response[0].raw;
 
   block.classList.add('relative');
-<<<<<<< HEAD
-  block.classList.add('max-[768px]:w-[100%]');
-=======
->>>>>>> optimus/main
 
   const sliderContainer = div({ class: 'slider-container w-full overflow-hidden py-5' });
 

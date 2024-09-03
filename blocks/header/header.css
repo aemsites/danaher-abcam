@@ -451,10 +451,6 @@
   font-weight: 700
 }
 
-.header-wrapper :is(.\[\&_img\]\:items-center img) {
-  align-items: center
-}
-
 .header-wrapper :is(.\[\&_svg\>use\]\:bg-white svg>use) {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))

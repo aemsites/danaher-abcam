@@ -39,7 +39,7 @@
   height: 8rem
 }
 
-.product-downloads-wrapper :is(.h-\[1px\]) {
+.product-downloads-wrapper :is(.h-px) {
   height: 1px
 }
 

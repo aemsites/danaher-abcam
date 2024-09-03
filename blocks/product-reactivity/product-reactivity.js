@@ -344,27 +344,6 @@ function publicationsAndImageSection({
   const publicationsContent = ul({ class: 'space-y-4' });
   const imagesContent = ul({ class: 'grid grid-cols-3 gap-4' });
 
-<<<<<<< HEAD
-function publicationsAndImageSection(images, publicationArray) {
-  const publicationsjson = (JSON.parse(publicationArray)).slice(0, 2);
-  const pubandimagesection = div({ class: 'col-span-4 lg:flex lg:space-x-8' });
-  const publicationsContent = div();
-  if (publicationArray) {
-    publicationsjson.forEach((publicationData) => {
-      const publicationJournalAndVolume = div(
-        { class: 'flex text-gray-700 font-semibold text-xs justify-between' },
-        span(`${publicationData.journal}:${publicationData.volume}:${publicationData.pages}`),
-        span({ class: 'text-right' }, publicationData.publicationDate.substring(0, 4)),
-      );
-      publicationsContent.appendChild(div(
-        { class: 'py-2 gap-4' },
-        div(
-          { class: ' flex-col font-normal text-sm p-4 border-t-[1px] bg-white rounded-lg justify-between min-h-32' },
-          publicationJournalAndVolume,
-          div({ class: 'text-black py-2' }, publicationData.name),
-          div({ class: 'flex text-gray-700 font-semibold text-xs' }, publicationData.authors),
-          a({ class: 'flex gap-x-1 text-gray-700 py-2 hover:underline', target: '_blank', href: `https://pubmed.ncbi.nlm.nih.gov/37192628/${publicationData.pubmedId}` }, img({ class: 'w-3', src: '/icons/share-icon.svg', alt: 'Share Link' }), `PubMed ${publicationData.pubmedId}`),
-=======
   if (publications && publications.length > 0) {
     publications.forEach((pub) => {
       publicationsContent.appendChild(
@@ -386,7 +365,6 @@ function publicationsAndImageSection(images, publicationArray) {
             img({ class: 'size-3', src: '/icons/share-icon.svg', alt: 'Share Link' }),
             `PubMed ${pub.pubmedId}`,
           ),
->>>>>>> optimus/main
         ),
       );
     });
@@ -470,12 +448,7 @@ function publicationsAndImageSection(images, publicationArray) {
  * @returns {HTMLElement} for reactivitydata for primary-antibodies
  */
 function allApplicationTableData(tableData, application) {
-<<<<<<< HEAD
-  const tableDataJSON = JSON.parse(tableData);
-  const allTabData = div({ class: 'individualdata' });
-=======
   const allTabData = div({ class: 'individualdata overflow-scroll' });
->>>>>>> optimus/main
   const tableColumn = thead();
   const tableHeadingRow = tr(th({ class: 'font-semibold text-black text-sm bg-white border border-b-2 px-2 py-3' }));
   application.forEach((name) => {
@@ -483,20 +456,6 @@ function allApplicationTableData(tableData, application) {
   });
   tableColumn.appendChild(tableHeadingRow);
   const tbodyContent = tbody();
-<<<<<<< HEAD
-  const tableHeading = table({ class: 'w-full border-separate indent-2' }, tableColumn);
-  tableDataJSON.forEach((row) => {
-    // const rowObj = JSON.parse(row);
-    const tablerow = tr();
-    tablerow.appendChild(th(
-      { class: 'p-4 font-normal text-left bg-white w-1/5 max-[959px]:p-2' },
-      span({ class: 'text-sm font-semibold' }, row.species),
-    ));
-    application.forEach((name) => {
-      const tableCell = td(
-        { class: 'p-4 font-normal text-left bg-white w-1/5' },
-        img({ class: getTableCSS(row[name]), src: getReactivityStatus(row[name]) }),
-=======
   const tableHeading = table({ class: 'w-full table-auto md:table-fixed border-separate indent-2 text-left' }, tableColumn);
   tableData.forEach((row) => {
     const tablerow = tr();
@@ -512,7 +471,6 @@ function allApplicationTableData(tableData, application) {
           src: getReactivityStatus(row[name].suitability),
           alt: row[name].suitability,
         }),
->>>>>>> optimus/main
       );
       tablerow.appendChild(tableCell);
     });
@@ -524,10 +482,6 @@ function allApplicationTableData(tableData, application) {
 }
 
 export default async function decorate(block) {
-<<<<<<< HEAD
-  block.classList.add(...'mx-auto xl:max-w-7xl px-6 pb-16'.split(' '));
-=======
->>>>>>> optimus/main
   const response = await getProductResponse();
   const {
     reactivitytabledata = [], publicationsjson = '', imagesjson = '',
@@ -566,15 +520,6 @@ export default async function decorate(block) {
     const productInfo = productPromise();
     reactivityApplicationWrapper.appendChild(productInfo);
     reactivityApplicationWrapper.appendChild(tableContent);
-<<<<<<< HEAD
-    const publicationArray = response[0].raw.publicationsjson
-      ? response[0].raw.publicationsjson : [];
-    const images = response[0].raw.images ? response[0].raw.images.slice(0, 3) : [];
-    const pubandimagesection = publicationsAndImageSection(images, publicationArray);
-    reactivityApplicationWrapper.appendChild(pubandimagesection);
-    block.append(reactivityData);
-    block.appendChild(reactivityApplicationWrapper);
-=======
     reactivityApplicationWrapper.appendChild(blockSection);
   }
   if (typeof parsedPublications === 'object' && parsedPublications.length > 0) {
@@ -620,7 +565,6 @@ export default async function decorate(block) {
       decorateAllImages({ el: imagesBackdropContent, allImages: parsedImages });
     }
     imagesBackdropBlockEl = imagesBackdropBlock;
->>>>>>> optimus/main
   }
 
   block.classList.add(...'container mx-auto px-6 md:px-0'.split(' '));

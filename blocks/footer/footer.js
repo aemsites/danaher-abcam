@@ -96,14 +96,9 @@ function createFooterDOM(mainContainer) {
       linksHeading.classList.add(...'block font-bold text-lg'.split(' '));
     });
     [...ceneterElements.children].forEach((liEle) => {
-<<<<<<< HEAD
-      const linkDiv = div({ class: 'link-div flex flex-row justify-between align-center' });
-      const svgSpan = span({ class: 'md:hidden icon icon-chevron-down-white' });
-=======
       const linkDiv = div({ class: 'link-div flex flex-row justify-between items-center' });
       linkDiv.append(liEle.querySelector('strong'));
       const svgSpan = span({ class: 'md:hidden icon icon-chevron-down-white size-5' });
->>>>>>> optimus/main
       linkDiv.append(svgSpan);
       decorateIcons(linkDiv);
       liEle.prepend(linkDiv);
