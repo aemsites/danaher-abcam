@@ -50,7 +50,7 @@ function buildSearchBlock(headerBlock) {
   if (window.location.pathname === '/') {
     logoPictureBlock.href = window.location.href;
   } else {
-    logoPictureBlock.href = 'https://main--danaher-optimus--aemsites.hlx.page/';
+    logoPictureBlock.href = '/';
   }
   logoPictureBlock.setAttribute('aria-label', 'Abcam Logo');
 
