@@ -248,6 +248,11 @@ const fileMappings = [
     output: './blocks/back-navigation/back-navigation.css',
     wrapper: 'back-navigation-wrapper',
   },
+  {
+    content: './blocks/related-stories/related-stories.js',
+    output: './blocks/related-stories/related-stories.css',
+    wrapper: 'related-stories-wrapper',
+  }
 ];
 
 const watch = process.argv[2];

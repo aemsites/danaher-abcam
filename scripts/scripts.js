@@ -14,7 +14,7 @@ import {
   toClassName,
   getMetadata,
 } from './aem.js';
-import { div, button } from './dom-builder.js';
+import { div, button, img } from './dom-builder.js';
 
 const LCP_BLOCKS = ['hero', 'hero-video']; // add your LCP blocks to the list
 
@@ -50,6 +50,40 @@ export async function fetchResponse(config) {
       throw new Error('Sorry, network error, not able to render response.');
   });
   return response;
+}
+
+/**
+ * Format date expressed in UTC seconds
+ * @param {number} date
+ * @returns new string with the formatted date
+ */
+export function formatDateUTCSeconds(date, options = {}) {
+  const dateObj = new Date(0);
+  dateObj.setUTCSeconds(date);
+
+  return dateObj.toLocaleDateString('en-US', {
+    month: 'short',
+    day: '2-digit',
+    year: 'numeric',
+    ...options,
+  });
+}
+
+/**
+ * Get the Image URL from Scene7 and Optimize the picture
+ * @param {string} imageUrl
+ * @param {string} imageAlt
+ * @param {boolean} eager
+ * @returns Optimized image
+ */
+export function imageHelper(imageUrl, imageAlt, eager = false) {
+  const imgUrl = 'https://stage.lifesciences.danaher.com'+imageUrl;
+    return img({
+      src: imgUrl,
+      alt: imageAlt,
+      loading: eager ? 'eager' : 'lazy',
+      class: 'mb-2 h-48 w-full object-cover',
+    });
 }
 
 
