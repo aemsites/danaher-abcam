@@ -961,12 +961,12 @@ dialog .modal-content .section > .default-content-wrapper p {
   float: right;
 }
 
-.ml-20 {
-  margin-left: 5rem;
+.ml-0 {
+  margin-left: 0px;
 }
 
-.ml-8 {
-  margin-left: 2rem;
+.ml-20 {
+  margin-left: 5rem;
 }
 
 .ml-auto {
@@ -979,10 +979,6 @@ dialog .modal-content .section > .default-content-wrapper p {
 
 .mt-4 {
   margin-top: 1rem;
-}
-
-.ml-0 {
-  margin-left: 0px;
 }
 
 .block {

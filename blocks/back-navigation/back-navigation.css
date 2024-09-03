@@ -1,26 +1,5 @@
-.back-navigation-wrapper :is(.mx-auto) {
-  margin-left: auto;
-  margin-right: auto
-}
-
-.back-navigation-wrapper :is(.mb-6) {
-  margin-bottom: 1.5rem
-}
-
-.back-navigation-wrapper :is(.mb-8) {
-  margin-bottom: 2rem
-}
-
 .back-navigation-wrapper :is(.mb-10) {
   margin-bottom: 2.5rem
-}
-
-.back-navigation-wrapper :is(.mt-2) {
-  margin-top: 0.5rem
-}
-
-.back-navigation-wrapper :is(.mt-0) {
-  margin-top: 0px
 }
 
 .back-navigation-wrapper :is(.block) {
@@ -36,26 +15,6 @@
   height: 1.5rem
 }
 
-.back-navigation-wrapper :is(.size-4) {
-  width: 1rem;
-  height: 1rem
-}
-
-.back-navigation-wrapper :is(.size-5) {
-  width: 1.25rem;
-  height: 1.25rem
-}
-
-.back-navigation-wrapper :is(.rotate-90) {
-  --tw-rotate: 90deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
-}
-
-.back-navigation-wrapper :is(.rotate-180) {
-  --tw-rotate: 180deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
-}
-
 .back-navigation-wrapper :is(.items-center) {
   align-items: center
 }
@@ -69,15 +28,6 @@
   padding-right: 1.5rem
 }
 
-.back-navigation-wrapper :is(.px-80) {
-  padding-left: 20rem;
-  padding-right: 20rem
-}
-
-.back-navigation-wrapper :is(.pb-16) {
-  padding-bottom: 4rem
-}
-
 .back-navigation-wrapper :is(.text-base) {
   font-size: 1rem;
   line-height: 1.5rem
@@ -85,11 +35,6 @@
 
 .back-navigation-wrapper :is(.font-bold) {
   font-weight: 700
-}
-
-.back-navigation-wrapper :is(.text-\[\#65797c\]) {
-  --tw-text-opacity: 1;
-  color: rgb(101 121 124 / var(--tw-text-opacity))
 }
 
 .back-navigation-wrapper :is(.text-\[\#4CA6B3\]) {
