@@ -43,10 +43,6 @@
   height: 1px
 }
 
-.product-downloads-wrapper :is(.h-px) {
-  height: 1px
-}
-
 .product-downloads-wrapper :is(.w-32) {
   width: 8rem
 }

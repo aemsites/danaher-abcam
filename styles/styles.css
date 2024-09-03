@@ -1033,14 +1033,14 @@ dialog .modal-content .section > .default-content-wrapper p {
   display: none;
 }
 
-.size-6 {
-  width: 1.5rem;
-  height: 1.5rem;
-}
-
 .size-10 {
   width: 2.5rem;
   height: 2.5rem;
+}
+
+.size-6 {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .h-6 {
@@ -1070,6 +1070,10 @@ dialog .modal-content .section > .default-content-wrapper p {
 .w-max {
   width: -moz-max-content;
   width: max-content;
+}
+
+.max-w-56 {
+  max-width: 14rem;
 }
 
 .flex-auto {
@@ -1194,20 +1198,6 @@ dialog .modal-content .section > .default-content-wrapper p {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-black {
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
-}
-
-.bg-gray-100 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
-}
-
-.bg-gray-900\/50 {
-  background-color: rgb(17 24 39 / 0.5);
-}
-
 .p-0 {
   padding: 0px;
 }
@@ -1269,11 +1259,6 @@ dialog .modal-content .section > .default-content-wrapper p {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
 }
 
 .font-bold {

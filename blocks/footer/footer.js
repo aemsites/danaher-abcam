@@ -16,7 +16,7 @@ function callSocialIcons(socialIcons) {
     ancTag.setAttribute('aria-label', 'Social Media Link');
     allAnchorTags.appendChild(ancTag);
   });
-  decorateIcons(allAnchorTags);
+  decorateIcons(allAnchorTags, 25, 25);
   return allAnchorTags;
 }
 

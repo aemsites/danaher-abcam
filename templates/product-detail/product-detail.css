@@ -41,16 +41,8 @@
   display: grid
 }
 
-.w-\[87\%\] {
-  width: 87%
-}
-
 .grid-cols-12 {
   grid-template-columns: repeat(12, minmax(0, 1fr))
-}
-
-.rounded-lg {
-  border-radius: 0.5rem
 }
 
 .bg-slate-100 {
@@ -69,16 +61,6 @@
 
 .pt-16 {
   padding-top: 4rem
-}
-
-.pt-8 {
-  padding-top: 2rem
-}
-
-@media (max-width: 768px) {
-  .max-\[768px\]\:w-full {
-    width: 100%
-  }
 }
 
 @media (min-width: 768px) {
