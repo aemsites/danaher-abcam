@@ -287,7 +287,9 @@
                 "resourceType": "core/franklin/components/block/v1/block/item",
                 "template": {
                   "name": "Podcast",
-                  "model": "podcast"
+                  "model": "podcast",
+                  "podcast_titleType": "h2",
+                  "podcast_subtitleType": "h3"
                 }
               }
             }
