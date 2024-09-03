@@ -260,91 +260,63 @@ function decorateStickyRightNav(main){
   }
 }
 
-function toggleModalPopUp(parentDiv) {
-  parentDiv.querySelector('.modal').classList.toggle('hidden');
-}
-
-function toggleModalPopUp1(modalPopUp) {
-  modalPopUp.classList.toggle('hidden');
-  const iframe1 = modalPopUp.querySelector('iframe');
-  if (iframe1) {
-    iframe1.src = '';
-  }
-}
-
-function extractVideoId(url) {
-  const match = url.match(/(?:embed\/|v=)([a-zA-Z0-9_-]{11})/);
-  return match ? match[1] : null;
-}
-
-function getYouTubeThumbnailUrl(videoId, quality = 'hqdefault') {
-  return `https://img.youtube.com/vi/${videoId}/${quality}.jpg`;
-}
-
-function createModalPopUp(videoLink) {
-  const modalPopUp = div(
-    { class: 'modal hidden fixed z-30 m-0 p-0 w-full h-full' },
-    div(
-      { class: 'modal-content bg-black m-auto p-10 max-[576px]:px-2.5 max-[767px]:px-3.5 h-full w-full left-0 text-center' },
-      div(
-        { class: 'youtube-frame h-3/4 md:h-full' },
-        span({ class: 'bg-black close-btn float-right icon icon-close absolute right-[0px] top-[-30px] cursor-pointer p-[10px]', onclick: () => toggleModalPopUp1(modalPopUp) }),
-        iframe({
-          class: 'm-0 p-0 w-full h-full',
-          src: videoLink,
-          loading: 'lazy',
-          style: 'border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;',
-          allow: 'autoplay; fullscreen; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture',
-          allowfullscreen: '',
-          scrolling: 'no',
-          title: 'Content from Youtube',
-        }),
-      ),
-
-    ),
-  );
-  decorateIcons(modalPopUp);
-}
-
 function decorateVideo(main) {
   // Find the container with the video link
-  const divContainer = main.querySelector('.columns-wrapper .columns');
-  if (divContainer) {
-    const linkContainer = divContainer.querySelector('div');
-    const link = linkContainer.querySelector('p a');
+  const divContainer = main.querySelector('.stories main .section .columns-wrapper');
+  console.log(divContainer);
+  if(divContainer) {
+    const linkContainer = divContainer.querySelector('div > div.button-container > p');
+    if (window.location.pathname.includes('/en/stories/podcasts')) {
+     const link = linkContainer.querySelector('a');
+     if (link.title === "video") {
+    const embedHTML = `<div class="relative md:absolute w-1/2 md:w-1/2 h-full object-cover md:right-0 md:bottom-6">
+          <iframe src="https://www.youtube.com/embed/3uCfxO5W6BE"
+          style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" 
+          allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" scrolling="no" title="Content from Youtube" loading="eager"></iframe>
+        </div>`;
+        linkContainer.innerHTML = embedHTML;
+     } else {
 
-    if (link) {
-        // Add styles to the link
-        link.classList.add('relative', 'hover:scale-125');
-        link.textContent = '';
-
-        // Extract the URL from the link
-        const videoUrl = link.href;
-        console.log(videoUrl);
-
-        // Check if the URL is a valid YouTube URL
-        const videoIdMatch = videoUrl.match(/(?:embed\/|v=)([a-zA-Z0-9_-]{11})/);
-        console.log(videoIdMatch);
-        if (videoIdMatch) {
-            const videoId = videoIdMatch[1];
-
-            // Create an iframe element
-            const iframe = document.createElement('iframe');
-            iframe.width = '560';  // Set desired width
-            iframe.height = '315'; // Set desired height
-            iframe.src = `https://www.youtube.com/embed/${videoId}`;
-            iframe.frameBorder = '0';
-            iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-            iframe.allowFullscreen = true;
-
-            // Replace the link with the iframe
-            //linkContainer.innerHTML = '';
-            linkContainer.appendChild(iframe);
-        } else {
-            console.error('Invalid YouTube URL');
-        }
-    }
+     }
   }
+}
+
+  // if (divContainer) {
+  //   const linkContainer = divContainer.querySelector('div');
+  //   const link = linkContainer.querySelector('p a');
+
+  //   if (link) {
+  //       // Add styles to the link
+  //       link.classList.add('relative', 'hover:scale-125');
+  //       link.textContent = '';
+
+  //       // Extract the URL from the link
+  //       const videoUrl = link.href;
+  //       console.log(videoUrl);
+
+  //       // Check if the URL is a valid YouTube URL
+  //       const videoIdMatch = videoUrl.match(/(?:embed\/|v=)([a-zA-Z0-9_-]{11})/);
+  //       console.log(videoIdMatch);
+  //       if (videoIdMatch) {
+  //           const videoId = videoIdMatch[1];
+
+  //           // Create an iframe element
+  //           const iframe = document.createElement('iframe');
+  //           iframe.width = '560';  // Set desired width
+  //           iframe.height = '315'; // Set desired height
+  //           iframe.src = `https://www.youtube.com/embed/${videoId}`;
+  //           iframe.frameBorder = '0';
+  //           iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+  //           iframe.allowFullscreen = true;
+
+  //           // Replace the link with the iframe
+  //           //linkContainer.innerHTML = '';
+  //           link.appendChild(iframe);
+  //       } else {
+  //           console.error('Invalid YouTube URL');
+  //       }
+  //   }
+  // }
   
 }
 
