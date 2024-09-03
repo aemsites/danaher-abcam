@@ -577,6 +577,33 @@
     "id": "title-card",
     "fields": [
       {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "value": "",
+        "label": "Search Options",
+        "options": [
+          {
+            "name": "Podcast",
+            "value": "title-image"
+          }
+        ]
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Alt",
+        "value": ""
+      },
+      {
         "component": "text",
         "valueType": "string",
         "name": "title-card_title",
@@ -596,6 +623,120 @@
         "value": "",
         "label": "Description",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "podcasts",
+    "fields": [
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "value": "",
+        "label": "Block Options",
+        "options": [
+          {
+            "name": "1 Columns",
+            "value": "cols-1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "podcast",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Podcast Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Alt",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "podcast_title",
+        "value": "",
+        "label": "Title"
+      },
+      {
+        "component": "text",
+        "name": "card_titleType",
+        "label": "",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "podcast_subtitle",
+        "value": "",
+        "label": "Sub Title"
+      },
+      {
+        "component": "text",
+        "name": "podcast_subtitle",
+        "label": "",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "richtext",
+        "name": "podcast_description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "podcast_CTAhref",
+        "value": "",
+        "label": "CTA Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "podcast_CTAhrefText",
+        "value": "",
+        "label": "CTA Text"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "streamed_title",
+        "value": "",
+        "label": "Stream Title"
+      },
+      {
+        "component": "text",
+        "name": "streamed_titleType",
+        "label": "",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Streamed Images",
+        "multi": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Alt",
+        "value": ""
       }
     ]
   },
