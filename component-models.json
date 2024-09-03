@@ -660,7 +660,7 @@
       },
       {
         "component": "text",
-        "name": "card_titleType",
+        "name": "podcast_titleType",
         "label": "",
         "valueType": "string",
         "hidden": true
@@ -674,7 +674,7 @@
       },
       {
         "component": "text",
-        "name": "podcast_subtitle",
+        "name": "podcast_subtitleType",
         "label": "",
         "valueType": "string",
         "hidden": true
