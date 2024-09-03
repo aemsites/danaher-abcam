@@ -204,7 +204,7 @@
       },
       {
         "component": "text",
-        "label": "Media Type",
+        "label": "Media Title",
         "name": "media_hrefText",
         "valueType": "string",
         "value": ""
@@ -214,7 +214,7 @@
         "valueType": "string",
         "name": "media_hrefTitle",
         "value": "",
-        "label": "Media Title"
+        "label": "Media Type"
       }
     ]
   },
