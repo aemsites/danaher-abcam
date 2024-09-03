@@ -288,7 +288,7 @@ function decorateVideo(main) {
   console.log(divContainer);
   if(divContainer) {
     const linkContainer = divContainer.querySelector('div > div.button-container > p');
-    if (window.location.pathname.includes('/en/stories/podcasts')) {
+    if (window.location.pathname.includes('/en/stories/podcasts') && linkContainer) {
      const link = linkContainer.querySelector('a');
      if (link.title === "video") {
     const embedHTML = `<div class="relative md:absolute w-1/2 md:w-1/2 h-full object-cover md:right-0 md:bottom-6">
