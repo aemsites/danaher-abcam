@@ -203,14 +203,11 @@
         "label": "Media Link"
       },
       {
-        "component": "radio-group",
+        "component": "text",
         "label": "Media Type",
-        "name": "media_hrefType",
+        "name": "media_hrefText",
         "valueType": "string",
-        "options": [
-          { "name": "Video", "value": "video" },
-          { "name": "Audio", "value": "audio" }
-        ]
+        "value": ""
       },
       {
         "component": "text",
