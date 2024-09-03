@@ -288,11 +288,11 @@ function decorateVideo(main) {
   console.log(divContainer);
   if(divContainer) {
     const linkContainer = divContainer.querySelector('div > div.button-container > p');
-    if (window.location.pathname.includes('/en/stories/podcasts') && linkContainer) {
+    if (linkContainer && (window.location.pathname.includes('/en/stories/podcasts'))) {
      const link = linkContainer.querySelector('a');
      if (link.title === "video") {
     const embedHTML = `<div class="relative md:absolute w-1/2 md:w-1/2 h-full object-cover md:right-0 md:bottom-6">
-          <iframe src="https://www.youtube.com/embed/3uCfxO5W6BE"
+          <iframe src="${link.href}"
           style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" 
           allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" scrolling="no" title="Content from Youtube" loading="eager"></iframe>
         </div>`;
