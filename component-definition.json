@@ -264,7 +264,7 @@
         },
         {
           "title": "Podcasts",
-          "id": "other-episodes",
+          "id": "podcasts",
           "plugins": {
             "xwalk": {
               "page": {
