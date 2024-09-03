@@ -1,5 +1,87 @@
 [
   {
+    "id": "page-metadata",
+    "fields": [
+      {
+        "component": "container",
+        "label": "Fieldset",
+        "fields": [
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "jcr:title",
+            "label": "Title"
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "jcr:description",
+            "label": "Description"
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "cq:canonicalUrl",
+            "label": "Canonical"
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "keywords",
+            "multi": true,
+            "label": "Keywords"
+          },
+          {
+            "component": "date-time",
+            "valueType": "date-time",
+            "name": "publishDate",
+            "label": "Publish Date",
+            "placeholder": "YYYY-MM-DD",
+            "displayFormat": null,
+            "valueFormat": null
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "navTitle",
+            "label": "Navigation Title"
+          },
+          {
+            "component": "aem-tag",
+            "valueType": "string",
+            "name": "pageTags",
+            "label": "AEM Tag Picker"
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "authorName",
+            "label": "Author Name"
+          },
+          {
+            "component": "reference",
+            "valueType": "string",
+            "name": "authorImage",
+            "label": "Image",
+            "multi": false
+          },
+          {
+            "component": "text",
+            "valueType": "number",
+            "name": "readingTime",
+            "label": "Reading Time"
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "template",
+            "label": "Template"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "title",
     "fields": [
       {
@@ -111,6 +193,25 @@
     ]
   },
   {
+    "id": "video",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "video_href",
+        "value": "",
+        "label": "Video Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "video_hrefTitle",
+        "value": "",
+        "label": "Video Title"
+      }
+    ]
+  },
+  {
     "id": "columns",
     "fields": [
       {
@@ -148,19 +249,19 @@
     ]
   },
   {
-    "id": "cards-item",
+    "id": "card",
     "fields": [
       {
         "component": "reference",
         "valueType": "string",
-        "name": "card_image",
+        "name": "image",
         "label": "Card Image",
         "multi": false
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "card_imageAlt",
+        "name": "imageAlt",
         "label": "Alt",
         "value": ""
       },
@@ -172,17 +273,11 @@
         "label": "Title"
       },
       {
-        "component": "select",
+        "component": "text",
         "name": "card_titleType",
-        "value": "h3",
-        "label": "Title Type",
+        "label": "",
         "valueType": "string",
-        "options": [
-          {
-            "name": "h3",
-            "value": "h3"
-          }
-        ]
+        "hidden": true
       },
       {
         "component": "richtext",
@@ -216,12 +311,32 @@
         "value": "",
         "label": "Style",
         "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "tabName",
+        "value": "",
+        "label": "Tab Name",
+        "valueType": "string"
       }
     ]
   },
   {
     "id": "hero",
     "fields": [
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "value": "",
+        "label": "Search Options",
+        "options": [
+          {
+            "name": "Input Popup",
+            "value": "input-popup"
+          }
+        ]
+      },
       {
         "component": "reference",
         "valueType": "string",
@@ -338,20 +453,6 @@
     "id": "alternating",
     "fields": [
       {
-        "component": "reference",
-        "valueType": "string",
-        "name": "alternating_image",
-        "label": "Image",
-        "multi": false
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "alternating_imageAlt",
-        "label": "Alt",
-        "value": ""
-      },
-      {
         "component": "text",
         "valueType": "string",
         "name": "alternating_title",
@@ -385,16 +486,30 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "cta_href",
+        "name": "alternating_ctahref",
         "value": "",
         "label": "CTA Link"
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "cta_hrefText",
+        "name": "alternating_ctahrefText",
         "value": "",
         "label": "CTA Text"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Alt",
+        "value": ""
       }
     ]
   },
@@ -405,6 +520,294 @@
         "component": "aem-content",
         "name": "reference",
         "label": "Reference"
+      }
+    ]
+  },
+  {
+    "id": "teaser",
+    "fields": [
+      {
+        "component": "text",
+        "name": "teaser_title",
+        "value": "",
+        "label": "Title",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "teaser_titleType",
+        "label": "",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "name": "teaser_description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "teaser_descriptionType",
+        "label": "",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "aem-content",
+        "name": "teaser_reference",
+        "value": "",
+        "label": "Select the page to link to",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "title-card",
+    "fields": [
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "value": "",
+        "label": "Search Options",
+        "options": [
+          {
+            "name": "Podcast",
+            "value": "title-image"
+          }
+        ]
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Alt",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title-card_title",
+        "value": "",
+        "label": "Title"
+      },
+      {
+        "component": "select",
+        "name": "title-card_titleType",
+        "hidden": true,
+        "label": "Title Type",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "title-card_description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "alert-banner",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "alert-banner_title",
+        "value": "",
+        "label": "Title"
+      },
+      {
+        "component": "select",
+        "name": "alert-banner_titleType",
+        "hidden": true,
+        "label": "Title Type",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "alert-banner_ctahref",
+        "value": "",
+        "label": "CTA Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "alert-banner_ctahrefText",
+        "value": "",
+        "label": "CTA Text"
+      }
+    ]
+  },
+  {
+    "id": "hero-video",
+    "fields": [
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "value": "",
+        "label": "Block Options",
+        "options": [
+          {
+            "name": "Video Position",
+            "value": "right-video"
+          }
+        ]
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image_one",
+        "label": "First Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "image_oneAlt",
+        "label": "First Alt",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "hero-video_title",
+        "value": "",
+        "label": "Title"
+      },
+      {
+        "component": "select",
+        "name": "hero-video_titleType",
+        "hidden": true,
+        "label": "Title Type",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "hero-video_description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image_two",
+        "label": "Second Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "image_twoAlt",
+        "label": "Second Alt",
+        "value": ""
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image_three",
+        "label": "Third Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "image_threeAlt",
+        "label": "Third Alt",
+        "value": ""
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image_four",
+        "label": "Fourth Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "image_fourAlt",
+        "label": "Fourth Alt",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "product-overview",
+    "fields": [
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "value": "",
+        "label": "Options",
+        "options": [
+          {
+            "name": "Overview",
+            "value": "overview",
+            "selected": true
+          },
+          {
+            "name": "Datasheet",
+            "value": "datasheet"
+          },
+          {
+            "name": "Supprot and Download",
+            "value": "download"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "learn-more",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "learn-more_title",
+        "value": "",
+        "label": "Title"
+      },
+      {
+        "component": "select",
+        "name": "learn-more_titleType",
+        "hidden": true,
+        "label": "Title Type",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "learn-more_description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "learn-more_ctahref",
+        "value": "",
+        "label": "CTA Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "learn-more_ctahrefText",
+        "value": "",
+        "label": "CTA Text"
       }
     ]
   }

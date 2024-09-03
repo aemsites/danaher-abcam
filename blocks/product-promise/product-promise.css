@@ -51,7 +51,7 @@
   height: 1.5rem
 }
 
-.product-promise-wrapper :is(.h-\[1px\]) {
+.product-promise-wrapper :is(.h-px) {
   height: 1px
 }
 

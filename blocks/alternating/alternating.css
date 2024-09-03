@@ -11,16 +11,16 @@
   margin-bottom: 2rem
 }
 
+.alternating-wrapper :is(.block) {
+  display: block
+}
+
 .alternating-wrapper :is(.h-full) {
   height: 100%
 }
 
 .alternating-wrapper :is(.w-16) {
   width: 4rem
-}
-
-.alternating-wrapper :is(.w-\[87\%\]) {
-  width: 87%
 }
 
 .alternating-wrapper :is(.w-full) {
@@ -57,25 +57,6 @@
   background-color: rgb(245 245 245 / var(--tw-bg-opacity))
 }
 
-.alternating-wrapper :is(.bg-gradient-to-b) {
-  background-image: linear-gradient(to bottom, var(--tw-gradient-stops))
-}
-
-.alternating-wrapper :is(.from-teal-400) {
-  --tw-gradient-from: #2dd4bf var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(45 212 191 / 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
-}
-
-.alternating-wrapper :is(.via-gray-300) {
-  --tw-gradient-to: rgb(209 213 219 / 0)  var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), #d1d5db var(--tw-gradient-via-position), var(--tw-gradient-to)
-}
-
-.alternating-wrapper :is(.to-orange-500) {
-  --tw-gradient-to: #f97316 var(--tw-gradient-to-position)
-}
-
 .alternating-wrapper :is(.px-10) {
   padding-left: 2.5rem;
   padding-right: 2.5rem
@@ -104,11 +85,6 @@
 .alternating-wrapper :is(.py-2\.5) {
   padding-top: 0.625rem;
   padding-bottom: 0.625rem
-}
-
-.alternating-wrapper :is(.py-\[72px\]) {
-  padding-top: 72px;
-  padding-bottom: 72px
 }
 
 .alternating-wrapper :is(.text-4xl) {
@@ -166,20 +142,9 @@
   }
 }
 
-@media (max-width: 768px) {
-  .alternating-wrapper :is(.max-\[768px\]\:w-full) {
-    width: 100%
-  }
-}
-
 @media (min-width: 640px) {
   .alternating-wrapper :is(.sm\:block) {
     display: block
-  }
-
-  .alternating-wrapper :is(.sm\:px-\[61px\]) {
-    padding-left: 61px;
-    padding-right: 61px
   }
 }
 
@@ -192,5 +157,16 @@
 @media (min-width: 1024px) {
   .alternating-wrapper :is(.lg\:flex) {
     display: flex
+  }
+}
+
+@media (min-width: 1280px) {
+  .alternating-wrapper :is(.xl\:max-w-\[1120px\]) {
+    max-width: 1120px
+  }
+
+  .alternating-wrapper :is(.xl\:px-0) {
+    padding-left: 0px;
+    padding-right: 0px
   }
 }

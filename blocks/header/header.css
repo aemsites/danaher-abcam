@@ -81,6 +81,11 @@
   display: none
 }
 
+.header-wrapper :is(.size-5) {
+  width: 1.25rem;
+  height: 1.25rem
+}
+
 .header-wrapper :is(.h-0) {
   height: 0px
 }
@@ -384,11 +389,6 @@
     padding-left: 3rem;
     padding-right: 3rem
   }
-
-  .header-wrapper :is(.md\:py-4) {
-    padding-top: 1rem;
-    padding-bottom: 1rem
-  }
 }
 
 @media (min-width: 1024px) {
@@ -426,14 +426,6 @@
 
   .header-wrapper :is(.lg\:pt-4) {
     padding-top: 1rem
-  }
-
-  .header-wrapper :is(.lg\:\!pb-4) {
-    padding-bottom: 1rem !important
-  }
-
-  .header-wrapper :is(.lg\:pt-8) {
-    padding-top: 2rem
   }
 }
 

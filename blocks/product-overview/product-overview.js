@@ -1,9 +1,10 @@
 import { decorateIcons } from '../../scripts/aem.js';
 import {
-  div, h6, p, h3, h5, ul, li, span,
-  a,
+  div, h6, p, h3, ul, li, span, a,
 } from '../../scripts/dom-builder.js';
 import { getProductResponse } from '../../scripts/search.js';
+import { decorateModals } from '../../scripts/modal.js';
+import { toolTip } from '../../scripts/scripts.js';
 
 function createKeyFactElement(key, value) {
   return div(
@@ -12,14 +13,14 @@ function createKeyFactElement(key, value) {
     p({ class: 'text-base text-black' }, value),
   );
 }
-export function getStarRating(rating, starParent, width = 'w-7') {
+export function getStarRating(rating, starParent, size = 'size-7') {
   // eslint-disable-next-line no-plusplus
   for (let i = 1; i <= 5; i++) {
     const spanEl = span();
     if (i <= rating) {
-      spanEl.classList.add('icon', 'icon-star-rating', `${width}`, 'h-auto');
+      spanEl.classList.add('icon', 'icon-star-rating', size, 'h-auto');
     } else {
-      spanEl.classList.add('icon', 'icon-star-rating-empty', `${width}`, 'h-auto');
+      spanEl.classList.add('icon', 'icon-star-rating-empty', size, 'h-auto');
     }
     decorateIcons(spanEl);
     starParent.append(spanEl);
@@ -59,8 +60,8 @@ function getButtonAlternative(rawData, title) {
     buttonAlternative.classList.add(...'bg-white w-full border border-interactive-grey-transparent-active rounded-md hover:bg-[#0000000d] cursor-pointer text-left'.split(' '));
     buttonAlternative.appendChild(div({ class: 'h-[5px] mb-4', style: 'background: linear-gradient(90deg, #4ba6b3 0, #c9d3b7 35%, #ff8730 70%, #c54428)' }));
     buttonAlternative.appendChild(p({ class: 'w-fit mx-4 px-2 py-1 rounded-md text-xs font-semibold bg-[#edf6f7] text-[#2c656b] border-blue-70 border ' }, categoryType));
-    buttonAlternative.appendChild(h5({ class: 'mt-4 mx-4 text-xs text-[#65797c]' }, (productCode)));
-    buttonAlternative.appendChild(h5({ class: 'pb-4 mt-2 mx-4 text-sm text-black-0' }, name));
+    buttonAlternative.appendChild(p({ class: 'mt-4 mx-4 text-xs text-[#65797c]' }, productCode));
+    buttonAlternative.appendChild(p({ class: 'pb-4 mt-2 mx-4 text-sm text-black-0' }, name));
     buttonAlternative.appendChild(p({ class: 'border-t-[1px] border-[#dde1e1] my-6 mx-4' }));
     titleDiv.appendChild(h3(
       { class: 'mb-6 font-semibold text-2xl text-[#2a3c3c]' },
@@ -73,6 +74,12 @@ function getButtonAlternative(rawData, title) {
         buttonAlternative,
       ),
     ));
+    const insteadbtn = titleDiv.appendChild(a(
+      { class: 'font-2xl mt-4', href: '/modals/consider-this-alternative' },
+      span({ class: 'learnmore align-center mt-4 underline text-[#378189]' }, 'why should I try this instead?'),
+    ));
+    decorateModals(insteadbtn);
+    titleDiv.appendChild(insteadbtn);
     return titleDiv;
   }
   return '';
@@ -129,10 +136,13 @@ export default async function decorate(block) {
   });
 
   // Constructing the container with title, description, alternative names, and key-value pairs
+  const overviewTitle = toolTip('overviewtitle', 'overviewtooltip', title, null);
+  const datasheetTitle = toolTip('datasheettitle', 'datasheettooltip', title, null);
+  const supportAndDownloadTitle = toolTip('supportanddownloadtitle', 'supportanddownloadtooltip', title, null);
   if (block.classList.contains('datasheet')) {
     const datasheetContainer = div(
       { class: 'font-sans' },
-      div({ class: 'text-black text-4xl pb-4 font-bold' }, title),
+      div({ class: 'text-black text-4xl pb-4 font-bold' }, datasheetTitle),
       div({ class: 'text-black text-xl font-normal' }, description),
       productTagsDiv,
       alternativeNames,
@@ -141,14 +151,14 @@ export default async function decorate(block) {
   } else if (block.classList.contains('download')) {
     const supportContainer = div(
       { class: 'font-sans' },
-      div({ class: 'text-black text-4xl pb-4 font-bold' }, title),
+      div({ class: 'text-black text-4xl pb-4 font-bold' }, supportAndDownloadTitle),
       productTagsDiv,
     );
     block.appendChild(supportContainer);
   } else {
     const overviewContainer = div(
       { class: 'font-sans py-6' },
-      div({ class: 'text-black text-4xl pb-4 font-bold' }, title),
+      div({ class: 'text-black text-4xl pb-4 font-bold' }, overviewTitle),
       div({ class: 'text-black text-xl font-normal tracking-wide' }, description),
       getReviewsRatings(aggregatedRating, numberOfReviews),
       div({ class: 'border-t-[1px] border-[#dde1e1] my-6' }),

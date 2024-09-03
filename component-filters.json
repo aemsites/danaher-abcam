@@ -15,7 +15,8 @@
       "text",
       "image",
       "button",
-      "title"
+      "title",
+      "video"
     ]
   },
   {
@@ -25,18 +26,35 @@
       "image",
       "button",
       "title",
+      "video",
       "hero",
       "cards",
       "columns",
       "mini-teasers",
       "alternating",
-      "fragment"
+      "fragment",
+      "teasers",
+      "title-card",
+      "alert-banner",
+      "hero-video",
+      "product-tabs",
+      "product-overview",
+      "product-buybox",
+      "product-reactivity",
+      "product-target-data",
+      "recommended-products",
+      "recently-viewed",
+      "product-datasheet",
+      "product-downloads",
+      "product-protocols",
+      "product-list",
+      "learn-more"
     ]
   },
   {
     "id": "cards",
     "components": [
-      "cards-item"
+      "card"
     ]
   },
   {
@@ -47,6 +65,24 @@
   },
   {
     "id": "alternating",
+    "components": []
+  },
+  {
+    "id": "teasers",
+    "components": [
+      "teaser"
+    ]
+  },
+  {
+    "id": "title-card",
+    "components": []
+  },
+  {
+    "id": "alert-banner",
+    "components": []
+  },
+  {
+    "id": "hero-video",
     "components": []
   }
 ]

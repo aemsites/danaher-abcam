@@ -14,7 +14,7 @@ import {
   toClassName,
   getMetadata,
 } from './aem.js';
-import { div } from './dom-builder.js';
+import { div, button } from './dom-builder.js';
 
 const LCP_BLOCKS = ['hero', 'hero-video']; // add your LCP blocks to the list
 
@@ -75,7 +75,83 @@ export function isValidProperty(property) {
   }
   return false;
 }
+export function paginateData(list, currentPage, perPage) {
+  return list.slice((currentPage - 1) * perPage, currentPage * perPage);
+}
+ 
+export function paginateIndexes({ listLength, currentPage, perPage }) {
+  if (listLength === 0) return [];
+  else if (listLength <= perPage) return [1];
+  const total = Math.ceil(listLength / perPage);
+  const center = [currentPage - 1, currentPage, currentPage + 1],
+    filteredCenter = center.filter((p) => p > 1 && p < total),
+    includeThreeLeft = currentPage === 5,
+    includeThreeRight = currentPage === total - 4,
+    includeLeftDots = currentPage > 5,
+    includeRightDots = currentPage < total - 4;
+ 
+  if (includeThreeLeft) filteredCenter.unshift(2);
+  if (includeThreeRight) filteredCenter.push(total - 1);
+ 
+  if (includeLeftDots) filteredCenter.unshift('...');
+  if (includeRightDots) filteredCenter.push('...');
+ 
+  return [1, ...filteredCenter, total];
+}
+export function clickToCopy(sku) {
+  var copyText = document.getElementById(sku);
+  navigator.clipboard.writeText(copyText.innerText);
+  document.getElementById(sku).previousElementSibling.innerHTML='Copied!';
+}
+export function mouseEnter(msg) {
+  var copyText = document.getElementById(msg);
+  copyText.classList.remove('hidden');
+}
+export function mouseLeave(toolTipClassId,textId) {
+  var copyText = document.getElementById(toolTipClassId);
+  var btn = document.getElementById(textId);
+  copyText.classList.add('hidden');
+  if(!btn.matches(':hover') && !copyText.matches(':hover')){
+    copyText.innerHTML='Click to Copy';
+  } 
+}
+export function toolTip(textId,toolTipClassId,title,skuClass){
+  let buttonDiv;
+  let clickToCopyDiv;
+  if(skuClass&&String(skuClass.trim!==null)){
+    buttonDiv = button({ id: 'skubutton', class: 'product-tabs-productID outline-none md:flex-col' });
+    clickToCopyDiv = div({ class: 'hidden w-auto  px-[3px] pt-[3px] bg-[#378189] text-center text-[white] rounded-t-lg text-sm absolute  -top-[23px] h-6 text-center text-xs break-keep text-wrap max-[768px]:top-[85px] font-normal', id: toolTipClassId }, 'Click to Copy');
+  }
+  else{
+   buttonDiv = button({ class: 'relative text-black text-4xl pb-4 font-bold' });
+   clickToCopyDiv = div({ class: 'hidden w-auto px-[3px] pt-[3px] bg-[#378189] text-center text-[white] rounded-t-lg text-sm absolute right-[10px] -top-[23px] h-6 text-center text-xs break-keep text-wrap font-normal', id: toolTipClassId }, 'Click to Copy');
+  }
 
+  const text = div({ id: textId, class: 'text-left border border-white hover:border-[#378189] rounded-lg ' }, title);
+  buttonDiv.appendChild(clickToCopyDiv);
+  buttonDiv.appendChild(text);
+  text.addEventListener('click', () => {
+    clickToCopy(textId);
+  });
+  text.addEventListener('mouseenter', () => {
+    mouseEnter(toolTipClassId);
+  });
+  
+  text.addEventListener('mouseleave', () => {
+    mouseLeave(toolTipClassId,textId);
+  });
+  clickToCopyDiv.addEventListener('click', () => {
+    clickToCopy(textId);
+  });
+  clickToCopyDiv.addEventListener('mouseenter', () => {
+    mouseEnter(toolTipClassId);
+  });
+  clickToCopyDiv.addEventListener('mouseleave', () => {
+    mouseLeave(toolTipClassId,textId);
+  });
+  
+  return buttonDiv
+}
 export function createRequest(config) {
   const {
     url,
@@ -133,6 +209,7 @@ const TEMPLATE_LIST = [
   'blog-page',
   'product-detail',
   'search-results',
+  'stories',
 ];
 
 async function decorateTemplates(main) {
@@ -162,6 +239,25 @@ function buildAutoBlocks(main) {
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
+  }
+}
+
+function decorateStoryPage(main){
+  const sectionEl = main.querySelector(':scope > div.section.story-info-container.social-media-container');
+  if(sectionEl){
+    const toBeRemoved = ['story-info-wrapper', 'social-media-wrapper'];
+    const rightSideElements = div({class: 'w-full'});
+    Array.from(sectionEl?.children).forEach((element) => {
+      if (!toBeRemoved.includes(element.classList[0])) {
+        rightSideElements.append(element);
+      }
+    });
+    sectionEl?.append(rightSideElements);
+  
+    const divEl = div({class: 'ml-0 md:ml-8 max-w-56'});
+    divEl.append(sectionEl?.querySelector('.story-info-wrapper'));
+    divEl.append(sectionEl?.querySelector('.social-media-wrapper'));
+    sectionEl?.prepend(divEl);
   }
 }
 
@@ -198,6 +294,7 @@ export function decorateMain(main) {
   decorateSections(main);
   decorateBlocks(main);
   decorateStickyRightNav(main);
+  decorateStoryPage(main);
 }
 
 function capitalizeWords(str) {

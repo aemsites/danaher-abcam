@@ -2,20 +2,78 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    body {
+        @apply font-sans;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-heading;
+    }
+}
 
 @layer components {
     header {
         @apply h-11 lg:h-[54px];
+    }
+    
+    main .section .default-content-wrapper a {
+        @apply font-bold text-[#378189];
+    }
+
+    main .section:not(.no-section-padding, .title-card-container) {
+        @apply mx-auto xl:max-w-7xl px-6 pb-16;
+    }
+
+    main .section .default-content-wrapper h2{
+        @apply font-medium leading-8 lg:leading-5 text-4xl py-8;
+    }
+
+    main .section .title-card-wrapper {
+        @apply border-b;
+    }
+
+    .button-container {
+        @apply bg-black hover:bg-[#3B3B3B] h-8 whitespace-nowrap rounded-2xl items-center py-2 px-3 text-white text-xs capitalize justify-self-end w-fit;
     }
 
     .home-page main .section > div.hero-wrapper {
         @apply h-[496px];
     }
 
+    main .section:not(:last-child) {
+        @apply mb-10;
+    }
+
     main .section.hide-section {
         @apply !hidden;
     }
 
+    main .section .cards-wrapper {
+        @apply m-auto mb-8;
+    }
+
+    main .section .cards-wrapper .cols-3 {
+        @apply grid grid-cols-3 gap-11 max-[799px]:grid-cols-1;
+    }
+
+    main .section .mini-teasers-wrapper {
+        @apply bg-black;
+    }
+
+    main .section .mini-teasers-wrapper .cols-4 {
+        @apply mx-auto bg-black w-4/5 py-20 space-y-11 min-[800px]:flex min-[800px]:space-x-11 min-[800px]:space-y-0;
+    }
+
+    main .section .alternating-wrapper {
+        @apply bg-gradient-to-b from-teal-400 via-gray-300 to-orange-500 mx-auto py-[72px] px-[30px] sm:px-[61px] w-full;
+    }
+    
     main .section > div.episodes-wrapper {
         @apply h-[2205px] lg:h-[1182px] bg-black text-white;
     }
@@ -25,30 +83,58 @@
     }
 
     main .section > .product-overview-wrapper {
-        @apply pt-8 col-span-12 lg:col-span-8;
+        @apply col-span-12 lg:col-span-8;
     }
 
     main .section > .product-buybox-wrapper {
-        @apply py-8 col-start-10 col-span-3;
+        @apply col-start-10 col-span-3;
     }
 
     main .section > .product-reactivity-wrapper {
-        @apply mx-auto max-[768px]:w-full py-8;
+        @apply mx-auto max-[768px]:w-full;
     }
 
     main .section > .product-target-data-wrapper {
-        @apply mx-auto max-[768px]:w-full py-8;
+        @apply mx-auto max-[768px]:w-full;
     }
 
     main .section > .recommended-products-wrapper {
-        @apply mx-auto  max-[768px]:w-full py-8;
+        @apply mx-auto  max-[768px]:w-full;
     }
 
     main .section > .recently-viewed-wrapper {
-        @apply mx-auto max-[768px]:w-full py-8;
+        @apply mx-auto max-[768px]:w-full;
     }
 
     .search-results main {
         @apply min-h-[91rem] h-auto w-full;
     }
-}
+
+    dialog .modal-content .section > .default-content-wrapper {
+        @apply flex flex-col justify-between gap-4 max-w-[600px] max-h-max m-2 px-6 py-2;
+    }
+
+    dialog .modal-content .section > .default-content-wrapper h2 {
+        @apply font-bold text-lg text-gray-900;
+    }
+    
+    dialog .modal-content .section > .default-content-wrapper h3 {
+        @apply font-bold text-base text-gray-900;
+    }
+
+    dialog .modal-content .section > .default-content-wrapper p {
+        @apply font-normal text-gray-900 mb-2;
+    }
+
+    .stories main .story-middle-container {
+        @apply flex flex-col gap-x-0 lg:flex-row lg:gap-x-16;
+    }
+
+    .stories main .section.no-section-padding .columns-wrapper {
+        @apply w-full mx-auto lg:h-[28rem] relative;
+    }
+
+    .stories main .section.no-section-padding.columns-container {
+        @apply pt-8;
+    }
+}   
