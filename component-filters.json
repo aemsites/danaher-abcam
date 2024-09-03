@@ -16,7 +16,7 @@
       "image",
       "button",
       "title",
-      "video"
+      "media"
     ]
   },
   {
@@ -26,7 +26,7 @@
       "image",
       "button",
       "title",
-      "video",
+      "media",
       "hero",
       "cards",
       "columns",

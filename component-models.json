@@ -193,21 +193,31 @@
     ]
   },
   {
-    "id": "video",
+    "id": "media",
     "fields": [
       {
-        "component": "text",
+        "component": "radio-group",
+        "label": "Media Type",
+        "name": "media_hrefType",
         "valueType": "string",
-        "name": "video_href",
-        "value": "",
-        "label": "Video Link"
+        "options": [
+          { "name": "Video", "value": "video" },
+          { "name": "Audio", "value": "audio" }
+        ]
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "video_hrefTitle",
+        "name": "media_href",
         "value": "",
-        "label": "Video Title"
+        "label": "Media Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_hrefTitle",
+        "value": "",
+        "label": "Media Title"
       }
     ]
   },
