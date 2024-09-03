@@ -75,7 +75,29 @@ export function isValidProperty(property) {
   }
   return false;
 }
-
+export function paginateData(list, currentPage, perPage) {
+  return list.slice((currentPage - 1) * perPage, currentPage * perPage);
+}
+ 
+export function paginateIndexes({ listLength, currentPage, perPage }) {
+  if (listLength === 0) return [];
+  else if (listLength <= perPage) return [1];
+  const total = Math.ceil(listLength / perPage);
+  const center = [currentPage - 1, currentPage, currentPage + 1],
+    filteredCenter = center.filter((p) => p > 1 && p < total),
+    includeThreeLeft = currentPage === 5,
+    includeThreeRight = currentPage === total - 4,
+    includeLeftDots = currentPage > 5,
+    includeRightDots = currentPage < total - 4;
+ 
+  if (includeThreeLeft) filteredCenter.unshift(2);
+  if (includeThreeRight) filteredCenter.push(total - 1);
+ 
+  if (includeLeftDots) filteredCenter.unshift('...');
+  if (includeRightDots) filteredCenter.push('...');
+ 
+  return [1, ...filteredCenter, total];
+}
 export function clickToCopy(sku) {
   var copyText = document.getElementById(sku);
   navigator.clipboard.writeText(copyText.innerText);
@@ -187,6 +209,7 @@ const TEMPLATE_LIST = [
   'blog-page',
   'product-detail',
   'search-results',
+  'stories',
 ];
 
 async function decorateTemplates(main) {
@@ -216,6 +239,25 @@ function buildAutoBlocks(main) {
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
+  }
+}
+
+function decorateStoryPage(main){
+  const sectionEl = main.querySelector(':scope > div.section.story-info-container.social-media-container');
+  if(sectionEl){
+    const toBeRemoved = ['story-info-wrapper', 'social-media-wrapper'];
+    const rightSideElements = div({class: 'w-full'});
+    Array.from(sectionEl?.children).forEach((element) => {
+      if (!toBeRemoved.includes(element.classList[0])) {
+        rightSideElements.append(element);
+      }
+    });
+    sectionEl?.append(rightSideElements);
+  
+    const divEl = div({class: 'ml-0 md:ml-8 max-w-56'});
+    divEl.append(sectionEl?.querySelector('.story-info-wrapper'));
+    divEl.append(sectionEl?.querySelector('.social-media-wrapper'));
+    sectionEl?.prepend(divEl);
   }
 }
 
@@ -252,6 +294,7 @@ export function decorateMain(main) {
   decorateSections(main);
   decorateBlocks(main);
   decorateStickyRightNav(main);
+  decorateStoryPage(main);
 }
 
 function capitalizeWords(str) {

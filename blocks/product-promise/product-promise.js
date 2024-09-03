@@ -44,7 +44,7 @@ export default function decorate(block) {
   tncDiv.append(tnc);
   block.append(
     hr({
-      class: 'h-[1px] my-2 bg-interactive-grey-active mb-4',
+      class: 'h-px my-2 bg-interactive-grey-active mb-4',
     }),
     tncDiv,
   );
