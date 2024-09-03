@@ -210,11 +210,14 @@
         "value": ""
       },
       {
-        "component": "text",
-        "valueType": "string",
+        "component": "radio-group",
+        "label": "Media Type",
         "name": "media_hrefTitle",
-        "value": "",
-        "label": "Media Type"
+        "valueType": "string",
+        "options": [
+          { "name": "Video", "value": "video" },
+          { "name": "Audio", "value": "audio" }
+        ]
       }
     ]
   },
