@@ -129,6 +129,11 @@ const fileMappings = [
     wrapper: 'card-slider-wrapper',
   },
   {
+    content: './blocks/drawer/drawer.js',
+    output: './blocks/drawer/drawer.css',
+    wrapper: 'drawer-wrapper',
+  },
+  {
     content: './blocks/download-block/download-block.js',
     output: './blocks/download-block/download-block.css',
     wrapper: 'download-block-wrapper',

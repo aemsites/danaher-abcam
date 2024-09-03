@@ -18,6 +18,11 @@
   display: inline-flex
 }
 
+.product-target-data-wrapper :is(.size-4) {
+  width: 1rem;
+  height: 1rem
+}
+
 .product-target-data-wrapper :is(.w-fit) {
   width: -moz-fit-content;
   width: fit-content
