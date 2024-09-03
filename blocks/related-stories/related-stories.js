@@ -12,7 +12,8 @@ function createCard(article, firstCard = false) {
   const cardWrapper = a(
     { class: 'group h-full', href: article.path, title: article.title },
     imageHelper(article.image, article.title, firstCard),
-    div({class: 'py-2'},
+    div(
+      { class: 'py-2' },
       h3(
         {
           class:
@@ -20,7 +21,7 @@ function createCard(article, firstCard = false) {
         },
         cardTitle,
       ),
-      p({class:'text-sm font-normal line-clamp-3 break-words !h-28'}, article.description),
+      p({ class: 'text-sm font-normal line-clamp-3 break-words !h-28' }, article.description),
       div(
         {
           class:

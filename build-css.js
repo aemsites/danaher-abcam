@@ -252,7 +252,7 @@ const fileMappings = [
     content: './blocks/related-stories/related-stories.js',
     output: './blocks/related-stories/related-stories.css',
     wrapper: 'related-stories-wrapper',
-  }
+  },
 ];
 
 const watch = process.argv[2];
