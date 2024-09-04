@@ -1,0 +1,15 @@
+.podcasts-wrapper .block {
+  display: block
+}
+
+.podcasts-wrapper .flex {
+  display: flex
+}
+
+.podcasts-wrapper .h-\[200px\] {
+  height: 200px
+}
+
+.podcasts-wrapper .w-\[200px\] {
+  width: 200px
+}
