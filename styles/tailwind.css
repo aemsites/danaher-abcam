@@ -27,7 +27,7 @@
     }
 
     main .section:not(.no-section-padding, .title-card-container) {
-        @apply mx-auto xl:max-w-7xl px-6 pb-16;
+        @apply mx-auto xl:max-w-7xl px-6 py-10;
     }
 
     main .section .default-content-wrapper h2{
@@ -44,10 +44,6 @@
 
     .home-page main .section > div.hero-wrapper {
         @apply h-[496px];
-    }
-
-    main .section:not(:last-child) {
-        @apply mb-10;
     }
 
     main .section.hide-section {

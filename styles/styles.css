@@ -622,7 +622,8 @@ main .section:not(.no-section-padding, .title-card-container) {
   margin-right: auto;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-  padding-bottom: 4rem;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
 }
 
 @media (min-width: 1280px) {
@@ -677,10 +678,6 @@ main .section .title-card-wrapper {
 
 .home-page main .section > div.hero-wrapper {
   height: 496px;
-}
-
-main .section:not(:last-child) {
-  margin-bottom: 2.5rem;
 }
 
 main .section.hide-section {
@@ -985,6 +982,10 @@ dialog .modal-content .section > .default-content-wrapper p {
   float: right;
 }
 
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
 .ml-0 {
   margin-left: 0px;
 }
@@ -1043,6 +1044,10 @@ dialog .modal-content .section > .default-content-wrapper p {
   height: 1.5rem;
 }
 
+.h-48 {
+  height: 12rem;
+}
+
 .h-6 {
   height: 1.5rem;
 }
@@ -1070,6 +1075,10 @@ dialog .modal-content .section > .default-content-wrapper p {
 .w-max {
   width: -moz-max-content;
   width: max-content;
+}
+
+.w-\[35rem\] {
+  width: 35rem;
 }
 
 .max-w-56 {
@@ -1259,6 +1268,11 @@ dialog .modal-content .section > .default-content-wrapper p {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .font-bold {
