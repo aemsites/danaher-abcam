@@ -14,7 +14,7 @@ export default function decorate(block) {
     if (block.className.includes('columns-2-cols')) {
       block.classList.add(...'h-full flex flex-col md:flex-row gap-y-6 px-6 md:px-0'.split(' '));
       if (window.location.pathname.includes('/en/stories/')) {
-        block.firstElementChild?.classList.add(...'container max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2'.split(' '));
+        block.firstElementChild?.classList.add(...'container max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2'.split(' '));
         const pageTags = getMetadata('pagetags');
         const tagName = pageTags?.split('/');
         const tag = tagName.pop();
@@ -29,7 +29,7 @@ export default function decorate(block) {
         img = pic;
         const moreStoriesImg = pic.querySelector('img');
         if (moreStoriesImg && window.location.pathname.includes('/en/stories/')) {
-          moreStoriesImg.classList.add(...'relative md:absolute w-full md:w-1/2 h-full object-cover md:right-0 md:bottom-6'.split(' '));
+          moreStoriesImg.classList.add(...'relative lg:absolute w-full lg:w-1/2 h-full object-cover lg:right-0 lg:bottom-6'.split(' '));
           // eslint-disable-next-line func-names
           moreStoriesImg.onerror = function () {
             moreStoriesImg.width = this.width;
@@ -41,7 +41,7 @@ export default function decorate(block) {
         }
       }
       if (window.location.pathname.includes('/en/stories/')) {
-        col.classList.add(...'my-auto md:pr-16'.split(' '));
+        col.classList.add(...'my-auto lg:pr-16'.split(' '));
         col.querySelectorAll('h1').forEach((ele) => {
           ele.classList.add(...'font-bold text-4xl mb-6'.split(' '));
         });

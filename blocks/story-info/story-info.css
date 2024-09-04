@@ -32,6 +32,11 @@
   display: none
 }
 
+.story-info-wrapper :is(.size-6) {
+  width: 1.5rem;
+  height: 1.5rem
+}
+
 .story-info-wrapper :is(.w-full) {
   width: 100%
 }
@@ -61,6 +66,10 @@
   --tw-space-y-reverse: 0;
   margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.25rem * var(--tw-space-y-reverse))
+}
+
+.story-info-wrapper :is(.pb-\[\.25rem\]) {
+  padding-bottom: .25rem
 }
 
 .story-info-wrapper :is(.pl-1) {
