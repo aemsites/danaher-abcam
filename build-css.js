@@ -253,6 +253,11 @@ const fileMappings = [
     output: './blocks/back-navigation/back-navigation.css',
     wrapper: 'back-navigation-wrapper',
   },
+  {
+    content: './blocks/podcasts/podcasts.js',
+    output: './blocks/podcasts/podcasts.css',
+    wrapper: 'podcasts-wrapper',
+  },
 ];
 
 const watch = process.argv[2];

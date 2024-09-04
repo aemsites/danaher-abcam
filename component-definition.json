@@ -287,8 +287,7 @@
                 "template": {
                   "name": "Podcast",
                   "model": "podcast",
-                  "podcast_titleType": "h2",
-                  "podcast_subtitleType": "h3"
+                  "podcast_titleType": "h2"
                 }
               }
             }
