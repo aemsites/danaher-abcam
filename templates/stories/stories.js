@@ -6,9 +6,9 @@ export default async function buildAutoBlocks() {
   section1.prepend(
     buildBlock('back-navigation', { elems: [] }),
   );
-  const section = main.querySelector(':scope > div:nth-child(2)');
-  section.classList.add(...'story-middle-container w-full'.split(' '));
-  section.prepend(
+  const section2 = main.querySelector(':scope > div:nth-child(2)');
+  section2.classList.add(...'story-middle-container w-full'.split(' '));
+  section2.prepend(
     buildBlock('story-info', { elems: [] }),
     buildBlock('social-media', { elems: [] }),
   );

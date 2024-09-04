@@ -477,7 +477,7 @@ function decorateIcon(span, width, height, prefix = '') {
  * @param {Element} [element] Element containing icons
  * @param {string} [prefix] prefix to be added to icon the src
  */
-function decorateIcons(element, width = 100, height = 100, prefix = '') {
+function decorateIcons(element, width = 25, height = 25, prefix = '') {
   const icons = [...element.querySelectorAll('span.icon')];
   icons.forEach((span) => {
     decorateIcon(span, width, height, prefix);
