@@ -525,6 +525,21 @@
               }
             }
           }
+        },
+        {
+          "title": "Elouqa-Form-Element",
+          "id": "elouqa-form-element",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Elouqa-Form-Element",
+                  "model": "elouqa-form-element"
+                }
+              }
+            }
+          }
         }
       ]
     }

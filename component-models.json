@@ -926,21 +926,54 @@
     ]
   },
   {
-    "id": "form",
+    "id": "elouqa-form",
     "fields": [
       {
         "component": "text",
         "valueType": "string",
-        "name": "form_id",
+        "name": "elouqa_form_id",
         "value": "",
-        "label": "Form Id"
+        "label": "Elouqa Form Id"
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "form_name",
+        "name": "elouqa_form_name",
         "value": "",
-        "label": "Form Name"
+        "label": "Elouqa Form Name"
+      }
+    ]
+  },
+  {
+    "id": "elouqa-form-element",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "elouqa_form_element_label",
+        "value": "",
+        "label": "Label"
+      },
+      {
+        "component": "text",
+        "name": "elouqa_form_element_elementType",
+        "value": "h3",
+        "label": "Element Type",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "elouqa_form_element_elementName",
+        "value": "h3",
+        "label": "Element Name",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "elouqa_form_element_elementValidations",
+        "value": "h3",
+        "label": "Validation Parameters",
+        "valueType": "string"
       }
     ]
   }
