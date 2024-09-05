@@ -1,0 +1,77 @@
+.podcasts-wrapper :is(.mb-6) {
+  margin-bottom: 1.5rem
+}
+
+.podcasts-wrapper :is(.ml-6) {
+  margin-left: 1.5rem
+}
+
+.podcasts-wrapper :is(.mt-4) {
+  margin-top: 1rem
+}
+
+.podcasts-wrapper :is(.block) {
+  display: block
+}
+
+.podcasts-wrapper :is(.flex) {
+  display: flex
+}
+
+.podcasts-wrapper :is(.h-\[200px\]) {
+  height: 200px
+}
+
+.podcasts-wrapper :is(.w-\[200px\]) {
+  width: 200px
+}
+
+.podcasts-wrapper :is(.w-\[65\%\]) {
+  width: 65%
+}
+
+.podcasts-wrapper :is(.object-cover) {
+  -o-object-fit: cover;
+     object-fit: cover
+}
+
+.podcasts-wrapper :is(.text-2xl) {
+  font-size: 1.5rem;
+  line-height: 2rem
+}
+
+.podcasts-wrapper :is(.text-sm) {
+  font-size: 0.875rem;
+  line-height: 1.25rem
+}
+
+.podcasts-wrapper :is(.font-bold) {
+  font-weight: 700
+}
+
+.podcasts-wrapper :is(.font-normal) {
+  font-weight: 400
+}
+
+.podcasts-wrapper :is(.leading-8) {
+  line-height: 2rem
+}
+
+.podcasts-wrapper :is(.text-black) {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity))
+}
+
+@media (max-width: 799px) {
+  .podcasts-wrapper :is(.max-\[799px\]\:ml-0) {
+    margin-left: 0px
+  }
+
+  .podcasts-wrapper :is(.max-\[799px\]\:block) {
+    display: block
+  }
+
+  .podcasts-wrapper :is(.max-\[799px\]\:w-full) {
+    width: 100%
+  }
+}

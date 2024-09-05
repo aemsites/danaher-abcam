@@ -617,24 +617,6 @@
     ]
   },
   {
-    "id": "podcasts",
-    "fields": [
-      {
-        "component": "multiselect",
-        "valueType": "string",
-        "name": "classes",
-        "value": "",
-        "label": "Block Options",
-        "options": [
-          {
-            "name": "1 Columns",
-            "value": "cols-1"
-          }
-        ]
-      }
-    ]
-  },
-  {
     "id": "podcast",
     "fields": [
       {
@@ -660,10 +642,10 @@
       },
       {
         "component": "text",
-        "name": "card_titleType",
+        "name": "podcast_titleType",
         "label": "",
         "valueType": "string",
-        "hidden": true
+        "value": "h2"
       },
       {
         "component": "text",
@@ -674,10 +656,10 @@
       },
       {
         "component": "text",
-        "name": "podcast_subtitle",
+        "name": "podcast_subtitleType",
         "label": "",
         "valueType": "string",
-        "hidden": true
+        "value": "h3"
       },
       {
         "component": "richtext",
@@ -708,24 +690,17 @@
         "label": "Stream Title"
       },
       {
-        "component": "text",
-        "name": "streamed_titleType",
-        "label": "",
-        "valueType": "string",
-        "hidden": true
-      },
-      {
         "component": "reference",
         "valueType": "string",
-        "name": "image",
+        "name": "icon",
         "label": "Streamed Images",
         "multi": true
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "imageAlt",
-        "label": "Alt",
+        "name": "iconAlt",
+        "label": "iconAlt",
         "value": ""
       }
     ]
