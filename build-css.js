@@ -258,6 +258,11 @@ const fileMappings = [
     output: './blocks/related-stories/related-stories.css',
     wrapper: 'related-stories-wrapper',
   },
+  {
+    content: './blocks/elouqa-form/elouqa-form.js',
+    output: './blocks/elouqa-form/elouqa-form.css',
+    wrapper: 'elouqa-form-wrapper',
+  },
 ];
 
 const watch = process.argv[2];
