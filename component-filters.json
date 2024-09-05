@@ -93,5 +93,11 @@
   {
     "id": "hero-video",
     "components": []
+  },
+  {
+    "id": "elouqa-form",
+    "components": [
+      "elouqa-form-element"
+    ]
   }
 ]
