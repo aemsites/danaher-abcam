@@ -4,6 +4,8 @@ import {
 } from '../../scripts/dom-builder.js';
 import { decorateIcons } from '../../scripts/aem.js';
 import { getStarRating } from '../product-overview/product-overview.js';
+import { decorateDrawer, showDrawer } from '../../scripts/drawer.js';
+import decorateProductQuickLook from '../../scripts/product-quick-look.js';
 
 function createSliderNavigation() {
   const prevButton = div(
@@ -34,13 +36,13 @@ function createSlides(productsArray) {
     } else ratingContainer.classList.add('hidden');
 
     const slide = li(
-      { class: 'h-auto size-full flex flex-col align-center text-left p-4 bg-white border border-[#0711121a] rounded hover:bg-[#0000000d] cursor-pointer' },
+      { class: 'slide-item h-auto size-full flex flex-col align-center text-left p-4 bg-white border border-[#0711121a] rounded hover:bg-[#0000000d] cursor-pointer' },
       p(
         { class: 'w-fit px-2 py-1 rounded text-xs text-emerald-800 border border-emerald-900 bg-[#edf6f7]' },
         product.category,
       ),
-      p({ class: 'mt-4 text-xs text-[#65797c] font-medium font-sans lowercase' }, product.code),
-      p({ class: 'mb-4 mt-2 text-sm text-black font-medium line-clamp-2' }, product.title),
+      p({ class: 'product-code mt-4 text-xs text-[#65797c] font-medium font-sans lowercase' }, product.code),
+      p({ class: 'product-title mb-4 mt-2 text-sm text-black font-medium line-clamp-2' }, product.title),
       div(
         { class: 'mt-auto' },
         hr({ class: 'h-px border-b border-[#0711121a]' }),
@@ -89,6 +91,31 @@ function updateDots(dotsContainer, currentIndex) {
   if (dots[currentIndex]) {
     dots[currentIndex].classList.add('bg-gray-600');
   }
+}
+
+// decorateOverviewContainer
+function quickViewContainer(block) {
+  const parentDiv = block.querySelector('.slider-wrapper');
+  parentDiv.addEventListener('click', async (event) => {
+    if (event.target.closest('.slide-item')) {
+      document.querySelector('#drawer-quickLook')?.parentElement?.replaceChildren();
+      const { block: publicationDrawerBlock, drawerBody } = await decorateDrawer({
+        id: 'drawer-quickLook', title: '', isBackdrop: true,
+      });
+      const selectedProduct = event.target.closest('.slide-item');
+      const recentlyViewedProducts = JSON.parse(localStorage.getItem('products')) || [];
+      const selectedObj = recentlyViewedProducts.find((obj) => obj.code === selectedProduct.querySelector('.product-code').textContent);
+      const quicklookContainer = await decorateProductQuickLook(
+        publicationDrawerBlock,
+        drawerBody,
+        selectedProduct,
+        selectedObj.slug,
+      );
+      decorateIcons(quicklookContainer);
+      block.append(publicationDrawerBlock);
+      showDrawer('drawer-quickLook');
+    }
+  });
 }
 
 function initializeSlider(sliderContainer, wrapper, prevButton, nextButton, dotsContainer) {
@@ -186,6 +213,7 @@ export default async function decorate(block) {
   const productCategory = responseData.categorytype;
   const productCode = responseData.productcode ? responseData.productcode.trim() : '';
   const productTitle = responseData.title ? responseData.title : '';
+  const productSlug = responseData.productslug ? responseData.productslug : '';
   let agrRating = null;
   let numOfReviews;
 
@@ -207,6 +235,7 @@ export default async function decorate(block) {
       title: productTitle,
       aggregatedRating: agrRating,
       numberOfReviews: numOfReviews,
+      slug: productSlug,
     });
 
     localStorage.setItem('products', JSON.stringify(productsArray));
@@ -246,5 +275,6 @@ export default async function decorate(block) {
     if (filteredProductsArray.length > 4) {
       initializeSlider(sliderContainer, sliderWrapper, prevButton, nextButton, dotsContainer);
     }
+    quickViewContainer(block);
   }
 }
