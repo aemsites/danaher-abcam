@@ -198,57 +198,7 @@
   background-color: rgb(42 95 101 / var(--tw-bg-opacity))
 }
 
-@media (min-width: 640px) {
-  .columns-wrapper :is(.sm\:absolute) {
-    position: absolute
-  }
-
-  .columns-wrapper :is(.sm\:bottom-6) {
-    bottom: 1.5rem
-  }
-
-  .columns-wrapper :is(.sm\:right-0) {
-    right: 0px
-  }
-
-  .columns-wrapper :is(.sm\:w-1\/2) {
-    width: 50%
-  }
-
-  .columns-wrapper :is(.sm\:grid-cols-2) {
-    grid-template-columns: repeat(2, minmax(0, 1fr))
-  }
-
-  .columns-wrapper :is(.sm\:flex-row) {
-    flex-direction: row
-  }
-
-  .columns-wrapper :is(.sm\:pr-16) {
-    padding-right: 4rem
-  }
-}
-
 @media (min-width: 768px) {
-  .columns-wrapper :is(.md\:absolute) {
-    position: absolute
-  }
-
-  .columns-wrapper :is(.md\:bottom-6) {
-    bottom: 1.5rem
-  }
-
-  .columns-wrapper :is(.md\:right-0) {
-    right: 0px
-  }
-
-  .columns-wrapper :is(.md\:w-1\/2) {
-    width: 50%
-  }
-
-  .columns-wrapper :is(.md\:grid-cols-2) {
-    grid-template-columns: repeat(2, minmax(0, 1fr))
-  }
-
   .columns-wrapper :is(.md\:flex-row) {
     flex-direction: row
   }
@@ -256,10 +206,6 @@
   .columns-wrapper :is(.md\:px-0) {
     padding-left: 0px;
     padding-right: 0px
-  }
-
-  .columns-wrapper :is(.md\:pr-16) {
-    padding-right: 4rem
   }
 }
 
