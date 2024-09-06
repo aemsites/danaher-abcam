@@ -157,25 +157,25 @@ export default async function decorate(block) {
       (item) => toClassName(item.topics).toLowerCase().indexOf(activeTagFilter) > -1,
     );
   }
-    // render cards application style
-    filteredArticles.sort((card1, card2) => card2.publishDate - card1.publishDate);
+  // render cards application style
+  filteredArticles.sort((card1, card2) => card2.publishDate - card1.publishDate);
 
-    let page = parseInt(getPageFromUrl(), 10);
-    page = Number.isNaN(page) ? 1 : page;
-    const limitPerPage = 18;
-    const start = (page - 1) * limitPerPage;
-    const articlesToDisplay = filteredArticles.slice(start, start + limitPerPage);
+  let page = parseInt(getPageFromUrl(), 10);
+  page = Number.isNaN(page) ? 1 : page;
+  const limitPerPage = 18;
+  const start = (page - 1) * limitPerPage;
+  const articlesToDisplay = filteredArticles.slice(start, start + limitPerPage);
 
-    const cardList = ul({
-        class:
+  const cardList = ul({
+    class:
         'container grid max-w-7xl w-full mx-auto gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-4 sm:px-0 justify-items-center mt-3 mb-3',
-    });
-    articlesToDisplay.forEach((article, index) => {
-        cardList.appendChild(createArticleCard(article, index === 0));
-    });
+  });
+  articlesToDisplay.forEach((article, index) => {
+    cardList.appendChild(createArticleCard(article, index === 0));
+  });
 
-    // render pagination and filters
-    const filterTags = createFilters(articles, true);
-    const paginationElements = createPagination(filteredArticles, page, limitPerPage);
-    block.append(filterTags, cardList, paginationElements);
+  // render pagination and filters
+  const filterTags = createFilters(articles, true);
+  const paginationElements = createPagination(filteredArticles, page, limitPerPage);
+  block.append(filterTags, cardList, paginationElements);
 }
