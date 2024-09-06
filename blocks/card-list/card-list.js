@@ -96,7 +96,7 @@ export function createFilters(articles, viewAll = false) {
     a(
       {
         class:
-          'text-center my-2 inline-block border-[1px] rounded-full border-black px-4 py-0.5 font-semibold text-black bg-white hover:text-white hover:bg-danaherpurple-500',
+          'text-center my-2 inline-block border-[1px] rounded-full border-black px-4 py-0.5 font-semibold text-black bg-white hover:text-white hover:bg-black',
         href: newUrl.toString(),
       },
       'View All',
@@ -116,7 +116,7 @@ export function createFilters(articles, viewAll = false) {
     const tagAnchor = a(
       {
         class:
-          'text-center my-2 inline-block border-[1px] rounded-full border-black px-4 py-0.5 font-semibold text-black bg-white hover:text-white hover:bg-slate-500',
+          'text-center my-2 inline-block border-[1px] rounded-full border-black px-4 py-0.5 font-semibold text-black bg-white hover:text-white hover:bg-black',
         href: newUrl.toString(),
       },
       keyword,
@@ -126,7 +126,7 @@ export function createFilters(articles, viewAll = false) {
   [...tags.children].forEach((tag) => {
     const url = new URL(tag.href);
     if (url.pathname === window.location.pathname) {
-      tag.classList.add('bg-slate-500', 'text-white');
+      tag.classList.add('bg-black', 'text-white');
       tag.setAttribute('aria-current', 'tag');
     } else {
       tag.classList.add('text-black', 'bg-white');
