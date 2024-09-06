@@ -126,7 +126,7 @@ export function createFilters(articles, viewAll = false) {
   [...tags.children].forEach((tag) => {
     const url = new URL(tag.href);
     if (url.pathname === window.location.pathname) {
-      tag.classList.add('bg-black', 'text-white');
+      tag.classList.add('!bg-black', '!text-white');
       tag.setAttribute('aria-current', 'tag');
     } else {
       tag.classList.add('text-black', 'bg-white');

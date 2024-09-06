@@ -109,20 +109,16 @@
   display: none
 }
 
-.card-list-wrapper :is(.\!h-24) {
-  height: 6rem !important
-}
-
-.card-list-wrapper :is(.h-full) {
-  height: 100%
-}
-
 .card-list-wrapper :is(.\!h-16) {
   height: 4rem !important
 }
 
 .card-list-wrapper :is(.\!h-28) {
   height: 7rem !important
+}
+
+.card-list-wrapper :is(.h-full) {
+  height: 100%
 }
 
 .card-list-wrapper :is(.w-0) {
@@ -205,10 +201,6 @@
   border-radius: 9999px
 }
 
-.card-list-wrapper :is(.border-2) {
-  border-width: 2px
-}
-
 .card-list-wrapper :is(.border-\[1px\]) {
   border-width: 1px
 }
@@ -226,24 +218,19 @@
   border-color: rgb(0 0 0 / var(--tw-border-opacity))
 }
 
+.card-list-wrapper :is(.bg-black) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity))
+}
+
 .card-list-wrapper :is(.bg-white) {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
 }
 
-.card-list-wrapper :is(.bg-slate-500) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(100 116 139 / var(--tw-bg-opacity))
-}
-
-.card-list-wrapper :is(.bg-slate-300) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(203 213 225 / var(--tw-bg-opacity))
-}
-
-.card-list-wrapper :is(.bg-black) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity))
+.card-list-wrapper :is(.\!bg-black) {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity)) !important
 }
 
 .card-list-wrapper :is(.px-4) {
@@ -261,31 +248,22 @@
   padding-bottom: 0.125rem
 }
 
-.card-list-wrapper :is(.py-4) {
-  padding-top: 1rem;
-  padding-bottom: 1rem
-}
-
-.card-list-wrapper :is(.py-5) {
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem
-}
-
 .card-list-wrapper :is(.py-2) {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem
 }
 
-.card-list-wrapper :is(.pl-2) {
-  padding-left: 0.5rem
-}
-
-.card-list-wrapper :is(.pt-4) {
-  padding-top: 1rem
+.card-list-wrapper :is(.py-4) {
+  padding-top: 1rem;
+  padding-bottom: 1rem
 }
 
 .card-list-wrapper :is(.pb-5) {
   padding-bottom: 1.25rem
+}
+
+.card-list-wrapper :is(.pt-4) {
+  padding-top: 1rem
 }
 
 .card-list-wrapper :is(.text-center) {
@@ -302,20 +280,16 @@
   line-height: 1.25rem
 }
 
-.card-list-wrapper :is(.font-extralight) {
-  font-weight: 200
-}
-
 .card-list-wrapper :is(.font-medium) {
   font-weight: 500
 }
 
-.card-list-wrapper :is(.font-semibold) {
-  font-weight: 600
-}
-
 .card-list-wrapper :is(.font-normal) {
   font-weight: 400
+}
+
+.card-list-wrapper :is(.font-semibold) {
+  font-weight: 600
 }
 
 .card-list-wrapper :is(.leading-5) {
@@ -327,14 +301,14 @@
   color: rgb(0 0 0 / var(--tw-text-opacity))
 }
 
-.card-list-wrapper :is(.text-gray-500) {
-  --tw-text-opacity: 1;
-  color: rgb(107 114 128 / var(--tw-text-opacity))
-}
-
 .card-list-wrapper :is(.text-white) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+
+.card-list-wrapper :is(.\!text-white) {
+  --tw-text-opacity: 1 !important;
+  color: rgb(255 255 255 / var(--tw-text-opacity)) !important
 }
 
 .card-list-wrapper :is(.filter) {
@@ -366,16 +340,6 @@
 .card-list-wrapper :is(.hover\:border-gray-300:hover) {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity))
-}
-
-.card-list-wrapper :is(.hover\:bg-slate-500:hover) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(100 116 139 / var(--tw-bg-opacity))
-}
-
-.card-list-wrapper :is(.hover\:bg-slate-300:hover) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(203 213 225 / var(--tw-bg-opacity))
 }
 
 .card-list-wrapper :is(.hover\:bg-black:hover) {
