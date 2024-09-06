@@ -205,6 +205,14 @@
   border-radius: 9999px
 }
 
+.card-list-wrapper :is(.border-2) {
+  border-width: 2px
+}
+
+.card-list-wrapper :is(.border-\[1px\]) {
+  border-width: 1px
+}
+
 .card-list-wrapper :is(.border-t) {
   border-top-width: 1px
 }
@@ -213,9 +221,24 @@
   border-top-width: 2px
 }
 
+.card-list-wrapper :is(.border-black) {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity))
+}
+
 .card-list-wrapper :is(.bg-white) {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+}
+
+.card-list-wrapper :is(.bg-slate-500) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(100 116 139 / var(--tw-bg-opacity))
+}
+
+.card-list-wrapper :is(.bg-slate-300) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(203 213 225 / var(--tw-bg-opacity))
 }
 
 .card-list-wrapper :is(.px-4) {
@@ -338,6 +361,16 @@
 .card-list-wrapper :is(.hover\:border-gray-300:hover) {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity))
+}
+
+.card-list-wrapper :is(.hover\:bg-slate-500:hover) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(100 116 139 / var(--tw-bg-opacity))
+}
+
+.card-list-wrapper :is(.hover\:bg-slate-300:hover) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(203 213 225 / var(--tw-bg-opacity))
 }
 
 .card-list-wrapper :is(.hover\:text-gray-700:hover) {
