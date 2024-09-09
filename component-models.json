@@ -220,7 +220,6 @@
         "value": "",
         "label": "Style",
         "valueType": "string",
-        "multi": true,
         "options": [
           {
             "name": "Text Center",
