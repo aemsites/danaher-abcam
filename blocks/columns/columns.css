@@ -143,6 +143,10 @@
   padding-bottom: 0.625rem
 }
 
+.columns-wrapper :is(.pb-10) {
+  padding-bottom: 2.5rem
+}
+
 .columns-wrapper :is(.text-4xl) {
   font-size: 2.25rem;
   line-height: 2.5rem
@@ -222,6 +226,10 @@
     right: 0px
   }
 
+  .columns-wrapper :is(.lg\:ml-80) {
+    margin-left: 20rem
+  }
+
   .columns-wrapper :is(.lg\:w-1\/2) {
     width: 50%
   }
@@ -236,5 +244,17 @@
 
   .columns-wrapper :is(.lg\:pr-16) {
     padding-right: 4rem
+  }
+
+  .columns-wrapper :is(.lg\:pl-16) {
+    padding-left: 4rem
+  }
+
+  .columns-wrapper :is(.lg\:pr-0) {
+    padding-right: 0px
+  }
+
+  .columns-wrapper :is(.lg\:pl-0) {
+    padding-left: 0px
   }
 }
