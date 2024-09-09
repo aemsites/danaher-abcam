@@ -70,7 +70,7 @@ function buildSearchBlock(headerBlock) {
   searchNewBlock.append(hamburgerIcon);
   logoPictureBlock.append(logoPictureBlockIcon);
   searchNewBlock.append(logoPictureBlock);
-  decorateIcons(logoPictureBlock);
+  decorateIcons(logoPictureBlock, 100, 100);
   decorateIcons(hamburgerIcon);
   searchNewBlock.append(extendedSectionBlock);
   searchHtmlBlock.append(searchNewBlock);
