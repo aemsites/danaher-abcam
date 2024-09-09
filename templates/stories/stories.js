@@ -8,7 +8,7 @@ export default async function buildAutoBlocks() {
   section1.prepend(
     buildBlock('back-navigation', { elems: [] }),
   );
-  if(window.location.pathname.includes('/en/stories/podcasts')){  
+  if (window.location.pathname.includes('/en/stories/podcasts')) {
     section3.classList.add(...'story-middle-container w-full'.split(' '));
     section3.prepend(
       buildBlock('story-info', { elems: [] }),
