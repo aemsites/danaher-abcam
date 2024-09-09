@@ -391,13 +391,7 @@ function decorateVideo(main) {
           parent.replaceChildren(audioContainer);
           const audioPlayer = div({ class: 'audio-player w-full mt-10 md:mb-2' });
           audioPlayer.innerHTML = playAudio({ src: link.href || '#' });
-          audioPlayer.querySelector('.audio-play-bar')?.addEventListener('loadedmetadata', () => {
-            const minutes = Math.floor(audioPlayer.querySelector('.audio-play-bar')?.duration / 60);
-            audioContainer.append(span({ class: 'inline-flex items-baseline md:mt-14' },
-              span({ class: 'self-center w-5 h-5 icon icon-Clock' }),
-              p({ class: 'text-[#8B8B8B]' }, minutes + ' min listen')));
-            decorateIcons(audioContainer);
-          });
+          decorateIcons(audioContainer);
           audioContainer.querySelector('.audio-play-icon')?.addEventListener('click', () => {
             audioContainer.replaceChildren(audioPlayer);
             const audioElement = audioPlayer.querySelector('audio');

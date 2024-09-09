@@ -3,7 +3,7 @@ import { buildBlock } from '../../scripts/aem.js';
 export default async function buildAutoBlocks() {
   const main = document.querySelector('main');
   const section1 = main.querySelector(':scope > div:nth-child(1)');
-  const section2 = main.querySelector(':scope > div:nth-child(3)');
+  const section2 = main.querySelector(':scope > div:nth-child(2)');
   const section3 = main.querySelector(':scope > div:nth-child(3)');
   section1.prepend(
     buildBlock('back-navigation', { elems: [] }),
