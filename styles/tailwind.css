@@ -38,10 +38,6 @@
         @apply border-b;
     }
 
-    .button-container {
-        @apply bg-black hover:bg-[#3B3B3B] h-8 whitespace-nowrap rounded-2xl items-center py-2 px-3 text-white text-xs capitalize justify-self-end w-fit;
-    }
-
     .home-page main .section > div.hero-wrapper {
         @apply h-[496px];
     }
@@ -132,5 +128,9 @@
 
     .stories main .section.no-section-padding.columns-container {
         @apply pt-8;
+    }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+    audio::-webkit-media-controls-panel {
+        background-color: white;
     }
 }   

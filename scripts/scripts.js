@@ -14,7 +14,7 @@ import {
   toClassName,
   getMetadata,
 } from './aem.js';
-import { div, button, img } from './dom-builder.js';
+import { div, button, img, span, p } from './dom-builder.js';
 
 const LCP_BLOCKS = ['hero', 'hero-video']; // add your LCP blocks to the list
 
@@ -314,6 +314,40 @@ function decorateStickyRightNav(main){
     stickySection.prepend(divEl);
   }
 }
+export function playAudio({src = '#'}) {
+  return `<audio controls preload="metadata" class = "audio-play-bar" style="width: 100%;" src=${src}/>`;
+}
+function decorateMedia(main) {
+  // Find the container with the video link
+  const divContainer = main.querySelector('.stories main .section .columns-wrapper');
+  
+  if(divContainer && (window.location.pathname.includes('/en/stories')) ) {
+    divContainer.querySelectorAll('.columns .button-container a')?.forEach((link) => {
+      if (link.title === "audio") {
+        const audioContainer = div({class: 'flex flex-col'}, 
+          p({class:'audio-label text-black no-underline mt-10 mb-2'},link.text !== undefined && link.text !== null ? link.text : ''),
+          span({ class: 'audio-play-icon cursor-pointer h-14 w-14 mb-10 md:mb-14 icon icon-Play' }),
+        );
+        const parent = link.parentElement;
+        parent.replaceChildren(audioContainer); 
+        const audioPlayer = div({class:'audio-player w-full mt-10 md:mb-2'});
+        audioPlayer.innerHTML = playAudio({ src: link.href !== undefined && link.href !== null ? link.href : '#' });
+        audioPlayer.querySelector('.audio-play-bar')?.addEventListener('loadedmetadata', () => {
+          const minutes = Math.floor(audioPlayer.querySelector('.audio-play-bar')?.duration / 60);
+          audioContainer.append(span({class: 'inline-flex items-baseline md:mt-14'},
+            span({class:'self-center w-5 h-5 icon icon-Clock'}),
+            p({class:'text-[#8B8B8B]'}, minutes + ' min listen'))),
+            decorateIcons(audioContainer);
+        });
+        audioContainer.querySelector('.audio-play-icon')?.addEventListener('click', () => {
+          audioContainer.replaceChildren(audioPlayer);
+          const audioElement = audioPlayer.querySelector('audio');
+          if (audioElement) audioElement.play();
+        });
+      } 
+    });
+  }
+}
 
 /**
  * Decorates the main element.
@@ -329,6 +363,7 @@ export function decorateMain(main) {
   decorateBlocks(main);
   decorateStickyRightNav(main);
   decorateStoryPage(main);
+  decorateMedia(main);
 }
 
 function capitalizeWords(str) {
