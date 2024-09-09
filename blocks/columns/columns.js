@@ -9,9 +9,9 @@ export default function decorate(block) {
   [...block.children].forEach((row) => {
     block.classList.add(...'h-full flex flex-col md:flex-row gap-y-6 px-6 md:px-0'.split(' '));
     row.classList.add(...'flex flex-col lg:flex-row'.split(' '));
-    
-    if (block.classList.contains('text-center-align') && 
-        block.classList.contains('image-full-width')) {
+
+    if (block.classList.contains('text-center-align')
+        && block.classList.contains('image-full-width')) {
       row.classList.add(...'container max-w-7xl mx-auto'.split(' '));
       const pageTags = getMetadata('pagetags');
       const tagName = pageTags?.split('/');
@@ -21,14 +21,14 @@ export default function decorate(block) {
 
     [...row.children].forEach((col, index, arr) => {
       col.classList.add('pb-10');
-      if(index !== arr.length - 1) col.classList.add('lg:pr-16');
+      if (index !== arr.length - 1) col.classList.add('lg:pr-16');
       if (block.className.includes('columns-2-cols')) col.classList.add('lg:w-1/2');
       if (block.classList.contains('text-center-align')) {
         col.classList.add('my-auto');
       } else {
         col.classList.add('h-full');
       }
-      
+
       const pic = col.querySelector('picture');
       if (pic) {
         const img = pic.querySelector('img');
@@ -41,7 +41,7 @@ export default function decorate(block) {
             img.height = Math.floor(this.width / imageAspectRatio);
           };
         }
-      }else{
+      } else {
         col.classList.add('mx-auto');
       }
     });
