@@ -15,6 +15,30 @@
     h6 {
         @apply font-heading;
     }
+
+    h1 {
+        @apply md:!leading-[3rem] !font-medium !text-3xl md:!text-4xl;
+    }
+
+    h2 { 
+        @apply !leading-9 !font-medium !text-2xl md:!text-3xl;
+    }
+
+    h3 { 
+        @apply !leading-8 !font-medium !text-xl md:!text-2xl;
+    }
+
+    h4 { 
+        @apply leading-7 !font-medium text-xl; 
+    }
+
+    h5 {
+        @apply leading-7 font-normal text-lg; 
+    }
+
+    h6 {
+        @apply font-normal text-base; 
+    }
 }
 
 @layer components {
@@ -27,7 +51,7 @@
     }
 
     main .section:not(.no-section-padding, .title-card-container) {
-        @apply mx-auto xl:max-w-7xl px-6 pb-16;
+        @apply mx-auto xl:max-w-7xl px-6 py-10;
     }
 
     main .section .default-content-wrapper h2{
@@ -44,10 +68,6 @@
 
     .home-page main .section > div.hero-wrapper {
         @apply h-[496px];
-    }
-
-    main .section:not(:last-child) {
-        @apply mb-10;
     }
 
     main .section.hide-section {

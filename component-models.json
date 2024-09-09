@@ -226,6 +226,13 @@
     "fields": [
       {
         "component": "text",
+        "name": "style",
+        "value": "",
+        "label": "Style",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
         "valueType": "number",
         "name": "columns",
         "value": "",
@@ -932,6 +939,25 @@
         "name": "learn-more_ctahrefText",
         "value": "",
         "label": "CTA Text"
+      }
+    ]
+  },
+  {
+    "id": "form",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "form_id",
+        "value": "",
+        "label": "Form Id"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "form_name",
+        "value": "",
+        "label": "Form Name"
       }
     ]
   }

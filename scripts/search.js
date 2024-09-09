@@ -5,7 +5,6 @@ import { common } from './coveo-body-requests.js';
 const bearerToken = 'xx8911235c-5e72-43cc-b401-bd85e9072adc';
 const orgId = 'danahernonproduction1892f3fhz';
 let is404Loaded = false;
-let isFetchCalled = false;
 let results;
 
 /**
@@ -27,18 +26,15 @@ export function getSelectedProductCategory() {
   return getMetadata('category-type');
 }
 
-async function getFullResponse(sku, selectedProductCategory, selectedPage) {
+export async function getFullResponse(sku, selectedProductCategory, selectedPage) {
   const url = `https://${orgId}.org.coveo.com/rest/search/v2`;
   let body = {};
   if (sku !== undefined && sku !== null) {
-    if (!isFetchCalled) {
-      body = {
-        aq: `@productslug==${sku}`,
-        pipeline: 'Abcam Product Details',
-        searchHub: 'AbcamProductDetails',
-      };
-    }
-    isFetchCalled = true;
+    body = {
+      aq: `@productslug==${sku}`,
+      pipeline: 'Abcam Product Details',
+      searchHub: 'AbcamProductDetails',
+    };
   }
   if (selectedProductCategory !== undefined && selectedProductCategory !== null
     && selectedPage !== null) {
