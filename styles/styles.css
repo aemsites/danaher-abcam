@@ -903,6 +903,10 @@ dialog .modal-content .section > .default-content-wrapper p {
   padding-top: 2rem;
 }
 
+audio::-webkit-media-controls-panel {
+  background-color: white;
+}
+
 .visible {
   visibility: visible;
 }
@@ -939,11 +943,11 @@ dialog .modal-content .section > .default-content-wrapper p {
   left: 0px;
 }
 
-.right-\[0px\] {
+.right-0 {
   right: 0px;
 }
 
-.right-0 {
+.right-\[0px\] {
   right: 0px;
 }
 
@@ -959,12 +963,8 @@ dialog .modal-content .section > .default-content-wrapper p {
   top: 8rem;
 }
 
-.right-0 {
-  right: 0px;
-}
-
-.top-0 {
-  top: 0px;
+.top-\[30px\] {
+  top: 30px;
 }
 
 .z-30 {
@@ -987,16 +987,20 @@ dialog .modal-content .section > .default-content-wrapper p {
   margin: auto;
 }
 
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
 .ml-0 {
   margin-left: 0px;
 }
 
 .ml-20 {
   margin-left: 5rem;
-}
-
-.ml-8 {
-  margin-left: 2rem;
 }
 
 .ml-auto {
@@ -1007,12 +1011,12 @@ dialog .modal-content .section > .default-content-wrapper p {
   margin-right: -8rem;
 }
 
-.mt-4 {
-  margin-top: 1rem;
+.mt-10 {
+  margin-top: 2.5rem;
 }
 
-.ml-0 {
-  margin-left: 0px;
+.mt-4 {
+  margin-top: 1rem;
 }
 
 .block {
@@ -1043,10 +1047,6 @@ dialog .modal-content .section > .default-content-wrapper p {
   display: none;
 }
 
-.h-3\/4 {
-  height: 75%;
-}
-
 .size-10 {
   width: 2.5rem;
   height: 2.5rem;
@@ -1055,6 +1055,18 @@ dialog .modal-content .section > .default-content-wrapper p {
 .size-6 {
   width: 1.5rem;
   height: 1.5rem;
+}
+
+.h-14 {
+  height: 3.5rem;
+}
+
+.h-3\/4 {
+  height: 75%;
+}
+
+.h-5 {
+  height: 1.25rem;
 }
 
 .h-6 {
@@ -1069,8 +1081,16 @@ dialog .modal-content .section > .default-content-wrapper p {
   height: 100vh;
 }
 
-.w-1\/2 {
-  width: 50%;
+.w-14 {
+  width: 3.5rem;
+}
+
+.w-5 {
+  width: 1.25rem;
+}
+
+.w-\[35rem\] {
+  width: 35rem;
 }
 
 .w-auto {
@@ -1086,10 +1106,6 @@ dialog .modal-content .section > .default-content-wrapper p {
   width: max-content;
 }
 
-.w-\[35rem\] {
-  width: 35rem;
-}
-
 .max-w-56 {
   max-width: 14rem;
 }
@@ -1102,12 +1118,12 @@ dialog .modal-content .section > .default-content-wrapper p {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.cursor-pointer {
-  cursor: pointer;
-}
-
 .transform-none {
   transform: none;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 .resize {
@@ -1138,8 +1154,20 @@ dialog .modal-content .section > .default-content-wrapper p {
   align-items: center;
 }
 
+.items-baseline {
+  align-items: baseline;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
 .justify-between {
   justify-content: space-between;
+}
+
+.self-center {
+  align-self: center;
 }
 
 .overflow-scroll {
@@ -1216,18 +1244,8 @@ dialog .modal-content .section > .default-content-wrapper p {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-black {
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
-}
-
-.bg-gray-100 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
-}
-
-.bg-gray-900\/50 {
-  background-color: rgb(17 24 39 / 0.5);
+.bg-opacity-50 {
+  --tw-bg-opacity: 0.5;
 }
 
 .object-cover {
@@ -1251,14 +1269,18 @@ dialog .modal-content .section > .default-content-wrapper p {
   padding: 1rem;
 }
 
-.px-\[3px\] {
-  padding-left: 3px;
-  padding-right: 3px;
+.p-\[10px\] {
+  padding: 10px;
 }
 
 .px-8 {
   padding-left: 2rem;
   padding-right: 2rem;
+}
+
+.px-\[3px\] {
+  padding-left: 3px;
+  padding-right: 3px;
 }
 
 .py-6 {
@@ -1268,6 +1290,10 @@ dialog .modal-content .section > .default-content-wrapper p {
 
 .pb-4 {
   padding-bottom: 1rem;
+}
+
+.pt-12 {
+  padding-top: 3rem;
 }
 
 .pt-\[3px\] {
@@ -1280,6 +1306,11 @@ dialog .modal-content .section > .default-content-wrapper p {
 
 .text-center {
   text-align: center;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .text-4xl {
@@ -1297,17 +1328,17 @@ dialog .modal-content .section > .default-content-wrapper p {
   line-height: 1rem;
 }
 
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-
 .font-bold {
   font-weight: 700;
 }
 
 .font-normal {
   font-weight: 400;
+}
+
+.text-\[\#8B8B8B\] {
+  --tw-text-opacity: 1;
+  color: rgb(139 139 139 / var(--tw-text-opacity));
 }
 
 .text-\[white\] {
@@ -1323,6 +1354,10 @@ dialog .modal-content .section > .default-content-wrapper p {
 .text-gray-500 {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
+.no-underline {
+  text-decoration-line: none;
 }
 
 .shadow {
@@ -1362,12 +1397,6 @@ dialog .modal-content .section > .default-content-wrapper p {
   transition-duration: 150ms;
 }
 
-.hover\:scale-125:hover {
-  --tw-scale-x: 1.25;
-  --tw-scale-y: 1.25;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
 .hover\:border-\[\#378189\]:hover {
   --tw-border-opacity: 1;
   border-color: rgb(55 129 137 / var(--tw-border-opacity));
@@ -1380,22 +1409,6 @@ dialog .modal-content .section > .default-content-wrapper p {
 }
 
 @media (max-width: 767px) {
-  .max-\[767px\]\:h-\[28\.563rem\] {
-    height: 28.563rem;
-  }
-
-  .max-\[767px\]\:h-\[457px\] {
-    height: 457px;
-  }
-
-  .max-\[767px\]\:w-auto {
-    width: auto;
-  }
-
-  .max-\[767px\]\:w-full {
-    width: 100%;
-  }
-
   .max-\[767px\]\:px-3\.5 {
     padding-left: 0.875rem;
     padding-right: 0.875rem;
@@ -1410,24 +1423,24 @@ dialog .modal-content .section > .default-content-wrapper p {
 }
 
 @media (min-width: 768px) {
-  .md\:absolute {
-    position: absolute;
+  .md\:mb-14 {
+    margin-bottom: 3.5rem;
   }
 
-  .md\:bottom-6 {
-    bottom: 1.5rem;
-  }
-
-  .md\:right-0 {
-    right: 0px;
+  .md\:mb-2 {
+    margin-bottom: 0.5rem;
   }
 
   .md\:ml-8 {
     margin-left: 2rem;
   }
 
-  .md\:w-1\/2 {
-    width: 50%;
+  .md\:mt-14 {
+    margin-top: 3.5rem;
+  }
+
+  .md\:h-full {
+    height: 100%;
   }
 
   .md\:flex-col {

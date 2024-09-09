@@ -15,7 +15,7 @@ import {
   getMetadata,
   createOptimizedPicture,
 } from './aem.js';
-import { div, span, button, iframe, img, p } from './dom-builder.js';
+import { div, span, button, iframe, p } from './dom-builder.js';
 
 const LCP_BLOCKS = ['hero', 'hero-video']; // add your LCP blocks to the list
 
@@ -282,64 +282,130 @@ function decorateStickyRightNav(main){
   }
 }
 
-function decorateVideo(main) {
-  // Find the container with the video link
-  const divContainer = main.querySelector('.stories main .section .columns-wrapper');
-  console.log(divContainer);
-  if(divContainer) {
-    const linkContainer = divContainer.querySelector('div > div.button-container > p');
-    if (linkContainer && (window.location.pathname.includes('/en/stories/podcasts'))) {
-     const link = linkContainer.querySelector('a');
-     if (link.title === "video") {
-    const embedHTML = `<div class="relative md:absolute w-1/2 md:w-1/2 h-full object-cover md:right-0 md:bottom-6">
-          <iframe src="${link.href}"
-          style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" 
-          allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" scrolling="no" title="Content from Youtube" loading="eager"></iframe>
-        </div>`;
-        linkContainer.innerHTML = embedHTML;
-     } else {
+function toggleModalPopUp(parentDiv) {
+  parentDiv.querySelector('.modal').classList.toggle('hidden');
+}
 
-     }
+function toggleModalPopUp1(modalPopUp) {
+  modalPopUp.classList.toggle('hidden');
+  const iframe1 = modalPopUp.querySelector('iframe');
+  if (iframe1) {
+    iframe1.src = '';
   }
 }
 
-  // if (divContainer) {
-  //   const linkContainer = divContainer.querySelector('div');
-  //   const link = linkContainer.querySelector('p a');
+function createModalPopUp(videoLink) {
+  const modalPopUp = div(
+    { class: 'modal hidden z-30 m-0 p-0 w-full h-full' },
+    div(
+      { class: 'modal-content bg-black m-auto p-10 max-[576px]:px-2.5 max-[767px]:px-3.5 h-full w-full left-0 text-center' },
+      div(
+        { class: 'youtube-frame h-3/4 md:h-full' },
+        span({ class: 'bg-black close-btn float-right icon icon-close absolute right-[0px] top-[30px] cursor-pointer p-[10px]', onclick: () => toggleModalPopUp1(modalPopUp) }),
+        iframe({
+          class: 'm-0 pt-12 w-full h-full',
+          src: videoLink,
+          loading: 'lazy',
+          style: 'border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;',
+          allow: 'autoplay; fullscreen; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture',
+          allowfullscreen: '',
+          scrolling: 'no',
+          title: 'Content from Youtube',
+        }),
+      ),
 
-  //   if (link) {
-  //       // Add styles to the link
-  //       link.classList.add('relative', 'hover:scale-125');
-  //       link.textContent = '';
+    ),
+  );
+  decorateIcons(modalPopUp);
+  return modalPopUp;
+}
 
-  //       // Extract the URL from the link
-  //       const videoUrl = link.href;
-  //       console.log(videoUrl);
+function extractVideoId(url) {
+  // Regular expression to extract video ID from YouTube URL
+  const regex = /(?:youtube\.com\/(?:embed\/|v\/|watch\?v=)|youtu\.be\/)([^\s&]+)/;
+  const match = url.match(regex);
+  return match ? match[1] : null;
+}
 
-  //       // Check if the URL is a valid YouTube URL
-  //       const videoIdMatch = videoUrl.match(/(?:embed\/|v=)([a-zA-Z0-9_-]{11})/);
-  //       console.log(videoIdMatch);
-  //       if (videoIdMatch) {
-  //           const videoId = videoIdMatch[1];
+function playAudio({src = '#'}) {
+  return `<audio controls preload="metadata" class = "audio-play-bar" style="width: 100%;" src=${src}/>`;
+}
 
-  //           // Create an iframe element
-  //           const iframe = document.createElement('iframe');
-  //           iframe.width = '560';  // Set desired width
-  //           iframe.height = '315'; // Set desired height
-  //           iframe.src = `https://www.youtube.com/embed/${videoId}`;
-  //           iframe.frameBorder = '0';
-  //           iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-  //           iframe.allowFullscreen = true;
+function decorateVideo(main) {
+  // Find the container with the video link
+  const divContainers = main.querySelectorAll('.stories main .section .columns-wrapper');
 
-  //           // Replace the link with the iframe
-  //           //linkContainer.innerHTML = '';
-  //           link.appendChild(iframe);
-  //       } else {
-  //           console.error('Invalid YouTube URL');
-  //       }
-  //   }
-  // }
-  
+  // Iterate over each container
+  divContainers.forEach(divContainer => {
+    if (window.location.pathname.includes('/en/stories/podcasts')) {
+      divContainer.querySelectorAll('.columns .button-container a').forEach(link => {
+        if (link.title === "video") {
+          const embedHTML = `<div class="relative w-full h-full">
+            <iframe src="${link.href}"
+            style="border: 0; top: 0; left: 0; width: 100%; position: relative;" 
+            allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" 
+            scrolling="no" title="Content from Youtube" loading="eager"></iframe>
+          </div>`;
+          const linkContainer = link.parentElement;
+          linkContainer.innerHTML = embedHTML;
+        } else if (link.title === "audio") {
+          const audioContainer = div({ class: 'flex flex-col' },
+            p({ class: 'audio-label text-black no-underline mt-10 mb-2' }, link.text || ''),
+            span({ class: 'audio-play-icon cursor-pointer h-14 w-14 mb-10 md:mb-14 icon icon-Play' }),
+          );
+          const parent = link.parentElement;
+          parent.replaceChildren(audioContainer);
+          const audioPlayer = div({ class: 'audio-player w-full mt-10 md:mb-2' });
+          audioPlayer.innerHTML = playAudio({ src: link.href || '#' });
+          audioPlayer.querySelector('.audio-play-bar')?.addEventListener('loadedmetadata', () => {
+            const minutes = Math.floor(audioPlayer.querySelector('.audio-play-bar')?.duration / 60);
+            audioContainer.append(span({ class: 'inline-flex items-baseline md:mt-14' },
+              span({ class: 'self-center w-5 h-5 icon icon-Clock' }),
+              p({ class: 'text-[#8B8B8B]' }, minutes + ' min listen')));
+            decorateIcons(audioContainer);
+          });
+          audioContainer.querySelector('.audio-play-icon')?.addEventListener('click', () => {
+            audioContainer.replaceChildren(audioPlayer);
+            const audioElement = audioPlayer.querySelector('audio');
+            if (audioElement) audioElement.play();
+          });
+        }
+      });
+    } else if (window.location.pathname.includes('/en/stories/films')) {
+      divContainer.querySelectorAll('.columns .button-container a').forEach(link => {
+        if (link.title === "video") {
+          // Extract video ID from the URL
+          const videoId = extractVideoId(link.href);
+
+          // Generate the poster image URL
+          const posterImage = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+
+          // Create the container for the poster image and play button
+          const playButtonHTML = `
+            <div class="relative w-full h-full">
+              <img src="${posterImage}" class="relative inset-0 w-full h-full object-cover" />
+              <button id="play-button-${videoId}" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 rounded-full p-4">
+                <svg width="80" height="80" viewBox="0 0 126 126" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M46.2656 36.4219C47.9883 35.1914 50.4492 35.1914 52.1719 36.4219L87.6094 58.0781C89.332 59.0625 90.5625 61.0312 90.5625 63C90.5625 65.2148 89.332 67.1836 87.6094 68.168L52.1719 89.8242C50.4492 90.8086 47.9883 91.0547 46.2656 89.8242C44.2969 88.8398 43.3125 86.8711 43.3125 84.6562V41.3438C43.3125 39.375 44.2969 37.4062 46.2656 36.4219ZM126 63C126 97.9453 97.6992 126 63 126C28.0547 126 0 97.9453 0 63C0 28.3008 28.0547 0 63 0C97.6992 0 126 28.3008 126 63ZM63 5.8125C34.6992 5.8125 5.8125 34.9453 5.8125 63C5.8125 91.3008 34.6992 120.188 63 120.188C91.0547 120.188 120.188 91.3008 120.188 63C120.188 34.9453 91.0547 5.8125 63 5.8125Z" fill="white"/>
+                </svg>
+              </button>
+            </div>
+          `;
+          const linkContainer = link.parentElement;
+          linkContainer.innerHTML = playButtonHTML;
+          linkContainer.querySelector(`button[id="play-button-${videoId}"]`).addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleModalPopUp(linkContainer);
+          });
+
+          // Create and append the modal popup
+          const videoIframeSrc = link.href;
+          const modalPopUp = createModalPopUp(videoIframeSrc);
+          linkContainer.appendChild(modalPopUp);
+        }
+      });
+    }
+  });
 }
 
 
@@ -355,9 +421,9 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
+  decorateVideo(main);
   decorateStickyRightNav(main);
   decorateStoryPage(main);
-  decorateVideo(main);
 }
 
 function capitalizeWords(str) {
