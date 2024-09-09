@@ -929,6 +929,24 @@
     "id": "elouqa-form",
     "fields": [
       {
+        "component": "select",
+        "valueType": "string",
+        "name": "elouqa_form_method",
+        "value": "",
+        "label": "Elouqa Form Method",
+        "options": [
+          {
+            "name": "GET",
+            "value": "get"
+          },
+          {
+            "name": "POST",
+            "value": "post",
+            "selected": true
+          }
+        ]
+      },
+      {
         "component": "text",
         "valueType": "string",
         "name": "elouqa_form_id",
@@ -955,23 +973,46 @@
         "label": "Label"
       },
       {
-        "component": "text",
+        "component": "select",
         "name": "elouqa_form_element_elementType",
-        "value": "h3",
+        "value": "",
         "label": "Element Type",
-        "valueType": "string"
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Text",
+            "value": "text",
+            "selected": true
+          },
+          {
+            "name": "Password",
+            "value": "password"
+          },
+          {
+            "name": "Email",
+            "value": "email"
+          },
+          {
+            "name": "Number",
+            "value": "number"
+          },
+          {
+            "name": "Hidden",
+            "value": "hidden"
+          }
+        ]
       },
       {
         "component": "text",
         "name": "elouqa_form_element_elementName",
-        "value": "h3",
+        "value": "",
         "label": "Element Name",
         "valueType": "string"
       },
       {
         "component": "text",
         "name": "elouqa_form_element_elementValidations",
-        "value": "h3",
+        "value": "",
         "label": "Validation Parameters",
         "valueType": "string"
       }

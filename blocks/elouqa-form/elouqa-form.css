@@ -1,0 +1,31 @@
+.elouqa-form-wrapper :is(.block) {
+  display: block
+}
+
+.elouqa-form-wrapper :is(.flex) {
+  display: flex
+}
+
+.elouqa-form-wrapper :is(.flex-col) {
+  flex-direction: column
+}
+
+.elouqa-form-wrapper :is(.gap-1) {
+  gap: 0.25rem
+}
+
+.elouqa-form-wrapper :is(.rounded) {
+  border-radius: 0.25rem
+}
+
+.elouqa-form-wrapper :is(.border) {
+  border-width: 1px
+}
+
+.elouqa-form-wrapper :is(.p-2) {
+  padding: 0.5rem
+}
+
+.elouqa-form-wrapper :is(.p-1) {
+  padding: 0.25rem
+}
