@@ -692,16 +692,65 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "icon",
-        "label": "Streamed Images",
-        "multi": true
+        "name": "apple-icon",
+        "label": "Apple Icon",
+        "multi": false
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "iconAlt",
-        "label": "iconAlt",
+        "name": "apple-iconAlt",
+        "label": "Apple Icon Alt",
         "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "apple-iconhref",
+        "value": "",
+        "label": "Apple Link"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "spotify-icon",
+        "label": "Spotify Icon",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "spotify-iconAlt",
+        "label": "Spotify Icon Alt",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "spotify-iconhref",
+        "value": "",
+        "label": "Spotify Link"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "youtube-icon",
+        "label": "Youtube Icon",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "youtube-iconAlt",
+        "label": "Youtube Icon Alt",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "youtube-iconhref",
+        "value": "",
+        "label": "Youtube Link"
       }
     ]
   },
