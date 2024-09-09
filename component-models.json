@@ -692,27 +692,6 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "apple-icon",
-        "label": "Apple Icon",
-        "multi": false
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "apple-iconAlt",
-        "label": "Apple Icon Alt",
-        "value": ""
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "apple-iconhref",
-        "value": "",
-        "label": "Apple Link"
-      },
-      {
-        "component": "reference",
-        "valueType": "string",
         "name": "spotify-icon",
         "label": "Spotify Icon",
         "multi": false
@@ -730,6 +709,27 @@
         "name": "spotify-iconhref",
         "value": "",
         "label": "Spotify Link"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "apple-icon",
+        "label": "Apple Icon",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "apple-iconAlt",
+        "label": "Apple Icon Alt",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "apple-iconhref",
+        "value": "",
+        "label": "Apple Link"
       },
       {
         "component": "reference",
