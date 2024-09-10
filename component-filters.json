@@ -84,7 +84,8 @@
   {
     "id": "podcasts",
     "components": [
-      "podcast"
+      "podcast",
+      "media"
     ]
   }, 
   {
