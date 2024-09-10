@@ -976,13 +976,13 @@
         "component": "text",
         "valueType": "string",
         "name": "elouqa_form_element_label",
-        "value": "",
+        "value": " ",
         "label": "Label"
       },
       {
         "component": "select",
         "name": "elouqa_form_element_elementType",
-        "value": "",
+        "value": "text",
         "label": "Element Type",
         "valueType": "string",
         "options": [
@@ -1012,14 +1012,14 @@
       {
         "component": "text",
         "name": "elouqa_form_element_elementName",
-        "value": "",
+        "value": " ",
         "label": "Element Name",
         "valueType": "string"
       },
       {
         "component": "text",
         "name": "elouqa_form_element_elementValidations",
-        "value": "",
+        "value": " ",
         "label": "Validation Parameters",
         "valueType": "string"
       }
