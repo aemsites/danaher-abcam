@@ -379,12 +379,12 @@ function playAudio({src = '#'}) {
 
 function decorateVideo(main) {
   // Find the container with the video link
-  const divContainers = main.querySelectorAll('.stories main .section .columns-wrapper');
+  const divContainers = main.querySelectorAll('.stories main .section');
   const type = getMetadata('pagetags');
   // Iterate over each container
   divContainers.forEach(divContainer => {
     if (type.includes('podcast')) {
-      divContainer.querySelectorAll('.columns .button-container a').forEach(link => {
+      divContainer.querySelectorAll('.button-container a').forEach(link => {
         if (link.title === "video") {
           const embedHTML = `<div class="relative w-full h-full">
             <iframe src="${link.href}"
