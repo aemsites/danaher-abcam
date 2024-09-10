@@ -52,7 +52,8 @@
       "learn-more",
       "related-stories",
       "card-list",
-      "form"
+      "form",
+      "form-embed"
     ]
   },
   {
@@ -94,5 +95,30 @@
   {
     "id": "hero-video",
     "components": []
+  },
+  {
+    "id": "form",
+    "components": [
+      "checkbox",
+      "checkbox-group",
+      "date-input",
+      "drop-down",
+      "email",
+      "file-input",
+      "form-button",
+      "form-fragment",
+      "form-image",
+      "form-reset-button",
+      "form-submit-button",
+      "modal",
+      "number-input",
+      "panel",
+      "plain-text",
+      "radio-group",
+      "telephone-input",
+      "text-input",
+      "tnc",
+      "wizard"
+    ]
   }
 ]
