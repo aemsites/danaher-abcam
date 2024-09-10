@@ -959,6 +959,13 @@
         "name": "elouqa_form_name",
         "value": "",
         "label": "Elouqa Form Name"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "elouqa_form_action",
+        "value": "",
+        "label": "Elouqa Form Action"
       }
     ]
   },
