@@ -1180,14 +1180,6 @@ audio::-webkit-media-controls-panel {
   height: 1.5rem;
 }
 
-.h-14 {
-  height: 3.5rem;
-}
-
-.h-3\/4 {
-  height: 75%;
-}
-
 .h-36 {
   height: 9rem;
 }
@@ -1198,10 +1190,6 @@ audio::-webkit-media-controls-panel {
 
 .h-48 {
   height: 12rem;
-}
-
-.h-5 {
-  height: 1.25rem;
 }
 
 .h-6 {
