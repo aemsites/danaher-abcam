@@ -28,7 +28,7 @@ export default function decorate(block) {
       } else {
         col.classList.add('h-full');
       }
-      
+
       const pic = col.querySelector('picture');
       if (pic) {
         const img = pic.querySelector('img');
