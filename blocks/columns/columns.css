@@ -70,6 +70,14 @@
   height: 100%
 }
 
+.columns-wrapper :is(.h-\[602px\]) {
+  height: 602px
+}
+
+.columns-wrapper :is(.h-\[502px\]) {
+  height: 502px
+}
+
 .columns-wrapper :is(.w-72) {
   width: 18rem
 }
@@ -228,6 +236,10 @@
 
   .columns-wrapper :is(.lg\:ml-80) {
     margin-left: 20rem
+  }
+
+  .columns-wrapper :is(.lg\:h-\[475px\]) {
+    height: 475px
   }
 
   .columns-wrapper :is(.lg\:w-1\/2) {

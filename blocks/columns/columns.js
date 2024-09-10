@@ -7,11 +7,11 @@ export default function decorate(block) {
   const imageAspectRatio = 1.7778;
 
   [...block.children].forEach((row) => {
-    block.classList.add(...'h-full flex flex-col md:flex-row gap-y-6 px-6 md:px-0'.split(' '));
+    block.classList.add(...'h-full lg:h-[475px] flex flex-col md:flex-row gap-y-6 px-6 md:px-0'.split(' '));
     row.classList.add(...'flex flex-col lg:flex-row'.split(' '));
 
     if (block.classList.contains('text-center-align')
-        && block.classList.contains('image-full-width')) {
+        || block.classList.contains('image-full-width')) {
       row.classList.add(...'container max-w-7xl mx-auto'.split(' '));
       const pageTags = getMetadata('pagetags');
       const tagName = pageTags?.split('/');
@@ -23,11 +23,13 @@ export default function decorate(block) {
       col.classList.add('pb-10');
       if (index !== arr.length - 1) col.classList.add('lg:pr-16');
       if (block.className.includes('columns-2-cols')) col.classList.add('lg:w-1/2');
-      if (block.classList.contains('text-center-align')) {
+      if (block.classList.contains('text-center-align') && col.querySelector('iframe') === null) {
         col.classList.add('my-auto');
       } else {
         col.classList.add('h-full');
       }
+
+      console.log(col.querySelector('iframe'))
 
       const pic = col.querySelector('picture');
       if (pic) {

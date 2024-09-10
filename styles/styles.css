@@ -1025,6 +1025,26 @@ audio::-webkit-media-controls-panel {
   top: 30px;
 }
 
+.top-\[3px\] {
+  top: 3px;
+}
+
+.top-\[-3px\] {
+  top: -3px;
+}
+
+.top-\[20px\] {
+  top: 20px;
+}
+
+.top-\[25px\] {
+  top: 25px;
+}
+
+.top-\[70px\] {
+  top: 70px;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -1180,6 +1200,14 @@ audio::-webkit-media-controls-panel {
   height: 1.5rem;
 }
 
+.h-14 {
+  height: 3.5rem;
+}
+
+.h-3\/4 {
+  height: 75%;
+}
+
 .h-36 {
   height: 9rem;
 }
@@ -1208,6 +1236,10 @@ audio::-webkit-media-controls-panel {
   height: 100vh;
 }
 
+.max-h-\[90vh\] {
+  max-height: 90vh;
+}
+
 .w-1\/2 {
   width: 50%;
 }
@@ -1222,10 +1254,6 @@ audio::-webkit-media-controls-panel {
 
 .w-44 {
   width: 11rem;
-}
-
-.w-5 {
-  width: 1.25rem;
 }
 
 .w-\[35rem\] {
@@ -1337,10 +1365,6 @@ audio::-webkit-media-controls-panel {
   align-items: center;
 }
 
-.items-baseline {
-  align-items: baseline;
-}
-
 .justify-end {
   justify-content: flex-end;
 }
@@ -1368,8 +1392,8 @@ audio::-webkit-media-controls-panel {
        column-gap: 0.75rem;
 }
 
-.self-center {
-  align-self: center;
+.overflow-hidden {
+  overflow: hidden;
 }
 
 .overflow-scroll {
@@ -1647,6 +1671,10 @@ audio::-webkit-media-controls-panel {
   padding-top: 3px;
 }
 
+.pt-10 {
+  padding-top: 2.5rem;
+}
+
 .text-left {
   text-align: left;
 }
@@ -1720,11 +1748,6 @@ audio::-webkit-media-controls-panel {
 .text-\[\#65797c\] {
   --tw-text-opacity: 1;
   color: rgb(101 121 124 / var(--tw-text-opacity));
-}
-
-.text-\[\#8B8B8B\] {
-  --tw-text-opacity: 1;
-  color: rgb(139 139 139 / var(--tw-text-opacity));
 }
 
 .text-\[white\] {
@@ -1857,10 +1880,6 @@ audio::-webkit-media-controls-panel {
     margin-left: 2rem;
   }
 
-  .md\:mt-14 {
-    margin-top: 3.5rem;
-  }
-
   .md\:h-64 {
     height: 16rem;
   }
@@ -1908,5 +1927,23 @@ audio::-webkit-media-controls-panel {
 
   .md\:pt-4 {
     padding-top: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:absolute {
+    position: absolute;
+  }
+
+  .lg\:bottom-6 {
+    bottom: 1.5rem;
+  }
+
+  .lg\:right-0 {
+    right: 0px;
+  }
+
+  .lg\:w-1\/2 {
+    width: 50%;
   }
 }   
