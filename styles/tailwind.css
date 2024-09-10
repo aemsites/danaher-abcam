@@ -13,7 +13,11 @@
     h4,
     h5,
     h6 {
-        @apply font-heading;
+        @apply font-heading my-2;
+    }
+
+    p {
+        @apply my-2;
     }
 
     h1 {

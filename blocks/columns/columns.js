@@ -29,8 +29,6 @@ export default function decorate(block) {
         col.classList.add('h-full');
       }
 
-      console.log(col.querySelector('iframe'))
-
       const pic = col.querySelector('picture');
       if (pic) {
         const img = pic.querySelector('img');
