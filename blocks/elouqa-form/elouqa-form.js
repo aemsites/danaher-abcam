@@ -5,6 +5,7 @@ import {
 export default function decorate(block) {
   // console.log(block);
   const formEl = form();
+  let childrens = 0;
   [...block.children].forEach((child, childIndex) => {
     if (childIndex === 0) {
       formEl.method = child?.children[0]?.children[0]?.innerText;
@@ -31,11 +32,17 @@ export default function decorate(block) {
           type: formInputElType,
         }),
       );
-      if (formInputElLabel && formInputElType && formInputElName) formEl.append(formInputEl);
+      if (formInputElLabel && formInputElType && formInputElName) {
+        childrens += 1;
+        formEl.append(formInputEl);
+      }
     }
   });
-  // console.log(formEl);
-  if (formEl && formEl.children.length > 0) {
+  // console.log(block, formEl, childrens, block.children.length, formEl.children.length, block.children.length === formEl.children.length);
+  if (
+    formEl && formEl.children.length > 0
+    && childrens === formEl.children.length
+  ) {
     block.innerHTML = '';
     block.append(formEl);
   }
