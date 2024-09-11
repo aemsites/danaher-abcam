@@ -35,6 +35,8 @@ export default function decorate(block) {
     }
   });
   // console.log(formEl);
-  block.innerHTML = '';
-  if (formEl && formEl.children.length > 0) block.append(formEl);
+  if (formEl && formEl.children.length > 0) {
+    block.innerHTML = '';
+    block.append(formEl);
+  }
 }
