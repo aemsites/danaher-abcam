@@ -25,3 +25,15 @@
 .elouqa-form-wrapper :is(.p-1) {
   padding: 0.25rem
 }
+
+.elouqa-form-wrapper :is(.font-sans) {
+  font-family: Noto Sans
+}
+
+.elouqa-form-wrapper :is(.font-semibold) {
+  font-weight: 600
+}
+
+.elouqa-form-wrapper :is(.tracking-wide) {
+  letter-spacing: 0.025em
+}

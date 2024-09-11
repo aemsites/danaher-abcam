@@ -11,7 +11,6 @@ export default function decorate(block) {
       formEl.id = child?.children[0]?.children[1]?.innerText;
       formEl.name = child?.children[0]?.children[2]?.innerText;
       formEl.action = child?.children[0]?.children[3]?.innerText;
-      block.innerHTML = '';
     } else if (child.children.length > 0) {
       const formInputElLabel = child.children[0].children[0]?.innerText;
       const formInputElType = child.children[0].children[1]?.innerText;
@@ -20,7 +19,7 @@ export default function decorate(block) {
         { class: 'form-group flex flex-col gap-1' },
         label(
           {
-            class: '',
+            class: 'font-sans tracking-wide font-semibold',
             for: formInputElName ? formInputElName : formInputElLabel,
           },
           formInputElLabel ? formInputElLabel : formInputElName,
@@ -32,8 +31,10 @@ export default function decorate(block) {
           type: formInputElType,
         }),
       );
-      formEl.append(formInputEl);
+      if (formInputElLabel && formInputElType && formInputElName) formEl.append(formInputEl);
     }
-    block.append(formEl);
   });
+  // console.log(formEl);
+  block.innerHTML = '';
+  if (formEl && formEl.children.length > 0) block.append(formEl);
 }
