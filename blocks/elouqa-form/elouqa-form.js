@@ -45,9 +45,9 @@ export default function decorate(block) {
       const formInputElLabel = child.children[0].children[0]?.innerText;
       const formInputElType = child.children[0].children[1]?.innerText;
       const formInputElName = child.children[0].children[2]?.innerText;
-      const formInputElValue = child.children[0].children[3]?.innerText;
-      const typeOfFormElement = detectFormElementType(formInputElType, formInputElName, formInputElLabel, formInputElValue);
-      const formInputEl = formInputElType !== "hidden" ? div(
+      // const formInputElValue = child.children[0].children[3]?.innerText;
+      const typeOfFormElement = detectFormElementType(formInputElType, formInputElName, formInputElLabel, "");
+      const formInputEl = div(
         { class: 'form-group flex flex-col gap-1' },
         label(
           {
@@ -57,7 +57,7 @@ export default function decorate(block) {
           formInputElLabel ? formInputElLabel : formInputElName,
         ),
         typeOfFormElement,
-      ) : typeOfFormElement;
+      );
       if (formInputElLabel && formInputElType && formInputElName) {
         child.outerHTML = '';
         formEl.append(formInputEl);
