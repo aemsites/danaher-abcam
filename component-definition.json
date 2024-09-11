@@ -490,7 +490,6 @@
                 "template": {
                   "name": "Learn More",
                   "model": "learn-more",
-                  "filter": "learn-more",
                   "learn-more_titleType": "h3"
                 }
               }

@@ -316,64 +316,6 @@
         "name": "card_CTAhrefText",
         "value": "",
         "label": "CTA Text"
-      },
-      {
-        "component": "select",
-        "name": "card_CTAhrefType",
-        "value": "",
-        "label": "Type",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "Default",
-            "value": "primary"
-          },
-          {
-            "name": "Secondary",
-            "value": "secondary"
-          },
-          {
-            "name": "Tertiary Outline",
-            "value": "tertiary-outline"
-          },
-          {
-            "name": "Tertiary Filled",
-            "value": "tertiary-filled"
-          },
-          {
-            "name": "Text Only",
-            "value": "text-only"
-          }
-        ]
-      },
-	    {
-        "component": "select",
-        "name": "card_CTAhrefIconType",
-        "value": "",
-        "label": "Icon Type",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "None",
-            "value": ""
-          },
-          {
-            "name": "Both",
-            "value": "both"
-          },
-          {
-            "name": "Right",
-            "value": "right"
-          },
-          {
-            "name": "Left",
-            "value": "left"
-          },
-          {
-            "name": "Icon Only",
-            "value": "icon"
-          }
-        ]
       }
     ]
   },
@@ -571,64 +513,6 @@
         "name": "alternating_ctahrefText",
         "value": "",
         "label": "CTA Text"
-      },
-      {
-        "component": "select",
-        "name": "alternating_ctahrefType",
-        "value": "",
-        "label": "Type",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "Default",
-            "value": "primary"
-          },
-          {
-            "name": "Secondary",
-            "value": "secondary"
-          },
-          {
-            "name": "Tertiary Outline",
-            "value": "tertiary-outline"
-          },
-          {
-            "name": "Tertiary Filled",
-            "value": "tertiary-filled"
-          },
-          {
-            "name": "Text Only",
-            "value": "text-only"
-          }
-        ]
-      },
-	    {
-        "component": "select",
-        "name": "alternating_ctahrefIconType",
-        "value": "",
-        "label": "Icon Type",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "None",
-            "value": ""
-          },
-          {
-            "name": "Both",
-            "value": "both"
-          },
-          {
-            "name": "Right",
-            "value": "right"
-          },
-          {
-            "name": "Left",
-            "value": "left"
-          },
-          {
-            "name": "Icon Only",
-            "value": "icon"
-          }
-        ]
       },
       {
         "component": "reference",
@@ -834,64 +718,6 @@
         "label": "CTA Text"
       },
       {
-        "component": "select",
-        "name": "podcast_CTAhrefType",
-        "value": "",
-        "label": "Type",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "Default",
-            "value": "primary"
-          },
-          {
-            "name": "Secondary",
-            "value": "secondary"
-          },
-          {
-            "name": "Tertiary Outline",
-            "value": "tertiary-outline"
-          },
-          {
-            "name": "Tertiary Filled",
-            "value": "tertiary-filled"
-          },
-          {
-            "name": "Text Only",
-            "value": "text-only"
-          }
-        ]
-      },
-	    {
-        "component": "select",
-        "name": "podcast_CTAhrefIconType",
-        "value": "",
-        "label": "Icon Type",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "None",
-            "value": ""
-          },
-          {
-            "name": "Both",
-            "value": "both"
-          },
-          {
-            "name": "Right",
-            "value": "right"
-          },
-          {
-            "name": "Left",
-            "value": "left"
-          },
-          {
-            "name": "Icon Only",
-            "value": "icon"
-          }
-        ]
-      },
-      {
         "component": "text",
         "valueType": "string",
         "name": "streamed_title",
@@ -951,64 +777,6 @@
         "name": "alert-banner_ctahrefText",
         "value": "",
         "label": "CTA Text"
-      },
-      {
-        "component": "select",
-        "name": "alert-banner_ctahrefType",
-        "value": "",
-        "label": "Type",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "Default",
-            "value": "primary"
-          },
-          {
-            "name": "Secondary",
-            "value": "secondary"
-          },
-          {
-            "name": "Tertiary Outline",
-            "value": "tertiary-outline"
-          },
-          {
-            "name": "Tertiary Filled",
-            "value": "tertiary-filled"
-          },
-          {
-            "name": "Text Only",
-            "value": "text-only"
-          }
-        ]
-      },
-	    {
-        "component": "select",
-        "name": "alert-banner_ctahrefIconType",
-        "value": "",
-        "label": "Icon Type",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "None",
-            "value": ""
-          },
-          {
-            "name": "Both",
-            "value": "both"
-          },
-          {
-            "name": "Right",
-            "value": "right"
-          },
-          {
-            "name": "Left",
-            "value": "left"
-          },
-          {
-            "name": "Icon Only",
-            "value": "icon"
-          }
-        ]
       }
     ]
   },
@@ -1137,55 +905,6 @@
   {
     "id": "learn-more",
     "fields": [
-      {
-        "component": "multiselect",
-        "valueType": "string",
-        "name": "classes",
-        "value": "",
-        "label": "Block Options",
-        "options": [
-          {
-            "name": "Button Primary",
-            "value": "button-primary"
-          },
-          {
-            "name": "Button Secondary",
-            "value": "button-secondary"
-          },
-          {
-            "name": "Button Tertiary Outline",
-            "value": "button-tertiary-outline"
-          },
-          {
-            "name": "Button Tertiary Filled",
-            "value": "button-tertiary-filled"
-          },
-          {
-            "name": "Button Text Only",
-            "value": "button-text-only"
-          },
-          {
-            "name": "Icon None",
-            "value": "icon-none"
-          },
-          {
-            "name": "Icon Both",
-            "value": "icon-both"
-          },
-          {
-            "name": "Icon Right",
-            "value": "icon-right"
-          },
-          {
-            "name": "Icon Left",
-            "value": "icon-left"
-          },
-          {
-            "name": "Icon Only",
-            "value": "icon-only"
-          }
-        ]
-      },
       {
         "component": "text",
         "valueType": "string",
