@@ -97,9 +97,13 @@
     "components": []
   },
   {
-    "id": "carousel",
+    "id": "carousel-item",
     "components": [
-      "column"
+      "text",
+      "image",
+      "button",
+      "title",
+      "video"
     ]
   }
 ]
