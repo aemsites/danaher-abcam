@@ -932,7 +932,7 @@
         "component": "select",
         "valueType": "string",
         "name": "elouqa_form_method",
-        "value": "",
+        "value": "post",
         "label": "Elouqa Form Method",
         "options": [
           {

@@ -43,7 +43,7 @@ export default function decorate(block) {
     formEl && formEl.children.length > 0
     && childrens === formEl.children.length
   ) {
-    block.innerHTML = '';
+    // block.innerHTML = '';
     block.append(formEl);
   }
 }
