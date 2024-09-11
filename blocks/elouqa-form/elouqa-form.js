@@ -3,7 +3,7 @@ import {
   select,
 } from '../../scripts/dom-builder.js';
 
-function detectFormElementType(formInputElType, formInputElName, formInputElLabel) {
+function detectFormElementType(formInputElType, formInputElName, formInputElLabel, formInputElValue = "") {
   let typeOfFormElement;
   switch (formInputElType) {
     case "options":
@@ -20,6 +20,7 @@ function detectFormElementType(formInputElType, formInputElName, formInputElLabe
         id: formInputElName ? formInputElName : formInputElLabel,
         name: formInputElName ? formInputElName : formInputElLabel,
         type: formInputElType,
+        value: formInputElValue,
       });
       break;
   }
@@ -39,7 +40,8 @@ export default function decorate(block) {
       const formInputElLabel = child.children[0].children[0]?.innerText;
       const formInputElType = child.children[0].children[1]?.innerText;
       const formInputElName = child.children[0].children[2]?.innerText;
-      const typeOfFormElement = detectFormElementType(formInputElType);
+      const formInputElValue = child.children[0].children[3]?.innerText;
+      const typeOfFormElement = detectFormElementType(formInputElType, formInputElName, formInputElLabel, formInputElValue);
       const formInputEl = formInputElType !== "hidden" ? div(
         { class: 'form-group flex flex-col gap-1' },
         label(
