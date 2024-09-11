@@ -289,7 +289,7 @@ function decorateStoryPage(main){
     });
     sectionEl?.append(rightSideElements);
   
-    const divEl = div({class: 'ml-0 md:ml-8 max-w-56'});
+    const divEl = div({class: 'ml-0 md:ml-8 min-w-56'});
     divEl.append(sectionEl?.querySelector('.story-info-wrapper'));
     divEl.append(sectionEl?.querySelector('.social-media-wrapper'));
     sectionEl?.prepend(divEl);
@@ -380,10 +380,10 @@ function playAudio({src = '#'}) {
 function decorateVideo(main) {
   // Find the container with the video link
   const divContainers = main.querySelectorAll('.stories main .section');
-
+  const type = getMetadata('pagetags');
   // Iterate over each container
   divContainers.forEach(divContainer => {
-    if (window.location.pathname.includes('/en/stories/podcasts')) {
+    if (type.includes('podcast')) {
       divContainer.querySelectorAll('.button-container a').forEach(link => {
         if (link.title === "video") {
           const embedHTML = `<div class="relative w-full h-full">
@@ -412,7 +412,7 @@ function decorateVideo(main) {
           });
         }
       });
-    } else if (window.location.pathname.includes('/en/stories/films')) {
+    } else if (type.includes('film')) {
       divContainer.querySelectorAll('.columns .button-container a').forEach(link => {
         if (link.title === "video") {
           // Extract video ID from the URL
@@ -432,7 +432,6 @@ function decorateVideo(main) {
               </button>
             </div>
           `;
-          console.log(link.parentElement);
           const linkContainer = link.parentElement;
           linkContainer.innerHTML = playButtonHTML;
 
@@ -616,7 +615,6 @@ export function formatDate(date) {
     weekday: 'short', day: '2-digit', month: 'short', year: 'numeric', timeZone: 'UTC',
   };
   const lastModifiedDate = new Date(Number(date) * 1000);
-  console.log(lastModifiedDate);
   const formattedDate = new Intl.DateTimeFormat('en-us', options).format(lastModifiedDate);
   const formatDate = formattedDate.replace(/,/g, '');
   return formatDate;
