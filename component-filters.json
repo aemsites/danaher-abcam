@@ -78,12 +78,6 @@
     ]
   },
   {
-    "id": "learn-more",
-    "components": [
-      "abcam-button"
-    ]
-  },
-  {
     "id": "title-card",
     "components": []
   },
