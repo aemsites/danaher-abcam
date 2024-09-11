@@ -3,16 +3,20 @@ import {
   select,
 } from '../../scripts/dom-builder.js';
 
-function detectFormElementType(formInputElType, formInputElName, formInputElLabel, formInputElValue = "") {
+function detectFormElementType(
+  formInputElType, formInputElName,
+  formInputElLabel, formInputElValue = ""
+) {
   let typeOfFormElement;
   switch (formInputElType) {
     case "options":
-      // typeOfFormElement = select({
-      //   class: 'p-1 border rounded',
-      //   id: formInputElName ? formInputElName : formInputElLabel,
-      //   name: formInputElName ? formInputElName : formInputElLabel,
-      //   type: formInputElType,
-      // });
+      typeOfFormElement = select({
+        class: 'p-1 border rounded',
+        id: formInputElName ? formInputElName : formInputElLabel,
+        name: formInputElName ? formInputElName : formInputElLabel,
+        type: formInputElType,
+        value: formInputElValue,
+      });
       break;
     default:
       typeOfFormElement = input({
@@ -36,6 +40,7 @@ export default function decorate(block) {
       formEl.id = child?.children[0]?.children[1]?.innerText;
       formEl.name = child?.children[0]?.children[2]?.innerText;
       formEl.action = child?.children[0]?.children[3]?.innerText;
+      child.outerHTML = '';
     } else if (child.children.length > 0) {
       const formInputElLabel = child.children[0].children[0]?.innerText;
       const formInputElType = child.children[0].children[1]?.innerText;
@@ -54,10 +59,10 @@ export default function decorate(block) {
         typeOfFormElement,
       ) : typeOfFormElement;
       if (formInputElLabel && formInputElType && formInputElName) {
+        child.outerHTML = '';
         formEl.append(formInputEl);
       }
     }
-    child.outerHTML = '';
   });
   if (formEl && formEl.children.length > 0) {
     block.append(formEl);
