@@ -80,7 +80,7 @@
   {
     "id": "learn-more",
     "components": [
-      "button"
+      "abcam-button"
     ]
   },
   {
