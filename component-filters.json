@@ -94,5 +94,11 @@
   {
     "id": "hero-video",
     "components": []
+  },
+  {
+    "id": "carousel",
+    "components": [
+      "column"
+    ]
   }
 ]
