@@ -7,12 +7,12 @@ function detectFormElementType(formInputElType, formInputElName, formInputElLabe
   let typeOfFormElement;
   switch (formInputElType) {
     case "options":
-      typeOfFormElement = select({
-        class: 'p-1 border rounded',
-        id: formInputElName ? formInputElName : formInputElLabel,
-        name: formInputElName ? formInputElName : formInputElLabel,
-        type: formInputElType,
-      });
+      // typeOfFormElement = select({
+      //   class: 'p-1 border rounded',
+      //   id: formInputElName ? formInputElName : formInputElLabel,
+      //   name: formInputElName ? formInputElName : formInputElLabel,
+      //   type: formInputElType,
+      // });
       break;
     default:
       typeOfFormElement = input({

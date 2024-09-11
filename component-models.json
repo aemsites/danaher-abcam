@@ -1027,7 +1027,7 @@
         "component": "text",
         "name": "elouqa_form_element_element_value",
         "value": "",
-        "label": "Value",
+        "label": "Element Default Value",
         "valueType": "string"
       }
     ]
