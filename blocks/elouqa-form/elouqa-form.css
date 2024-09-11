@@ -6,6 +6,10 @@
   display: flex
 }
 
+.elouqa-form-wrapper :is(.hidden) {
+  display: none
+}
+
 .elouqa-form-wrapper :is(.flex-col) {
   flex-direction: column
 }
