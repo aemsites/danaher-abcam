@@ -1249,12 +1249,12 @@ audio::-webkit-media-controls-panel {
   width: 100vw;
 }
 
-.min-w-56 {
-  min-width: 14rem;
+.w-3\/4 {
+  width: 75%;
 }
 
-.max-w-56 {
-  max-width: 14rem;
+.min-w-56 {
+  min-width: 14rem;
 }
 
 .flex-auto {
@@ -1430,6 +1430,10 @@ audio::-webkit-media-controls-panel {
 
 .border {
   border-width: 1px;
+}
+
+.border-0 {
+  border-width: 0px;
 }
 
 .border-2 {
@@ -1900,5 +1904,9 @@ audio::-webkit-media-controls-panel {
 
   .lg\:w-1\/2 {
     width: 50%;
+  }
+
+  .lg\:w-3\/4 {
+    width: 75%;
   }
 }   

@@ -17,7 +17,7 @@ export default function decorate(block) {
     span({ class: 'icon icon-arrow-left size-6 items-center' }),
     `Back to ${articleType}`,
   );
-  if(document.querySelector('.section.no-section-padding')) {
+  if (document.querySelector('.section.no-section-padding')) {
     goParentBack.classList.add('px-6', 'lg:px-80');
   }
   decorateIcons(goParentBack);

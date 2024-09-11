@@ -388,7 +388,7 @@ function decorateVideo(main) {
         if (link.title === "video") {
           const embedHTML = `<div class="relative w-full h-full">
             <iframe src="${link.href}"
-            style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: relative;" 
+            class="relative w-full h-full border-0 top-0 left-0" 
             allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" 
             scrolling="no" title="Content from Youtube" loading="eager"></iframe>
           </div>`;
@@ -426,14 +426,14 @@ function decorateVideo(main) {
             <div class="relative w-full h-full">
               <img src="${posterImage}" class="relative inset-0 w-full h-full object-cover" />
               <button id="play-button-${videoId}" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 rounded-full p-4">
-                <svg width="80" height="80" viewBox="0 0 126 126" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M46.2656 36.4219C47.9883 35.1914 50.4492 35.1914 52.1719 36.4219L87.6094 58.0781C89.332 59.0625 90.5625 61.0312 90.5625 63C90.5625 65.2148 89.332 67.1836 87.6094 68.168L52.1719 89.8242C50.4492 90.8086 47.9883 91.0547 46.2656 89.8242C44.2969 88.8398 43.3125 86.8711 43.3125 84.6562V41.3438C43.3125 39.375 44.2969 37.4062 46.2656 36.4219ZM126 63C126 97.9453 97.6992 126 63 126C28.0547 126 0 97.9453 0 63C0 28.3008 28.0547 0 63 0C97.6992 0 126 28.3008 126 63ZM63 5.8125C34.6992 5.8125 5.8125 34.9453 5.8125 63C5.8125 91.3008 34.6992 120.188 63 120.188C91.0547 120.188 120.188 91.3008 120.188 63C120.188 34.9453 91.0547 5.8125 63 5.8125Z" fill="white"/>
-                </svg>
+                <span class = "video-play-icon icon icon-video-play"/>
               </button>
             </div>
           `;
           const linkContainer = link.parentElement;
           linkContainer.innerHTML = playButtonHTML;
+          decorateIcons(linkContainer);
+          linkContainer.querySelector('button > span > img')?.classList.add(...'w-3/4 h-full'.split(' '));
 
           if(linkContainer.closest('.image-full-width')){
             linkContainer.className = 'relative lg:absolute w-full lg:w-1/2 h-full object-cover lg:right-0 lg:bottom-6';
