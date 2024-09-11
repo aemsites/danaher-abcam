@@ -5,13 +5,13 @@ import {
 export default function decorate(block) {
   // console.log(block);
   const formEl = form();
-  let childrens = 0;
   [...block.children].forEach((child, childIndex) => {
     if (childIndex === 0) {
       formEl.method = child?.children[0]?.children[0]?.innerText;
       formEl.id = child?.children[0]?.children[1]?.innerText;
       formEl.name = child?.children[0]?.children[2]?.innerText;
       formEl.action = child?.children[0]?.children[3]?.innerText;
+      child.innerHTML = '';
     } else if (child.children.length > 0) {
       const formInputElLabel = child.children[0].children[0]?.innerText;
       const formInputElType = child.children[0].children[1]?.innerText;
@@ -33,7 +33,7 @@ export default function decorate(block) {
         }),
       );
       if (formInputElLabel && formInputElType && formInputElName) {
-        childrens += 1;
+        child.innerHTML = '';
         formEl.append(formInputEl);
       }
     }
@@ -41,7 +41,6 @@ export default function decorate(block) {
   // console.log(block, formEl, childrens, block.children.length, formEl.children.length, block.children.length === formEl.children.length);
   if (
     formEl && formEl.children.length > 0
-    && childrens === formEl.children.length
   ) {
     // block.innerHTML = '';
     block.append(formEl);
