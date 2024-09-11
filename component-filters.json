@@ -78,6 +78,12 @@
     ]
   },
   {
+    "id": "learn-more",
+    "components": [
+      "button"
+    ]
+  },
+  {
     "id": "title-card",
     "components": []
   },
