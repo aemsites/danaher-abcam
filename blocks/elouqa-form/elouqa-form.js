@@ -1,17 +1,18 @@
 import {
   form, input, label, div,
+  select,
 } from '../../scripts/dom-builder.js';
 
-function detectFormElementType() {
+function detectFormElementType(formInputElType, formInputElName, formInputElLabel) {
   let typeOfFormElement;
   switch (formInputElType) {
     case "options":
-      // typeOfFormElement = input({
-      //   class: 'p-1 border rounded',
-      //   id: formInputElName ? formInputElName : formInputElLabel,
-      //   name: formInputElName ? formInputElName : formInputElLabel,
-      //   type: formInputElType,
-      // });
+      typeOfFormElement = select({
+        class: 'p-1 border rounded',
+        id: formInputElName ? formInputElName : formInputElLabel,
+        name: formInputElName ? formInputElName : formInputElLabel,
+        type: formInputElType,
+      });
       break;
     default:
       typeOfFormElement = input({
@@ -22,6 +23,7 @@ function detectFormElementType() {
       });
       break;
   }
+  return typeOfFormElement;
 }
 
 export default function decorate(block) {

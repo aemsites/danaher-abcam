@@ -1011,16 +1011,23 @@
       },
       {
         "component": "text",
-        "name": "elouqa_form_element_elementName",
+        "name": "elouqa_form_element_element_name",
         "value": "",
         "label": "Element Name",
         "valueType": "string"
       },
       {
         "component": "text",
-        "name": "elouqa_form_element_elementValidations",
+        "name": "elouqa_form_element_element_validations",
         "value": "",
         "label": "Validation Parameters",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "elouqa_form_element_element_value",
+        "value": "",
+        "label": "Value",
         "valueType": "string"
       }
     ]
