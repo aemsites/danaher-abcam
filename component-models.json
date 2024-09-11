@@ -981,7 +981,7 @@
       },
       {
         "component": "select",
-        "name": "elouqa_form_element_elementType",
+        "name": "elouqa_form_element_element_type",
         "value": "text",
         "label": "Element Type",
         "valueType": "string",

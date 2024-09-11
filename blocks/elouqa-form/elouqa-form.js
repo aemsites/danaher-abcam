@@ -36,32 +36,33 @@ export default function decorate(block) {
   const formEl = form();
   [...block.children].forEach((child, childIndex) => {
     if (childIndex === 0) {
+      // console.log(child?.children[0]);
       formEl.method = child?.children[0]?.children[0]?.innerText;
       formEl.id = child?.children[0]?.children[1]?.innerText;
       formEl.name = child?.children[0]?.children[2]?.innerText;
       formEl.action = child?.children[0]?.children[3]?.innerText;
-      child.outerHTML = '';
+      // child.outerHTML = '';
     } else if (child.children.length > 0) {
       const formInputElLabel = child.children[0].children[0]?.innerText;
       const formInputElType = child.children[0].children[1]?.innerText;
       const formInputElName = child.children[0].children[2]?.innerText;
       // const formInputElValue = child.children[0].children[3]?.innerText;
-      const typeOfFormElement = detectFormElementType(formInputElType, formInputElName, formInputElLabel, "");
-      const formInputEl = div(
-        { class: 'form-group flex flex-col gap-1' },
-        label(
-          {
-            class: 'font-sans tracking-wide font-semibold',
-            for: formInputElName ? formInputElName : formInputElLabel,
-          },
-          formInputElLabel ? formInputElLabel : formInputElName,
-        ),
-        typeOfFormElement,
-      );
-      if (formInputElLabel && formInputElType && formInputElName) {
-        child.outerHTML = '';
-        formEl.append(formInputEl);
-      }
+      // const typeOfFormElement = detectFormElementType(formInputElType, formInputElName, formInputElLabel, "");
+      // const formInputEl = div(
+      //   { class: 'form-group flex flex-col gap-1' },
+      //   label(
+      //     {
+      //       class: 'font-sans tracking-wide font-semibold',
+      //       for: formInputElName ? formInputElName : formInputElLabel,
+      //     },
+      //     formInputElLabel ? formInputElLabel : formInputElName,
+      //   ),
+      //   typeOfFormElement,
+      // );
+      // if (formInputElLabel && formInputElType && formInputElName) {
+      //   // child.outerHTML = '';
+      //   formEl.append(formInputEl);
+      // }
     }
   });
   if (formEl && formEl.children.length > 0) {
