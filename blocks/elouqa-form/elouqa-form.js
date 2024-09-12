@@ -60,7 +60,7 @@ export default function decorate(block) {
           ),
           typeOfFormElement,
         ) : typeOfFormElement;
-        child.outerHTML = '';
+        // child.outerHTML = '';
         formEl.append(formInputEl);
       }
     }
