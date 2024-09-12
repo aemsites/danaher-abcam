@@ -6,52 +6,16 @@
     ]
   },
   {
-    "id": "columns",
-    "components": []
-  },
-  {
-    "id": "column",
-    "components": [
-      "text",
-      "image",
-      "button",
-      "title",
-      "video"
-    ]
-  },
-  {
     "id": "section",
     "components": [
       "text",
       "image",
       "button",
       "title",
-      "video",
       "hero",
       "cards",
       "columns",
-      "mini-teasers",
-      "alternating",
       "fragment",
-      "teasers",
-      "title-card",
-      "podcasts",
-      "alert-banner",
-      "hero-video",
-      "product-tabs",
-      "product-overview",
-      "product-buybox",
-      "product-reactivity",
-      "product-target-data",
-      "recommended-products",
-      "recently-viewed",
-      "product-datasheet",
-      "product-downloads",
-      "product-protocols",
-      "product-list",
-      "learn-more",
-      "related-stories",
-      "card-list",
       "form",
       "form-embed"
     ]
@@ -63,38 +27,19 @@
     ]
   },
   {
-    "id": "mini-teasers",
+    "id": "columns",
     "components": [
-      "mini-teaser"
+      "column"
     ]
   },
   {
-    "id": "alternating",
-    "components": []
-  },
-  {
-    "id": "teasers",
+    "id": "column",
     "components": [
-      "teaser"
+      "text",
+      "image",
+      "button",
+      "title"
     ]
-  },
-  {
-    "id": "title-card",
-    "components": []
-  },
-  {
-    "id": "podcasts",
-    "components": [
-      "podcast"
-    ]
-  }, 
-  {
-    "id": "alert-banner",
-    "components": []
-  },
-  {
-    "id": "hero-video",
-    "components": []
   },
   {
     "id": "form",
