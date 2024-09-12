@@ -1015,23 +1015,30 @@
       },
       {
         "component": "text",
-        "name": "elouqa_form_element_element_name",
+        "name": "elouqa_form_element_name",
         "value": "",
         "label": "Element Name",
         "valueType": "string"
       },
       {
         "component": "text",
-        "name": "elouqa_form_element_element_validations",
+        "name": "elouqa_form_element_validations",
         "value": "",
         "label": "Validation Parameters",
         "valueType": "string"
       },
       {
         "component": "text",
-        "name": "elouqa_form_element_element_value",
+        "name": "elouqa_form_element_value",
         "value": "",
         "label": "Element Default Value",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "elouqa_form_element_options",
+        "value": "",
+        "label": "Element Options",
         "valueType": "string"
       }
     ]

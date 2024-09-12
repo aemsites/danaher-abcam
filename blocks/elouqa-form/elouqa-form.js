@@ -1,22 +1,31 @@
 import {
   form, input, label, div,
-  select,
+  select, option,
 } from '../../scripts/dom-builder.js';
 
 function detectFormElementType(
   formInputElType, formInputElName, formInputElLabel,
-  formInputElValue = "", formInputElValidations = "",
+  formInputElValue = "", formInputElValidations = "", formInputElOptions = "",
 ) {
   let typeOfFormElement;
   switch (formInputElType) {
     case "options":
-      typeOfFormElement = select({
-        class: 'p-1 border rounded',
-        id: formInputElName ? formInputElName : formInputElLabel,
-        name: formInputElName ? formInputElName : formInputElLabel,
-        type: formInputElType,
-        value: formInputElValue,
-      });
+      const allOptions = formInputElOptions.trim() !== ''
+        ? formInputElOptions.split('|').map((opt) => {
+          const newOption = opt.split('->');
+          return option({ value: newOption[0] }, newOption[1]);
+        })
+        : '';
+      typeOfFormElement = select(
+        {
+          class: 'p-1 border rounded',
+          id: formInputElName ? formInputElName : formInputElLabel,
+          name: formInputElName ? formInputElName : formInputElLabel,
+          type: formInputElType,
+          value: formInputElValue,
+        },
+        ...allOptions
+      );
       break;
     default:
       typeOfFormElement = input({
@@ -35,20 +44,25 @@ export default function decorate(block) {
   // console.log(block);
   const formEl = form();
   [...block.children].forEach((child, childIndex) => {
+    const firstElementChildren = child.children[0].children;
     if (childIndex === 0) {
-      formEl.method = child?.children[0]?.children[0]?.innerText;
-      formEl.id = child?.children[0]?.children[1]?.innerText;
-      formEl.name = child?.children[0]?.children[2]?.innerText;
-      formEl.action = child?.children[0]?.children[3]?.innerText;
+      formEl.method = firstElementChildren[0]?.innerText;
+      formEl.id = firstElementChildren[1]?.innerText;
+      formEl.name = firstElementChildren[2]?.innerText;
+      formEl.action = firstElementChildren[3]?.innerText;
       child.outerHTML = '';
     } else if (child.children.length > 0) {
-      const formInputElLabel = child.children[0].children[0]?.innerText;
-      const formInputElType = child.children[0].children[1]?.innerText;
-      const formInputElName = child.children[0].children[2]?.innerText;
-      const formInputElValidations = child.children[0].children[3]?.innerText;
-      const formInputElValue = child.children[0].children[4]?.innerText;
+      const formInputElLabel = firstElementChildren[0]?.innerText;
+      const formInputElType = firstElementChildren[1]?.innerText;
+      const formInputElName = firstElementChildren[2]?.innerText;
+      const formInputElValidations = firstElementChildren[3]?.innerText;
+      const formInputElValue = firstElementChildren[4]?.innerText;
+      const formInputElOptions = firstElementChildren[5]?.innerText;
       if (formInputElLabel && formInputElType && formInputElName) {
-        const typeOfFormElement = detectFormElementType(formInputElType, formInputElName, formInputElLabel, formInputElValue, formInputElValidations);
+        const typeOfFormElement = detectFormElementType(
+          formInputElType, formInputElName, formInputElLabel,
+          formInputElValue, formInputElValidations, formInputElOptions,
+        );
         const formInputEl = formInputElType !== 'hidden' ? div(
           { class: 'form-group flex flex-col gap-1' },
           label(
