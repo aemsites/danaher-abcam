@@ -1,0 +1,86 @@
+{
+  "definitions": [
+    {
+      "title": "Teasers",
+      "id": "teasers",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Teasers",
+              "filter": "teasers"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Teaser",
+      "id": "teaser",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Teaser",
+              "model": "teaser",
+              "teaser_titleType": "h3",
+              "teaser_descriptionType": "h6"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "teaser",
+      "fields": [
+        {
+          "component": "text",
+          "name": "teaser_title",
+          "value": "",
+          "label": "Title",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "teaser_titleType",
+          "label": "",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "text",
+          "name": "teaser_description",
+          "value": "",
+          "label": "Description",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "teaser_descriptionType",
+          "label": "",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+          "component": "aem-content",
+          "name": "teaser_reference",
+          "value": "",
+          "label": "Select the page to link to",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "teasers",
+      "components": [
+        "teaser"
+      ]
+    }
+  ]
+}
