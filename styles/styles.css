@@ -456,7 +456,14 @@ h1,
     h4,
     h5,
     h6 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   font-family: rockwell;
+}
+
+p {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 h1 {
@@ -707,31 +714,9 @@ main .section .title-card-wrapper {
   border-bottom-width: 1px;
 }
 
-.button-container {
-  height: 2rem;
-  width: -moz-fit-content;
-  width: fit-content;
-  align-items: center;
-  justify-self: end;
-  white-space: nowrap;
-  border-radius: 1rem;
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  font-size: 0.75rem;
-  line-height: 1rem;
-  text-transform: capitalize;
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.button-container:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(59 59 59 / var(--tw-bg-opacity));
-}
+/* .button-container {
+        @apply bg-black hover:bg-[#3B3B3B] h-8 whitespace-nowrap rounded-2xl items-center py-2 px-3 text-white text-xs capitalize justify-self-end w-fit;
+    } */
 
 .home-page main .section > div.hero-wrapper {
   height: 496px;
@@ -979,6 +964,10 @@ dialog .modal-content .section > .default-content-wrapper p {
   padding-top: 2rem;
 }
 
+audio::-webkit-media-controls-panel {
+  background-color: white;
+}
+
 .visible {
   visibility: visible;
 }
@@ -1023,6 +1012,10 @@ dialog .modal-content .section > .default-content-wrapper p {
   right: 0px;
 }
 
+.right-\[0px\] {
+  right: 0px;
+}
+
 .right-\[10px\] {
   right: 10px;
 }
@@ -1033,6 +1026,10 @@ dialog .modal-content .section > .default-content-wrapper p {
 
 .top-32 {
   top: 8rem;
+}
+
+.top-\[70px\] {
+  top: 70px;
 }
 
 .z-10 {
@@ -1128,6 +1125,10 @@ dialog .modal-content .section > .default-content-wrapper p {
   margin-top: 0.375rem;
 }
 
+.mt-10 {
+  margin-top: 2.5rem;
+}
+
 .mt-2 {
   margin-top: 0.5rem;
 }
@@ -1210,6 +1211,10 @@ dialog .modal-content .section > .default-content-wrapper p {
   width: 50%;
 }
 
+.w-14 {
+  width: 3.5rem;
+}
+
 .w-2\/5 {
   width: 40%;
 }
@@ -1244,8 +1249,12 @@ dialog .modal-content .section > .default-content-wrapper p {
   width: 100vw;
 }
 
-.max-w-56 {
-  max-width: 14rem;
+.w-3\/4 {
+  width: 75%;
+}
+
+.min-w-56 {
+  min-width: 14rem;
 }
 
 .flex-auto {
@@ -1354,6 +1363,10 @@ dialog .modal-content .section > .default-content-wrapper p {
        column-gap: 0.75rem;
 }
 
+.overflow-hidden {
+  overflow: hidden;
+}
+
 .overflow-scroll {
   overflow: scroll;
 }
@@ -1419,6 +1432,10 @@ dialog .modal-content .section > .default-content-wrapper p {
   border-width: 1px;
 }
 
+.border-0 {
+  border-width: 0px;
+}
+
 .border-2 {
   border-width: 2px;
 }
@@ -1479,6 +1496,10 @@ dialog .modal-content .section > .default-content-wrapper p {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-opacity-50 {
+  --tw-bg-opacity: 0.5;
+}
+
 .object-contain {
   -o-object-fit: contain;
      object-fit: contain;
@@ -1493,6 +1514,10 @@ dialog .modal-content .section > .default-content-wrapper p {
   padding: 0px;
 }
 
+.p-10 {
+  padding: 2.5rem;
+}
+
 .p-12 {
   padding: 3rem;
 }
@@ -1503,6 +1528,10 @@ dialog .modal-content .section > .default-content-wrapper p {
 
 .p-4 {
   padding: 1rem;
+}
+
+.p-\[10px\] {
+  padding: 10px;
 }
 
 .px-1 {
@@ -1712,6 +1741,10 @@ dialog .modal-content .section > .default-content-wrapper p {
   text-decoration-line: underline;
 }
 
+.no-underline {
+  text-decoration-line: none;
+}
+
 .shadow {
   --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
@@ -1787,7 +1820,25 @@ dialog .modal-content .section > .default-content-wrapper p {
   }
 }
 
+@media (max-width: 767px) {
+  .max-\[767px\]\:px-3\.5 {
+    padding-left: 0.875rem;
+    padding-right: 0.875rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .max-\[576px\]\:px-2\.5 {
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+  }
+}
+
 @media (min-width: 768px) {
+  .md\:mb-2 {
+    margin-bottom: 0.5rem;
+  }
+
   .md\:ml-8 {
     margin-left: 2rem;
   }
@@ -1835,5 +1886,27 @@ dialog .modal-content .section > .default-content-wrapper p {
 
   .md\:pt-4 {
     padding-top: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:absolute {
+    position: absolute;
+  }
+
+  .lg\:bottom-6 {
+    bottom: 1.5rem;
+  }
+
+  .lg\:right-0 {
+    right: 0px;
+  }
+
+  .lg\:w-1\/2 {
+    width: 50%;
+  }
+
+  .lg\:w-3\/4 {
+    width: 75%;
   }
 }   
