@@ -1006,6 +1006,10 @@
           {
             "name": "Hidden",
             "value": "hidden"
+          },
+          {
+            "name": "Options",
+            "value": "options"
           }
         ]
       },
