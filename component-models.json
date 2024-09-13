@@ -1010,6 +1010,10 @@
           {
             "name": "Options",
             "value": "options"
+          },
+          {
+            "name": "Submit",
+            "value": "submit"
           }
         ]
       },
@@ -1039,6 +1043,20 @@
         "name": "elouqa_form_element_options",
         "value": "",
         "label": "Element Options",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "elouqa_form_element_data_value",
+        "value": "",
+        "label": "Element Data Value",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "elouqa_form_element_id",
+        "value": "",
+        "label": "Element Id",
         "valueType": "string"
       }
     ]

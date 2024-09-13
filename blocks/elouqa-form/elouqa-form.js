@@ -4,7 +4,6 @@ import {
 } from '../../scripts/dom-builder.js';
 
 function handleValidations(validations, element) {
-  // console.log('Handle Validations', validations);
   let isError = false;
   let message = '';
   const allValidations = validations.split('|');
@@ -28,8 +27,8 @@ function handleValidations(validations, element) {
 }
 
 function detectFormElementType(
-  formInputElType, formInputElName, formInputElLabel,
-  formInputElValue = "", formInputElOptions = "",
+  formInputElType, formInputElName, formInputElId,
+  formInputElValue = '', formInputElOptions = '', formInputElDataValue = '',
 ) {
   let typeOfFormElement;
   switch (formInputElType) {
@@ -43,21 +42,21 @@ function detectFormElementType(
       typeOfFormElement = select(
         {
           class: 'p-1 border rounded',
-          id: formInputElName ? formInputElName : formInputElLabel,
-          name: formInputElName ? formInputElName : formInputElLabel,
-          type: formInputElType,
-          value: formInputElValue,
+          id: formInputElId ? formInputElId : formInputElName,
+          name: formInputElName ? formInputElName : formInputElId,
+          'data-value': formInputElDataValue,
         },
         ...allOptions
       );
       break;
     default:
       typeOfFormElement = input({
-        class: 'p-1 border rounded',
-        id: formInputElName ? formInputElName : formInputElLabel,
-        name: formInputElName ? formInputElName : formInputElLabel,
+        class: `p-1 border rounded-md ${formInputElType === 'submit' ? 'text-white bg-green-400' : ''}`,
+        id: formInputElId ? formInputElId : formInputElName,
+        name: formInputElName ? formInputElName : formInputElId,
         type: formInputElType,
-        // value: formInputElValue,
+        value: formInputElValue,
+        'data-value': formInputElDataValue,
       });
       break;
   }
@@ -66,7 +65,7 @@ function detectFormElementType(
 
 export default function decorate(block) {
   // console.log(block);
-  const formEl = form();
+  const formEl = form({ class: 'flex flex-col gap-4' });
   [...block.children].forEach((child, childIndex) => {
     const firstElementChildren = child.children[0].children;
     if (childIndex === 0) {
@@ -82,10 +81,12 @@ export default function decorate(block) {
       const formInputElValidations = firstElementChildren[3]?.innerText;
       const formInputElValue = firstElementChildren[4]?.innerText;
       const formInputElOptions = firstElementChildren[5]?.innerText;
+      const formInputElDataValue = firstElementChildren[6]?.innerText;
+      const formInputElId = firstElementChildren[7]?.innerText;
       if (formInputElLabel && formInputElType && formInputElName) {
         const typeOfFormElement = detectFormElementType(
-          formInputElType, formInputElName, formInputElLabel,
-          formInputElValue, formInputElOptions,
+          formInputElType, formInputElName, formInputElId,
+          formInputElValue, formInputElOptions, formInputElDataValue,
         );
         if (formInputElValidations !== '' && typeOfFormElement) {
           typeOfFormElement.addEventListener(
