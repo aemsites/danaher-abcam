@@ -1012,6 +1012,13 @@
       },
       {
         "component": "text",
+        "name": "link-list-item_titleType",
+        "label": "",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
         "valueType": "string",
         "name": "linklist_hrefText",
         "value": "",

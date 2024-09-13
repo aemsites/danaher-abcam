@@ -551,7 +551,8 @@
                 "template": {
                   "name": "Link List",
                   "model": "link-list",
-                  "filter": "link-list"
+                  "filter": "link-list",
+                  "link-list_titleType": "h3"
                 }
               }
             }
@@ -566,7 +567,8 @@
                 "resourceType": "core/franklin/components/block/v1/block/item",
                 "template": {
                   "name": "Link List Item",
-                  "model": "link-list-item"
+                  "model": "link-list-item",
+                  "link-list-item_titleType": "h4"
                 }
               }
             }
