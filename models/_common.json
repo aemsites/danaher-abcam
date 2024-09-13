@@ -1,0 +1,69 @@
+{
+  "button-fields": [
+    {
+      "component": "aem-content",
+      "name": "link",
+      "label": "Link"
+    },
+    {
+      "component": "text",
+      "name": "linkText",
+      "label": "Text"
+    },
+    {
+      "component": "text",
+      "name": "linkTitle",
+      "label": "Button or Link"
+    },
+    {
+      "component": "select",
+      "name": "linkVariant",
+      "label": "Type",
+      "options": [
+        {
+          "name": "Primary",
+          "value": "button-primary"
+        },
+        {
+          "name": "Secondary",
+          "value": "button-secondary"
+        },
+        {
+          "name": "Tertiary Outline",
+          "value": "button-tertiary-outline"
+        },
+        {
+          "name": "Tertiary Filled",
+          "value": "button-tertiary-filled"
+        },
+        {
+          "name": "Text Only",
+          "value": "button-text-only"
+        }
+      ]
+    },
+    {
+      "component": "select",
+      "name": "linkIconType",
+      "label": "Type",
+      "options": [
+        {
+          "name": "Both",
+          "value": "icon-both"
+        },
+        {
+          "name": "Right",
+          "value": "icon-right"
+        },
+        {
+          "name": "Left",
+          "value": "icon-left"
+        },
+        {
+          "name": "Icon Only",
+          "value": "icon-only"
+        }
+      ]
+    }
+  ]
+}
