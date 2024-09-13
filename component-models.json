@@ -846,6 +846,33 @@
     ]
   },
   {
+    "id": "product-overview",
+    "fields": [
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "value": "",
+        "label": "Options",
+        "options": [
+          {
+            "name": "Overview",
+            "value": "overview",
+            "selected": true
+          },
+          {
+            "name": "Datasheet",
+            "value": "datasheet"
+          },
+          {
+            "name": "Supprot and Download",
+            "value": "download"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "teaser",
     "fields": [
       {
