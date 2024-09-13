@@ -20,18 +20,12 @@ function sortFlyoutMenus(menuPath) {
       menu.classList.add('hidden');
     } else {
       menu.classList.remove('hidden');
-      const href = menu.getAttribute('data-href');
       const backFlyout = document.querySelector('#back-flyout');
-      const exploreFlyout = document.querySelector('#explore-flyout');
       const redirectLink = menu.getAttribute('data-content').split('|').slice(0, -1).join('|');
       if (redirectLink) {
         backFlyout.setAttribute('data-redirect', redirectLink);
         backFlyout.classList.remove('hidden');
       } else backFlyout.classList.add('hidden');
-      if (href) {
-        exploreFlyout.setAttribute('href', href);
-        exploreFlyout.classList.remove('hidden');
-      } else exploreFlyout.classList.add('hidden');
     }
   });
 }
@@ -128,17 +122,14 @@ function buildFlyoutMenus(headerBlock) {
   const backFlyout = button({ id: 'back-flyout', class: 'flex items-center gap-x-1 group' }, span({ class: 'icon icon-chevron-left-orange w-4 h-4 transition-transform group-hover:translate-x-0.5' }), 'Back');
   backFlyout.addEventListener('click', () => sortFlyoutMenus(backFlyout.getAttribute('data-redirect')));
 
-  const exploreFlyout = a({ id: 'explore-flyout', class: 'flex items-center gap-x-1 group', href: '/' }, 'Explore all', span({ class: 'icon icon-chevron-right-orange w-4 h-4 transition-transform group-hover:-translate-x-0.5' }));
 
   const navigateActions = div(
     { class: 'flex justify-between mt-5 text-base text-white font-bold mx-2' },
     backFlyout,
-    exploreFlyout,
   );
 
   decorateIcons(closeFlyout);
   decorateIcons(backFlyout);
-  decorateIcons(exploreFlyout);
 
   const menuWrapper = ul({ class: 'h-full flex flex-col text-white gap-y-2 mt-3 overflow-auto [&>li.active]:bg-danaherpurple-50 [&>li.active]:font-bold' });
   [...allFlyout].forEach((flyMenu) => {
@@ -153,7 +144,7 @@ function buildFlyoutMenus(headerBlock) {
           ...(anchorHref && { 'data-href': anchorHref }),
         },
       );
-      if (headerBlock.querySelector('span.icon')) {
+      if (flyMenuChild.querySelector('a') === null) {
         liTag.setAttribute('data-redirect', contextPath);
         liTag.innerHTML += flyMenuChild.textContent;
         liTag.append(span({ class: 'icon icon-chevron-right-orange w-4 h-4 group-hover:-translate-x-0.5' }));
