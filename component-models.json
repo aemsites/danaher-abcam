@@ -644,120 +644,6 @@
     ]
   },
   {
-    "id": "podcasts",
-    "fields": [
-      {
-        "component": "multiselect",
-        "valueType": "string",
-        "name": "classes",
-        "value": "",
-        "label": "Block Options",
-        "options": [
-          {
-            "name": "1 Columns",
-            "value": "cols-1"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "podcast",
-    "fields": [
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image",
-        "label": "Podcast Image",
-        "multi": false
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "imageAlt",
-        "label": "Alt",
-        "value": ""
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "podcast_title",
-        "value": "",
-        "label": "Title"
-      },
-      {
-        "component": "text",
-        "name": "card_titleType",
-        "label": "",
-        "valueType": "string",
-        "hidden": true
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "podcast_subtitle",
-        "value": "",
-        "label": "Sub Title"
-      },
-      {
-        "component": "text",
-        "name": "podcast_subtitle",
-        "label": "",
-        "valueType": "string",
-        "hidden": true
-      },
-      {
-        "component": "richtext",
-        "name": "podcast_description",
-        "value": "",
-        "label": "Description",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "podcast_CTAhref",
-        "value": "",
-        "label": "CTA Link"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "podcast_CTAhrefText",
-        "value": "",
-        "label": "CTA Text"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "streamed_title",
-        "value": "",
-        "label": "Stream Title"
-      },
-      {
-        "component": "text",
-        "name": "streamed_titleType",
-        "label": "",
-        "valueType": "string",
-        "hidden": true
-      },
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image",
-        "label": "Streamed Images",
-        "multi": true
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "imageAlt",
-        "label": "Alt",
-        "value": ""
-      }
-    ]
-  },
-  {
     "id": "alert-banner",
     "fields": [
       {
@@ -882,6 +768,174 @@
         "name": "image_fourAlt",
         "label": "Fourth Alt",
         "value": ""
+      }
+    ]
+  },
+  {
+    "id": "podcast",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Podcast Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Alt",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "podcast_title",
+        "value": "",
+        "label": "Title"
+      },
+      {
+        "component": "text",
+        "name": "podcast_titleType",
+        "label": "",
+        "valueType": "string",
+        "value": "h2"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "podcast_subtitle",
+        "value": "",
+        "label": "Sub Title"
+      },
+      {
+        "component": "text",
+        "name": "podcast_subtitleType",
+        "label": "",
+        "valueType": "string",
+        "value": "h3"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_href",
+        "value": "",
+        "label": "Media Link"
+      },
+      {
+        "component": "text",
+        "label": "Media Title",
+        "name": "media_hrefText",
+        "valueType": "string",
+        "value": ""
+      },
+      {
+        "component": "radio-group",
+        "label": "Media Type",
+        "name": "media_hrefTitle",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Video",
+            "value": "video"
+          },
+          {
+            "name": "Audio",
+            "value": "audio"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "name": "podcast_description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "podcast_CTAhref",
+        "value": "",
+        "label": "CTA Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "podcast_CTAhrefText",
+        "value": "",
+        "label": "CTA Text"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "streamed_title",
+        "value": "",
+        "label": "Stream Title"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "spotify-icon",
+        "label": "Spotify Icon",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "spotify-iconAlt",
+        "label": "Spotify Icon Alt",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "spotify-iconhref",
+        "value": "",
+        "label": "Spotify Link"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "apple-icon",
+        "label": "Apple Icon",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "apple-iconAlt",
+        "label": "Apple Icon Alt",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "apple-iconhref",
+        "value": "",
+        "label": "Apple Link"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "youtube-icon",
+        "label": "Youtube Icon",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "youtube-iconAlt",
+        "label": "Youtube Icon Alt",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "youtube-iconhref",
+        "value": "",
+        "label": "Youtube Link"
       }
     ]
   },

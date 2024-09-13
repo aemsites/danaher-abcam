@@ -154,6 +154,11 @@ const fileMappings = [
     wrapper: 'hero-video-wrapper',
   },
   {
+    content: './blocks/podcasts/podcasts.js',
+    output: './blocks/podcasts/podcasts.css',
+    wrapper: 'podcasts-wrapper',
+  },
+  {
     content: './blocks/marketo-form/marketo-form.js',
     output: './blocks/marketo-form/marketo-form.css',
     wrapper: 'marketo-form-wrapper',

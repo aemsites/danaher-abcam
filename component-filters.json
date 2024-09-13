@@ -35,9 +35,9 @@
       "fragment",
       "teasers",
       "title-card",
-      "podcasts",
       "alert-banner",
       "hero-video",
+      "podcasts",
       "product-tabs",
       "product-overview",
       "product-buybox",
@@ -80,12 +80,6 @@
   {
     "id": "title-card",
     "components": []
-  },
-  {
-    "id": "podcasts",
-    "components": [
-      "podcast"
-    ]
   }, 
   {
     "id": "alert-banner",
@@ -94,5 +88,11 @@
   {
     "id": "hero-video",
     "components": []
+  },
+  {
+    "id": "podcasts",
+    "components": [
+      "podcast"
+    ]
   }
 ]

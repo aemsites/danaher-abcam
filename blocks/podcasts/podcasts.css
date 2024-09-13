@@ -1,0 +1,224 @@
+.podcasts-wrapper :is(.absolute) {
+  position: absolute
+}
+
+.podcasts-wrapper :is(.relative) {
+  position: relative
+}
+
+.podcasts-wrapper :is(.right-0) {
+  right: 0px
+}
+
+.podcasts-wrapper :is(.top-16) {
+  top: 4rem
+}
+
+.podcasts-wrapper :is(.mb-0) {
+  margin-bottom: 0px
+}
+
+.podcasts-wrapper :is(.mb-6) {
+  margin-bottom: 1.5rem
+}
+
+.podcasts-wrapper :is(.ml-12) {
+  margin-left: 3rem
+}
+
+.podcasts-wrapper :is(.ml-4) {
+  margin-left: 1rem
+}
+
+.podcasts-wrapper :is(.ml-6) {
+  margin-left: 1.5rem
+}
+
+.podcasts-wrapper :is(.mt-4) {
+  margin-top: 1rem
+}
+
+.podcasts-wrapper :is(.block) {
+  display: block
+}
+
+.podcasts-wrapper :is(.flex) {
+  display: flex
+}
+
+.podcasts-wrapper :is(.h-16) {
+  height: 4rem
+}
+
+.podcasts-wrapper :is(.h-\[200px\]) {
+  height: 200px
+}
+
+.podcasts-wrapper :is(.w-16) {
+  width: 4rem
+}
+
+.podcasts-wrapper :is(.w-\[200px\]) {
+  width: 200px
+}
+
+.podcasts-wrapper :is(.w-\[65\%\]) {
+  width: 65%
+}
+
+.podcasts-wrapper :is(.items-center) {
+  align-items: center
+}
+
+.podcasts-wrapper :is(.rounded-\[40px\]) {
+  border-radius: 40px
+}
+
+.podcasts-wrapper :is(.border) {
+  border-width: 1px
+}
+
+.podcasts-wrapper :is(.border-b-2) {
+  border-bottom-width: 2px
+}
+
+.podcasts-wrapper :is(.border-\[\#000\]) {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity))
+}
+
+.podcasts-wrapper :is(.border-\[\#D8D8D8\]) {
+  --tw-border-opacity: 1;
+  border-color: rgb(216 216 216 / var(--tw-border-opacity))
+}
+
+.podcasts-wrapper :is(.bg-white) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+}
+
+.podcasts-wrapper :is(.object-cover) {
+  -o-object-fit: cover;
+     object-fit: cover
+}
+
+.podcasts-wrapper :is(.px-4) {
+  padding-left: 1rem;
+  padding-right: 1rem
+}
+
+.podcasts-wrapper :is(.py-4) {
+  padding-top: 1rem;
+  padding-bottom: 1rem
+}
+
+.podcasts-wrapper :is(.py-8) {
+  padding-top: 2rem;
+  padding-bottom: 2rem
+}
+
+.podcasts-wrapper :is(.text-2xl) {
+  font-size: 1.5rem;
+  line-height: 2rem
+}
+
+.podcasts-wrapper :is(.text-lg) {
+  font-size: 1.125rem;
+  line-height: 1.75rem
+}
+
+.podcasts-wrapper :is(.text-sm) {
+  font-size: 0.875rem;
+  line-height: 1.25rem
+}
+
+.podcasts-wrapper :is(.font-bold) {
+  font-weight: 700
+}
+
+.podcasts-wrapper :is(.font-normal) {
+  font-weight: 400
+}
+
+.podcasts-wrapper :is(.leading-8) {
+  line-height: 2rem
+}
+
+.podcasts-wrapper :is(.leading-\[0rem\]) {
+  line-height: 0rem
+}
+
+.podcasts-wrapper :is(.text-\[\#8B8B8B\]) {
+  --tw-text-opacity: 1;
+  color: rgb(139 139 139 / var(--tw-text-opacity))
+}
+
+.podcasts-wrapper :is(.text-black) {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity))
+}
+
+@media (max-width: 799px) {
+  .podcasts-wrapper :is(.max-\[799px\]\:top-64) {
+    top: 16rem
+  }
+
+  .podcasts-wrapper :is(.max-\[799px\]\:mb-1\.5) {
+    margin-bottom: 0.375rem
+  }
+
+  .podcasts-wrapper :is(.max-\[799px\]\:ml-0) {
+    margin-left: 0px
+  }
+
+  .podcasts-wrapper :is(.max-\[799px\]\:ml-8) {
+    margin-left: 2rem
+  }
+
+  .podcasts-wrapper :is(.max-\[799px\]\:mt-6) {
+    margin-top: 1.5rem
+  }
+
+  .podcasts-wrapper :is(.max-\[799px\]\:h-10) {
+    height: 2.5rem
+  }
+
+  .podcasts-wrapper :is(.max-\[799px\]\:h-\[200px\]) {
+    height: 200px
+  }
+
+  .podcasts-wrapper :is(.max-\[799px\]\:w-10) {
+    width: 2.5rem
+  }
+
+  .podcasts-wrapper :is(.max-\[799px\]\:w-\[65\%\]) {
+    width: 65%
+  }
+
+  .podcasts-wrapper :is(.max-\[799px\]\:w-full) {
+    width: 100%
+  }
+
+  .podcasts-wrapper :is(.max-\[799px\]\:flex-col) {
+    flex-direction: column
+  }
+
+  .podcasts-wrapper :is(.max-\[799px\]\:justify-between) {
+    justify-content: space-between
+  }
+
+  .podcasts-wrapper :is(.max-\[799px\]\:px-2) {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem
+  }
+
+  .podcasts-wrapper :is(.max-\[799px\]\:py-2) {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem
+  }
+
+  .podcasts-wrapper :is(.max-\[799px\]\:text-base) {
+    font-size: 1rem;
+    line-height: 1.5rem
+  }
+}
