@@ -977,26 +977,9 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "linklist_title",
+        "name": "text",
         "value": "",
-        "label": "Title"
-      },
-      {
-        "component": "select",
-        "name": "linklist_titleType",
-        "value": "h4",
-        "label": "Type",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "h4",
-            "value": "h4"
-          },
-          {
-            "name": "h5",
-            "value": "h5"
-          }
-        ]
+        "label": "Text"
       }
     ]
   },
