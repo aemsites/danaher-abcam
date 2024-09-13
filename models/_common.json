@@ -18,7 +18,6 @@
     {
       "component": "select",
       "name": "linkVariant",
-      "id": "linkVariant",
       "label": "Link Variant",
       "options": [
         {
@@ -46,7 +45,6 @@
     {
       "component": "select",
       "name": "linkIconType",
-      "id": "linkIconType",
       "label": "Icon Type",
       "options": [
         {

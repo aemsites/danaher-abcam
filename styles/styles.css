@@ -1219,6 +1219,10 @@ audio::-webkit-media-controls-panel {
   width: 40%;
 }
 
+.w-3\/4 {
+  width: 75%;
+}
+
 .w-44 {
   width: 11rem;
 }
@@ -1247,10 +1251,6 @@ audio::-webkit-media-controls-panel {
 
 .w-screen {
   width: 100vw;
-}
-
-.w-3\/4 {
-  width: 75%;
 }
 
 .min-w-56 {
@@ -1904,9 +1904,5 @@ audio::-webkit-media-controls-panel {
 
   .lg\:w-1\/2 {
     width: 50%;
-  }
-
-  .lg\:w-3\/4 {
-    width: 75%;
   }
 }   
