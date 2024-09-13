@@ -17,7 +17,7 @@
     },
     {
       "component": "select",
-      "name": "link_Variant",
+      "name": "variant",
       "label": "Link Variant",
       "options": [
         {
