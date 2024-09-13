@@ -970,5 +970,52 @@
         "label": "Form Name"
       }
     ]
-  }
+  },
+  {
+    "id": "link-list",
+    "fields": []
+  },
+  {
+    "id": "link-list-item",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "linklist_title",
+        "value": "",
+        "label": "Title"
+      },
+      {
+        "component": "select",
+        "name": "linklist_titleType",
+        "value": "h4",
+        "label": "Type",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "h4",
+            "value": "h4"
+          },
+          {
+            "name": "h5",
+            "value": "h5"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "linklist_href",
+        "value": "",
+        "label": "Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "linklist_hrefText",
+        "value": "",
+        "label": "Link Text"
+      }
+    ]
+  }  
 ]
