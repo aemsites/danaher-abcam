@@ -21,7 +21,7 @@
       "id": "product-overview",
       "fields": [
         {
-          "component": "multiselect",
+          "component": "select",
           "valueType": "string",
           "name": "classes",
           "value": "",
