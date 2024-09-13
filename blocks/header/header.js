@@ -122,7 +122,6 @@ function buildFlyoutMenus(headerBlock) {
   const backFlyout = button({ id: 'back-flyout', class: 'flex items-center gap-x-1 group' }, span({ class: 'icon icon-chevron-left-orange w-4 h-4 transition-transform group-hover:translate-x-0.5' }), 'Back');
   backFlyout.addEventListener('click', () => sortFlyoutMenus(backFlyout.getAttribute('data-redirect')));
 
-
   const navigateActions = div(
     { class: 'flex justify-between mt-5 text-base text-white font-bold mx-2' },
     backFlyout,
