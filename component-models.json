@@ -189,6 +189,10 @@
         "label": "Icon Type",
         "options": [
           {
+            "name": "None",
+            "value": ""
+          },
+          {
             "name": "Both",
             "value": "icon-both"
           },
@@ -721,6 +725,10 @@
         "name": "linkIconType",
         "label": "Icon Type",
         "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
           {
             "name": "Both",
             "value": "icon-both"

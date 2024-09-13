@@ -48,6 +48,10 @@
       "label": "Icon Type",
       "options": [
         {
+          "name": "None",
+          "value": ""
+        },
+        {
           "name": "Both",
           "value": "icon-both"
         },
