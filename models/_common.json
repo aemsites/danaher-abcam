@@ -17,8 +17,8 @@
     },
     {
       "component": "select",
-      "name": "linkVariant",
-      "label": "Type",
+      "name": "link_Variant",
+      "label": "Link Variant",
       "options": [
         {
           "name": "Primary",
@@ -45,7 +45,7 @@
     {
       "component": "select",
       "name": "linkIconType",
-      "label": "Type",
+      "label": "Icon Type",
       "options": [
         {
           "name": "Both",
