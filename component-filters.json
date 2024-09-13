@@ -52,7 +52,8 @@
       "learn-more",
       "related-stories",
       "card-list",
-      "form"
+      "form",
+      "timeline-steps"
     ]
   },
   {
@@ -94,5 +95,11 @@
   {
     "id": "hero-video",
     "components": []
+  },
+  {
+    "id": "timeline-steps",
+    "components": [
+      "steps"
+    ]
   }
 ]

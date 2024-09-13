@@ -970,5 +970,43 @@
         "label": "Form Name"
       }
     ]
+  },
+  {
+    "id": "timeline-steps",
+    "fields": [
+      {
+        "component": "text",
+        "name": "timeline-steps_title",
+        "value": "",
+        "label": "Title",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "steps",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "steps_heading",
+        "value": "",
+        "label": "Heading",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "steps_description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "steps_stepdata",
+        "value": "",
+        "label": "Step Data",
+        "valueType": "string"
+      }
+    ]
   }
 ]
