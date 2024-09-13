@@ -158,7 +158,7 @@
       },
       {
         "component": "select",
-        "name": "variant",
+        "name": "linkVariant",
         "label": "Link Variant",
         "options": [
           {
@@ -691,7 +691,7 @@
       },
       {
         "component": "select",
-        "name": "variant",
+        "name": "linkVariant",
         "label": "Link Variant",
         "options": [
           {
