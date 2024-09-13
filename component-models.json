@@ -973,10 +973,6 @@
   },
   {
     "id": "link-list",
-    "fields": []
-  },
-  {
-    "id": "link-list-item",
     "fields": [
       {
         "component": "text",
@@ -1001,7 +997,12 @@
             "value": "h5"
           }
         ]
-      },
+      }
+    ]
+  },
+  {
+    "id": "link-list-item",
+    "fields": [
       {
         "component": "text",
         "valueType": "string",
