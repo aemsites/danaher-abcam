@@ -10,8 +10,5 @@ export default function decorate(block) {
       }
     });
   });
-  if (block.parentElement?.parentElement?.className.includes('w-full')) {
-    block.parentElement?.parentElement?.remove();
-  }
   parentBlock.append(block.parentElement);
 }
