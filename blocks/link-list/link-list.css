@@ -1,0 +1,174 @@
+.link-list-wrapper :is(.col-span-2) {
+  grid-column: span 2 / span 2
+}
+
+.link-list-wrapper :is(.mx-auto) {
+  margin-left: auto;
+  margin-right: auto
+}
+
+.link-list-wrapper :is(.my-4) {
+  margin-top: 1rem;
+  margin-bottom: 1rem
+}
+
+.link-list-wrapper :is(.mb-8) {
+  margin-bottom: 2rem
+}
+
+.link-list-wrapper :is(.block) {
+  display: block
+}
+
+.link-list-wrapper :is(.flex) {
+  display: flex
+}
+
+.link-list-wrapper :is(.w-full) {
+  width: 100%
+}
+
+.link-list-wrapper :is(.w-16) {
+  width: 4rem
+}
+
+.link-list-wrapper :is(.max-w-4xl) {
+  max-width: 56rem
+}
+
+.link-list-wrapper :is(.items-center) {
+  align-items: center
+}
+
+.link-list-wrapper :is(.justify-start) {
+  justify-content: flex-start
+}
+
+.link-list-wrapper :is(.justify-center) {
+  justify-content: center
+}
+
+.link-list-wrapper :is(.space-y-1 > :not([hidden]) ~ :not([hidden])) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.25rem * var(--tw-space-y-reverse))
+}
+
+.link-list-wrapper :is(.rounded-2xl) {
+  border-radius: 1rem
+}
+
+.link-list-wrapper :is(.bg-\[\#378189\]) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(55 129 137 / var(--tw-bg-opacity))
+}
+
+.link-list-wrapper :is(.bg-neutral-100) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(245 245 245 / var(--tw-bg-opacity))
+}
+
+.link-list-wrapper :is(.px-4) {
+  padding-left: 1rem;
+  padding-right: 1rem
+}
+
+.link-list-wrapper :is(.py-2) {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem
+}
+
+.link-list-wrapper :is(.py-2\.5) {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem
+}
+
+.link-list-wrapper :is(.px-\[30px\]) {
+  padding-left: 30px;
+  padding-right: 30px
+}
+
+.link-list-wrapper :is(.text-lg) {
+  font-size: 1.125rem;
+  line-height: 1.75rem
+}
+
+.link-list-wrapper :is(.text-xs) {
+  font-size: 0.75rem;
+  line-height: 1rem
+}
+
+.link-list-wrapper :is(.text-sm) {
+  font-size: 0.875rem;
+  line-height: 1.25rem
+}
+
+.link-list-wrapper :is(.font-medium) {
+  font-weight: 500
+}
+
+.link-list-wrapper :is(.font-normal) {
+  font-weight: 400
+}
+
+.link-list-wrapper :is(.font-semibold) {
+  font-weight: 600
+}
+
+.link-list-wrapper :is(.font-bold) {
+  font-weight: 700
+}
+
+.link-list-wrapper :is(.leading-6) {
+  line-height: 1.5rem
+}
+
+.link-list-wrapper :is(.leading-10) {
+  line-height: 2.5rem
+}
+
+.link-list-wrapper :is(.leading-4) {
+  line-height: 1rem
+}
+
+.link-list-wrapper :is(.tracking-wider) {
+  letter-spacing: 0.05em
+}
+
+.link-list-wrapper :is(.text-white) {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+
+.link-list-wrapper :is(.text-\[\#4CA6B3\]) {
+  --tw-text-opacity: 1;
+  color: rgb(76 166 179 / var(--tw-text-opacity))
+}
+
+.link-list-wrapper :is(.hover\:bg-\[\#2A5F65\]:hover) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(42 95 101 / var(--tw-bg-opacity))
+}
+
+@media (min-width: 640px) {
+  .link-list-wrapper :is(.sm\:block) {
+    display: block
+  }
+}
+
+@media (min-width: 1024px) {
+  .link-list-wrapper :is(.lg\:flex) {
+    display: flex
+  }
+}
+
+@media (min-width: 1280px) {
+  .link-list-wrapper :is(.xl\:max-w-\[1120px\]) {
+    max-width: 1120px
+  }
+
+  .link-list-wrapper :is(.xl\:px-0) {
+    padding-left: 0px;
+    padding-right: 0px
+  }
+}
