@@ -419,10 +419,8 @@ function wrapTextNodes(block) {
  * @param {Element} element container element
  */
 function decorateButtons(element) {
-  console.log('decorateButtons', element);
   element.querySelectorAll('a').forEach((a) => {
     a.title = a.title || a.textContent;
-    console.log(a.href, a);
     if (a.href !== a.textContent && a.title === 'button') {
       const up = a.parentElement;
       const twoup = a.parentElement.parentElement;
@@ -430,10 +428,10 @@ function decorateButtons(element) {
       const iconTypeContainer = linkTypeContainer?.nextElementSibling;
       const linkType = linkTypeContainer?.querySelector('div')?.textContent || 'button-primary';
       const iconType = iconTypeContainer?.querySelector('div')?.textContent || 'icon-none';
-      console.log(iconType);
       if (!a.querySelector('img')) {
         if (up.childNodes.length === 1 && (up.tagName === 'P' || up.tagName === 'DIV')) {
           a.className = 'button'; // default
+          // up.classList.add('button-container');
           up.classList.add(linkType, iconType);
         }
         linkTypeContainer.remove();
