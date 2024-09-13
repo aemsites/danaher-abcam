@@ -26,6 +26,11 @@
   border-width: 1px
 }
 
+.elouqa-form-wrapper :is(.border-red-400) {
+  --tw-border-opacity: 1;
+  border-color: rgb(248 113 113 / var(--tw-border-opacity))
+}
+
 .elouqa-form-wrapper :is(.p-1) {
   padding: 0.25rem
 }
@@ -34,10 +39,25 @@
   font-family: Noto Sans
 }
 
+.elouqa-form-wrapper :is(.text-sm) {
+  font-size: 0.875rem;
+  line-height: 1.25rem
+}
+
 .elouqa-form-wrapper :is(.font-semibold) {
   font-weight: 600
 }
 
 .elouqa-form-wrapper :is(.tracking-wide) {
   letter-spacing: 0.025em
+}
+
+.elouqa-form-wrapper :is(.text-red-600) {
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity))
+}
+
+.elouqa-form-wrapper :is(.blur) {
+  --tw-blur: blur(8px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
 }
