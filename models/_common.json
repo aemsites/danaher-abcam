@@ -1,0 +1,105 @@
+{
+  "button-fields": [
+    {
+      "component": "aem-content",
+      "name": "link",
+      "label": "Link"
+    },
+    {
+      "component": "text",
+      "name": "linkText",
+      "label": "Text"
+    },
+    {
+      "component": "text",
+      "name": "linkTitle",
+      "label": "Button or Link"
+    },
+    {
+      "component": "select",
+      "name": "linkVariant",
+      "label": "Link Variant",
+      "options": [
+        {
+          "name": "Primary",
+          "value": "button-primary"
+        },
+        {
+          "name": "Secondary",
+          "value": "button-secondary"
+        },
+        {
+          "name": "Tertiary Outline",
+          "value": "button-tertiary-outline"
+        },
+        {
+          "name": "Tertiary Filled",
+          "value": "button-tertiary-filled"
+        },
+        {
+          "name": "Text Only",
+          "value": "button-text-only"
+        }
+      ]
+    },
+    {
+      "component": "select",
+      "name": "linkIconType",
+      "label": "Icon Type",
+      "options": [
+        {
+          "name": "None",
+          "value": ""
+        },
+        {
+          "name": "Both",
+          "value": "icon-both"
+        },
+        {
+          "name": "Right",
+          "value": "icon-right"
+        },
+        {
+          "name": "Left",
+          "value": "icon-left"
+        },
+        {
+          "name": "Icon Only",
+          "value": "icon-only"
+        }
+      ]
+    }
+  ],
+  "image-fields": [
+    {
+      "component": "reference",
+      "valueType": "string",
+      "name": "image",
+      "label": "Image",
+      "multi": false
+    },
+    {
+      "component": "text",
+      "valueType": "string",
+      "name": "imageAlt",
+      "label": "Alt",
+      "value": ""
+    }
+  ],
+  "image-fields1": [
+    {
+      "component": "reference",
+      "valueType": "string",
+      "name": "image2",
+      "label": "Second Image",
+      "multi": false
+    },
+    {
+      "component": "text",
+      "valueType": "string",
+      "name": "imageAlt2",
+      "label": "Second Image Alt",
+      "value": ""
+    }
+  ]
+}

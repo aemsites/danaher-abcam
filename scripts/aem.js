@@ -421,32 +421,39 @@ function wrapTextNodes(block) {
 function decorateButtons(element) {
   element.querySelectorAll('a').forEach((a) => {
     a.title = a.title || a.textContent;
-    if (a.href !== a.textContent) {
+    if (a.href !== a.textContent && a.title === 'button') {
       const up = a.parentElement;
       const twoup = a.parentElement.parentElement;
+      const linkTypeContainer = twoup?.nextElementSibling;
+      const iconTypeContainer = linkTypeContainer?.nextElementSibling;
+      const linkType = linkTypeContainer?.querySelector('div')?.textContent || 'button-primary';
+      const iconType = iconTypeContainer?.querySelector('div')?.textContent || 'icon-none';
       if (!a.querySelector('img')) {
         if (up.childNodes.length === 1 && (up.tagName === 'P' || up.tagName === 'DIV')) {
           a.className = 'button'; // default
-          up.classList.add('button-container');
+          // up.classList.add('button-container');
+          up.classList.add(linkType, iconType);
         }
-        if (
-          up.childNodes.length === 1
-          && up.tagName === 'STRONG'
-          && twoup.childNodes.length === 1
-          && twoup.tagName === 'P'
-        ) {
-          a.className = 'button primary';
-          twoup.classList.add('button-container');
-        }
-        if (
-          up.childNodes.length === 1
-          && up.tagName === 'EM'
-          && twoup.childNodes.length === 1
-          && twoup.tagName === 'P'
-        ) {
-          a.className = 'button secondary';
-          twoup.classList.add('button-container');
-        }
+        linkTypeContainer.remove();
+        iconTypeContainer.remove();
+        // if (
+        //   up.childNodes.length === 1
+        //   && up.tagName === 'STRONG'
+        //   && twoup.childNodes.length === 1
+        //   && twoup.tagName === 'P'
+        // ) {
+        //   a.className = 'button primary';
+        //   twoup.classList.add('button-container');
+        // }
+        // if (
+        //   up.childNodes.length === 1
+        //   && up.tagName === 'EM'
+        //   && twoup.childNodes.length === 1
+        //   && twoup.tagName === 'P'
+        // ) {
+        //   a.className = 'button secondary';
+        //   twoup.classList.add('button-container');
+        // }
       }
     }
   });

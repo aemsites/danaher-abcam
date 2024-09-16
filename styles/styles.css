@@ -523,6 +523,56 @@ h6 {
   font-weight: 400;
 }
 
+.button-primary {
+  width: -moz-fit-content;
+  width: fit-content;
+  align-items: center;
+  justify-self: end;
+  white-space: nowrap;
+  border-radius: 9999px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(55 129 137 / var(--tw-bg-opacity));
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  text-transform: capitalize;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.button-primary:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(42 95 101 / var(--tw-bg-opacity));
+}
+
+main .section .button-secondary {
+  width: -moz-fit-content;
+  width: fit-content;
+  align-items: center;
+  justify-self: end;
+  white-space: nowrap;
+  border-radius: 9999px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  text-transform: capitalize;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+main .section .button-secondary:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 59 59 / var(--tw-bg-opacity));
+}
+
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -713,10 +763,6 @@ main .section .default-content-wrapper h2 {
 main .section .title-card-wrapper {
   border-bottom-width: 1px;
 }
-
-/* .button-container {
-        @apply bg-black hover:bg-[#3B3B3B] h-8 whitespace-nowrap rounded-2xl items-center py-2 px-3 text-white text-xs capitalize justify-self-end w-fit;
-    } */
 
 .home-page main .section > div.hero-wrapper {
   height: 496px;
@@ -1219,6 +1265,10 @@ audio::-webkit-media-controls-panel {
   width: 40%;
 }
 
+.w-3\/4 {
+  width: 75%;
+}
+
 .w-44 {
   width: 11rem;
 }
@@ -1247,10 +1297,6 @@ audio::-webkit-media-controls-panel {
 
 .w-screen {
   width: 100vw;
-}
-
-.w-3\/4 {
-  width: 75%;
 }
 
 .min-w-56 {
@@ -1904,9 +1950,5 @@ audio::-webkit-media-controls-panel {
 
   .lg\:w-1\/2 {
     width: 50%;
-  }
-
-  .lg\:w-3\/4 {
-    width: 75%;
   }
 }   

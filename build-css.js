@@ -264,9 +264,9 @@ const fileMappings = [
     wrapper: 'related-stories-wrapper',
   },
   {
-    content: ['./blocks/card-list/card-list.js', './blocks/card-list/articleCard.js'],
-    output: './blocks/card-list/card-list.css',
-    wrapper: 'card-list-wrapper',
+    content: ['./blocks/dynamic-cards/dynamic-cards.js', './blocks/dynamic-cards/articleCard.js'],
+    output: './blocks/dynamic-cards/dynamic-cards.css',
+    wrapper: 'dynamic-cards-wrapper',
   },
 ];
 
