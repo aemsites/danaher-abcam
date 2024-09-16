@@ -2,6 +2,10 @@
   position: fixed
 }
 
+.header-wrapper :is(.absolute) {
+  position: absolute
+}
+
 .header-wrapper :is(.relative) {
   position: relative
 }
@@ -17,6 +21,22 @@
 
 .header-wrapper :is(.top-0) {
   top: 0px
+}
+
+.header-wrapper :is(.right-0) {
+  right: 0px
+}
+
+.header-wrapper :is(.right-32) {
+  right: 8rem
+}
+
+.header-wrapper :is(.right-20) {
+  right: 5rem
+}
+
+.header-wrapper :is(.right-12) {
+  right: 3rem
 }
 
 .header-wrapper :is(.z-20) {
@@ -114,6 +134,10 @@
   height: 100vh
 }
 
+.header-wrapper :is(.h-5) {
+  height: 1.25rem
+}
+
 .header-wrapper :is(.w-4) {
   width: 1rem
 }
@@ -132,6 +156,14 @@
 
 .header-wrapper :is(.w-full) {
   width: 100%
+}
+
+.header-wrapper :is(.w-5) {
+  width: 1.25rem
+}
+
+.header-wrapper :is(.w-10) {
+  width: 2.5rem
 }
 
 .header-wrapper :is(.max-w-7xl) {
@@ -186,6 +218,22 @@
   row-gap: 0.5rem
 }
 
+.header-wrapper :is(.gap-x-16) {
+  -moz-column-gap: 4rem;
+       column-gap: 4rem
+}
+
+.header-wrapper :is(.gap-x-14) {
+  -moz-column-gap: 3.5rem;
+       column-gap: 3.5rem
+}
+
+.header-wrapper :is(.space-x-4 > :not([hidden]) ~ :not([hidden])) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1rem * var(--tw-space-x-reverse));
+  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)))
+}
+
 .header-wrapper :is(.overflow-auto) {
   overflow: auto
 }
@@ -194,12 +242,33 @@
   border-radius: 0.25rem
 }
 
+.header-wrapper :is(.rounded-xl) {
+  border-radius: 0.75rem
+}
+
+.header-wrapper :is(.rounded-lg) {
+  border-radius: 0.5rem
+}
+
+.header-wrapper :is(.rounded-3xl) {
+  border-radius: 1.5rem
+}
+
 .header-wrapper :is(.border-0) {
   border-width: 0px
 }
 
+.header-wrapper :is(.border) {
+  border-width: 1px
+}
+
 .header-wrapper :is(.border-b) {
   border-bottom-width: 1px
+}
+
+.header-wrapper :is(.border-white) {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity))
 }
 
 .header-wrapper :is(.border-b-gray-400) {
@@ -369,6 +438,10 @@
 }
 
 @media (min-width: 768px) {
+  .header-wrapper :is(.md\:right-32) {
+    right: 8rem
+  }
+
   .header-wrapper :is(.md\:ml-14) {
     margin-left: 3.5rem
   }
