@@ -34,18 +34,7 @@
           ]
         },
         {
-          "component": "reference",
-          "valueType": "string",
-          "name": "hero_image",
-          "label": "Hero Image",
-          "multi": false
-        },
-        {
-          "component": "text",
-          "valueType": "string",
-          "name": "hero_imageAlt",
-          "label": "Alt",
-          "value": ""
+          "...": "../../models/_common.json#/image-fields"
         },
         {
           "component": "text",

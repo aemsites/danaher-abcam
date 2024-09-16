@@ -45,39 +45,10 @@
           ]
         },
         {
-          "component": "richtext",
-          "name": "alternating_description",
-          "value": "",
-          "label": "Description",
-          "valueType": "string"
+          "...": "../../models/_common.json#/button-fields"
         },
         {
-          "component": "text",
-          "valueType": "string",
-          "name": "alternating_ctahref",
-          "value": "",
-          "label": "CTA Link"
-        },
-        {
-          "component": "text",
-          "valueType": "string",
-          "name": "alternating_ctahrefText",
-          "value": "",
-          "label": "CTA Text"
-        },
-        {
-          "component": "reference",
-          "valueType": "string",
-          "name": "image",
-          "label": "Image",
-          "multi": false
-        },
-        {
-          "component": "text",
-          "valueType": "string",
-          "name": "imageAlt",
-          "label": "Alt",
-          "value": ""
+          "...": "../../models/_common.json#/image-fields"
         }
       ]
     }

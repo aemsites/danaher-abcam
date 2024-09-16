@@ -127,14 +127,17 @@
     "fields": [
       {
         "component": "reference",
+        "valueType": "string",
         "name": "image",
         "label": "Image",
         "multi": false
       },
       {
         "component": "text",
+        "valueType": "string",
         "name": "imageAlt",
-        "label": "Alt Text"
+        "label": "Alt",
+        "value": ""
       }
     ]
   },
@@ -298,25 +301,80 @@
         "label": "Title"
       },
       {
-        "component": "select",
+        "component": "text",
         "name": "alert-banner_titleType",
         "hidden": true,
         "label": "Title Type",
         "valueType": "string"
       },
       {
-        "component": "text",
-        "valueType": "string",
-        "name": "alert-banner_ctahref",
-        "value": "",
-        "label": "CTA Link"
+        "component": "aem-content",
+        "name": "link",
+        "label": "Link"
       },
       {
         "component": "text",
-        "valueType": "string",
-        "name": "alert-banner_ctahrefText",
-        "value": "",
-        "label": "CTA Text"
+        "name": "linkText",
+        "label": "Text"
+      },
+      {
+        "component": "text",
+        "name": "linkTitle",
+        "label": "Button or Link"
+      },
+      {
+        "component": "select",
+        "name": "linkVariant",
+        "label": "Link Variant",
+        "options": [
+          {
+            "name": "Primary",
+            "value": "button-primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "button-secondary"
+          },
+          {
+            "name": "Tertiary Outline",
+            "value": "button-tertiary-outline"
+          },
+          {
+            "name": "Tertiary Filled",
+            "value": "button-tertiary-filled"
+          },
+          {
+            "name": "Text Only",
+            "value": "button-text-only"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "linkIconType",
+        "label": "Icon Type",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Both",
+            "value": "icon-both"
+          },
+          {
+            "name": "Right",
+            "value": "icon-right"
+          },
+          {
+            "name": "Left",
+            "value": "icon-left"
+          },
+          {
+            "name": "Icon Only",
+            "value": "icon-only"
+          }
+        ]
       }
     ]
   },
@@ -348,25 +406,73 @@
         ]
       },
       {
-        "component": "richtext",
-        "name": "alternating_description",
-        "value": "",
-        "label": "Description",
-        "valueType": "string"
+        "component": "aem-content",
+        "name": "link",
+        "label": "Link"
       },
       {
         "component": "text",
-        "valueType": "string",
-        "name": "alternating_ctahref",
-        "value": "",
-        "label": "CTA Link"
+        "name": "linkText",
+        "label": "Text"
       },
       {
         "component": "text",
-        "valueType": "string",
-        "name": "alternating_ctahrefText",
-        "value": "",
-        "label": "CTA Text"
+        "name": "linkTitle",
+        "label": "Button or Link"
+      },
+      {
+        "component": "select",
+        "name": "linkVariant",
+        "label": "Link Variant",
+        "options": [
+          {
+            "name": "Primary",
+            "value": "button-primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "button-secondary"
+          },
+          {
+            "name": "Tertiary Outline",
+            "value": "button-tertiary-outline"
+          },
+          {
+            "name": "Tertiary Filled",
+            "value": "button-tertiary-filled"
+          },
+          {
+            "name": "Text Only",
+            "value": "button-text-only"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "linkIconType",
+        "label": "Icon Type",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Both",
+            "value": "icon-both"
+          },
+          {
+            "name": "Right",
+            "value": "icon-right"
+          },
+          {
+            "name": "Left",
+            "value": "icon-left"
+          },
+          {
+            "name": "Icon Only",
+            "value": "icon-only"
+          }
+        ]
       },
       {
         "component": "reference",
@@ -423,18 +529,73 @@
         "valueType": "string"
       },
       {
-        "component": "text",
-        "valueType": "string",
-        "name": "card_CTAhref",
-        "value": "",
-        "label": "CTA Link"
+        "component": "aem-content",
+        "name": "link",
+        "label": "Link"
       },
       {
         "component": "text",
-        "valueType": "string",
-        "name": "card_CTAhrefText",
-        "value": "",
-        "label": "CTA Text"
+        "name": "linkText",
+        "label": "Text"
+      },
+      {
+        "component": "text",
+        "name": "linkTitle",
+        "label": "Button or Link"
+      },
+      {
+        "component": "select",
+        "name": "linkVariant",
+        "label": "Link Variant",
+        "options": [
+          {
+            "name": "Primary",
+            "value": "button-primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "button-secondary"
+          },
+          {
+            "name": "Tertiary Outline",
+            "value": "button-tertiary-outline"
+          },
+          {
+            "name": "Tertiary Filled",
+            "value": "button-tertiary-filled"
+          },
+          {
+            "name": "Text Only",
+            "value": "button-text-only"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "linkIconType",
+        "label": "Icon Type",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Both",
+            "value": "icon-both"
+          },
+          {
+            "name": "Right",
+            "value": "icon-right"
+          },
+          {
+            "name": "Left",
+            "value": "icon-left"
+          },
+          {
+            "name": "Icon Only",
+            "value": "icon-only"
+          }
+        ]
       }
     ]
   },
@@ -617,14 +778,14 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "hero_image",
-        "label": "Hero Image",
+        "name": "image",
+        "label": "Image",
         "multi": false
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "hero_imageAlt",
+        "name": "imageAlt",
         "label": "Alt",
         "value": ""
       },
@@ -777,14 +938,14 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "mini-teaser_image",
+        "name": "image",
         "label": "Image",
         "multi": false
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "mini-teaser_imageAlt",
+        "name": "imageAlt",
         "label": "Alt",
         "value": ""
       },
@@ -846,7 +1007,7 @@
         "component": "reference",
         "valueType": "string",
         "name": "image",
-        "label": "Podcast Image",
+        "label": "Image",
         "multi": false
       },
       {
@@ -865,7 +1026,7 @@
       },
       {
         "component": "text",
-        "name": "card_titleType",
+        "name": "podcast_titleType",
         "label": "",
         "valueType": "string",
         "hidden": true
@@ -879,7 +1040,7 @@
       },
       {
         "component": "text",
-        "name": "podcast_subtitle",
+        "name": "podcast_subtitleType",
         "label": "",
         "valueType": "string",
         "hidden": true
@@ -892,46 +1053,73 @@
         "valueType": "string"
       },
       {
-        "component": "text",
-        "valueType": "string",
-        "name": "podcast_CTAhref",
-        "value": "",
-        "label": "CTA Link"
+        "component": "aem-content",
+        "name": "link",
+        "label": "Link"
       },
       {
         "component": "text",
-        "valueType": "string",
-        "name": "podcast_CTAhrefText",
-        "value": "",
-        "label": "CTA Text"
+        "name": "linkText",
+        "label": "Text"
       },
       {
         "component": "text",
-        "valueType": "string",
-        "name": "streamed_title",
-        "value": "",
-        "label": "Stream Title"
+        "name": "linkTitle",
+        "label": "Button or Link"
       },
       {
-        "component": "text",
-        "name": "streamed_titleType",
-        "label": "",
-        "valueType": "string",
-        "hidden": true
+        "component": "select",
+        "name": "linkVariant",
+        "label": "Link Variant",
+        "options": [
+          {
+            "name": "Primary",
+            "value": "button-primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "button-secondary"
+          },
+          {
+            "name": "Tertiary Outline",
+            "value": "button-tertiary-outline"
+          },
+          {
+            "name": "Tertiary Filled",
+            "value": "button-tertiary-filled"
+          },
+          {
+            "name": "Text Only",
+            "value": "button-text-only"
+          }
+        ]
       },
       {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image",
-        "label": "Streamed Images",
-        "multi": true
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "imageAlt",
-        "label": "Alt",
-        "value": ""
+        "component": "select",
+        "name": "linkIconType",
+        "label": "Icon Type",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Both",
+            "value": "icon-both"
+          },
+          {
+            "name": "Right",
+            "value": "icon-right"
+          },
+          {
+            "name": "Left",
+            "value": "icon-left"
+          },
+          {
+            "name": "Icon Only",
+            "value": "icon-only"
+          }
+        ]
       }
     ]
   },
@@ -980,18 +1168,11 @@
         "hidden": true
       },
       {
-        "component": "text",
+        "component": "richtext",
         "name": "teaser_description",
         "value": "",
         "label": "Description",
         "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": "teaser_descriptionType",
-        "label": "",
-        "valueType": "string",
-        "hidden": true
       },
       {
         "component": "aem-content",

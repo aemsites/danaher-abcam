@@ -72,18 +72,7 @@
           "valueType": "string"
         },
         {
-          "component": "text",
-          "valueType": "string",
-          "name": "card_CTAhref",
-          "value": "",
-          "label": "CTA Link"
-        },
-        {
-          "component": "text",
-          "valueType": "string",
-          "name": "card_CTAhrefText",
-          "value": "",
-          "label": "CTA Text"
+          "...": "../../models/_common.json#/button-fields"
         }
       ]
     }

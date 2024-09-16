@@ -52,18 +52,11 @@
           "hidden": true
         },
         {
-          "component": "text",
+          "component": "richtext",
           "name": "teaser_description",
           "value": "",
           "label": "Description",
           "valueType": "string"
-        },
-        {
-          "component": "text",
-          "name": "teaser_descriptionType",
-          "label": "",
-          "valueType": "string",
-          "hidden": true
         },
         {
           "component": "aem-content",

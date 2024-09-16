@@ -59,18 +59,7 @@
       "id": "mini-teaser",
       "fields": [
         {
-          "component": "reference",
-          "valueType": "string",
-          "name": "mini-teaser_image",
-          "label": "Image",
-          "multi": false
-        },
-        {
-          "component": "text",
-          "valueType": "string",
-          "name": "mini-teaser_imageAlt",
-          "label": "Alt",
-          "value": ""
+          "...": "../../models/_common.json#/image-fields"
         },
         {
           "component": "text",

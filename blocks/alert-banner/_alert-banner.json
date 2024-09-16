@@ -29,25 +29,14 @@
           "label": "Title"
         },
         {
-          "component": "select",
+          "component": "text",
           "name": "alert-banner_titleType",
           "hidden": true,
           "label": "Title Type",
           "valueType": "string"
         },
         {
-          "component": "text",
-          "valueType": "string",
-          "name": "alert-banner_ctahref",
-          "value": "",
-          "label": "CTA Link"
-        },
-        {
-          "component": "text",
-          "valueType": "string",
-          "name": "alert-banner_ctahrefText",
-          "value": "",
-          "label": "CTA Text"
+          "...": "../../models/_common.json#/button-fields"
         }
       ]
     }

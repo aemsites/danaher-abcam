@@ -25,7 +25,9 @@
                   "resourceType": "core/franklin/components/block/v1/block/item",
                   "template": {
                     "name": "Podcast",
-                    "model": "podcast"
+                    "model": "podcast",
+                    "podcast_titleType": "h2",
+                    "podcast_subtitleType": "h3"
                   }
                 }
               }
@@ -55,18 +57,7 @@
             "id": "podcast",
             "fields": [
               {
-                "component": "reference",
-                "valueType": "string",
-                "name": "image",
-                "label": "Podcast Image",
-                "multi": false
-              },
-              {
-                "component": "text",
-                "valueType": "string",
-                "name": "imageAlt",
-                "label": "Alt",
-                "value": ""
+                "...": "../../models/_common.json#/image-fields"
               },
               {
                 "component": "text",
@@ -77,7 +68,7 @@
               },
               {
                 "component": "text",
-                "name": "card_titleType",
+                "name": "podcast_titleType",
                 "label": "",
                 "valueType": "string",
                 "hidden": true
@@ -91,7 +82,7 @@
               },
               {
                 "component": "text",
-                "name": "podcast_subtitle",
+                "name": "podcast_subtitleType",
                 "label": "",
                 "valueType": "string",
                 "hidden": true
@@ -104,46 +95,7 @@
                 "valueType": "string"
               },
               {
-                "component": "text",
-                "valueType": "string",
-                "name": "podcast_CTAhref",
-                "value": "",
-                "label": "CTA Link"
-              },
-              {
-                "component": "text",
-                "valueType": "string",
-                "name": "podcast_CTAhrefText",
-                "value": "",
-                "label": "CTA Text"
-              },
-              {
-                "component": "text",
-                "valueType": "string",
-                "name": "streamed_title",
-                "value": "",
-                "label": "Stream Title"
-              },
-              {
-                "component": "text",
-                "name": "streamed_titleType",
-                "label": "",
-                "valueType": "string",
-                "hidden": true
-              },
-              {
-                "component": "reference",
-                "valueType": "string",
-                "name": "image",
-                "label": "Streamed Images",
-                "multi": true
-              },
-              {
-                "component": "text",
-                "valueType": "string",
-                "name": "imageAlt",
-                "label": "Alt",
-                "value": ""
+                "...": "../../models/_common.json#/button-fields"
               }
             ]
         }

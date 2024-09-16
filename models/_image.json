@@ -18,15 +18,7 @@
       "id": "image",
       "fields": [
         {
-          "component": "reference",
-          "name": "image",
-          "label": "Image",
-          "multi": false
-        },
-        {
-          "component": "text",
-          "name": "imageAlt",
-          "label": "Alt Text"
+          "...": "./_common.json#/image-fields"
         }
       ]
     }
