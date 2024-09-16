@@ -43,6 +43,14 @@
     h6 {
         @apply font-normal text-base; 
     }
+
+    .button-primary {
+        @apply bg-[#378189] hover:bg-[#2A5F65] whitespace-nowrap rounded-full items-center py-[1px] px-3 text-white text-sm capitalize justify-self-end w-fit;
+    }
+
+    main .section .button-secondary {
+        @apply bg-black hover:bg-[#3B3B3B] whitespace-nowrap rounded-full items-center py-[1px] px-3 text-white text-sm capitalize justify-self-end w-fit;
+    }
 }
 
 @layer components {
@@ -65,10 +73,6 @@
     main .section .title-card-wrapper {
         @apply border-b;
     }
-
-    /* .button-container {
-        @apply bg-black hover:bg-[#3B3B3B] h-8 whitespace-nowrap rounded-2xl items-center py-2 px-3 text-white text-xs capitalize justify-self-end w-fit;
-    } */
 
     .home-page main .section > div.hero-wrapper {
         @apply h-[496px];
