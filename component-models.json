@@ -983,40 +983,7 @@
     ]
   },
   {
-    "id": "alert-banner",
-    "fields": [
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "alert-banner_title",
-        "value": "",
-        "label": "Title"
-      },
-      {
-        "component": "select",
-        "name": "alert-banner_titleType",
-        "hidden": true,
-        "label": "Title Type",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "alert-banner_ctahref",
-        "value": "",
-        "label": "CTA Link"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "alert-banner_ctahrefText",
-        "value": "",
-        "label": "CTA Text"
-      }
-    ]
-  },
-  {
-    "id": "hero-video",
+    "id": "podcasts",
     "fields": [
       {
         "component": "multiselect",
@@ -1026,11 +993,16 @@
         "label": "Block Options",
         "options": [
           {
-            "name": "Video Position",
-            "value": "right-video"
+            "name": "1 Columns",
+            "value": "cols-1"
           }
         ]
-      },
+      }
+    ]
+  },
+  {
+    "id": "podcast",
+    "fields": [
       {
         "component": "reference",
         "valueType": "string",
@@ -1041,14 +1013,14 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "image_oneAlt",
-        "label": "First Alt",
+        "name": "imageAlt",
+        "label": "Alt",
         "value": ""
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "hero-video_title",
+        "name": "podcast_title",
         "value": "",
         "label": "Title"
       },
@@ -1060,27 +1032,25 @@
         "hidden": true
       },
       {
-        "component": "richtext",
-        "name": "hero-video_description",
+        "component": "text",
+        "valueType": "string",
+        "name": "podcast_subtitle",
         "value": "",
-        "label": "Description",
-        "valueType": "string"
+        "label": "Sub Title"
       },
       {
         "component": "text",
         "name": "podcast_subtitleType",
         "label": "",
         "valueType": "string",
-        "name": "image_two",
-        "label": "Second Image",
-        "multi": false
+        "hidden": true
       },
       {
-        "component": "text",
-        "valueType": "string",
-        "name": "image_twoAlt",
-        "label": "Second Alt",
-        "value": ""
+        "component": "richtext",
+        "name": "podcast_description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
       },
       {
         "component": "aem-content",
