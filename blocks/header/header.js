@@ -35,7 +35,7 @@ function buildSearchBlock(headerBlock) {
   searchHtmlBlock.classList.add(...'navbar-wrapper justify-center bg-black z-50 pt-2 lg:pt-4'.split(' '));
   searchHtmlBlock.id = 'sticky-header';
   searchHtmlBlock.querySelector('p').classList.add('hidden');
-  const langSelection = div({class:'language-selection absolute top-0 right-12 md:right-32 px-2 text-white border rounded-3xl border-white'},'EN')
+  const langSelection = div({ class: 'language-selection absolute top-0 right-12 md:right-32 px-2 text-white border rounded-3xl border-white' }, 'EN');
   const borderBottom = div({ class: 'h-0.5 mt-3', style: 'background: linear-gradient(90deg, #4ba6b3 0, #c9d3b7 35%, #ff8730 70%, #c54428)' });
   const searchNewBlock = div({ class: 'bg-black relative flex gap-x-4 xl:gap-x-8 lg:mx-auto 2xl:mx-24 lg:px-8 md:px-12 px-4 pr-4 max-w-7xl flex-row' });
   const extendedSectionBlock = div({ class: 'extended-section md:w-full ml-auto md:ml-14 mr-2 md:mr-4 hidden lg:flex items-center gap-x-14 lg:block' });
@@ -111,18 +111,18 @@ function buildNavBlock(headerBlock) {
 
 function buildFlyoutMenus(headerBlock) {
   const allFlyout = headerBlock.querySelectorAll('.menu-flyout');
-  const closeSvg = div({class:'close-svg'},span({ class: 'icon icon-close' }))
+  const closeSvg = div({ class: 'close-svg' }, span({ class: 'icon icon-close' }));
   decorateIcons(closeSvg);
 
-  const closeLogo = div({class:'close-Logo'},span({ class: 'icon icon-logo' }))
-  decorateIcons(closeLogo,100, 100);
+  const closeLogo = div({ class: 'close-Logo' }, span({ class: 'icon icon-logo' }));
+  decorateIcons(closeLogo, 100, 100);
 
   const closeFlyout = div(
     { class: 'flex mt-5 p-1 gap-x-4 rounded' },
     closeSvg,
     closeLogo,
   );
-  
+
   closeFlyout.addEventListener('click', hideFlyoutMenu);
 
   const backFlyout = button({ id: 'back-flyout', class: 'flex items-center gap-x-1 group' }, span({ class: 'icon icon-chevron-left-orange w-4 h-4 transition-transform group-hover:translate-x-0.5' }), 'Back');
@@ -133,7 +133,7 @@ function buildFlyoutMenus(headerBlock) {
     backFlyout,
   );
 
-  //decorateIcons(closeFlyout);
+  // decorateIcons(closeFlyout);
   decorateIcons(backFlyout);
 
   const menuWrapper = ul({ class: 'h-full flex flex-col text-white gap-y-2 mt-3 overflow-auto [&>li.active]:bg-danaherpurple-50 [&>li.active]:font-bold' });
