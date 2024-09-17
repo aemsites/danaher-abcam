@@ -543,7 +543,8 @@
                 "template": {
                   "name": "Timeline Steps",
                   "model": "timeline-steps",
-                  "filter": "timeline-steps"
+                  "filter": "timeline-steps",
+                  "timeline-steps_titleType": "h2"
                 }
               }
             }

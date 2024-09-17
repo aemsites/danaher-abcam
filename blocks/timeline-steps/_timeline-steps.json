@@ -10,7 +10,8 @@
             "template": {
               "name": "Timeline Steps",
               "model": "timeline-steps",
-              "filter": "timeline-steps"
+              "filter": "timeline-steps",
+              "timeline-steps_titleType": "h2"
             }
           }
         }
@@ -42,6 +43,13 @@
           "value": "",
           "label": "Title",
           "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "timeline-steps_titleType",
+          "label": "",
+          "valueType": "string",
+          "hidden": true
         }
       ]
     },
