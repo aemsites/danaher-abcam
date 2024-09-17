@@ -406,6 +406,13 @@
         ]
       },
       {
+        "component": "richtext",
+        "name": "alternating_description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
         "component": "aem-content",
         "name": "link",
         "label": "Link"
@@ -487,6 +494,24 @@
         "name": "imageAlt",
         "label": "Alt",
         "value": ""
+      }
+    ]
+  },
+  {
+    "id": "cards",
+    "fields": [
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "value": "",
+        "label": "Block Options",
+        "options": [
+          {
+            "name": "3 Columns",
+            "value": "cols-3"
+          }
+        ]
       }
     ]
   },
