@@ -10,10 +10,6 @@
   display: none
 }
 
-.elouqa-form-wrapper :is(.flex-row) {
-  flex-direction: row
-}
-
 .elouqa-form-wrapper :is(.flex-col) {
   flex-direction: column
 }
