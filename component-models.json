@@ -1053,6 +1053,36 @@
         "valueType": "string"
       },
       {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_href",
+        "value": "",
+        "label": "Media Link"
+      },
+      {
+        "component": "text",
+        "label": "Media Title",
+        "name": "media_hrefText",
+        "valueType": "string",
+        "value": ""
+      },
+      {
+        "component": "radio-group",
+        "label": "Media Type",
+        "name": "media_hrefTitle",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Video",
+            "value": "video"
+          },
+          {
+            "name": "Audio",
+            "value": "audio"
+          }
+        ]
+      },
+      {
         "component": "aem-content",
         "name": "link",
         "label": "Link"
@@ -1120,6 +1150,13 @@
             "value": "icon-only"
           }
         ]
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "podcast_links",
+        "value": "",
+        "label": "Postcasts Links"
       }
     ]
   },
