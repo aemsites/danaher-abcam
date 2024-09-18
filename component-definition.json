@@ -186,7 +186,7 @@
                   "name": "Carousel Item",
                   "model": "carousel-item",
                   "carousel_titleType": "h3",
-                  "carousel_subtitleType": "h4"
+                  "carousel_subtitleType": "h5"
                 }
               }
             }
