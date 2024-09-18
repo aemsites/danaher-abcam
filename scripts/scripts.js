@@ -384,7 +384,7 @@ function decorateVideo(main) {
   // Iterate over each container
   divContainers.forEach(divContainer => {
     if (type.includes('podcast')) {
-      divContainer.querySelectorAll('.button-container a').forEach(link => {
+      divContainer.querySelectorAll('p a').forEach(link => {
         if (link.title === "video") {
           const embedHTML = `<div class="relative w-full h-full">
             <iframe src="${link.href}"
@@ -413,7 +413,7 @@ function decorateVideo(main) {
         }
       });
     } else if (type.includes('film')) {
-      divContainer.querySelectorAll('.columns .button-container a').forEach(link => {
+      divContainer.querySelectorAll('p a').forEach(link => {
         if (link.title === "video") {
           // Extract video ID from the URL
           const videoId = extractVideoId(link.href);
