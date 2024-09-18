@@ -8,7 +8,7 @@ sampleRUM('cwv');
 function loadGTM() {
   const scriptTag = document.createElement('script');
   scriptTag.innerHTML = `
-          let gtmId = 'GTM-PDRV95V’';
+          let gtmId = 'GTM-PDRV95V'’;
           // googleTagManager
           (function (w, d, s, l, i) {
               w[l] = w[l] || [];
