@@ -35,19 +35,31 @@ function buildSearchBlock(headerBlock) {
   searchHtmlBlock.classList.add(...'navbar-wrapper justify-center bg-black z-50 pt-2 lg:pt-4'.split(' '));
   searchHtmlBlock.id = 'sticky-header';
   searchHtmlBlock.querySelector('p').classList.add('hidden');
-  const langSelection = div({ class: 'language-selection absolute top-0 right-12 md:right-32 px-2 text-white border rounded-3xl border-white' }, 'EN');
+  const logoSearchMenuContainer = div({ class: 'logo-search-menu-container flex flex-col gap-y-7' });
+  const logoSearchBarContianer = div({ class: 'logo-searchbar-continer w-full ml-20 flex flex-row items-center gap-x-12 md:flex-wrap items-center' })
+  const searchbarContainer = div({ class: 'searchbar-container cursor-pointer w-[38.5rem] h-12 flex items-center text-white border rounded-3xl border-white'},
+    span({ class: 'icon icon-Search-bar pl-4 pr-2'}),
+    span({ class: 'placeholder-text font-bold'}, 'What are you searching for?'),
+  );
+  searchbarContainer.addEventListener('click', () => {
+    window.location.href = "https://www.abcam.com/en-us/search";
+  })
+  decorateIcons(searchbarContainer);
+  //const langSelection = div({ class: 'language-selection absolute top-0 right-12 md:right-32 px-2 text-white border rounded-3xl border-white' }, 'EN');
   const borderBottom = div({ class: 'h-0.5 mt-3', style: 'background: linear-gradient(90deg, #4ba6b3 0, #c9d3b7 35%, #ff8730 70%, #c54428)' });
-  const searchNewBlock = div({ class: 'bg-black relative flex gap-x-4 xl:gap-x-8 lg:mx-auto 2xl:mx-24 lg:px-8 md:px-12 px-4 pr-4 max-w-7xl flex-row' });
-  const extendedSectionBlock = div({ class: 'extended-section md:w-full ml-auto md:ml-14 mr-2 md:mr-4 hidden lg:flex items-center gap-x-14 lg:block' });
+  //const searchNewBlock = div({ class: 'bg-black relative flex gap-x-4 xl:gap-x-8 lg:mx-auto 2xl:mx-24 lg:px-8 md:px-12 px-4 pr-4 max-w-7xl flex-row' });
+  const extendedSectionBlock = div({ class: 'extended-section md:w-full ml-auto md:ml-80 mr-2 md:mr-4 hidden lg:flex items-center gap-x-16 lg:block' });
   extendedSectionBlock.id = 'extended-section';
-  const logoPictureBlock = a({ class: '' });
-  const logoPictureBlockIcon = span({ class: 'icon icon-logo' });
+  const logoPictureBlock = a({ class: '' },
+    span({ class: 'icon icon-logo' })
+  );
   if (window.location.pathname === '/') {
     logoPictureBlock.href = window.location.href;
   } else {
     logoPictureBlock.href = '/';
   }
   logoPictureBlock.setAttribute('aria-label', 'Abcam Logo');
+
 
   const hamburgerIcon = button(
     {
@@ -62,16 +74,21 @@ function buildSearchBlock(headerBlock) {
     span({ class: 'icon icon-Menu flex items-center w-8 h-6' }),
   );
 
-  searchNewBlock.append(hamburgerIcon);
-  logoPictureBlock.append(logoPictureBlockIcon);
-  searchNewBlock.append(logoPictureBlock);
-  decorateIcons(logoPictureBlock, 100, 100);
+  //searchNewBlock.append(hamburgerIcon);
+  const logoHamburgerMenu = div({ class: 'flex flex-row gap-x-2' }, hamburgerIcon, logoPictureBlock)
+  logoSearchBarContianer.append(logoHamburgerMenu);
+  logoSearchBarContianer.append(searchbarContainer);
+  //logoPictureBlock.append(logoPictureBlockIcon);
+  //searchNewBlock.append(logoPictureBlock);
+  decorateIcons(logoPictureBlock, 120, 120);
   decorateIcons(hamburgerIcon);
-  searchNewBlock.append(extendedSectionBlock);
-  searchNewBlock.append(langSelection);
-  searchHtmlBlock.append(searchNewBlock);
+  logoSearchMenuContainer.append(logoSearchBarContianer);
+  logoSearchMenuContainer.append(extendedSectionBlock);
+  //searchNewBlock.append(searchbarContainer);
+  //searchNewBlock.append(extendedSectionBlock);
+  searchHtmlBlock.append(logoSearchMenuContainer);
   searchHtmlBlock.append(borderBottom);
-  searchHtmlBlock.append(borderBottom);
+  //searchHtmlBlock.append(borderBottom);
   searchHtmlBlock.querySelector('#nav-hamburger').addEventListener('click', (e) => {
     e.preventDefault();
     showFlyoutMenu();
@@ -95,7 +112,7 @@ function buildNavBlock(headerBlock) {
     const menuItemName = item.innerText;
     const menuItemEl = a(
       {
-        class: 'btn flex items-center relative bg-black hover:bg-black text-white font-medium ring-0 border-0 ring-offset-0 group',
+        class: 'btn flex items-center font-bold relative bg-black text-white ring-0 border-b-4 border-black hover:border-b-4 hover:border-[#ff7223] ring-offset-0 group',
         href: item.querySelector('a')?.href || '/',
       },
       menuItemName,
@@ -152,6 +169,7 @@ function buildFlyoutMenus(headerBlock) {
       if (flyMenuChild.querySelector('a') === null) {
         liTag.setAttribute('data-redirect', contextPath);
         liTag.innerHTML += flyMenuChild.textContent;
+        liTag.classList.add('font-bold');
         liTag.append(span({ class: 'icon icon-chevron-right-orange w-4 h-4 group-hover:-translate-x-0.5' }));
         liTag.addEventListener('click', () => sortFlyoutMenus(contextPath));
       } else liTag.append(a({ href: flyMenuChild.querySelector('a')?.href }, flyMenuChild.textContent));
