@@ -1,0 +1,29 @@
+{
+  "definitions": [
+    {
+      "title": "Button",
+      "id": "button",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/button/v1/button",
+            "template": {
+              "model": "button",
+              "linkTitle": "button"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "button",
+      "fields": [
+        {
+          "...": "./_common.json#/button-fields"
+        }
+      ]
+    }
+  ]
+}

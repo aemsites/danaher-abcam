@@ -6,27 +6,13 @@
     ]
   },
   {
-    "id": "columns",
-    "components": []
-  },
-  {
-    "id": "column",
-    "components": [
-      "text",
-      "image",
-      "button",
-      "title",
-      "video"
-    ]
-  },
-  {
     "id": "section",
     "components": [
       "text",
       "image",
       "button",
       "title",
-      "video",
+      "media",
       "hero",
       "cards",
       "columns",
@@ -37,7 +23,6 @@
       "title-card",
       "podcasts",
       "alert-banner",
-      "hero-video",
       "product-tabs",
       "product-overview",
       "product-buybox",
@@ -63,47 +48,36 @@
     ]
   },
   {
+    "id": "columns",
+    "components": [
+      "column"
+    ]
+  },
+  {
+    "id": "column",
+    "components": [
+      "text",
+      "image",
+      "button",
+      "title"
+    ]
+  },
+  {
     "id": "mini-teasers",
     "components": [
       "mini-teaser"
     ]
   },
   {
-    "id": "alternating",
-    "components": []
+    "id": "podcasts",
+    "components": [
+      "podcast"
+    ]
   },
   {
     "id": "teasers",
     "components": [
       "teaser"
-    ]
-  },
-  {
-    "id": "title-card",
-    "components": []
-  },
-  {
-    "id": "podcasts",
-    "components": [
-      "podcast"
-    ]
-  }, 
-  {
-    "id": "alert-banner",
-    "components": []
-  },
-  {
-    "id": "hero-video",
-    "components": []
-  },
-  {
-    "id": "carousel-item",
-    "components": [
-      "text",
-      "image",
-      "button",
-      "title",
-      "video"
     ]
   }
 ]
