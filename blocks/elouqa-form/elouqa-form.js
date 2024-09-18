@@ -10,12 +10,6 @@ async function loadForm(block) {
 }
 
 export default function decorate(block) {
-  const observer = new IntersectionObserver((entries) => {
-    if (entries.some((e) => e.isIntersecting)) {
-      observer.disconnect();
-      loadForm(block);
-    }
-  });
-  observer.observe(block);
   console.log(block);
+  loadForm();
 }

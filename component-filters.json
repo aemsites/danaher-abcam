@@ -100,8 +100,6 @@
   },
   {
     "id": "elouqa-form",
-    "components": [
-      "elouqa-form-element"
-    ]
+    "components": []
   }
 ]

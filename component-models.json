@@ -1300,7 +1300,7 @@
     "id": "elouqa-form",
     "fields": [
       {
-        "component": "text",
+        "component": "richtext",
         "valueType": "string",
         "name": "elouqa_structure",
         "value": "",
