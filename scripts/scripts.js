@@ -13,8 +13,9 @@ import {
   loadCSS,
   toClassName,
   getMetadata,
+  createOptimizedPicture,
 } from './aem.js';
-import { div, button, img } from './dom-builder.js';
+import { div, span, button, iframe, p, img, li } from './dom-builder.js';
 
 const LCP_BLOCKS = ['hero', 'hero-video']; // add your LCP blocks to the list
 
@@ -288,7 +289,7 @@ function decorateStoryPage(main){
     });
     sectionEl?.append(rightSideElements);
   
-    const divEl = div({class: 'ml-0 md:ml-8 max-w-56'});
+    const divEl = div({class: 'ml-0 md:ml-8 min-w-56'});
     divEl.append(sectionEl?.querySelector('.story-info-wrapper'));
     divEl.append(sectionEl?.querySelector('.social-media-wrapper'));
     sectionEl?.prepend(divEl);
@@ -315,6 +316,144 @@ function decorateStickyRightNav(main){
   }
 }
 
+function toggleModalPopUp(videoLink, parentDiv) {
+  if(parentDiv.closest('.image-full-width')) parentDiv.classList.toggle('lg:w-1/2');
+  parentDiv.querySelector('.modal').classList.toggle('hidden');
+  const iframe = parentDiv.querySelector('iframe');
+  document.body.classList.toggle('overflow-hidden');
+  if (iframe) {
+    iframe.src = videoLink;
+  }
+}
+
+function createModalPopUp(videoLink, parentDiv) {
+  const modalPopUp = div(
+    { class: 'modal hidden z-30 w-full h-full' },
+    div(
+      { class: 'modal-content bg-black m-auto p-10 max-[576px]:px-2.5 max-[767px]:px-3.5 w-full left-0 text-center' },
+      span(
+        { 
+          class: 'bg-black close-btn float-right fixed icon icon-close right-[0px] top-[70px] cursor-pointer p-[10px] z-40', 
+          onclick: () => {
+            if(parentDiv.closest('.image-full-width')) parentDiv.classList.toggle('lg:w-1/2');
+            modalPopUp.classList.toggle('hidden');
+            document.body.classList.toggle('overflow-hidden');
+            const iframe1 = modalPopUp.querySelector('iframe');
+            if (iframe1) {
+              iframe1.src = '';
+            }
+          } 
+        }
+      ),
+      div(
+        { class: 'youtube-frame' },
+        iframe({
+          class: 'w-full h-full',
+          src: videoLink,
+          loading: 'lazy',
+          style: 'border: 0; top: 0; left: 0; width: 100%; height: 100%; position: fixed; z-index: 30;',
+          allow: 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture',
+          allowfullscreen: true,
+          scrolling: 'no',
+          title: 'Content from Youtube',
+          frameBorder: '0',
+        }),
+      ),
+
+    ),
+  );
+  decorateIcons(modalPopUp);
+  return modalPopUp;
+}
+
+function extractVideoId(url) {
+  // Regular expression to extract video ID from YouTube URL
+  const regex = /(?:youtube\.com\/(?:embed\/|v\/|watch\?v=)|youtu\.be\/)([^\s&]+)/;
+  const match = url.match(regex);
+  return match ? match[1] : null;
+}
+
+function playAudio({src = '#'}) {
+  return `<audio controls preload="metadata" class = "audio-play-bar" style="width: 100%;" src=${src}/>`;
+}
+
+function decorateVideo(main) {
+  // Find the container with the video link
+  const divContainers = main.querySelectorAll('.stories main .section');
+  const type = getMetadata('pagetags');
+  // Iterate over each container
+  divContainers.forEach(divContainer => {
+    if (type.includes('podcast')) {
+      divContainer.querySelectorAll('.button-container a').forEach(link => {
+        if (link.title === "video") {
+          const embedHTML = `<div class="relative w-full h-full">
+            <iframe src="${link.href}"
+            class="relative w-full h-full border-0 top-0 left-0" 
+            allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" 
+            scrolling="no" title="Content from Youtube" loading="eager"></iframe>
+          </div>`;
+          const linkContainer = link.parentElement;
+          linkContainer.classList.add('h-full');
+          linkContainer.innerHTML = embedHTML;
+        } else if (link.title === "audio") {
+          const audioContainer = div({ class: 'flex flex-col' },
+            p({ class: 'audio-label text-black no-underline ' }, link.text || ''),
+            span({ class: 'audio-play-icon cursor-pointer w-14 icon icon-Play' }),
+          );
+          const parent = link.parentElement;
+          parent.replaceChildren(audioContainer);
+          const audioPlayer = div({ class: 'audio-player w-full mt-10 md:mb-2' });
+          audioPlayer.innerHTML = playAudio({ src: link.href || '#' });
+          decorateIcons(audioContainer);
+          audioContainer.querySelector('.audio-play-icon')?.addEventListener('click', () => {
+            audioContainer.replaceChildren(audioPlayer);
+            const audioElement = audioPlayer.querySelector('audio');
+            if (audioElement) audioElement.play();
+          });
+        }
+      });
+    } else if (type.includes('film')) {
+      divContainer.querySelectorAll('.columns .button-container a').forEach(link => {
+        if (link.title === "video") {
+          // Extract video ID from the URL
+          const videoId = extractVideoId(link.href);
+
+          // Generate the poster image URL
+          const posterImage = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+
+          // Create the container for the poster image and play button
+          const playButtonHTML = `
+            <div class="relative w-full h-full">
+              <img src="${posterImage}" class="relative inset-0 w-full h-full object-cover" />
+              <button id="play-button-${videoId}" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 rounded-full p-4">
+                <span class = "video-play-icon icon icon-video-play"/>
+              </button>
+            </div>
+          `;
+          const linkContainer = link.parentElement;
+          linkContainer.innerHTML = playButtonHTML;
+          decorateIcons(linkContainer);
+          linkContainer.querySelector('button > span > img')?.classList.add(...'w-3/4 h-full'.split(' '));
+
+          if(linkContainer.closest('.image-full-width')){
+            linkContainer.className = 'relative lg:absolute w-full lg:w-1/2 h-full object-cover lg:right-0 lg:bottom-6';
+          }
+            
+          linkContainer.querySelector(`button[id="play-button-${videoId}"]`).addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleModalPopUp(link.href, linkContainer);
+          });
+
+          // Create and append the modal popup
+          const modalPopUp = createModalPopUp(link.href, linkContainer);
+          linkContainer.appendChild(modalPopUp);
+        }
+      });
+    }
+  });
+}
+
+
 /**
  * Decorates the main element.
  * @param {Element} main The main element
@@ -327,6 +466,7 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
+  decorateVideo(main);
   decorateStickyRightNav(main);
   decorateStoryPage(main);
 }
@@ -475,7 +615,6 @@ export function formatDate(date) {
     weekday: 'short', day: '2-digit', month: 'short', year: 'numeric', timeZone: 'UTC',
   };
   const lastModifiedDate = new Date(Number(date) * 1000);
-  console.log(lastModifiedDate);
   const formattedDate = new Intl.DateTimeFormat('en-us', options).format(lastModifiedDate);
   const formatDate = formattedDate.replace(/,/g, '');
   return formatDate;
