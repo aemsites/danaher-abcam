@@ -259,6 +259,11 @@ const fileMappings = [
     wrapper: 'related-stories-wrapper',
   },
   {
+    content: './blocks/elouqa-form/elouqa-form.js',
+    output: './blocks/elouqa-form/elouqa-form.css',
+    wrapper: 'elouqa-form-wrapper',
+  },
+  {
     content: ['./blocks/dynamic-cards/dynamic-cards.js', './blocks/dynamic-cards/articleCard.js'],
     output: './blocks/dynamic-cards/dynamic-cards.css',
     wrapper: 'dynamic-cards-wrapper',

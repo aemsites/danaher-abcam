@@ -6,3 +6,4 @@ plugins/
 scripts/scripts.js
 scripts/aem.js
 scripts/at.js
+scripts/elouqa-script.js

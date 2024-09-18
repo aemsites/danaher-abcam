@@ -37,7 +37,8 @@
       "learn-more",
       "related-stories",
       "card-list",
-      "form"
+      "form",
+      "elouqa-form"
     ]
   },
   {
@@ -60,6 +61,10 @@
       "button",
       "title"
     ]
+  },
+  {
+    "id": "elouqa-form",
+    "components": []
   },
   {
     "id": "mini-teasers",
