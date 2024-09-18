@@ -386,15 +386,28 @@ function decorateVideo(main) {
     if (type.includes('podcast')) {
       divContainer.querySelectorAll('p a').forEach(link => {
         if (link.title === "video") {
-          const embedHTML = `<div class="relative w-full h-full">
-            <iframe src="${link.href}"
-            class="relative w-full h-full border-0 top-0 left-0" 
-            allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" 
-            scrolling="no" title="Content from Youtube" loading="eager"></iframe>
-          </div>`;
           const linkContainer = link.parentElement;
           linkContainer.classList.add('h-full');
-          linkContainer.innerHTML = embedHTML;
+          const videoId = new URL(link.href).searchParams.get('v');
+          if (videoId) {
+            const embedURL = `https://www.youtube.com/embed/${videoId}`;
+            const embedHTML = `
+              <div class="relative w-full h-full">
+                <iframe src="${embedURL}"
+                class="relative w-full h-full border-0 top-0 left-0" 
+                allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" 
+                scrolling="no" title="Content from Youtube" loading="eager"></iframe>
+              </div>`;
+              linkContainer.innerHTML = embedHTML;
+          } else {
+            const embedHTML = `<div class="relative w-full h-full">
+              <iframe src="${link.href}"
+              class="relative w-full h-full border-0 top-0 left-0" 
+              allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" 
+              scrolling="no" title="Content from Youtube" loading="eager"></iframe>
+            </div>`;
+            linkContainer.innerHTML = embedHTML;
+          }
         } else if (link.title === "audio") {
           const audioContainer = div({ class: 'flex flex-col' },
             p({ class: 'audio-label text-black no-underline ' }, link.text || ''),
