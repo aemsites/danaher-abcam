@@ -155,9 +155,19 @@
         "label": "Text"
       },
       {
-        "component": "text",
+        "component": "select",
         "name": "linkTitle",
-        "label": "Button or Link"
+        "label": "Button or Link",
+        "options": [
+          {
+            "name": "Button",
+            "value": "button"
+          },
+          {
+            "name": "Link",
+            "value": "link"
+          }
+        ]
       },
       {
         "component": "select",
@@ -318,9 +328,19 @@
         "label": "Text"
       },
       {
-        "component": "text",
+        "component": "select",
         "name": "linkTitle",
-        "label": "Button or Link"
+        "label": "Button or Link",
+        "options": [
+          {
+            "name": "Button",
+            "value": "button"
+          },
+          {
+            "name": "Link",
+            "value": "link"
+          }
+        ]
       },
       {
         "component": "select",
@@ -423,9 +443,19 @@
         "label": "Text"
       },
       {
-        "component": "text",
+        "component": "select",
         "name": "linkTitle",
-        "label": "Button or Link"
+        "label": "Button or Link",
+        "options": [
+          {
+            "name": "Button",
+            "value": "button"
+          },
+          {
+            "name": "Link",
+            "value": "link"
+          }
+        ]
       },
       {
         "component": "select",
@@ -564,9 +594,19 @@
         "label": "Text"
       },
       {
-        "component": "text",
+        "component": "select",
         "name": "linkTitle",
-        "label": "Button or Link"
+        "label": "Button or Link",
+        "options": [
+          {
+            "name": "Button",
+            "value": "button"
+          },
+          {
+            "name": "Link",
+            "value": "link"
+          }
+        ]
       },
       {
         "component": "select",
@@ -875,9 +915,19 @@
         "label": "Text"
       },
       {
-        "component": "text",
+        "component": "select",
         "name": "linkTitle",
-        "label": "Button or Link"
+        "label": "Button or Link",
+        "options": [
+          {
+            "name": "Button",
+            "value": "button"
+          },
+          {
+            "name": "Link",
+            "value": "link"
+          }
+        ]
       },
       {
         "component": "select",
@@ -1088,9 +1138,19 @@
         "label": "Text"
       },
       {
-        "component": "text",
+        "component": "select",
         "name": "linkTitle",
-        "label": "Button or Link"
+        "label": "Button or Link",
+        "options": [
+          {
+            "name": "Button",
+            "value": "button"
+          },
+          {
+            "name": "Link",
+            "value": "link"
+          }
+        ]
       },
       {
         "component": "select",
