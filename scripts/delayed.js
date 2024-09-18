@@ -7,8 +7,8 @@ sampleRUM('cwv');
 // google tag manager -start
 function loadGTM() {
   const scriptTag = document.createElement('script');
+  let gtmId = (window.location.host === 'www.abcam.com') ? 'GTM-5J97L4S' : 'GTM-PDRV95V';
   scriptTag.innerHTML = `
-          let gtmId = 'GTM-PDRV95V';
           // googleTagManager
           (function (w, d, s, l, i) {
               w[l] = w[l] || [];
@@ -27,7 +27,7 @@ function loadGTM() {
   document.head.prepend(scriptTag);
   const noScriptTag = document.createElement('noscript');
   noScriptTag.innerHTML = `
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PDRV95V"
+    <iframe src="https://www.googletagmanager.com/ns.html?id="+gtmId
     height="0" width="0" style="display:none;visibility:hidden"></iframe>
     `;
   document.body.prepend(noScriptTag);
