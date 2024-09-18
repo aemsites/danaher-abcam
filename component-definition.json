@@ -184,7 +184,9 @@
                 "resourceType": "core/franklin/components/block/v1/block/item",
                 "template": {
                   "name": "Carousel Item",
-                  "model": "carousel-item"
+                  "model": "carousel-item",
+                  "carousel_titleType": "h3",
+                  "carousel_subtitleType": "h4"
                 }
               }
             }
