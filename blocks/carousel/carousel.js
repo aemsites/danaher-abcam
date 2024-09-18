@@ -54,7 +54,7 @@ export default function decorate(block) {
       const content = contentEl.closest('div');
       content.append(ele.querySelector('.button-container'));
       content.prepend(ele.querySelector('h4'));
-      content.classList.add(...'lg:w-1/2 px-4 lg:px-8 xl:pr-10'.split(' '));
+      content.classList.add(...'px-4 lg:px-8 lg:pr-10 lg:pl-[22rem]'.split(' '));
       const heading = content.querySelector('h2');
       const paragraphs = content.querySelectorAll('p:not(.button-container)');
       const allBtns = content.querySelectorAll('p.button-container');
@@ -69,7 +69,7 @@ export default function decorate(block) {
         }
       });
       if (allBtns.length > 0) {
-        const actions = div({ class: 'flex flex-col md:flex-row gap-5 mt-10' });
+        const actions = div({ class: 'flex flex-col md:flex-row gap-5 mt-10 w-full' });
         allBtns.forEach((elBtn) => {
           if (elBtn.title === 'link') {
             elBtn.className = 'flex items-center gap-x-2 text-danaherpurple-500 font-bold group';
@@ -90,7 +90,7 @@ export default function decorate(block) {
         });
         content.append(actions);
       }
-      ele.append(div({ class: 'lg:m-auto w-full h-auto max-w-7xl py-8 lg:py-0 overflow-hidden' }, content));
+      ele.append(div({ class: 'lg:my-auto w-1/2 h-auto max-w-7xl py-8 lg:py-0 pt-24 overflow-hidden' }, content));
     }
     if (picture) {
       picture.querySelector('img').classList.add(...'absolute bottom-0 h-full w-full object-cover'.split(' '));

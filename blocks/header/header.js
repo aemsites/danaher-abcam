@@ -38,7 +38,7 @@ function sortFlyoutMenus(menuPath) {
 
 function buildSearchBlock(headerBlock) {
   const searchHtmlBlock = headerBlock.children[0];
-  searchHtmlBlock.classList.add(...'navbar-wrapper justify-center bg-black z-50 pt-2 lg:pt-5 h-full'.split(' '));
+  searchHtmlBlock.classList.add(...'navbar-wrapper justify-center bg-black z-50 pt-2 lg:pt-4'.split(' '));
   searchHtmlBlock.id = 'sticky-header';
   searchHtmlBlock.querySelector('p').classList.add('hidden');
   const borderBottom = div({ class: 'h-0.5 mt-5', style: 'background: linear-gradient(90deg, #4ba6b3 0, #c9d3b7 35%, #ff8730 70%, #c54428)' });
