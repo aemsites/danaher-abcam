@@ -6,8 +6,8 @@ sampleRUM('cwv');
 
 // google tag manager -start
 function loadGTM() {
-    const scriptTag = document.createElement('script');
-    scriptTag.innerHTML = `
+  const scriptTag = document.createElement('script');
+  scriptTag.innerHTML = `
           let gtmId = 'GTM-PDRV95V’';
           // googleTagManager
           (function (w, d, s, l, i) {
@@ -24,19 +24,19 @@ function loadGTM() {
               f.parentNode.insertBefore(j, f);
           })(window, document, 'script', 'dataLayer', gtmId);
           `;
-    document.head.prepend(scriptTag);
-    const noScriptTag = document.createElement('noscript');
-    noScriptTag.innerHTML = `
+  document.head.prepend(scriptTag);
+  const noScriptTag = document.createElement('noscript');
+  noScriptTag.innerHTML = `
     <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PDRV95V"
     height="0" width="0" style="display:none;visibility:hidden"></iframe>
     `;
-    document.body.prepend(noScriptTag);
-  }
-  // google tag manager -end
-  
-  if (
-    !window.location.hostname.includes('localhost')
+  document.body.prepend(noScriptTag);
+}
+// google tag manager -end
+
+if (
+  !window.location.hostname.includes('localhost')
       && !window.location.hostname.includes('.hlx')
-  ) {
-    loadGTM();
-  }
+) {
+  loadGTM();
+}
