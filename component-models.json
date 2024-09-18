@@ -1300,135 +1300,18 @@
     "id": "elouqa-form",
     "fields": [
       {
-        "component": "select",
+        "component": "text",
         "valueType": "string",
-        "name": "elouqa_form_method",
-        "value": "post",
-        "label": "Elouqa Form Method",
-        "options": [
-          {
-            "name": "GET",
-            "value": "get"
-          },
-          {
-            "name": "POST",
-            "value": "post",
-            "selected": true
-          }
-        ]
+        "name": "elouqa_structure",
+        "value": "",
+        "label": "Elouqa Structure"
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "elouqa_form_id",
+        "name": "elouqa_script",
         "value": "",
-        "label": "Elouqa Form Id"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "elouqa_form_name",
-        "value": "",
-        "label": "Elouqa Form Name"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "elouqa_form_action",
-        "value": "",
-        "label": "Elouqa Form Action"
-      }
-    ]
-  },
-  {
-    "id": "elouqa-form-element",
-    "fields": [
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "elouqa_form_element_label",
-        "value": "",
-        "label": "Label"
-      },
-      {
-        "component": "select",
-        "name": "elouqa_form_element_element_type",
-        "value": "text",
-        "label": "Element Type",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "Text",
-            "value": "text",
-            "selected": true
-          },
-          {
-            "name": "Password",
-            "value": "password"
-          },
-          {
-            "name": "Email",
-            "value": "email"
-          },
-          {
-            "name": "Number",
-            "value": "number"
-          },
-          {
-            "name": "Hidden",
-            "value": "hidden"
-          },
-          {
-            "name": "Options",
-            "value": "options"
-          },
-          {
-            "name": "Submit",
-            "value": "submit"
-          }
-        ]
-      },
-      {
-        "component": "text",
-        "name": "elouqa_form_element_name",
-        "value": "",
-        "label": "Element Name",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": "elouqa_form_element_validations",
-        "value": "",
-        "label": "Validation Parameters",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": "elouqa_form_element_value",
-        "value": "",
-        "label": "Element Default Value",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": "elouqa_form_element_options",
-        "value": "",
-        "label": "Element Options",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": "elouqa_form_element_data_value",
-        "value": "",
-        "label": "Element Data Value",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": "elouqa_form_element_id",
-        "value": "",
-        "label": "Element Id",
-        "valueType": "string"
+        "label": "Elouqa Script"
       }
     ]
   }
