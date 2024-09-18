@@ -7,7 +7,7 @@ sampleRUM('cwv');
 // google tag manager -start
 function loadGTM() {
   const scriptTag = document.createElement('script');
-  let gtmId = (window.location.host === 'www.abcam.com') ? 'GTM-5J97L4S' : 'GTM-PDRV95V';
+  const gtmId = (window.location.host === 'www.abcam.com') ? 'GTM-5J97L4S' : 'GTM-PDRV95V';
   scriptTag.innerHTML = `
           // googleTagManager
           (function (w, d, s, l, i) {
