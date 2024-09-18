@@ -1214,13 +1214,6 @@
       },
       {
         "component": "richtext",
-        "name": "steps_description",
-        "value": "",
-        "label": "Description",
-        "valueType": "string"
-      },
-      {
-        "component": "richtext",
         "name": "steps_stepdata",
         "value": "",
         "label": "Step Data",
