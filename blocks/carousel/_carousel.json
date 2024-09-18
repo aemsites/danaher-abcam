@@ -67,7 +67,7 @@
           },
           {
             "component": "richtext",
-            "name": "card_description",
+            "name": "carousel_description",
             "value": "",
             "label": "Description",
             "valueType": "string"
