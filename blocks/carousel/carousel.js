@@ -90,11 +90,11 @@ export default function decorate(block) {
         });
         content.append(actions);
       }
-      ele.append(div({ class: 'lg:my-auto w-1/2 h-auto max-w-7xl py-8 lg:py-0 pt-24 overflow-hidden' }, content));
+      ele.append(div({ class: 'lg:my-auto lg:w-1/2 h-auto max-w-7xl py-8 lg:py-0 pt-24 overflow-hidden' }, content));
     }
     if (picture) {
-      picture.querySelector('img').classList.add(...'absolute bottom-0 h-full w-full object-cover'.split(' '));
-      ele.append(div({ class: 'relative h-48 w-full md:h-[35rem] block lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2' }, picture));
+      picture.querySelector('img').classList.add(...'lg:absolute lg:bottom-0 h-full w-full lg:object-cover'.split(' '));
+      ele.append(div({ class: 'relative h-48 w-full md:h-[35rem] block lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 px-6' }, picture));
     }
     changedBtn = 0;
     decorateModals(ele);
@@ -104,7 +104,7 @@ export default function decorate(block) {
     block.parentElement.classList.add(...'relative w-full'.split(' '));
     block.parentElement.setAttribute('data-carousel', 'slide');
     block.parentElement.setAttribute('id', uuid);
-    const carouselControls = div({ class: 'relative md:absolute md:bottom-16 flex gap-x-4 items-center space-x-3 z-10 px-4 lg:px-8 xl:pr-10' });
+    const carouselControls = div({ class: 'relative md:absolute md:bottom-16 flex gap-x-4 items-center space-x-3 z-10 px-4 lg:px-8 xl:pr-10 pt-8' });
     configurePagination(carouselControls, slides.length);
     configureNavigation(carouselControls);
     block.parentElement.append(div({ class: 'carousel-controls relative max-w-7xl mx-auto' }, carouselControls));
