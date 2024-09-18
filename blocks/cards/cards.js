@@ -1,19 +1,19 @@
 export default function decorate(block) {
   const pictureTag = block.querySelectorAll('picture');
-  pictureTag.forEach(picture => {
+  pictureTag.forEach((picture) => {
     const imgTag = picture.querySelector('img');
     if (imgTag) {
       imgTag.classList.add('max-[799px]:w-full');
     }
   });
-  
+
   [...block.children].forEach((row) => {
     row.classList.add(...'bg-[#e5e7eb] pb-12'.split(' '));
     [...row.children].forEach((div) => {
       if (div.children.length === 1 && div.querySelector('picture')) div.className = 'cards-card-image';
       else div.className = 'cards-card-body py-3 px-8 flex flex-col grow';
     });
-    
+
     const cardHeading = row.querySelector('h3');
     cardHeading.classList.add(...'card-heading text-2xl pt-8 tracking-[-0.03em]'.split(' '));
 

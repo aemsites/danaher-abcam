@@ -2,7 +2,7 @@ export default function decorate(block) {
   block.classList.add(...'lg:flex bg-neutral-100 sm:block mx-auto xl:max-w-[1120px] xl:px-0'.split(' '));
   block.querySelectorAll('div').forEach((row, index) => {
     row.classList.add('basis-1/2');
-    if(!row.textContent.trim() && row.children.length === 0) {
+    if (!row.textContent.trim() && row.children.length === 0) {
       row.remove();
     } else if (index === 0) {
       row.classList.add(...'self-center px-10 py-16 lg:pb-15 md:pl-[62px]'.split(' '));
