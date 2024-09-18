@@ -2,8 +2,8 @@ import Carousel from '../../scripts/carousel.js';
 import { button, div, span } from '../../scripts/dom-builder.js';
 import { decorateModals } from '../../scripts/modal.js';
 
-const SLIDE_DELAY = 3000;
-const SLIDE_TRANSITION = 1000;
+const SLIDE_DELAY = 2000;
+const SLIDE_TRANSITION = 2000;
 
 function configureNavigation(elementControls) {
   const previousBtn = button({ type: 'button', class: 'flex items-center justify-center h-full cursor-pointer group focus:outline-none', 'data-carousel-prev': '' });
@@ -41,7 +41,7 @@ export default function decorate(block) {
   const uuid = crypto.randomUUID(4).substring(0, 6);
   if (block.querySelector('a[title="link"]')) block.parentElement.parentElement.classList.add(...'!px-6 !py-16 !sm:py-16'.split(' '));
   block.classList.add(...'relative min-h-[30rem] md:min-h-[37rem]'.split(' '));
-  block.style = 'grid-auto-columns: 100%';
+  block.style = 'grid-auto-columns: 100%; scrollbar-width: none;';
   // block.classList.remove('block');
   block.classList.add(...'grid grid-flow-col overflow-x-auto space-x-2 snap-x snap-mandatory gap-6 scroll-smooth'.split(' '));
   const slides = [...block.children].map((ele, eleIndex) => {
@@ -100,7 +100,7 @@ export default function decorate(block) {
     decorateModals(ele);
     return { position: parseInt(eleIndex, 10), el: ele };
   }).filter((item) => item);
-  if (block.children.length > 2 && block.parentElement.className.includes('carousel-wrapper')) {
+  if (block.children.length > 1 && block.parentElement.className.includes('carousel-wrapper')) {
     block.parentElement.classList.add(...'relative w-full'.split(' '));
     block.parentElement.setAttribute('data-carousel', 'slide');
     block.parentElement.setAttribute('id', uuid);
