@@ -438,6 +438,7 @@ function decorateButtons(element) {
         linkType = linkTypeContainer?.querySelector('div')?.textContent || linkTypeContainer?.textContent || linkType;
         iconType = iconTypeContainer?.querySelector('div')?.textContent || iconTypeContainer?.textContent || iconType;
         a.className = 'button'; // Default class
+        up.className = 'button-container'; // Default class
         if(linkType?.trim()) up.classList.add(linkType.trim());
         if(iconType?.trim()) up.classList.add(iconType.trim());
 
