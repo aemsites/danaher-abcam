@@ -36,9 +36,9 @@
       "product-list",
       "learn-more",
       "related-stories",
-      "elouqa-form",
       "card-list",
-      "form"
+      "form",
+      "elouqa-form"
     ]
   },
   {
@@ -63,6 +63,10 @@
     ]
   },
   {
+    "id": "elouqa-form",
+    "components": []
+  },
+  {
     "id": "mini-teasers",
     "components": [
       "mini-teaser"
@@ -79,27 +83,5 @@
     "components": [
       "teaser"
     ]
-  },
-  {
-    "id": "title-card",
-    "components": []
-  },
-  {
-    "id": "podcasts",
-    "components": [
-      "podcast"
-    ]
-  }, 
-  {
-    "id": "alert-banner",
-    "components": []
-  },
-  {
-    "id": "hero-video",
-    "components": []
-  },
-  {
-    "id": "elouqa-form",
-    "components": []
   }
 ]

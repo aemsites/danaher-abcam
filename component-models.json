@@ -676,6 +676,10 @@
     ]
   },
   {
+    "id": "elouqa-form",
+    "fields": []
+  },
+  {
     "id": "form",
     "fields": [
       {
@@ -1293,25 +1297,6 @@
         "value": "",
         "label": "Description",
         "valueType": "string"
-      }
-    ]
-  },
-  {
-    "id": "elouqa-form",
-    "fields": [
-      {
-        "component": "richtext",
-        "valueType": "string",
-        "name": "elouqa_structure",
-        "value": "",
-        "label": "Elouqa Structure"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "elouqa_script",
-        "value": "",
-        "label": "Elouqa Script"
       }
     ]
   }
