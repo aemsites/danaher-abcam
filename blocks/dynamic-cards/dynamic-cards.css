@@ -228,6 +228,10 @@
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
 }
 
+.dynamic-cards-wrapper :is(.bg-transparent) {
+  background-color: transparent
+}
+
 .dynamic-cards-wrapper :is(.px-4) {
   padding-left: 1rem;
   padding-right: 1rem

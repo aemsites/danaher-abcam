@@ -16,6 +16,67 @@
       }
     }
   ],
-  "models": [],
+  "models": [
+    {
+      "id": "dynamic-cards",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "jsonName",
+          "label": "JSON Name",
+          "value": "article-index"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "needFilters",
+          "label": "Need filters",
+          "value": "true",
+          "options": [
+            {
+              "name": "True",
+              "value": "true"
+            },
+            {
+              "name": "False",
+              "value": "false"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "card_title",
+          "label": "Need Pagination",
+          "value": "true",
+          "options": [
+            {
+              "name": "True",
+              "value": "true"
+            },
+            {
+              "name": "False",
+              "value": "false"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "articleType",
+          "label": "Article Type",
+          "value": "Blog"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "filterPath",
+          "label": "Filter Path",
+          "value": "topics-template"
+        }
+      ]
+    }
+  ],
   "filters": []
 }

@@ -142,6 +142,7 @@ export function createFilters(articles, viewAll = false) {
 }
 
 export default async function decorate(block) {
+  console.log(block);
   const articleType = 'blog';
 
   // fetch and sort all articles
