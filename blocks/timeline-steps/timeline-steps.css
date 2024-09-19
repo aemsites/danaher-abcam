@@ -18,6 +18,10 @@
   margin-top: 0.25rem
 }
 
+.timeline-steps-wrapper :is(.mb-60) {
+  margin-bottom: 15rem
+}
+
 .timeline-steps-wrapper :is(.block) {
   display: block
 }
