@@ -721,7 +721,7 @@ header {
 
 @media (min-width: 1024px) {
   header {
-    height: 54px;
+    height: 4rem;
   }
 }
 

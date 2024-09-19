@@ -55,7 +55,7 @@
 
 @layer components {
     header {
-        @apply h-11 lg:h-[54px];
+        @apply h-11 lg:h-16;
     }
     
     main .section .default-content-wrapper a {

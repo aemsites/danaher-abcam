@@ -424,6 +424,10 @@
     padding-right: 2rem
   }
 
+  .header-wrapper :is(.lg\:pt-5) {
+    padding-top: 1.25rem
+  }
+
   .header-wrapper :is(.lg\:pt-4) {
     padding-top: 1rem
   }
