@@ -10,24 +10,12 @@
   border-width: 0
 }
 
-.carousel-wrapper :is(.absolute) {
-  position: absolute
-}
-
 .carousel-wrapper :is(.relative) {
   position: relative
 }
 
 .carousel-wrapper :is(.inset-0) {
   inset: 0px
-}
-
-.carousel-wrapper :is(.bottom-0) {
-  bottom: 0px
-}
-
-.carousel-wrapper :is(.right-1) {
-  right: 0.25rem
 }
 
 .carousel-wrapper :is(.z-10) {
@@ -105,10 +93,6 @@
 
 .carousel-wrapper :is(.w-full) {
   width: 100%
-}
-
-.carousel-wrapper :is(.w-1\/2) {
-  width: 50%
 }
 
 .carousel-wrapper :is(.max-w-7xl) {
@@ -231,11 +215,6 @@
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
 }
 
-.carousel-wrapper :is(.object-cover) {
-  -o-object-fit: cover;
-     object-fit: cover
-}
-
 .carousel-wrapper :is(.\!px-6) {
   padding-left: 1.5rem !important;
   padding-right: 1.5rem !important
@@ -261,17 +240,8 @@
   padding-bottom: 2rem
 }
 
-.carousel-wrapper :is(.py-6) {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem
-}
-
 .carousel-wrapper :is(.pt-24) {
   padding-top: 6rem
-}
-
-.carousel-wrapper :is(.pb-8) {
-  padding-bottom: 2rem
 }
 
 .carousel-wrapper :is(.pt-8) {
@@ -397,16 +367,12 @@
     bottom: 0px
   }
 
-  .carousel-wrapper :is(.lg\:right-0) {
-    right: 0px
-  }
-
   .carousel-wrapper :is(.lg\:bottom-0) {
     bottom: 0px
   }
 
-  .carousel-wrapper :is(.lg\:m-auto) {
-    margin: auto
+  .carousel-wrapper :is(.lg\:right-0) {
+    right: 0px
   }
 
   .carousel-wrapper :is(.lg\:my-auto) {
@@ -416,10 +382,6 @@
 
   .carousel-wrapper :is(.lg\:w-1\/2) {
     width: 50%
-  }
-
-  .carousel-wrapper :is(.lg\:w-full) {
-    width: 100%
   }
 
   .carousel-wrapper :is(.lg\:object-cover) {
@@ -437,36 +399,12 @@
     padding-bottom: 0px
   }
 
-  .carousel-wrapper :is(.lg\:pr-24) {
-    padding-right: 6rem
-  }
-
-  .carousel-wrapper :is(.lg\:pl-48) {
-    padding-left: 12rem
-  }
-
-  .carousel-wrapper :is(.lg\:pr-10) {
-    padding-right: 2.5rem
-  }
-
-  .carousel-wrapper :is(.lg\:pl-72) {
-    padding-left: 18rem
-  }
-
-  .carousel-wrapper :is(.lg\:pl-96) {
-    padding-left: 24rem
-  }
-
-  .carousel-wrapper :is(.lg\:pl-80) {
-    padding-left: 20rem
-  }
-
   .carousel-wrapper :is(.lg\:pl-\[22rem\]) {
     padding-left: 22rem
   }
 
-  .carousel-wrapper :is(.lg\:pb-0) {
-    padding-bottom: 0px
+  .carousel-wrapper :is(.lg\:pr-10) {
+    padding-right: 2.5rem
   }
 
   .carousel-wrapper :is(.lg\:text-\[40px\]) {
