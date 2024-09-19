@@ -16,11 +16,7 @@ function detectNextElements(stepsOl) {
  * @param {Element} block The header block element
  */
 export default async function decorate(block) {
-  console.log(block);
   const title = block.querySelector('h2');
-  console.log('title');
-  console.log(title);
- if(title===null) title=="Steps";
   title.className = 'text-3xl mb-6 font-semibold text-heading-large font-header md:pt-20 md:-mt-20';
 
   const timeline = [...block.children].map((element) => {
@@ -37,7 +33,7 @@ export default async function decorate(block) {
       description.appendChild(subtitleFootnote);
     }
     const steps = element.querySelectorAll('ol');
-    if (steps && steps.length > 0 ) {
+    if (steps && steps.length > 0) {
       if (subtitle || subtitleFootnote) timelineWrapper.append(description);
       const stepEl = div({ class: 'text-2xl mb-6 font-semibold' }, title);
       timelineWrapper.append(stepEl);
