@@ -49,7 +49,7 @@
           "name": "timeline-steps_titleType",
           "label": "",
           "valueType": "string",
-          "hidden": true
+          "hidden": false
         }
       ]
     },
