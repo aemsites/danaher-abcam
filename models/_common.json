@@ -78,6 +78,21 @@
           "value": "icon-only"
         }
       ]
+    },
+    {
+      "component": "select",
+      "name": "horizontalRuler",
+      "label": "Horizontal Ruler",
+      "options": [
+        {
+          "name": "None",
+          "value": ""
+        },
+        {
+          "name": "Add Ruler",
+          "value": "add-ruler"
+        }
+      ]
     }
   ],
   "image-fields": [
