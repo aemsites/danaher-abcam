@@ -7,10 +7,9 @@ import { getFragmentFromFile } from '../../scripts/scripts.js';
  */
 export default async function decorate(block) {
   try {
-    // get the content
     const fragment = await getFragmentFromFile('/fragments/elouqa-form.html');
     const fragmentCSS = await getFragmentFromFile('/styles/elouqa-form.css');
-    const fragmentCustomScript = await getFragmentFromFile('/styles/elouqa-form.css');
+    const fragmentCustomScript = await getFragmentFromFile('/scripts/elouqa-script.js');
     block.innerHTML = '';
     if (fragment) {
       await loadScript('https://img06.en25.com/i/livevalidation_standalone.compressed.js');
@@ -25,7 +24,7 @@ export default async function decorate(block) {
       document.head.append(fragmentStyle);
     }
     if (fragmentCustomScript) {
-      const fragmentScript = document.createElement('style');
+      const fragmentScript = document.createElement('script');
       fragmentScript.type = 'text/javascript';
       fragmentScript.append(fragmentCustomScript);
       document.body.append(fragmentScript);
