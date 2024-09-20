@@ -278,9 +278,9 @@ function buildAutoBlocks(main) {
 }
 
 function decorateStoryPage(main){
-  const sectionEl = main.querySelector(':scope > div.section.story-info-container.social-media-container');
+  const sectionEl = main.querySelector(':scope > div.section.story-info-container.social-media-container.sidelinks-container');
   if(sectionEl){
-    const toBeRemoved = ['story-info-wrapper', 'social-media-wrapper'];
+    const toBeRemoved = ['story-info-wrapper', 'social-media-wrapper', 'sidelinks-wrapper'];
     const rightSideElements = div({class: 'w-full'});
     Array.from(sectionEl?.children).forEach((element) => {
       if (!toBeRemoved.includes(element.classList[0])) {
@@ -292,6 +292,7 @@ function decorateStoryPage(main){
     const divEl = div({class: 'ml-0 md:ml-8 min-w-56'});
     divEl.append(sectionEl?.querySelector('.story-info-wrapper'));
     divEl.append(sectionEl?.querySelector('.social-media-wrapper'));
+    divEl.append(sectionEl?.querySelector('.sidelinks-wrapper'));
     sectionEl?.prepend(divEl);
   }
 }
