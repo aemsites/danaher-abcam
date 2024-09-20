@@ -9,7 +9,6 @@ export default async function buildAutoBlocks() {
   sectionColumns.prepend(
     buildBlock('back-navigation', { elems: [] }),
   );
-  
   sectionMiddle.classList.add(...'story-middle-container w-full'.split(' '));
   const sideLinksDiv = div({ class: 'sidelinks leading-5 text-sm font-bold text-black pb-4' }, 'Explore Our Products');
   main.querySelectorAll('p')?.forEach((paragraph) => {
@@ -22,5 +21,5 @@ export default async function buildAutoBlocks() {
     buildBlock('story-info', { elems: [] }),
     buildBlock('social-media', { elems: [] }),
     sideLinksDiv,
-  ); 
+  );
 }
