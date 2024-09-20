@@ -28,8 +28,7 @@
           "value": "article-index"
         },
         {
-          "component": "text",
-          "valueType": "string",
+          "component": "select",
           "name": "needFilters",
           "label": "Need filters",
           "value": "true",
@@ -45,9 +44,8 @@
           ]
         },
         {
-          "component": "text",
-          "valueType": "string",
-          "name": "card_title",
+          "component": "select",
+          "name": "needPagination",
           "label": "Need Pagination",
           "value": "true",
           "options": [
@@ -63,10 +61,9 @@
         },
         {
           "component": "text",
-          "valueType": "string",
           "name": "articleType",
           "label": "Article Type",
-          "value": "Blog"
+          "value": "blog"
         },
         {
           "component": "text",

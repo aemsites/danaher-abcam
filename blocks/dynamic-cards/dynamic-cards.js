@@ -143,13 +143,29 @@ export function createFilters(articles, viewAll = false) {
 
 export default async function decorate(block) {
   console.log(block);
-  const articleType = 'blog';
+  let jsonName = 'article-index';
+  let needFilters = true;
+  let needPagination = true;
+  let articleType = 'blog';
+  let filterPath = 'topics-template';
+  if (block.children.length > 0) {
+    [...block.children].forEach((child, childIndex) => {
+      const firstElementChildren = child.children[0].children[0].innerText;
+      if (childIndex === 0) jsonName = firstElementChildren;
+      if (childIndex === 1) needFilters = JSON.parse(firstElementChildren);
+      if (childIndex === 2) needPagination = JSON.parse(firstElementChildren);
+      if (childIndex === 3) articleType = firstElementChildren;
+      if (childIndex === 4) filterPath = firstElementChildren;
+      // console.log(childIndex, firstElementChildren);
+    });
+  }
+  // console.log(jsonName, needFilters, needPagination, articleType, filterPath);
 
   // fetch and sort all articles
-  const articles = await ffetch('https://stage.lifesciences.danaher.com/us/en/article-index.json')
+  const articles = await ffetch(`https://stage.lifesciences.danaher.com/us/en/${jsonName}.json`)
     .chunks(500)
     .filter(({ type }) => type.toLowerCase() === articleType)
-    .filter((article) => !article.path.includes('/topics-template'))
+    .filter((article) => !article.path.includes(`/${filterPath}`))
     .all();
   let filteredArticles = articles;
   const activeTagFilter = block.classList.contains('url-filtered') ? getSelectionFromUrl() : '';
@@ -176,7 +192,13 @@ export default async function decorate(block) {
   });
 
   // render pagination and filters
-  const filterTags = createFilters(articles, true);
-  const paginationElements = createPagination(filteredArticles, page, limitPerPage);
-  block.append(filterTags, cardList, paginationElements);
+  if (needFilters) {
+    const filterTags = createFilters(articles, true);
+    block.append(filterTags);
+  }
+  block.append(cardList);
+  if (needPagination) {
+    const paginationElements = createPagination(filteredArticles, page, limitPerPage);
+    block.append(paginationElements);
+  }
 }
