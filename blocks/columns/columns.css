@@ -74,6 +74,22 @@
   width: 75%
 }
 
+.columns-wrapper :is(.w-1\/2) {
+  width: 50%
+}
+
+.columns-wrapper :is(.w-1\/4) {
+  width: 25%
+}
+
+.columns-wrapper :is(.w-2\/5) {
+  width: 40%
+}
+
+.columns-wrapper :is(.w-3\/5) {
+  width: 60%
+}
+
 .columns-wrapper :is(.max-w-7xl) {
   max-width: 80rem
 }
@@ -157,6 +173,10 @@
 
   .columns-wrapper :is(.lg\:right-0) {
     right: 0px
+  }
+
+  .columns-wrapper :is(.lg\:h-\[475px\]) {
+    height: 475px
   }
 
   .columns-wrapper :is(.lg\:max-h-\[475px\]) {
