@@ -87,13 +87,26 @@
      object-fit: cover
 }
 
+.columns-wrapper :is(.p-6) {
+  padding: 1.5rem
+}
+
 .columns-wrapper :is(.px-6) {
   padding-left: 1.5rem;
   padding-right: 1.5rem
 }
 
+.columns-wrapper :is(.py-6) {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem
+}
+
 .columns-wrapper :is(.pb-10) {
   padding-bottom: 2.5rem
+}
+
+.columns-wrapper :is(.pr-6) {
+  padding-right: 1.5rem
 }
 
 .columns-wrapper :is(.text-sm) {
