@@ -14,7 +14,7 @@ export default function decorate(block) {
     const podcastPictureTag = row.querySelector('.podcast-section-1 picture');
     const podcastImg = podcastPictureTag.querySelector('img');
     if (podcastImg) {
-      podcastImg.classList.add(...'w-[200px] h-[200px] object-cover max-[799px]:w-full max-[799px]:h-[200px]'.split(' '));
+      podcastImg.classList.add(...'w-[322px] h-[322px] object-cover max-[799px]:w-full max-[799px]:h-[162px]'.split(' '));
     }
 
     const podcastHeading = row.querySelector('h2');

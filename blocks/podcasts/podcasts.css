@@ -58,6 +58,10 @@
   height: 200px
 }
 
+.podcasts-wrapper :is(.h-\[322px\]) {
+  height: 322px
+}
+
 .podcasts-wrapper :is(.w-16) {
   width: 4rem
 }
@@ -68,6 +72,10 @@
 
 .podcasts-wrapper :is(.w-\[65\%\]) {
   width: 65%
+}
+
+.podcasts-wrapper :is(.w-\[322px\]) {
+  width: 322px
 }
 
 .podcasts-wrapper :is(.items-center) {
@@ -201,6 +209,14 @@
 
   .podcasts-wrapper :is(.max-\[799px\]\:h-\[375px\]) {
     height: 375px
+  }
+
+  .podcasts-wrapper :is(.max-\[799px\]\:h-\[322px\]) {
+    height: 322px
+  }
+
+  .podcasts-wrapper :is(.max-\[799px\]\:h-\[162px\]) {
+    height: 162px
   }
 
   .podcasts-wrapper :is(.max-\[799px\]\:w-10) {
