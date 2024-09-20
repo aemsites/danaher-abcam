@@ -372,9 +372,29 @@ function extractVideoId(url) {
   const match = url.match(regex);
   return match ? match[1] : null;
 }
-
-function playAudio({src = '#'}) {
+ 
+function playAudio({ src = '#' }) {
   return `<audio controls preload="metadata" class = "audio-play-bar" style="width: 100%;" src=${src}/>`;
+}
+ 
+let currentlyPlayingAudio = null; // Global variable to track the currently playing audio
+ 
+function pauseCurrentAudio() {
+  if (currentlyPlayingAudio) {
+    // Pause the currently playing audio
+    currentlyPlayingAudio.pause();
+    // Find the audio container for the currently playing audio and update its play/pause icons
+    const currentAudioContainer = currentlyPlayingAudio.parentElement;
+    if (currentAudioContainer) {
+      const playIcon = currentAudioContainer.querySelector('.audio-play-icon');
+      const pauseIcon = currentAudioContainer.querySelector('.audio-play-pause-icon');
+      if (playIcon && pauseIcon) {
+        playIcon.classList.remove('hidden');
+        pauseIcon.classList.add('hidden');
+      }
+    }
+    currentlyPlayingAudio = null;
+  }
 }
 
 function decorateVideo(main) {
@@ -412,17 +432,59 @@ function decorateVideo(main) {
           const audioContainer = div({ class: 'flex flex-col' },
             p({ class: 'audio-label text-black no-underline ' }, link.text || ''),
             span({ class: 'audio-play-icon cursor-pointer w-14 icon icon-Play' }),
+            span({ class: 'audio-play-pause-icon hidden cursor-pointer w-14 icon icon-play-pause' }),
           );
           const parent = link.parentElement;
           parent.replaceChildren(audioContainer);
-          const audioPlayer = div({ class: 'audio-player w-full mt-10 md:mb-2' });
+          const audioPlayer = div({ class: 'audio-player w-full md:mb-2' });
           audioPlayer.innerHTML = playAudio({ src: link.href || '#' });
           decorateIcons(audioContainer, 80, 80);
-          audioContainer.querySelector('.audio-play-icon')?.addEventListener('click', () => {
-            audioContainer.replaceChildren(audioPlayer);
-            const audioElement = audioPlayer.querySelector('audio');
-            if (audioElement) audioElement.play();
+ 
+          let isPlaying = false;
+          const playIcon = audioContainer.querySelector('.audio-play-icon');
+          const pauseIcon = audioContainer.querySelector('.audio-play-pause-icon');
+          const audioElement = audioPlayer.querySelector('audio');
+ 
+          function updateIconVisibility() {
+            if (isPlaying) {
+              playIcon.classList.add('hidden');
+              pauseIcon.classList.remove('hidden');
+            } else {
+              playIcon.classList.remove('hidden');
+              pauseIcon.classList.add('hidden');
+            }
+          }
+ 
+          playIcon.addEventListener('click', () => {
+            if (audioElement) {
+              pauseCurrentAudio(); // Pause any currently playing audio
+              audioElement.play();
+              audioContainer.appendChild(audioPlayer);
+              currentlyPlayingAudio = audioElement; // Update the currently playing audio
+              isPlaying = true;
+              updateIconVisibility();
+            }
           });
+ 
+          pauseIcon.addEventListener('click', () => {
+            if (audioElement) {
+              audioElement.pause();
+              isPlaying = false;
+              updateIconVisibility();
+            }
+          });
+ 
+          audioElement.addEventListener('play', () => {
+            isPlaying = true;
+            updateIconVisibility();
+          });
+ 
+          audioElement.addEventListener('pause', () => {
+            isPlaying = false;
+            updateIconVisibility();
+          });
+ 
+          updateIconVisibility();
         }
       });
     } else if (type.includes('film')) {
