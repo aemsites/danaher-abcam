@@ -426,6 +426,7 @@ function decorateButtons(element) {
       const twoup = a.parentElement.parentElement;
       let linkTypeContainer;
       let iconTypeContainer;
+
       let linkType = 'button-primary'; // Default value
       let iconType = 'icon-none'; // Default value
       if (!a.querySelector('img')) {
