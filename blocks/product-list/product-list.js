@@ -37,7 +37,7 @@ function renderRecords(records, block) {
         p({ class: 'font-bold text-gray-400 text-body-small' }, product.raw?.productslug.split('-').slice(-1)),
         p(
           { class: 'font-bold' },
-          a({ class: 'product-link', href: `${window.location.origin}/en/products/detail/${product.raw.productslug}` }, product.raw?.name),
+          a({ class: 'product-link', href: `${window.location.origin}/en-us/products/detail/${product.raw.productslug}` }, product.raw?.name),
         ),
       );
       if (product.raw?.producttags) {
