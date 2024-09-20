@@ -75,5 +75,10 @@
       ]
     }
   ],
-  "filters": []
+  "filters": [
+    {
+      "id": "dynamic-cards",
+      "components": []
+    }
+  ]
 }
