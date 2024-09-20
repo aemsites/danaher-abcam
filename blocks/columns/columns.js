@@ -7,7 +7,7 @@ export default function decorate(block) {
   const imageAspectRatio = 1.7778;
 
   [...block.children].forEach((row) => {
-    block.classList.add(...'h-full lg:h-[475px] flex flex-col md:flex-row gap-y-6 px-6 md:px-0'.split(' '));
+    block.classList.add(...'h-full lg:max-h-[475px] flex flex-col md:flex-row gap-y-6 px-6 md:px-0'.split(' '));
     row.classList.add(...'flex flex-col lg:flex-row'.split(' '));
 
     if (block.classList.contains('text-center-align')
