@@ -54,6 +54,10 @@
   display: block
 }
 
+.columns-wrapper :is(.\!block) {
+  display: block !important
+}
+
 .columns-wrapper :is(.flex) {
   display: flex
 }

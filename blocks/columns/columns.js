@@ -56,6 +56,13 @@ import { div } from '../../scripts/dom-builder.js';
 //   });
 // }
 
+const widthRatios = [
+  '2-col-width-2-4', 
+  '2-col-width-3-4',
+  '2-col-width-1-4',
+  '2-col-width-3-5',
+  '2-col-width-2-5'
+]
 
 export default function decorate(block) {
   const cols = [...block.firstElementChild.children];
@@ -76,14 +83,16 @@ export default function decorate(block) {
       block.firstElementChild?.firstElementChild?.prepend(div({ class: 'font-normal text-sm leading-4 text-[#8B8B8B] capitalize mb-2' }, tag));
     }
 
-    [...row.children].forEach((col, colIndex, arr) => {
-      block.classList.forEach((className) => {
-        if (className.includes('2-col-width-') && colIndex === 0) {
-          col.classList.add(className.replace(/2-col-width-(\d)-(\d)/, 'lg:w-$1/$2'));
-        } else {
-          col.classList.add('lg:w-1/2');
-        }
-      });
+    const firstRow = row.querySelector('div:nth-child(1)');
+    widthRatios.forEach((widthRatioClass) => {
+      if (block.className.includes('columns-2-cols') && block.className.includes(widthRatioClass)) {
+        firstRow.classList.add(widthRatioClass.replace(/2-col-width-(\d)-(\d)/, 'lg:w-$1/$2'));
+      }
+    });
+
+    [...row.children].forEach((col, colIndex) => {
+
+      if(colIndex !== 0 && !block.className.includes('2-col-width-')) col.classList.add('lg:w-1/2');
 
       col.classList.add('py-6', 'pr-6', block.classList.contains('text-center-align') && !col.querySelector('iframe') ? 'my-auto' : 'h-full');
 
