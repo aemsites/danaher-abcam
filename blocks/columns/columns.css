@@ -159,10 +159,6 @@
     right: 0px
   }
 
-  .columns-wrapper :is(.lg\:h-\[475px\]) {
-    height: 475px
-  }
-
   .columns-wrapper :is(.lg\:max-h-\[475px\]) {
     max-height: 475px
   }
