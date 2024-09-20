@@ -53,11 +53,15 @@
     }
 
     main .section .button-tertiary-outline {
-        @apply bg-white hover:bg-[#f5f5f5] outline-black text-black text-sm whitespace-nowrap rounded-full py-px px-3 capitalize w-fit;
+        @apply bg-white hover:bg-[#071112]/[5%] outline outline-1 outline-black text-black text-sm font-semibold whitespace-nowrap rounded-full py-2 px-3 capitalize w-fit;
     }
  
     main .section .button-tertiary-filled {
-        @apply bg-[#f5f5f5] hover:bg-[#f5f5f5] whitespace-nowrap rounded-full py-px px-3 text-black text-sm capitalize w-fit;
+        @apply bg-[#071112]/[5%] hover:bg-[#071112]/[10%] whitespace-nowrap rounded-full py-2 px-3 text-black text-sm font-semibold capitalize w-fit;
+    }
+
+    main .section .button-text-only {
+        @apply hover:underline decoration-2 whitespace-nowrap rounded-full py-2 px-3 text-black text-lg font-semibold capitalize w-fit;
     }
  
 }

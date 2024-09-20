@@ -45,6 +45,13 @@
           ]
         },
         {
+          "component": "richtext",
+          "name": "alternating_description",
+          "value": "",
+          "label": "Description",
+          "valueType": "string"
+        },
+        {
           "...": "../../models/_common.json#/button-fields"
         },
         {

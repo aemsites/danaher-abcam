@@ -10,7 +10,7 @@ export default function decorate(block) {
       img.closest('picture').replaceWith(createOptimizedPicture(img.src, 'img-alt', false, [{ width: '750' }]));
     });
 
-    teaser.querySelector('h3').classList.add(...'my-4 text-lg font-semibold'.split(' '));
+    teaser.querySelector('h3').classList.add(...'!my-4 !text-xl'.split(' '));
     divEl.appendChild(teaser);
   });
   block.appendChild(divEl);
