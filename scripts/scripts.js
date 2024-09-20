@@ -372,9 +372,29 @@ function extractVideoId(url) {
   const match = url.match(regex);
   return match ? match[1] : null;
 }
-
-function playAudio({src = '#'}) {
+ 
+function playAudio({ src = '#' }) {
   return `<audio controls preload="metadata" class = "audio-play-bar" style="width: 100%;" src=${src}/>`;
+}
+ 
+let currentlyPlayingAudio = null; // Global variable to track the currently playing audio
+ 
+function pauseCurrentAudio() {
+  if (currentlyPlayingAudio) {
+    // Pause the currently playing audio
+    currentlyPlayingAudio.pause();
+    // Find the audio container for the currently playing audio and update its play/pause icons
+    const currentAudioContainer = currentlyPlayingAudio.parentElement;
+    if (currentAudioContainer) {
+      const playIcon = currentAudioContainer.querySelector('.audio-play-icon');
+      const pauseIcon = currentAudioContainer.querySelector('.audio-play-pause-icon');
+      if (playIcon && pauseIcon) {
+        playIcon.classList.remove('hidden');
+        pauseIcon.classList.add('hidden');
+      }
+    }
+    currentlyPlayingAudio = null;
+  }
 }
 
 function decorateVideo(main) {
@@ -384,36 +404,91 @@ function decorateVideo(main) {
   // Iterate over each container
   divContainers.forEach(divContainer => {
     if (type.includes('podcast')) {
-      divContainer.querySelectorAll('.button-container a').forEach(link => {
+      divContainer.querySelectorAll('p a').forEach(link => {
         if (link.title === "video") {
-          const embedHTML = `<div class="relative w-full h-full">
-            <iframe src="${link.href}"
-            class="relative w-full h-full border-0 top-0 left-0" 
-            allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" 
-            scrolling="no" title="Content from Youtube" loading="eager"></iframe>
-          </div>`;
           const linkContainer = link.parentElement;
           linkContainer.classList.add('h-full');
-          linkContainer.innerHTML = embedHTML;
+          const videoId = new URL(link.href).searchParams.get('v');
+          if (videoId) {
+            const embedURL = `https://www.youtube.com/embed/${videoId}`;
+            const embedHTML = `
+              <div class="relative w-full h-full">
+                <iframe src="${embedURL}"
+                class="relative w-full h-full border-0 top-0 left-0" 
+                allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" 
+                scrolling="no" title="Content from Youtube" loading="eager"></iframe>
+              </div>`;
+              linkContainer.innerHTML = embedHTML;
+          } else {
+            const embedHTML = `<div class="relative w-full h-full">
+              <iframe src="${link.href}"
+              class="relative w-full h-full border-0 top-0 left-0" 
+              allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" 
+              scrolling="no" title="Content from Youtube" loading="eager"></iframe>
+            </div>`;
+            linkContainer.innerHTML = embedHTML;
+          }
         } else if (link.title === "audio") {
           const audioContainer = div({ class: 'flex flex-col' },
             p({ class: 'audio-label text-black no-underline ' }, link.text || ''),
             span({ class: 'audio-play-icon cursor-pointer w-14 icon icon-Play' }),
+            span({ class: 'audio-play-pause-icon hidden cursor-pointer w-14 icon icon-play-pause' }),
           );
           const parent = link.parentElement;
           parent.replaceChildren(audioContainer);
-          const audioPlayer = div({ class: 'audio-player w-full mt-10 md:mb-2' });
+          const audioPlayer = div({ class: 'audio-player w-full md:mb-2' });
           audioPlayer.innerHTML = playAudio({ src: link.href || '#' });
-          decorateIcons(audioContainer);
-          audioContainer.querySelector('.audio-play-icon')?.addEventListener('click', () => {
-            audioContainer.replaceChildren(audioPlayer);
-            const audioElement = audioPlayer.querySelector('audio');
-            if (audioElement) audioElement.play();
+          decorateIcons(audioContainer, 80, 80);
+ 
+          let isPlaying = false;
+          const playIcon = audioContainer.querySelector('.audio-play-icon');
+          const pauseIcon = audioContainer.querySelector('.audio-play-pause-icon');
+          const audioElement = audioPlayer.querySelector('audio');
+ 
+          function updateIconVisibility() {
+            if (isPlaying) {
+              playIcon.classList.add('hidden');
+              pauseIcon.classList.remove('hidden');
+            } else {
+              playIcon.classList.remove('hidden');
+              pauseIcon.classList.add('hidden');
+            }
+          }
+ 
+          playIcon.addEventListener('click', () => {
+            if (audioElement) {
+              pauseCurrentAudio(); // Pause any currently playing audio
+              audioElement.play();
+              audioContainer.appendChild(audioPlayer);
+              currentlyPlayingAudio = audioElement; // Update the currently playing audio
+              isPlaying = true;
+              updateIconVisibility();
+            }
           });
+ 
+          pauseIcon.addEventListener('click', () => {
+            if (audioElement) {
+              audioElement.pause();
+              isPlaying = false;
+              updateIconVisibility();
+            }
+          });
+ 
+          audioElement.addEventListener('play', () => {
+            isPlaying = true;
+            updateIconVisibility();
+          });
+ 
+          audioElement.addEventListener('pause', () => {
+            isPlaying = false;
+            updateIconVisibility();
+          });
+ 
+          updateIconVisibility();
         }
       });
     } else if (type.includes('film')) {
-      divContainer.querySelectorAll('.columns .button-container a').forEach(link => {
+      divContainer.querySelectorAll('p a').forEach(link => {
         if (link.title === "video") {
           // Extract video ID from the URL
           const videoId = extractVideoId(link.href);
