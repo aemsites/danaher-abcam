@@ -17,6 +17,7 @@ function detectNextElements(stepsOl) {
  */
 export default async function decorate(block) {
   const title = block.querySelector('h2');
+  if(title!=null)
   title.className = 'text-3xl mb-6 font-semibold text-heading-large font-header md:pt-20 md:-mt-20';
 
   const timeline = [...block.children].map((element) => {
