@@ -417,7 +417,7 @@ function decorateVideo(main) {
           parent.replaceChildren(audioContainer);
           const audioPlayer = div({ class: 'audio-player w-full mt-10 md:mb-2' });
           audioPlayer.innerHTML = playAudio({ src: link.href || '#' });
-          decorateIcons(audioContainer);
+          decorateIcons(audioContainer, 80, 80);
           audioContainer.querySelector('.audio-play-icon')?.addEventListener('click', () => {
             audioContainer.replaceChildren(audioPlayer);
             const audioElement = audioPlayer.querySelector('audio');
