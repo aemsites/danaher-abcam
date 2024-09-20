@@ -223,20 +223,6 @@
           }
         },
         {
-          "title": "Column",
-          "id": "column",
-          "plugins": {
-            "xwalk": {
-              "page": {
-                "resourceType": "core/franklin/components/block/v1/block/item",
-                "template": {
-                  "model": "column"
-                }
-              }
-            }
-          }
-        },
-        {
           "title": "Dynamic Cards",
           "id": "dynamic-cards",
           "plugins": {
