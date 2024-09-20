@@ -13,6 +13,7 @@
       "button",
       "title",
       "media",
+      "abcam-button",
       "hero",
       "cards",
       "columns",
@@ -36,14 +37,21 @@
       "product-list",
       "learn-more",
       "related-stories",
-      "card-list",
-      "form"
+      "dynamic-cards",
+      "form",
+      "carousel"
     ]
   },
   {
     "id": "cards",
     "components": [
       "card"
+    ]
+  },
+  {
+    "id": "carousel",
+    "components": [
+      "carousel-item"
     ]
   },
   {
@@ -58,7 +66,9 @@
       "text",
       "image",
       "button",
-      "title"
+      "title",
+      "abcam-button",
+      "media"
     ]
   },
   {

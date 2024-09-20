@@ -56,18 +56,7 @@
       "id": "card",
       "fields": [
         {
-          "component": "reference",
-          "valueType": "string",
-          "name": "image",
-          "label": "Card Image",
-          "multi": false
-        },
-        {
-          "component": "text",
-          "valueType": "string",
-          "name": "imageAlt",
-          "label": "Alt",
-          "value": ""
+          "...": "../../models/_common.json#/image-fields"
         },
         {
           "component": "text",

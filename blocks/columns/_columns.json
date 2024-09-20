@@ -67,7 +67,9 @@
         "text",
         "image",
         "button",
-        "title"
+        "title",
+        "abcam-button",
+        "media"
       ]
     }
   ]
