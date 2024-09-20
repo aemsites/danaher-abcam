@@ -15,6 +15,9 @@
     "...": "./_media.json#/models"
   },
   {
+    "...": "./_abcam-button.json#/models"
+  },
+  {
     "...": "./_text.json#/models"
   },
   {
