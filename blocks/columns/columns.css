@@ -54,6 +54,10 @@
   display: block
 }
 
+.columns-wrapper :is(.\!block) {
+  display: block !important
+}
+
 .columns-wrapper :is(.flex) {
   display: flex
 }
@@ -64,6 +68,10 @@
 
 .columns-wrapper :is(.w-full) {
   width: 100%
+}
+
+.columns-wrapper :is(.w-3\/4) {
+  width: 75%
 }
 
 .columns-wrapper :is(.max-w-7xl) {
@@ -83,13 +91,26 @@
      object-fit: cover
 }
 
+.columns-wrapper :is(.p-6) {
+  padding: 1.5rem
+}
+
 .columns-wrapper :is(.px-6) {
   padding-left: 1.5rem;
   padding-right: 1.5rem
 }
 
+.columns-wrapper :is(.py-6) {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem
+}
+
 .columns-wrapper :is(.pb-10) {
   padding-bottom: 2.5rem
+}
+
+.columns-wrapper :is(.pr-6) {
+  padding-right: 1.5rem
 }
 
 .columns-wrapper :is(.text-sm) {
@@ -150,7 +171,21 @@
     flex-direction: row
   }
 
+  .columns-wrapper :is(.lg\:py-6) {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem
+  }
+
+  .columns-wrapper :is(.lg\:px-6) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem
+  }
+
   .columns-wrapper :is(.lg\:pr-16) {
     padding-right: 4rem
+  }
+
+  .columns-wrapper :is(.lg\:pr-6) {
+    padding-right: 1.5rem
   }
 }

@@ -898,6 +898,26 @@
           {
             "name": "Media full width",
             "value": "image-full-width"
+          },
+          {
+            "name": "2 Columns (50-50)",
+            "value": "2-col-width-1-2"
+          },
+          {
+            "name": "2 Columns (75-25)",
+            "value": "2-col-width-3-4"
+          },
+          {
+            "name": "2 Columns (25-75)",
+            "value": "2-col-width-1-4"
+          },
+          {
+            "name": "2 Columns (60-40)",
+            "value": "2-col-width-3-5"
+          },
+          {
+            "name": "2 Columns (40-60)",
+            "value": "2-col-width-2-5"
           }
         ]
       },
