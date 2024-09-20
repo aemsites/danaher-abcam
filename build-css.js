@@ -17,6 +17,11 @@ const fileMappings = [
     wrapper: 'footer-wrapper',
   },
   {
+    content: ['./blocks/carousel/carousel.js', './scripts/carousel.js'],
+    output: './blocks/carousel/carousel.css',
+    wrapper: 'carousel-wrapper',
+  },
+  {
     content: './blocks/cards/cards.js',
     output: './blocks/cards/cards.css',
     wrapper: 'cards-wrapper',

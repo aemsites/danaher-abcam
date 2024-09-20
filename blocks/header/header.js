@@ -230,7 +230,7 @@ export default async function decorate(block) {
     const html = await resp.text();
 
     // build header DOM
-    const headerBlock = div({ class: 'nav-container pt-0 pb-0 md:p-0 relative z-20' });
+    const headerBlock = div({ class: 'nav-container pt-0 pb-0 md:p-0 relative z-20 h-full' });
     headerBlock.innerHTML = html;
     buildSearchBlock(headerBlock);
     buildNavBlock(headerBlock);
@@ -241,6 +241,7 @@ export default async function decorate(block) {
     block.innerHTML = '';
     block.append(headerBlock);
     block.append(flyout);
+    block.classList.add('h-full');
   }
 
   return block;

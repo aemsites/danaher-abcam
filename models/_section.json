@@ -89,8 +89,9 @@
         "product-list",
         "learn-more",
         "related-stories",
-        "card-list",
-        "form"
+        "dynamic-cards",
+        "form",
+        "carousel"
       ]
     }
   ]

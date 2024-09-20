@@ -36,14 +36,21 @@
       "product-list",
       "learn-more",
       "related-stories",
-      "card-list",
-      "form"
+      "dynamic-cards",
+      "form",
+      "carousel"
     ]
   },
   {
     "id": "cards",
     "components": [
       "card"
+    ]
+  },
+  {
+    "id": "carousel",
+    "components": [
+      "carousel-item"
     ]
   },
   {
