@@ -66,6 +66,10 @@
   width: 100%
 }
 
+.columns-wrapper :is(.w-3\/4) {
+  width: 75%
+}
+
 .columns-wrapper :is(.max-w-7xl) {
   max-width: 80rem
 }

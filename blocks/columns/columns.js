@@ -20,6 +20,12 @@ export default function decorate(block) {
     }
 
     [...row.children].forEach((col, index, arr) => {
+      block.classList.forEach((className) => {
+        if (className.includes('2-col-width-')) {
+          const width = className.replace('2-col-width', 'w');
+          col.classList.add(width);
+        }
+      });
       col.classList.add('pb-10');
       if (index !== arr.length - 1) col.classList.add('lg:pr-16');
       if (block.className.includes('columns-2-cols')) col.classList.add('lg:w-1/2');
