@@ -16,12 +16,13 @@ export default function decorate(block) {
 
   const applyClasses = (element, classes) => element.classList.add(...classes.split(' '));
 
-  applyClasses(block, 'h-full lg:max-h-[475px] flex flex-col md:flex-row gap-y-6 px-6 md:px-0');
+  applyClasses(block, 'h-full lg:max-h-[475px] flex flex-col md:flex-row gap-y-6 md:px-0');
 
   [...block.children].forEach((row) => {
     applyClasses(row, 'flex flex-col lg:flex-row');
 
     if (block.classList.contains('text-center-align') || block.classList.contains('image-full-width')) {
+      block.classList.add('px-6');
       applyClasses(row, 'container max-w-7xl mx-auto');
       const pageTags = getMetadata('pagetags');
       const tag = pageTags?.split('/').pop();
@@ -40,7 +41,7 @@ export default function decorate(block) {
     [...row.children].forEach((col, colIndex) => {
       if (colIndex !== 0) col.classList.add('lg:w-1/2');
 
-      col.classList.add('py-6', 'pr-6', block.classList.contains('text-center-align') && !col.querySelector('iframe') ? 'my-auto' : 'h-full');
+      col.classList.add('lg:py-6', 'lg:pr-6', block.classList.contains('text-center-align') && !col.querySelector('iframe') ? 'my-auto' : 'h-full');
 
       const pic = col.querySelector('picture');
       if (pic) {

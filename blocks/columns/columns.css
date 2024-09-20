@@ -175,7 +175,21 @@
     flex-direction: row
   }
 
+  .columns-wrapper :is(.lg\:py-6) {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem
+  }
+
+  .columns-wrapper :is(.lg\:px-6) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem
+  }
+
   .columns-wrapper :is(.lg\:pr-16) {
     padding-right: 4rem
+  }
+
+  .columns-wrapper :is(.lg\:pr-6) {
+    padding-right: 1.5rem
   }
 }
