@@ -1,15 +1,3 @@
-.cards-wrapper :is(.mb-3) {
-  margin-bottom: 0.75rem
-}
-
-.cards-wrapper :is(.mt-2) {
-  margin-top: 0.5rem
-}
-
-.cards-wrapper :is(.mt-2\.5) {
-  margin-top: 0.625rem
-}
-
 .cards-wrapper :is(.block) {
   display: block
 }
@@ -18,12 +6,8 @@
   display: flex
 }
 
-.cards-wrapper :is(.h-12) {
-  height: 3rem
-}
-
-.cards-wrapper :is(.h-32) {
-  height: 8rem
+.cards-wrapper :is(.h-24) {
+  height: 6rem
 }
 
 .cards-wrapper :is(.w-fit) {
@@ -73,9 +57,21 @@
   padding-bottom: 0.625rem
 }
 
-.cards-wrapper :is(.py-9) {
-  padding-top: 2.25rem;
-  padding-bottom: 2.25rem
+.cards-wrapper :is(.py-3) {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem
+}
+
+.cards-wrapper :is(.pb-12) {
+  padding-bottom: 3rem
+}
+
+.cards-wrapper :is(.pb-3) {
+  padding-bottom: 0.75rem
+}
+
+.cards-wrapper :is(.pt-8) {
+  padding-top: 2rem
 }
 
 .cards-wrapper :is(.text-2xl) {

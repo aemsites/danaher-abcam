@@ -43,15 +43,6 @@
   align-self: center
 }
 
-.alternating-wrapper :is(.rounded-2xl) {
-  border-radius: 1rem
-}
-
-.alternating-wrapper :is(.bg-\[\#378189\]) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(55 129 137 / var(--tw-bg-opacity))
-}
-
 .alternating-wrapper :is(.bg-neutral-100) {
   --tw-bg-opacity: 1;
   background-color: rgb(245 245 245 / var(--tw-bg-opacity))
@@ -65,11 +56,6 @@
 .alternating-wrapper :is(.px-4) {
   padding-left: 1rem;
   padding-right: 1rem
-}
-
-.alternating-wrapper :is(.px-\[30px\]) {
-  padding-left: 30px;
-  padding-right: 30px
 }
 
 .alternating-wrapper :is(.py-16) {
@@ -124,16 +110,6 @@
 
 .alternating-wrapper :is(.tracking-wider) {
   letter-spacing: 0.05em
-}
-
-.alternating-wrapper :is(.text-white) {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity))
-}
-
-.alternating-wrapper :is(.hover\:bg-\[\#2A5F65\]:hover) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(42 95 101 / var(--tw-bg-opacity))
 }
 
 @media (max-width: 799px) {
