@@ -44,8 +44,6 @@ export default function decorate(block) {
     
 
     [...row.children].forEach((col, colIndex) => {
-      // if (colIndex !== 0) col.classList.add('lg:w-1/2');
-
       col.classList.add('lg:py-6', 'lg:pr-6', block.classList.contains('text-center-align') && !col.querySelector('iframe') ? 'my-auto' : 'h-full');
 
       const pic = col.querySelector('picture');
