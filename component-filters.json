@@ -72,6 +72,10 @@
     ]
   },
   {
+    "id": "filters",
+    "components": []
+  },
+  {
     "id": "mini-teasers",
     "components": [
       "mini-teaser"

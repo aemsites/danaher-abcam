@@ -938,6 +938,18 @@
     ]
   },
   {
+    "id": "filters",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "jsonName",
+        "label": "JSON Name",
+        "value": "products-index"
+      }
+    ]
+  },
+  {
     "id": "form",
     "fields": [
       {
