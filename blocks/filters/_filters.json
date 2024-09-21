@@ -24,9 +24,16 @@
         {
           "component": "text",
           "valueType": "string",
-          "name": "jsonName",
+          "name": "json_name",
           "label": "JSON Name",
           "value": "products-index"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "filter_names",
+          "value": "",
+          "label": "Filter Names"
         }
       ]
     }
