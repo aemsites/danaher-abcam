@@ -3,8 +3,6 @@ import ffetch from '../../scripts/ffetch.js';
 export default async function decorate(block) {
   console.log(block);
   let jsonName = 'products-index';
-  let articleType = '';
-  let filterPath = '';
   let filterNames = '';
   if (block.children.length > 0) {
     [...block.children].forEach((child, childIndex) => {
@@ -12,12 +10,25 @@ export default async function decorate(block) {
       if (childIndex === 0) jsonName = firstElementChildren;
       if (childIndex === 1) filterNames = firstElementChildren;
     });
-    const articles = await ffetch(`https://stage.lifesciences.danaher.com/us/en/${jsonName}.json`)
-      // .chunks(500)
-      // .filter(({ type }) => type.toLowerCase() === articleType)
-      // .filter((article) => !article.path.includes(`/${filterPath}`))
+    const response = await ffetch(`https://stage.lifesciences.danaher.com/us/en/${jsonName}.json`)
+      .chunks(500)
       .all();
-    // const allFilters = 
-    console.log(jsonName, articles);
+    let filterCategory = {};
+    for (let topicIndex = 0; topicIndex < response.length; topicIndex += 1) {
+      const topic = response[topicIndex];
+      filterNames.split('|').map((num) => {
+        if (
+          Object.keys(filterCategory).length === 0
+          || typeof filterCategory[num] === 'undefined'
+        ) filterCategory[num] = [];
+        if (
+          topic[num] !== ''
+          && !filterCategory[num].includes(topic[num])
+        ) {
+          filterCategory[num].push(topic[num]);
+        }
+      });
+    }
+    console.log(jsonName, response, filterCategory);
   }
 }
