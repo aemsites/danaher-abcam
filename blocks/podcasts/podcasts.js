@@ -24,7 +24,7 @@ export default function decorate(block) {
 
     const podcastSubHeading = row.querySelector('h3');
     if (podcastSubHeading) {
-      podcastSubHeading.classList.add(...'text-black lg:text-2xl lg:!m-0 font-normal leading-8 text-base w-2/3'.split(' '));
+      podcastSubHeading.classList.add(...'text-black lg:!text-2xl lg:!m-0 !font-normal leading-8 text-base w-2/3'.split(' '));
     }
 
     const podcastDescription = row.querySelector('p');
