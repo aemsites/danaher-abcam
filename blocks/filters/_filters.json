@@ -15,6 +15,21 @@
           }
         }
       }
+    },
+    {
+      "title": "Filter Name",
+      "id": "filter_name",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Filter Name",
+              "model": "filter_name"
+            }
+          }
+        }
+      }
     }
   ],
   "models": [
@@ -29,11 +44,11 @@
           "value": "products-index"
         },
         {
-          "component": "multiselect",
+          "component": "text",
           "valueType": "string",
           "name": "filter_names",
-          "label": "Filter Names",
-          "options": []
+          "value": "",
+          "label": "Filter Names"
         }
       ]
     }
@@ -41,7 +56,9 @@
   "filters": [
     {
       "id": "filters",
-      "components": []
+      "components": [
+        "filter-name"
+      ]
     }
   ]
 }

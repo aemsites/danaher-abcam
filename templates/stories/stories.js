@@ -2,6 +2,7 @@ import { buildBlock, getMetadata } from '../../scripts/aem.js';
 import { div, span } from '../../scripts/dom-builder.js';
 
 export default async function buildAutoBlocks() {
+  console.log('Stories');
   const main = document.querySelector('main');
   const sectionColumns = main.querySelector(':scope > div > div.columns')?.parentElement;
   const sectionMiddle = getMetadata('pagetags').includes('podcast') ? main.querySelector(':scope > div:nth-child(3)')
