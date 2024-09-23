@@ -19,6 +19,19 @@
   margin-bottom: 0px !important
 }
 
+.podcasts-wrapper :is(.ml-0) {
+  margin-left: 0px
+}
+
+.podcasts-wrapper :is(.mt-2) {
+  margin-top: 0.5rem
+}
+
+.podcasts-wrapper :is(.\!my-0) {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important
+}
+
 .podcasts-wrapper :is(.mb-0) {
   margin-bottom: 0px
 }
@@ -164,10 +177,6 @@
   font-weight: 400
 }
 
-.podcasts-wrapper :is(.\!font-normal) {
-  font-weight: 400 !important
-}
-
 .podcasts-wrapper :is(.leading-8) {
   line-height: 2rem
 }
@@ -241,11 +250,6 @@
 
   .podcasts-wrapper :is(.lg\:gap-4) {
     gap: 1rem
-  }
-
-  .podcasts-wrapper :is(.lg\:text-2xl) {
-    font-size: 1.5rem;
-    line-height: 2rem
   }
 
   .podcasts-wrapper :is(.lg\:\!text-2xl) {
