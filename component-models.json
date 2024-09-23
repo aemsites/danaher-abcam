@@ -1484,13 +1484,6 @@
     "fields": [
       {
         "component": "richtext",
-        "name": "steps_heading",
-        "value": "",
-        "label": "Heading",
-        "valueType": "string"
-      },
-      {
-        "component": "richtext",
         "name": "steps_stepdata",
         "value": "",
         "label": "Step Data",
