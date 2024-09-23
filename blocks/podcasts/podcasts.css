@@ -140,6 +140,10 @@
   font-weight: 400
 }
 
+.podcasts-wrapper :is(.\!font-normal) {
+  font-weight: 400 !important
+}
+
 .podcasts-wrapper :is(.leading-8) {
   line-height: 2rem
 }
@@ -214,6 +218,15 @@
   .podcasts-wrapper :is(.lg\:text-2xl) {
     font-size: 1.5rem;
     line-height: 2rem
+  }
+
+  .podcasts-wrapper :is(.lg\:\!text-2xl) {
+    font-size: 1.5rem !important;
+    line-height: 2rem !important
+  }
+
+  .podcasts-wrapper :is(.lg\:font-normal) {
+    font-weight: 400
   }
 }
 
