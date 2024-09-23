@@ -8,11 +8,6 @@ const widthRatios = [
   { value: '2-col-width-1-4', first: 'w-1/4', second: 'w-3/4' },
   { value: '2-col-width-3-5', first: 'w-3/5', second: 'w-2/5' },
   { value: '2-col-width-2-5', first: 'w-2/5', second: 'w-3/5' },
-  { value: '2-col-width-1-2', first: 'w-1/2', second: 'w-1/2' },
-  { value: '2-col-width-3-4', first: 'w-3/4', second: 'w-1/4' },
-  { value: '2-col-width-1-4', first: 'w-1/4', second: 'w-3/4' },
-  { value: '2-col-width-3-5', first: 'w-3/5', second: 'w-2/5' },
-  { value: '2-col-width-2-5', first: 'w-2/5', second: 'w-3/5' },
 ];
 
 export default function decorate(block) {
@@ -37,7 +32,7 @@ export default function decorate(block) {
       const [firstCol, secondCol] = row.children;
       firstCol.classList.add('lg:w-1/2');
       secondCol.classList.add('lg:w-1/2');
-    
+
       widthRatios.forEach(({ value, first, second }) => {
         if (block.classList.contains(value)) {
           firstCol.classList.replace('lg:w-1/2', first);
@@ -45,8 +40,6 @@ export default function decorate(block) {
         }
       });
     }
-
-    [...row.children].forEach((col) => {
 
     [...row.children].forEach((col) => {
       col.classList.add('lg:py-6', 'lg:pr-6', block.classList.contains('text-center-align') && !col.querySelector('iframe') ? 'my-auto' : 'h-full');
