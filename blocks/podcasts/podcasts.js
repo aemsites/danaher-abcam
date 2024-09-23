@@ -13,20 +13,25 @@ function decoratePodcast(podcast) {
   const contentDiv = podcast.querySelector('div:nth-child(2)');
   applyClasses(contentDiv, 'lg:ml-6 lg:w-2/3 xl:w-3/4 w-full ml-0');
 
-  const iconContainer = div({ class: 'flex mt-2 w-4/6 lg:w-1/4 justify-between' }, 'Also Available on');
+  const allButtons = div({class: 'flex flex-row gap-6'});
+
+  const iconContainer = div({ class: 'flex flex-col lg:flex-row mt-2 justify-between' }, 
+    div('Also Available on'), 
+    div({class: 'icon-container flex gap-2'}));
   contentDiv.querySelectorAll('p > a').forEach((link) => {
     link.parentElement.remove();
     const icon = span({ class: `icon icon-${link.textContent.toLowerCase()}` }, link);
     link.textContent = '';
-    iconContainer.appendChild(icon);
+    iconContainer.querySelector('.icon-container')?.append(icon);
   });
   decorateIcons(iconContainer);
-  contentDiv.appendChild(iconContainer);
+  // contentDiv.appendChild(iconContainer);
 
   const h3El = contentDiv.querySelector('h3');
   const button = podcast.querySelector('div.button-container');
   button.querySelector('p')?.classList.add('!my-0');
-  contentDiv.append(button);
+  allButtons.append(button, iconContainer);
+  contentDiv.append(allButtons);
 
   const audioPlayIconContainers = podcast.querySelector('.audio-play-icon');
   audioPlayIconContainers.addEventListener('click', () => {

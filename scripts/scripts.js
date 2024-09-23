@@ -430,6 +430,7 @@ function decorateVideo(main) {
             linkContainer.innerHTML = embedHTML;
           }
         } else if (link.title === "audio") {
+          link.textContent = '';
           const audioContainer = div({ class: 'flex flex-col' },
             p({ class: 'audio-label text-black no-underline ' }, link.text || ''),
             span({ class: 'audio-play-icon cursor-pointer w-14 icon icon-Play' }),
@@ -540,6 +541,8 @@ export function decorateMain(main) {
   decorateStickyRightNav(main);
   decorateStoryPage(main);
 }
+
+export const applyClasses = (element, classes) => element.classList.add(...classes.split(' '));
 
 function capitalizeWords(str) {
   const words = str.split(' ');
