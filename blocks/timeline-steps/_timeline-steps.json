@@ -48,8 +48,7 @@
           "component": "text",
           "name": "timeline-steps_titleType",
           "label": "",
-          "valueType": "string",
-          "hidden": true
+          "valueType": "string"
         }
       ]
     },
