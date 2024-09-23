@@ -48,14 +48,21 @@
           "component": "text",
           "name": "timeline-steps_titleType",
           "label": "",
-          "valueType": "string"
+          "valueType": "string",
+          "hidden": true
         }
       ]
     },
     {
       "id": "steps",
       "fields": [
-       
+        {
+          "component": "richtext",
+          "name": "steps_heading",
+          "value": "",
+          "label": "Heading",
+          "valueType": "string"
+        },
         {
           "component": "richtext",
           "name": "steps_stepdata",
