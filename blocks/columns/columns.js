@@ -1,5 +1,6 @@
 import { createOptimizedPicture, getMetadata } from '../../scripts/aem.js';
 import { div } from '../../scripts/dom-builder.js';
+import { applyClasses } from '../../scripts/scripts.js';
 
 const widthRatios = [
   { value: '2-col-width-1-2', first:'w-1/2', second:'w-1/2' },
@@ -13,8 +14,6 @@ export default function decorate(block) {
   const cols = [...block.firstElementChild.children];
   block.classList.add(`columns-${cols.length}-cols`);
   const imageAspectRatio = 1.7778;
-
-  const applyClasses = (element, classes) => element.classList.add(...classes.split(' '));
 
   applyClasses(block, 'h-full lg:max-h-[475px] flex flex-col md:flex-row gap-y-6 md:px-0');
 
