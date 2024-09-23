@@ -33,7 +33,6 @@ export default function decorate(block) {
       const [firstCol, secondCol] = row.children;
       firstCol.classList.add('lg:w-1/2');
       secondCol.classList.add('lg:w-1/2');
-    
       widthRatios.forEach(({ value, first, second }) => {
         if (block.classList.contains(value)) {
           firstCol.classList.replace('lg:w-1/2', first);
@@ -41,7 +40,6 @@ export default function decorate(block) {
         }
       });
     }
-    
 
     [...row.children].forEach((col, colIndex) => {
       col.classList.add('lg:py-6', 'lg:pr-6', block.classList.contains('text-center-align') && !col.querySelector('iframe') ? 'my-auto' : 'h-full');
