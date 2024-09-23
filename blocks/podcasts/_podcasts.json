@@ -95,9 +95,6 @@
                 "valueType": "string"
               },
               {
-                "...": "../../models/_common.json#/media-fields"
-              },
-              {
                 "...": "../../models/_common.json#/button-fields"
               },
               {
@@ -106,6 +103,9 @@
                 "name": "podcast_links",
                 "value": "",
                 "label": "Postcasts Links"
+              },
+              {
+                "...": "../../models/_common.json#/media-fields"
               }
             ]
         }
