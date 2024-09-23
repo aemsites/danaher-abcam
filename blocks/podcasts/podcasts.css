@@ -239,6 +239,10 @@
     justify-content: flex-start
   }
 
+  .podcasts-wrapper :is(.lg\:gap-4) {
+    gap: 1rem
+  }
+
   .podcasts-wrapper :is(.lg\:text-2xl) {
     font-size: 1.5rem;
     line-height: 2rem

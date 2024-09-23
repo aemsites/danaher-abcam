@@ -15,7 +15,7 @@ function decoratePodcast(podcast) {
 
   const allButtons = div({class: 'flex flex-row gap-6'});
 
-  const iconContainer = div({ class: 'flex flex-col lg:flex-row mt-2 justify-between' }, 
+  const iconContainer = div({ class: 'flex flex-col lg:flex-row mt-2 lg:gap-4 justify-between' }, 
     div('Also Available on'), 
     div({class: 'icon-container flex gap-2'}));
   contentDiv.querySelectorAll('p > a').forEach((link) => {
@@ -25,7 +25,6 @@ function decoratePodcast(podcast) {
     iconContainer.querySelector('.icon-container')?.append(icon);
   });
   decorateIcons(iconContainer);
-  // contentDiv.appendChild(iconContainer);
 
   const h3El = contentDiv.querySelector('h3');
   const button = podcast.querySelector('div.button-container');
