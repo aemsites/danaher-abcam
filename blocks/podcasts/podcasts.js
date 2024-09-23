@@ -24,8 +24,9 @@ function decoratePodcast(podcast) {
   contentDiv.appendChild(iconContainer);
 
   const h3El = contentDiv.querySelector('h3');
-
-  contentDiv.append(podcast.querySelector('div.button-container'));
+  const button = podcast.querySelector('div.button-container')
+  button.querySelector('p')?.classList.add('!my-0');
+  contentDiv.append(button);
 
   const audioPlayIconContainers = podcast.querySelector('.audio-play-icon');
   audioPlayIconContainers.addEventListener('click', () => {
