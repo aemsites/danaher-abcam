@@ -948,11 +948,11 @@
         "value": "products-index"
       },
       {
-        "component": "text",
+        "component": "multiselect",
         "valueType": "string",
         "name": "filter_names",
-        "value": "",
-        "label": "Filter Names"
+        "label": "Filter Names",
+        "options": []
       }
     ]
   },
