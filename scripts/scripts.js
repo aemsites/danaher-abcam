@@ -542,7 +542,7 @@ export function decorateMain(main) {
   decorateStoryPage(main);
 }
 
-export const applyClasses = (element, classes) => element.classList.add(...classes.split(' '));
+export const applyClasses = (element, classes) => element?.classList.add(...classes.split(' '));
 
 function capitalizeWords(str) {
   const words = str.split(' ');

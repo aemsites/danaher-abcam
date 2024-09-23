@@ -1,6 +1,6 @@
 import { decorateIcons } from '../../scripts/aem.js';
 import { applyClasses } from '../../scripts/scripts.js';
-import { a, div, span } from '../../scripts/dom-builder.js';
+import { div, span } from '../../scripts/dom-builder.js';
 
 function decoratePodcast(podcast) {
   applyClasses(podcast, 'podcast-list flex lg:flex-row border-[#D8D8D8] border-b-2 py-8 relative flex-col');
@@ -13,11 +13,13 @@ function decoratePodcast(podcast) {
   const contentDiv = podcast.querySelector('div:nth-child(2)');
   applyClasses(contentDiv, 'lg:ml-6 lg:w-2/3 xl:w-3/4 w-full ml-0');
 
-  const allButtons = div({class: 'grid grid-cols-2 gap-6 lg:w-7/12 w-full'});
+  const allButtons = div({ class: 'grid grid-cols-2 gap-6 lg:w-7/12 w-full' });
 
-  const iconContainer = div({ class: 'flex flex-col lg:flex-row mt-2 lg:gap-4 justify-between' }, 
-    div('Also Available on'), 
-    div({class: 'icon-container flex gap-2'}));
+  const iconContainer = div(
+    { class: 'flex flex-col lg:flex-row mt-2 lg:gap-4 justify-between' },
+    div('Also Available on'),
+    div({ class: 'icon-container flex gap-2' }),
+  );
   contentDiv.querySelectorAll('p > a').forEach((link) => {
     link.parentElement.remove();
     const icon = span({ class: `icon icon-${link.textContent.toLowerCase()}` }, link);
@@ -27,8 +29,8 @@ function decoratePodcast(podcast) {
   decorateIcons(iconContainer);
 
   const button = podcast.querySelector('div.button-container');
-  button.classList.add('h-10', 'mt-2');
-  button.querySelector('p')?.classList.add('!my-0');
+  applyClasses(button, 'h-10 mt-2');
+  applyClasses(button.querySelector('p'), '!my-0');
   allButtons.append(button, iconContainer);
   contentDiv.append(allButtons);
 
