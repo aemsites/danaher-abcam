@@ -2,29 +2,29 @@ import { decorateIcons } from '../../scripts/aem.js';
 
 export default function decorate(block) {
   [...block.children].forEach((row) => {
-    row.classList.add(...'podcast-list flex border-[#D8D8D8] border-b-2 py-8 relative max-[799px]:flex-col'.split(' '));
+    row.classList.add(...'podcast-list flex lg:flex-row border-[#D8D8D8] border-b-2 py-8 relative flex-col'.split(' '));
     [...row.children].forEach((div, index) => {
       const podcastClassName = `podcast-section-${index + 1}`;
       div.classList.add(podcastClassName);
     });
 
     const podcastSection2 = row.querySelector('.podcast-section-2');
-    podcastSection2.classList.add(...'ml-6 w-[65%] max-[799px]:w-full max-[799px]:ml-0'.split(' '));
+    podcastSection2.classList.add(...'lg:ml-6 lg:w-2/3 xl:w-3/4 w-full ml-0'.split(' '));
 
     const podcastPictureTag = row.querySelector('.podcast-section-1 picture');
     const podcastImg = podcastPictureTag.querySelector('img');
     if (podcastImg) {
-      podcastImg.classList.add(...'w-[322px] h-[322px] object-cover max-[799px]:w-full max-[799px]:h-[162px]'.split(' '));
+      podcastImg.classList.add(...'lg:w-48 lg:h-48 object-cover w-full h-32'.split(' '));
     }
 
     const podcastHeading = row.querySelector('h2');
     if (podcastHeading) {
-      podcastHeading.classList.add(...'text-black text-2xl font-bold leading-8 max-[799px]:text-base max-[799px]:mt-6 max-[799px]:w-[65%]'.split(' '));
+      podcastHeading.classList.add(...'text-black lg:text-2xl lg:!m-0 font-bold leading-8 text-base mt-6 w-2/3'.split(' '));
     }
 
     const podcastSubHeading = row.querySelector('h3');
     if (podcastSubHeading) {
-      podcastSubHeading.classList.add(...'text-black text-2xl font-normal leading-8 max-[799px]:text-base max-[799px]:w-[65%]'.split(' '));
+      podcastSubHeading.classList.add(...'text-black lg:text-2xl lg:!m-0 font-normal leading-8 text-base w-2/3'.split(' '));
     }
 
     const podcastDescription = row.querySelector('p');
@@ -37,7 +37,7 @@ export default function decorate(block) {
       podcastDescription.parentNode.insertBefore(podcastSection4, podcastDescription.nextSibling);
     }
 
-    const linkParagraphs = [...podcastSection2.querySelectorAll('p')].slice(2, 6); // Selecting the 3 <p> elements after podcastSection4
+    const linkParagraphs = [...podcastSection2.querySelectorAll('p')].slice(2, 6);
     linkParagraphs.forEach((paragraph, index) => {
       const streamIcons = `stream-icon-${index + 1}`;
       paragraph.classList.add(streamIcons);
@@ -70,25 +70,25 @@ export default function decorate(block) {
     decorateIcons(streamIcon3);
 
     const btnIconContainer = document.createElement('div');
-    btnIconContainer.classList.add(...'flex items-center ml-12 max-[799px]:ml-8 max-[799px]:flex-col'.split(' '));
+    btnIconContainer.classList.add(...'flex lg:flex-row items-center lg:ml-12 ml-8 flex-col'.split(' '));
     const streamText = document.createElement('span');
-    streamText.classList.add(...'text-sm text-[#8B8B8B] mr-6 max-[799px]:mr-0'.split(' '));
+    streamText.classList.add(...'text-sm text-[#8B8B8B] lg:mr-6 mr-0 w-full'.split(' '));
     streamText.textContent = 'Also Available on';
     btnIconContainer.appendChild(streamText);
 
     const iconContainer = document.createElement('div');
-    iconContainer.classList.add(...'flex max-[799px]:mt-2 max-[799px]:w-full max-[799px]:justify-between'.split(' '));
+    iconContainer.classList.add(...'flex mt-2 w-full justify-between'.split(' '));
     iconContainer.append(streamIcon1, streamIcon2, streamIcon3);
 
     btnIconContainer.appendChild(iconContainer);
     podcastSection2.appendChild(btnIconContainer);
 
     const ctaIconContainer = document.createElement('div');
-    ctaIconContainer.classList.add(...'flex items-center max-[799px]:justify-between'.split(' '));
+    ctaIconContainer.classList.add(...'flex items-center justify-between lg:justify-start'.split(' '));
     ctaIconContainer.append(podcastSection4, btnIconContainer);
     podcastSection2.appendChild(ctaIconContainer);
     const podcastSection3 = row.querySelector('.podcast-section-3');
-    podcastSection3.classList.add(...'absolute right-0 top-16 max-[799px]:top-64'.split(' '));
+    podcastSection3.classList.add(...'absolute right-0 lg:top-16 top-48'.split(' '));
     podcastSection2.appendChild(podcastSection3);
 
     const audioLabels = row.querySelectorAll('.podcast-section-3 .audio-label');
@@ -98,12 +98,12 @@ export default function decorate(block) {
 
     const audioPlayIcons = row.querySelectorAll('.audio-play-icon img');
     audioPlayIcons.forEach((audioPlayIcon) => {
-      audioPlayIcon.classList.add(...'mb-0 w-16 h-16 max-[799px]:w-10 max-[799px]:h-10'.split(' '));
+      audioPlayIcon.classList.add(...'mb-0 lg:w-16 lg:h-16 w-10 h-10'.split(' '));
     });
 
     const audioPlayPauseIcons = row.querySelectorAll('.audio-play-pause-icon img');
     audioPlayPauseIcons.forEach((audioPlayPauseIcon) => {
-      audioPlayPauseIcon.classList.add(...'mb-0 w-16 h-16 max-[799px]:w-10 max-[799px]:h-10'.split(' '));
+      audioPlayPauseIcon.classList.add(...'mb-0 lg:w-16 lg:h-16 w-10 h-10'.split(' '));
     });
 
     const audioPlayIconContainers = row.querySelectorAll('.audio-play-icon');
