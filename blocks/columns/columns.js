@@ -2,11 +2,11 @@ import { createOptimizedPicture, getMetadata } from '../../scripts/aem.js';
 import { div } from '../../scripts/dom-builder.js';
 
 const widthRatios = [
-  { value: '2-col-width-1-2', first:'w-1/2', second:'w-1/2' },
-  { value: '2-col-width-3-4', first:'w-3/4', second:'w-1/4' },
-  { value: '2-col-width-1-4', first:'w-1/4', second:'w-3/4' },
-  { value: '2-col-width-3-5', first:'w-3/5', second:'w-2/5' },
-  { value: '2-col-width-2-5', first:'w-2/5', second:'w-3/5' },
+  { value: '2-col-width-1-2', first: 'w-1/2', second: 'w-1/2' },
+  { value: '2-col-width-3-4', first: 'w-3/4', second: 'w-1/4' },
+  { value: '2-col-width-1-4', first: 'w-1/4', second: 'w-3/4' },
+  { value: '2-col-width-3-5', first: 'w-3/5', second: 'w-2/5' },
+  { value: '2-col-width-2-5', first: 'w-2/5', second: 'w-3/5' },
 ];
 
 export default function decorate(block) {
