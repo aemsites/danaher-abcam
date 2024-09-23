@@ -47,9 +47,9 @@ export async function fetchResponse(config) {
     .then((res) => {
       if (res.ok) {
         return res.json();
-      }  
+      }
       throw new Error('Sorry, network error, not able to render response.');
-  });
+    });
   return response;
 }
 
@@ -78,13 +78,13 @@ export function formatDateUTCSeconds(date, options = {}) {
  * @returns Optimized image
  */
 export function imageHelper(imageUrl, imageAlt, eager = false) {
-  const imgUrl = 'https://stage.lifesciences.danaher.com'+imageUrl;
-    return img({
-      src: imgUrl,
-      alt: imageAlt,
-      loading: eager ? 'eager' : 'lazy',
-      class: 'mb-2 h-48 w-full object-cover',
-    });
+  const imgUrl = 'https://stage.lifesciences.danaher.com' + imageUrl;
+  return img({
+    src: imgUrl,
+    alt: imageAlt,
+    loading: eager ? 'eager' : 'lazy',
+    class: 'mb-2 h-48 w-full object-cover',
+  });
 }
 
 
@@ -113,7 +113,7 @@ export function isValidProperty(property) {
 export function paginateData(list, currentPage, perPage) {
   return list.slice((currentPage - 1) * perPage, currentPage * perPage);
 }
- 
+
 export function paginateIndexes({ listLength, currentPage, perPage }) {
   if (listLength === 0) return [];
   else if (listLength <= perPage) return [1];
@@ -124,42 +124,42 @@ export function paginateIndexes({ listLength, currentPage, perPage }) {
     includeThreeRight = currentPage === total - 4,
     includeLeftDots = currentPage > 5,
     includeRightDots = currentPage < total - 4;
- 
+
   if (includeThreeLeft) filteredCenter.unshift(2);
   if (includeThreeRight) filteredCenter.push(total - 1);
- 
+
   if (includeLeftDots) filteredCenter.unshift('...');
   if (includeRightDots) filteredCenter.push('...');
- 
+
   return [1, ...filteredCenter, total];
 }
 export function clickToCopy(sku) {
   var copyText = document.getElementById(sku);
   navigator.clipboard.writeText(copyText.innerText);
-  document.getElementById(sku).previousElementSibling.innerHTML='Copied!';
+  document.getElementById(sku).previousElementSibling.innerHTML = 'Copied!';
 }
 export function mouseEnter(msg) {
   var copyText = document.getElementById(msg);
   copyText.classList.remove('hidden');
 }
-export function mouseLeave(toolTipClassId,textId) {
+export function mouseLeave(toolTipClassId, textId) {
   var copyText = document.getElementById(toolTipClassId);
   var btn = document.getElementById(textId);
   copyText.classList.add('hidden');
-  if(!btn.matches(':hover') && !copyText.matches(':hover')){
-    copyText.innerHTML='Click to Copy';
-  } 
+  if (!btn.matches(':hover') && !copyText.matches(':hover')) {
+    copyText.innerHTML = 'Click to Copy';
+  }
 }
-export function toolTip(textId,toolTipClassId,title,skuClass){
+export function toolTip(textId, toolTipClassId, title, skuClass) {
   let buttonDiv;
   let clickToCopyDiv;
-  if(skuClass&&String(skuClass.trim!==null)){
+  if (skuClass && String(skuClass.trim !== null)) {
     buttonDiv = button({ id: 'skubutton', class: 'product-tabs-productID outline-none md:flex-col' });
     clickToCopyDiv = div({ class: 'hidden w-auto  px-[3px] pt-[3px] bg-[#378189] text-center text-[white] rounded-t-lg text-sm absolute  -top-[23px] h-6 text-center text-xs break-keep text-wrap max-[768px]:top-[85px] font-normal', id: toolTipClassId }, 'Click to Copy');
   }
-  else{
-   buttonDiv = button({ class: 'relative text-black text-4xl pb-4 font-bold' });
-   clickToCopyDiv = div({ class: 'hidden w-auto px-[3px] pt-[3px] bg-[#378189] text-center text-[white] rounded-t-lg text-sm absolute right-[10px] -top-[23px] h-6 text-center text-xs break-keep text-wrap font-normal', id: toolTipClassId }, 'Click to Copy');
+  else {
+    buttonDiv = button({ class: 'relative text-black text-4xl pb-4 font-bold' });
+    clickToCopyDiv = div({ class: 'hidden w-auto px-[3px] pt-[3px] bg-[#378189] text-center text-[white] rounded-t-lg text-sm absolute right-[10px] -top-[23px] h-6 text-center text-xs break-keep text-wrap font-normal', id: toolTipClassId }, 'Click to Copy');
   }
 
   const text = div({ id: textId, class: 'text-left border border-white hover:border-[#378189] rounded-lg ' }, title);
@@ -171,9 +171,9 @@ export function toolTip(textId,toolTipClassId,title,skuClass){
   text.addEventListener('mouseenter', () => {
     mouseEnter(toolTipClassId);
   });
-  
+
   text.addEventListener('mouseleave', () => {
-    mouseLeave(toolTipClassId,textId);
+    mouseLeave(toolTipClassId, textId);
   });
   clickToCopyDiv.addEventListener('click', () => {
     clickToCopy(textId);
@@ -182,9 +182,9 @@ export function toolTip(textId,toolTipClassId,title,skuClass){
     mouseEnter(toolTipClassId);
   });
   clickToCopyDiv.addEventListener('mouseleave', () => {
-    mouseLeave(toolTipClassId,textId);
+    mouseLeave(toolTipClassId, textId);
   });
-  
+
   return buttonDiv
 }
 export function createRequest(config) {
@@ -282,14 +282,15 @@ function decorateStoryPage(main){
   if(sectionEl){
     const toBeRemoved = ['story-info-wrapper', 'social-media-wrapper', 'sidelinks-wrapper'];
     const rightSideElements = div({class: 'w-full'});
+    
     Array.from(sectionEl?.children).forEach((element) => {
       if (!toBeRemoved.includes(element.classList[0])) {
         rightSideElements.append(element);
       }
     });
     sectionEl?.append(rightSideElements);
-  
-    const divEl = div({class: 'ml-0 md:ml-8 min-w-56'});
+
+    const divEl = div({ class: 'ml-0 md:ml-8 min-w-56' });
     divEl.append(sectionEl?.querySelector('.story-info-wrapper'));
     divEl.append(sectionEl?.querySelector('.social-media-wrapper'));
     divEl.append(sectionEl?.querySelector('.sidelinks-wrapper'));
@@ -301,15 +302,15 @@ function decorateStoryPage(main){
  * Decorates the sticky right navigation block from main element.
  * @param {Element} main The main element
  */
-function decorateStickyRightNav(main){
+function decorateStickyRightNav(main) {
   const stickySection = main.querySelector('div.sticky-right-navigation-container');
-  if(stickySection){
+  if (stickySection) {
     const divEl = div();
     stickySection.classList.add('flex');
     const stricyBlock = stickySection.querySelector('.sticky-right-navigation-wrapper')?.firstElementChild;
     stricyBlock?.classList.add('sticky', 'top-32', 'mt-4', 'ml-20', 'mr-[-8rem]');
     [...stickySection.children].forEach((child, index, childs) => {
-      if(index !== childs.length - 1){
+      if (index !== childs.length - 1) {
         divEl.append(child);
       }
     });
@@ -318,7 +319,7 @@ function decorateStickyRightNav(main){
 }
 
 function toggleModalPopUp(videoLink, parentDiv) {
-  if(parentDiv.closest('.image-full-width')) parentDiv.classList.toggle('lg:w-1/2');
+  if (parentDiv.closest('.image-full-width')) parentDiv.classList.toggle('lg:w-1/2');
   parentDiv.querySelector('.modal').classList.toggle('hidden');
   const iframe = parentDiv.querySelector('iframe');
   document.body.classList.toggle('overflow-hidden');
@@ -333,17 +334,17 @@ function createModalPopUp(videoLink, parentDiv) {
     div(
       { class: 'modal-content bg-black m-auto p-10 max-[576px]:px-2.5 max-[767px]:px-3.5 w-full left-0 text-center' },
       span(
-        { 
-          class: 'bg-black close-btn float-right fixed icon icon-close right-[0px] top-[70px] cursor-pointer p-[10px] z-40', 
+        {
+          class: 'bg-black close-btn float-right fixed icon icon-close right-[0px] top-[70px] cursor-pointer p-[10px] z-40',
           onclick: () => {
-            if(parentDiv.closest('.image-full-width')) parentDiv.classList.toggle('lg:w-1/2');
+            if (parentDiv.closest('.image-full-width')) parentDiv.classList.toggle('lg:w-1/2');
             modalPopUp.classList.toggle('hidden');
             document.body.classList.toggle('overflow-hidden');
             const iframe1 = modalPopUp.querySelector('iframe');
             if (iframe1) {
               iframe1.src = '';
             }
-          } 
+          }
         }
       ),
       div(
@@ -399,10 +400,9 @@ function pauseCurrentAudio() {
 }
 
 function decorateVideo(main) {
-  // Find the container with the video link
   const divContainers = main.querySelectorAll('.stories main .section');
   const type = getMetadata('pagetags');
-  // Iterate over each container
+
   divContainers.forEach(divContainer => {
     if (type.includes('podcast')) {
       divContainer.querySelectorAll('p a').forEach(link => {
@@ -430,11 +430,13 @@ function decorateVideo(main) {
             linkContainer.innerHTML = embedHTML;
           }
         } else if (link.title === "audio") {
+          link.textContent = '';
           const audioContainer = div({ class: 'flex flex-col' },
             p({ class: 'audio-label text-black no-underline ' }, link.text || ''),
             span({ class: 'audio-play-icon cursor-pointer w-14 icon icon-Play' }),
             span({ class: 'audio-play-pause-icon hidden cursor-pointer w-14 icon icon-play-pause' }),
           );
+
           const parent = link.parentElement;
           parent.replaceChildren(audioContainer);
           const audioPlayer = div({ class: 'audio-player w-full md:mb-2' });
@@ -491,36 +493,30 @@ function decorateVideo(main) {
     } else if (type.includes('film')) {
       divContainer.querySelectorAll('p a').forEach(link => {
         if (link.title === "video") {
-          // Extract video ID from the URL
           const videoId = extractVideoId(link.href);
-
-          // Generate the poster image URL
           const posterImage = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
 
-          // Create the container for the poster image and play button
           const playButtonHTML = `
-            <div class="relative w-full h-full">
-              <img src="${posterImage}" class="relative inset-0 w-full h-full object-cover" />
-              <button id="play-button-${videoId}" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 rounded-full p-4">
-                <span class = "video-play-icon icon icon-video-play"/>
-              </button>
-            </div>
+<div class="relative w-full h-full">
+<img src="${posterImage}" class="relative inset-0 w-full h-full object-cover" />
+<button id="play-button-${videoId}" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 rounded-full p-4">
+<span class = "video-play-icon icon icon-video-play"/>
+</button>
+</div>
           `;
           const linkContainer = link.parentElement;
           linkContainer.innerHTML = playButtonHTML;
           decorateIcons(linkContainer);
-          linkContainer.querySelector('button > span > img')?.classList.add(...'w-3/4 h-full'.split(' '));
 
-          if(linkContainer.closest('.image-full-width')){
+          if (linkContainer.closest('.image-full-width')) {
             linkContainer.className = 'relative lg:absolute w-full lg:w-1/2 h-full object-cover lg:right-0 lg:bottom-6';
           }
-            
+
           linkContainer.querySelector(`button[id="play-button-${videoId}"]`).addEventListener('click', (e) => {
             e.preventDefault();
             toggleModalPopUp(link.href, linkContainer);
           });
 
-          // Create and append the modal popup
           const modalPopUp = createModalPopUp(link.href, linkContainer);
           linkContainer.appendChild(modalPopUp);
         }
@@ -528,7 +524,6 @@ function decorateVideo(main) {
     }
   });
 }
-
 
 /**
  * Decorates the main element.
@@ -546,6 +541,8 @@ export function decorateMain(main) {
   decorateStickyRightNav(main);
   decorateStoryPage(main);
 }
+
+export const applyClasses = (element, classes) => element?.classList.add(...classes.split(' '));
 
 function capitalizeWords(str) {
   const words = str.split(' ');
@@ -581,13 +578,13 @@ async function loadEager(doc) {
         import(path).then(resolve);
       });
     }
-    
+
     function onDecoratedElement(fn) {
       // Apply propositions to all already decorated blocks/sections
       if (document.querySelector('[data-block-status="loaded"],[data-section-status="loaded"]')) {
         fn();
       }
-    
+
       const observer = new MutationObserver((mutations) => {
         if (mutations.some((m) => m.target.tagName === 'BODY'
           || m.target.dataset.sectionStatus === 'loaded'
@@ -604,21 +601,21 @@ async function loadEager(doc) {
       // Watch anything else added to the body
       observer.observe(document.querySelector('body'), { childList: true });
     }
-    
+
     function toCssSelector(selector) {
       return selector.replace(/(\.\S+)?:eq\((\d+)\)/g, (_, clss, i) => `:nth-child(${Number(i) + 1}${clss ? ` of ${clss})` : ''}`);
     }
-    
+
     async function getElementForOffer(offer) {
       const selector = offer.cssSelector || toCssSelector(offer.selector);
       return document.querySelector(selector);
     }
-    
+
     async function getElementForMetric(metric) {
       const selector = toCssSelector(metric.selector);
       return document.querySelector(selector);
     }
-    
+
     async function getAndApplyOffers() {
       const response = await window.adobe.target.getOffers({ request: { execute: { pageLoad: {} } } });
       const { options = [], metrics = [] } = response.execute.pageLoad;
@@ -635,7 +632,7 @@ async function loadEager(doc) {
           .map((i) => metrics.splice(i, 1));
       });
     }
-    
+
     let atjsPromise = Promise.resolve();
     atjsPromise = initATJS('./at.js', {
       clientCode: 'danaher',
@@ -652,7 +649,7 @@ async function loadEager(doc) {
       console.error('Error loading at.js', e);
     });
     document.addEventListener('at-library-loaded', () => getAndApplyOffers());
-	  
+
     document.body.classList.add('appear');
     await atjsPromise;
 
