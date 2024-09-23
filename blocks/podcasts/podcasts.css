@@ -26,6 +26,26 @@
   top: -1rem
 }
 
+.podcasts-wrapper :is(.right-\[-2\.25rem\]) {
+  right: -2.25rem
+}
+
+.podcasts-wrapper :is(.top-\[-0\.625rem\]) {
+  top: -0.625rem
+}
+
+.podcasts-wrapper :is(.col-span-1) {
+  grid-column: span 1 / span 1
+}
+
+.podcasts-wrapper :is(.col-span-3) {
+  grid-column: span 3 / span 3
+}
+
+.podcasts-wrapper :is(.col-start-4) {
+  grid-column-start: 4
+}
+
 .podcasts-wrapper :is(.\!my-0) {
   margin-top: 0px !important;
   margin-bottom: 0px !important
@@ -113,6 +133,14 @@
 
 .podcasts-wrapper :is(.grid-cols-2) {
   grid-template-columns: repeat(2, minmax(0, 1fr))
+}
+
+.podcasts-wrapper :is(.grid-cols-4) {
+  grid-template-columns: repeat(4, minmax(0, 1fr))
+}
+
+.podcasts-wrapper :is(.grid-cols-3) {
+  grid-template-columns: repeat(3, minmax(0, 1fr))
 }
 
 .podcasts-wrapper :is(.flex-row) {

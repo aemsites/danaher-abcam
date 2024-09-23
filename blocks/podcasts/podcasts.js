@@ -35,14 +35,18 @@ function decoratePodcast(podcast) {
   contentDiv.append(allButtons);
 
   const h2El = contentDiv.querySelector('h2');
+  const h3El = contentDiv.querySelector('h3');
   const audioDiv = podcast.querySelector('div:nth-child(3)');
-  applyClasses(audioDiv, 'right-[-7rem] lg:right-0 top-[-1rem] lg:top-0 relative lg:absolute');
-  const headContainer = div({ class: 'grid grid-cols-2' }, h2El, audioDiv);
+  applyClasses(audioDiv, 'right-[-2.25rem] top-[-0.625rem] lg:right-0 lg:top-0 relative lg:absolute');
+  const headContainer = div(
+    { class: 'grid grid-cols-4' },
+    div({ class: 'w-full col-span-3' }, h2El, h3El),
+    audioDiv,
+  );
   contentDiv.prepend(headContainer);
 
   const audioPlayIconContainers = podcast.querySelector('.audio-play-icon');
   audioPlayIconContainers.addEventListener('click', () => {
-    const h3El = contentDiv.querySelector('h3');
     const audioPlayer = audioPlayIconContainers.parentElement.querySelector('.audio-player');
     h3El.after(audioPlayer);
   });
