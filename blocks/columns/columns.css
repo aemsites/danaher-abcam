@@ -108,14 +108,6 @@
   padding-right: 1.5rem
 }
 
-.columns-wrapper :is(.pb-\[\.25rem\]) {
-  padding-bottom: .25rem
-}
-
-.columns-wrapper :is(.pl-1) {
-  padding-left: 0.25rem
-}
-
 .columns-wrapper :is(.pt-4) {
   padding-top: 1rem
 }

@@ -298,6 +298,24 @@ function decorateStoryPage(main){
   }
 }
 
+function decorateWebinarPage(main){
+  const sectionEl2 = main.querySelector(':scope > div.section.webinartitle-container.back-navigation-container.columns-container');
+  const sectionEl = main.querySelector(':scope > div.section.abcam-button-container.speakersinfo-container');
+  if(sectionEl){
+    const toBeRemoved = ['abcam-button-wrapper'];
+    const rightSideElements = div({class: 'w-full'});
+    Array.from(sectionEl?.children).forEach((element) => {
+      if (!toBeRemoved.includes(element.classList[0])) {
+        rightSideElements.append(element);
+      }
+    });
+    sectionEl?.append(rightSideElements);  
+    const divEl = div({class: 'ml-0 md:ml-[311px] mt-[-7rem] my-auto'});
+    divEl.append(sectionEl?.querySelector('.abcam-button-wrapper'));
+    sectionEl2?.appendChild(divEl);
+  }
+}
+
 /**
  * Decorates the sticky right navigation block from main element.
  * @param {Element} main The main element
@@ -546,6 +564,7 @@ export function decorateMain(main) {
   decorateVideo(main);
   decorateStickyRightNav(main);
   decorateStoryPage(main);
+  decorateWebinarPage(main);
 }
 
 function capitalizeWords(str) {
