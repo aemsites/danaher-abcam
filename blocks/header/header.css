@@ -241,6 +241,11 @@
   padding-bottom: 1rem
 }
 
+.header-wrapper :is(.py-3) {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem
+}
+
 .header-wrapper :is(.pb-0) {
   padding-bottom: 0px
 }
@@ -332,6 +337,21 @@
 
 .header-wrapper :is(.ease-out) {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1)
+}
+
+.header-wrapper :is(.after\:mb-0)::after {
+  content: var(--tw-content);
+  margin-bottom: 0px
+}
+
+.header-wrapper :is(.after\:h-0)::after {
+  content: var(--tw-content);
+  height: 0px
+}
+
+.header-wrapper :is(.after\:h-0\.5)::after {
+  content: var(--tw-content);
+  height: 0.125rem
 }
 
 .header-wrapper :is(.hover\:bg-black:hover) {
