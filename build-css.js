@@ -3,22 +3,22 @@ const { exec } = require('child_process');
 // Define input and output file mappings
 const fileMappings = [
   {
-    input: './eds/eds/styles/tailwind.css',
-    output: './eds/eds/styles/styles.css',
+    input: './eds/styles/tailwind.css',
+    output: './eds/styles/styles.css',
   },
   {
-    content: './eds/eds/blocks/header/header.js',
-    output: './eds/eds/blocks/header/header.css',
+    content: './eds/blocks/header/header.js',
+    output: './eds/blocks/header/header.css',
     wrapper: 'header-wrapper',
   },
   {
-    content: './eds/eds/blocks/footer/footer.js',
-    output: './eds/eds/blocks/footer/footer.css',
+    content: './eds/blocks/footer/footer.js',
+    output: './eds/blocks/footer/footer.css',
     wrapper: 'footer-wrapper',
   },
   {
-    content: ['./eds/eds/blocks/carousel/carousel.js', './eds/eds/scripts/carousel.js'],
-    output: './eds/eds/blocks/carousel/carousel.css',
+    content: ['./eds/blocks/carousel/carousel.js', './eds/scripts/carousel.js'],
+    output: './eds/blocks/carousel/carousel.css',
     wrapper: 'carousel-wrapper',
   },
   {
