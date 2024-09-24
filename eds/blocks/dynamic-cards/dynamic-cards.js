@@ -1,9 +1,9 @@
-import ffetch from '../../../eds/scripts/ffetch.js';
+import ffetch from '../../scripts/ffetch.js';
 import {
   ul, a, div, span,
-} from '../../../eds/scripts/dom-builder.js';
+} from '../../scripts/dom-builder.js';
 
-import { getMetadata, toClassName } from '../../../eds/scripts/aem.js';
+import { getMetadata, toClassName } from '../../scripts/aem.js';
 import createArticleCard from './articleCard.js';
 
 const getSelectionFromUrl = () => (window.location.pathname.indexOf('topics') > -1 ? toClassName(window.location.pathname.replace('.html', '').split('/').pop()) : '');

@@ -1,5 +1,5 @@
-import { createOptimizedPicture } from '../../../eds/scripts/aem.js';
-import { div } from '../../../eds/scripts/dom-builder.js';
+import { createOptimizedPicture } from '../../scripts/aem.js';
+import { div } from '../../scripts/dom-builder.js';
 
 export default function decorate(block) {
   block.classList.add(...'w-full bg-black'.split(' '));

@@ -1,7 +1,7 @@
 import {
   div, button, span, a, ul, li, h4,
-} from '../../../eds/scripts/dom-builder.js';
-import { decorateIcons } from '../../../eds/scripts/aem.js';
+} from '../../scripts/dom-builder.js';
+import { decorateIcons } from '../../scripts/aem.js';
 
 function showFlyoutMenu() {
   document.querySelector('#menu-flyout')?.classList.remove('hidden');

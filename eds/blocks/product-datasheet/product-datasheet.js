@@ -1,8 +1,8 @@
-import { getProductResponse } from '../../../eds/scripts/search.js';
-import { isValidProperty } from '../../../eds/scripts/scripts.js';
+import { getProductResponse } from '../../scripts/search.js';
+import { isValidProperty } from '../../scripts/scripts.js';
 import {
   div, h2, h6, p, a,
-} from '../../../eds/scripts/dom-builder.js';
+} from '../../scripts/dom-builder.js';
 
 function createParagraph(heading, value, isNotes = false) {
   if (isNotes) {

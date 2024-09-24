@@ -1,8 +1,8 @@
-import { getProductsListResponse } from '../../../eds/scripts/search.js';
+import { getProductsListResponse } from '../../scripts/search.js';
 import {
   a, button, div, h2, h3, p, span,
-} from '../../../eds/scripts/dom-builder.js';
-import { decorateIcons } from '../../../eds/scripts/aem.js';
+} from '../../scripts/dom-builder.js';
+import { decorateIcons } from '../../scripts/aem.js';
 
 // Constants
 const pageSize = 20; // Number of records per page

@@ -1,5 +1,5 @@
-import { buildBlock } from '../../../eds/scripts/aem.js';
-import { div } from '../../../eds/scripts/dom-builder.js';
+import { buildBlock } from '../../scripts/aem.js';
+import { div } from '../../scripts/dom-builder.js';
 
 export default async function buildAutoBlocks() {
   const main = document.querySelector('main');

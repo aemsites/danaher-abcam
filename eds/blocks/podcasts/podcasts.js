@@ -1,6 +1,6 @@
-import { decorateIcons } from '../../../eds/scripts/aem.js';
-import { applyClasses } from '../../../eds/scripts/scripts.js';
-import { div, span } from '../../../eds/scripts/dom-builder.js';
+import { decorateIcons } from '../../scripts/aem.js';
+import { applyClasses } from '../../scripts/scripts.js';
+import { div, span } from '../../scripts/dom-builder.js';
 
 function decoratePodcast(podcast) {
   applyClasses(podcast, 'podcast-list flex lg:flex-row border-[#D8D8D8] border-b-2 py-8 relative flex-col');

@@ -1,6 +1,6 @@
 import {
   ul, li, a, h3,
-} from '../../../eds/scripts/dom-builder.js';
+} from '../../scripts/dom-builder.js';
 
 export default function decorate(block) {
   const sectionHead = h3({ class: 'text-xs leading-normal tracking-[.03125rem] text-[#65797c] pr-3.5 pl-3.5 py-2.5 max-[768px]:hidden' });

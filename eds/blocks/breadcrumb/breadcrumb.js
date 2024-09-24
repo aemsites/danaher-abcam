@@ -1,7 +1,7 @@
-import { getMetadata } from '../../../eds/scripts/aem.js';
+import { getMetadata } from '../../scripts/aem.js';
 import {
   div, nav, ul, li, a,
-} from '../../../eds/scripts/dom-builder.js';
+} from '../../scripts/dom-builder.js';
 // breadcrumb functionality implementation
 export default function decorate(block) {
   const path = window.location.pathname.split('/').slice(1);

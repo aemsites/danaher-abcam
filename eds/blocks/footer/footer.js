@@ -1,5 +1,5 @@
-import { readBlockConfig, decorateIcons } from '../../../eds/scripts/aem.js';
-import { div, span, a } from '../../../eds/scripts/dom-builder.js';
+import { readBlockConfig, decorateIcons } from '../../scripts/aem.js';
+import { div, span, a } from '../../scripts/dom-builder.js';
 
 /**
  * Adding Hyperlinks to social icons. Links which are authored in the sharepoint

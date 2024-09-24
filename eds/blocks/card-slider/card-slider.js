@@ -3,8 +3,8 @@ import {
   h5,
   h6,
   span,
-} from '../../../eds/scripts/dom-builder.js';
-import { createOptimizedPicture, decorateIcons, getMetadata } from '../../../eds/scripts/aem.js';
+} from '../../scripts/dom-builder.js';
+import { createOptimizedPicture, decorateIcons, getMetadata } from '../../scripts/aem.js';
 
 async function fetchPostData() {
   try {

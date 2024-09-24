@@ -1,8 +1,8 @@
 /* eslint-disable no-script-url */
 import {
   a, div, li, p, span, ul,
-} from '../../../eds/scripts/dom-builder.js';
-import { decorateIcons } from '../../../eds/scripts/aem.js';
+} from '../../scripts/dom-builder.js';
+import { decorateIcons } from '../../scripts/aem.js';
 
 export default function decorate(block) {
   block.classList.add(...'px-6 py-8 w-full border-y'.split(' '));

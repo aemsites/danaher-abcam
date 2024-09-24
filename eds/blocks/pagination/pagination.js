@@ -1,7 +1,7 @@
-import { decorateIcons, getMetadata } from '../../../eds/scripts/aem.js';
+import { decorateIcons, getMetadata } from '../../scripts/aem.js';
 import {
   a, div, li, p, span, ul,
-} from '../../../eds/scripts/dom-builder.js';
+} from '../../scripts/dom-builder.js';
 import { fetchPostData } from '../child-page/child-page.js';
 
 let allPathways = [];

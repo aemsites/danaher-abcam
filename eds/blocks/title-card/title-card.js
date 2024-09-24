@@ -1,4 +1,4 @@
-import { div } from '../../../eds/scripts/dom-builder.js';
+import { div } from '../../scripts/dom-builder.js';
 
 export default function decorate(block) {
   const titleCardDiv = document.querySelector('.title-card');

@@ -4,15 +4,15 @@ import {
   select,
   option,
   p,
-} from '../../../eds/scripts/dom-builder.js';
-import { decorateIcons } from '../../../eds/scripts/aem.js';
-import { decorateModals } from '../../../eds/scripts/modal.js';
-import { getProductResponse } from '../../../eds/scripts/search.js';
-import { decorateDrawer, showDrawer, hideDrawer } from '../../../eds/scripts/drawer.js';
+} from '../../scripts/dom-builder.js';
+import { decorateIcons } from '../../scripts/aem.js';
+import { decorateModals } from '../../scripts/modal.js';
+import { getProductResponse } from '../../scripts/search.js';
+import { decorateDrawer, showDrawer, hideDrawer } from '../../scripts/drawer.js';
 import {
   debounce, generateUUID, paginateData, paginateIndexes,
-} from '../../../eds/scripts/scripts.js';
-import Carousel from '../../../eds/scripts/carousel.js';
+} from '../../scripts/scripts.js';
+import Carousel from '../../scripts/carousel.js';
 
 const baseOriginURL = 'https://content.abcam.com/';
 let publicationDrawerContent;

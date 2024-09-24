@@ -1,5 +1,5 @@
 /* eslint-disable import/no-unresolved */
-import { loadCSS } from '../../../eds/scripts/aem.js';
+import { loadCSS } from '../../scripts/aem.js';
 
 let cType;
 

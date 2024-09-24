@@ -1,4 +1,4 @@
-import { button, div, span } from '../../../eds/scripts/dom-builder.js';
+import { button, div, span } from '../../scripts/dom-builder.js';
 
 export default async function decorate(block) {
   block.classList.add(...'hidden lg:block h-1/2 rounded-lg w-auto bg-[#edf7f6] col-span-4 p-4'.split(' '));

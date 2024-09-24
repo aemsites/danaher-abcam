@@ -1,6 +1,6 @@
-import { createOptimizedPicture, getMetadata } from '../../../eds/scripts/aem.js';
-import { div } from '../../../eds/scripts/dom-builder.js';
-import { applyClasses } from '../../../eds/scripts/scripts.js';
+import { createOptimizedPicture, getMetadata } from '../../scripts/aem.js';
+import { div } from '../../scripts/dom-builder.js';
+import { applyClasses } from '../../scripts/scripts.js';
 
 const widthRatios = [
   { value: '2-col-width-1-2', first: 'w-1/2', second: 'w-1/2' },

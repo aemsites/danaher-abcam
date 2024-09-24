@@ -2,9 +2,9 @@ import {
   div, a, ul, li,
   p,
   span,
-} from '../../../eds/scripts/dom-builder.js';
-import { getMetadata } from '../../../eds/scripts/aem.js';
-import { formatDate } from '../../../eds/scripts/scripts.js';
+} from '../../scripts/dom-builder.js';
+import { getMetadata } from '../../scripts/aem.js';
+import { formatDate } from '../../scripts/scripts.js';
 
 export async function fetchPostData() {
   try {

@@ -1,4 +1,4 @@
-import { div, button } from '../../../eds/scripts/dom-builder.js';
+import { div, button } from '../../scripts/dom-builder.js';
 
 export default function decorate(block) {
   const tabComponent = div({ class: 'mmg-tabs lg:w-2/5 w-full' });

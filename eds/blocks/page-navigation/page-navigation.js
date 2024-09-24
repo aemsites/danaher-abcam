@@ -1,7 +1,7 @@
 import {
   div, a, p, strong, img,
-} from '../../../eds/scripts/dom-builder.js';
-import { getMetadata } from '../../../eds/scripts/aem.js';
+} from '../../scripts/dom-builder.js';
+import { getMetadata } from '../../scripts/aem.js';
 
 async function fetchPostData() {
   try {

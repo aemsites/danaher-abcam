@@ -1,5 +1,5 @@
-import { a, span } from '../../../eds/scripts/dom-builder.js';
-import { getMetadata, decorateIcons } from '../../../eds/scripts/aem.js';
+import { a, span } from '../../scripts/dom-builder.js';
+import { getMetadata, decorateIcons } from '../../scripts/aem.js';
 
 function goBack() {
   const backArr = window.location.pathname.split('/');

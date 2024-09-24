@@ -1,6 +1,6 @@
-import Carousel from '../../../eds/scripts/carousel.js';
-import { button, div, span } from '../../../eds/scripts/dom-builder.js';
-import { decorateModals } from '../../../eds/scripts/modal.js';
+import Carousel from '../../scripts/carousel.js';
+import { button, div, span } from '../../scripts/dom-builder.js';
+import { decorateModals } from '../../scripts/modal.js';
 
 const SLIDE_DELAY = 2000;
 const SLIDE_TRANSITION = 2000;

@@ -1,11 +1,11 @@
-import { getProductResponse } from '../../../eds/scripts/search.js';
+import { getProductResponse } from '../../scripts/search.js';
 import {
   h3, p, div, span, hr, ul, li,
-} from '../../../eds/scripts/dom-builder.js';
-import { decorateIcons } from '../../../eds/scripts/aem.js';
+} from '../../scripts/dom-builder.js';
+import { decorateIcons } from '../../scripts/aem.js';
 import { getStarRating } from '../product-overview/product-overview.js';
-import { decorateDrawer, showDrawer } from '../../../eds/scripts/drawer.js';
-import decorateProductQuickLook from '../../../eds/scripts/product-quick-look.js';
+import { decorateDrawer, showDrawer } from '../../scripts/drawer.js';
+import decorateProductQuickLook from '../../scripts/product-quick-look.js';
 
 function createSliderNavigation() {
   const prevButton = div(

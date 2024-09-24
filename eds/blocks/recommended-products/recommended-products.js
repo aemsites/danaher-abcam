@@ -1,9 +1,9 @@
-import { decorateIcons } from '../../../eds/scripts/aem.js';
+import { decorateIcons } from '../../scripts/aem.js';
 import {
   h2, ul, li, span, div, hr,
   p,
-} from '../../../eds/scripts/dom-builder.js';
-import { getProductResponse } from '../../../eds/scripts/search.js';
+} from '../../scripts/dom-builder.js';
+import { getProductResponse } from '../../scripts/search.js';
 import { getStarRating } from '../product-overview/product-overview.js';
 
 export default async function decorate(block) {

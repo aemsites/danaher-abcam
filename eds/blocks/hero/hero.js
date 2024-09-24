@@ -1,11 +1,11 @@
-import { decorateIcons } from '../../../eds/scripts/aem.js';
-import { facetSelect, finishType, searchFacetTerms } from '../../../eds/scripts/coveo-body-requests.js';
+import { decorateIcons } from '../../scripts/aem.js';
+import { facetSelect, finishType, searchFacetTerms } from '../../scripts/coveo-body-requests.js';
 import {
   a, div, input, li, p, span, ul, h3,
   label,
   hr,
-} from '../../../eds/scripts/dom-builder.js';
-import { createRequest, debounce } from '../../../eds/scripts/scripts.js';
+} from '../../scripts/dom-builder.js';
+import { createRequest, debounce } from '../../scripts/scripts.js';
 
 let searchString = '';
 let payload = { ...finishType };

@@ -1,4 +1,4 @@
-import { div } from '../../../eds/scripts/dom-builder.js';
+import { div } from '../../scripts/dom-builder.js';
 
 export default function decorate(block) {
   block.classList.add(...'grid grid-cols-1 lg:grid-cols-3 w-[50%] items-center m-auto'.split(' '));

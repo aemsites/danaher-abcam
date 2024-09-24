@@ -1,7 +1,7 @@
-import { decorateIcons } from '../../../eds/scripts/aem.js';
+import { decorateIcons } from '../../scripts/aem.js';
 import {
   div, iframe, span,
-} from '../../../eds/scripts/dom-builder.js';
+} from '../../scripts/dom-builder.js';
 
 function toggleModalPopUp(parentDiv) {
   parentDiv.querySelector('.modal').classList.toggle('hidden');

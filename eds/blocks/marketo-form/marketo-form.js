@@ -3,10 +3,10 @@ import {
   form,
   p,
   section,
-} from '../../../eds/scripts/dom-builder.js';
+} from '../../scripts/dom-builder.js';
 import {
   loadScript,
-} from '../../../eds/scripts/aem.js';
+} from '../../scripts/aem.js';
 
 // eslint-disable no-console
 async function loadMarketo(block) {

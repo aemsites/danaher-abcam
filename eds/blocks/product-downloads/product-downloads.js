@@ -1,7 +1,7 @@
-import { decorateIcons } from '../../../eds/scripts/aem.js';
+import { decorateIcons } from '../../scripts/aem.js';
 import {
   hr, h2, div, span,
-} from '../../../eds/scripts/dom-builder.js';
+} from '../../scripts/dom-builder.js';
 
 export default async function decorate(block) {
   const buttonsList = ['Datasheet', 'Safety Datasheet', 'COC'];

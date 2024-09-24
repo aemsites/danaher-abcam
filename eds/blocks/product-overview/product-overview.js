@@ -1,11 +1,11 @@
-import { decorateIcons } from '../../../eds/scripts/aem.js';
+import { decorateIcons } from '../../scripts/aem.js';
 import {
   div, h6, p, h3, ul, li, span, a as anchorElement, button,
-} from '../../../eds/scripts/dom-builder.js';
-import { getProductResponse } from '../../../eds/scripts/search.js';
-import { decorateModals } from '../../../eds/scripts/modal.js';
-import { toolTip } from '../../../eds/scripts/scripts.js';
-import { decorateDrawer, showDrawer } from '../../../eds/scripts/drawer.js';
+} from '../../scripts/dom-builder.js';
+import { getProductResponse } from '../../scripts/search.js';
+import { decorateModals } from '../../scripts/modal.js';
+import { toolTip } from '../../scripts/scripts.js';
+import { decorateDrawer, showDrawer } from '../../scripts/drawer.js';
 
 function toRGBA(waveLength) {
   let r; let g; let b; let a;

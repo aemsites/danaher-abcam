@@ -1,8 +1,8 @@
-import { getProductResponse } from '../../../eds/scripts/search.js';
+import { getProductResponse } from '../../scripts/search.js';
 import {
   div, h3, a, span,
-} from '../../../eds/scripts/dom-builder.js';
-import { decorateIcons } from '../../../eds/scripts/aem.js';
+} from '../../scripts/dom-builder.js';
+import { decorateIcons } from '../../scripts/aem.js';
 
 export default async function decorate(block) {
   const response = await getProductResponse();

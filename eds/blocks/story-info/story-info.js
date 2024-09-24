@@ -1,9 +1,9 @@
 import {
   div, input, span,
-} from '../../../eds/scripts/dom-builder.js';
+} from '../../scripts/dom-builder.js';
 import {
   getMetadata, decorateIcons,
-} from '../../../eds/scripts/aem.js';
+} from '../../scripts/aem.js';
 
 export default function decorate(block) {
   block.innerHTML = '';

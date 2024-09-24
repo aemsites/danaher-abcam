@@ -5,5 +5,4 @@ LICENSE
 package.json
 package-lock.json
 test/*
-styles/tailwind.css
-styles/proxy-tailwind.css
+eds/styles/tailwind.css

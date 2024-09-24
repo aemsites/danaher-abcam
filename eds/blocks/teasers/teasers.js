@@ -1,7 +1,7 @@
-import { decorateIcons } from '../../../eds/scripts/aem.js';
+import { decorateIcons } from '../../scripts/aem.js';
 import {
   div, span, a,
-} from '../../../eds/scripts/dom-builder.js';
+} from '../../scripts/dom-builder.js';
 
 /**
 * loads and decorates the header, mainly the nav

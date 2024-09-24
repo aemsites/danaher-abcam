@@ -1,5 +1,5 @@
-import { getMetadata } from '../../../eds/scripts/aem.js';
-import { div, p } from '../../../eds/scripts/dom-builder.js';
+import { getMetadata } from '../../scripts/aem.js';
+import { div, p } from '../../scripts/dom-builder.js';
 
 export default function decorate(block) {
   block.innerHTML = '';

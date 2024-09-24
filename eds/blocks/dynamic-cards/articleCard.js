@@ -1,7 +1,7 @@
-import { imageHelper } from '../../../eds/scripts/scripts.js';
+import { imageHelper } from '../../scripts/scripts.js';
 import {
   li, a, p, div, h3,
-} from '../../../eds/scripts/dom-builder.js';
+} from '../../scripts/dom-builder.js';
 
 function createCard(article, firstCard = false) {
   const cardTitle = article.title.indexOf('| Danaher Life Sciences') > -1

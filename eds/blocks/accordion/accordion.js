@@ -1,8 +1,8 @@
 import {
   div, h3, h6, input, label, span, a,
-} from '../../../eds/scripts/dom-builder.js';
-import { decorateIcons } from '../../../eds/scripts/aem.js';
-import { generateUUID } from '../../../eds/scripts/scripts.js';
+} from '../../scripts/dom-builder.js';
+import { decorateIcons } from '../../scripts/aem.js';
+import { generateUUID } from '../../scripts/scripts.js';
 
 function toggleAccordion(blockUUID, activeAccordion) {
   const allAccordions = document.querySelectorAll(`div#accordion-${blockUUID} div.accordion-item`);

@@ -1,10 +1,10 @@
 /* eslint-disable no-script-url */
 import {
   div, p, ul, li, a, span,
-} from '../../../eds/scripts/dom-builder.js';
+} from '../../scripts/dom-builder.js';
 import {
   decorateIcons,
-} from '../../../eds/scripts/aem.js';
+} from '../../scripts/aem.js';
 
 export default function decorate(block) {
   block.classList.add(...'max-w-4xl mx-auto mb-8 text-gray-600 pt-4 pb-0 md:pb-10'.split(' '));

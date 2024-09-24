@@ -1,4 +1,4 @@
-import { div, hr } from '../../../eds/scripts/dom-builder.js';
+import { div, hr } from '../../scripts/dom-builder.js';
 
 export default function decorate(block) {
   block.classList.add(...'flex flex-col justify-between gap-4 max-w-[600px] m-2 px-6 py-2'.split(' '));

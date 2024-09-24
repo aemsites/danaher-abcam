@@ -4,7 +4,7 @@ import {
   h2,
   ul,
   li,
-} from '../../../eds/scripts/dom-builder.js';
+} from '../../scripts/dom-builder.js';
 
 export default async function decorate(block) {
   block.classList.add('border-t-4');

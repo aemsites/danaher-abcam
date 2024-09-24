@@ -1,5 +1,5 @@
-import { decorateIcons } from '../../../eds/scripts/aem.js';
-import { div, h5, span } from '../../../eds/scripts/dom-builder.js';
+import { decorateIcons } from '../../scripts/aem.js';
+import { div, h5, span } from '../../scripts/dom-builder.js';
 
 let nextElement = [];
 
