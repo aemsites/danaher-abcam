@@ -245,6 +245,7 @@ const TEMPLATE_LIST = [
   'product-detail',
   'search-results',
   'stories',
+  'webinars',
 ];
 
 async function decorateTemplates(main) {

@@ -268,6 +268,10 @@ const fileMappings = [
     output: './blocks/dynamic-cards/dynamic-cards.css',
     wrapper: 'dynamic-cards-wrapper',
   },
+  {
+    content: './templates/webinars/webinars.js',
+    output: './templates/webinars/webinars.css',
+  },
 ];
 
 const watch = process.argv[2];

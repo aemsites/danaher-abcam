@@ -171,11 +171,11 @@
         @apply flex flex-col gap-x-0 lg:flex-row lg:gap-x-16;
     }
 
-    .stories main .section.no-section-padding .columns-wrapper {
+    .stories main .section.no-section-padding .columns-wrapper, .webinars main .section.no-section-padding .columns-wrapper {
         @apply w-full mx-auto lg:h-[28rem] relative;
     }
 
-    .stories main .section.no-section-padding.columns-container {
+    .stories main .section.no-section-padding.columns-container, .webinars main .section.no-section-padding.columns-container {
         @apply pt-8;
     }
 
