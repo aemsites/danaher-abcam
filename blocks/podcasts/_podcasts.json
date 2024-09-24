@@ -96,6 +96,16 @@
               },
               {
                 "...": "../../models/_common.json#/button-fields"
+              },
+              {
+                "component": "richtext",
+                "valueType": "string",
+                "name": "podcast_links",
+                "value": "",
+                "label": "Postcasts Links"
+              },
+              {
+                "...": "../../models/_common.json#/media-fields"
               }
             ]
         }

@@ -44,6 +44,10 @@
   position: relative
 }
 
+.hero-wrapper :is(.inset-0) {
+  inset: 0px
+}
+
 .hero-wrapper :is(.inset-x-auto) {
   left: auto;
   right: auto
@@ -475,6 +479,11 @@
 .hero-wrapper :is(.py-\[5px\]) {
   padding-top: 5px;
   padding-bottom: 5px
+}
+
+.hero-wrapper :is(.px-12) {
+  padding-left: 3rem;
+  padding-right: 3rem
 }
 
 .hero-wrapper :is(.pl-2) {
