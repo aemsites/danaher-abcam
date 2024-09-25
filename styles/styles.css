@@ -795,6 +795,24 @@ header {
   }
 }
 
+.default-content-wrapper:first-child {
+  padding-bottom: 2rem;
+}
+
+.default-content-wrapper:not(:first-child, :last-child) {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.default-content-wrapper:last-child {
+  padding-top: 2rem;
+}
+
+.default-content-wrapper > ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+}
+
 main .section .default-content-wrapper a {
   font-weight: 700;
   --tw-text-opacity: 1;
@@ -1947,10 +1965,6 @@ audio::-webkit-media-controls-panel {
     margin-bottom: 0.5rem;
   }
 
-  .md\:ml-8 {
-    margin-left: 2rem;
-  }
-
   .md\:h-64 {
     height: 16rem;
   }
@@ -2012,5 +2026,9 @@ audio::-webkit-media-controls-panel {
 
   .lg\:w-1\/2 {
     width: 50%;
+  }
+
+  .lg\:max-w-72 {
+    max-width: 18rem;
   }
 }   
