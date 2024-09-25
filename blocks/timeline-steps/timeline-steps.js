@@ -3,13 +3,13 @@ import { div, h5, span } from '../../scripts/dom-builder.js';
 
 let nextElement = [];
 
-/* function detectNextElements(stepsOl) {
+function detectNextElements(stepsOl) {
   if (stepsOl.nextElementSibling && ['p', 'ul'].includes(stepsOl.nextElementSibling.localName)) {
     nextElement.push(stepsOl.nextElementSibling);
     return detectNextElements(stepsOl.nextElementSibling);
   }
   return false;
-} */
+}
 
 /**
  * loads and decorates the header, mainly the nav
@@ -43,7 +43,7 @@ export default async function decorate(block) {
       // timelineWrapper.append(stepEl);
       let index = 1;
       [...steps].map((eachStep) => {
-        // detectNextElements(eachStep);
+        detectNextElements(eachStep);
         [...eachStep.children].forEach((step, stepIndex) => {
           step.className = 'flex gap-x-4 mb-6';
           const stepIndexElement = h5({ class: 'size-10 flex items-center text-lg p-3 border-2 border-black rounded-full' }, index);
@@ -96,9 +96,9 @@ export default async function decorate(block) {
     }
     return timelineWrapper;
   });
-  block.innerHTML = '';
+  // block.innerHTML = '';
   /* timeline.forEach((element) => {
     block.append(element);
   }); */
-  block.append(timelineWrapper);
+  // block.append(timelineWrapper);
 }
