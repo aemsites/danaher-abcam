@@ -65,7 +65,7 @@ function createFooterDOM(mainContainer) {
   const danaharLogoContainer = div({ class: 'shrink-0 h-[84px] w-[72px]' });
 
   const bottomLeftContainer = div({ class: 'flex flex-col items-end gap-y-4' });
-  const privacyTermsContainer = div({ class: 'flex flex-wrap justify-end list-none font-light space-x-5 opacity-90 max-[767px]:flex-col max-[767px]:text-right' });
+  const privacyTermsContainer = div({ class: 'flex flex-wrap lg:flex-row justify-end list-none font-light space-x-5 opacity-90 flex-col text-right lg:text-left' });
 
   const rightsContainer = div({ class: 'font-normal text-end opacity-80' });
 
@@ -135,7 +135,7 @@ export default async function decorate(block) {
 
   if (response.ok) {
     const html = await response.text();
-    const mainContainer = div({ class: 'flex flex-col mx-auto xl:max-w-7xl max-[767px]:px-6 xl:max-w-[1120px]' });
+    const mainContainer = div({ class: 'flex flex-col mx-auto xl:max-w-7xl px-6 xl:max-w-[1120px]' });
     mainContainer.innerHTML = html;
     block.append(createFooterDOM(mainContainer));
   }
@@ -144,38 +144,42 @@ export default async function decorate(block) {
   const clientsFooter = div(
     { class: 'bg-[#333]' },
     div(
-      { class: 'mx-auto xl:max-w-[1120px] w-full grid xlu:w-fit grid-cols-8 max-[767px]:grid-cols-2' },
+      { class: 'flex flex-wrap justify-center w-full' },
 
       a(
-        { class: 'flex justify-center py-7 px-6 w-full h-full hover:bg-black xld:pt-7 xld:[&>svg]:pb-7 max-[767px]:pb-0 max-[767px]:items-center max-[767px]:pb-0 max-[767px]:items-center', href: 'https://www.mybeckman.com/?utm_source=abcam_website&utm_medium=referral&utm_content=footer', target: '_blank' },
+        { class: 'flex items-center justify-center p-4 lg:w-fit h-[156px] [&>svg]:w-[96px] w-1/2 hover:bg-black', href: 'https://www.mybeckman.com/?utm_source=abcam_website&utm_medium=referral&utm_content=footer', target: '_blank' },
         span({ class: 'client-links icon icon-beckman' }),
       ),
       a(
-        { class: 'flex justify-center py-7 px-6 w-full h-full hover:bg-black xld:pt-7 xld:[&>svg]:pb-7 max-[767px]:pb-0 max-[767px]:items-center', href: 'https://www.idbs.com/?utm_source=abcam_website&utm_medium=referral&utm_content=footer', target: '_blank' },
+        { class: 'flex items-center justify-center p-4 lg:w-fit h-[156px] [&>svg]:w-[96px] w-1/2 hover:bg-black', href: 'https://www.genedata.com/?utm_source=abcam_website&utm_medium=referral&utm_content=footer', target: '_blank' },
+        span({ class: 'client-links icon icon-genedata' }),
+      ),
+      a(
+        { class: 'flex items-center justify-center p-4 lg:w-fit h-[156px] [&>svg]:w-[96px] w-1/2 hover:bg-black', href: 'https://www.idbs.com/?utm_source=abcam_website&utm_medium=referral&utm_content=footer', target: '_blank' },
         span({ class: 'client-links icon icon-idbs' }),
       ),
       a(
-        { class: 'flex justify-center py-7 px-6 w-full h-full hover:bg-black xld:pt-7 xld:[&>svg]:pb-7 max-[767px]:pb-0 max-[767px]:items-center', href: 'https://www.leica-microsystems.com/?utm_source=abcam_website&utm_medium=referral&utm_content=footer', target: '_blank' },
+        { class: 'flex items-center justify-center p-4 lg:w-fit h-[156px] [&>svg]:w-[96px] w-1/2 hover:bg-black', href: 'https://www.leica-microsystems.com/?utm_source=abcam_website&utm_medium=referral&utm_content=footer', target: '_blank' },
         span({ class: 'client-links icon icon-leica' }),
       ),
       a(
-        { class: 'flex justify-center py-7 px-6 w-full h-full hover:bg-black xld:pt-7 xld:[&>svg]:pb-7 max-[767px]:pb-0 max-[767px]:items-center', href: 'https://www.moleculardevices.com/?utm_source=abcam_website&utm_medium=referral&utm_content=footer', target: '_blank' },
+        { class: 'flex items-center justify-center p-4 lg:w-fit h-[156px] [&>svg]:w-[96px] w-1/2 hover:bg-black', href: 'https://www.moleculardevices.com/?utm_source=abcam_website&utm_medium=referral&utm_content=footer', target: '_blank' },
         span({ class: 'client-links icon icon-molecular' }),
       ),
       a(
-        { class: 'flex justify-center py-7 px-6 w-full h-full hover:bg-black xld:pt-7 xld:[&>svg]:pb-7 max-[767px]:pb-0 max-[767px]:items-center', href: 'https://www.phenomenex.com/?utm_source=abcam_website&utm_medium=referral&utm_content=footer', target: '_blank' },
+        { class: 'flex items-center justify-center p-4 lg:w-fit h-[156px] [&>svg]:w-[96px] w-1/2 hover:bg-black', href: 'https://www.phenomenex.com/?utm_source=abcam_website&utm_medium=referral&utm_content=footer', target: '_blank' },
         span({ class: 'client-links icon icon-phenomenex' }),
       ),
       a(
-        { class: 'flex justify-center py-7 px-6 w-full h-full hover:bg-black xld:pt-7 xld:[&>svg]:pb-7 max-[767px]:pb-0 max-[767px]:items-center', href: 'https://sciex.com/?utm_source=abcam_website&utm_medium=referral&utm_content=footer', target: '_blank' },
+        { class: 'flex items-center justify-center p-4 lg:w-fit h-[156px] [&>svg]:w-[96px] w-1/2 hover:bg-black', href: 'https://sciex.com/?utm_source=abcam_website&utm_medium=referral&utm_content=footer', target: '_blank' },
         span({ class: 'client-links icon icon-sciex' }),
       ),
       a(
-        { class: 'flex justify-center py-7 px-6 w-full h-full hover:bg-black xld:pt-7 xld:[&>svg]:pb-7 max-[767px]:pb-0 max-[767px]:items-center', href: 'https://www.aldevron.com/?utm_source=abcam_website&utm_medium=referral&utm_content=footer', target: '_blank' },
+        { class: 'flex items-center justify-center p-4 lg:w-fit h-[156px] [&>svg]:w-[96px] w-1/2 hover:bg-black', href: 'https://www.aldevron.com/?utm_source=abcam_website&utm_medium=referral&utm_content=footer', target: '_blank' },
         span({ class: 'client-links icon icon-aldevron' }),
       ),
       a(
-        { class: 'flex justify-center py-7 px-6 w-full h-full hover:bg-black xld:pt-7 xld:[&>svg]:pb-7 max-[767px]:pb-0 max-[767px]:items-center', href: 'https://www.idtdna.com/?utm_source=abcam_website&utm_medium=referral&utm_content=footer', target: '_blank' },
+        { class: 'flex items-center justify-center p-4 lg:w-fit h-[156px] [&>svg]:w-[96px] w-1/2 hover:bg-black', href: 'https://www.idtdna.com/?utm_source=abcam_website&utm_medium=referral&utm_content=footer', target: '_blank' },
         span({ class: 'client-links icon icon-idt' }),
       ),
     ),
@@ -185,7 +189,7 @@ export default async function decorate(block) {
   const clientImages = clientsFooter.querySelectorAll('img');
 
   clientImages.forEach((clientImage) => {
-    clientImage.classList.add(...'w-[6rem] h-[5rem] max-[767px]:w-full max-[767px]:h-full max-[767px]:pb-7'.split(' '));
+    clientImage.classList.add('w-24');
   });
 
   footerWrapper.append(clientsFooter);
