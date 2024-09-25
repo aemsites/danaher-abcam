@@ -26,16 +26,19 @@ export default async function decorate(block) {
     const subtitle = element.children[1]?.querySelector('p');
     const subtitleFootnote = element.children[1]?.querySelector('ul');
     if (subtitle) {
-      subtitle.className = `mb-4 ${subtitleFootnote ? 'text-2xl font-semibold' : 'text-lg tracking-wide'}`.trim();
+      subtitle.className = `mb-4 ${subtitleFootnote ?
+      'text-2xl font-semibold' : 'text-lg tracking-wide'}`.trim();
       description.appendChild(subtitle);
     }
     if (subtitleFootnote) {
-      subtitleFootnote.className = 'text-lg trancking-wide list-disc list-inside mb-10 ml-2 text-body-medium [&_li]:text-lg [&_li]:leading-9 [&_li]:tracking-wide [&_li]:text-slate-400';
+      subtitleFootnote.className ='text-lg trancking-wide list-disc
+      list-inside mb-10 ml-2 text-body-medium [&_li]:text-lg [&_li]:leading-9 [&_li]:tracking-wide
+      [&_li]:text-slate-400';
       // description.appendChild(subtitleFootnote);
     } */
     const steps = element.querySelectorAll('ol');
     if (steps && steps.length > 0) {
-      //if (subtitle || subtitleFootnote) timelineWrapper.append(description);
+      // if (subtitle || subtitleFootnote) timelineWrapper.append(description);
       const stepEl = div({ class: 'text-2xl mb-6 font-semibold' }, 'Steps');
       timelineWrapper.append(stepEl);
       let index = 1;
