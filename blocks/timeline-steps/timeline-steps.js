@@ -22,7 +22,7 @@ export default async function decorate(block) {
   title.className = 'text-3xl mb-6 font-semibold text-heading-large font-header md:pt-20 md:-mt-20';
   timelineWrapper.append(title);
   const timeline = [...block.children].map((element) => {
-    const description = document.createElement('sub');
+    /* const description = document.createElement('sub');
     const subtitle = element.children[1]?.querySelector('p');
     const subtitleFootnote = element.children[1]?.querySelector('ul');
     if (subtitle) {
@@ -32,7 +32,7 @@ export default async function decorate(block) {
     if (subtitleFootnote) {
       subtitleFootnote.className = 'text-lg trancking-wide list-disc list-inside mb-10 ml-2 text-body-medium [&_li]:text-lg [&_li]:leading-9 [&_li]:tracking-wide [&_li]:text-slate-400';
       // description.appendChild(subtitleFootnote);
-    }
+    } */
     const steps = element.querySelectorAll('ol');
     if (steps && steps.length > 0) {
       if (subtitle || subtitleFootnote) timelineWrapper.append(description);
