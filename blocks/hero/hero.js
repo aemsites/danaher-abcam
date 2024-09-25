@@ -449,14 +449,14 @@ export default function decorate(block) {
   const img = pictureTag.querySelector('img');
   img.setAttribute('loading', 'eager');
   pictureTag.classList.add(...'[&_img]:h-[496px] [&_img]:w-full'.split(' '));
-  const title = block.querySelector('div > div > p');
-  const parentWrapper = div({ class: 'absolute w-full inset-x-auto inset-y-0 flex flex-col items-center justify-center gap-y-4 text-5xl px-6 md:px-0' });
-  const headingTag = block.querySelector('h1');
-  headingTag.className = 'hidden lg:block font-semibold xl:font-bold text-4xl xl:text-5xl xxl:text-7xl text-white';
   block.classList.add(...'relative'.split(' '));
-  title.append(parentWrapper);
-  parentWrapper.append(headingTag);
   if (block.classList.contains('input-popup')) {
+    const title = block.querySelector('div > div > p');
+    const parentWrapper = div({ class: 'absolute w-full inset-x-auto inset-y-0 flex flex-col items-center justify-center gap-y-4 text-5xl px-6 md:px-0' });
+    const headingTag = block.querySelector('h1');
+    title?.append(parentWrapper);
+    headingTag.className = 'hidden lg:block font-semibold xl:font-bold text-4xl xl:text-5xl xxl:text-7xl text-white';
+    parentWrapper.append(headingTag);
     const searchBar = div(
       {
         class: 'max-w-2xl w-full relative sm:border border-b sm:border-solid rounded-full flex flex-wrap gap-1 py-4 pl-8 pr-0 md:px-14 bg-white cursor-pointer',
@@ -485,5 +485,7 @@ export default function decorate(block) {
     parentWrapper.append(buildSearchBackdrop());
     parentWrapper.append(div({ id: 'search-container-child', class: 'h-screen fixed top-0 left-0 bg-black opacity-75 z-40 transition-all -translate-y-full' }));
     decorateIcons(parentWrapper);
+  } else {
+    block.querySelector('div > div > h1')?.parentElement?.classList.add(...'absolute inset-0 flex items-center justify-center text-center px-12 font-semibold text-4xl xl:font-bold xl:text-5xl xxl:text-7xl text-white'.split(' '));
   }
 }

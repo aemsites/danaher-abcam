@@ -1,11 +1,11 @@
+.mini-teasers-wrapper :is(.\!my-4) {
+  margin-top: 1rem !important;
+  margin-bottom: 1rem !important
+}
+
 .mini-teasers-wrapper :is(.mx-auto) {
   margin-left: auto;
   margin-right: auto
-}
-
-.mini-teasers-wrapper :is(.my-4) {
-  margin-top: 1rem;
-  margin-bottom: 1rem
 }
 
 .mini-teasers-wrapper :is(.block) {
@@ -45,13 +45,9 @@
   padding-bottom: 2rem
 }
 
-.mini-teasers-wrapper :is(.text-lg) {
-  font-size: 1.125rem;
-  line-height: 1.75rem
-}
-
-.mini-teasers-wrapper :is(.font-semibold) {
-  font-weight: 600
+.mini-teasers-wrapper :is(.\!text-xl) {
+  font-size: 1.25rem !important;
+  line-height: 1.75rem !important
 }
 
 .mini-teasers-wrapper :is(.text-white) {
