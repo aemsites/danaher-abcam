@@ -35,7 +35,7 @@ export default async function decorate(block) {
     } */
     const steps = element.querySelectorAll('ol');
     if (steps && steps.length > 0) {
-      if (subtitle || subtitleFootnote) timelineWrapper.append(description);
+      //if (subtitle || subtitleFootnote) timelineWrapper.append(description);
       const stepEl = div({ class: 'text-2xl mb-6 font-semibold' }, 'Steps');
       timelineWrapper.append(stepEl);
       let index = 1;
