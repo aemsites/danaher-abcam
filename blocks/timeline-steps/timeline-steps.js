@@ -37,7 +37,7 @@ export default async function decorate(block) {
       // description.appendChild(subtitleFootnote);
     } */
     const steps = element.querySelectorAll('ol');
-    if (steps && steps.length > 0) {
+    /* if (steps && steps.length > 0) {
       // if (subtitle || subtitleFootnote) timelineWrapper.append(description);
       const stepEl = div({ class: 'text-2xl mb-6 font-semibold' }, 'Steps');
       timelineWrapper.append(stepEl);
@@ -93,7 +93,7 @@ export default async function decorate(block) {
         timelineWrapper.append(eachStep);
         return eachStep;
       });
-    }
+    } */
     return timelineWrapper;
   });
   block.innerHTML = '';
