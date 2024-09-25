@@ -1357,6 +1357,10 @@ audio::-webkit-media-controls-panel {
   width: 40%;
 }
 
+.w-3\/4 {
+  width: 75%;
+}
+
 .w-44 {
   width: 11rem;
 }

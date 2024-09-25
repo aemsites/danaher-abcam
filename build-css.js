@@ -277,6 +277,11 @@ const fileMappings = [
     content: './templates/webinars/webinars.js',
     output: './templates/webinars/webinars.css',
   },
+  {
+    content: './blocks/speakers-info/speakers-info.js',
+    output: './blocks/speakers-info/speakers-info.css',
+    wrapper: 'speakers-info-wrapper',
+  },
 ];
 
 const watch = process.argv[2];
