@@ -39,8 +39,7 @@
       "related-stories",
       "dynamic-cards",
       "form",
-      "carousel",
-      "filters"
+      "carousel"
     ]
   },
   {
@@ -71,10 +70,6 @@
       "abcam-button",
       "media"
     ]
-  },
-  {
-    "id": "filters",
-    "components": []
   },
   {
     "id": "mini-teasers",

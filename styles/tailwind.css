@@ -147,6 +147,18 @@
         @apply mx-auto max-[768px]:w-full;
     }
 
+    main .section.hub > div:first-child {
+        @apply col-span-3;
+    }
+
+    main .section.hub > div:last-child {
+        @apply col-span-12;
+    }
+
+    main .section.hub > div:nth-child(2) {
+        @apply col-span-9;
+    }
+
     .search-results main {
         @apply min-h-[91rem] h-auto w-full;
     }

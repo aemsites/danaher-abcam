@@ -3,7 +3,7 @@ import {
   li, a, p, div, h3,
 } from '../../scripts/dom-builder.js';
 
-function createCard(article, firstCard = false) {
+export default function createCard(article, firstCard = false) {
   const cardTitle = article.title.indexOf('| Danaher Life Sciences') > -1
     ? article.title.split('| Danaher Life Sciences')[0]
     : article.title;
@@ -39,4 +39,3 @@ function createCard(article, firstCard = false) {
     cardWrapper,
   );
 }
-export default createCard;

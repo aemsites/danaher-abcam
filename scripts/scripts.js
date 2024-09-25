@@ -15,7 +15,7 @@ import {
   getMetadata,
   createOptimizedPicture,
 } from './aem.js';
-import { div, span, button, iframe, p, img, li } from './dom-builder.js';
+import { div, span, button, iframe, p, img, li, label, input, ul, a, h3 } from './dom-builder.js';
 
 const LCP_BLOCKS = ['hero', 'hero-video', 'carousel']; // add your LCP blocks to the list
 
@@ -734,6 +734,130 @@ async function loadPage() {
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();
+}
+
+export function createFilters({
+  lists = [],
+  filterNames = [],
+  element,
+  listActionHandler = () => {},
+  limit = 6,
+}) {
+  let filterCategory = {};
+  for (let topicIndex = 0; topicIndex < lists.length; topicIndex += 1) {
+    const topic = lists[topicIndex];
+    for (let numIndex = 0; numIndex < filterNames.length; numIndex += 1) {
+      const num = filterNames[numIndex];
+      if (
+        Object.keys(filterCategory).length === 0
+        || typeof filterCategory[num] === 'undefined'
+      ) filterCategory[num] = [];
+      if (
+        topic[num] !== ''
+        && !filterCategory[num].includes(topic[num])
+      ) filterCategory[num].push(topic[num]);
+    }
+  }
+  console.log(filterCategory);
+  for (let categoryIndex = 0; categoryIndex < Object.keys(filterCategory).length; categoryIndex += 1) {
+    const categoryKey = Object.keys(filterCategory)[categoryIndex];
+    const lists = ul({ class: 'space-y-2' });
+    [...filterCategory[categoryKey]].map((categoryValue, categoryIndex) => {
+      lists.append(li(
+        { class: categoryIndex >= limit ? 'hidden' : '' },
+        label(
+          {
+            class: 'w-full flex items-center gap-3 py-1 hover:px-1 hover:bg-gray-50 text-sm font-medium capitalize cursor-pointer',
+            for: `${[categoryKey]}-${categoryValue}`
+          },
+          input({
+            class: 'accent-teal-800 hover:accent-teal-600',
+            type: 'checkbox',
+            name: [categoryKey],
+            id: `${[categoryKey]}-${categoryValue}`,
+            onchange: () => {
+              // console.log(`${[categoryKey]}-${categoryValue}`);
+              listActionHandler(categoryKey, categoryValue);
+            }
+          }),
+          categoryValue,
+        ),
+      ));
+    });
+    if (limit !== 0 && filterCategory[categoryKey].length > limit) {
+      lists.append(li(
+        span(
+          {
+            class: 'text-sm text-emerald-800 font-normal mt-2 cursor-pointer hover:underline underline-offset-1',
+            onclick: (event) => {
+              const anyHiddenChild = event.target.parentElement.parentElement.querySelector('.hidden');
+              [...event.target.parentElement.parentElement.children].forEach((child, childIndex) => {
+                if (anyHiddenChild) child.classList.remove('hidden');
+                else if (childIndex > limit && childIndex !== (event.target.parentElement.parentElement.children.length - 1)) child.classList.add('hidden');
+              });
+              event.target.innerText = `Show ${anyHiddenChild ? 'Less' : 'More'}`;
+            }
+          },
+          'Show More'
+        )
+      ));
+    }
+    const accordionSection = div(
+      { class: 'px-6 py-4 border border-gray-300 rounded-xl' },
+      p(
+        { class: 'flex items-center justify-between mt-0 mb-1' },
+        span({ class: 'text-base font-bold capitalize' }, categoryKey),
+        span({ class: 'icon icon-chevron-down size-5 cursor-pointer' })
+      ),
+      span({
+        class: 'text-xs leading-5 font-medium text-emerald-600 mb-2 cursor-pointer hover:underline underline-offset-1',
+        onclick: (event) => {
+          listActionHandler(categoryKey, null);
+          event.target.parentElement.querySelectorAll('input:checked').forEach((el) => {
+            el.checked = false;
+          });
+        },
+      }, 'Clear filters'),
+      lists,
+    );
+    element.append(accordionSection);
+  }
+}
+
+export function createCard({
+  titleImage,
+  title = '',
+  description = '',
+  footerLink = '',
+  bodyEl = '',
+  footerEl = '',
+  path = '/',
+}) {
+  const card = li(
+    {
+      class: 'card relative overflow-hidden bg-transparent',
+      title,
+    },
+    a(
+      { class: 'size-full flex flex-col justify-center group', href: path },
+      titleImage,
+      div(
+        { class: 'flex-1' },
+        h3({ class: 'text-black font-medium mt-4 break-words' }, title),
+        p({ class: 'line-clamp-3' }, description),
+        bodyEl
+      ),
+      footerLink !== ''
+        ? a(
+          {
+            class: 'text-base leading-5 text-emerald-800 font-bold group-hover:tracking-wide group-hover:underline transition duration-700 mt-2',
+            href: path
+          }, footerLink)
+        : '',
+      footerEl,
+    )
+  );
+  return card;
 }
 
 loadPage();
