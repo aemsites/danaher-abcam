@@ -97,7 +97,8 @@ export default async function decorate(block) {
     return timelineWrapper;
   });
   block.innerHTML = '';
-  timeline.forEach((element) => {
+  /* timeline.forEach((element) => {
     block.append(element);
-  });
+  }); */
+  block.append(timelineWrapper);
 }
