@@ -37,10 +37,10 @@ export default async function decorate(block) {
       // description.appendChild(subtitleFootnote);
     } */
     const steps = element.querySelectorAll('ol');
-    /* if (steps && steps.length > 0) {
+    if (steps && steps.length > 0) {
       // if (subtitle || subtitleFootnote) timelineWrapper.append(description);
-      const stepEl = div({ class: 'text-2xl mb-6 font-semibold' }, 'Steps');
-      timelineWrapper.append(stepEl);
+      // const stepEl = div({ class: 'text-2xl mb-6 font-semibold' }, 'Steps');
+      // timelineWrapper.append(stepEl);
       let index = 1;
       [...steps].map((eachStep) => {
         detectNextElements(eachStep);
@@ -93,7 +93,7 @@ export default async function decorate(block) {
         timelineWrapper.append(eachStep);
         return eachStep;
       });
-    } */
+    }
     return timelineWrapper;
   });
   block.innerHTML = '';
