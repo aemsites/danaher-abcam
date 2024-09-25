@@ -195,3 +195,4 @@ export default async function decorate(block) {
   footerWrapper.append(clientsFooter);
 }
 
+
