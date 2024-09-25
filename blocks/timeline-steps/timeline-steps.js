@@ -18,7 +18,7 @@ function detectNextElements(stepsOl) {
 export default async function decorate(block) {
   const timelineWrapper = div();
   let title = block.querySelector('h2');
-  title = title != null ? title : '';
+  title = title != null ? title : 'Default Title';
   title.className = 'text-3xl mb-6 font-semibold text-heading-large font-header md:pt-20 md:-mt-20';
   timelineWrapper.append(title);
   const timeline = [...block.children].map((element) => {
