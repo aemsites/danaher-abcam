@@ -17,10 +17,10 @@ let nextElement = [];
  */
 export default async function decorate(block) {
   const timelineWrapper = div();
-  let title = block.querySelector('h2');
+  /* let title = block.querySelector('h2');
   title = title != null ? title : 'Default Title';
   title.className = 'text-3xl mb-6 font-semibold text-heading-large font-header md:pt-20 md:-mt-20';
-  timelineWrapper.append(title);
+  timelineWrapper.append(title); */
   [...block.children].map((element) => {
     /* const description = document.createElement('sub');
     const subtitle = element.children[1]?.querySelector('p');
