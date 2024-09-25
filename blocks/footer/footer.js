@@ -135,7 +135,7 @@ export default async function decorate(block) {
 
   if (response.ok) {
     const html = await response.text();
-    const mainContainer = div({ class: 'flex flex-col mx-auto xl:max-w-7xl px-6 xl:max-w-[1120px]' });
+    const mainContainer = div({ class: 'flex flex-col mx-auto xl:max-w-7xl lg:px-0 px-6 xl:max-w-[1120px]' });
     mainContainer.innerHTML = html;
     block.append(createFooterDOM(mainContainer));
   }
@@ -194,3 +194,4 @@ export default async function decorate(block) {
 
   footerWrapper.append(clientsFooter);
 }
+
