@@ -268,11 +268,6 @@ const fileMappings = [
     output: './blocks/dynamic-cards/dynamic-cards.css',
     wrapper: 'dynamic-cards-wrapper',
   },
-  {
-    content: './blocks/filters/filters.js',
-    output: './blocks/filters/filters.css',
-    wrapper: 'filters-wrapper',
-  },
 ];
 
 const watch = process.argv[2];

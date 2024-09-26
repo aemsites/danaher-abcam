@@ -1,5 +1,7 @@
 import { readBlockConfig, decorateIcons } from '../../scripts/aem.js';
-import { div, span, a } from '../../scripts/dom-builder.js';
+import {
+  div, span, a, ul,
+} from '../../scripts/dom-builder.js';
 
 /**
  * Adding Hyperlinks to social icons. Links which are authored in the sharepoint
@@ -65,7 +67,7 @@ function createFooterDOM(mainContainer) {
   const danaharLogoContainer = div({ class: 'shrink-0 h-[84px] w-[72px]' });
 
   const bottomLeftContainer = div({ class: 'flex flex-col items-end gap-y-4' });
-  const privacyTermsContainer = div({ class: 'flex flex-wrap justify-end list-none font-light space-x-5 opacity-90 max-[767px]:flex-col max-[767px]:text-right' });
+  const privacyTermsContainer = ul({ class: 'flex flex-wrap justify-end list-none font-light space-x-5 opacity-90 max-[767px]:flex-col max-[767px]:text-right' });
 
   const rightsContainer = div({ class: 'font-normal text-end opacity-80' });
 

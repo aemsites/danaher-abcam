@@ -10,29 +10,24 @@ let lists = [];
 let filterContainer = {};
 const hub = div({ class: 'hub grid grid-cols-12 gap-6' });
 const allSelectedTags = div(
-  { class: 'flex items-center gap-2 mb-4 cursor-pointer [&_*:empty+*]:hidden' },
-  ul({ class: 'flex flex-wrap gap-2 empty:hidden' }),
-  span(
-    {
-      class: 'shrink-0 text-xs font-semibold underline',
-      onclick: () => {
-        Object.keys(filterContainer).forEach((filt) => {
-          for (let eachFilt = 0; eachFilt < filterContainer[filt].length; eachFilt += 1) {
-            const filterInp = hub.querySelector(`#${filt}-${filterContainer[filt][eachFilt]}`);
-            if (filterInp) filterInp.checked = false;
-          }
-        });
-        filterContainer = {};
-        // eslint-disable-next-line no-use-before-define
-        handleChangeFilter(null, null, 'skip-filter');
-      },
-    },
-    'Clear All',
+  { class: 'flex items-start md:items-center gap-2 mb-4 cursor-pointer' },
+  span({ class: 'text-xs font-semibold text-[#07111299]' }, 'Filters:'),
+  ul(
+    { class: 'flex flex-wrap gap-2 [&_*:empty+*]:hidden' },
   ),
 );
+const clearAllEl = li(span(
+  {
+    class: 'shrink-0 text-xs font-semibold underline',
+    // eslint-disable-next-line no-use-before-define
+    onclick: () => handleResetFilters(),
+  },
+  'Clear All',
+));
 const cardList = ul({ class: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-stretch' });
 
 function handleRenderTags() {
+  // console.log(filterContainer);
   const tagsList = allSelectedTags.querySelector('ul');
   tagsList.innerHTML = '';
   if (Object.keys(filterContainer).length > 0) {
@@ -40,15 +35,13 @@ function handleRenderTags() {
       filterContainer[filterArr].forEach((filt) => {
         tagsList.append(li(
           {
-            class: 'flex items-center capitalize gap-x-1 text-xs text-emerald-600 bg-emerald-50 px-2 py-1 rounded cursor-pointer',
+            class: 'flex items-center capitalize gap-x-1 text-xs text-[#378189] bg-[#EDF6F7] px-2 py-1 rounded cursor-pointer',
             title: filt,
             onclick: (event) => {
-              filterContainer[filterArr] = filterContainer[filterArr].filter((fl) => fl !== filt);
-              if (filterContainer[filterArr].length === 0) delete filterContainer[filterArr];
               hub.querySelector(`#${filterArr}-${filt}`).checked = false;
-              event.target.remove();
               // eslint-disable-next-line no-use-before-define
-              handleChangeFilter(null, null, 'skip-filter');
+              handleChangeFilter(filterArr, event.target.title);
+              event.target.remove();
             },
           },
           filt,
@@ -56,6 +49,7 @@ function handleRenderTags() {
         ));
       });
     });
+    tagsList.append(clearAllEl);
     decorateIcons(tagsList);
   }
 }
@@ -90,13 +84,13 @@ function handleRenderContent(newLists = lists) {
 function handleChangeFilter(key, value, mode) {
   let newLists = lists;
   if (mode !== 'skip-filter') {
-    if (key in filterContainer) {
+    if (key !== 'undefined' && (value === 'undefined' || value === null)) {
+      delete filterContainer[key];
+    } else if (key in filterContainer) {
       if (filterContainer[key].includes(value)) {
         filterContainer[key] = filterContainer[key].filter((val) => val !== value);
         if (filterContainer[key].length === 0) delete filterContainer[key];
       } else filterContainer[key].push(value);
-    } else if (key !== 'undefined' && value === 'undefined') {
-      delete filterContainer[key];
     } else filterContainer[key] = [value];
     // newLists = lists.filter((list) => {
     //   if (Object.keys(filterContainer).length === 0) return true;
@@ -110,6 +104,27 @@ function handleChangeFilter(key, value, mode) {
   }
   handleRenderTags();
   handleRenderContent(newLists);
+}
+
+function handleResetFilters() {
+  Object.keys(filterContainer).forEach((filt) => {
+    for (let eachFilt = 0; eachFilt < filterContainer[filt].length; eachFilt += 1) {
+      const filterInp = hub.querySelector(`#${filt}-${filterContainer[filt][eachFilt]}`);
+      if (filterInp) filterInp.checked = false;
+    }
+  });
+  filterContainer = {};
+  // eslint-disable-next-line no-use-before-define
+  handleChangeFilter(null, null, 'skip-filter');
+}
+
+function handleClearCategoryFilter(key) {
+  filterContainer[key].forEach((filt) => {
+    const selectedTag = allSelectedTags.querySelector(`ul li[title=${filt}]`);
+    selectedTag.outerHTML = '';
+    hub.querySelector(`#${key}-${filt}`).checked = false;
+  });
+  handleChangeFilter(key, null);
 }
 
 export default async function buildAutoBlocks() {
@@ -147,6 +162,7 @@ export default async function buildAutoBlocks() {
       filterNames,
       element: hubFilters,
       listActionHandler: handleChangeFilter,
+      clearFilterHandler: handleClearCategoryFilter,
     });
 
     const hubContent = div(
@@ -158,7 +174,8 @@ export default async function buildAutoBlocks() {
     hub.append(
       div(
         { class: 'flex flex-col' },
-        span({ class: 'text-xl leading-6 font-bold mb-4' }, 'Filter'),
+        span({ class: 'w-full block md:hidden text-sm text-center font-semibold tracking-wide mb-4 p-3 border border-black rounded-full' }, 'Filter'),
+        span({ class: 'hidden md:block text-xl leading-6 font-bold mb-4' }, 'Filter'),
         hubFilters,
       ),
       hubContent,

@@ -19,12 +19,20 @@
   margin-top: 0.5rem
 }
 
+.block {
+  display: block
+}
+
 .flex {
   display: flex
 }
 
 .grid {
   display: grid
+}
+
+.hidden {
+  display: none
 }
 
 .size-4 {
@@ -52,10 +60,6 @@
   grid-template-columns: repeat(1, minmax(0, 1fr))
 }
 
-.grid-cols-9 {
-  grid-template-columns: repeat(9, minmax(0, 1fr))
-}
-
 .grid-cols-12 {
   grid-template-columns: repeat(12, minmax(0, 1fr))
 }
@@ -68,12 +72,12 @@
   flex-wrap: wrap
 }
 
-.items-center {
-  align-items: center
+.items-start {
+  align-items: flex-start
 }
 
-.justify-items-center {
-  justify-items: center
+.items-center {
+  align-items: center
 }
 
 .justify-items-stretch {
@@ -103,8 +107,21 @@
   border-radius: 0.25rem
 }
 
+.rounded-full {
+  border-radius: 9999px
+}
+
+.border {
+  border-width: 1px
+}
+
 .border-b {
   border-bottom-width: 1px
+}
+
+.border-black {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity))
 }
 
 .border-b-gray-300 {
@@ -112,9 +129,17 @@
   border-bottom-color: rgb(209 213 219 / var(--tw-border-opacity))
 }
 
-.bg-emerald-50 {
+.bg-\[\#EDF6F7\] {
   --tw-bg-opacity: 1;
-  background-color: rgb(236 253 245 / var(--tw-bg-opacity))
+  background-color: rgb(237 246 247 / var(--tw-bg-opacity))
+}
+
+.p-4 {
+  padding: 1rem
+}
+
+.p-3 {
+  padding: 0.75rem
 }
 
 .px-2 {
@@ -136,19 +161,23 @@
   padding-bottom: 1rem
 }
 
+.text-center {
+  text-align: center
+}
+
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem
 }
 
-.text-xs {
-  font-size: 0.75rem;
-  line-height: 1rem
-}
-
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem
+}
+
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem
 }
 
 .font-bold {
@@ -175,6 +204,14 @@
   line-height: 1.5rem
 }
 
+.tracking-wide {
+  letter-spacing: 0.025em
+}
+
+.text-\[\#07111299\] {
+  color: #07111299
+}
+
 .text-\[\#378189\] {
   --tw-text-opacity: 1;
   color: rgb(55 129 137 / var(--tw-text-opacity))
@@ -183,11 +220,6 @@
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity))
-}
-
-.text-emerald-600 {
-  --tw-text-opacity: 1;
-  color: rgb(5 150 105 / var(--tw-text-opacity))
 }
 
 .text-emerald-800 {
@@ -203,13 +235,21 @@
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
 }
 
-.empty\:hidden:empty {
-  display: none
-}
-
 @media (min-width: 768px) {
+  .md\:block {
+    display: block
+  }
+
+  .md\:hidden {
+    display: none
+  }
+
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr))
+  }
+
+  .md\:items-center {
+    align-items: center
   }
 }
 
@@ -221,18 +261,4 @@
 
 .\[\&_\*\:empty\+\*\]\:hidden *:empty+* {
   display: none
-}
-
-.\[\&_svg\>use\]\:bg-white svg>use {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity))
-}
-
-.\[\&_svg\>use\]\:bg-emerald-800 svg>use {
-  --tw-bg-opacity: 1;
-  background-color: rgb(6 95 70 / var(--tw-bg-opacity))
-}
-
-.\[\&_svg\>use\]\:stroke-2 svg>use {
-  stroke-width: 2
 }

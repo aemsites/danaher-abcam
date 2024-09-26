@@ -741,6 +741,7 @@ export function createFilters({
   filterNames = [],
   element,
   listActionHandler = () => {},
+  clearFilterHandler = () => {},
   limit = 6,
 }) {
   let filterCategory = {};
@@ -758,7 +759,7 @@ export function createFilters({
       ) filterCategory[num].push(topic[num]);
     }
   }
-  console.log(filterCategory);
+  // console.log(filterCategory);
   for (let categoryIndex = 0; categoryIndex < Object.keys(filterCategory).length; categoryIndex += 1) {
     const categoryKey = Object.keys(filterCategory)[categoryIndex];
     const lists = ul({ class: 'space-y-2' });
@@ -767,7 +768,7 @@ export function createFilters({
         { class: categoryIndex >= limit ? 'hidden' : '' },
         label(
           {
-            class: 'w-full flex items-center gap-3 py-1 hover:px-1 hover:bg-gray-50 text-sm font-medium capitalize cursor-pointer',
+            class: 'w-full flex items-center gap-3 py-1 hover:px-1 hover:bg-gray-50 text-sm font-medium break-all capitalize cursor-pointer',
             for: `${[categoryKey]}-${categoryValue}`
           },
           input({
@@ -811,12 +812,7 @@ export function createFilters({
       ),
       span({
         class: 'text-xs leading-5 font-medium text-emerald-600 mb-2 cursor-pointer hover:underline underline-offset-1',
-        onclick: (event) => {
-          listActionHandler(categoryKey, null);
-          event.target.parentElement.querySelectorAll('input:checked').forEach((el) => {
-            el.checked = false;
-          });
-        },
+        onclick: () => clearFilterHandler(categoryKey),
       }, 'Clear filters'),
       lists,
     );
@@ -850,7 +846,7 @@ export function createCard({
       footerLink !== ''
         ? a(
           {
-            class: 'text-base leading-5 text-emerald-800 font-bold group-hover:tracking-wide group-hover:underline transition duration-700 mt-2',
+            class: 'text-base leading-5 text-emerald-800 font-bold p-2 pl-0 group-hover:tracking-wide group-hover:underline transition duration-700 mt-2',
             href: path
           }, footerLink)
         : '',

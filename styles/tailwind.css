@@ -148,7 +148,7 @@
     }
 
     main .section.hub > div:first-child {
-        @apply col-span-3;
+        @apply col-span-12 md:col-span-3;
     }
 
     main .section.hub > div:last-child {
@@ -156,7 +156,7 @@
     }
 
     main .section.hub > div:nth-child(2) {
-        @apply col-span-9;
+        @apply col-span-12 md:col-span-9;
     }
 
     .search-results main {
