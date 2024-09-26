@@ -68,7 +68,7 @@
 
 @layer components {
     header {
-        @apply h-11 lg:h-16;
+        @apply h-28 md:h-16 lg:h-32;
     }
 
     .default-content-wrapper:first-child {

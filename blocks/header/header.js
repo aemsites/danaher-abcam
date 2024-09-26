@@ -32,7 +32,7 @@ function sortFlyoutMenus(menuPath) {
 
 function buildSearchBlock(headerBlock) {
   const searchHtmlBlock = headerBlock.children[0];
-  searchHtmlBlock.classList.add(...'navbar-wrapper justify-center bg-black z-50 pt-2 lg:pt-4'.split(' '));
+  searchHtmlBlock.classList.add(...'navbar-wrapper justify-center bg-black z-50 pt-4'.split(' '));
   searchHtmlBlock.id = 'sticky-header';
   searchHtmlBlock.querySelector('p').classList.add('hidden');
   const logoSearchMenuContainer = div({ class: 'logo-search-menu-container flex flex-col gap-y-7' });
@@ -57,7 +57,7 @@ function buildSearchBlock(headerBlock) {
   );
   logoSearchBarContianer.append(searchbarContainer);
   decorateIcons(logoSearchBarContianer);
-  const borderBottom = div({ class: 'h-0.5 mt-3', style: 'background: linear-gradient(90deg, #4ba6b3 0, #c9d3b7 35%, #ff8730 70%, #c54428)' });
+  const borderBottom = div({ class: 'h-0.5 mt-3 lg:mt-4', style: 'background: linear-gradient(90deg, #4ba6b3 0, #c9d3b7 35%, #ff8730 70%, #c54428)' });
   const extendedSectionBlock = div({ class: 'extended-section md:w-fit md:ml-80 ml-auto mr-2 hidden lg:flex items-center gap-x-16 lg:block' });
   extendedSectionBlock.id = 'extended-section';
   const logoPictureBlock = a(
