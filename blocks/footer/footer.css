@@ -53,10 +53,6 @@
   display: flex
 }
 
-.footer-wrapper :is(.grid) {
-  display: grid
-}
-
 .footer-wrapper :is(.hidden) {
   display: none
 }
@@ -66,19 +62,19 @@
   height: 1.25rem
 }
 
-.footer-wrapper :is(.h-\[5rem\]) {
-  height: 5rem
+.footer-wrapper :is(.h-\[156px\]) {
+  height: 156px
 }
 
 .footer-wrapper :is(.h-\[84px\]) {
   height: 84px
 }
 
-.footer-wrapper :is(.h-full) {
-  height: 100%
+.footer-wrapper :is(.w-1\/2) {
+  width: 50%
 }
 
-.footer-wrapper :is(.w-\[6rem\]) {
+.footer-wrapper :is(.w-24) {
   width: 6rem
 }
 
@@ -100,10 +96,6 @@
 
 .footer-wrapper :is(.list-none) {
   list-style-type: none
-}
-
-.footer-wrapper :is(.grid-cols-8) {
-  grid-template-columns: repeat(8, minmax(0, 1fr))
 }
 
 .footer-wrapper :is(.flex-row) {
@@ -182,14 +174,13 @@
   background-color: rgb(0 0 0 / var(--tw-bg-opacity))
 }
 
+.footer-wrapper :is(.p-4) {
+  padding: 1rem
+}
+
 .footer-wrapper :is(.px-6) {
   padding-left: 1.5rem;
   padding-right: 1.5rem
-}
-
-.footer-wrapper :is(.py-7) {
-  padding-top: 1.75rem;
-  padding-bottom: 1.75rem
 }
 
 .footer-wrapper :is(.pb-8) {
@@ -198,6 +189,10 @@
 
 .footer-wrapper :is(.pt-8) {
   padding-top: 2rem
+}
+
+.footer-wrapper :is(.text-right) {
+  text-align: right
 }
 
 .footer-wrapper :is(.text-end) {
@@ -247,45 +242,6 @@
   text-decoration-line: underline
 }
 
-@media (max-width: 767px) {
-  .footer-wrapper :is(.max-\[767px\]\:h-full) {
-    height: 100%
-  }
-
-  .footer-wrapper :is(.max-\[767px\]\:w-full) {
-    width: 100%
-  }
-
-  .footer-wrapper :is(.max-\[767px\]\:grid-cols-2) {
-    grid-template-columns: repeat(2, minmax(0, 1fr))
-  }
-
-  .footer-wrapper :is(.max-\[767px\]\:flex-col) {
-    flex-direction: column
-  }
-
-  .footer-wrapper :is(.max-\[767px\]\:items-center) {
-    align-items: center
-  }
-
-  .footer-wrapper :is(.max-\[767px\]\:px-6) {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem
-  }
-
-  .footer-wrapper :is(.max-\[767px\]\:pb-0) {
-    padding-bottom: 0px
-  }
-
-  .footer-wrapper :is(.max-\[767px\]\:pb-7) {
-    padding-bottom: 1.75rem
-  }
-
-  .footer-wrapper :is(.max-\[767px\]\:text-right) {
-    text-align: right
-  }
-}
-
 @media (min-width: 768px) {
   .footer-wrapper :is(.md\:block) {
     display: block
@@ -315,6 +271,24 @@
     margin-top: 1.75rem;
     margin-bottom: 1.75rem
   }
+
+  .footer-wrapper :is(.lg\:w-fit) {
+    width: -moz-fit-content;
+    width: fit-content
+  }
+
+  .footer-wrapper :is(.lg\:flex-row) {
+    flex-direction: row
+  }
+
+  .footer-wrapper :is(.lg\:px-0) {
+    padding-left: 0px;
+    padding-right: 0px
+  }
+
+  .footer-wrapper :is(.lg\:text-left) {
+    text-align: left
+  }
 }
 
 @media (min-width: 1280px) {
@@ -325,4 +299,8 @@
   .footer-wrapper :is(.xl\:max-w-\[1120px\]) {
     max-width: 1120px
   }
+}
+
+.footer-wrapper :is(.\[\&\>svg\]\:w-\[96px\]>svg) {
+  width: 96px
 }
