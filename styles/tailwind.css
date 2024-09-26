@@ -70,7 +70,23 @@
     header {
         @apply h-11 lg:h-16;
     }
-    
+
+    .default-content-wrapper:first-child {
+        @apply pb-8;
+    }
+
+    .default-content-wrapper:not(:first-child, :last-child) {
+        @apply py-8;
+    }
+
+    .default-content-wrapper:last-child {
+        @apply pt-8;
+    }
+
+    .default-content-wrapper > ol {
+        @apply pl-6 list-decimal;
+    }
+
     main .section .default-content-wrapper a {
         @apply font-bold text-[#378189];
     }
