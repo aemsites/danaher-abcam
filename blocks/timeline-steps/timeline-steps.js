@@ -17,10 +17,8 @@ function detectNextElements(stepsOl) {
 export default async function decorate(block) {
   // eslint-disable-next-line no-console
   console.log(block);
-  let title = block.querySelector('h2');
-  title = title != null ? title : 'Default Title';
-  title.className = 'text-3xl mb-6 font-semibold text-heading-large font-header md:pt-20 md:-mt-20';
-  // start of custom code
+  const title = block.querySelector('h2');
+  title?.classList.add(...'text-3xl mb-6 font-semibold text-heading-large font-header md:pt-20 md:-mt-20'.split(' '));
   [...block.children].map((element) => {
     const description = document.createElement('sub');
     const subtitle = element.children[1]?.querySelector('h3');
