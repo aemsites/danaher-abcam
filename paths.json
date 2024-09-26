@@ -7,7 +7,7 @@
     "/content/danaher/abcam/configuration:/.helix/config.json",
     "/content/danaher/abcam/metadata:/metadata.json",
     "/content/danaher/abcam/placeholders:/placeholders.json",
-    "/content/danaher.resourceen-us/stories/index.json:/en-us/stories/index.json"
+    "/content/danaher.resource/en-us/stories/index.json:/en-us/stories/index.json"
   ],
   "includes": [
     "/content/danaher/abcam"
