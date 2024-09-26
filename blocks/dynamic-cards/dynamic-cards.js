@@ -142,7 +142,6 @@ export function createFilters(articles, viewAll = false) {
 }
 
 export default async function decorate(block) {
-  console.log(block);
   let jsonName = 'article-index';
   let needFilters = true;
   let needPagination = true;
@@ -156,11 +155,9 @@ export default async function decorate(block) {
       if (childIndex === 2) needPagination = JSON.parse(firstElementChildren);
       if (childIndex === 3) articleType = firstElementChildren;
       if (childIndex === 4) filterPath = firstElementChildren;
-      // console.log(childIndex, firstElementChildren);
     });
   }
-  // console.log(jsonName, needFilters, needPagination, articleType, filterPath);
-
+  
   // fetch and sort all articles
   const articles = await ffetch(`https://stage.lifesciences.danaher.com/us/en/${jsonName}.json`)
     .chunks(500)
