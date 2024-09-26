@@ -1,5 +1,5 @@
 import {
-  div, button, span, a, ul, li, h4,
+  div, button, span, a, ul, li, h4, input,
 } from '../../scripts/dom-builder.js';
 import { decorateIcons } from '../../scripts/aem.js';
 
@@ -36,18 +36,29 @@ function buildSearchBlock(headerBlock) {
   searchHtmlBlock.id = 'sticky-header';
   searchHtmlBlock.querySelector('p').classList.add('hidden');
   const logoSearchMenuContainer = div({ class: 'logo-search-menu-container flex flex-col gap-y-7' });
-  const logoSearchBarContianer = div({ class: 'logo-searchbar-continer w-full ml-20 flex flex-row items-center gap-x-12 md:flex-wrap items-center' });
+  const logoSearchBarContianer = div({ class: 'logo-searchbar-continer w-full m-0 px-4 md:w-11/12 lg:ml-20 flex flex-col-reverse content-start md:flex-row md:gap-x-20 gap-y-5 md:items-center' });
   const searchbarContainer = div(
-    { class: 'searchbar-container cursor-pointer w-[38.5rem] h-12 flex items-center text-white border rounded-3xl border-white' },
-    span({ class: 'icon icon-Search-bar pl-4 pr-2' }),
-    span({ class: 'placeholder-text font-bold' }, 'What are you searching for?'),
+    { class: 'w-full md:w-6/12 relative' },
+    input({
+      class: 'w-full text-base h-12 rounded-full bg-black border border-white text-white py-2 px-12 font-bold outline-none',
+      placeholder: 'What are you searching for?',
+      onkeydown: (event) => {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          const inputValue = event.target.value.trim();
+          if (inputValue) {
+            const searchResultsUrl = `https://www.abcam.com/en-us/search?keywords=${inputValue}`;
+            window.location.href = searchResultsUrl;
+          }
+        }
+      },
+    }),
+    span({ class: 'icon icon-Search-bar pl-4 pr-2 absolute top-3 left-0' }),
   );
-  searchbarContainer.addEventListener('click', () => {
-    window.location.href = 'https://www.abcam.com/en-us/search';
-  });
-  decorateIcons(searchbarContainer);
+  logoSearchBarContianer.append(searchbarContainer);
+  decorateIcons(logoSearchBarContianer);
   const borderBottom = div({ class: 'h-0.5 mt-3', style: 'background: linear-gradient(90deg, #4ba6b3 0, #c9d3b7 35%, #ff8730 70%, #c54428)' });
-  const extendedSectionBlock = div({ class: 'extended-section md:w-full ml-auto md:ml-80 mr-2 md:mr-4 hidden lg:flex items-center gap-x-16 lg:block' });
+  const extendedSectionBlock = div({ class: 'extended-section md:w-fit md:ml-80 ml-auto mr-2 hidden lg:flex items-center gap-x-16 lg:block' });
   extendedSectionBlock.id = 'extended-section';
   const logoPictureBlock = a(
     { class: '' },
@@ -76,7 +87,7 @@ function buildSearchBlock(headerBlock) {
   const logoHamburgerMenu = div({ class: 'flex flex-row gap-x-2' }, hamburgerIcon, logoPictureBlock);
   logoSearchBarContianer.append(logoHamburgerMenu);
   logoSearchBarContianer.append(searchbarContainer);
-  decorateIcons(logoPictureBlock, 120, 120);
+  decorateIcons(logoPictureBlock, 120, 25);
   decorateIcons(hamburgerIcon);
   logoSearchMenuContainer.append(logoSearchBarContianer);
   logoSearchMenuContainer.append(extendedSectionBlock);
