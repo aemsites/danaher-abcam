@@ -10,19 +10,23 @@ function detectNextElements(stepsOl) {
   }
   return false;
 }
-
 /**
  * loads and decorates the header, mainly the nav
  * @param {Element} block The header block element
  */
 export default async function decorate(block) {
-  const timeline = [...block.children].map((element) => {
-    const timelineWrapper = div();
-    const title = element.querySelector('h2');
-    title.className = 'text-3xl mb-6 font-semibold text-heading-large font-header md:pt-20 md:-mt-20';
-    timelineWrapper.append(title);
+  // eslint-disable-next-line no-console
+  console.log(block);
+  const title = block.querySelector('h2');
+  title?.classList.add(...'text-3xl mb-6 font-semibold text-heading-large font-header md:pt-20 md:-mt-20'.split(' '));
+  // start of custom code
+  [...block.children].map((element) => {
     const description = document.createElement('sub');
-    const subtitle = element.children[1]?.querySelector('p');
+    const subtitle = element.children[1]?.querySelector('h3');
+    // eslint-disable-next-line no-console
+    console.log('subtitle');
+    // eslint-disable-next-line no-console
+    console.log(subtitle);
     const subtitleFootnote = element.children[1]?.querySelector('ul');
     if (subtitle) {
       subtitle.className = `mb-4 ${subtitleFootnote ? 'text-2xl font-semibold' : 'text-lg tracking-wide'}`.trim();
@@ -34,9 +38,10 @@ export default async function decorate(block) {
     }
     const steps = element.querySelectorAll('ol');
     if (steps && steps.length > 0) {
-      if (subtitle || subtitleFootnote) timelineWrapper.append(description);
+      if (subtitle || subtitleFootnote);
       const stepEl = div({ class: 'text-2xl mb-6 font-semibold' }, 'Steps');
-      timelineWrapper.append(stepEl);
+      // eslint-disable-next-line no-console
+      console.log(stepEl);
       let index = 1;
       [...steps].map((eachStep) => {
         detectNextElements(eachStep);
@@ -86,14 +91,10 @@ export default async function decorate(block) {
           step.append(stepContent);
           index += 1;
         });
-        timelineWrapper.append(eachStep);
         return eachStep;
       });
     }
-    return timelineWrapper;
+    return 'test';
   });
-  block.innerHTML = '';
-  timeline.forEach((element) => {
-    block.append(element);
-  });
+  // end of the custom code
 }

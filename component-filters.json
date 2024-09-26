@@ -39,7 +39,8 @@
       "related-stories",
       "dynamic-cards",
       "form",
-      "carousel"
+      "carousel",
+      "timeline-steps"
     ]
   },
   {
@@ -87,6 +88,12 @@
     "id": "teasers",
     "components": [
       "teaser"
+    ]
+  },
+  {
+    "id": "timeline-steps",
+    "components": [
+      "steps"
     ]
   }
 ]
