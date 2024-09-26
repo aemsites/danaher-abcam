@@ -62,6 +62,26 @@
   height: 100%
 }
 
+.columns-wrapper :is(.w-1\/2) {
+  width: 50%
+}
+
+.columns-wrapper :is(.w-1\/4) {
+  width: 25%
+}
+
+.columns-wrapper :is(.w-2\/5) {
+  width: 40%
+}
+
+.columns-wrapper :is(.w-3\/4) {
+  width: 75%
+}
+
+.columns-wrapper :is(.w-3\/5) {
+  width: 60%
+}
+
 .columns-wrapper :is(.w-full) {
   width: 100%
 }
@@ -86,10 +106,6 @@
 .columns-wrapper :is(.px-6) {
   padding-left: 1.5rem;
   padding-right: 1.5rem
-}
-
-.columns-wrapper :is(.pb-10) {
-  padding-bottom: 2.5rem
 }
 
 .columns-wrapper :is(.text-sm) {
@@ -138,8 +154,8 @@
     right: 0px
   }
 
-  .columns-wrapper :is(.lg\:h-\[475px\]) {
-    height: 475px
+  .columns-wrapper :is(.lg\:max-h-\[475px\]) {
+    max-height: 475px
   }
 
   .columns-wrapper :is(.lg\:w-1\/2) {
@@ -150,7 +166,12 @@
     flex-direction: row
   }
 
-  .columns-wrapper :is(.lg\:pr-16) {
-    padding-right: 4rem
+  .columns-wrapper :is(.lg\:py-6) {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem
+  }
+
+  .columns-wrapper :is(.lg\:pr-6) {
+    padding-right: 1.5rem
   }
 }

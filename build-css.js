@@ -17,6 +17,11 @@ const fileMappings = [
     wrapper: 'footer-wrapper',
   },
   {
+    content: ['./blocks/carousel/carousel.js', './scripts/carousel.js'],
+    output: './blocks/carousel/carousel.css',
+    wrapper: 'carousel-wrapper',
+  },
+  {
     content: './blocks/cards/cards.js',
     output: './blocks/cards/cards.css',
     wrapper: 'cards-wrapper',
@@ -152,6 +157,11 @@ const fileMappings = [
     content: './blocks/hero-video/hero-video.js',
     output: './blocks/hero-video/hero-video.css',
     wrapper: 'hero-video-wrapper',
+  },
+  {
+    content: './blocks/podcasts/podcasts.js',
+    output: './blocks/podcasts/podcasts.css',
+    wrapper: 'podcasts-wrapper',
   },
   {
     content: './blocks/marketo-form/marketo-form.js',

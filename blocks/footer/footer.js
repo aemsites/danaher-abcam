@@ -1,12 +1,12 @@
 import { readBlockConfig, decorateIcons } from '../../scripts/aem.js';
-import { div, span } from '../../scripts/dom-builder.js';
+import { div, span, a } from '../../scripts/dom-builder.js';
 
 /**
  * Adding Hyperlinks to social icons. Links which are authored in the sharepoint
  * @param {Element} socialIcons Authored content from the Document
  */
 function callSocialIcons(socialIcons) {
-  const allAnchorTags = div({ class: 'flex items-center gap-x-1.5 md:gap-x-4' });
+  const allAnchorTags = div({ class: 'flex items-center gap-x-1.5 md:gap-x-6' });
   [...socialIcons.children].forEach((element) => {
     const ancTag = element.querySelector('a');
     const iconName = ancTag.textContent;
@@ -65,7 +65,7 @@ function createFooterDOM(mainContainer) {
   const danaharLogoContainer = div({ class: 'shrink-0 h-[84px] w-[72px]' });
 
   const bottomLeftContainer = div({ class: 'flex flex-col items-end gap-y-4' });
-  const privacyTermsContainer = div({ class: 'flex flex-wrap justify-end font-light space-x-5 opacity-90' });
+  const privacyTermsContainer = div({ class: 'flex flex-wrap lg:flex-row justify-end list-none font-light space-x-5 opacity-90 flex-col text-right lg:text-left' });
 
   const rightsContainer = div({ class: 'font-normal text-end opacity-80' });
 
@@ -92,17 +92,17 @@ function createFooterDOM(mainContainer) {
   const ceneterElements = middleContainer.firstElementChild.firstElementChild;
   if (ceneterElements !== undefined) {
     ceneterElements.classList.add(...'flex flex-col md:flex-row gap-x-20 gap-y-4'.split(' '));
-    ceneterElements.querySelectorAll('strong').forEach((linksHeading) => {
+    ceneterElements.querySelectorAll('p').forEach((linksHeading) => {
       linksHeading.classList.add(...'block font-bold text-lg'.split(' '));
     });
     [...ceneterElements.children].forEach((liEle) => {
-      const linkDiv = div({ class: 'link-div flex flex-row justify-between items-center' });
-      linkDiv.append(liEle.querySelector('strong'));
+      const linkDiv = div({ class: 'link-div flex flex-row justify-between items-center absolute right-0 top-3.5' });
       const svgSpan = span({ class: 'md:hidden icon icon-chevron-down-white size-5' });
+      liEle.append(linkDiv);
       linkDiv.append(svgSpan);
       decorateIcons(linkDiv);
-      liEle.prepend(linkDiv);
       liEle.querySelector('ul').classList.add(...'hidden md:block mt-4 text-white text-body-medium font-body'.split(' '));
+      liEle.classList.add('relative');
     });
   }
   showHideFooterLinks(footerLinks);
@@ -135,8 +135,62 @@ export default async function decorate(block) {
 
   if (response.ok) {
     const html = await response.text();
-    const mainContainer = div({ class: 'flex flex-col mx-auto xl:max-w-7xl px-6' });
+    const mainContainer = div({ class: 'flex flex-col mx-auto xl:max-w-7xl lg:px-0 px-6 xl:max-w-[1120px]' });
     mainContainer.innerHTML = html;
     block.append(createFooterDOM(mainContainer));
   }
+
+  const footerWrapper = document.querySelector('.footer-wrapper');
+  const clientsFooter = div(
+    { class: 'bg-[#333]' },
+    div(
+      { class: 'flex flex-wrap justify-center w-full' },
+
+      a(
+        { class: 'flex items-center justify-center p-4 lg:w-fit h-[156px] [&>svg]:w-[96px] w-1/2 hover:bg-black', href: 'https://www.mybeckman.com/?utm_source=abcam_website&utm_medium=referral&utm_content=footer', target: '_blank' },
+        span({ class: 'client-links icon icon-beckman' }),
+      ),
+      a(
+        { class: 'flex items-center justify-center p-4 lg:w-fit h-[156px] [&>svg]:w-[96px] w-1/2 hover:bg-black', href: 'https://www.genedata.com/?utm_source=abcam_website&utm_medium=referral&utm_content=footer', target: '_blank' },
+        span({ class: 'client-links icon icon-genedata' }),
+      ),
+      a(
+        { class: 'flex items-center justify-center p-4 lg:w-fit h-[156px] [&>svg]:w-[96px] w-1/2 hover:bg-black', href: 'https://www.idbs.com/?utm_source=abcam_website&utm_medium=referral&utm_content=footer', target: '_blank' },
+        span({ class: 'client-links icon icon-idbs' }),
+      ),
+      a(
+        { class: 'flex items-center justify-center p-4 lg:w-fit h-[156px] [&>svg]:w-[96px] w-1/2 hover:bg-black', href: 'https://www.leica-microsystems.com/?utm_source=abcam_website&utm_medium=referral&utm_content=footer', target: '_blank' },
+        span({ class: 'client-links icon icon-leica' }),
+      ),
+      a(
+        { class: 'flex items-center justify-center p-4 lg:w-fit h-[156px] [&>svg]:w-[96px] w-1/2 hover:bg-black', href: 'https://www.moleculardevices.com/?utm_source=abcam_website&utm_medium=referral&utm_content=footer', target: '_blank' },
+        span({ class: 'client-links icon icon-molecular' }),
+      ),
+      a(
+        { class: 'flex items-center justify-center p-4 lg:w-fit h-[156px] [&>svg]:w-[96px] w-1/2 hover:bg-black', href: 'https://www.phenomenex.com/?utm_source=abcam_website&utm_medium=referral&utm_content=footer', target: '_blank' },
+        span({ class: 'client-links icon icon-phenomenex' }),
+      ),
+      a(
+        { class: 'flex items-center justify-center p-4 lg:w-fit h-[156px] [&>svg]:w-[96px] w-1/2 hover:bg-black', href: 'https://sciex.com/?utm_source=abcam_website&utm_medium=referral&utm_content=footer', target: '_blank' },
+        span({ class: 'client-links icon icon-sciex' }),
+      ),
+      a(
+        { class: 'flex items-center justify-center p-4 lg:w-fit h-[156px] [&>svg]:w-[96px] w-1/2 hover:bg-black', href: 'https://www.aldevron.com/?utm_source=abcam_website&utm_medium=referral&utm_content=footer', target: '_blank' },
+        span({ class: 'client-links icon icon-aldevron' }),
+      ),
+      a(
+        { class: 'flex items-center justify-center p-4 lg:w-fit h-[156px] [&>svg]:w-[96px] w-1/2 hover:bg-black', href: 'https://www.idtdna.com/?utm_source=abcam_website&utm_medium=referral&utm_content=footer', target: '_blank' },
+        span({ class: 'client-links icon icon-idt' }),
+      ),
+    ),
+  );
+  decorateIcons(clientsFooter);
+
+  const clientImages = clientsFooter.querySelectorAll('img');
+
+  clientImages.forEach((clientImage) => {
+    clientImage.classList.add('w-24');
+  });
+
+  footerWrapper.append(clientsFooter);
 }

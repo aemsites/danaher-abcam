@@ -44,6 +44,10 @@
   position: relative
 }
 
+.hero-wrapper :is(.inset-0) {
+  inset: 0px
+}
+
 .hero-wrapper :is(.inset-x-auto) {
   left: auto;
   right: auto
@@ -425,6 +429,11 @@
 .hero-wrapper :is(.px-0) {
   padding-left: 0px;
   padding-right: 0px
+}
+
+.hero-wrapper :is(.px-12) {
+  padding-left: 3rem;
+  padding-right: 3rem
 }
 
 .hero-wrapper :is(.px-2) {

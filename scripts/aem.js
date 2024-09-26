@@ -424,18 +424,32 @@ function decorateButtons(element) {
     if (a.href !== a.textContent && a.title === 'button') {
       const up = a.parentElement;
       const twoup = a.parentElement.parentElement;
-      const linkTypeContainer = twoup?.nextElementSibling;
-      const iconTypeContainer = linkTypeContainer?.nextElementSibling;
-      const linkType = linkTypeContainer?.querySelector('div')?.textContent || 'button-primary';
-      const iconType = iconTypeContainer?.querySelector('div')?.textContent || 'icon-none';
+      let linkTypeContainer;
+      let iconTypeContainer;
+
+      let linkType = 'button-primary'; // Default value
+      let iconType = 'icon-none'; // Default value
       if (!a.querySelector('img')) {
-        if (up.childNodes.length === 1 && (up.tagName === 'P' || up.tagName === 'DIV')) {
-          a.className = 'button'; // default
-          // up.classList.add('button-container');
-          up.classList.add(linkType, iconType);
-        }
-        linkTypeContainer.remove();
-        iconTypeContainer.remove();
+        const isSingleChild = twoup.children.length === 1 && (up.tagName === 'P' || up.tagName === 'DIV');
+        const targetElement = isSingleChild ? twoup : up;
+
+        linkTypeContainer = targetElement?.nextElementSibling;
+        iconTypeContainer = linkTypeContainer?.nextElementSibling;
+
+        linkType = linkTypeContainer?.querySelector('div')?.textContent || linkTypeContainer?.textContent || linkType;
+        iconType = iconTypeContainer?.querySelector('div')?.textContent || iconTypeContainer?.textContent || iconType;
+        a.className = 'button'; // Default class
+        up.className = 'button-container'; // Default class
+        if(linkType?.trim()) up.classList.add(linkType.trim());
+        if(iconType?.trim()) up.classList.add(iconType.trim());
+
+        linkTypeContainer?.remove();
+        iconTypeContainer?.remove();
+
+        // if (up.childNodes.length === 1 && (up.tagName === 'P' || up.tagName === 'DIV')) {
+        //   a.className = 'button'; // default
+        //   up.classList.add('button-container');
+        // } 
         // if (
         //   up.childNodes.length === 1
         //   && up.tagName === 'STRONG'
@@ -634,6 +648,7 @@ async function loadBlock(block) {
   if (status !== 'loading' && status !== 'loaded') {
     block.dataset.blockStatus = 'loading';
     const { blockName } = block.dataset;
+    if(!blockName) return;
     try {
       const cssLoaded = loadCSS(`${window.hlx.codeBasePath}/blocks/${blockName}/${blockName}.css`);
       const decorationComplete = new Promise((resolve) => {
