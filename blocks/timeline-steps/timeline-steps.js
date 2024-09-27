@@ -8,7 +8,7 @@ export default async function decorate(block) {
   const title = block.querySelector('h2');
   title?.classList.add(...'text-3xl mb-6 font-semibold text-heading-large font-header md:pt-20 md:-mt-20'.split(' '));
   [...block.children].map((element) => {
-    const steps = element.querySelectorAll('ol list-style-type: number');
+    const steps = element.querySelectorAll('ol');
     if (steps && steps.length > 0) {
       let index = 1;
       [...steps].map((eachStep) => {
