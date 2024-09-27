@@ -20,13 +20,13 @@ indices:
         select: head > meta[property="og:image"]
         value: match(attribute(el, "content"), "^(https?:\/\/.*?(abcam.com))+(.*)|^(.*)")
       tags:
-        select: head > meta[property="article:tag"]
+        select: head > meta[name="pagetags"]
         value: attribute(el, "content")
       readingTime:
         select: head > meta[name="readingtime"]
         value: attribute(el, "content")
       publishDate:
-        select: head > meta[name="publishdate"]
+        select: head > meta[name="published-time"]
         value: parseTimestamp(attribute(el, "content"), "ddd, DD MMM YYYY hh:mm:ss GMT")
       template:
         select: head > meta[name="template"]
