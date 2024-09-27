@@ -25,18 +25,7 @@ export default function decorate(block) {
       }
     }
   });
-  // block.querySelectorAll('p')?.forEach((p) => {
-  //   console.log('p : ', p);
-  // });
-  // block.querySelectorAll('div').forEach((row, index) => {
-  //   if (!row.textContent.trim() && row.children.length === 0) {
-  //     row.remove();
-  //   } else {
-  //     row.querySelectorAll('p')?.forEach((p) => {
-  //       console.log('p : ', p);
-  //     });
-  //   }
-  // });
+
   // block.innerHTML = '';
   // const authorName = getMetadata('authorname');
   // const authorJobTitle = getMetadata('authortitle');

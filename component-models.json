@@ -1607,11 +1607,25 @@
       },
       {
         "component": "text",
+        "name": "speakers_titleType",
+        "label": "",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
         "valueType": "string",
         "name": "speakers_subtitle",
         "value": "",
         "label": "Subtitle"
       },
+      {
+        "component": "text",
+        "name": "speakers_subtitleType",
+        "label": "",
+        "valueType": "string",
+        "hidden": true
+      },      
       {
         "component": "richtext",
         "name": "speakers_description",
