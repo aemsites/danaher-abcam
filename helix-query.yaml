@@ -17,7 +17,7 @@ indices:
         select: head > meta[name="description"]
         value: attribute(el, "content")
       image:
-        select: main div.columns div picture img
+        select: main div.columns:first-child img
         value: attribute(el, "src")
       tags:
         select: head > meta[name="pagetags"]
