@@ -13,9 +13,4 @@ export default async function buildAutoBlocks() {
     titleDiv,
     buildBlock('back-navigation', { elems: [] }),
   );
-  const sectionMiddle = main.querySelector(':scope > div:nth-child(2)');
-  sectionMiddle.classList.add(...'webinar-middle-container w-full'.split(' '));
-  sectionMiddle.prepend(
-    buildBlock('speakers-info', { elems: [] }),
-  );
 }

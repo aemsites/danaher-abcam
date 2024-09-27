@@ -301,7 +301,7 @@ function decorateStoryPage(main){
 
 function decorateWebinarPage(main){
   const sectionEl2 = main.querySelector(':scope > div.section.webinartitle-container.back-navigation-container.columns-container');
-  const sectionEl = main.querySelector(':scope > div.section.abcam-button-container.speakers-info-container');
+  const sectionEl = main.querySelector(':scope > div.section.abcam-button-container');
   if(sectionEl){
     const toBeRemoved = ['abcam-button-wrapper'];
     const rightSideElements = div({class: 'w-full'});
