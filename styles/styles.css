@@ -1199,11 +1199,6 @@ audio::-webkit-media-controls-panel {
   margin-bottom: 1rem;
 }
 
-.mx-auto {
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .my-auto {
   margin-top: auto;
   margin-bottom: auto;
@@ -1279,18 +1274,6 @@ audio::-webkit-media-controls-panel {
 
 .mt-4 {
   margin-top: 1rem;
-}
-
-.ml-72 {
-  margin-left: 18rem;
-}
-
-.mt-\[-8rem\] {
-  margin-top: -8rem;
-}
-
-.mt-\[-6rem\] {
-  margin-top: -6rem;
 }
 
 .mt-\[-7rem\] {
@@ -1373,10 +1356,6 @@ audio::-webkit-media-controls-panel {
 
 .w-2\/5 {
   width: 40%;
-}
-
-.w-3\/4 {
-  width: 75%;
 }
 
 .w-44 {
@@ -1993,6 +1972,10 @@ audio::-webkit-media-controls-panel {
 @media (min-width: 768px) {
   .md\:mb-2 {
     margin-bottom: 0.5rem;
+  }
+
+  .md\:ml-\[311px\] {
+    margin-left: 311px;
   }
 
   .md\:h-64 {

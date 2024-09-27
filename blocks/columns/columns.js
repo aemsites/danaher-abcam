@@ -25,7 +25,7 @@ export default function decorate(block) {
       applyClasses(row, 'container max-w-7xl mx-auto');
       const pageTags = getMetadata('pagetags');
       let tag = '';
-      if(pageTags.includes('/')){
+      if (pageTags.includes('/')) {
         tag = pageTags?.split('/').pop();
       } else {
         tag = pageTags?.split(':').pop();
