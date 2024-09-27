@@ -607,8 +607,8 @@
                 "template": {
                   "name": "SpeakersInfo",
                   "model": "speakers-info",
-                  "speakers_titleType": "h4",
-                  "speakers_subtitleType": "h5"
+                  "speakers_titleType": "h5",
+                  "speakers_subtitleType": "h6"
                 }
               }
             }

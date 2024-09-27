@@ -56,6 +56,18 @@
   width: 60%
 }
 
+.speakersinfo-wrapper :is(.w-\[87\%\]) {
+  width: 87%
+}
+
+.speakersinfo-wrapper :is(.basis-1\/2) {
+  flex-basis: 50%
+}
+
+.speakersinfo-wrapper :is(.flex-row-reverse) {
+  flex-direction: row-reverse
+}
+
 .speakersinfo-wrapper :is(.items-center) {
   align-items: center
 }
@@ -72,6 +84,11 @@
 
 .speakersinfo-wrapper :is(.rounded-full) {
   border-radius: 9999px
+}
+
+.speakersinfo-wrapper :is(.bg-neutral-100) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(245 245 245 / var(--tw-bg-opacity))
 }
 
 .speakersinfo-wrapper :is(.pt-10) {
@@ -137,7 +154,29 @@
   color: rgb(0 0 0 / var(--tw-text-opacity))
 }
 
+@media (max-width: 768px) {
+  .speakersinfo-wrapper :is(.max-\[768px\]\:w-full) {
+    width: 100%
+  }
+}
+
+@media (min-width: 640px) {
+  .speakersinfo-wrapper :is(.sm\:block) {
+    display: block
+  }
+}
+
+@media (min-width: 768px) {
+  .speakersinfo-wrapper :is(.md\:flex-row-reverse) {
+    flex-direction: row-reverse
+  }
+}
+
 @media (min-width: 1024px) {
+  .speakersinfo-wrapper :is(.lg\:flex) {
+    display: flex
+  }
+
   .speakersinfo-wrapper :is(.lg\:h-20) {
     height: 5rem
   }
@@ -148,5 +187,16 @@
 
   .speakersinfo-wrapper :is(.lg\:w-1\/2) {
     width: 50%
+  }
+}
+
+@media (min-width: 1280px) {
+  .speakersinfo-wrapper :is(.xl\:max-w-\[1120px\]) {
+    max-width: 1120px
+  }
+
+  .speakersinfo-wrapper :is(.xl\:px-0) {
+    padding-left: 0px;
+    padding-right: 0px
   }
 }
