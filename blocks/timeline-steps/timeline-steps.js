@@ -5,12 +5,10 @@ import { div, h5 } from '../../scripts/dom-builder.js';
  * @param {Element} block The header block element
  */
 export default async function decorate(block) {
-  // eslint-disable-next-line no-console
-  console.log(block);
   const title = block.querySelector('h2');
   title?.classList.add(...'text-3xl mb-6 font-semibold text-heading-large font-header md:pt-20 md:-mt-20'.split(' '));
   [...block.children].map((element) => {
-    const steps = element.querySelectorAll('ol');
+    const steps = element.querySelectorAll('ul');
     if (steps && steps.length > 0) {
       let index = 1;
       [...steps].map((eachStep) => {
