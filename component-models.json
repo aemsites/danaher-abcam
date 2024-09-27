@@ -1596,7 +1596,7 @@
     ]
   },
   {
-    "id": "speakers",
+    "id": "speakers-info",
     "fields": [
       {
         "component": "text",
