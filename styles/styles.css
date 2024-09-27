@@ -795,6 +795,24 @@ header {
   }
 }
 
+.default-content-wrapper:first-child {
+  padding-bottom: 2rem;
+}
+
+.default-content-wrapper:not(:first-child, :last-child) {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.default-content-wrapper:last-child {
+  padding-top: 2rem;
+}
+
+.default-content-wrapper > ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+}
+
 main .section .default-content-wrapper a {
   font-weight: 700;
   --tw-text-opacity: 1;
@@ -1977,26 +1995,6 @@ audio::-webkit-media-controls-panel {
     margin-bottom: 0.5rem;
   }
 
-  .md\:ml-8 {
-    margin-left: 2rem;
-  }
-
-  .md\:ml-72 {
-    margin-left: 18rem;
-  }
-
-  .md\:ml-80 {
-    margin-left: 20rem;
-  }
-
-  .md\:ml-\[300px\] {
-    margin-left: 300px;
-  }
-
-  .md\:ml-\[311px\] {
-    margin-left: 311px;
-  }
-
   .md\:h-64 {
     height: 16rem;
   }
@@ -2060,12 +2058,7 @@ audio::-webkit-media-controls-panel {
     width: 50%;
   }
 
-  .lg\:py-6 {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-  }
-
-  .lg\:pr-6 {
-    padding-right: 1.5rem;
+  .lg\:max-w-72 {
+    max-width: 18rem;
   }
 }   

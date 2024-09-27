@@ -3,9 +3,11 @@
     "/content/danaher/abcam:/",
     "/content/danaher/abcam/:/",
     "/content/danaher/abcam/redirects:/redirects.json",
+    "/content/danaher/abcam/tags:/tags.json",
     "/content/danaher/abcam/configuration:/.helix/config.json",
     "/content/danaher/abcam/metadata:/metadata.json",
-    "/content/danaher/abcam/placeholders:/placeholders.json"
+    "/content/danaher/abcam/placeholders:/placeholders.json",
+    "/content/danaher.resource/en-us/stories/index.json:/en-us/stories/index.json"
   ],
   "includes": [
     "/content/danaher/abcam"

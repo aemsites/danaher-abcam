@@ -291,7 +291,7 @@ function decorateStoryPage(main){
     });
     sectionEl?.append(rightSideElements);
 
-    const divEl = div({ class: 'ml-0 md:ml-8 min-w-56' });
+    const divEl = div({ class: 'ml-0 min-w-56 lg:max-w-72' });
     divEl.append(sectionEl?.querySelector('.story-info-wrapper'));
     divEl.append(sectionEl?.querySelector('.social-media-wrapper'));
     divEl.append(sectionEl?.querySelector('.sidelinks-wrapper'));
