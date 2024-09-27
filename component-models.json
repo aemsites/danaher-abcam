@@ -57,19 +57,7 @@
             "valueType": "string",
             "name": "authorName",
             "label": "Author Name"
-          },
-          {
-            "component": "text",
-            "valueType": "string",
-            "name": "authorTitle",
-            "label": "Author Title"
-          },
-          {
-            "component": "text",
-            "valueType": "string",
-            "name": "authorDecsription",
-            "label": "Author Description"
-          },                    
+          },                  
           {
             "component": "reference",
             "valueType": "string",
@@ -1604,6 +1592,46 @@
         "value": "",
         "label": "Description",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "speakers",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "speakers_title",
+        "value": "",
+        "label": "Title"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "speakers_subtitle",
+        "value": "",
+        "label": "Subtitle"
+      },
+      {
+        "component": "richtext",
+        "name": "speakers_description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Alt",
+        "value": ""
       }
     ]
   }

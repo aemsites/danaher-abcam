@@ -58,19 +58,7 @@
                     "valueType": "string",
                     "name": "authorName",
                     "label": "Author Name"
-                  },
-                  {
-                    "component": "text",
-                    "valueType": "string",
-                    "name": "authorTitle",
-                    "label": "Author Title"
-                  },
-                  {
-                    "component": "text",
-                    "valueType": "string",
-                    "name": "authorDescription",
-                    "label": "Author Description"
-                  },                                    
+                  },                                   
                   {
                     "component": "reference",
                     "valueType": "string",
