@@ -50,7 +50,7 @@
                   {
                     "component": "aem-tag",
                     "valueType": "string",
-                    "name": "tags",
+                    "name": "pageTags",
                     "label": "AEM Tag Picker"
                   },
                   {
