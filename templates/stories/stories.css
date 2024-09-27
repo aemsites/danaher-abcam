@@ -11,12 +11,12 @@
   margin-right: 0px
 }
 
-.mb-4 {
-  margin-bottom: 1rem
-}
-
 .mt-2 {
   margin-top: 0.5rem
+}
+
+.mb-4 {
+  margin-bottom: 1rem
 }
 
 .block {
@@ -134,12 +134,13 @@
   background-color: rgb(237 246 247 / var(--tw-bg-opacity))
 }
 
-.p-4 {
-  padding: 1rem
-}
-
 .p-3 {
   padding: 0.75rem
+}
+
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem
 }
 
 .px-2 {
@@ -150,11 +151,6 @@
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem
-}
-
-.py-2 {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem
 }
 
 .pb-4 {
@@ -208,10 +204,6 @@
   letter-spacing: 0.025em
 }
 
-.text-\[\#07111299\] {
-  color: #07111299
-}
-
 .text-\[\#378189\] {
   --tw-text-opacity: 1;
   color: rgb(55 129 137 / var(--tw-text-opacity))
@@ -220,6 +212,10 @@
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity))
+}
+
+.text-\[\#07111299\] {
+  color: #07111299
 }
 
 .text-emerald-800 {

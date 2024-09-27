@@ -152,9 +152,12 @@ export default async function buildAutoBlocks() {
     );
   } else if (getMetadata('keywords').includes('all-stories')) {
     const filterNames = ['type', 'fullCategory'];
-    const response = await ffetch('https://stage.lifesciences.danaher.com/us/en/products-index.json')
+    let response = await ffetch('/en-us/stories/query-index.json')
       .chunks(500)
       .all();
+
+    response = response.sort((item1, item2) => item1.title.localeCompare(item2.title));
+
     lists = [...response];
     const hubFilters = div({ class: 'col-span-2 space-y-4' });
     createFilters({

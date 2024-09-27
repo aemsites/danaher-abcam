@@ -78,9 +78,8 @@ export function formatDateUTCSeconds(date, options = {}) {
  * @returns Optimized image
  */
 export function imageHelper(imageUrl, imageAlt, eager = false) {
-  const imgUrl = 'https://stage.lifesciences.danaher.com' + imageUrl;
   return img({
-    src: imgUrl,
+    src: imageUrl,
     alt: imageAlt,
     loading: eager ? 'eager' : 'lazy',
     class: 'mb-2 h-48 w-full object-cover',
@@ -746,6 +745,7 @@ export function createFilters({
     const topic = lists[topicIndex];
     for (let numIndex = 0; numIndex < filterNames.length; numIndex += 1) {
       const num = filterNames[numIndex];
+      console.log(typeof filterCategory[num] === 'undefined');
       if (
         Object.keys(filterCategory).length === 0
         || typeof filterCategory[num] === 'undefined'
@@ -756,7 +756,7 @@ export function createFilters({
       ) filterCategory[num].push(topic[num]);
     }
   }
-  // console.log(filterCategory);
+  console.log(filterCategory);
   for (let categoryIndex = 0; categoryIndex < Object.keys(filterCategory).length; categoryIndex += 1) {
     const categoryKey = Object.keys(filterCategory)[categoryIndex];
     const lists = ul({ class: 'space-y-2' });
