@@ -2,6 +2,7 @@ import {
   div, button, span, a, ul, li, h4, input,
 } from '../../scripts/dom-builder.js';
 import { decorateIcons } from '../../scripts/aem.js';
+import { applyClasses } from '../../scripts/scripts.js';
 
 function showFlyoutMenu() {
   document.querySelector('#menu-flyout')?.classList.remove('hidden');
@@ -32,7 +33,7 @@ function sortFlyoutMenus(menuPath) {
 
 function buildSearchBlock(headerBlock) {
   const searchHtmlBlock = headerBlock.children[0];
-  searchHtmlBlock.classList.add(...'navbar-wrapper justify-center bg-black z-50 pt-4'.split(' '));
+  applyClasses(searchHtmlBlock, 'navbar-wrapper justify-center bg-black z-50 pt-4');
   searchHtmlBlock.id = 'sticky-header';
   searchHtmlBlock.querySelector('p').classList.add('hidden');
   const logoSearchMenuContainer = div({ class: 'logo-search-menu-container flex flex-col gap-y-7' });
@@ -154,7 +155,6 @@ function buildFlyoutMenus(headerBlock) {
     backFlyout,
   );
 
-  // decorateIcons(closeFlyout);
   decorateIcons(backFlyout);
 
   const menuWrapper = ul({ class: 'h-full flex flex-col text-white gap-y-2 mt-3 overflow-auto [&>li.active]:bg-danaherpurple-50 [&>li.active]:font-bold' });
@@ -170,7 +170,7 @@ function buildFlyoutMenus(headerBlock) {
           ...(anchorHref && { 'data-href': anchorHref }),
         },
       );
-      if (flyMenuChild.querySelector('a') === null) {
+      if (!(flyMenuChild.querySelector('a'))) {
         liTag.setAttribute('data-redirect', contextPath);
         liTag.innerHTML += flyMenuChild.textContent;
         liTag.classList.add('font-bold');
