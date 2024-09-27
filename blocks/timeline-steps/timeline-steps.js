@@ -26,9 +26,9 @@ export default async function decorate(block) {
           step.append(stepContent);
           index += 1;
         });
-        return eachStep;
+        return null;
       });
     }
-    return steps;
+    return null;
   });
 }
