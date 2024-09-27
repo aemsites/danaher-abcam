@@ -17,8 +17,8 @@ indices:
         select: head > meta[name="description"]
         value: attribute(el, "content")
       image:
-        select: head > meta[property="og:image"]
-        value: match(attribute(el, "content"), "^(https?:\/\/.*?(abcam.com))+(.*)|^(.*)")
+        select: main div.columns div picture img
+        value: attribute(el, "src")
       tags:
         select: head > meta[name="pagetags"]
         value: attribute(el, "content")
