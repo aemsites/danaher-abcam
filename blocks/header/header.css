@@ -490,6 +490,14 @@
       grid-template-rows: repeat(2, minmax(0, 1fr))
     }
   }
+
+  .header-wrapper :is(.lg\:grid-rows-1) {
+    grid-template-rows: repeat(1, minmax(0, 1fr))
+  }
+
+  .header-wrapper :is(.lg\:grid-rows-2) {
+    grid-template-rows: repeat(2, minmax(0, 1fr))
+  }
 }
 
 .header-wrapper :is(.\[\&\>a\]\:w-full>a) {

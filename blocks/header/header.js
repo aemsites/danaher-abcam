@@ -210,12 +210,12 @@ function handleScroll() {
   const extendedSection = document.getElementById('extended-section');
   const brandLogo = stickyHeader.querySelector('.brand-logo');
   if (window.scrollY >= 95) {
-    stickyHeader.classList.add('remove-descedents', 'fixed', 'inset-x-0', 'top-0', 'w-full', 'shadow-lg');
+    applyClasses(stickyHeader, 'remove-descedents fixed inset-x-0 top-0 w-full shadow-lg');
     stickyHeader.firstElementChild.classList.add('bg-black');
     hamburgerIcon?.classList.remove('lg:hidden');
     hamburgerIcon?.classList.add('lg:block');
-    extendedSection?.classList.remove('lg:lg:grid-rows-2');
-    extendedSection?.classList.add('lg:lg:grid-rows-1');
+    extendedSection?.classList.remove('lg:grid-rows-2');
+    extendedSection?.classList.add('lg:grid-rows-1');
     extendedSection?.classList.remove('lg:block');
     extendedSection?.classList.add('lg:hidden');
     brandLogo?.classList.remove('h-full');
@@ -225,8 +225,8 @@ function handleScroll() {
     stickyHeader.firstElementChild.classList.remove('bg-danaherblue-600');
     hamburgerIcon?.classList.add('lg:hidden');
     hamburgerIcon?.classList.remove('lg:block');
-    extendedSection?.classList.remove('lg:lg:grid-rows-1');
-    extendedSection?.classList.add('lg:lg:grid-rows-2');
+    extendedSection?.classList.remove('lg:grid-rows-1');
+    extendedSection?.classList.add('lg:grid-rows-2');
     extendedSection?.classList.remove('lg:hidden');
     extendedSection?.classList.add('lg:block');
     brandLogo?.classList.remove('h-10');
