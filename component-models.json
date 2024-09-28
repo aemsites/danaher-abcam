@@ -938,6 +938,25 @@
     ]
   },
   {
+    "id": "filters",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "json_name",
+        "label": "Fetch URL",
+        "value": "https://stage.lifesciences.danaher.com/us/en/products-index.json"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "filter_names",
+        "value": "",
+        "label": "Filter Names"
+      }
+    ]
+  },
+  {
     "id": "form",
     "fields": [
       {

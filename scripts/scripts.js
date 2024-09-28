@@ -762,14 +762,14 @@ export function createFilters({
     const lists = ul({ class: 'space-y-2' });
     [...filterCategory[categoryKey]].map((categoryValue, categoryIndex) => {
       lists.append(li(
-        { class: categoryIndex >= limit ? 'hidden' : '' },
+        categoryIndex >= limit ? { class: 'hidden' } : '',
         label(
           {
-            class: 'w-full flex items-center gap-3 py-1 hover:px-1 hover:bg-gray-50 text-sm font-medium break-all capitalize cursor-pointer',
+            class: 'w-full flex items-center gap-3 py-1 md:hover:px-1 md:hover:bg-gray-50 text-sm font-medium break-all capitalize cursor-pointer',
             for: `${[categoryKey]}-${categoryValue}`
           },
           input({
-            class: 'accent-teal-800 hover:accent-teal-600',
+            class: 'accent-teal-800 md:hover:accent-teal-600',
             type: 'checkbox',
             name: [categoryKey],
             id: `${[categoryKey]}-${categoryValue}`,
@@ -801,17 +801,25 @@ export function createFilters({
       ));
     }
     const accordionSection = div(
-      { class: 'px-6 py-4 border border-gray-300 rounded-xl' },
-      p(
-        { class: 'flex items-center justify-between mt-0 mb-1' },
-        span({ class: 'text-base font-bold capitalize' }, categoryKey),
-        span({ class: 'icon icon-chevron-down size-5 cursor-pointer' })
+      { class: `flex flex-col-reverse px-6 py-4 border-b md:border border-gray-300 ${categoryIndex > 0 ? 'md:mt-4' : ''} md:rounded-xl [&_div:not(.hidden)~p]:mb-3 [&_div:not(.hidden)~p_.icon]:rotate-180` },
+      div(
+        { class: 'flex flex-col-reverse [&_ul:has(:checked)+*]:block' },
+        lists,
+        span({
+          class: 'hidden text-xs leading-5 font-medium text-emerald-600 mb-1 cursor-pointer hover:underline underline-offset-1',
+          onclick: () => clearFilterHandler(categoryKey),
+        }, 'Clear filters'),
       ),
-      span({
-        class: 'text-xs leading-5 font-medium text-emerald-600 mb-2 cursor-pointer hover:underline underline-offset-1',
-        onclick: () => clearFilterHandler(categoryKey),
-      }, 'Clear filters'),
-      lists,
+      p(
+        { class: 'flex items-center justify-between my-0' },
+        span({ class: 'text-base font-bold capitalize' }, categoryKey),
+        span({
+          class: 'icon icon-chevron-down size-5 cursor-pointer',
+          onclick: () => {
+            lists.parentElement.classList.toggle('hidden');
+          },
+        }),
+      ),
     );
     element.append(accordionSection);
   }

@@ -1,0 +1,64 @@
+{
+  "definitions": [
+    {
+      "title": "Filters",
+      "id": "filters",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Filters",
+              "model": "filters",
+              "filter": "filters"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Filter Name",
+      "id": "filter_name",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Filter Name",
+              "model": "filter_name"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "filters",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "json_name",
+          "label": "Fetch URL",
+          "value": "https://stage.lifesciences.danaher.com/us/en/products-index.json"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "filter_names",
+          "value": "",
+          "label": "Filter Names"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "filters",
+      "components": [
+        "filter-name"
+      ]
+    }
+  ]
+}
