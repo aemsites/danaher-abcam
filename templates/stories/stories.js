@@ -10,7 +10,7 @@ let lists = [];
 let filterContainer = {};
 const hub = div({ class: 'hub grid grid-cols-12 gap-6' });
 const allSelectedTags = div(
-  { class: 'flex items-start md:items-center gap-2 mb-4 cursor-pointer' },
+  { class: 'filter-content flex items-start md:items-center gap-2 mb-4 cursor-pointer' },
   span({ class: 'text-xs font-semibold text-[#07111299]' }, 'Filters:'),
   ul(
     { class: 'flex flex-wrap gap-2 [&_*:empty+*]:hidden' },
@@ -27,7 +27,6 @@ const clearAllEl = li(span(
 const cardList = ul({ class: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-stretch' });
 
 function handleRenderTags() {
-  // console.log(filterContainer);
   const tagsList = allSelectedTags.querySelector('ul');
   tagsList.innerHTML = '';
   if (Object.keys(filterContainer).length > 0) {
@@ -38,10 +37,11 @@ function handleRenderTags() {
             class: 'flex items-center capitalize gap-x-1 text-xs text-[#378189] bg-[#EDF6F7] px-2 py-1 rounded cursor-pointer',
             title: filt,
             onclick: (event) => {
+              const target = event.target.title ? event.target : event.target?.closest('li');
               hub.querySelector(`#${filterArr}-${filt}`).checked = false;
               // eslint-disable-next-line no-use-before-define
-              handleChangeFilter(filterArr, event.target.title);
-              event.target.remove();
+              handleChangeFilter(filterArr, target?.title);
+              document.querySelector('.filter-content').remove();
             },
           },
           filt,
@@ -50,6 +50,7 @@ function handleRenderTags() {
       });
     });
     tagsList.append(clearAllEl);
+    document.querySelector('.hub-center-content').prepend(allSelectedTags);
     decorateIcons(tagsList);
   }
 }
@@ -92,14 +93,8 @@ function handleChangeFilter(key, value, mode) {
         if (filterContainer[key].length === 0) delete filterContainer[key];
       } else filterContainer[key].push(value);
     } else filterContainer[key] = [value];
-    // newLists = lists.filter((list) => {
-    //   if (Object.keys(filterContainer).length === 0) return true;
-    //   return filterContainer[key].includes(list[key]);
-    // });
     newLists = lists.filter((list) => {
-      const x = Object.keys(filterContainer)
-        .filter((item) => filterContainer[item].includes(list[item]));
-      return Object.keys(filterContainer).length === x.length;
+      return filterContainer[key] ? list.tags.includes(filterContainer[key]) : true;
     });
   }
   handleRenderTags();
@@ -113,6 +108,7 @@ function handleResetFilters() {
       if (filterInp) filterInp.checked = false;
     }
   });
+  document.querySelector('.filter-content').remove();
   filterContainer = {};
   // eslint-disable-next-line no-use-before-define
   handleChangeFilter(null, null, 'skip-filter');
@@ -169,8 +165,7 @@ export default async function buildAutoBlocks() {
     });
 
     const hubContent = div(
-      { class: 'col-span-7' },
-      allSelectedTags,
+      { class: 'hub-center-content col-span-7' },
       cardList,
     );
 

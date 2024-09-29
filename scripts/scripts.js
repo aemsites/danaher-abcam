@@ -740,70 +740,87 @@ export function createFilters({
   clearFilterHandler = () => {},
   limit = 6,
 }) {
+
+  const output = {
+    contentTypes: new Set(),
+    researchAreas: new Set(),
+    applications: new Set()
+  };
   let filterCategory = {};
-  for (let topicIndex = 0; topicIndex < lists.length; topicIndex += 1) {
-    const topic = lists[topicIndex];
-    for (let numIndex = 0; numIndex < filterNames.length; numIndex += 1) {
-      const num = filterNames[numIndex];
-      console.log(typeof filterCategory[num] === 'undefined');
-      if (
-        Object.keys(filterCategory).length === 0
-        || typeof filterCategory[num] === 'undefined'
-      ) filterCategory[num] = [];
-      if (
-        topic[num] !== ''
-        && !filterCategory[num].includes(topic[num])
-      ) filterCategory[num].push(topic[num]);
-    }
-  }
-  console.log(filterCategory);
-  for (let categoryIndex = 0; categoryIndex < Object.keys(filterCategory).length; categoryIndex += 1) {
-    const categoryKey = Object.keys(filterCategory)[categoryIndex];
-    const lists = ul({ class: 'space-y-2' });
-    [...filterCategory[categoryKey]].map((categoryValue, categoryIndex) => {
-      lists.append(li(
-        { class: categoryIndex >= limit ? 'hidden' : '' },
-        label(
-          {
-            class: 'w-full flex items-center gap-3 py-1 hover:px-1 hover:bg-gray-50 text-sm font-medium break-all capitalize cursor-pointer',
-            for: `${[categoryKey]}-${categoryValue}`
-          },
-          input({
-            class: 'accent-teal-800 hover:accent-teal-600',
-            type: 'checkbox',
-            name: [categoryKey],
-            id: `${[categoryKey]}-${categoryValue}`,
-            onchange: () => {
-              // console.log(`${[categoryKey]}-${categoryValue}`);
-              listActionHandler(categoryKey, categoryValue);
-            }
-          }),
-          categoryValue,
-        ),
-      ));
+  lists.forEach((list) => {
+    const parts = list?.tags?.split(", ");
+  
+    parts.forEach(part => {
+        const [key, value] = part.split("/");
+        if (key.includes("content-type")) {
+            output.contentTypes.add(value);
+        } else if (key.includes("research-areas")) {
+            output.researchAreas.add(value);
+        } else if (key.includes("applications")) {
+            output.applications.add(value);
+        }
     });
-    if (limit !== 0 && filterCategory[categoryKey].length > limit) {
-      lists.append(li(
-        span(
-          {
-            class: 'text-sm text-emerald-800 font-normal mt-2 cursor-pointer hover:underline underline-offset-1',
-            onclick: (event) => {
-              const anyHiddenChild = event.target.parentElement.parentElement.querySelector('.hidden');
-              [...event.target.parentElement.parentElement.children].forEach((child, childIndex) => {
-                if (anyHiddenChild) child.classList.remove('hidden');
-                else if (childIndex > limit && childIndex !== (event.target.parentElement.parentElement.children.length - 1)) child.classList.add('hidden');
-              });
-              event.target.innerText = `Show ${anyHiddenChild ? 'Less' : 'More'}`;
-            }
-          },
-          'Show More'
+  });
+
+  filterCategory['content-type'] = [...output.contentTypes];
+  filterCategory['research-areas'] = [...output.researchAreas];
+  filterCategory['applications'] = [...output.applications];
+
+  Object.keys(filterCategory).forEach(categoryKey => {
+    const lists = ul({ class: 'space-y-2' });
+    
+    filterCategory[categoryKey].forEach((categoryValue, index) => {
+      const hiddenClass = index >= limit ? 'hidden' : '';
+      lists.append(
+        li({ class: hiddenClass },
+          label(
+            {
+              class: 'w-full flex items-center gap-3 py-1 hover:px-1 hover:bg-gray-50 text-sm font-medium break-all capitalize cursor-pointer',
+              for: `${categoryKey}-${categoryValue}`
+            },
+            input({
+              class: 'accent-teal-800 hover:accent-teal-600',
+              type: 'checkbox',
+              name: categoryKey,
+              id: `${categoryKey}-${categoryValue}`,
+              onchange: () => listActionHandler(categoryKey, categoryValue),
+            }),
+            categoryValue
+          )
         )
-      ));
+      );
+    });
+  
+    // Add "Show More" button if needed
+    if (limit !== 0 && filterCategory[categoryKey].length > limit) {
+      lists.append(
+        li(
+          span(
+            {
+              class: 'text-sm text-emerald-800 font-normal mt-2 cursor-pointer hover:underline underline-offset-1',
+              onclick: (event) => {
+                const parent = event.target.closest('ul');
+                const hiddenItems = parent.querySelectorAll('.hidden');
+                const toggle = hiddenItems.length > 0;
+                
+                parent.querySelectorAll('li').forEach((child, childIndex) => {
+                  if (childIndex >= limit && childIndex !== parent.children.length - 1) {
+                    child.classList.toggle('hidden', !toggle);
+                  }
+                });
+                event.target.innerText = `Show ${toggle ? 'Less' : 'More'}`;
+              }
+            },
+            'Show More'
+          )
+        )
+      );
     }
+  
     const accordionSection = div(
       { class: 'px-6 py-4 border border-gray-300 rounded-xl' },
       p(
-        { class: 'flex items-center justify-between mt-0 mb-1' },
+        { class: 'filter-title-element flex items-center justify-between mt-0 mb-1' },
         span({ class: 'text-base font-bold capitalize' }, categoryKey),
         span({ class: 'icon icon-chevron-down size-5 cursor-pointer' })
       ),
@@ -811,10 +828,11 @@ export function createFilters({
         class: 'text-xs leading-5 font-medium text-emerald-600 mb-2 cursor-pointer hover:underline underline-offset-1',
         onclick: () => clearFilterHandler(categoryKey),
       }, 'Clear filters'),
-      lists,
+      lists
     );
+  
     element.append(accordionSection);
-  }
+  });
 }
 
 export function createCard({
