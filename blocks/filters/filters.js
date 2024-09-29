@@ -1,11 +1,10 @@
 import ffetch from '../../scripts/ffetch.js';
+import { decorateIcons } from '../../scripts/aem.js';
 import {
-  button,
-  div, li, p, span, ul,
+  button, div, p, span, ul, li,
 } from '../../scripts/dom-builder.js';
-import { buildBlock, decorateIcons, getMetadata } from '../../scripts/aem.js';
 import { createCard, createFilters, imageHelper } from '../../scripts/scripts.js';
-import { createPagination, getPageFromUrl } from '../../blocks/dynamic-cards/dynamic-cards.js';
+import { createPagination, getPageFromUrl } from '../dynamic-cards/dynamic-cards.js';
 
 let lists = [];
 let filterContainer = {};
@@ -139,8 +138,14 @@ function handleChangeFilter(key, value, mode) {
         if (filterContainer[key].length === 0) delete filterContainer[key];
       } else filterContainer[key].push(value);
     } else filterContainer[key] = [value];
+    // newLists = lists.filter((list) => {
+    //   if (Object.keys(filterContainer).length === 0) return true;
+    //   return filterContainer[key].includes(list[key]);
+    // });
     newLists = lists.filter((list) => {
-      return filterContainer[key] ? list.tags.includes(filterContainer[key]) : true;
+      const x = Object.keys(filterContainer)
+        .filter((item) => filterContainer[item].includes(list[item]));
+      return Object.keys(filterContainer).length === x.length;
     });
   }
   handleRenderTags();
@@ -154,7 +159,6 @@ function handleResetFilters() {
       if (filterInp) filterInp.checked = false;
     }
   });
-  document.querySelector('.filter-content').remove();
   filterContainer = {};
   // eslint-disable-next-line no-use-before-define
   handleChangeFilter(null, null, 'skip-filter');
@@ -183,37 +187,19 @@ function toggleMobileFilters(mode) {
   }
 }
 
-export default async function buildAutoBlocks() {
-  const main = document.querySelector('main');
-  const sectionColumns = main.querySelector(':scope > div > div.columns')?.parentElement;
-  if (sectionColumns) {
-    const sectionMiddle = getMetadata('pagetags').includes('podcast')
-      ? main.querySelector(':scope > div:nth-child(3)')
-      : main.querySelector(':scope > div:nth-child(2)');
-    sectionColumns.prepend(
-      buildBlock('back-navigation', { elems: [] }),
-    );
-    sectionMiddle.classList.add(...'story-middle-container w-full'.split(' '));
-    const sideLinksDiv = div({ class: 'sidelinks leading-5 text-sm font-bold text-black pb-4' }, 'Explore Our Products');
-    main.querySelectorAll('p')?.forEach((paragraph) => {
-      if (paragraph.querySelector('a[title="link"]')) {
-        paragraph.classList.add(...'border-b border-b-gray-300 py-2 mx-0 w-auto mt-2'.split(' '));
-        sideLinksDiv.append(span({ class: 'leading-5 text-normal font-medium text-[#378189]' }, paragraph));
-      }
+export default async function decorate(block) {
+  if (block.children.length > 0) {
+    let filterNamesStr = '';
+    let fetchURL = '';
+    [...block.children].forEach((child, childIndex) => {
+      const firstElementChildren = child.children[0].children[0].innerText;
+      if (childIndex === 0) fetchURL = firstElementChildren;
+      if (childIndex === 1) filterNamesStr = firstElementChildren;
     });
-    sectionMiddle.prepend(
-      buildBlock('story-info', { elems: [] }),
-      buildBlock('social-media', { elems: [] }),
-      sideLinksDiv,
-    );
-  } else if (getMetadata('keywords').includes('all-stories')) {
-    const filterNames = ['type', 'fullCategory'];
-    let response = await ffetch('/en-us/stories/query-index.json')
+    const filterNames = filterNamesStr.split('|');
+    const response = await ffetch(fetchURL)
       .chunks(500)
       .all();
-
-    response = response.sort((item1, item2) => item1.title.localeCompare(item2.title));
-
     lists = [...response];
     const allFilters = p({ class: 'h-5/6 mb-3 overflow-scroll' });
     createFilters({
@@ -225,7 +211,8 @@ export default async function buildAutoBlocks() {
     });
 
     const hubContent = div(
-      { class: 'hub-center-content col-span-7' },
+      { class: 'col-span-7' },
+      allSelectedTags,
       cardList,
     );
 
@@ -257,6 +244,8 @@ export default async function buildAutoBlocks() {
     );
     hubDesktopFilters.querySelector('.icon.icon-close').addEventListener('click', () => toggleMobileFilters('close'));
     handleRenderContent();
-    main.append(hub);
+    decorateIcons(hub);
+    block.innerHTML = '';
+    block.append(hub);
   }
 }
