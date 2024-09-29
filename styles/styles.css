@@ -1218,14 +1218,14 @@ audio::-webkit-media-controls-panel {
   margin: auto;
 }
 
-.my-4 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
 .my-0 {
   margin-top: 0px;
   margin-bottom: 0px;
+}
+
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .mb-1 {
@@ -1282,10 +1282,6 @@ audio::-webkit-media-controls-panel {
 
 .mr-\[-8rem\] {
   margin-right: -8rem;
-}
-
-.mt-0 {
-  margin-top: 0px;
 }
 
 .mt-1 {
@@ -1621,10 +1617,6 @@ audio::-webkit-media-controls-panel {
   border-radius: 0.5rem;
 }
 
-.rounded-xl {
-  border-radius: 0.75rem;
-}
-
 .rounded-t-lg {
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
@@ -1642,16 +1634,16 @@ audio::-webkit-media-controls-panel {
   border-width: 2px;
 }
 
+.border-b {
+  border-bottom-width: 1px;
+}
+
 .border-b-8 {
   border-bottom-width: 8px;
 }
 
 .border-t {
   border-top-width: 1px;
-}
-
-.border-b {
-  border-bottom-width: 1px;
 }
 
 .border-\[\#ff7223\] {
@@ -2080,19 +2072,9 @@ audio::-webkit-media-controls-panel {
   background-color: rgb(42 95 101 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-gray-50:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
-}
-
 .hover\:bg-white:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.hover\:px-1:hover {
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
 }
 
 .hover\:text-black:hover {
@@ -2102,10 +2084,6 @@ audio::-webkit-media-controls-panel {
 
 .hover\:underline:hover {
   text-decoration-line: underline;
-}
-
-.hover\:accent-teal-600:hover {
-  accent-color: #0d9488;
 }
 
 .group:hover .group-hover\:tracking-wide {
@@ -2139,14 +2117,6 @@ audio::-webkit-media-controls-panel {
 @media (min-width: 768px) {
   .md\:mb-2 {
     margin-bottom: 0.5rem;
-  }
-
-  .md\:mb-3 {
-    margin-bottom: 0.75rem;
-  }
-
-  .md\:mb-1 {
-    margin-bottom: 0.25rem;
   }
 
   .md\:mt-4 {
@@ -2243,34 +2213,13 @@ audio::-webkit-media-controls-panel {
   }
 }
 
-.\[\&_\*\+\*\:not\(\.hidden\)\]\:mb-3 *+*:not(.hidden) {
-  margin-bottom: 0.75rem;
-}
-
-.\[\&_\*\~\*\:not\(\.hidden\)\]\:mb-3 *~*:not(.hidden) {
-  margin-bottom: 0.75rem;
-}
-
 .\[\&_div\:not\(\.hidden\)\~p\]\:mb-3 div:not(.hidden)~p {
   margin-bottom: 0.75rem;
-}
-
-.\[\&_div\:not\(\.hidden\)\~p_\.icon\]\:rotate-90 div:not(.hidden)~p .icon {
-  --tw-rotate: 90deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .\[\&_div\:not\(\.hidden\)\~p_\.icon\]\:rotate-180 div:not(.hidden)~p .icon {
   --tw-rotate: 180deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.\[\&_p\+div\:not\(\.hidden\)\]\:mb-3 p+div:not(.hidden) {
-  margin-bottom: 0.75rem;
-}
-
-.\[\&_p\~div\:not\(\.hidden\)\]\:mb-3 p~div:not(.hidden) {
-  margin-bottom: 0.75rem;
 }
 
 .\[\&_ul\:has\(\:checked\)\+\*\]\:block ul:has(:checked)+* {

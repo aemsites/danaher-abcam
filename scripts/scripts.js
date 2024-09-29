@@ -766,7 +766,7 @@ export function createFilters({
   filterCategory['research-areas'] = [...output.researchAreas];
   filterCategory['applications'] = [...output.applications];
 
-  Object.keys(filterCategory).forEach(categoryKey => {
+  Object.keys(filterCategory).forEach((categoryKey, categoryIndex) => {
     const lists = ul({ class: 'space-y-2' });
     [...filterCategory[categoryKey]].map((categoryValue, categoryIndex) => {
       lists.append(li(
