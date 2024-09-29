@@ -9,7 +9,7 @@ import { createPagination, getPageFromUrl } from '../../blocks/dynamic-cards/dyn
 
 let lists = [];
 let filterContainer = {};
-const hub = div({ class: 'hub grid grid-cols-12 gap-6' });
+const hub = div();
 const allSelectedTags = div(
   { class: 'w-fit flex flex-row-reverse items-start gap-2 mb-4 [&_*:empty+span]:hidden' },
   ul({ class: 'inline-flex items-center flex-wrap gap-2 [&_.showmoretags.active~*:not(.clear-all)]:hidden md:[&_.showmoretags.active~*:not(.clear-all):not(.showlesstags)]:flex md:[&_.showmoretags~*:not(.showlesstags)]:flex' }),
@@ -129,6 +129,7 @@ function handleRenderContent(newLists = lists) {
 }
 
 function handleChangeFilter(key, value, mode) {
+    console.log('handleChangeFilter', key, value, mode);
   let newLists = lists;
   if (mode !== 'skip-filter') {
     if (key !== 'undefined' && (value === 'undefined' || value === null)) {
@@ -184,7 +185,7 @@ function toggleMobileFilters(mode) {
 }
 
 export default async function decorate(block) {
-
+    block.innerHTML = '';
     const filterNames = ['type', 'fullCategory'];
     let response = await ffetch('/en-us/stories/query-index.json')
         .chunks(500)
@@ -203,7 +204,7 @@ export default async function decorate(block) {
     });
 
     const hubContent = div(
-        { class: 'hub-center-content col-span-7' },
+        { class: 'hub-center-content col-start-4 col-span-9' },
         allSelectedTags,
         cardList,
     );
@@ -219,22 +220,24 @@ export default async function decorate(block) {
         ),
     );
     hub.append(
-        div(
-        { class: 'flex flex-col' },
-        span(
-            {
-            class: 'w-full block md:hidden text-sm text-center font-semibold tracking-wide p-3 border border-black rounded-full',
-            onclick: () => toggleMobileFilters('open'),
-            },
-            'Filter',
+        div( { class: 'hub grid grid-cols-12 gap-6' },
+            div(
+            { class: 'flex flex-col col-span-3' },
+            span(
+                {
+                class: 'w-full block md:hidden text-sm text-center font-semibold tracking-wide p-3 border border-black rounded-full',
+                onclick: () => toggleMobileFilters('open'),
+                },
+                'Filter',
+            ),
+            hubDesktopFilters,
+            filterBackdrop,
+            ),
+            hubContent,
         ),
-        hubDesktopFilters,
-        filterBackdrop,
-        ),
-        hubContent,
         div({ class: 'paginate' }),
     );
     hubDesktopFilters.querySelector('.icon.icon-close').addEventListener('click', () => toggleMobileFilters('close'));
     handleRenderContent();
-    block.append(hub);
+    block.innerHTML = hub.outerHTML;
 }

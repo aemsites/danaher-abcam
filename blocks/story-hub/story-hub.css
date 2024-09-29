@@ -30,6 +30,26 @@
   grid-column: span 7 / span 7
 }
 
+.story-hub-wrapper :is(.col-span-3) {
+  grid-column: span 3 / span 3
+}
+
+.story-hub-wrapper :is(.col-span-8) {
+  grid-column: span 8 / span 8
+}
+
+.story-hub-wrapper :is(.col-span-9) {
+  grid-column: span 9 / span 9
+}
+
+.story-hub-wrapper :is(.col-start-4) {
+  grid-column-start: 4
+}
+
+.story-hub-wrapper :is(.col-start-5) {
+  grid-column-start: 5
+}
+
 .story-hub-wrapper :is(.my-0) {
   margin-top: 0px;
   margin-bottom: 0px
@@ -45,6 +65,14 @@
 
 .story-hub-wrapper :is(.mb-4) {
   margin-bottom: 1rem
+}
+
+.story-hub-wrapper :is(.mb-1) {
+  margin-bottom: 0.25rem
+}
+
+.story-hub-wrapper :is(.mt-2) {
+  margin-top: 0.5rem
 }
 
 .story-hub-wrapper :is(.block) {
@@ -75,6 +103,11 @@
 .story-hub-wrapper :is(.size-8) {
   width: 2rem;
   height: 2rem
+}
+
+.story-hub-wrapper :is(.size-5) {
+  width: 1.25rem;
+  height: 1.25rem
 }
 
 .story-hub-wrapper :is(.h-5\/6) {
@@ -167,6 +200,10 @@
   gap: 1.5rem
 }
 
+.story-hub-wrapper :is(.gap-3) {
+  gap: 0.75rem
+}
+
 .story-hub-wrapper :is(.gap-x-1) {
   -moz-column-gap: 0.25rem;
        column-gap: 0.25rem
@@ -177,8 +214,18 @@
        column-gap: 0.5rem
 }
 
+.story-hub-wrapper :is(.space-y-2 > :not([hidden]) ~ :not([hidden])) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.5rem * var(--tw-space-y-reverse))
+}
+
 .story-hub-wrapper :is(.overflow-scroll) {
   overflow: scroll
+}
+
+.story-hub-wrapper :is(.break-all) {
+  word-break: break-all
 }
 
 .story-hub-wrapper :is(.rounded) {
@@ -197,9 +244,18 @@
   border-top-width: 1px
 }
 
+.story-hub-wrapper :is(.border-b) {
+  border-bottom-width: 1px
+}
+
 .story-hub-wrapper :is(.border-black) {
   --tw-border-opacity: 1;
   border-color: rgb(0 0 0 / var(--tw-border-opacity))
+}
+
+.story-hub-wrapper :is(.border-gray-300) {
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity))
 }
 
 .story-hub-wrapper :is(.bg-\[\#378189\]) {
@@ -245,6 +301,16 @@
   padding-bottom: 0.5rem
 }
 
+.story-hub-wrapper :is(.px-6) {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem
+}
+
+.story-hub-wrapper :is(.py-4) {
+  padding-top: 1rem;
+  padding-bottom: 1rem
+}
+
 .story-hub-wrapper :is(.text-center) {
   text-align: center
 }
@@ -264,12 +330,25 @@
   line-height: 1rem
 }
 
+.story-hub-wrapper :is(.text-base) {
+  font-size: 1rem;
+  line-height: 1.5rem
+}
+
 .story-hub-wrapper :is(.font-normal) {
   font-weight: 400
 }
 
 .story-hub-wrapper :is(.font-semibold) {
   font-weight: 600
+}
+
+.story-hub-wrapper :is(.font-bold) {
+  font-weight: 700
+}
+
+.story-hub-wrapper :is(.font-medium) {
+  font-weight: 500
 }
 
 .story-hub-wrapper :is(.capitalize) {
@@ -308,8 +387,21 @@
   color: rgb(255 255 255 / var(--tw-text-opacity))
 }
 
+.story-hub-wrapper :is(.text-emerald-600) {
+  --tw-text-opacity: 1;
+  color: rgb(5 150 105 / var(--tw-text-opacity))
+}
+
 .story-hub-wrapper :is(.underline) {
   text-decoration-line: underline
+}
+
+.story-hub-wrapper :is(.underline-offset-1) {
+  text-underline-offset: 1px
+}
+
+.story-hub-wrapper :is(.accent-teal-800) {
+  accent-color: #115e59
 }
 
 .story-hub-wrapper :is(.invert) {
@@ -331,6 +423,10 @@
   transition-duration: 150ms
 }
 
+.story-hub-wrapper :is(.hover\:underline:hover) {
+  text-decoration-line: underline
+}
+
 @media (min-width: 768px) {
   .story-hub-wrapper :is(.md\:relative) {
     position: relative
@@ -348,6 +444,10 @@
     margin-bottom: 1rem
   }
 
+  .story-hub-wrapper :is(.md\:mt-4) {
+    margin-top: 1rem
+  }
+
   .story-hub-wrapper :is(.md\:hidden) {
     display: none
   }
@@ -363,6 +463,14 @@
 
   .story-hub-wrapper :is(.md\:grid-cols-2) {
     grid-template-columns: repeat(2, minmax(0, 1fr))
+  }
+
+  .story-hub-wrapper :is(.md\:rounded-xl) {
+    border-radius: 0.75rem
+  }
+
+  .story-hub-wrapper :is(.md\:border) {
+    border-width: 1px
   }
 
   .story-hub-wrapper :is(.md\:px-0) {
@@ -386,6 +494,20 @@
 
   .story-hub-wrapper :is(.md\:leading-5) {
     line-height: 1.25rem
+  }
+
+  .story-hub-wrapper :is(.md\:hover\:bg-gray-50:hover) {
+    --tw-bg-opacity: 1;
+    background-color: rgb(249 250 251 / var(--tw-bg-opacity))
+  }
+
+  .story-hub-wrapper :is(.md\:hover\:px-1:hover) {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem
+  }
+
+  .story-hub-wrapper :is(.md\:hover\:accent-teal-600:hover) {
+    accent-color: #0d9488
   }
 }
 
@@ -417,4 +539,17 @@
   .story-hub-wrapper :is(.md\:\[\&_\.showmoretags\~\*\:not\(\.showlesstags\)\]\:flex .showmoretags~*:not(.showlesstags)) {
     display: flex
   }
+}
+
+.story-hub-wrapper :is(.\[\&_div\:not\(\.hidden\)\~p\]\:mb-3 div:not(.hidden)~p) {
+  margin-bottom: 0.75rem
+}
+
+.story-hub-wrapper :is(.\[\&_div\:not\(\.hidden\)\~p_\.icon\]\:rotate-180 div:not(.hidden)~p .icon) {
+  --tw-rotate: 180deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+
+.story-hub-wrapper :is(.\[\&_ul\:has\(\:checked\)\+\*\]\:block ul:has(:checked)+*) {
+  display: block
 }
