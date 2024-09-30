@@ -1,6 +1,6 @@
 import ffetch from '../../scripts/ffetch.js';
 import { decorateIcons } from '../../scripts/aem.js';
-import { buildStoryHubSchema } from '../../schema.js';
+import { buildStoryHubSchema } from '../../scripts/schema.js';
 import {
   button, div, p, span, ul, li,
 } from '../../scripts/dom-builder.js';
