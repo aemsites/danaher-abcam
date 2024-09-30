@@ -741,24 +741,26 @@ export function createFilters({
   limit = 6,
 }) {
 
-  const output = {
-    contentTypes: new Set(),
-    researchAreas: new Set(),
-    applications: new Set()
-  };
+  const output = filterNames.reduce((obj, key) => {
+    obj[key] = new Set();
+    return obj;
+  }, {});
+
+  console.log("output", output);
+
   let filterCategory = {};
   lists.forEach((list) => {
     const parts = list?.tags?.split(", ");
-  
     parts.forEach(part => {
-        const [key, value] = part.split("/");
-        if (key.includes("content-type")) {
-            output.contentTypes.add(value);
-        } else if (key.includes("research-areas")) {
-            output.researchAreas.add(value);
-        } else if (key.includes("applications")) {
-            output.applications.add(value);
-        }
+      console.log("part", part);
+      // const [key, value] = part.split("/");
+      // if (key.includes("content-type")) {
+      //     output.contentTypes.add(value);
+      // } else if (key.includes("research-areas")) {
+      //     output.researchAreas.add(value);
+      // } else if (key.includes("applications")) {
+      //     output.applications.add(value);
+      // }
     });
   });
 

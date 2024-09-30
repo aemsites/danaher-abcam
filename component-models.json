@@ -1538,11 +1538,11 @@
         "options": [
           {
             "name": "Content Type",
-            "value": "contentType"
+            "value": "content-type"
           },
           {
             "name": "Research Areas",
-            "value": "researchAreas"
+            "value": "research-areas"
           },
           {
             "name": "Applications",
