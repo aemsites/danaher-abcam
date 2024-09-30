@@ -812,7 +812,7 @@ export function createFilters({
       { class: `flex flex-col px-6 py-4 border-b md:border border-gray-300 ${categoryIndex > 0 ? 'md:mt-4' : ''} md:rounded-xl [&_div:not(.hidden)~p]:mb-3 [&_div:not(.hidden)~p_.icon]:rotate-180` },
       p(
         { class: 'flex items-center justify-between my-0' },
-        span({ class: 'text-base font-bold capitalize' }, categoryKey),
+        span({ class: 'text-base font-bold capitalize' }, categoryKey.replace('-', ' ')),
         span({
           class: 'icon icon-chevron-down size-5 cursor-pointer',
           onclick: () => {
@@ -853,7 +853,7 @@ export function createCard({
       titleImage,
       div(
         { class: 'flex-1' },
-        h3({ class: 'text-black font-medium mt-4 break-words' }, title),
+        h3({ class: 'text-black font-medium mt-4 break-words line-clamp-4' }, title),
         p({ class: 'line-clamp-3' }, description),
         bodyEl
       ),
