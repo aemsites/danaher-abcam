@@ -106,3 +106,32 @@ export function buildPodcastEpisodeSchema(mediaURL, episodeNum, seriesName, seri
 
   setJsonLd(data, 'podcastepisode');
 }
+
+function generateItemListElement(type, position, url, name) {
+    return {
+      '@type': type,
+      position,
+      item: {
+        '@id': url,
+        name,
+      },
+    };
+  }
+   
+  export function buildStoryHubSchema(srcObj) {
+    const data = {
+      '@context': 'http://schema.org',
+      '@type': 'ItemList',
+      '@id': `https://lifesciences.danaher.com${makePublicUrl(window.location.pathname)}`,
+      itemListElement: [],
+    };
+   
+    srcObj.forEach((obj, index) => {
+      data.itemListElement.push(generateItemListElement(
+        'ListItem',
+        index + 1,
+        obj.clickUri,
+        obj.title,
+      ));
+    });
+}
