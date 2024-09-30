@@ -1,6 +1,6 @@
 import { buildBlock, getMetadata } from '../../scripts/aem.js';
 import { div, span } from '../../scripts/dom-builder.js';
-import { buildArticleSchema } from '../../scripts/schema.js';
+import { buildArticleSchema, buildPodcastEpisodeSchema } from '../../scripts/schema.js';
 
 export default async function buildAutoBlocks() {
   const main = document.querySelector('main');
