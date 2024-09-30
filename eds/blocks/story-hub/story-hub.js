@@ -116,13 +116,13 @@ function handleRenderContent(newLists = lists, page) {
     const type = article.path.split('/')[3];
     switch (type) {
       case 'podcasts':
-        footerLink = 'Listen to Podcast';
+        footerLink = 'Listen to podcast';
         break;
       case 'films':
-        footerLink = 'Watch Film';
+        footerLink = 'Watch film';
         break;
       default:
-        footerLink = 'Read Article';
+        footerLink = 'Read article';
         break;
     }
 

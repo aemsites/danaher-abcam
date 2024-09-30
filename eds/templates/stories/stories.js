@@ -28,6 +28,6 @@ export default async function buildAutoBlocks() {
   sectionMiddle.prepend(
     buildBlock('story-info', { elems: [] }),
     buildBlock('social-media', { elems: [] }),
-    sideLinksDiv('Explore Our Products'),
+    sideLinksDiv('Explore our products'),
   );
 }
