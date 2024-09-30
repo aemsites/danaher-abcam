@@ -109,29 +109,29 @@ export function buildPodcastEpisodeSchema(mediaURL, episodeNum, seriesName, seri
 
 function generateItemListElement(type, position, url, name) {
   return {
-   '@type': type,
-      position,
-      item: {
-        '@id': url,
-        name,
-      },
-    };
-  }
-   
-  export function buildStoryHubSchema(srcObj) {
-    const data = {
-      '@context': 'http://schema.org',
-      '@type': 'ItemList',
-      '@id': `https://www.abcam.com${makePublicUrl(window.location.pathname)}`,
-      itemListElement: [],
-    };
-   
-    srcObj.forEach((obj, index) => {
-      data.itemListElement.push(generateItemListElement(
-        'ListItem',
-        index + 1,
-        obj.clickUri,
-        obj.title,
-      ));
-    });
+    '@type': type,
+    position,
+    item: {
+      '@id': url,
+      name,
+    },
+  };
+}
+
+export function buildStoryHubSchema(srcObj) {
+  const data = {
+    '@context': 'http://schema.org',
+    '@type': 'ItemList',
+    '@id': `https://www.abcam.com${makePublicUrl(window.location.pathname)}`,
+    itemListElement: [],
+  };
+
+  srcObj.forEach((obj, index) => {
+    data.itemListElement.push(generateItemListElement(
+      'ListItem',
+      index + 1,
+      obj.clickUri,
+      obj.title,
+    ));
+  });
 }
