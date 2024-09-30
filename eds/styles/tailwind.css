@@ -68,7 +68,7 @@
 
 @layer components {
     header {
-        @apply h-11 lg:h-16;
+        @apply h-28 md:h-16 lg:h-32;
     }
 
     .default-content-wrapper:first-child {
@@ -161,6 +161,18 @@
 
     main .section > .recently-viewed-wrapper {
         @apply mx-auto max-[768px]:w-full;
+    }
+
+    main .section.hub > div:first-child {
+        @apply col-span-12 md:col-span-3;
+    }
+
+    main .section.hub > div:last-child {
+        @apply col-span-12;
+    }
+
+    main .section.hub > div:nth-child(2) {
+        @apply col-span-12 md:col-span-9;
     }
 
     .search-results main {

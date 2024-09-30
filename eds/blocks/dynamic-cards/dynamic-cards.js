@@ -7,7 +7,7 @@ import { getMetadata, toClassName } from '../../scripts/aem.js';
 import createArticleCard from './articleCard.js';
 
 const getSelectionFromUrl = () => (window.location.pathname.indexOf('topics') > -1 ? toClassName(window.location.pathname.replace('.html', '').split('/').pop()) : '');
-const getPageFromUrl = () => toClassName(new URLSearchParams(window.location.search).get('page')) || '';
+export const getPageFromUrl = () => toClassName(new URLSearchParams(window.location.search).get('page')) || '';
 
 const createTopicUrl = (currentUrl, keyword = '') => {
   if (currentUrl.indexOf('topics') > -1) {
@@ -40,7 +40,7 @@ const createPaginationLink = (page, label, current = false) => {
   return link;
 };
 
-const createPagination = (entries, page, limit) => {
+export const createPagination = (entries, page, limit) => {
   const paginationNav = document.createElement('nav');
   paginationNav.className = 'flex items-center justify-between border-t py-4 md:py-0 mt-8 md:mt-12';
 

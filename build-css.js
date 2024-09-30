@@ -249,6 +249,11 @@ const fileMappings = [
     wrapper: 'story-info-wrapper',
   },
   {
+    content: './eds/blocks/story-hub/story-hub.js',
+    output: './eds/blocks/story-hub/story-hub.css',
+    wrapper: 'story-hub-wrapper',
+  },
+  {
     content: './eds/blocks/social-media/social-media.js',
     output: './eds/blocks/social-media/social-media.css',
     wrapper: 'social-media-wrapper',

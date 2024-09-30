@@ -15,7 +15,7 @@ import {
   getMetadata,
   createOptimizedPicture,
 } from './aem.js';
-import { div, span, button, iframe, p, img, li } from './dom-builder.js';
+import { div, span, button, iframe, p, img, li, label, input, ul, a, h3 } from './dom-builder.js';
 
 const LCP_BLOCKS = ['hero', 'hero-video', 'carousel']; // add your LCP blocks to the list
 
@@ -78,9 +78,8 @@ export function formatDateUTCSeconds(date, options = {}) {
  * @returns Optimized image
  */
 export function imageHelper(imageUrl, imageAlt, eager = false) {
-  const imgUrl = 'https://stage.lifesciences.danaher.com' + imageUrl;
   return img({
-    src: imgUrl,
+    src: imageUrl,
     alt: imageAlt,
     loading: eager ? 'eager' : 'lazy',
     class: 'mb-2 h-48 w-full object-cover',
@@ -731,6 +730,144 @@ async function loadPage() {
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();
+}
+
+export function createFilters({
+  lists = [],
+  filterNames = [],
+  element,
+  listActionHandler = () => {},
+  clearFilterHandler = () => {},
+  limit = 6,
+}) {
+
+  const output = filterNames.reduce((obj, key) => {
+    obj[key] = new Set();
+    return obj;
+  }, {});
+
+  lists.forEach((list) => {
+    const parts = list?.tags?.split(", ");
+    parts.forEach(part => {
+      const [key, value] = part.split("/");
+      filterNames.forEach((name) => {
+        if (key.includes(name)) {
+          output[name].add(value);
+        }
+      });
+    });
+  });
+
+  Object.keys(output).forEach((categoryKey, categoryIndex) => {
+    const lists = ul({ class: 'space-y-2' });
+    [...output[categoryKey]].map((categoryValue, categoryIndex) => {
+      lists.append(li(
+        categoryIndex >= limit ? { class: 'hidden' } : '',
+        label(
+          {
+            class: 'w-full flex items-center gap-3 py-1 md:hover:px-1 md:hover:bg-gray-50 text-sm font-medium break-all capitalize cursor-pointer',
+            for: `${[categoryKey]}-${categoryValue}`
+          },
+          input({
+            class: 'accent-teal-800 md:hover:accent-teal-600',
+            type: 'checkbox',
+            name: [categoryKey],
+            id: `${[categoryKey]}-${categoryValue}`,
+            onchange: () => {
+              listActionHandler(categoryKey, categoryValue);
+            }
+          }),
+          categoryValue,
+        ),
+      ));
+    });
+  
+    // Add "Show More" button if needed
+    if (limit !== 0 && output[categoryKey].length > limit) {
+      lists.append(
+        li(
+          span(
+            {
+              class: 'text-sm text-emerald-800 font-normal mt-2 cursor-pointer hover:underline underline-offset-1',
+              onclick: (event) => {
+                const parent = event.target.closest('ul');
+                const hiddenItems = parent.querySelectorAll('.hidden');
+                const toggle = hiddenItems.length > 0;
+                
+                parent.querySelectorAll('li').forEach((child, childIndex) => {
+                  if (childIndex >= limit && childIndex !== parent.children.length - 1) {
+                    child.classList.toggle('hidden', !toggle);
+                  }
+                });
+                event.target.innerText = `Show ${toggle ? 'Less' : 'More'}`;
+              }
+            },
+            'Show More'
+          )
+        )
+      );
+    }
+  
+    const accordionSection = div(
+      { class: `flex flex-col px-6 py-4 border-b md:border border-gray-300 ${categoryIndex > 0 ? 'md:mt-4' : ''} md:rounded-xl [&_div:not(.hidden)~p]:mb-3 [&_div:not(.hidden)~p_.icon]:rotate-180` },
+      p(
+        { class: 'flex items-center justify-between my-0' },
+        span({ class: 'text-base font-bold capitalize' }, categoryKey),
+        span({
+          class: 'icon icon-chevron-down size-5 cursor-pointer',
+          onclick: () => {
+            lists.parentElement.classList.toggle('hidden');
+          },
+        }),
+      ),
+      div(
+        { class: 'flex flex-col-reverse [&_ul:has(:checked)+*]:block' },
+        lists,
+        span({
+          class: 'hidden text-xs leading-5 font-medium text-emerald-600 mb-1 cursor-pointer hover:underline underline-offset-1',
+          onclick: () => clearFilterHandler(categoryKey),
+        }, 'Clear filters'),
+      ),
+    );
+  
+    if(lists.children.length > 0) element.append(accordionSection);
+  });
+}
+
+export function createCard({
+  titleImage,
+  title = '',
+  description = '',
+  footerLink = '',
+  bodyEl = '',
+  footerEl = '',
+  path = '/',
+}) {
+  const card = li(
+    {
+      class: 'card relative overflow-hidden bg-transparent',
+      title,
+    },
+    a(
+      { class: 'size-full flex flex-col justify-center group', href: path },
+      titleImage,
+      div(
+        { class: 'flex-1' },
+        h3({ class: 'text-black font-medium mt-4 break-words' }, title),
+        p({ class: 'line-clamp-3' }, description),
+        bodyEl
+      ),
+      footerLink !== ''
+        ? a(
+          {
+            class: 'text-base leading-5 text-emerald-800 font-bold p-2 pl-0 group-hover:tracking-wide group-hover:underline transition duration-700 mt-2',
+            href: path
+          }, footerLink)
+        : '',
+      footerEl,
+    )
+  );
+  return card;
 }
 
 loadPage();

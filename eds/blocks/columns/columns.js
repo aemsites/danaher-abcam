@@ -15,7 +15,7 @@ export default function decorate(block) {
   block.classList.add(`columns-${cols.length}-cols`);
   const imageAspectRatio = 1.7778;
 
-  applyClasses(block, 'h-full lg:max-h-[475px] flex flex-col md:flex-row gap-y-6 md:px-0');
+  applyClasses(block, 'h-full flex flex-col md:flex-row gap-y-6 md:px-0');
 
   [...block.children].forEach((row) => {
     applyClasses(row, 'flex flex-col lg:flex-row');
@@ -25,7 +25,7 @@ export default function decorate(block) {
       applyClasses(row, 'container max-w-7xl mx-auto');
       const pageTags = getMetadata('pagetags');
       const tag = pageTags?.split('/').pop();
-      block.firstElementChild?.firstElementChild?.prepend(div({ class: 'font-normal text-sm leading-4 text-[#8B8B8B] capitalize mb-2' }, tag));
+      block.firstElementChild?.firstElementChild?.prepend(div({ class: 'font-normal text-sm leading-4 text-[#435656] capitalize mb-2' }, tag));
     }
 
     if (block.classList.contains('columns-2-cols')) {
