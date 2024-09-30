@@ -6,9 +6,9 @@ sampleRUM('cwv');
 
 // google tag manager -start
 function loadGTM() {
+  const gtmId = (window.location.host === 'www.abcam.com') ? 'GTM-5J97L4S' : 'GTM-PDRV95V';
   const scriptTag = document.createElement('script');
   scriptTag.innerHTML = `
-          let gtmId = (window.location.host === 'www.abcam.com') ? 'GTM-5J97L4S' : 'GTM-PDRV95V';
           // googleTagManager
           (function (w, d, s, l, i) {
               w[l] = w[l] || [];
@@ -22,13 +22,12 @@ function loadGTM() {
               j.src =
                   'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
               f.parentNode.insertBefore(j, f);
-          })(window, document, 'script', 'dataLayer', gtmId);
+          })(window, document, 'script', 'dataLayer', ${gtmId});
           `;
   document.head.prepend(scriptTag);
   const noScriptTag = document.createElement('noscript');
   noScriptTag.innerHTML = `
-    let gtmId = (window.location.host === 'www.abcam.com') ? 'GTM-5J97L4S' : 'GTM-PDRV95V';
-    <iframe src="https://www.googletagmanager.com/ns.html?id="+gtmId
+    <iframe src="https://www.googletagmanager.com/ns.html?id="+${gtmId}
     height="0" width="0" style="display:none;visibility:hidden"></iframe>
     `;
   document.body.prepend(noScriptTag);
