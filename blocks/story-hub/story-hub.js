@@ -112,11 +112,25 @@ function handleRenderContent(newLists = lists, page) {
   cardList.innerHTML = '';
 
   listsToDisplay.forEach((article, index) => {
+    let footerLink = '';
+    const type = article.path.split('/')[3];
+    switch (type) {
+      case 'podcasts':
+        footerLink = 'Listen to Podcast';
+        break;
+      case 'films':
+        footerLink = 'Watch Film';
+        break;
+      default:
+        footerLink = 'Read Article';
+        break;
+    }
+
     cardList.appendChild(createCard({
       titleImage: imageHelper(article.image, article.title, (index === 0)),
       title: article.title,
       description: article.description,
-      footerLink: 'Watch Film',
+      footerLink,
       path: article.path,
     }));
   });
