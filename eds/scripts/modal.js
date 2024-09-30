@@ -1,4 +1,4 @@
-import { loadFragment } from '../eds/blocks/fragment/fragment.js';
+import { loadFragment } from '../blocks/fragment/fragment.js';
 import {
   buildBlock, decorateIcons,
 } from './aem.js';
