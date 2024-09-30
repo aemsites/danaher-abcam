@@ -69,7 +69,7 @@ export function buildVideoSchema(embedURL) {
 }
 
 // eslint-disable-next-line import/prefer-default-export
-export function buildPodcastEpisodeSchema(mediaURL, episodeNum, seriesName, seriesURL, accessMode) {
+export function buildPodcastEpisodeSchema(mediaURL, episodeNum, seriesName, seriesURL, mode) {
   const data = {
     '@context': 'http://schema.org',
     '@type': 'PodcastEpisode',
@@ -84,7 +84,7 @@ export function buildPodcastEpisodeSchema(mediaURL, episodeNum, seriesName, seri
     },
     episodeNumber: episodeNum,
     image: getMetadata('og:image'),
-    accessMode: accessMode,
+    accessMode: mode,
     inLanguage: 'en',
   };
 
