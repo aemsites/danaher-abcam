@@ -16,7 +16,6 @@ import {
   createOptimizedPicture,
 } from './aem.js';
 import { div, span, button, iframe, p, img, li, label, input, ul, a, h3 } from './dom-builder.js';
-import { buildVideoSchema } from './schema.js';
 
 const LCP_BLOCKS = ['hero', 'hero-video', 'carousel']; // add your LCP blocks to the list
 
@@ -364,7 +363,6 @@ function createModalPopUp(videoLink, parentDiv) {
 
     ),
   );
-  buildVideoSchema(videoLink);
   decorateIcons(modalPopUp);
   return modalPopUp;
 }

@@ -108,8 +108,8 @@ export function buildPodcastEpisodeSchema(mediaURL, episodeNum, seriesName, seri
 }
 
 function generateItemListElement(type, position, url, name) {
-    return {
-      '@type': type,
+  return {
+   '@type': type,
       position,
       item: {
         '@id': url,
@@ -122,7 +122,7 @@ function generateItemListElement(type, position, url, name) {
     const data = {
       '@context': 'http://schema.org',
       '@type': 'ItemList',
-      '@id': `https://lifesciences.danaher.com${makePublicUrl(window.location.pathname)}`,
+      '@id': `https://www.abcam.com${makePublicUrl(window.location.pathname)}`,
       itemListElement: [],
     };
    
