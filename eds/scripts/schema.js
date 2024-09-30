@@ -107,6 +107,35 @@ export function buildPodcastEpisodeSchema(mediaURL, episodeNum, seriesName, seri
   setJsonLd(data, 'podcastepisode');
 }
 
+// eslint-disable-next-line import/prefer-default-export
+export function buildPodcastSeriesSchema(mode) {
+  const data = {
+    '@context': 'http://schema.org',
+    '@type': 'PodcastSeries',
+    name: getMetadata('og:title'),
+    description: getMetadata('description'),
+    url: `https://www.abcam.com${makePublicUrl(window.location.pathname)}`,
+    inLanguage: 'en',
+    publisher: {
+      '@type': 'Organization',
+      name: 'Abcam',
+      url: 'https://www.abcam.com/en-us',
+    },
+    image: getMetadata('og:image'),
+    accessMode: mode,
+    genre: 'Science, Research, Life Sciences',
+  };
+
+  if (getMetadata('authorname')) {
+    data.author = {
+    '@type': 'Person',
+    name: getMetadata('authorname'),
+    };
+  }
+
+  setJsonLd(data, 'podcastepisode');
+}
+
 function generateItemListElement(type, position, url, name) {
   return {
     '@type': type,
