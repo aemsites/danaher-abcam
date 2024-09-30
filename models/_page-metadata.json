@@ -42,10 +42,11 @@
                     "valueFormat": null
                   },
                   {
-                    "component": "text",
+                    "component": "reference",
                     "valueType": "string",
-                    "name": "navTitle",
-                    "label": "Navigation Title"
+                    "name": "image",
+                    "label": "Image",
+                    "multi": false
                   },
                   {
                     "component": "aem-tag",
@@ -63,7 +64,7 @@
                     "component": "reference",
                     "valueType": "string",
                     "name": "authorImage",
-                    "label": "Image",
+                    "label": "Author Image",
                     "multi": false
                   },
                   {
