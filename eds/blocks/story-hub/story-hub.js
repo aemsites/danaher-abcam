@@ -274,9 +274,9 @@ export default async function decorate(block) {
     const horizondalLine = div({ class: 'flex items-center justify-between border-t mb-8 md:py-0' });
     const tabElement = div({ class: 'font-semibold text-base text-black md:block flex' });
     const tabs = [
-      { name: 'All Stories', tabId: 'stories-type/' },
-      { name: 'Community Stories', tabId: 'stories-type/community' },
-      { name: 'Product Stories', tabId: 'stories-type/products' },
+      { name: 'All stories', tabId: 'stories-type/' },
+      { name: 'Community stories', tabId: 'stories-type/community' },
+      { name: 'Product stories', tabId: 'stories-type/products' },
     ];
     tabs.forEach((tab) => {
       const btn = button({
