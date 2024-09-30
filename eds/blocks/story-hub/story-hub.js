@@ -1,5 +1,6 @@
 import ffetch from '../../scripts/ffetch.js';
 import { decorateIcons } from '../../scripts/aem.js';
+import { buildStoryHubSchema } from '../../schema.js';
 import {
   button, div, p, span, ul, li,
 } from '../../scripts/dom-builder.js';
@@ -223,6 +224,7 @@ export default async function decorate(block) {
       .chunks(500)
       .all();
     lists = [...response];
+    buildStoryHubSchema(lists);
     const allFilters = p({ class: 'h-5/6 mb-3 overflow-visible' });
     createFilters({
       lists,
