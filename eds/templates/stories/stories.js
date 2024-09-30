@@ -1,5 +1,19 @@
 import { buildBlock, getMetadata } from '../../scripts/aem.js';
-import { div, span } from '../../scripts/dom-builder.js';
+import { div, p } from '../../scripts/dom-builder.js';
+
+function sideLinksDiv(linkHeading) {
+  const main = document.querySelector('main');
+  const divEl = div({ class: 'sidelinks leading-5 text-sm font-bold text-black pb-4' });
+  const allParagraphs = main.querySelectorAll('p a[title="link"]');
+  if (allParagraphs.length > 0) {
+    divEl.append(p(linkHeading));
+    allParagraphs.forEach((elPara) => {
+      elPara.classList.add(...'border-b border-b-gray-300 py-2 mx-0 w-auto mt-2'.split(' '));
+      divEl.append(p({ class: 'leading-5 text-normal font-medium text-[#378189]' }, elPara));
+    });
+  }
+  return divEl;
+}
 
 export default async function buildAutoBlocks() {
   const main = document.querySelector('main');
@@ -11,16 +25,9 @@ export default async function buildAutoBlocks() {
     buildBlock('back-navigation', { elems: [] }),
   );
   sectionMiddle.classList.add(...'story-middle-container w-full'.split(' '));
-  const sideLinksDiv = div({ class: 'sidelinks leading-5 text-sm font-bold text-black pb-4' }, 'Explore Our Products');
-  main.querySelectorAll('p')?.forEach((paragraph) => {
-    if (paragraph.querySelector('a[title="link"]')) {
-      paragraph.classList.add(...'border-b border-b-gray-300 py-2 mx-0 w-auto mt-2'.split(' '));
-      sideLinksDiv.append(span({ class: 'leading-5 text-normal font-medium text-[#378189]' }, paragraph));
-    }
-  });
   sectionMiddle.prepend(
     buildBlock('story-info', { elems: [] }),
     buildBlock('social-media', { elems: [] }),
-    sideLinksDiv,
+    sideLinksDiv('Explore Our Products'),
   );
 }
