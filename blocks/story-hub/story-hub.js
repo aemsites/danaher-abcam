@@ -271,7 +271,7 @@ export default async function decorate(block) {
         id: tab.tabId,
       });
       btn.innerHTML = tab.name;
-      tabElement.appendChild(li);
+      tabElement.appendChild(btn);
       btn.addEventListener('click', () => {
         toggleTabs(tab.tabId, tabElement);
       });
