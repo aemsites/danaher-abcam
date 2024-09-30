@@ -310,8 +310,8 @@ function decorateWebinarPage(main){
         rightSideElements.append(element);
       }
     });
-    sectionEl?.append(rightSideElements);  
-    const divEl = div({class: 'ml-0 md:ml-[311px] mt-[-7rem] my-auto'});
+    sectionEl?.append(rightSideElements);
+    const divEl = div({class: 'ml-6 md:ml-[311px] mt-6 md:mt-[-7rem] my-auto'});
     divEl.append(sectionEl?.querySelector('.abcam-button-wrapper'));
     sectionEl2?.appendChild(divEl);
   }

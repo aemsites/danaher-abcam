@@ -1280,6 +1280,22 @@ audio::-webkit-media-controls-panel {
   margin-top: -7rem;
 }
 
+.mt-8 {
+  margin-top: 2rem;
+}
+
+.ml-6 {
+  margin-left: 1.5rem;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
+.mt-0 {
+  margin-top: 0px;
+}
+
 .block {
   display: block;
 }
@@ -1976,6 +1992,18 @@ audio::-webkit-media-controls-panel {
 
   .md\:ml-\[311px\] {
     margin-left: 311px;
+  }
+
+  .md\:ml-72 {
+    margin-left: 18rem;
+  }
+
+  .md\:mt-6 {
+    margin-top: 1.5rem;
+  }
+
+  .md\:mt-\[-7rem\] {
+    margin-top: -7rem;
   }
 
   .md\:h-64 {

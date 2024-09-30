@@ -1,5 +1,9 @@
-.speakersinfo-wrapper :is(.col-span-2) {
-  grid-column: span 2 / span 2
+.speakersinfo-wrapper :is(.col-span-1) {
+  grid-column: span 1 / span 1
+}
+
+.speakersinfo-wrapper :is(.m-0) {
+  margin: 0px
 }
 
 .speakersinfo-wrapper :is(.mx-auto) {
@@ -7,13 +11,9 @@
   margin-right: auto
 }
 
-.speakersinfo-wrapper :is(.my-4) {
-  margin-top: 1rem;
-  margin-bottom: 1rem
-}
-
-.speakersinfo-wrapper :is(.mr-7) {
-  margin-right: 1.75rem
+.speakersinfo-wrapper :is(.my-auto) {
+  margin-top: auto;
+  margin-bottom: auto
 }
 
 .speakersinfo-wrapper :is(.block) {
@@ -24,80 +24,144 @@
   display: flex
 }
 
+.speakersinfo-wrapper :is(.grid) {
+  display: grid
+}
+
+.speakersinfo-wrapper :is(.hidden) {
+  display: none
+}
+
 .speakersinfo-wrapper :is(.h-16) {
   height: 4rem
+}
+
+.speakersinfo-wrapper :is(.h-full) {
+  height: 100%
 }
 
 .speakersinfo-wrapper :is(.w-16) {
   width: 4rem
 }
 
-.speakersinfo-wrapper :is(.w-full) {
-  width: 100%
-}
-
-.speakersinfo-wrapper :is(.w-1\/2) {
+.speakersinfo-wrapper :is(.w-2\/4) {
   width: 50%
 }
 
-.speakersinfo-wrapper :is(.w-1\/4) {
-  width: 25%
-}
-
-.speakersinfo-wrapper :is(.w-2\/5) {
-  width: 40%
-}
-
-.speakersinfo-wrapper :is(.w-3\/4) {
-  width: 75%
-}
-
-.speakersinfo-wrapper :is(.w-3\/5) {
-  width: 60%
+.speakersinfo-wrapper :is(.w-full) {
+  width: 100%
 }
 
 .speakersinfo-wrapper :is(.w-\[87\%\]) {
   width: 87%
 }
 
-.speakersinfo-wrapper :is(.basis-1\/2) {
-  flex-basis: 50%
+.speakersinfo-wrapper :is(.w-1\/6) {
+  width: 16.666667%
+}
+
+.speakersinfo-wrapper :is(.shrink-0) {
+  flex-shrink: 0
+}
+
+.speakersinfo-wrapper :is(.grid-cols-2) {
+  grid-template-columns: repeat(2, minmax(0, 1fr))
+}
+
+.speakersinfo-wrapper :is(.flex-row) {
+  flex-direction: row
 }
 
 .speakersinfo-wrapper :is(.flex-row-reverse) {
   flex-direction: row-reverse
 }
 
+.speakersinfo-wrapper :is(.flex-col) {
+  flex-direction: column
+}
+
 .speakersinfo-wrapper :is(.items-center) {
   align-items: center
 }
 
-.speakersinfo-wrapper :is(.justify-start) {
-  justify-content: flex-start
+.speakersinfo-wrapper :is(.justify-center) {
+  justify-content: center
 }
 
-.speakersinfo-wrapper :is(.space-y-1 > :not([hidden]) ~ :not([hidden])) {
+.speakersinfo-wrapper :is(.justify-between) {
+  justify-content: space-between
+}
+
+.speakersinfo-wrapper :is(.gap-4) {
+  gap: 1rem
+}
+
+.speakersinfo-wrapper :is(.gap-8) {
+  gap: 2rem
+}
+
+.speakersinfo-wrapper :is(.\!gap-8) {
+  gap: 2rem !important
+}
+
+.speakersinfo-wrapper :is(.gap-x-8) {
+  -moz-column-gap: 2rem;
+       column-gap: 2rem
+}
+
+.speakersinfo-wrapper :is(.gap-y-8) {
+  row-gap: 2rem
+}
+
+.speakersinfo-wrapper :is(.gap-x-4) {
+  -moz-column-gap: 1rem;
+       column-gap: 1rem
+}
+
+.speakersinfo-wrapper :is(.gap-y-6) {
+  row-gap: 1.5rem
+}
+
+.speakersinfo-wrapper :is(.space-y-2 > :not([hidden]) ~ :not([hidden])) {
   --tw-space-y-reverse: 0;
-  margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(0.25rem * var(--tw-space-y-reverse))
+  margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.5rem * var(--tw-space-y-reverse))
 }
 
 .speakersinfo-wrapper :is(.rounded-full) {
   border-radius: 9999px
 }
 
-.speakersinfo-wrapper :is(.bg-neutral-100) {
+.speakersinfo-wrapper :is(.rounded-lg) {
+  border-radius: 0.5rem
+}
+
+.speakersinfo-wrapper :is(.bg-\[\#FF8C00\]) {
   --tw-bg-opacity: 1;
-  background-color: rgb(245 245 245 / var(--tw-bg-opacity))
+  background-color: rgb(255 140 0 / var(--tw-bg-opacity))
 }
 
-.speakersinfo-wrapper :is(.pt-10) {
-  padding-top: 2.5rem
+.speakersinfo-wrapper :is(.object-cover) {
+  -o-object-fit: cover;
+     object-fit: cover
 }
 
-.speakersinfo-wrapper :is(.text-2xl) {
-  font-size: 1.5rem;
-  line-height: 2rem
+.speakersinfo-wrapper :is(.px-4) {
+  padding-left: 1rem;
+  padding-right: 1rem
+}
+
+.speakersinfo-wrapper :is(.py-2) {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem
+}
+
+.speakersinfo-wrapper :is(.pt-0) {
+  padding-top: 0px
+}
+
+.speakersinfo-wrapper :is(.\!pt-0) {
+  padding-top: 0px !important
 }
 
 .speakersinfo-wrapper :is(.text-lg) {
@@ -108,10 +172,6 @@
 .speakersinfo-wrapper :is(.text-sm) {
   font-size: 0.875rem;
   line-height: 1.25rem
-}
-
-.speakersinfo-wrapper :is(.font-bold) {
-  font-weight: 700
 }
 
 .speakersinfo-wrapper :is(.font-normal) {
@@ -149,9 +209,9 @@
   color: rgb(101 121 124 / var(--tw-text-opacity))
 }
 
-.speakersinfo-wrapper :is(.text-black) {
+.speakersinfo-wrapper :is(.text-white) {
   --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity))
+  color: rgb(255 255 255 / var(--tw-text-opacity))
 }
 
 @media (max-width: 768px) {
@@ -160,43 +220,26 @@
   }
 }
 
-@media (min-width: 640px) {
-  .speakersinfo-wrapper :is(.sm\:block) {
-    display: block
-  }
-}
-
 @media (min-width: 768px) {
-  .speakersinfo-wrapper :is(.md\:flex-row-reverse) {
-    flex-direction: row-reverse
+  .speakersinfo-wrapper :is(.md\:col-span-2) {
+    grid-column: span 2 / span 2
+  }
+
+  .speakersinfo-wrapper :is(.md\:col-span-1) {
+    grid-column: span 1 / span 1
+  }
+
+  .speakersinfo-wrapper :is(.md\:w-1\/4) {
+    width: 25%
   }
 }
 
 @media (min-width: 1024px) {
-  .speakersinfo-wrapper :is(.lg\:flex) {
-    display: flex
-  }
-
-  .speakersinfo-wrapper :is(.lg\:h-20) {
-    height: 5rem
-  }
-
-  .speakersinfo-wrapper :is(.lg\:w-20) {
-    width: 5rem
-  }
-
-  .speakersinfo-wrapper :is(.lg\:w-1\/2) {
-    width: 50%
+  .speakersinfo-wrapper :is(.lg\:w-1\/6) {
+    width: 16.666667%
   }
 }
 
-@media (min-width: 1280px) {
-  .speakersinfo-wrapper :is(.xl\:max-w-\[1120px\]) {
-    max-width: 1120px
-  }
-
-  .speakersinfo-wrapper :is(.xl\:px-0) {
-    padding-left: 0px;
-    padding-right: 0px
-  }
+.speakersinfo-wrapper :is(.\[\&_img\]\:w-full img) {
+  width: 100%
 }
