@@ -1,7 +1,8 @@
 import {
-  div, button, span, a, ul, li, h4,
+  div, button, span, a, ul, li, h4, input,
 } from '../../scripts/dom-builder.js';
 import { decorateIcons } from '../../scripts/aem.js';
+import { applyClasses } from '../../scripts/scripts.js';
 
 function showFlyoutMenu() {
   document.querySelector('#menu-flyout')?.classList.remove('hidden');
@@ -20,33 +21,50 @@ function sortFlyoutMenus(menuPath) {
       menu.classList.add('hidden');
     } else {
       menu.classList.remove('hidden');
-      const href = menu.getAttribute('data-href');
       const backFlyout = document.querySelector('#back-flyout');
-      const exploreFlyout = document.querySelector('#explore-flyout');
       const redirectLink = menu.getAttribute('data-content').split('|').slice(0, -1).join('|');
       if (redirectLink) {
         backFlyout.setAttribute('data-redirect', redirectLink);
         backFlyout.classList.remove('hidden');
       } else backFlyout.classList.add('hidden');
-      if (href) {
-        exploreFlyout.setAttribute('href', href);
-        exploreFlyout.classList.remove('hidden');
-      } else exploreFlyout.classList.add('hidden');
     }
   });
 }
 
 function buildSearchBlock(headerBlock) {
   const searchHtmlBlock = headerBlock.children[0];
-  searchHtmlBlock.classList.add(...'navbar-wrapper justify-center bg-black z-50 pt-2 lg:pt-4'.split(' '));
+  applyClasses(searchHtmlBlock, 'navbar-wrapper justify-center bg-black z-50 pt-4');
   searchHtmlBlock.id = 'sticky-header';
   searchHtmlBlock.querySelector('p').classList.add('hidden');
-  const borderBottom = div({ class: 'h-0.5 mt-5', style: 'background: linear-gradient(90deg, #4ba6b3 0, #c9d3b7 35%, #ff8730 70%, #c54428)' });
-  const searchNewBlock = div({ class: 'bg-black flex gap-x-4 xl:gap-x-8 lg:mx-auto 2xl:mx-24 lg:px-8 md:px-12 px-4 pr-4 max-w-7xl flex-row' });
-  const extendedSectionBlock = div({ class: 'extended-section md:w-full ml-auto md:ml-14 mr-2 md:mr-4 hidden lg:flex items-center gap-x-4 lg:block' });
+  const logoSearchMenuContainer = div({ class: 'logo-search-menu-container flex flex-col gap-y-7' });
+  const logoSearchBarContianer = div({ class: 'logo-searchbar-continer w-full m-0 px-4 md:w-11/12 lg:ml-20 flex flex-col-reverse content-start md:flex-row md:gap-x-20 gap-y-5 md:items-center' });
+  const searchbarContainer = div(
+    { class: 'w-full md:w-6/12 relative' },
+    input({
+      class: 'w-full text-base h-12 rounded-full bg-black border border-white text-white py-2 px-12 font-bold outline-none',
+      placeholder: 'What are you searching for?',
+      onkeydown: (event) => {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          const inputValue = event.target.value.trim();
+          if (inputValue) {
+            const searchResultsUrl = `https://www.abcam.com/en-us/search?keywords=${inputValue}`;
+            window.location.href = searchResultsUrl;
+          }
+        }
+      },
+    }),
+    span({ class: 'icon icon-Search-bar pl-4 pr-2 absolute top-3 left-0' }),
+  );
+  logoSearchBarContianer.append(searchbarContainer);
+  decorateIcons(logoSearchBarContianer);
+  const borderBottom = div({ class: 'h-0.5 mt-3 lg:mt-4', style: 'background: linear-gradient(90deg, #4ba6b3 0, #c9d3b7 35%, #ff8730 70%, #c54428)' });
+  const extendedSectionBlock = div({ class: 'extended-section md:w-fit md:ml-80 ml-auto mr-2 hidden lg:flex items-center gap-x-16 lg:block' });
   extendedSectionBlock.id = 'extended-section';
-  const logoPictureBlock = a();
-  const logoPictureBlockIcon = span({ class: 'icon icon-logo' });
+  const logoPictureBlock = a(
+    { class: '' },
+    span({ class: 'icon icon-logo' }),
+  );
   if (window.location.pathname === '/') {
     logoPictureBlock.href = window.location.href;
   } else {
@@ -67,13 +85,14 @@ function buildSearchBlock(headerBlock) {
     span({ class: 'icon icon-Menu flex items-center w-8 h-6' }),
   );
 
-  searchNewBlock.append(hamburgerIcon);
-  logoPictureBlock.append(logoPictureBlockIcon);
-  searchNewBlock.append(logoPictureBlock);
+  const logoHamburgerMenu = div({ class: 'flex flex-row gap-x-2' }, hamburgerIcon, logoPictureBlock);
+  logoSearchBarContianer.append(logoHamburgerMenu);
+  logoSearchBarContianer.append(searchbarContainer);
   decorateIcons(logoPictureBlock, 120, 25);
   decorateIcons(hamburgerIcon);
-  searchNewBlock.append(extendedSectionBlock);
-  searchHtmlBlock.append(searchNewBlock);
+  logoSearchMenuContainer.append(logoSearchBarContianer);
+  logoSearchMenuContainer.append(extendedSectionBlock);
+  searchHtmlBlock.append(logoSearchMenuContainer);
   searchHtmlBlock.append(borderBottom);
   searchHtmlBlock.querySelector('#nav-hamburger').addEventListener('click', (e) => {
     e.preventDefault();
@@ -98,46 +117,45 @@ function buildNavBlock(headerBlock) {
     const menuItemName = item.innerText;
     const menuItemEl = a(
       {
-        class: 'btn flex items-center relative bg-black hover:bg-black text-white font-medium ring-0 border-0 ring-offset-0 group',
+        class: 'btn flex items-center font-bold relative bg-black text-white ring-0 border-b-4 border-black hover:border-b-4 hover:border-[#ff7223] ring-offset-0 group',
         href: item.querySelector('a')?.href || '/',
       },
       menuItemName,
     );
-    const arrowDownIcon = span({ class: 'icon icon-chevron-down-white size-5 flex transition group-hover:rotate-180 ml-1' });
-    menuItemEl.append(arrowDownIcon);
     menuItemEl.addEventListener('click', (e) => {
       e.preventDefault();
       showFlyoutMenu();
       sortFlyoutMenus(`Menu|${menuItemName}`);
     });
-    decorateIcons(menuItemEl);
     extendedSectionBlock.append(menuItemEl);
   });
 }
 
 function buildFlyoutMenus(headerBlock) {
   const allFlyout = headerBlock.querySelectorAll('.menu-flyout');
-  const closeFlyout = button(
-    { class: 'flex mx-2 mt-5 p-1 gap-x-4 rounded' },
-    span({ class: 'icon icon-close w-6 h-6 [&_svg>use]:stroke-2 [&_svg>use]:bg-white' }),
-    span({ class: 'icon icon-logo' }),
+  const closeSvg = div({ class: 'close-svg' }, span({ class: 'icon icon-close' }));
+  decorateIcons(closeSvg);
+
+  const closeLogo = div({ class: 'close-Logo' }, span({ class: 'icon icon-logo' }));
+  decorateIcons(closeLogo, 100, 100);
+
+  const closeFlyout = div(
+    { class: 'flex mt-5 p-1 gap-x-4 rounded' },
+    closeSvg,
+    closeLogo,
   );
+
   closeFlyout.addEventListener('click', hideFlyoutMenu);
 
   const backFlyout = button({ id: 'back-flyout', class: 'flex items-center gap-x-1 group' }, span({ class: 'icon icon-chevron-left-orange w-4 h-4 transition-transform group-hover:translate-x-0.5' }), 'Back');
   backFlyout.addEventListener('click', () => sortFlyoutMenus(backFlyout.getAttribute('data-redirect')));
 
-  const exploreFlyout = a({ id: 'explore-flyout', class: 'flex items-center gap-x-1 group', href: '/' }, 'Explore all', span({ class: 'icon icon-chevron-right-orange w-4 h-4 transition-transform group-hover:-translate-x-0.5' }));
-
   const navigateActions = div(
     { class: 'flex justify-between mt-5 text-base text-white font-bold mx-2' },
     backFlyout,
-    exploreFlyout,
   );
 
-  decorateIcons(closeFlyout);
   decorateIcons(backFlyout);
-  decorateIcons(exploreFlyout);
 
   const menuWrapper = ul({ class: 'h-full flex flex-col text-white gap-y-2 mt-3 overflow-auto [&>li.active]:bg-danaherpurple-50 [&>li.active]:font-bold' });
   [...allFlyout].forEach((flyMenu) => {
@@ -152,9 +170,10 @@ function buildFlyoutMenus(headerBlock) {
           ...(anchorHref && { 'data-href': anchorHref }),
         },
       );
-      if (headerBlock.querySelector('span.icon')) {
+      if (!(flyMenuChild.querySelector('a'))) {
         liTag.setAttribute('data-redirect', contextPath);
         liTag.innerHTML += flyMenuChild.textContent;
+        liTag.classList.add('font-bold');
         liTag.append(span({ class: 'icon icon-chevron-right-orange w-4 h-4 group-hover:-translate-x-0.5' }));
         liTag.addEventListener('click', () => sortFlyoutMenus(contextPath));
       } else liTag.append(a({ href: flyMenuChild.querySelector('a')?.href }, flyMenuChild.textContent));
@@ -191,12 +210,12 @@ function handleScroll() {
   const extendedSection = document.getElementById('extended-section');
   const brandLogo = stickyHeader.querySelector('.brand-logo');
   if (window.scrollY >= 95) {
-    stickyHeader.classList.add('remove-descedents', 'fixed', 'inset-x-0', 'top-0', 'w-full', 'shadow-lg');
+    applyClasses(stickyHeader, 'remove-descedents fixed inset-x-0 top-0 w-full shadow-lg');
     stickyHeader.firstElementChild.classList.add('bg-black');
     hamburgerIcon?.classList.remove('lg:hidden');
     hamburgerIcon?.classList.add('lg:block');
-    extendedSection?.classList.remove('lg:lg:grid-rows-2');
-    extendedSection?.classList.add('lg:lg:grid-rows-1');
+    extendedSection?.classList.remove('lg:grid-rows-2');
+    extendedSection?.classList.add('lg:grid-rows-1');
     extendedSection?.classList.remove('lg:block');
     extendedSection?.classList.add('lg:hidden');
     brandLogo?.classList.remove('h-full');
@@ -206,8 +225,8 @@ function handleScroll() {
     stickyHeader.firstElementChild.classList.remove('bg-danaherblue-600');
     hamburgerIcon?.classList.add('lg:hidden');
     hamburgerIcon?.classList.remove('lg:block');
-    extendedSection?.classList.remove('lg:lg:grid-rows-1');
-    extendedSection?.classList.add('lg:lg:grid-rows-2');
+    extendedSection?.classList.remove('lg:grid-rows-1');
+    extendedSection?.classList.add('lg:grid-rows-2');
     extendedSection?.classList.remove('lg:hidden');
     extendedSection?.classList.add('lg:block');
     brandLogo?.classList.remove('h-10');
