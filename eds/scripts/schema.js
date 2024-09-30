@@ -128,8 +128,8 @@ export function buildPodcastSeriesSchema(mode) {
 
   if (getMetadata('authorname')) {
     data.author = {
-    '@type': 'Person',
-    name: getMetadata('authorname'),
+      '@type': 'Person',
+      name: getMetadata('authorname'),
     };
   }
 
