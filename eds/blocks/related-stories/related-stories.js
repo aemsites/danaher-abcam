@@ -58,7 +58,7 @@ function createCard(article, firstCard = false) {
 
 export default async function decorate(block) {
   const pagetags = getMetadata('pagetags').split(',');
-
+  
   let storyType;
   let contentType;
   pagetags.forEach((tag) => {
@@ -71,6 +71,7 @@ export default async function decorate(block) {
   });
 
   let articles = await ffetch('/en-us/stories/query-index.json')
+    .filter((item) => item.title !== getMetadata('og:title'))
     .filter((item) => item.tags.includes(storyType) && item.tags.includes(contentType))
     .all();
 
