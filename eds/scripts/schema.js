@@ -1,5 +1,5 @@
 import { getMetadata } from './aem.js';
-import { makePublicUrl, setJsonLd } from '../scripts/scripts.js';
+import { makePublicUrl, setJsonLd } from './scripts.js';
 
 // eslint-disable-next-line import/prefer-default-export
 export function buildArticleSchema() {
