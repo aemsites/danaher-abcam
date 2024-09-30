@@ -10,19 +10,19 @@
                   {
                     "component": "text",
                     "valueType": "string",
-                    "name": "jcr:title",
+                    "name": "title",
                     "label": "Title"
                   },
                   {
                     "component": "text",
                     "valueType": "string",
-                    "name": "jcr:description",
+                    "name": "description",
                     "label": "Description"
                   },
                   {
                     "component": "text",
                     "valueType": "string",
-                    "name": "cq:canonicalUrl",
+                    "name": "canonical",
                     "label": "Canonical"
                   },
                   {
@@ -65,7 +65,7 @@
                     "valueType": "string",
                     "name": "authorImage",
                     "label": "Author Image",
-                    "multi": false
+                      "multi": false
                   },
                   {
                     "component": "text",

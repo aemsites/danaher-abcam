@@ -42,52 +42,5 @@
       "carousel",
       "story-hub"
     ]
-  },
-  {
-    "id": "cards",
-    "components": [
-      "card"
-    ]
-  },
-  {
-    "id": "carousel",
-    "components": [
-      "carousel-item"
-    ]
-  },
-  {
-    "id": "columns",
-    "components": [
-      "column"
-    ]
-  },
-  {
-    "id": "column",
-    "components": [
-      "text",
-      "image",
-      "button",
-      "title",
-      "abcam-button",
-      "media"
-    ]
-  },
-  {
-    "id": "mini-teasers",
-    "components": [
-      "mini-teaser"
-    ]
-  },
-  {
-    "id": "podcasts",
-    "components": [
-      "podcast"
-    ]
-  },
-  {
-    "id": "teasers",
-    "components": [
-      "teaser"
-    ]
   }
 ]
