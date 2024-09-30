@@ -39,4 +39,3 @@ if (getMetadata('pagetags').includes('article')) {
 if (getMetadata('pagetags').includes('podcast')) {
   buildPodcastEpisodeSchema('', '', '', '', 'listening');
 }
-
