@@ -818,15 +818,7 @@ export function createFilters({
     }
   
     const accordionSection = div(
-      { class: `flex flex-col-reverse px-6 py-4 border-b md:border border-gray-300 ${categoryIndex > 0 ? 'md:mt-4' : ''} md:rounded-xl [&_div:not(.hidden)~p]:mb-3 [&_div:not(.hidden)~p_.icon]:rotate-180` },
-      div(
-        { class: 'flex flex-col-reverse [&_ul:has(:checked)+*]:block' },
-        lists,
-        span({
-          class: 'hidden text-xs leading-5 font-medium text-emerald-600 mb-1 cursor-pointer hover:underline underline-offset-1',
-          onclick: () => clearFilterHandler(categoryKey),
-        }, 'Clear filters'),
-      ),
+      { class: `flex flex-col px-6 py-4 border-b md:border border-gray-300 ${categoryIndex > 0 ? 'md:mt-4' : ''} md:rounded-xl [&_div:not(.hidden)~p]:mb-3 [&_div:not(.hidden)~p_.icon]:rotate-180` },
       p(
         { class: 'flex items-center justify-between my-0' },
         span({ class: 'text-base font-bold capitalize' }, categoryKey),
@@ -837,9 +829,17 @@ export function createFilters({
           },
         }),
       ),
+      div(
+        { class: 'flex flex-col-reverse [&_ul:has(:checked)+*]:block' },
+        lists,
+        span({
+          class: 'hidden text-xs leading-5 font-medium text-emerald-600 mb-1 cursor-pointer hover:underline underline-offset-1',
+          onclick: () => clearFilterHandler(categoryKey),
+        }, 'Clear filters'),
+      ),
     );
   
-    element.append(accordionSection);
+    if(lists.children.length > 0) element.append(accordionSection);
   });
 }
 

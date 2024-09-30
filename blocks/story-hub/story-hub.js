@@ -1,11 +1,10 @@
 import ffetch from '../../scripts/ffetch.js';
-import {
-  button,
-  div, li, p, span, ul,
-} from '../../scripts/dom-builder.js';
 import { decorateIcons } from '../../scripts/aem.js';
+import {
+  button, div, p, span, ul, li,
+} from '../../scripts/dom-builder.js';
 import { createCard, createFilters, imageHelper } from '../../scripts/scripts.js';
-import { createPagination, getPageFromUrl } from '../../blocks/dynamic-cards/dynamic-cards.js';
+import { createPagination, getPageFromUrl } from '../dynamic-cards/dynamic-cards.js';
 
 let lists = [];
 let filterContainer = {};
@@ -101,13 +100,14 @@ function handleRenderTags() {
   }
 }
 
-function handleRenderContent(newLists = lists) {
+// eslint-disable-next-line default-param-last
+function handleRenderContent(newLists = lists, page) {
   newLists.sort((card1, card2) => card2.publishDate - card1.publishDate);
 
-  let page = parseInt(getPageFromUrl(), 10);
-  page = Number.isNaN(page) ? 1 : page;
+  let pageNo = page || parseInt(getPageFromUrl(), 10);
+  pageNo = Number.isNaN(pageNo) ? 1 : pageNo;
   const limitPerPage = 12;
-  const start = (page - 1) * limitPerPage;
+  const start = (pageNo - 1) * limitPerPage;
   const listsToDisplay = newLists.slice(start, start + limitPerPage);
   cardList.innerHTML = '';
 
@@ -129,23 +129,29 @@ function handleRenderContent(newLists = lists) {
 }
 
 function handleChangeFilter(key, value, mode) {
-    console.log('handleChangeFilter', key, value, mode);
   let newLists = lists;
-  if (mode !== 'skip-filter') {
-    if (key !== 'undefined' && (value === 'undefined' || value === null)) {
-      delete filterContainer[key];
-    } else if (key in filterContainer) {
-      if (filterContainer[key].includes(value)) {
-        filterContainer[key] = filterContainer[key].filter((val) => val !== value);
-        if (filterContainer[key].length === 0) delete filterContainer[key];
-      } else filterContainer[key].push(value);
-    } else filterContainer[key] = [value];
-    newLists = lists.filter((list) => {
-      return filterContainer[key] ? list.tags.includes(filterContainer[key]) : true;
-    });
+  if (key === 'stories-type') {
+    newLists = lists.filter((list) => (value
+      ? list.tags.includes(value)
+      : true));
+    handleRenderContent(newLists, 1);
+  } else {
+    if (mode !== 'skip-filter') {
+      if (key !== 'undefined' && (value === 'undefined' || value === null)) {
+        delete filterContainer[key];
+      } else if (key in filterContainer) {
+        if (filterContainer[key].includes(value)) {
+          filterContainer[key] = filterContainer[key].filter((val) => val !== value);
+          if (filterContainer[key].length === 0) delete filterContainer[key];
+        } else filterContainer[key].push(value);
+      } else filterContainer[key] = [value];
+      newLists = lists.filter((list) => (filterContainer[key]
+        ? list.tags.includes(filterContainer[key])
+        : true));
+    }
+    handleRenderTags();
+    handleRenderContent(newLists);
   }
-  handleRenderTags();
-  handleRenderContent(newLists);
 }
 
 function handleResetFilters() {
@@ -155,7 +161,6 @@ function handleResetFilters() {
       if (filterInp) filterInp.checked = false;
     }
   });
-  document.querySelector('.filter-content').remove();
   filterContainer = {};
   // eslint-disable-next-line no-use-before-define
   handleChangeFilter(null, null, 'skip-filter');
@@ -184,60 +189,95 @@ function toggleMobileFilters(mode) {
   }
 }
 
+function toggleTabs(tabId, tabElement) {
+  const tabs = tabElement.querySelectorAll('.tab');
+  const [key, value] = tabId.split('/');
+  tabs.forEach((tab) => {
+    if (tab.id === tabId) {
+      tab.classList.add('active', 'border-b-8', 'border-[#ff7223]');
+      handleChangeFilter(key, value);
+    } else {
+      tab.classList.remove('active', 'border-b-8', 'border-[#ff7223]');
+    }
+  });
+}
+
 export default async function decorate(block) {
-    block.innerHTML = '';
-    const filterNames = ['type', 'fullCategory'];
-    let response = await ffetch('/en-us/stories/query-index.json')
-        .chunks(500)
-        .all();
-
-    response = response.sort((item1, item2) => item1.title.localeCompare(item2.title));
-
+  if (block.children.length > 0) {
+    const filterNamesStr = '';
+    const filterNames = filterNamesStr.split('|');
+    const response = await ffetch('/en-us/stories/query-index.json')
+      .chunks(500)
+      .all();
     lists = [...response];
-    const allFilters = p({ class: 'h-5/6 mb-3 overflow-scroll' });
+    const allFilters = p({ class: 'h-5/6 mb-3 overflow-visible' });
     createFilters({
-        lists,
-        filterNames,
-        element: allFilters,
-        listActionHandler: handleChangeFilter,
-        clearFilterHandler: handleClearCategoryFilter,
+      lists,
+      filterNames,
+      element: allFilters,
+      listActionHandler: handleChangeFilter,
+      clearFilterHandler: handleClearCategoryFilter,
     });
 
     const hubContent = div(
-        { class: 'hub-center-content col-start-4 col-span-9' },
-        allSelectedTags,
-        cardList,
+      { class: 'col-span-9' },
+      allSelectedTags,
+      cardList,
     );
 
     hubDesktopFilters.prepend(
-        allFilters,
-        p(
+      allFilters,
+      p(
         { class: 'w-full fixed block md:hidden bottom-0 px-4 py-2 my-0 border-t' },
         button({
-            class: 'w-full text-sm text-white font-semibold bg-[#378189] p-3 rounded-full',
-            onclick: () => toggleMobileFilters('close'),
+          class: 'w-full text-sm text-white font-semibold bg-[#378189] p-3 rounded-full',
+          onclick: () => toggleMobileFilters('close'),
         }, 'View Results'),
-        ),
+      ),
     );
     hub.append(
-        div( { class: 'hub grid grid-cols-12 gap-6' },
-            div(
-            { class: 'flex flex-col col-span-3' },
-            span(
-                {
-                class: 'w-full block md:hidden text-sm text-center font-semibold tracking-wide p-3 border border-black rounded-full',
-                onclick: () => toggleMobileFilters('open'),
-                },
-                'Filter',
-            ),
-            hubDesktopFilters,
-            filterBackdrop,
-            ),
-            hubContent,
+      div(
+        { class: 'hub grid grid-col-1 lg:grid-cols-12 gap-6' },
+        div(
+          { class: 'flex flex-col col-span-9 lg:col-span-3 w-full' },
+          span(
+            {
+              class: 'w-full block md:hidden text-sm text-center font-semibold tracking-wide p-3 border border-black rounded-full',
+              onclick: () => toggleMobileFilters('open'),
+            },
+            'Filter',
+          ),
+          hubDesktopFilters,
+          filterBackdrop,
         ),
-        div({ class: 'paginate' }),
+        hubContent,
+      ),
+      div({ class: 'paginate' }),
     );
     hubDesktopFilters.querySelector('.icon.icon-close').addEventListener('click', () => toggleMobileFilters('close'));
     handleRenderContent();
-    block.innerHTML = hub.outerHTML;
+    decorateIcons(hub);
+
+    const horizondalLine = div({ class: 'flex items-center justify-between border-t mb-8 md:py-0' });
+    const tabElement = div({ class: 'font-semibold text-base text-black md:block flex' });
+    const tabs = [
+      { name: 'All Stories', tabId: 'stories-type/' },
+      { name: 'Community Stories', tabId: 'stories-type/community' },
+      { name: 'Product Stories', tabId: 'stories-type/products' },
+    ];
+    tabs.forEach((tab) => {
+      const btn = button({
+        class: 'tab md:py-1.5 pb-4 mr-8 active border-b-8 border-[#ff7223]',
+        id: tab.tabId,
+      });
+      btn.innerHTML = tab.name;
+      tabElement.appendChild(li);
+      btn.addEventListener('click', () => {
+        toggleTabs(tab.tabId, tabElement);
+      });
+    });
+    toggleTabs(tabs[0].tabId, tabElement);
+    block.innerHTML = '';
+    block.append(tabElement, horizondalLine, hub);
+  }
 }

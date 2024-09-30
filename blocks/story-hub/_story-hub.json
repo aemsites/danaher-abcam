@@ -16,7 +16,32 @@
         }
       }
     ],
-    "models": [],
+    "models": [
+        {
+            "id": "story-hub",
+            "fields": [
+                {
+                    "component": "multiselect",
+                    "name": "filterName",
+                    "label": "Filter Name",
+                    "options": [
+                      {
+                        "name": "Content Type",
+                        "value": "contentType"
+                      },
+                      {
+                        "name": "Research Areas",
+                        "value": "researchAreas"
+                      },
+                      {
+                        "name": "Applications",
+                        "value": "applications"
+                      }
+                    ]
+                  }
+            ]
+          }
+    ],
     "filters": []
   }
   
