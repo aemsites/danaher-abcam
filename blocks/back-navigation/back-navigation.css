@@ -37,9 +37,9 @@
   font-weight: 700
 }
 
-.back-navigation-wrapper :is(.text-\[\#4CA6B3\]) {
+.back-navigation-wrapper :is(.text-\[\#378189\]) {
   --tw-text-opacity: 1;
-  color: rgb(76 166 179 / var(--tw-text-opacity))
+  color: rgb(55 129 137 / var(--tw-text-opacity))
 }
 
 @media (min-width: 768px) {

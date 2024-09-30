@@ -281,9 +281,9 @@
     flex-direction: row
   }
 
-  .footer-wrapper :is(.lg\:px-0) {
-    padding-left: 0px;
-    padding-right: 0px
+  .footer-wrapper :is(.lg\:px-6) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem
   }
 
   .footer-wrapper :is(.lg\:text-left) {
@@ -298,6 +298,11 @@
 
   .footer-wrapper :is(.xl\:max-w-\[1120px\]) {
     max-width: 1120px
+  }
+
+  .footer-wrapper :is(.xl\:px-0) {
+    padding-left: 0px;
+    padding-right: 0px
   }
 }
 

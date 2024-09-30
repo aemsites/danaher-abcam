@@ -78,9 +78,8 @@ export function formatDateUTCSeconds(date, options = {}) {
  * @returns Optimized image
  */
 export function imageHelper(imageUrl, imageAlt, eager = false) {
-  const imgUrl = 'https://stage.lifesciences.danaher.com' + imageUrl;
   return img({
-    src: imgUrl,
+    src: imageUrl,
     alt: imageAlt,
     loading: eager ? 'eager' : 'lazy',
     class: 'mb-2 h-48 w-full object-cover',
@@ -741,26 +740,27 @@ export function createFilters({
   clearFilterHandler = () => {},
   limit = 6,
 }) {
-  let filterCategory = {};
-  for (let topicIndex = 0; topicIndex < lists.length; topicIndex += 1) {
-    const topic = lists[topicIndex];
-    for (let numIndex = 0; numIndex < filterNames.length; numIndex += 1) {
-      const num = filterNames[numIndex];
-      if (
-        Object.keys(filterCategory).length === 0
-        || typeof filterCategory[num] === 'undefined'
-      ) filterCategory[num] = [];
-      if (
-        topic[num] !== ''
-        && !filterCategory[num].includes(topic[num])
-      ) filterCategory[num].push(topic[num]);
-    }
-  }
-  // console.log(filterCategory);
-  for (let categoryIndex = 0; categoryIndex < Object.keys(filterCategory).length; categoryIndex += 1) {
-    const categoryKey = Object.keys(filterCategory)[categoryIndex];
+
+  const output = filterNames.reduce((obj, key) => {
+    obj[key] = new Set();
+    return obj;
+  }, {});
+
+  lists.forEach((list) => {
+    const parts = list?.tags?.split(", ");
+    parts.forEach(part => {
+      const [key, value] = part.split("/");
+      filterNames.forEach((name) => {
+        if (key.includes(name)) {
+          output[name].add(value);
+        }
+      });
+    });
+  });
+
+  Object.keys(output).forEach((categoryKey, categoryIndex) => {
     const lists = ul({ class: 'space-y-2' });
-    [...filterCategory[categoryKey]].map((categoryValue, categoryIndex) => {
+    [...output[categoryKey]].map((categoryValue, categoryIndex) => {
       lists.append(li(
         categoryIndex >= limit ? { class: 'hidden' } : '',
         label(
@@ -774,7 +774,6 @@ export function createFilters({
             name: [categoryKey],
             id: `${[categoryKey]}-${categoryValue}`,
             onchange: () => {
-              // console.log(`${[categoryKey]}-${categoryValue}`);
               listActionHandler(categoryKey, categoryValue);
             }
           }),
@@ -782,34 +781,35 @@ export function createFilters({
         ),
       ));
     });
-    if (limit !== 0 && filterCategory[categoryKey].length > limit) {
-      lists.append(li(
-        span(
-          {
-            class: 'text-sm text-emerald-800 font-normal mt-2 cursor-pointer hover:underline underline-offset-1',
-            onclick: (event) => {
-              const anyHiddenChild = event.target.parentElement.parentElement.querySelector('.hidden');
-              [...event.target.parentElement.parentElement.children].forEach((child, childIndex) => {
-                if (anyHiddenChild) child.classList.remove('hidden');
-                else if (childIndex > limit && childIndex !== (event.target.parentElement.parentElement.children.length - 1)) child.classList.add('hidden');
-              });
-              event.target.innerText = `Show ${anyHiddenChild ? 'Less' : 'More'}`;
-            }
-          },
-          'Show More'
+  
+    // Add "Show More" button if needed
+    if (limit !== 0 && output[categoryKey].length > limit) {
+      lists.append(
+        li(
+          span(
+            {
+              class: 'text-sm text-emerald-800 font-normal mt-2 cursor-pointer hover:underline underline-offset-1',
+              onclick: (event) => {
+                const parent = event.target.closest('ul');
+                const hiddenItems = parent.querySelectorAll('.hidden');
+                const toggle = hiddenItems.length > 0;
+                
+                parent.querySelectorAll('li').forEach((child, childIndex) => {
+                  if (childIndex >= limit && childIndex !== parent.children.length - 1) {
+                    child.classList.toggle('hidden', !toggle);
+                  }
+                });
+                event.target.innerText = `Show ${toggle ? 'Less' : 'More'}`;
+              }
+            },
+            'Show More'
+          )
         )
-      ));
+      );
     }
+  
     const accordionSection = div(
-      { class: `flex flex-col-reverse px-6 py-4 border-b md:border border-gray-300 ${categoryIndex > 0 ? 'md:mt-4' : ''} md:rounded-xl [&_div:not(.hidden)~p]:mb-3 [&_div:not(.hidden)~p_.icon]:rotate-180` },
-      div(
-        { class: 'flex flex-col-reverse [&_ul:has(:checked)+*]:block' },
-        lists,
-        span({
-          class: 'hidden text-xs leading-5 font-medium text-emerald-600 mb-1 cursor-pointer hover:underline underline-offset-1',
-          onclick: () => clearFilterHandler(categoryKey),
-        }, 'Clear filters'),
-      ),
+      { class: `flex flex-col px-6 py-4 border-b md:border border-gray-300 ${categoryIndex > 0 ? 'md:mt-4' : ''} md:rounded-xl [&_div:not(.hidden)~p]:mb-3 [&_div:not(.hidden)~p_.icon]:rotate-180` },
       p(
         { class: 'flex items-center justify-between my-0' },
         span({ class: 'text-base font-bold capitalize' }, categoryKey),
@@ -820,9 +820,18 @@ export function createFilters({
           },
         }),
       ),
+      div(
+        { class: 'flex flex-col-reverse [&_ul:has(:checked)+*]:block' },
+        lists,
+        span({
+          class: 'hidden text-xs leading-5 font-medium text-emerald-600 mb-1 cursor-pointer hover:underline underline-offset-1',
+          onclick: () => clearFilterHandler(categoryKey),
+        }, 'Clear filters'),
+      ),
     );
-    element.append(accordionSection);
-  }
+  
+    if(lists.children.length > 0) element.append(accordionSection);
+  });
 }
 
 export function createCard({
