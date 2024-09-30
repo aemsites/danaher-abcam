@@ -204,10 +204,7 @@ function toggleTabs(tabId, tabElement) {
 
 export default async function decorate(block) {
   if (block.children.length > 0) {
-    console.log(block.querySelector(':scope > div > div > p'));
     const filterNames = block.querySelector(':scope > div > div > p')?.textContent?.split(',');
-    console.log(filterNames);
-    // const filterNames = filterNamesStr.split('|');
     const response = await ffetch('/en-us/stories/query-index.json')
       .chunks(500)
       .all();

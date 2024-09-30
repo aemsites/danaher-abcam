@@ -746,31 +746,21 @@ export function createFilters({
     return obj;
   }, {});
 
-  console.log("output", output);
-
-  let filterCategory = {};
   lists.forEach((list) => {
     const parts = list?.tags?.split(", ");
     parts.forEach(part => {
-      console.log("part", part);
-      // const [key, value] = part.split("/");
-      // if (key.includes("content-type")) {
-      //     output.contentTypes.add(value);
-      // } else if (key.includes("research-areas")) {
-      //     output.researchAreas.add(value);
-      // } else if (key.includes("applications")) {
-      //     output.applications.add(value);
-      // }
+      const [key, value] = part.split("/");
+      filterNames.forEach((name) => {
+        if (key.includes(name)) {
+          output[name].add(value);
+        }
+      });
     });
   });
 
-  filterCategory['content-type'] = [...output.contentTypes];
-  filterCategory['research-areas'] = [...output.researchAreas];
-  filterCategory['applications'] = [...output.applications];
-
-  Object.keys(filterCategory).forEach((categoryKey, categoryIndex) => {
+  Object.keys(output).forEach((categoryKey, categoryIndex) => {
     const lists = ul({ class: 'space-y-2' });
-    [...filterCategory[categoryKey]].map((categoryValue, categoryIndex) => {
+    [...output[categoryKey]].map((categoryValue, categoryIndex) => {
       lists.append(li(
         categoryIndex >= limit ? { class: 'hidden' } : '',
         label(
@@ -784,7 +774,6 @@ export function createFilters({
             name: [categoryKey],
             id: `${[categoryKey]}-${categoryValue}`,
             onchange: () => {
-              // console.log(`${[categoryKey]}-${categoryValue}`);
               listActionHandler(categoryKey, categoryValue);
             }
           }),
@@ -794,7 +783,7 @@ export function createFilters({
     });
   
     // Add "Show More" button if needed
-    if (limit !== 0 && filterCategory[categoryKey].length > limit) {
+    if (limit !== 0 && output[categoryKey].length > limit) {
       lists.append(
         li(
           span(
