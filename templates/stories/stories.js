@@ -26,4 +26,7 @@ export default async function buildAutoBlocks() {
   if (getMetadata('pagetags').includes('article')) {
     buildArticleSchema();
   }
+  if (getMetadata('pagetags').includes('podcast')) {
+    buildPodcastEpisodeSchema('', '', '', '', 'listening');
+  }
 }
