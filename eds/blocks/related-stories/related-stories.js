@@ -3,11 +3,26 @@ import { imageHelper } from '../../scripts/scripts.js';
 import {
   ul, li, p, a, div, h3,
 } from '../../scripts/dom-builder.js';
+import { getMetadata } from '../../scripts/aem.js';
 
 function createCard(article, firstCard = false) {
   const cardTitle = article.title.indexOf('| Danaher Life Sciences') > -1
     ? article.title.split('| Danaher Life Sciences')[0]
     : article.title;
+
+  let footerLink = '';
+  const type = article.path.split('/')[3];
+  switch (type) {
+    case 'podcasts':
+      footerLink = 'Listen to Podcast';
+      break;
+    case 'films':
+      footerLink = 'Watch Film';
+      break;
+    default:
+      footerLink = 'Read Article';
+      break;
+  }
 
   const cardWrapper = a(
     { class: 'group h-full', href: article.path, title: article.title },
@@ -27,7 +42,7 @@ function createCard(article, firstCard = false) {
           class:
             'mt-auto inline-flex w-full pb-5 text-base text-danaherpurple-500 font-semibold',
         },
-        'Read Article →',
+        `${footerLink} →`,
       ),
     ),
   );
@@ -42,10 +57,22 @@ function createCard(article, firstCard = false) {
 }
 
 export default async function decorate(block) {
-  const articleType = 'blog';
+  const pagetags = getMetadata('pagetags').split(',');
 
-  let articles = await ffetch('https://stage.lifesciences.danaher.com/us/en/article-index.json')
-    .filter(({ type }) => type.toLowerCase() === articleType)
+  let storyType;
+  let contentType;
+  pagetags.forEach((tag) => {
+    if (tag.includes('stories-type')) {
+      storyType = tag;
+    }
+    if (tag.includes('content-type')) {
+      contentType = tag;
+    }
+  });
+
+  let articles = await ffetch('/en-us/stories/query-index.json')
+    .filter((item) => item.title !== getMetadata('og:title'))
+    .filter((item) => item.tags.includes(storyType) && item.tags.includes(contentType))
     .all();
 
   articles = articles.sort((item1, item2) => item2.publishDate - item1.publishDate).slice(0, 3);
