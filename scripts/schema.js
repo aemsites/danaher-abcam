@@ -70,39 +70,39 @@ export function buildVideoSchema(embedURL) {
 
 // eslint-disable-next-line import/prefer-default-export
 export function buildPodcastEpisodeSchema(mediaURL, episodeNum, seriesName, seriesURL, accessMode) {
-    const data = {
-      '@context': 'http://schema.org',
-      '@type': 'PodcastEpisode',
-      url: `https://www.abcam.com${makePublicUrl(window.location.pathname)}`,
-      name: getMetadata('og:title'),
-      datePublished: getMetadata('publishdate'),
-      timeRequired: getMetadata('readingtime'),
-      description: getMetadata('description'),
-      associatedMedia: {
-        '@type': 'MediaObject',
-        contentUrl: mediaURL,
-      },
-      episodeNumber: episodeNum,
-      image: getMetadata('og:image'),
-      'accessMode': accessMode,
-      'inLanguage': 'en',
+  const data = {
+    '@context': 'http://schema.org',
+    '@type': 'PodcastEpisode',
+    url: `https://www.abcam.com${makePublicUrl(window.location.pathname)}`,
+    name: getMetadata('og:title'),
+    datePublished: getMetadata('publishdate'),
+    timeRequired: getMetadata('readingtime'),
+    description: getMetadata('description'),
+    associatedMedia: {
+      '@type': 'MediaObject',
+      contentUrl: mediaURL,
+    },
+    episodeNumber: episodeNum,
+    image: getMetadata('og:image'),
+    accessMode: accessMode,
+    inLanguage: 'en',
+  };
+
+  if (getMetadata('creationdate')) data.datePublished = getMetadata('creationdate');
+  if (getMetadata('updatedate')) data.dateModified = getMetadata('updatedate');
+  if (seriesName && seriesURL) {
+    data.partOfSeries = {
+      '@type': 'PodcastSeries',
+      name: seriesName,
+      url: seriesURL,
     };
-  
-    if (getMetadata('creationdate')) data.datePublished = getMetadata('creationdate');
-    if (getMetadata('updatedate')) data.dateModified = getMetadata('updatedate');
-    if (seriesName && seriesURL) {
-      data.partOfSeries = {
-        '@type': 'PodcastSeries',
-        name: seriesName,
-        url: seriesURL,
-      };
-    };
-    if (getMetadata('authorname')) {
-      data.creator = {
-        '@type': 'Person',
-        name: getMetadata('authorname'),
-      };
-    };
-  
-    setJsonLd(data, 'podcastepisode');
   }
+  if (getMetadata('authorname')) {
+    data.creator = {
+      '@type': 'Person',
+      name: getMetadata('authorname'),
+    };
+  }
+
+  setJsonLd(data, 'podcastepisode');
+}
