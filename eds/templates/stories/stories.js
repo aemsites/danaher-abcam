@@ -1,5 +1,6 @@
 import { buildBlock, getMetadata } from '../../scripts/aem.js';
 import { div, p } from '../../scripts/dom-builder.js';
+import { buildArticleSchema, buildPodcastEpisodeSchema } from '../../scripts/schema.js';
 
 function sideLinksDiv(linkHeading) {
   const main = document.querySelector('main');
@@ -31,3 +32,11 @@ export default async function buildAutoBlocks() {
     sideLinksDiv('Explore our products'),
   );
 }
+
+if (getMetadata('pagetags').includes('article')) {
+  buildArticleSchema();
+}
+if (getMetadata('pagetags').includes('podcast')) {
+  buildPodcastEpisodeSchema('', '', '', '', 'listening');
+}
+

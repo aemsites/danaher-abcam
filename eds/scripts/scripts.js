@@ -776,7 +776,6 @@ export function setJsonLd(data, name) {
   document.head.appendChild(script);
 }
 
-
 async function loadPage() {
   await loadEager(document);
   await loadLazy(document);
