@@ -10,19 +10,19 @@ function createCard(article, firstCard = false) {
     ? article.title.split('| Danaher Life Sciences')[0]
     : article.title;
 
-    let footerLink = '';
-    const type = article.path.split('/')[3];
-    switch (type) {
-      case 'podcasts':
-        footerLink = 'Listen to Podcast';
-        break;
-      case 'films':
-        footerLink = 'Watch Film';
-        break;
-      default:
-        footerLink = 'Read Article';
-        break;
-    }
+  let footerLink = '';
+  const type = article.path.split('/')[3];
+  switch (type) {
+    case 'podcasts':
+      footerLink = 'Listen to Podcast';
+      break;
+    case 'films':
+      footerLink = 'Watch Film';
+      break;
+    default:
+      footerLink = 'Read Article';
+      break;
+  }
 
   const cardWrapper = a(
     { class: 'group h-full', href: article.path, title: article.title },
@@ -58,7 +58,7 @@ function createCard(article, firstCard = false) {
 
 export default async function decorate(block) {
   const pagetags = getMetadata('pagetags').split(',');
-  
+
   let storyType;
   let contentType;
   pagetags.forEach((tag) => {
@@ -71,9 +71,7 @@ export default async function decorate(block) {
   });
 
   let articles = await ffetch('/en-us/stories/query-index.json')
-    .filter((item) => {
-      return item.tags.includes(storyType) && item.tags.includes(contentType);
-    })
+    .filter((item) => item.tags.includes(storyType) && item.tags.includes(contentType))
     .all();
 
   articles = articles.sort((item1, item2) => item2.publishDate - item1.publishDate).slice(0, 3);
