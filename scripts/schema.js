@@ -55,12 +55,12 @@ export function buildVideoSchema(embedURL) {
       {
         '@type': 'Clip',
         startOffset: 30,
-        name: 'Introduction'
+        name: 'Introduction',
       },
       {
         '@type': 'Clip',
         startOffset: 120,
-        name: 'Main Topic'
+        name: 'Main Topic',
       },
     ],
   };
