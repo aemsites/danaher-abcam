@@ -1,0 +1,173 @@
+.container {
+  width: 100%
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px
+  }
+}
+
+.columns-wrapper :is(.relative) {
+  position: relative
+}
+
+.columns-wrapper :is(.mx-auto) {
+  margin-left: auto;
+  margin-right: auto
+}
+
+.columns-wrapper :is(.my-auto) {
+  margin-top: auto;
+  margin-bottom: auto
+}
+
+.columns-wrapper :is(.mb-2) {
+  margin-bottom: 0.5rem
+}
+
+.columns-wrapper :is(.block) {
+  display: block
+}
+
+.columns-wrapper :is(.flex) {
+  display: flex
+}
+
+.columns-wrapper :is(.h-full) {
+  height: 100%
+}
+
+.columns-wrapper :is(.w-1\/2) {
+  width: 50%
+}
+
+.columns-wrapper :is(.w-1\/4) {
+  width: 25%
+}
+
+.columns-wrapper :is(.w-2\/5) {
+  width: 40%
+}
+
+.columns-wrapper :is(.w-3\/4) {
+  width: 75%
+}
+
+.columns-wrapper :is(.w-3\/5) {
+  width: 60%
+}
+
+.columns-wrapper :is(.w-full) {
+  width: 100%
+}
+
+.columns-wrapper :is(.max-w-7xl) {
+  max-width: 80rem
+}
+
+.columns-wrapper :is(.flex-col) {
+  flex-direction: column
+}
+
+.columns-wrapper :is(.gap-y-6) {
+  row-gap: 1.5rem
+}
+
+.columns-wrapper :is(.object-cover) {
+  -o-object-fit: cover;
+     object-fit: cover
+}
+
+.columns-wrapper :is(.px-6) {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem
+}
+
+.columns-wrapper :is(.text-sm) {
+  font-size: 0.875rem;
+  line-height: 1.25rem
+}
+
+.columns-wrapper :is(.font-normal) {
+  font-weight: 400
+}
+
+.columns-wrapper :is(.capitalize) {
+  text-transform: capitalize
+}
+
+.columns-wrapper :is(.leading-4) {
+  line-height: 1rem
+}
+
+.columns-wrapper :is(.text-\[\#435656\]) {
+  --tw-text-opacity: 1;
+  color: rgb(67 86 86 / var(--tw-text-opacity))
+}
+
+@media (min-width: 768px) {
+  .columns-wrapper :is(.md\:flex-row) {
+    flex-direction: row
+  }
+
+  .columns-wrapper :is(.md\:px-0) {
+    padding-left: 0px;
+    padding-right: 0px
+  }
+}
+
+@media (min-width: 1024px) {
+  .columns-wrapper :is(.lg\:absolute) {
+    position: absolute
+  }
+
+  .columns-wrapper :is(.lg\:bottom-6) {
+    bottom: 1.5rem
+  }
+
+  .columns-wrapper :is(.lg\:right-0) {
+    right: 0px
+  }
+
+  .columns-wrapper :is(.lg\:w-1\/2) {
+    width: 50%
+  }
+
+  .columns-wrapper :is(.lg\:flex-row) {
+    flex-direction: row
+  }
+
+  .columns-wrapper :is(.lg\:py-6) {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem
+  }
+
+  .columns-wrapper :is(.lg\:pr-6) {
+    padding-right: 1.5rem
+  }
+}

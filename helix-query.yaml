@@ -11,14 +11,14 @@ indices:
         select: head > meta[name="modified-time"]
         value: parseTimestamp(attribute(el, "content"), "ddd, DD MMM YYYY hh:mm:ss GMT")
       title:
-        select: main h1
-        value: textContent(el)
+        select: head > meta[property="og:title"]
+        value: attribute(el, "content")
       description:
-        select: head > meta[name="description"]
+        select: head > meta[property="og:description"]
         value: attribute(el, "content")
       image:
         select: head > meta[property="og:image"]
-        value: match(attribute(el, "content"), "^(https?:\/\/.*?(abcam.com))+(.*)|^(.*)")
+        value: attribute(el, "content")
       tags:
         select: head > meta[name="pagetags"]
         value: attribute(el, "content")
