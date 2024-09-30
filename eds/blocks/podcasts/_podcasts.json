@@ -57,7 +57,7 @@
             "id": "podcast",
             "fields": [
               {
-                "...": "../../models/_common.json#/image-fields"
+                "...": "../../../models/_common.json#/image-fields"
               },
               {
                 "component": "text",
@@ -95,7 +95,7 @@
                 "valueType": "string"
               },
               {
-                "...": "../../models/_common.json#/button-fields"
+                "...": "../../../models/_common.json#/button-fields"
               },
               {
                 "component": "richtext",
@@ -105,7 +105,7 @@
                 "label": "Postcasts Links"
               },
               {
-                "...": "../../models/_common.json#/media-fields"
+                "...": "../../../models/_common.json#/media-fields"
               }
             ]
         }
