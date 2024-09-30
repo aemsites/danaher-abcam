@@ -421,6 +421,7 @@ function decorateVideo(main) {
                 scrolling="no" title="Content from Youtube" loading="eager"></iframe>
               </div>`;
               linkContainer.innerHTML = embedHTML;
+              buildVideoSchema(embedURL);
           } else {
             const embedHTML = `<div class="relative w-full h-full">
               <iframe src="${link.href}"
@@ -429,8 +430,8 @@ function decorateVideo(main) {
               scrolling="no" title="Content from Youtube" loading="eager"></iframe>
             </div>`;
             linkContainer.innerHTML = embedHTML;
+            buildVideoSchema(link.href);
           }
-          buildVideoSchema(embedURL);
         } else if (link.title === "audio") {
           link.textContent = '';
           const audioContainer = div({ class: 'flex flex-col' },
