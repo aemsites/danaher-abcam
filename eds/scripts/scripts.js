@@ -870,6 +870,23 @@ export function createCard({
   return card;
 }
 
+/**
+ * Datalayer Function to get the 'page' object
+ */
+function getDLPage() {
+  const page = {
+    type: 'Content',
+  };
+  return page;
+}
+
+// Datalayer Start
+window.dataLayer = [];
+window.dataLayer.push({
+  page: getDLPage(),
+});
+// Datalayer End
+
 loadPage();
 
 
