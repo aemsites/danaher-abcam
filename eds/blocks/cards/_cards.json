@@ -56,7 +56,7 @@
       "id": "card",
       "fields": [
         {
-          "...": "../../models/_common.json#/image-fields"
+          "...": "../../../models/_common.json#/image-fields"
         },
         {
           "component": "text",
@@ -80,7 +80,7 @@
           "valueType": "string"
         },
         {
-          "...": "../../models/_common.json#/button-fields"
+          "...": "../../../models/_common.json#/button-fields"
         }
       ]
     }

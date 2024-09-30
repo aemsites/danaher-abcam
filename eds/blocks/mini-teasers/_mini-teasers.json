@@ -59,7 +59,7 @@
       "id": "mini-teaser",
       "fields": [
         {
-          "...": "../../models/_common.json#/image-fields"
+          "...": "../../../models/_common.json#/image-fields"
         },
         {
           "component": "text",
