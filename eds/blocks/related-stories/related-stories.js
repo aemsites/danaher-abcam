@@ -58,7 +58,7 @@ function createCard(article, firstCard = false) {
 
 export default async function decorate(block) {
   const pagetags = getMetadata('pagetags').split(',');
-  
+
   let storyType;
   let contentType;
   pagetags.forEach((tag) => {
