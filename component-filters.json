@@ -73,12 +73,6 @@
     ]
   },
   {
-    "id": "filters",
-    "components": [
-      "filter-name"
-    ]
-  },
-  {
     "id": "mini-teasers",
     "components": [
       "mini-teaser"

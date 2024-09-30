@@ -41,10 +41,11 @@
             "valueFormat": null
           },
           {
-            "component": "text",
+            "component": "reference",
             "valueType": "string",
-            "name": "navTitle",
-            "label": "Navigation Title"
+            "name": "image",
+            "label": "Image",
+            "multi": false
           },
           {
             "component": "aem-tag",
@@ -62,7 +63,7 @@
             "component": "reference",
             "valueType": "string",
             "name": "authorImage",
-            "label": "Image",
+            "label": "Author Image",
             "multi": false
           },
           {
@@ -934,25 +935,6 @@
         "name": "rows",
         "value": "",
         "label": "Rows"
-      }
-    ]
-  },
-  {
-    "id": "filters",
-    "fields": [
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "json_name",
-        "label": "Fetch URL",
-        "value": "https://stage.lifesciences.danaher.com/us/en/products-index.json"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "filter_names",
-        "value": "",
-        "label": "Filter Names"
       }
     ]
   },
