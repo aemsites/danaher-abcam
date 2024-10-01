@@ -148,7 +148,6 @@ function generateItemListElement(type, position, url, name) {
 }
 
 export function buildStoryHubSchema(srcObj) {
-  // console.log('creating schema for story hub', srcObj);
   const data = {
     '@context': 'http://schema.org',
     '@type': 'ItemList',
@@ -164,4 +163,6 @@ export function buildStoryHubSchema(srcObj) {
       obj.title,
     ));
   });
+
+  setJsonLd(data, 'storyhub');
 }
