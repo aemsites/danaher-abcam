@@ -283,9 +283,9 @@ const fileMappings = [
     output: './eds/templates/webinars/webinars.css',
   },
   {
-    content: './eds/blocks/speakers-info/speakers-info.js',
-    output: './eds/blocks/speakers-info/speakers-info.css',
-    wrapper: 'speakers-info-wrapper',
+    content: './eds/blocks/speakersinfo/speakersinfo.js',
+    output: './eds/blocks/speakersinfo/speakersinfo.css',
+    wrapper: 'speakersinfo-wrapper',
   },
 ];
 
