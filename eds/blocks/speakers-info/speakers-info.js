@@ -6,7 +6,6 @@ import {
 } from '../../scripts/dom-builder.js';
 
 export default function decorate(block) {
-
   const pictureEl = block.querySelector('picture');
   pictureEl?.classList.add(...'shrink-0'.split(' '));
   const img = pictureEl?.querySelector('img');
