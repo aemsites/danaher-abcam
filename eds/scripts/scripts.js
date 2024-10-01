@@ -517,7 +517,7 @@ function decorateVideo(main) {
             e.preventDefault();
             toggleModalPopUp(link.href, linkContainer);
           });
-          buildVideoSchema(link.href);
+          buildVideoSchema(posterImage, link.href);
           const modalPopUp = createModalPopUp(link.href, linkContainer);
           linkContainer.appendChild(modalPopUp);
         }

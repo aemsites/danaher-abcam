@@ -38,10 +38,11 @@ export function buildArticleSchema() {
 }
 
 // eslint-disable-next-line import/prefer-default-export
-export function buildVideoSchema(embedURL) {
+export function buildVideoSchema(thumbnailUrl, embedURL) {
   const data = {
     '@context': 'http://schema.org',
     '@type': 'VideoObject',
+    thumbnailUrl: thumbnailUrl,
     embedUrl: embedURL,
     publisher: {
       '@type': 'Organization',
