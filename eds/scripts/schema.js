@@ -141,7 +141,6 @@ function generateItemListElement(type, position, url, name) {
     '@type': type,
     position,
     item: {
-      '@type': 'Story',  
       '@id': url,
       name,
     },
