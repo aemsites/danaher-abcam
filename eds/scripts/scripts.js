@@ -404,6 +404,7 @@ function decorateVideo(main) {
   const divContainers = main.querySelectorAll('.stories main .section');
   const type = getMetadata('pagetags');
 
+  let firstVideo = 0;
   divContainers.forEach(divContainer => {
     if (type.includes('podcast')) {
       divContainer.querySelectorAll('p a').forEach(link => {
@@ -494,16 +495,17 @@ function decorateVideo(main) {
     } else if (type.includes('film')) {
       divContainer.querySelectorAll('p a').forEach(link => {
         if (link.title === "video") {
+          firstVideo += 1;
           const videoId = extractVideoId(link.href);
           const posterImage = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
 
           const playButtonHTML = `
-<div class="relative w-full h-full">
-<img src="${posterImage}" class="relative inset-0 w-full h-full object-cover" />
-<button id="play-button-${videoId}" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 rounded-full p-4">
-<span class = "video-play-icon icon icon-video-play"/>
-</button>
-</div>
+            <div class="relative w-full h-full">
+              <img src="${posterImage}" class="relative inset-0 w-full h-full object-cover" />
+              <button id="play-button-${videoId}" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 rounded-full p-4">
+                <span class = "video-play-icon icon icon-video-play"/>
+              </button>
+            </div>
           `;
           const linkContainer = link.parentElement;
           linkContainer.innerHTML = playButtonHTML;
@@ -517,7 +519,7 @@ function decorateVideo(main) {
             e.preventDefault();
             toggleModalPopUp(link.href, linkContainer);
           });
-          buildVideoSchema(posterImage, link.href);
+          if (firstVideo === 1) buildVideoSchema(posterImage, link.href);
           const modalPopUp = createModalPopUp(link.href, linkContainer);
           linkContainer.appendChild(modalPopUp);
         }
