@@ -39,7 +39,7 @@ export function buildArticleSchema() {
 
 // eslint-disable-next-line import/prefer-default-export
 export function buildVideoSchema(posterImage, embedURL) {
-    console.log('posterImage in schema' + posterImage);
+  console.log('posterImage in schema', posterImage);
   const data = {
     '@context': 'http://schema.org',
     '@type': 'VideoObject',
