@@ -1,4 +1,5 @@
 import { getMetadata } from './aem.js';
+// eslint-disable-next-line import/no-cycle
 import { makePublicUrl, setJsonLd } from './scripts.js';
 
 // eslint-disable-next-line import/prefer-default-export
