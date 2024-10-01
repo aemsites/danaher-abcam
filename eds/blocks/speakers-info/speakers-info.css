@@ -1,0 +1,80 @@
+.speakersinfo-wrapper :is(.m-0) {
+  margin: 0px
+}
+
+.speakersinfo-wrapper :is(.my-auto) {
+  margin-top: auto;
+  margin-bottom: auto
+}
+
+.speakersinfo-wrapper :is(.block) {
+  display: block
+}
+
+.speakersinfo-wrapper :is(.flex) {
+  display: flex
+}
+
+.speakersinfo-wrapper :is(.h-16) {
+  height: 4rem
+}
+
+.speakersinfo-wrapper :is(.w-16) {
+  width: 4rem
+}
+
+.speakersinfo-wrapper :is(.w-full) {
+  width: 100%
+}
+
+.speakersinfo-wrapper :is(.shrink-0) {
+  flex-shrink: 0
+}
+
+.speakersinfo-wrapper :is(.flex-col) {
+  flex-direction: column
+}
+
+.speakersinfo-wrapper :is(.rounded-full) {
+  border-radius: 9999px
+}
+
+.speakersinfo-wrapper :is(.text-lg) {
+  font-size: 1.125rem;
+  line-height: 1.75rem
+}
+
+.speakersinfo-wrapper :is(.text-sm) {
+  font-size: 0.875rem;
+  line-height: 1.25rem
+}
+
+.speakersinfo-wrapper :is(.font-normal) {
+  font-weight: 400
+}
+
+.speakersinfo-wrapper :is(.font-semibold) {
+  font-weight: 600
+}
+
+.speakersinfo-wrapper :is(.leading-6) {
+  line-height: 1.5rem
+}
+
+.speakersinfo-wrapper :is(.leading-7) {
+  line-height: 1.75rem
+}
+
+.speakersinfo-wrapper :is(.tracking-normal) {
+  letter-spacing: 0em
+}
+
+.speakersinfo-wrapper :is(.text-\[\#071112\]) {
+  --tw-text-opacity: 1;
+  color: rgb(7 17 18 / var(--tw-text-opacity))
+}
+
+.speakersinfo-wrapper :is(.text-\[\#65797C\]) {
+  --tw-text-opacity: 1;
+  color: rgb(101 121 124 / var(--tw-text-opacity))
+}
