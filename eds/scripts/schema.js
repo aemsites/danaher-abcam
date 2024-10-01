@@ -42,7 +42,7 @@ export function buildVideoSchema(thumbnailUrl, embedURL) {
   const data = {
     '@context': 'http://schema.org',
     '@type': 'VideoObject',
-    thumbnailUrl: thumbnailUrl,
+    thumbnailUrl,
     embedUrl: embedURL,
     publisher: {
       '@type': 'Organization',
