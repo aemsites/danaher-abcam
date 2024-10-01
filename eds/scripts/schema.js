@@ -159,7 +159,7 @@ export function buildStoryHubSchema(srcObj) {
     data.itemListElement.push(generateItemListElement(
       'ListItem',
       index + 1,
-      obj.clickUri,
+      obj.path,
       obj.title,
     ));
   });
