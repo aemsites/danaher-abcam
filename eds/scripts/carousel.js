@@ -50,7 +50,10 @@ export default function Carousel({
       const value = firstCardWidth;
       carousel.scrollLeft += value;
       if (onChange) {
-        onChange({ target: carousel.children[Math.floor(carousel.scrollLeft / value) + 1] });
+        const nextIndex = Math.floor(carousel.scrollLeft / value) + 1;
+        const nextItemIndex = carousel.children.length === nextIndex ? 0 : nextIndex;
+        console.log(carousel.children.length, carousel.scrollLeft, value, nextItemIndex);
+        onChange({ target: carousel.children[nextItemIndex] });
       }
     });
     const dragStart = (e) => {

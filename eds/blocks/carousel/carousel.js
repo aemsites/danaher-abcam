@@ -54,7 +54,7 @@ export default function decorate(block) {
       const content = contentEl.closest('div');
       content.append(ele.querySelector('.button-container'));
       content.prepend(ele.querySelector('h4'));
-      content.classList.add(...'px-4 lg:px-8 lg:pr-10 lg:pl-[22rem]'.split(' '));
+      content.classList.add(...'px-5 lg:px-8 lg:pr-10 md:pl-16 lg:pl-[22rem]'.split(' '));
       const heading = content.querySelector('h2');
       const paragraphs = content.querySelectorAll('p:not(.button-container)');
       const allBtns = content.querySelectorAll('p.button-container');
@@ -117,9 +117,10 @@ export default function decorate(block) {
         delay: SLIDE_DELAY,
         previousElAction: 'button[data-carousel-prev]',
         nextElAction: 'button[data-carousel-next]',
-        isAutoPlay: true,
+        isAutoPlay: false,
         copyChild: 1,
         onChange: (elPosition) => {
+          console.log(elPosition);
           const currentSlide = elPosition.target.getAttribute('data-carousel-item');
           const carouselPaginate = block?.parentElement?.querySelector('.carousel-paginate');
           if (block.children.length > 1 && elPosition && elPosition.target) {
