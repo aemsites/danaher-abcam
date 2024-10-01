@@ -224,8 +224,8 @@ export default async function decorate(block) {
       .chunks(500)
       .all();
     lists = [...response];
-    console.log('story hub');
-    buildStoryHubSchema(response?.data);
+    // console.log('story hub', response, response?.data, lists);
+    buildStoryHubSchema(lists);
     const allFilters = p({ class: 'h-5/6 mb-3 overflow-visible' });
     createFilters({
       lists,
