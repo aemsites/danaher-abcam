@@ -1640,13 +1640,13 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "speakers_subtitle",
+        "name": "speakers_subTitle",
         "value": "",
-        "label": "Subtitle"
+        "label": "SubTitle"
       },
       {
         "component": "text",
-        "name": "speakers_subtitleType",
+        "name": "speakers_subTitleType",
         "label": "",
         "valueType": "string",
         "hidden": true

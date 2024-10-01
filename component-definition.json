@@ -623,7 +623,7 @@
                   "name": "Speakers Info",
                   "model": "speakers-info",
                   "speakers_titleType": "h5",
-                  "speakers_subtitleType": "h6"
+                  "speakers_subTitleType": "h6"
                 }
               }
             }

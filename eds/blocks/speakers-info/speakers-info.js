@@ -6,6 +6,7 @@ import {
 } from '../../scripts/dom-builder.js';
 
 export default function decorate(block) {
+
   const parentEl = block?.parentElement?.parentElement;
   const divEl = div({ class: 'flex' });
   const socialLinks = parentEl.lastElementChild.querySelectorAll('p');
