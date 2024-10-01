@@ -5,8 +5,12 @@ import {
   button, div, p, span, ul, li,
 } from '../../scripts/dom-builder.js';
 import { createCard, createFilters, imageHelper } from '../../scripts/scripts.js';
-import { createPagination, getPageFromUrl } from '../dynamic-cards/dynamic-cards.js';
 
+const excludedPages = [
+  '/en-us/stories/films',
+  '/en-us/stories/podcasts',
+  '/en-us/stories/articles',
+];
 let lists = [];
 let filterContainer = {};
 const hub = div();
@@ -102,17 +106,17 @@ function handleRenderTags() {
 }
 
 // eslint-disable-next-line default-param-last
-function handleRenderContent(newLists = lists, page) {
+function handleRenderContent(newLists = lists) {
   newLists.sort((card1, card2) => card2.publishDate - card1.publishDate);
 
-  let pageNo = page || parseInt(getPageFromUrl(), 10);
-  pageNo = Number.isNaN(pageNo) ? 1 : pageNo;
-  const limitPerPage = 12;
-  const start = (pageNo - 1) * limitPerPage;
-  const listsToDisplay = newLists.slice(start, start + limitPerPage);
+  // let pageNo = page || parseInt(getPageFromUrl(), 10);
+  // pageNo = Number.isNaN(pageNo) ? 1 : pageNo;
+  // const limitPerPage = 12;
+  // const start = (pageNo - 1) * limitPerPage;
+  // const listsToDisplay = newLists.slice(start, start + limitPerPage);
   cardList.innerHTML = '';
 
-  listsToDisplay.forEach((article, index) => {
+  newLists.forEach((article, index) => {
     let footerLink = '';
     const type = article.path.split('/')[3];
     switch (type) {
@@ -135,11 +139,11 @@ function handleRenderContent(newLists = lists, page) {
       path: article.path,
     }));
   });
-  const paginationElements = createPagination(newLists, page, limitPerPage);
+  // const paginationElements = createPagination(newLists, page, limitPerPage);
   const paginateEl = hub.querySelector('.paginate');
   if (paginateEl) {
     paginateEl.innerHTML = '';
-    paginateEl.append(paginationElements);
+    // paginateEl.append(paginationElements);
   }
 }
 
@@ -221,6 +225,7 @@ export default async function decorate(block) {
   if (block.children.length > 0) {
     const filterNames = block.querySelector(':scope > div > div > p')?.textContent?.split(',');
     const response = await ffetch('/en-us/stories/query-index.json')
+      .filter(({ path }) => !excludedPages.includes(path))
       .chunks(500)
       .all();
     lists = [...response];
