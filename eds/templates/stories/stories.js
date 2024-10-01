@@ -37,5 +37,5 @@ if (getMetadata('pagetags').includes('article')) {
   buildArticleSchema();
 }
 if (getMetadata('pagetags').includes('podcast')) {
-  buildPodcastEpisodeSchema('', '', '', '', 'listening');
+  buildPodcastEpisodeSchema('', 1, '', '', 'listening');
 }
