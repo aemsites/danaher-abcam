@@ -16,6 +16,8 @@ import {
   createOptimizedPicture,
 } from './aem.js';
 import { div, span, button, iframe, p, img, li, label, input, ul, a, h3 } from './dom-builder.js';
+// eslint-disable-next-line import/prefer-default-export
+import { buildVideoSchema } from '../../scripts/schema.js';
 
 const LCP_BLOCKS = ['hero', 'hero-video', 'carousel']; // add your LCP blocks to the list
 
@@ -515,7 +517,7 @@ function decorateVideo(main) {
             e.preventDefault();
             toggleModalPopUp(link.href, linkContainer);
           });
-
+          buildVideoSchema(link.href);
           const modalPopUp = createModalPopUp(link.href, linkContainer);
           linkContainer.appendChild(modalPopUp);
         }
