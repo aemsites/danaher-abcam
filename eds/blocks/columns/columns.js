@@ -24,7 +24,12 @@ export default function decorate(block) {
       block.classList.add('px-6');
       applyClasses(row, 'container max-w-7xl mx-auto');
       const pageTags = getMetadata('pagetags');
-      const tag = pageTags?.split('/').pop();
+      let tag = '';
+      if (pageTags.includes('/')) {
+        tag = pageTags?.split('/').pop();
+      } else {
+        tag = pageTags?.split(':').pop();
+      }
       block.firstElementChild?.firstElementChild?.prepend(div({ class: 'font-normal text-sm leading-4 text-[#435656] capitalize mb-2' }, tag));
     }
 

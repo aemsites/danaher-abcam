@@ -244,6 +244,7 @@ const TEMPLATE_LIST = [
   'product-detail',
   'search-results',
   'stories',
+  'webinars',
 ];
 
 async function decorateTemplates(main) {
@@ -294,6 +295,24 @@ function decorateStoryPage(main){
     divEl.append(sectionEl?.querySelector('.social-media-wrapper'));
     divEl.append(sectionEl?.querySelector('.sidelinks-wrapper'));
     sectionEl?.prepend(divEl);
+  }
+}
+
+function decorateWebinarPage(main){
+  const sectionEl2 = main.querySelector(':scope > div.section.webinartitle-container.back-navigation-container.columns-container');
+  const sectionEl = main.querySelector(':scope > div.section.abcam-button-container');
+  if(sectionEl){
+    const toBeRemoved = ['abcam-button-wrapper'];
+    const rightSideElements = div({class: 'w-full'});
+    Array.from(sectionEl?.children).forEach((element) => {
+      if (!toBeRemoved.includes(element.classList[0])) {
+        rightSideElements.append(element);
+      }
+    });
+    sectionEl?.append(rightSideElements);
+    const divEl = div({class: 'ml-6 md:ml-[311px] mt-6 md:mt-[-7rem] my-auto'});
+    divEl.append(sectionEl?.querySelector('.abcam-button-wrapper'));
+    sectionEl2?.appendChild(divEl);
   }
 }
 
@@ -539,6 +558,7 @@ export function decorateMain(main) {
   decorateVideo(main);
   decorateStickyRightNav(main);
   decorateStoryPage(main);
+  decorateWebinarPage(main);
 }
 
 export const applyClasses = (element, classes) => element?.classList.add(...classes.split(' '));

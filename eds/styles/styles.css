@@ -1111,7 +1111,7 @@ dialog .modal-content .section > .default-content-wrapper p {
   }
 }
 
-.stories main .section.no-section-padding .columns-wrapper {
+.stories main .section.no-section-padding .columns-wrapper, .webinars main .section.no-section-padding .columns-wrapper {
   position: relative;
   margin-left: auto;
   margin-right: auto;
@@ -1119,12 +1119,12 @@ dialog .modal-content .section > .default-content-wrapper p {
 }
 
 @media (min-width: 1024px) {
-  .stories main .section.no-section-padding .columns-wrapper {
+  .stories main .section.no-section-padding .columns-wrapper, .webinars main .section.no-section-padding .columns-wrapper {
     height: 28rem;
   }
 }
 
-.stories main .section.no-section-padding.columns-container {
+.stories main .section.no-section-padding.columns-container, .webinars main .section.no-section-padding.columns-container {
   padding-top: 2rem;
 }
 
@@ -1234,6 +1234,11 @@ audio::-webkit-media-controls-panel {
   margin-bottom: 1rem;
 }
 
+.my-auto {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 .mb-1 {
   margin-bottom: 0.25rem;
 }
@@ -1274,6 +1279,10 @@ audio::-webkit-media-controls-panel {
   margin-left: 1.25rem;
 }
 
+.ml-6 {
+  margin-left: 1.5rem;
+}
+
 .ml-\[2px\] {
   margin-left: 2px;
 }
@@ -1308,6 +1317,10 @@ audio::-webkit-media-controls-panel {
 
 .mt-4 {
   margin-top: 1rem;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
 }
 
 .line-clamp-3 {
@@ -2132,8 +2145,16 @@ audio::-webkit-media-controls-panel {
     margin-bottom: 0.5rem;
   }
 
+  .md\:ml-\[311px\] {
+    margin-left: 311px;
+  }
+
   .md\:mt-4 {
     margin-top: 1rem;
+  }
+
+  .md\:mt-\[-7rem\] {
+    margin-top: -7rem;
   }
 
   .md\:h-64 {
