@@ -4,12 +4,11 @@ import {
   button, div, p, span, ul, li,
 } from '../../scripts/dom-builder.js';
 import { createCard, createFilters, imageHelper } from '../../scripts/scripts.js';
-import { getPageFromUrl } from '../dynamic-cards/dynamic-cards.js';
 
 const excludedPages = [
   '/en-us/stories/films',
   '/en-us/stories/podcasts',
-  '/en-us/stories/articles'
+  '/en-us/stories/articles',
 ];
 let lists = [];
 let filterContainer = {};
@@ -106,12 +105,12 @@ function handleRenderTags() {
 }
 
 // eslint-disable-next-line default-param-last
-function handleRenderContent(newLists = lists, page) {
+function handleRenderContent(newLists = lists) {
   newLists.sort((card1, card2) => card2.publishDate - card1.publishDate);
 
-  let pageNo = page || parseInt(getPageFromUrl(), 10);
-  pageNo = Number.isNaN(pageNo) ? 1 : pageNo;
-  const limitPerPage = 12;
+  // let pageNo = page || parseInt(getPageFromUrl(), 10);
+  // pageNo = Number.isNaN(pageNo) ? 1 : pageNo;
+  // const limitPerPage = 12;
   // const start = (pageNo - 1) * limitPerPage;
   // const listsToDisplay = newLists.slice(start, start + limitPerPage);
   cardList.innerHTML = '';
@@ -225,9 +224,7 @@ export default async function decorate(block) {
   if (block.children.length > 0) {
     const filterNames = block.querySelector(':scope > div > div > p')?.textContent?.split(',');
     const response = await ffetch('/en-us/stories/query-index.json')
-      .filter(({ path }) => {
-        return !excludedPages.includes(path);
-      })
+      .filter(({ path }) => !excludedPages.includes(path))
       .chunks(500)
       .all();
     lists = [...response];

@@ -6,7 +6,7 @@ import { decorateIcons } from '../../scripts/aem.js';
 
 export default function decorate(block) {
   const firstDivEl = block.querySelector(':scope > div > div');
-  if(firstDivEl?.childElementCount === 0){
+  if (firstDivEl?.childElementCount === 0) {
     const button = block.querySelector('.button-container');
     firstDivEl?.append(button);
   }
