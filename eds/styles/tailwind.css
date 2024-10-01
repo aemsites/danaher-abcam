@@ -75,6 +75,10 @@
         @apply pb-8;
     }
 
+    .webinars main .section.speakers-info-container .default-content-wrapper:first-child {
+        @apply pb-0 font-bold text-2xl;
+    }
+
     .default-content-wrapper:not(:first-child, :last-child) {
         @apply py-8;
     }

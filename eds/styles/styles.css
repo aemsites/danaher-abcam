@@ -805,6 +805,13 @@ header {
   padding-bottom: 2rem;
 }
 
+.webinars main .section.speakers-info-container .default-content-wrapper:first-child {
+  padding-bottom: 0px;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+}
+
 .default-content-wrapper:not(:first-child, :last-child) {
   padding-top: 2rem;
   padding-bottom: 2rem;
