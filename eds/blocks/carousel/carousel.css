@@ -258,6 +258,10 @@
   padding-top: 2rem
 }
 
+.carousel-wrapper :is(.text-left) {
+  text-align: left
+}
+
 .carousel-wrapper :is(.text-center) {
   text-align: center
 }
@@ -270,6 +274,21 @@
 .carousel-wrapper :is(.text-base) {
   font-size: 1rem;
   line-height: 1.5rem
+}
+
+.carousel-wrapper :is(.text-sm) {
+  font-size: 0.875rem;
+  line-height: 1.25rem
+}
+
+.carousel-wrapper :is(.text-3xl) {
+  font-size: 1.875rem;
+  line-height: 2.25rem
+}
+
+.carousel-wrapper :is(.\!text-3xl) {
+  font-size: 1.875rem !important;
+  line-height: 2.25rem !important
 }
 
 .carousel-wrapper :is(.font-bold) {
@@ -290,6 +309,10 @@
 
 .carousel-wrapper :is(.leading-7) {
   line-height: 1.75rem
+}
+
+.carousel-wrapper :is(.leading-10) {
+  line-height: 2.5rem
 }
 
 .carousel-wrapper :is(.tracking-tight) {
