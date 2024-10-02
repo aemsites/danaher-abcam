@@ -2,8 +2,8 @@
 Your project's description...
 
 ## Environments
-- Preview: https://main--danaher-abcam--aemsites.aem.page/
-- Live: https://main--danaher-abcam--aemsites.aem.live/
+- Preview: https://main--danaher-abcam-prod--aemsites.aem.page/
+- Live: https://main--danaher-abcam-prod--aemsites.aem.live/
 
 ## Installation
 
