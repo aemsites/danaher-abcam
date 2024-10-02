@@ -808,13 +808,10 @@ header {
 .default-content-wrapper h1:first-of-type {
   margin-left: auto;
   margin-right: auto;
+  max-width: 80rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
   padding-top: 1rem;
-}
-
-@media (min-width: 1280px) {
-  .default-content-wrapper h1:first-of-type {
-    max-width: 80rem;
-  }
 }
 
 .default-content-wrapper:not(:first-child, :last-child) {
