@@ -1,6 +1,6 @@
 mountpoints:
   /:
-    url: https://author-p93411-e849602.adobeaemcloud.com/bin/franklin.delivery/aemsites/danaher-abcam/main
+    url: https://author-p93411-e849552.adobeaemcloud.com/bin/franklin.delivery/aemsites/danaher-abcam-prod/main
     type: "markup"
     suffix: ".html"
 
