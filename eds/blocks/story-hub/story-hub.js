@@ -163,8 +163,8 @@ function handleChangeFilter(key, value, mode) {
         delete filterContainer[key];
       } else if (key in filterContainer) {
         if (filterContainer[key].includes(value)) {
-          filterContainer[key] = filterContainer[key].filter((val) => val !== value);
-          if (filterContainer[key].length === 0) delete filterContainer[key];
+          if (key !== 'stories-type') filterContainer[key] = filterContainer[key].filter((val) => val !== value);
+          if (key !== 'stories-type' && filterContainer[key].length === 0) delete filterContainer[key];
         } else filterContainer[key].push(value);
       } else filterContainer[key] = [value];
       // newLists = lists.filter((list) => (filterContainer[key]
@@ -172,23 +172,25 @@ function handleChangeFilter(key, value, mode) {
       //   : true));
       const totalFilterKeys = Object.keys(filterContainer);
       newLists = lists.map((list) => {
-        return totalFilterKeys.filter((filt) => {
+        const totalChecks = totalFilterKeys.filter((filt) => {
           if (filterContainer[filt].length > 0) {
             const arrNameRes = filterContainer[filt].filter((arrName) => {
+              if (filt === 'stories-type' && arrName === '') return true;
               return list.tags.includes(arrName);
             });
             if (arrNameRes.length > 0) return true;
           }
-        }).length === totalFilterKeys.length && list;
+          return false;
+        });
+        return totalChecks.length === totalFilterKeys.length && list;
       }).filter(Boolean);
-      // console.log(newLists, filterContainer);
     }
     handleRenderTags();
     handleRenderContent(newLists);
   }
 }
 
-function handleResetFilters() {
+function handleResetFilters(value = '') {
   Object.keys(filterContainer).forEach((filt) => {
     for (let eachFilt = 0; eachFilt < filterContainer[filt].length; eachFilt += 1) {
       const filterInp = hub.querySelector(`#${filt}-${filterContainer[filt][eachFilt]}`);
@@ -196,6 +198,7 @@ function handleResetFilters() {
     }
   });
   filterContainer = {};
+  filterContainer['stories-type'] = [value];
   // eslint-disable-next-line no-use-before-define
   handleChangeFilter(null, null, 'skip-filter');
 }
@@ -226,8 +229,10 @@ function toggleMobileFilters(mode) {
 function toggleTabs(tabId, tabElement) {
   const tabs = tabElement.querySelectorAll('.tab');
   const [key, value] = tabId.split('/');
-  if (!(key in filterContainer)) filterContainer = {};
-  filterContainer[key] = [value];
+  if (!filterContainer[key].includes(value)) {
+    handleResetFilters(value);
+  }
+  // filterContainer[key] = [value];
   tabs.forEach((tab) => {
     if (tab.id === tabId) {
       tab.classList.add('active', 'border-b-8', 'border-[#ff7223]');
@@ -314,6 +319,7 @@ export default async function decorate(block) {
       }, tab.name);
       tabElement.appendChild(btn);
     });
+    filterContainer['stories-type'] = [''];
     toggleTabs(tabs[0].tabId, tabElement);
     block.innerHTML = '';
     block.append(tabElement, horizondalLine, hub);
