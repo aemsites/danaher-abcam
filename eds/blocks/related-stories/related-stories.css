@@ -182,6 +182,11 @@
   color: rgb(0 0 0 / var(--tw-text-opacity))
 }
 
+.related-stories-wrapper :is(.text-\[\#378089\]) {
+  --tw-text-opacity: 1;
+  color: rgb(55 128 137 / var(--tw-text-opacity))
+}
+
 .related-stories-wrapper :is(.filter) {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
 }

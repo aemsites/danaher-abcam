@@ -497,7 +497,7 @@ function decorateVideo(main) {
         if (link.title === "video") {
           firstVideo += 1;
           const videoId = extractVideoId(link.href);
-          const posterImage = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+          const posterImage = `https://img.youtube.com/vi/${videoId}/sddefault.jpg`;
 
           const playButtonHTML = `
             <div class="relative w-full h-full">
@@ -509,7 +509,7 @@ function decorateVideo(main) {
           `;
           const linkContainer = link.parentElement;
           linkContainer.innerHTML = playButtonHTML;
-          decorateIcons(linkContainer);
+          decorateIcons(linkContainer, 50, 50);
 
           if (linkContainer.closest('.image-full-width')) {
             linkContainer.className = 'relative lg:absolute w-full lg:w-1/2 h-full object-cover lg:right-0 lg:bottom-6';
