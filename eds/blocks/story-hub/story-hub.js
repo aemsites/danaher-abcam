@@ -65,24 +65,26 @@ function handleRenderTags() {
   if (Object.keys(filterContainer).length > 0) {
     let filterCount = 0;
     Object.keys(filterContainer).forEach((filterArr) => {
-      filterContainer[filterArr].forEach((filt) => {
-        filterCount += 1;
-        tagsList.append(li(
-          {
-            class: 'flex items-center gap-x-1 text-xs text-[#378189] font-semibold bg-[#EDF6F7] px-2 py-1 rounded cursor-pointer capitalize',
-            title: filt,
-            onclick: () => {
-              const selectedTag = allSelectedTags.querySelector(`ul li[title=${filt}]`);
-              selectedTag.outerHTML = '';
-              hub.querySelector(`#${filterArr}-${filt}`).checked = false;
-              // eslint-disable-next-line no-use-before-define
-              handleChangeFilter(filterArr, filt);
+      if (filterArr !== 'stories-type') {
+        filterContainer[filterArr].forEach((filt) => {
+          filterCount += 1;
+          tagsList.append(li(
+            {
+              class: 'flex items-center gap-x-1 text-xs text-[#378189] font-semibold bg-[#EDF6F7] px-2 py-1 rounded cursor-pointer capitalize',
+              title: filt,
+              onclick: () => {
+                const selectedTag = allSelectedTags.querySelector(`ul li[title=${filt}]`);
+                selectedTag.outerHTML = '';
+                hub.querySelector(`#${filterArr}-${filt}`).checked = false;
+                // eslint-disable-next-line no-use-before-define
+                handleChangeFilter(filterArr, filt);
+              },
             },
-          },
-          filt,
-          span({ class: 'icon icon-close size-4 text-emerald-800' }),
-        ));
-      });
+            filt,
+            span({ class: 'icon icon-close size-4 text-emerald-800' }),
+          ));
+        });
+      }
     });
     if (filterCount > 2) {
       tagsList.insertBefore(
@@ -100,7 +102,7 @@ function handleRenderTags() {
         tagsList.childNodes[tagsList.children - 2],
       );
     }
-    tagsList.append(li({ class: 'clear-all' }, clearAllEl));
+    if (filterCount >= 1) tagsList.append(li({ class: 'clear-all' }, clearAllEl));
     decorateIcons(tagsList);
   }
 }
@@ -148,8 +150,9 @@ function handleRenderContent(newLists = lists) {
 }
 
 function handleChangeFilter(key, value, mode) {
+  // console.log(key, value, mode, filterContainer);
   let newLists = lists;
-  if (key === 'stories-type') {
+  if (!(key in filterContainer) && key === 'stories-type') {
     newLists = lists.filter((list) => (value
       ? list.tags.includes(value)
       : true));
@@ -164,9 +167,21 @@ function handleChangeFilter(key, value, mode) {
           if (filterContainer[key].length === 0) delete filterContainer[key];
         } else filterContainer[key].push(value);
       } else filterContainer[key] = [value];
-      newLists = lists.filter((list) => (filterContainer[key]
-        ? list.tags.includes(filterContainer[key])
-        : true));
+      // newLists = lists.filter((list) => (filterContainer[key]
+      //   ? list.tags.includes(filterContainer[key])
+      //   : true));
+      const totalFilterKeys = Object.keys(filterContainer);
+      newLists = lists.map((list) => {
+        return totalFilterKeys.filter((filt) => {
+          if (filterContainer[filt].length > 0) {
+            const arrNameRes = filterContainer[filt].filter((arrName) => {
+              return list.tags.includes(arrName);
+            });
+            if (arrNameRes.length > 0) return true;
+          }
+        }).length === totalFilterKeys.length && list;
+      }).filter(Boolean);
+      // console.log(newLists, filterContainer);
     }
     handleRenderTags();
     handleRenderContent(newLists);
@@ -211,6 +226,8 @@ function toggleMobileFilters(mode) {
 function toggleTabs(tabId, tabElement) {
   const tabs = tabElement.querySelectorAll('.tab');
   const [key, value] = tabId.split('/');
+  if (!(key in filterContainer)) filterContainer = {};
+  filterContainer[key] = [value];
   tabs.forEach((tab) => {
     if (tab.id === tabId) {
       tab.classList.add('active', 'border-b-8', 'border-[#ff7223]');
@@ -221,14 +238,18 @@ function toggleTabs(tabId, tabElement) {
   });
 }
 
+async function initiateRequest() {
+  const response = await ffetch('/en-us/stories/query-index.json')
+    .filter(({ path }) => !excludedPages.includes(path))
+    .chunks(500)
+    .all();
+  lists = [...response];
+}
+
 export default async function decorate(block) {
   if (block.children.length > 0) {
     const filterNames = block.querySelector(':scope > div > div > p')?.textContent?.split(',');
-    const response = await ffetch('/en-us/stories/query-index.json')
-      .filter(({ path }) => !excludedPages.includes(path))
-      .chunks(500)
-      .all();
-    lists = [...response];
+    await initiateRequest();
     buildStoryHubSchema(lists);
     const allFilters = p({ class: 'h-5/6 mb-3 overflow-visible' });
     createFilters({
@@ -289,12 +310,9 @@ export default async function decorate(block) {
       const btn = button({
         class: 'tab md:py-1.5 pb-4 mr-8 active border-b-8 border-[#ff7223]',
         id: tab.tabId,
-      });
-      btn.innerHTML = tab.name;
+        onclick: () => toggleTabs(tab.tabId, tabElement),
+      }, tab.name);
       tabElement.appendChild(btn);
-      btn.addEventListener('click', () => {
-        toggleTabs(tab.tabId, tabElement);
-      });
     });
     toggleTabs(tabs[0].tabId, tabElement);
     block.innerHTML = '';
