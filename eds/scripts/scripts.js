@@ -910,7 +910,6 @@ export function createCard({
   time = '',
   isStoryCard = false,
 }) {
-  console.log('tags', tags);
   const card = li(
     {
       class: 'card relative overflow-hidden bg-transparent',
