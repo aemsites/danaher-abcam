@@ -70,7 +70,9 @@ export default function decorate(block) {
       }
       content.classList.add(...'px-4 lg:px-8 lg:pr-10 gap-y-2'.split(' '));
       const heading = content.querySelector('h2');
-      const paragraphs = content.querySelectorAll('p:not(.button-container)');
+      const buttonParagrah = content.querySelector('div.button-container > p');
+      if (buttonParagrah) buttonParagrah.parentElement.classList.add('mt-6');
+      const paragraphs = content.querySelectorAll('div > p:not(div.button-container > p)');
       const allBtns = content.querySelectorAll('p.button-container');
       if (heading) heading.classList.add(...'lg:text-[40px] text-2xl md:text-4xl tracking-wide md:tracking-tight m-0 font-medium leading-6 md:leading-[44px]'.split(' '));
       paragraphs.forEach((paragraph) => {

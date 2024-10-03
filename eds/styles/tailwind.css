@@ -16,12 +16,12 @@
         @apply font-heading my-2;
     }
 
-    p {
+    div > p:not(div.button-container > p) {
         @apply my-2;
     }
 
     h1 {
-        @apply md:!leading-[3rem] !font-bold !text-5xl md:!text-4xl !pt-20;
+        @apply md:!leading-[3rem] !font-bold !text-5xl md:!text-4xl;
     }
 
     h2 { 
@@ -97,6 +97,10 @@
 
     main .section:not(.no-section-padding, .title-card-container) {
         @apply mx-auto xl:max-w-7xl px-6 lg:px-0 py-10;
+    }
+
+    main .section.carousel-container h1 {
+        @apply !pt-20;
     }
 
     main .section .default-content-wrapper h2{
