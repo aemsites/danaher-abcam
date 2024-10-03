@@ -9,7 +9,7 @@ export default function decorate(block) {
   block.querySelector('div')?.classList.add(...'flex flex-col sm:flex-row md:justify-between pt-0 pb-8'.split(' '));
   block.querySelector('h3')?.parentElement?.classList.add('max-w-3xl');
   block.querySelector('h3')?.classList.add('text-xl', 'font-bold', 'mb-4');
-  block.querySelector('p')?.classList.add('text-base', 'font-normal', 'mb-4');
+  block.querySelector('div > p:not(div.button-container > p)')?.classList.add('text-base', 'font-normal', 'mb-4');
 
   const socialLinksDiv = div({ class: 'max-w-56 pt-10 lg:pt-0' });
   socialLinksDiv.prepend(
@@ -36,7 +36,7 @@ export default function decorate(block) {
     block.querySelector('div')?.classList.add(...'flex flex-col md:flex-row md:justify-between pt-0 pb-8'.split(' '));
     block.querySelector('h3')?.parentElement?.classList.add('max-w-3xl');
     block.querySelector('h3')?.classList.add('text-xl', 'font-bold', 'mb-4');
-    block.querySelector('p')?.classList.add('text-base', 'font-normal', 'mb-4');
+    block.querySelector('div > p:not(div.button-container > p)')?.classList.add('text-base', 'font-normal', 'mb-4');
     decorateIcons(socialLinksDiv);
   }
   block.querySelector('div').append(socialLinksDiv);
