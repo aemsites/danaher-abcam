@@ -13,18 +13,19 @@ function decoratePodcast(podcast) {
   const contentDiv = podcast.querySelector('div:nth-child(2)');
   applyClasses(contentDiv, 'lg:ml-6 lg:w-2/3 xl:w-3/4 w-full ml-0');
 
-  const allButtons = div({ class: 'grid grid-cols-2 gap-6 lg:w-7/12 w-full' });
+  const allButtons = div({ class: 'grid grid-cols-2 gap-6 lg:w-7/12 w-full items-center' });
 
   const iconContainer = div(
-    { class: 'flex flex-col lg:flex-row mt-2 lg:gap-4 justify-between' },
+    { class: 'flex flex-col lg:flex-row lg:gap-4 justify-between' },
     div('Also Available on'),
     div({ class: 'icon-container flex gap-2' }),
   );
   contentDiv.querySelectorAll('p > a').forEach((link) => {
     link.parentElement.remove();
-    const icon = span({ class: `icon icon-${link.textContent.toLowerCase()}` }, link);
+    const icon = span({ class: `icon icon-${link.textContent.toLowerCase()}` });
     link.textContent = '';
-    iconContainer.querySelector('.icon-container')?.append(icon);
+    link.append(icon);
+    iconContainer.querySelector('.icon-container')?.append(link);
   });
   decorateIcons(iconContainer);
 

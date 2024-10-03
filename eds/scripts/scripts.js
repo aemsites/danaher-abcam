@@ -16,6 +16,8 @@ import {
   createOptimizedPicture,
 } from './aem.js';
 import { div, span, button, iframe, p, img, li, label, input, ul, a, h3 } from './dom-builder.js';
+// eslint-disable-next-line import/prefer-default-export
+import { buildVideoSchema } from './schema.js';
 
 const LCP_BLOCKS = ['hero', 'hero-video', 'carousel']; // add your LCP blocks to the list
 
@@ -421,6 +423,7 @@ function decorateVideo(main) {
   const divContainers = main.querySelectorAll('.stories main .section');
   const type = getMetadata('pagetags');
 
+  let firstVideo = 0;
   divContainers.forEach(divContainer => {
     if (type.includes('podcast')) {
       divContainer.querySelectorAll('p a').forEach(link => {
@@ -511,16 +514,17 @@ function decorateVideo(main) {
     } else if (type.includes('film')) {
       divContainer.querySelectorAll('p a').forEach(link => {
         if (link.title === "video") {
+          firstVideo += 1;
           const videoId = extractVideoId(link.href);
           const posterImage = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
 
           const playButtonHTML = `
-<div class="relative w-full h-full">
-<img src="${posterImage}" class="relative inset-0 w-full h-full object-cover" />
-<button id="play-button-${videoId}" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 rounded-full p-4">
-<span class = "video-play-icon icon icon-video-play"/>
-</button>
-</div>
+            <div class="relative w-full h-full">
+              <img src="${posterImage}" class="relative inset-0 w-full h-full object-cover" />
+              <button id="play-button-${videoId}" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 rounded-full p-4">
+                <span class = "video-play-icon icon icon-video-play"/>
+              </button>
+            </div>
           `;
           const linkContainer = link.parentElement;
           linkContainer.innerHTML = playButtonHTML;
@@ -534,7 +538,7 @@ function decorateVideo(main) {
             e.preventDefault();
             toggleModalPopUp(link.href, linkContainer);
           });
-
+          if (firstVideo === 1) buildVideoSchema(posterImage, link.href);
           const modalPopUp = createModalPopUp(link.href, linkContainer);
           linkContainer.appendChild(modalPopUp);
         }
@@ -744,6 +748,54 @@ function loadDelayed() {
   window.setTimeout(() => import('./delayed.js'), 3000);
   // load anything that can be postponed to the latest here
   import('./sidekick.js').then(({ initSidekick }) => initSidekick());
+}
+
+/**
+ * Returns the valid public url with or without .html extension
+ * @param {string} url
+ * @returns new string with the formatted url
+ */
+export function makePublicUrl(url) {
+  const isProd = window.location.hostname.includes('abcam.com');
+  try {
+    const newURL = new URL(url, window.location.origin);
+    if (isProd) {
+      if (newURL.pathname.endsWith('.html')) {
+        return newURL.pathname;
+      }
+      newURL.pathname += '.html';
+      return newURL.pathname;
+    }
+    if (newURL.pathname.endsWith('.html')) {
+      newURL.pathname = newURL.pathname.slice(0, -5);
+      return newURL.pathname;
+    }
+    return newURL.pathname;
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('Invalid URL:', error);
+    return url;
+  }
+}
+
+/**
+ * Set the JSON-LD script in the head
+ * @param {*} data
+ * @param {string} name
+ */
+export function setJsonLd(data, name) {
+  const existingScript = document.head.querySelector(`script[data-name="${name}"]`);
+  if (existingScript) {
+    existingScript.innerHTML = JSON.stringify(data);
+    return;
+  }
+
+  const script = document.createElement('script');
+  script.type = 'application/ld+json';
+
+  script.innerHTML = JSON.stringify(data);
+  script.dataset.name = name;
+  document.head.appendChild(script);
 }
 
 async function loadPage() {

@@ -5,6 +5,11 @@ import {
 import { decorateIcons } from '../../scripts/aem.js';
 
 export default function decorate(block) {
+  const firstDivEl = block.querySelector(':scope > div > div');
+  if (firstDivEl?.childElementCount === 0) {
+    const button = block.querySelector('.button-container');
+    firstDivEl?.append(button);
+  }
   block.classList.add(...'px-6 py-8 w-full border-y'.split(' '));
   block.querySelector('div')?.classList.add(...'flex flex-col md:flex-row md:justify-between pt-0'.split(' '));
   block.querySelector('h3')?.parentElement?.classList.add('max-w-3xl');
