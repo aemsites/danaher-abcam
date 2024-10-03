@@ -30,6 +30,10 @@
   flex-direction: column
 }
 
+.learn-more-wrapper :is(.items-center) {
+  align-items: center
+}
+
 .learn-more-wrapper :is(.gap-x-2) {
   -moz-column-gap: 0.5rem;
        column-gap: 0.5rem

@@ -486,6 +486,6 @@ export default function decorate(block) {
     parentWrapper.append(div({ id: 'search-container-child', class: 'h-screen fixed top-0 left-0 bg-black opacity-75 z-40 transition-all -translate-y-full' }));
     decorateIcons(parentWrapper);
   } else {
-    block.querySelector('div > div > h1')?.parentElement?.classList.add(...'absolute inset-0 flex items-center justify-center text-center px-12 font-semibold text-4xl xl:font-bold xl:text-5xl xxl:text-7xl text-white'.split(' '));
+    block.querySelector('div > div > h1,h2')?.parentElement?.classList.add(...'absolute inset-0 flex items-center justify-center text-center px-12 font-semibold text-4xl xl:font-bold xl:text-5xl xxl:text-7xl text-white'.split(' '));
   }
 }

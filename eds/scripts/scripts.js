@@ -21,8 +21,8 @@ import { buildVideoSchema } from './schema.js';
 
 const LCP_BLOCKS = ['hero', 'hero-video', 'carousel']; // add your LCP blocks to the list
 
-export function getStoryType() {
-  const tags = getMetadata('pagetags');
+export function getStoryType(pageTags) {
+  const tags = pageTags ? pageTags : getMetadata('pagetags');
   let type = null;
   tags?.split(',').forEach((tag) => {
     if (tag.includes('content-type')) {
@@ -511,7 +511,7 @@ function decorateVideo(main) {
           const posterImage = `https://img.youtube.com/vi/${videoId}/sddefault.jpg`;
 
           const playButtonHTML = `
-            <div class="video relative w-full h-full">
+            <div class="aspect-video relative w-full h-full">
               <img src="${posterImage}" class="relative inset-0 w-full h-full object-cover" />
               <button id="play-button-${videoId}" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 rounded-full p-4">
                 <span class = "video-play-icon icon icon-video-play"/>
@@ -906,7 +906,11 @@ export function createCard({
   bodyEl = '',
   footerEl = '',
   path = '/',
+  tags = '',
+  time = '',
+  isStoryCard = false,
 }) {
+  console.log('tags', tags);
   const card = li(
     {
       class: 'card relative overflow-hidden bg-transparent',
@@ -931,6 +935,24 @@ export function createCard({
       footerEl,
     )
   );
+  if(isStoryCard){
+    let minRead;
+    switch (getStoryType(tags)) {
+      case 'podcast':
+        minRead = ` | ${time} mins listen`;
+        break;
+      case 'film':
+        minRead = ` | ${time} mins watch`;
+        break;
+      default:
+        minRead = ` | ${time} mins read`;
+        break;
+    }
+    card.querySelector('.flex-1').prepend(
+      span({ class: 'capitalize font-normal text-sm' }, `${getStoryType(tags)}`),
+      span({ class: 'font-normal text-sm' }, `${minRead}`),
+    );
+  }
   return card;
 }
 

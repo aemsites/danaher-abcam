@@ -66,6 +66,10 @@
   display: none
 }
 
+.columns-wrapper :is(.aspect-video) {
+  aspect-ratio: 16 / 9
+}
+
 .columns-wrapper :is(.h-full) {
   height: 100%
 }
@@ -139,6 +143,10 @@
 }
 
 @media (min-width: 640px) {
+  .columns-wrapper :is(.sm\:aspect-video) {
+    aspect-ratio: 16 / 9
+  }
+
   .columns-wrapper :is(.sm\:w-3\/5) {
     width: 60%
   }
@@ -163,6 +171,10 @@
 
   .columns-wrapper :is(.md\:left-32) {
     left: 8rem
+  }
+
+  .columns-wrapper :is(.md\:aspect-video) {
+    aspect-ratio: 16 / 9
   }
 
   .columns-wrapper :is(.md\:w-1\/2) {
@@ -248,6 +260,11 @@
   .columns-wrapper :is(.lg\:py-6) {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem
+  }
+
+  .columns-wrapper :is(.lg\:py-10) {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem
   }
 
   .columns-wrapper :is(.lg\:pr-6) {
