@@ -817,7 +817,7 @@ export function createFilters({
         categoryIndex >= limit ? { class: 'hidden' } : '',
         label(
           {
-            class: 'w-full flex items-center gap-3 py-1 md:hover:px-1 md:hover:bg-gray-50 text-sm font-medium break-all capitalize cursor-pointer',
+            class: 'w-full flex items-center gap-3 py-1 md:hover:px-1 md:hover:bg-gray-50 text-sm font-medium break-all cursor-pointer',
             for: `${[categoryKey]}-${categoryValue}`
           },
           input({
@@ -829,7 +829,7 @@ export function createFilters({
               listActionHandler(categoryKey, categoryValue);
             }
           }),
-          categoryValue,
+          categoryValue.replace(/-/g, ' ').replace(/^\w/, char => char.toUpperCase()),
         ),
       ));
     });
