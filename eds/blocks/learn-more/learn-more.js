@@ -5,17 +5,7 @@ import {
 import { decorateIcons } from '../../scripts/aem.js';
 
 export default function decorate(block) {
-  const firstDivEl = block.querySelector(':scope > div > div');
-  if (firstDivEl?.childElementCount === 0) {
-    const button = block.querySelector('.button-container');
-    firstDivEl?.append(button);
-  }
   block.classList.add(...'px-6 py-8 w-full border-y'.split(' '));
-  block.querySelector('div')?.classList.add(...'flex flex-col md:flex-row md:justify-between pt-0'.split(' '));
-  block.querySelector('h3')?.parentElement?.classList.add('max-w-3xl');
-  block.querySelector('h3')?.classList.add('text-xl', 'font-bold', 'mb-4');
-  block.querySelector('p')?.classList.add('text-base', 'font-normal', 'mb-4');
-
   const socialLinksDiv = div({ class: 'max-w-56 pt-10 lg:pt-0' });
   socialLinksDiv.prepend(
     p(
@@ -29,6 +19,20 @@ export default function decorate(block) {
       li(a({ href: 'javascript:window.open(\'//www.facebook.com/sharer/sharer.php?\' + location.href + \'&title=\' + encodeURI(document.title))' }, span({ class: 'icon icon-facebook-circle' }))),
     ),
   );
-  decorateIcons(socialLinksDiv);
+  const firstDivEl = block.querySelector(':scope > div > div');
+  const button = block.querySelector('.button-container');
+  if (firstDivEl?.childElementCount === 0 && !button) {
+    socialLinksDiv.classList.add(...'flex flex-col w-full items-center m-auto'.split(' '));
+    decorateIcons(socialLinksDiv, 50, 50);
+  } else {
+    if (firstDivEl?.childElementCount === 0 && button) {
+      firstDivEl?.append(button);
+    }
+    block.querySelector('div')?.classList.add(...'flex flex-col md:flex-row md:justify-between pt-0'.split(' '));
+    block.querySelector('h3')?.parentElement?.classList.add('max-w-3xl');
+    block.querySelector('h3')?.classList.add('text-xl', 'font-bold', 'mb-4');
+    block.querySelector('p')?.classList.add('text-base', 'font-normal', 'mb-4');
+    decorateIcons(socialLinksDiv);
+  }
   block.querySelector('div').append(socialLinksDiv);
 }

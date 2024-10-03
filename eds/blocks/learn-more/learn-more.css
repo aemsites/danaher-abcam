@@ -1,3 +1,7 @@
+.learn-more-wrapper :is(.m-auto) {
+  margin: auto
+}
+
 .learn-more-wrapper :is(.mb-4) {
   margin-bottom: 1rem
 }
@@ -26,6 +30,14 @@
   flex-direction: column
 }
 
+.learn-more-wrapper :is(.items-center) {
+  align-items: center
+}
+
+.learn-more-wrapper :is(.justify-center) {
+  justify-content: center
+}
+
 .learn-more-wrapper :is(.gap-x-2) {
   -moz-column-gap: 0.5rem;
        column-gap: 0.5rem
@@ -52,6 +64,10 @@
 
 .learn-more-wrapper :is(.pt-10) {
   padding-top: 2.5rem
+}
+
+.learn-more-wrapper :is(.text-center) {
+  text-align: center
 }
 
 .learn-more-wrapper :is(.text-base) {
