@@ -8,7 +8,7 @@ export function buildArticleSchema() {
     '@context': 'http://schema.org',
     '@type': 'Article',
     '@id': `https://www.abcam.com${makePublicUrl(window.location.pathname)}`,
-    headline: getMetadata('og:title'),
+    headline: document.querySelector('h1') ? document.querySelector('h1').textContent : getMetadata('og:title'),
     image: getMetadata('og:image'),
     datePublished: getMetadata('publishdate'),
     publisher: {
