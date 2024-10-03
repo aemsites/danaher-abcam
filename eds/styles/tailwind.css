@@ -45,11 +45,11 @@
     }
 
     .button-primary {
-        @apply bg-[#378189] hover:bg-[#2A5F65] whitespace-nowrap rounded-full items-center py-[1px] px-3 text-white text-sm capitalize justify-self-end w-fit;
+        @apply bg-[#378189] hover:bg-[#2A5F65] whitespace-nowrap rounded-full items-center py-px px-3 text-white text-sm capitalize justify-self-end w-fit;
     }
 
     main .section .button-secondary {
-        @apply bg-black hover:bg-[#3B3B3B] whitespace-nowrap rounded-full items-center py-[1px] px-3 text-white text-sm capitalize justify-self-end w-fit;
+        @apply bg-black hover:bg-[#3B3B3B] whitespace-nowrap rounded-full items-center py-px px-5 text-white text-sm capitalize justify-self-end w-fit;
     }
 
     main .section .button-tertiary-outline {

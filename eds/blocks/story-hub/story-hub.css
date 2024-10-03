@@ -230,6 +230,14 @@
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
 }
 
+.story-hub-wrapper :is(.fill-\[\#378189\]) {
+  fill: #378189
+}
+
+.story-hub-wrapper :is(.\!fill-\[\#378189\]) {
+  fill: #378189 !important
+}
+
 .story-hub-wrapper :is(.p-1) {
   padding: 0.25rem
 }
@@ -328,6 +336,11 @@
 .story-hub-wrapper :is(.text-white) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+
+.story-hub-wrapper :is(.\!text-\[\#378189\]) {
+  --tw-text-opacity: 1 !important;
+  color: rgb(55 129 137 / var(--tw-text-opacity)) !important
 }
 
 .story-hub-wrapper :is(.underline) {
