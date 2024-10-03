@@ -171,6 +171,10 @@
   gap: 1.5rem
 }
 
+.story-hub-wrapper :is(.gap-10) {
+  gap: 2.5rem
+}
+
 .story-hub-wrapper :is(.gap-x-1) {
   -moz-column-gap: 0.25rem;
        column-gap: 0.25rem
@@ -449,6 +453,10 @@
 
   .story-hub-wrapper :is(.lg\:grid-cols-3) {
     grid-template-columns: repeat(3, minmax(0, 1fr))
+  }
+
+  .story-hub-wrapper :is(.lg\:gap-16) {
+    gap: 4rem
   }
 }
 

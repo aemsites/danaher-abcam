@@ -47,6 +47,10 @@
   height: 8rem
 }
 
+.podcasts-wrapper :is(.h-64) {
+  height: 16rem
+}
+
 .podcasts-wrapper :is(.w-full) {
   width: 100%
 }

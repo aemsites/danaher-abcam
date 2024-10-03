@@ -21,11 +21,11 @@
     }
 
     h1 {
-        @apply md:!leading-[3rem] !font-medium !text-3xl md:!text-4xl;
+        @apply md:!leading-[3rem] !font-bold !text-5xl md:!text-4xl !pt-20;
     }
 
     h2 { 
-        @apply !leading-9 !font-medium !text-2xl md:!text-3xl;
+        @apply !leading-9 !font-bold !text-4xl md:!text-3xl;
     }
 
     h3 { 
@@ -49,7 +49,7 @@
     }
 
     main .section .button-secondary {
-        @apply bg-black hover:bg-[#3B3B3B] whitespace-nowrap rounded-full items-center py-px px-5 text-white text-sm capitalize justify-self-end w-fit;
+        @apply bg-black hover:bg-[#3B3B3B] whitespace-nowrap rounded-full items-center py-3 px-6 font-semibold text-white text-sm capitalize justify-self-end w-fit;
     }
 
     main .section .button-tertiary-outline {
@@ -75,6 +75,10 @@
         @apply pb-8;
     }
 
+    .default-content-wrapper h1:first-of-type {
+        @apply pt-4 px-6 mx-auto max-w-7xl;
+    }
+
     .default-content-wrapper:not(:first-child, :last-child) {
         @apply py-8;
     }
@@ -92,11 +96,11 @@
     }
 
     main .section:not(.no-section-padding, .title-card-container) {
-        @apply mx-auto xl:max-w-7xl px-6 py-10;
+        @apply mx-auto xl:max-w-7xl px-6 lg:px-0 py-10;
     }
 
     main .section .default-content-wrapper h2{
-        @apply font-medium leading-8 lg:leading-5 text-4xl py-8;
+        @apply font-medium leading-8 lg:leading-5 text-4xl !my-0 pt-8;
     }
 
     main .section .title-card-wrapper {
