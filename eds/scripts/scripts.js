@@ -869,6 +869,7 @@ export function createFilters({
           class: 'icon icon-chevron-down size-5 cursor-pointer',
           onclick: () => {
             lists.parentElement.classList.toggle('hidden');
+            lists.parentElement.previousElementSibling.children[1].classList.toggle('rotate-180');
           },
         }),
       ),

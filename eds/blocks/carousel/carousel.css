@@ -210,14 +210,14 @@
   border-color: rgb(0 0 0 / var(--tw-border-opacity))
 }
 
-.carousel-wrapper :is(.bg-white) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity))
-}
-
 .carousel-wrapper :is(.bg-black) {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity))
+}
+
+.carousel-wrapper :is(.bg-white) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity))
 }
 
 .carousel-wrapper :is(.object-contain) {
@@ -392,11 +392,6 @@
 
   .carousel-wrapper :is(.lg\:w-1\/2) {
     width: 50%
-  }
-
-  .carousel-wrapper :is(.lg\:bg-black) {
-    --tw-bg-opacity: 1;
-    background-color: rgb(0 0 0 / var(--tw-bg-opacity))
   }
 
   .carousel-wrapper :is(.lg\:bg-white) {
