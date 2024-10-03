@@ -97,6 +97,10 @@
   height: 75%
 }
 
+.carousel-wrapper :is(.h-\[31\.5rem\]) {
+  height: 31.5rem
+}
+
 .carousel-wrapper :is(.min-h-\[30rem\]) {
   min-height: 30rem
 }
