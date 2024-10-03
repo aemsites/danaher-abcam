@@ -8,7 +8,7 @@ import {
 export default function decorate(block) {
   block.innerHTML = '';
   const authorName = getMetadata('authorname');
-  const publishDate = getMetadata('published-time');
+  const publishDate = getMetadata('publishdate');
   const readingTime = getMetadata('readingtime');
   const expectedPublishFormat = new Date(publishDate);
 

@@ -912,7 +912,7 @@ export function createCard({
       footerLink !== ''
         ? a(
           {
-            class: 'text-base leading-5 text-emerald-800 font-bold p-2 pl-0 group-hover:tracking-wide group-hover:underline transition duration-700 mt-2',
+            class: 'text-base leading-5 text-[#378189] font-bold p-2 pl-0 group-hover:tracking-wide group-hover:underline transition duration-700 mt-2',
             href: path
           }, footerLink)
         : '',
