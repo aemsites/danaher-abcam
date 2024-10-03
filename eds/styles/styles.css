@@ -805,6 +805,15 @@ header {
   padding-bottom: 2rem;
 }
 
+.default-content-wrapper h1:first-of-type {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 80rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 1rem;
+}
+
 .default-content-wrapper:not(:first-child, :last-child) {
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -1456,6 +1465,11 @@ audio::-webkit-media-controls-panel {
 
 .flex-none {
   flex: none;
+}
+
+.rotate-180 {
+  --tw-rotate: 180deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .transform {
