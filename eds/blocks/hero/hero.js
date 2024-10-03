@@ -448,7 +448,7 @@ export default function decorate(block) {
   const pictureTag = block.querySelector('picture');
   const img = pictureTag.querySelector('img');
   img.setAttribute('loading', 'eager');
-  pictureTag.classList.add(...'[&_img]:h-[496px] [&_img]:w-full'.split(' '));
+  pictureTag.classList.add(...'[&_img]:lg:h-[496px] [&_img]:w-full'.split(' '));
   block.classList.add(...'relative'.split(' '));
   if (block.classList.contains('input-popup')) {
     const title = block.querySelector('div > div > p');

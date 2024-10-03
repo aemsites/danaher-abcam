@@ -47,6 +47,10 @@
   height: 8rem
 }
 
+.podcasts-wrapper :is(.h-64) {
+  height: 16rem
+}
+
 .podcasts-wrapper :is(.w-full) {
   width: 100%
 }
@@ -86,6 +90,11 @@
 .podcasts-wrapper :is(.border-\[\#D8D8D8\]) {
   --tw-border-opacity: 1;
   border-color: rgb(216 216 216 / var(--tw-border-opacity))
+}
+
+.podcasts-wrapper :is(.object-contain) {
+  -o-object-fit: contain;
+     object-fit: contain
 }
 
 .podcasts-wrapper :is(.object-cover) {

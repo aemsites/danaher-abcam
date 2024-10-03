@@ -319,7 +319,7 @@ function getMetadata(name, doc = document) {
  * @returns {Element} The picture element
  */
 function createOptimizedPicture(
-  src,
+  src = 'https://s7d9.scene7.com/is/image/danaherstage/default-stories?$danaher-mobile$',
   alt = '',
   eager = false,
   breakpoints = [{ media: '(min-width: 600px)', width: '2000' }, { width: '750' }],

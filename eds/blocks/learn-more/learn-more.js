@@ -6,6 +6,11 @@ import { decorateIcons } from '../../scripts/aem.js';
 
 export default function decorate(block) {
   block.classList.add(...'px-6 py-8 w-full border-y'.split(' '));
+  block.querySelector('div')?.classList.add(...'flex flex-col sm:flex-row md:justify-between pt-0 pb-8'.split(' '));
+  block.querySelector('h3')?.parentElement?.classList.add('max-w-3xl');
+  block.querySelector('h3')?.classList.add('text-xl', 'font-bold', 'mb-4');
+  block.querySelector('p')?.classList.add('text-base', 'font-normal', 'mb-4');
+
   const socialLinksDiv = div({ class: 'max-w-56 pt-10 lg:pt-0' });
   socialLinksDiv.prepend(
     p(
@@ -28,7 +33,7 @@ export default function decorate(block) {
     if (firstDivEl?.childElementCount === 0 && button) {
       firstDivEl?.append(button);
     }
-    block.querySelector('div')?.classList.add(...'flex flex-col md:flex-row md:justify-between pt-0'.split(' '));
+    block.querySelector('div')?.classList.add(...'flex flex-col md:flex-row md:justify-between pt-0 pb-8'.split(' '));
     block.querySelector('h3')?.parentElement?.classList.add('max-w-3xl');
     block.querySelector('h3')?.classList.add('text-xl', 'font-bold', 'mb-4');
     block.querySelector('p')?.classList.add('text-base', 'font-normal', 'mb-4');
