@@ -40,7 +40,7 @@ const hubDesktopFilters = div(
     ),
   ),
 );
-const cardList = ul({ class: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-stretch' });
+const cardList = ul({ class: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-16 justify-items-stretch' });
 const filterBackdrop = div({ class: 'h-screen fixed top-0 left-0 bg-white z-40 transition-all -translate-y-full' });
 
 function showMoreOrLessTags(mode) {
@@ -139,6 +139,9 @@ function handleRenderContent(newLists = lists) {
       description: article.description,
       footerLink,
       path: article.path,
+      tags: article.tags,
+      time: article.readingTime,
+      isStoryCard: true,
     }));
   });
   // const paginationElements = createPagination(newLists, page, limitPerPage);

@@ -63,7 +63,12 @@ export default function decorate(block) {
         h4Element.classList.add('text-sm');
         content.prepend(h4Element);
       }
-      content.classList.add(...'px-4 lg:px-8 lg:pr-10 lg:pl-[22rem]'.split(' '));
+      const h5Element = ele.querySelector('h5');
+      if (h5Element) {
+        h5Element.classList.add('text-sm');
+        content.prepend(h5Element);
+      }
+      content.classList.add(...'px-4 lg:px-8 lg:pr-10 gap-y-2'.split(' '));
       const heading = content.querySelector('h2');
       const paragraphs = content.querySelectorAll('p:not(.button-container)');
       const allBtns = content.querySelectorAll('p.button-container');
@@ -71,7 +76,7 @@ export default function decorate(block) {
       paragraphs.forEach((paragraph) => {
         if (!paragraph.querySelector('a[title="link"]')) {
           if (paragraph.nextElementSibling && ['H1', 'H2', 'H3'].includes(paragraph.nextElementSibling.nodeName)) paragraph.classList.add(...'eyebrow'.split(' '));
-          else paragraph.classList.add(...'font-extralight tracking-tight leading-7'.split(' '));
+          else paragraph.classList.add(...'font-semibold tracking-tight leading-7 my-0'.split(' '));
         } else {
           const linkBtn = paragraph.querySelector('a[title="link"]');
           if (linkBtn.title === 'link') paragraph.classList.add(...'btn btn-lg font-medium btn-primary-purple rounded-full px-6 mt-10'.split(' '));
@@ -99,7 +104,7 @@ export default function decorate(block) {
         });
         content.append(actions);
       }
-      ele.append(div({ class: 'lg:my-auto lg:w-1/2 h-auto max-w-7xl py-8 lg:py-0 pt-24 overflow-hidden' }, content));
+      ele.append(div({ class: 'lg:my-auto lg:w-1/2 h-auto max-w-7xl py-8 lg:py-0 pt-24 xl:pl-0 2xl:pl-[19rem] overflow-hidden' }, content));
     }
     if (picture) {
       picture.querySelector('img').classList.add(...'lg:absolute lg:bottom-0 h-full w-full object-contain lg:object-cover'.split(' '));
@@ -113,7 +118,7 @@ export default function decorate(block) {
     block.parentElement.classList.add(...'relative w-full'.split(' '));
     block.parentElement.setAttribute('data-carousel', 'slide');
     block.parentElement.setAttribute('id', uuid);
-    const carouselControls = div({ class: 'relative md:absolute md:bottom-16 flex gap-x-4 items-center space-x-3 z-10 px-4 lg:px-8 xl:pr-10 pt-8' });
+    const carouselControls = div({ class: 'relative md:absolute md:bottom-16 flex gap-x-4 items-center space-x-3 z-10 px-4 lg:px-4 xl:pr-2 pt-8' });
     configurePagination(carouselControls, slides.length);
     configureNavigation(carouselControls);
     block.parentElement.append(div({ class: 'carousel-controls relative max-w-7xl mx-auto' }, carouselControls));
