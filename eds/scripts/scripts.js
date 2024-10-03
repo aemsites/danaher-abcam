@@ -21,6 +21,17 @@ import { buildVideoSchema } from './schema.js';
 
 const LCP_BLOCKS = ['hero', 'hero-video', 'carousel']; // add your LCP blocks to the list
 
+export function getStoryType() {
+  const tags = getMetadata('pagetags');
+  let type = null;
+  tags?.split(',').forEach((tag) => {
+    if (tag.includes('content-type')) {
+      type = tag.split('/').pop();
+    }
+  });
+  return type;
+}
+
 /**
  * 
  * @param {*} config 
@@ -500,7 +511,7 @@ function decorateVideo(main) {
           const posterImage = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
 
           const playButtonHTML = `
-            <div class="relative w-full h-full">
+            <div class="video relative w-full h-full">
               <img src="${posterImage}" class="relative inset-0 w-full h-full object-cover" />
               <button id="play-button-${videoId}" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 rounded-full p-4">
                 <span class = "video-play-icon icon icon-video-play"/>

@@ -7,7 +7,7 @@ function decoratePodcast(podcast) {
   const pictureDiv = podcast.querySelector('div:nth-child(1)');
   const img = pictureDiv.querySelector('img');
   if (img) {
-    applyClasses(img, 'lg:w-48 lg:h-48 object-cover w-full h-32');
+    applyClasses(img, 'lg:w-48 lg:h-48 object-cover w-full h-64');
   }
 
   const contentDiv = podcast.querySelector('div:nth-child(2)');
