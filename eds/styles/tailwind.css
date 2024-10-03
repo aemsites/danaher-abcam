@@ -96,7 +96,7 @@
     }
 
     main .section:not(.no-section-padding, .title-card-container) {
-        @apply mx-auto xl:max-w-7xl px-6 py-10;
+        @apply mx-auto xl:max-w-7xl px-6 lg:px-0 py-10;
     }
 
     main .section .default-content-wrapper h2{

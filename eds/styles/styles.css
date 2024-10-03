@@ -845,6 +845,13 @@ main .section:not(.no-section-padding, .title-card-container) {
   padding-bottom: 2.5rem;
 }
 
+@media (min-width: 1024px) {
+  main .section:not(.no-section-padding, .title-card-container) {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
 @media (min-width: 1280px) {
   main .section:not(.no-section-padding, .title-card-container) {
     max-width: 80rem;
