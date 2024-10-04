@@ -163,16 +163,16 @@
   justify-items: stretch
 }
 
+.story-hub-wrapper :is(.gap-10) {
+  gap: 2.5rem
+}
+
 .story-hub-wrapper :is(.gap-2) {
   gap: 0.5rem
 }
 
 .story-hub-wrapper :is(.gap-6) {
   gap: 1.5rem
-}
-
-.story-hub-wrapper :is(.gap-10) {
-  gap: 2.5rem
 }
 
 .story-hub-wrapper :is(.gap-x-1) {
@@ -322,11 +322,6 @@
 .story-hub-wrapper :is(.text-black) {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity))
-}
-
-.story-hub-wrapper :is(.text-emerald-800) {
-  --tw-text-opacity: 1;
-  color: rgb(6 95 70 / var(--tw-text-opacity))
 }
 
 .story-hub-wrapper :is(.text-white) {
