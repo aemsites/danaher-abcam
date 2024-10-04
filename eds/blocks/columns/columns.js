@@ -15,7 +15,7 @@ export default function decorate(block) {
   block.classList.add(`columns-${cols.length}-cols`);
   const imageAspectRatio = 1.7778;
 
-  applyClasses(block, 'h-full flex flex-col md:flex-row gap-y-6 px-6');
+  applyClasses(block, 'h-full flex flex-col md:flex-row gap-y-6 px-6 md:px-0');
 
   [...block.children].forEach((row) => {
     applyClasses(row, 'flex flex-col lg:flex-row');

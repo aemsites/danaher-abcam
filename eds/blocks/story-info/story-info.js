@@ -11,6 +11,17 @@ export default function decorate(block) {
   const publishDate = getMetadata('published-time');
   const readingTime = getMetadata('readingtime');
   const expectedPublishFormat = new Date(publishDate);
+  const pageTags = getMetadata('pagetags');
+  let labelType = '';
+  pageTags.split(', ')?.forEach((category) => {
+    if (category.includes('film')) {
+      labelType = 'watch';
+    } else if (category.includes('article')) {
+      labelType = 'read';
+    } else if (category.includes('podcast')) {
+      labelType = 'listen';
+    }
+  });
 
   block.append(
     div(
@@ -30,11 +41,11 @@ export default function decorate(block) {
           input({ id: 'publishdate', class: 'hidden', value: publishDate }),
         ),
         div(
-          { class: 'items-center flex justify-start col-span-1 my-4' },
+          { class: 'items-center flex justify-start col-span-1' },
           span({ class: 'icon icon-reading size-6 items-center' }),
           div(
-            { class: 'text-sm text-danaherblack-500 pl-1 pb-[.25rem]' },
-            span({ id: 'timetoread' }, `${readingTime} Mins`),
+            { class: 'text-sm text-danaherblack-500 pl-1' },
+            span({ id: 'timetoread' }, `${readingTime} mins ${labelType}`),
           ),
         ),
       ),
