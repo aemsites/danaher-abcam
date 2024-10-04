@@ -98,7 +98,7 @@ export default async function decorate(block) {
 
   const cardList = ul({
     class:
-          'container grid max-w-7xl w-full mx-auto gap-6 grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 px-3 lg:px-10 sm:px-0 justify-items-center mt-3 mb-3',
+          'container grid max-w-7xl w-full mx-auto gap-6 grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 px-3 lg:px-6 xl:px-0 sm:px-0 justify-items-center mt-3 mb-3',
   });
   articles.forEach((article, index) => {
     cardList.appendChild(createCard(article, index === 0));

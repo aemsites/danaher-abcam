@@ -303,7 +303,7 @@ function decorateStoryPage(main) {
     });
     sectionEl?.append(rightSideElements);
 
-    const divEl = div({ class: 'ml-0 min-w-56 lg:max-w-72 flex flex-col gap-y-8' });
+    const divEl = div({ class: 'ml-4 xl:ml-0 min-w-56 lg:max-w-72 flex flex-col gap-y-2' });
     divEl.append(sectionEl?.querySelector('.story-info-wrapper'));
     divEl.append(sectionEl?.querySelector('.social-media-wrapper'));
     divEl.append(sectionEl?.querySelector('.sidelinks-wrapper'));

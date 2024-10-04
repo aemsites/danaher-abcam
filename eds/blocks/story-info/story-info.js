@@ -50,7 +50,7 @@ export default function decorate(block) {
           { class: 'items-center flex justify-start col-span-1' },
           span({ class: 'icon icon-reading size-6 items-center' }),
           div(
-            { class: 'text-sm text-danaherblack-500 pl-1 pb-[.25rem]' },
+            { class: 'text-sm text-danaherblack-500 pl-1' },
             span({ id: 'timetoread' }, `${readingTime} Mins ${actionLabel}`),
           ),
         ),
