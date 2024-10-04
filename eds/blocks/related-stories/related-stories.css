@@ -233,6 +233,13 @@
     padding-left: 2.5rem;
     padding-right: 2.5rem
   }
+}
+
+@media (min-width: 1280px) {
+  .related-stories-wrapper :is(.xl\:px-0) {
+    padding-left: 0px;
+    padding-right: 0px
+  }
 
   .related-stories-wrapper :is(.lg\:px-6) {
     padding-left: 1.5rem;

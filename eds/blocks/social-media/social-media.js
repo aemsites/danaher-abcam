@@ -7,7 +7,7 @@ import {
 } from '../../scripts/aem.js';
 
 export default function decorate(block) {
-  block.classList.add(...'max-w-4xl mx-auto mb-8 text-gray-600 pt-4 pb-0 md:pb-10'.split(' '));
+  block.classList.add(...'max-w-4xl mx-auto text-gray-600'.split(' '));
   const socialLinksDiv = div({ class: 'space-y-2' });
   socialLinksDiv.prepend(
     p({ class: 'text-base font-bold text-black' }, 'Share'),

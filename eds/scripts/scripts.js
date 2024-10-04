@@ -15,14 +15,17 @@ import {
   getMetadata,
   createOptimizedPicture,
 } from './aem.js';
-import { div, span, button, iframe, p, img, li, label, input, ul, a, h3 } from './dom-builder.js';
+import {
+  div, span, button, iframe, p, img, li, label, input, ul, a, h3,
+} from './dom-builder.js';
 // eslint-disable-next-line import/prefer-default-export
 import { buildVideoSchema } from './schema.js';
+import ffetch from './ffetch.js';
 
 const LCP_BLOCKS = ['hero', 'hero-video', 'carousel']; // add your LCP blocks to the list
 
 export function getStoryType(pageTags) {
-  const tags = pageTags ? pageTags : getMetadata('pagetags');
+  const tags = pageTags || getMetadata('pagetags');
   let type = null;
   tags?.split(',').forEach((tag) => {
     if (tag.includes('content-type')) {
@@ -33,8 +36,8 @@ export function getStoryType(pageTags) {
 }
 
 /**
- * 
- * @param {*} config 
+ *
+ * @param {*} config
  * @returns response JSON
  */
 export async function fetchResponse(config) {
@@ -99,7 +102,6 @@ export function imageHelper(imageUrl, imageAlt, eager = false) {
   });
 }
 
-
 /**
  * It will used generate random number to use in ID
  * @returns 4 digit random numbers
@@ -128,14 +130,14 @@ export function paginateData(list, currentPage, perPage) {
 
 export function paginateIndexes({ listLength, currentPage, perPage }) {
   if (listLength === 0) return [];
-  else if (listLength <= perPage) return [1];
+  if (listLength <= perPage) return [1];
   const total = Math.ceil(listLength / perPage);
-  const center = [currentPage - 1, currentPage, currentPage + 1],
-    filteredCenter = center.filter((p) => p > 1 && p < total),
-    includeThreeLeft = currentPage === 5,
-    includeThreeRight = currentPage === total - 4,
-    includeLeftDots = currentPage > 5,
-    includeRightDots = currentPage < total - 4;
+  const center = [currentPage - 1, currentPage, currentPage + 1];
+  const filteredCenter = center.filter((p) => p > 1 && p < total);
+  const includeThreeLeft = currentPage === 5;
+  const includeThreeRight = currentPage === total - 4;
+  const includeLeftDots = currentPage > 5;
+  const includeRightDots = currentPage < total - 4;
 
   if (includeThreeLeft) filteredCenter.unshift(2);
   if (includeThreeRight) filteredCenter.push(total - 1);
@@ -146,17 +148,17 @@ export function paginateIndexes({ listLength, currentPage, perPage }) {
   return [1, ...filteredCenter, total];
 }
 export function clickToCopy(sku) {
-  var copyText = document.getElementById(sku);
+  const copyText = document.getElementById(sku);
   navigator.clipboard.writeText(copyText.innerText);
   document.getElementById(sku).previousElementSibling.innerHTML = 'Copied!';
 }
 export function mouseEnter(msg) {
-  var copyText = document.getElementById(msg);
+  const copyText = document.getElementById(msg);
   copyText.classList.remove('hidden');
 }
 export function mouseLeave(toolTipClassId, textId) {
-  var copyText = document.getElementById(toolTipClassId);
-  var btn = document.getElementById(textId);
+  const copyText = document.getElementById(toolTipClassId);
+  const btn = document.getElementById(textId);
   copyText.classList.add('hidden');
   if (!btn.matches(':hover') && !copyText.matches(':hover')) {
     copyText.innerHTML = 'Click to Copy';
@@ -168,8 +170,7 @@ export function toolTip(textId, toolTipClassId, title, skuClass) {
   if (skuClass && String(skuClass.trim !== null)) {
     buttonDiv = button({ id: 'skubutton', class: 'product-tabs-productID outline-none md:flex-col' });
     clickToCopyDiv = div({ class: 'hidden w-auto  px-[3px] pt-[3px] bg-[#378189] text-center text-[white] rounded-t-lg text-sm absolute  -top-[23px] h-6 text-center text-xs break-keep text-wrap max-[768px]:top-[85px] font-normal', id: toolTipClassId }, 'Click to Copy');
-  }
-  else {
+  } else {
     buttonDiv = button({ class: 'relative text-black text-4xl pb-4 font-bold' });
     clickToCopyDiv = div({ class: 'hidden w-auto px-[3px] pt-[3px] bg-[#378189] text-center text-[white] rounded-t-lg text-sm absolute right-[10px] -top-[23px] h-6 text-center text-xs break-keep text-wrap font-normal', id: toolTipClassId }, 'Click to Copy');
   }
@@ -197,7 +198,7 @@ export function toolTip(textId, toolTipClassId, title, skuClass) {
     mouseLeave(toolTipClassId, textId);
   });
 
-  return buttonDiv
+  return buttonDiv;
 }
 export function createRequest(config) {
   const {
@@ -289,12 +290,12 @@ function buildAutoBlocks(main) {
   }
 }
 
-function decorateStoryPage(main){
+function decorateStoryPage(main) {
   const sectionEl = main.querySelector(':scope > div.section.story-info-container.social-media-container.sidelinks-container');
-  if(sectionEl){
+  if (sectionEl) {
     const toBeRemoved = ['story-info-wrapper', 'social-media-wrapper', 'sidelinks-wrapper'];
-    const rightSideElements = div({class: 'w-full'});
-    
+    const rightSideElements = div({ class: 'w-full' });
+
     Array.from(sectionEl?.children).forEach((element) => {
       if (!toBeRemoved.includes(element.classList[0])) {
         rightSideElements.append(element);
@@ -302,7 +303,7 @@ function decorateStoryPage(main){
     });
     sectionEl?.append(rightSideElements);
 
-    const divEl = div({ class: 'ml-0 min-w-56 lg:max-w-72' });
+    const divEl = div({ class: 'ml-4 xl:ml-0 min-w-56 lg:max-w-72 flex flex-col gap-y-2' });
     divEl.append(sectionEl?.querySelector('.story-info-wrapper'));
     divEl.append(sectionEl?.querySelector('.social-media-wrapper'));
     divEl.append(sectionEl?.querySelector('.sidelinks-wrapper'));
@@ -356,8 +357,8 @@ function createModalPopUp(videoLink, parentDiv) {
             if (iframe1) {
               iframe1.src = '';
             }
-          }
-        }
+          },
+        },
       ),
       div(
         { class: 'youtube-frame' },
@@ -386,13 +387,13 @@ function extractVideoId(url) {
   const match = url.match(regex);
   return match ? match[1] : null;
 }
- 
+
 function playAudio({ src = '#' }) {
   return `<audio controls preload="metadata" class = "audio-play-bar" style="width: 100%;" src=${src}/>`;
 }
- 
+
 let currentlyPlayingAudio = null; // Global variable to track the currently playing audio
- 
+
 function pauseCurrentAudio() {
   if (currentlyPlayingAudio) {
     // Pause the currently playing audio
@@ -411,15 +412,25 @@ function pauseCurrentAudio() {
   }
 }
 
-function decorateVideo(main) {
+// Function to get OG image
+async function getOgImage() {
+  const articles = await ffetch('/en-us/stories/query-index.json')
+    .filter((item) => item.tags.includes('content-type/film'))
+    .all();
+  console.log(articles);
+  return articles;
+}
+
+async function decorateVideo(main) {
   const divContainers = main.querySelectorAll('.stories main .section');
   const type = getMetadata('pagetags');
+  const filmThumbnails = await getOgImage();
 
   let firstVideo = 0;
-  divContainers.forEach(divContainer => {
+  divContainers.forEach((divContainer) => {
     if (type.includes('podcast')) {
-      divContainer.querySelectorAll('p a').forEach(link => {
-        if (link.title === "video") {
+      divContainer.querySelectorAll('p a').forEach((link) => {
+        if (link.title === 'video') {
           const linkContainer = link.parentElement;
           linkContainer.classList.add('h-full');
           const videoId = new URL(link.href).searchParams.get('v');
@@ -432,7 +443,7 @@ function decorateVideo(main) {
                 allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" 
                 scrolling="no" title="Content from Youtube" loading="eager"></iframe>
               </div>`;
-              linkContainer.innerHTML = embedHTML;
+            linkContainer.innerHTML = embedHTML;
           } else {
             const embedHTML = `<div class="relative w-full h-full">
               <iframe src="${link.href}"
@@ -442,9 +453,10 @@ function decorateVideo(main) {
             </div>`;
             linkContainer.innerHTML = embedHTML;
           }
-        } else if (link.title === "audio") {
+        } else if (link.title === 'audio') {
           link.textContent = '';
-          const audioContainer = div({ class: 'flex flex-col' },
+          const audioContainer = div(
+            { class: 'flex flex-col' },
             p({ class: 'audio-label text-black no-underline ' }, link.text || ''),
             span({ class: 'audio-play-icon cursor-pointer w-14 icon icon-Play' }),
             span({ class: 'audio-play-pause-icon hidden cursor-pointer w-14 icon icon-play-pause' }),
@@ -455,12 +467,12 @@ function decorateVideo(main) {
           const audioPlayer = div({ class: 'audio-player w-full md:mb-2' });
           audioPlayer.innerHTML = playAudio({ src: link.href || '#' });
           decorateIcons(audioContainer, 80, 80);
- 
+
           let isPlaying = false;
           const playIcon = audioContainer.querySelector('.audio-play-icon');
           const pauseIcon = audioContainer.querySelector('.audio-play-pause-icon');
           const audioElement = audioPlayer.querySelector('audio');
- 
+
           function updateIconVisibility() {
             if (isPlaying) {
               playIcon.classList.add('hidden');
@@ -470,7 +482,7 @@ function decorateVideo(main) {
               pauseIcon.classList.add('hidden');
             }
           }
- 
+
           playIcon.addEventListener('click', () => {
             if (audioElement) {
               pauseCurrentAudio(); // Pause any currently playing audio
@@ -481,7 +493,7 @@ function decorateVideo(main) {
               updateIconVisibility();
             }
           });
- 
+
           pauseIcon.addEventListener('click', () => {
             if (audioElement) {
               audioElement.pause();
@@ -489,31 +501,34 @@ function decorateVideo(main) {
               updateIconVisibility();
             }
           });
- 
+
           audioElement.addEventListener('play', () => {
             isPlaying = true;
             updateIconVisibility();
           });
- 
+
           audioElement.addEventListener('pause', () => {
             isPlaying = false;
             updateIconVisibility();
           });
- 
+
           updateIconVisibility();
         }
       });
     } else if (type.includes('film')) {
-      divContainer.querySelectorAll('p a').forEach(link => {
-        if (link.title === "video") {
+      divContainer.querySelectorAll('p a').forEach((link) => {
+        if (link.title === 'video') {
+          let episodeUrl = link.parentElement?.parentElement?.nextElementSibling?.querySelector('p a')?.pathname;
+          if (episodeUrl === undefined) { episodeUrl = window.location.pathname; }
           firstVideo += 1;
           const videoId = extractVideoId(link.href);
-          const posterImage = `https://img.youtube.com/vi/${videoId}/sddefault.jpg`;
+          const thumbnailObj = filmThumbnails.find((obj) => obj.path === episodeUrl);
+          const posterImage = thumbnailObj?.image;
 
           const playButtonHTML = `
             <div class="aspect-video relative w-full h-full">
               <img src="${posterImage}" class="relative inset-0 w-full h-full object-cover" />
-              <button id="play-button-${videoId}" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 rounded-full p-4">
+              <button id="play-button-${videoId}" class="absolute inset-0 flex items-center justify-center bg-opacity-50 rounded-full p-4">
                 <span class = "video-play-icon icon icon-video-play"/>
               </button>
             </div>
@@ -803,16 +818,15 @@ export function createFilters({
   clearFilterHandler = () => {},
   limit = 6,
 }) {
-
   const output = filterNames.reduce((obj, key) => {
     obj[key] = new Set();
     return obj;
   }, {});
 
   lists.forEach((list) => {
-    const parts = list?.tags?.split(", ");
-    parts.forEach(part => {
-      const [key, value] = part.split("/");
+    const parts = list?.tags?.split(', ');
+    parts.forEach((part) => {
+      const [key, value] = part.split('/');
       filterNames.forEach((name) => {
         if (key.includes(name)) {
           output[name].add(value);
@@ -829,7 +843,7 @@ export function createFilters({
         label(
           {
             class: 'w-full flex items-center gap-3 py-1 md:hover:bg-gray-50 text-sm font-medium cursor-pointer',
-            for: `${[categoryKey]}-${categoryValue}`
+            for: `${[categoryKey]}-${categoryValue}`,
           },
           input({
             class: 'accent-[#378189]',
@@ -838,13 +852,13 @@ export function createFilters({
             id: `${[categoryKey]}-${categoryValue}`,
             onchange: () => {
               listActionHandler(categoryKey, categoryValue);
-            }
+            },
           }),
-          categoryValue.replace(/-/g, ' ').replace(/^\w/, char => char.toUpperCase()),
+          categoryValue.replace(/-/g, ' ').replace(/^\w/, (char) => char.toUpperCase()),
         ),
       ));
     });
-  
+
     // Add "Show More" button if needed
     if (limit !== 0 && output[categoryKey].length > limit) {
       lists.append(
@@ -856,21 +870,21 @@ export function createFilters({
                 const parent = event.target.closest('ul');
                 const hiddenItems = parent.querySelectorAll('.hidden');
                 const toggle = hiddenItems.length > 0;
-                
+
                 parent.querySelectorAll('li').forEach((child, childIndex) => {
                   if (childIndex >= limit && childIndex !== parent.children.length - 1) {
                     child.classList.toggle('hidden', !toggle);
                   }
                 });
                 event.target.innerText = `Show ${toggle ? 'Less' : 'More'}`;
-              }
+              },
             },
-            'Show More'
-          )
-        )
+            'Show More',
+          ),
+        ),
       );
     }
-  
+
     const accordionSection = div(
       { class: `flex flex-col px-6 py-4 border-b md:border border-gray-300 ${categoryIndex > 0 ? 'md:mt-4' : ''} md:rounded-xl [&_div:not(.hidden)~p]:mb-3 [&_div:not(.hidden)~p_.icon]:rotate-180` },
       p(
@@ -893,8 +907,8 @@ export function createFilters({
         }, 'Clear filters'),
       ),
     );
-  
-    if(lists.children.length > 0) element.append(accordionSection);
+
+    if (lists.children.length > 0) element.append(accordionSection);
   });
 }
 
@@ -922,19 +936,18 @@ export function createCard({
         { class: 'flex-1' },
         h3({ class: 'text-black font-medium mt-4 break-words line-clamp-4' }, title),
         p({ class: 'line-clamp-3' }, description),
-        bodyEl
+        bodyEl,
       ),
       footerLink !== ''
-        ? a(
-          {
-            class: 'text-base leading-5 text-[#378089] font-bold p-2 pl-0 group-hover:tracking-wide group-hover:underline transition duration-700 mt-2',
-            href: path
-          }, footerLink)
+        ? a({
+          class: 'text-base leading-5 text-[#378089] font-bold p-2 pl-0 group-hover:tracking-wide group-hover:underline transition duration-700 mt-2',
+          href: path,
+        }, footerLink)
         : '',
       footerEl,
-    )
+    ),
   );
-  if(isStoryCard){
+  if (isStoryCard) {
     let minRead;
     switch (getStoryType(tags)) {
       case 'podcast':
@@ -974,9 +987,8 @@ window.dataLayer.push({
 
 loadPage();
 
-
 // Optimus Config - Start
 window.OptimusConfig = {
   organizationId: 'danahernonproduction1892f3fhz',
-  bearerToken: 'xx27ea823a-e994-4d71-97f6-403174ec592a'
+  bearerToken: 'xx27ea823a-e994-4d71-97f6-403174ec592a',
 };

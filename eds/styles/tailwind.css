@@ -53,7 +53,7 @@
     }
 
     main .section .button-tertiary-outline {
-        @apply bg-white hover:bg-[#071112]/[5%] outline outline-1 outline-black text-black text-sm font-semibold whitespace-nowrap rounded-full py-2 px-3 capitalize w-fit;
+        @apply bg-white hover:bg-[#071112]/[5%] outline outline-1 outline-black text-black text-sm font-semibold whitespace-nowrap rounded-full lg:mt-14 py-2 px-3 capitalize w-fit;
     }
  
     main .section .button-tertiary-filled {
@@ -69,10 +69,6 @@
 @layer components {
     header {
         @apply h-28 md:h-16 lg:h-32;
-    }
-
-    .default-content-wrapper:first-child {
-        @apply pb-8;
     }
 
     .default-content-wrapper h1:first-of-type {
@@ -213,7 +209,7 @@
     }
 
     .stories main .section.no-section-padding .columns-wrapper {
-        @apply w-full mx-auto lg:h-[28rem] relative;
+        @apply w-full mx-auto lg:h-[31rem] relative;
     }
 
     .stories main .section.no-section-padding.columns-container {

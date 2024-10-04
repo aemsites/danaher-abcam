@@ -600,6 +600,12 @@ main .section .button-tertiary-outline:hover {
   background-color: rgb(7 17 18 / 5%);
 }
 
+@media (min-width: 1024px) {
+  main .section .button-tertiary-outline {
+    margin-top: 3.5rem;
+  }
+}
+
 main .section .button-tertiary-filled {
   width: -moz-fit-content;
   width: fit-content;
@@ -800,10 +806,6 @@ header {
   header {
     height: 8rem;
   }
-}
-
-.default-content-wrapper:first-child {
-  padding-bottom: 2rem;
 }
 
 .default-content-wrapper h1:first-of-type {
@@ -1148,7 +1150,7 @@ dialog .modal-content .section > .default-content-wrapper p {
 
 @media (min-width: 1024px) {
   .stories main .section.no-section-padding .columns-wrapper {
-    height: 28rem;
+    height: 31rem;
   }
 }
 
@@ -1282,16 +1284,16 @@ audio::-webkit-media-controls-panel {
   margin-bottom: 1.25rem;
 }
 
-.ml-0 {
-  margin-left: 0px;
-}
-
 .ml-2 {
   margin-left: 0.5rem;
 }
 
 .ml-20 {
   margin-left: 5rem;
+}
+
+.ml-4 {
+  margin-left: 1rem;
 }
 
 .ml-5 {
@@ -1591,6 +1593,10 @@ audio::-webkit-media-controls-panel {
 .gap-x-3 {
   -moz-column-gap: 0.75rem;
        column-gap: 0.75rem;
+}
+
+.gap-y-2 {
+  row-gap: 0.5rem;
 }
 
 .space-y-2 > :not([hidden]) ~ :not([hidden]) {
@@ -2238,6 +2244,12 @@ audio::-webkit-media-controls-panel {
 
   .lg\:max-w-72 {
     max-width: 18rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .xl\:ml-0 {
+    margin-left: 0px;
   }
 }
 

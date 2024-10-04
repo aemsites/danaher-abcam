@@ -79,15 +79,18 @@ export default async function decorate(block) {
   let contentType;
   pagetags.forEach((tag) => {
     if (tag.includes('stories-type')) {
-      storyType = tag;
+      storyType = tag.trim();
     }
     if (tag.includes('content-type')) {
-      contentType = tag;
+      contentType = tag.trim();
     }
   });
 
   let articles = await ffetch('/en-us/stories/query-index.json')
-    .filter((item) => item.title !== getMetadata('og:title'))
+    .filter((item) => {
+      const url = new URL(getMetadata('og:url'));
+      return item.path !== url.pathname;
+    })
     .filter((item) => item.tags.includes(storyType) && item.tags.includes(contentType))
     .all();
 
@@ -95,7 +98,7 @@ export default async function decorate(block) {
 
   const cardList = ul({
     class:
-          'container grid max-w-7xl w-full mx-auto gap-6 grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 px-3 lg:px-10 sm:px-0 justify-items-center mt-3 mb-3',
+          'container grid max-w-7xl w-full mx-auto gap-6 grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 px-3 lg:px-6 xl:px-0 sm:px-0 justify-items-center mt-3 mb-3',
   });
   articles.forEach((article, index) => {
     cardList.appendChild(createCard(article, index === 0));

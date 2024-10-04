@@ -4,13 +4,13 @@ import { buildArticleSchema, buildPodcastEpisodeSchema } from '../../scripts/sch
 
 function sideLinksDiv(linkHeading) {
   const main = document.querySelector('main');
-  const divEl = div({ class: 'sidelinks leading-5 text-sm font-bold text-black pb-4' });
+  const divEl = div({ class: 'sidelinks leading-5 text-sm font-bold text-black flex flex-col gap-y-3' });
   const allParagraphs = main.querySelectorAll('p a[title="link"]');
   if (allParagraphs.length > 0) {
     divEl.append(p(linkHeading));
     allParagraphs.forEach((elPara) => {
-      elPara.classList.add(...'border-b border-b-gray-300 py-2 mx-0 w-auto mt-2'.split(' '));
-      divEl.append(p({ class: 'leading-5 text-normal font-medium text-[#378189]' }, elPara));
+      elPara.classList.add(...'border-b border-b-gray-300 py-2 mx-0 w-auto mt-2 pb-3'.split(' '));
+      divEl.append(p({ class: 'leading-5 text-base font-medium text-[#378189]' }, elPara));
     });
   }
   return divEl;
