@@ -15,7 +15,7 @@ let lists = [];
 let filterContainer = {};
 const hub = div();
 const allSelectedTags = div(
-  { class: 'w-fit flex flex-row-reverse items-start gap-2 mb-4 [&_*:empty+span]:hidden' },
+  { class: 'w-fit flex flex-row-reverse items-start gap-2 mb-4 [&_*:empty+span]:hidden [&_*:empty]:mb-8' },
   ul({ class: 'inline-flex items-center flex-wrap gap-2 [&_.showmoretags.active~*:not(.clear-all)]:hidden md:[&_.showmoretags.active~*:not(.clear-all):not(.showlesstags)]:flex md:[&_.showmoretags~*:not(.showlesstags)]:flex' }),
   span({ class: 'text-xs font-semibold text-[#07111299]' }, 'Filters:'),
 );

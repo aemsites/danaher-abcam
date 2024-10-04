@@ -442,8 +442,20 @@
   }
 }
 
+.story-hub-wrapper :is(.\[\&_\*\:empty\+span\]\:mb-12 *:empty+span) {
+  margin-bottom: 3rem
+}
+
 .story-hub-wrapper :is(.\[\&_\*\:empty\+span\]\:hidden *:empty+span) {
   display: none
+}
+
+.story-hub-wrapper :is(.\[\&_\*\:empty\]\:mb-12 *:empty) {
+  margin-bottom: 3rem
+}
+
+.story-hub-wrapper :is(.\[\&_\*\:empty\]\:mb-8 *:empty) {
+  margin-bottom: 2rem
 }
 
 .story-hub-wrapper :is(.\[\&_\*\:has\(input\:checked\)\~\*_\.clear-all\]\:block *:has(input:checked)~* .clear-all) {
