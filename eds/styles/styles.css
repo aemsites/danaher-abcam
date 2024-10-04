@@ -829,6 +829,12 @@ header {
   padding-left: 1.5rem;
 }
 
+body.stories main .story-middle-container,
+    body.appear main .section.story-hub-container {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
 main .section .default-content-wrapper a {
   font-weight: 700;
   --tw-text-opacity: 1;
@@ -1254,10 +1260,6 @@ audio::-webkit-media-controls-panel {
 .my-4 {
   margin-top: 1rem;
   margin-bottom: 1rem;
-}
-
-.mb-1 {
-  margin-bottom: 0.25rem;
 }
 
 .mb-2 {
