@@ -8,9 +8,26 @@ import {
 export default function decorate(block) {
   block.innerHTML = '';
   const authorName = getMetadata('authorname');
-  const publishDate = getMetadata('published-time');
+  const publishDate = getMetadata('publishdate');
+  const publishTime = getMetadata('published-time');
   const readingTime = getMetadata('readingtime');
-  const expectedPublishFormat = new Date(publishDate);
+  const pageTags = getMetadata('pagetags');
+  const expectedPublishFormat = publishDate ? new Date(publishDate) : new Date(publishTime);
+
+  let actionLabel = '';
+  if (pageTags) {
+    // Split pageTags into an array
+    const tagsArray = pageTags.split(',').map((tag) => tag.trim());
+
+    // Determine the action based on the tags
+    if (tagsArray.includes('abcam:content-type/film')) {
+      actionLabel = 'watch';
+    } else if (tagsArray.includes('abcam:content-type/podcast')) {
+      actionLabel = 'listen';
+    } else {
+      actionLabel = 'read';
+    }
+  }
 
   block.append(
     div(
@@ -34,7 +51,7 @@ export default function decorate(block) {
           span({ class: 'icon icon-reading size-6 items-center' }),
           div(
             { class: 'text-sm text-danaherblack-500 pl-1 pb-[.25rem]' },
-            span({ id: 'timetoread' }, `${readingTime} Mins`),
+            span({ id: 'timetoread' }, `${readingTime} Mins ${actionLabel}`),
           ),
         ),
       ),

@@ -54,16 +54,16 @@
   padding-bottom: 2rem
 }
 
+.learn-more-wrapper :is(.pb-8) {
+  padding-bottom: 2rem
+}
+
 .learn-more-wrapper :is(.pt-0) {
   padding-top: 0px
 }
 
 .learn-more-wrapper :is(.pt-10) {
   padding-top: 2.5rem
-}
-
-.learn-more-wrapper :is(.pb-8) {
-  padding-bottom: 2rem
 }
 
 .learn-more-wrapper :is(.text-base) {

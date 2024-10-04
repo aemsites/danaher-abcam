@@ -822,17 +822,17 @@ export function createFilters({
   });
 
   Object.keys(output).forEach((categoryKey, categoryIndex) => {
-    const lists = ul({ class: 'space-y-2' });
+    const lists = ul({ class: 'space-y-2 mt-2' });
     [...output[categoryKey]].map((categoryValue, categoryIndex) => {
       lists.append(li(
         categoryIndex >= limit ? { class: 'hidden' } : '',
         label(
           {
-            class: 'w-full flex items-center gap-3 py-1 md:hover:px-1 md:hover:bg-gray-50 text-sm font-medium break-all cursor-pointer',
+            class: 'w-full flex items-center gap-3 py-1 md:hover:bg-gray-50 text-sm font-medium cursor-pointer',
             for: `${[categoryKey]}-${categoryValue}`
           },
           input({
-            class: 'accent-teal-800 md:hover:accent-teal-600',
+            class: 'accent-[#378189]',
             type: 'checkbox',
             name: [categoryKey],
             id: `${[categoryKey]}-${categoryValue}`,
@@ -851,7 +851,7 @@ export function createFilters({
         li(
           span(
             {
-              class: 'text-sm text-emerald-800 font-normal mt-2 cursor-pointer hover:underline underline-offset-1',
+              class: 'text-sm text-[#378189] font-normal mt-2 cursor-pointer hover:underline underline-offset-1',
               onclick: (event) => {
                 const parent = event.target.closest('ul');
                 const hiddenItems = parent.querySelectorAll('.hidden');
@@ -888,7 +888,7 @@ export function createFilters({
         { class: 'flex flex-col-reverse [&_ul:has(:checked)+*]:block' },
         lists,
         span({
-          class: 'hidden text-xs leading-5 font-medium text-emerald-600 mb-1 cursor-pointer hover:underline underline-offset-1',
+          class: 'hidden text-xs leading-5 font-medium text-[#378189] mt-1 cursor-pointer hover:underline underline-offset-1',
           onclick: () => clearFilterHandler(categoryKey),
         }, 'Clear filters'),
       ),
@@ -927,7 +927,7 @@ export function createCard({
       footerLink !== ''
         ? a(
           {
-            class: 'text-base leading-5 text-emerald-800 font-bold p-2 pl-0 group-hover:tracking-wide group-hover:underline transition duration-700 mt-2',
+            class: 'text-base leading-5 text-[#378089] font-bold p-2 pl-0 group-hover:tracking-wide group-hover:underline transition duration-700 mt-2',
             href: path
           }, footerLink)
         : '',
