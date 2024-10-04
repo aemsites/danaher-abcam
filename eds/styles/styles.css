@@ -1208,6 +1208,18 @@ audio::-webkit-media-controls-panel {
   top: 70px;
 }
 
+.left-4 {
+  left: 1rem;
+}
+
+.right-4 {
+  right: 1rem;
+}
+
+.top-1\/2 {
+  top: 50%;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -1244,6 +1256,11 @@ audio::-webkit-media-controls-panel {
 .my-4 {
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .mb-1 {
@@ -1462,6 +1479,10 @@ audio::-webkit-media-controls-panel {
   min-width: 14rem;
 }
 
+.min-w-\[300px\] {
+  min-width: 300px;
+}
+
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -1472,6 +1493,11 @@ audio::-webkit-media-controls-panel {
 
 .flex-none {
   flex: none;
+}
+
+.-translate-y-1\/2 {
+  --tw-translate-y: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .rotate-180 {
@@ -1735,6 +1761,11 @@ audio::-webkit-media-controls-panel {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-blue-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(147 197 253 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-50 {

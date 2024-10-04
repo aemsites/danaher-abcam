@@ -1,3 +1,37 @@
+.container {
+  width: 100%
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px
+  }
+}
+
 .carousel-wrapper :is(.sr-only) {
   position: absolute;
   width: 1px;
@@ -10,12 +44,32 @@
   border-width: 0
 }
 
+.carousel-wrapper :is(.visible) {
+  visibility: visible
+}
+
+.carousel-wrapper :is(.absolute) {
+  position: absolute
+}
+
 .carousel-wrapper :is(.relative) {
   position: relative
 }
 
 .carousel-wrapper :is(.inset-0) {
   inset: 0px
+}
+
+.carousel-wrapper :is(.left-4) {
+  left: 1rem
+}
+
+.carousel-wrapper :is(.right-4) {
+  right: 1rem
+}
+
+.carousel-wrapper :is(.top-1\/2) {
+  top: 50%
 }
 
 .carousel-wrapper :is(.z-10) {
@@ -36,8 +90,17 @@
   margin-bottom: 0px
 }
 
+.carousel-wrapper :is(.mx-2) {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem
+}
+
 .carousel-wrapper :is(.mt-10) {
   margin-top: 2.5rem
+}
+
+.carousel-wrapper :is(.mt-6) {
+  margin-top: 1.5rem
 }
 
 .carousel-wrapper :is(.block) {
@@ -54,6 +117,14 @@
 
 .carousel-wrapper :is(.grid) {
   display: grid
+}
+
+.carousel-wrapper :is(.contents) {
+  display: contents
+}
+
+.carousel-wrapper :is(.hidden) {
+  display: none
 }
 
 .carousel-wrapper :is(.h-3) {
@@ -80,6 +151,10 @@
   height: 100%
 }
 
+.carousel-wrapper :is(.h-\[31\.5rem\]) {
+  height: 31.5rem
+}
+
 .carousel-wrapper :is(.min-h-\[30rem\]) {
   min-height: 30rem
 }
@@ -100,8 +175,17 @@
   width: 100%
 }
 
+.carousel-wrapper :is(.min-w-\[300px\]) {
+  min-width: 300px
+}
+
 .carousel-wrapper :is(.max-w-7xl) {
   max-width: 80rem
+}
+
+.carousel-wrapper :is(.-translate-y-1\/2) {
+  --tw-translate-y: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 
 .carousel-wrapper :is(.transform) {
@@ -110,6 +194,10 @@
 
 .carousel-wrapper :is(.cursor-pointer) {
   cursor: pointer
+}
+
+.carousel-wrapper :is(.resize) {
+  resize: both
 }
 
 .carousel-wrapper :is(.snap-none) {
@@ -202,6 +290,10 @@
   border-radius: 9999px
 }
 
+.carousel-wrapper :is(.border) {
+  border-width: 1px
+}
+
 .carousel-wrapper :is(.border-b) {
   border-bottom-width: 1px
 }
@@ -219,6 +311,11 @@
   border-color: rgb(0 0 0 / var(--tw-border-opacity))
 }
 
+.carousel-wrapper :is(.border-gray-300) {
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity))
+}
+
 .carousel-wrapper :is(.bg-white) {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
@@ -229,9 +326,22 @@
   background-color: rgb(0 0 0 / var(--tw-bg-opacity))
 }
 
+.carousel-wrapper :is(.bg-blue-300) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(147 197 253 / var(--tw-bg-opacity))
+}
+
 .carousel-wrapper :is(.object-contain) {
   -o-object-fit: contain;
      object-fit: contain
+}
+
+.carousel-wrapper :is(.p-2) {
+  padding: 0.5rem
+}
+
+.carousel-wrapper :is(.p-4) {
+  padding: 1rem
 }
 
 .carousel-wrapper :is(.\!px-6) {
@@ -377,6 +487,10 @@
     height: 35rem
   }
 
+  .carousel-wrapper :is(.md\:h-\[31\.5rem\]) {
+    height: 31.5rem
+  }
+
   .carousel-wrapper :is(.md\:min-h-\[37rem\]) {
     min-height: 37rem
   }
@@ -480,10 +594,30 @@
   .carousel-wrapper :is(.xl\:pr-2) {
     padding-right: 0.5rem
   }
+
+  .carousel-wrapper :is(.xl\:pl-20) {
+    padding-left: 5rem
+  }
+
+  .carousel-wrapper :is(.xl\:pl-\[5rem\]) {
+    padding-left: 5rem
+  }
+
+  .carousel-wrapper :is(.xl\:pl-\[0rem\]) {
+    padding-left: 0rem
+  }
+
+  .carousel-wrapper :is(.xl\:pl-\[2rem\]) {
+    padding-left: 2rem
+  }
 }
 
 @media (min-width: 1536px) {
   .carousel-wrapper :is(.\32xl\:pl-\[19rem\]) {
     padding-left: 19rem
+  }
+
+  .carousel-wrapper :is(.\32xl\:pl-\[40rem\]) {
+    padding-left: 40rem
   }
 }

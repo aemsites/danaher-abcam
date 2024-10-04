@@ -14,7 +14,8 @@ export default function Carousel({
   else {
     const carousel = wrapper?.querySelector(mainEl);
     const carouselChildrens = [...carousel.children];
-    if (carouselChildrens.length <= 1) return;
+    const originalSlidesCount = carouselChildrens.length;
+    if (originalSlidesCount <= 1) return;
     let isDragging = false;
     let startX;
     let startScrollLeft;
@@ -23,7 +24,6 @@ export default function Carousel({
     const firstCardWidth = carousel.querySelector('.carousel-slider').offsetWidth;
     // Get the number of cards that can fit in the carousel at once
     const cardPerView = Math.round(carousel.offsetWidth / firstCardWidth);
-
     // Insert copies of the last few cards to beginning of carousel for infinite scrolling
     const copiesLastThree = carouselChildrens.slice(-cardPerView).reverse();
     copiesLastThree.map((card) => {
@@ -39,9 +39,10 @@ export default function Carousel({
       return null;
     });
     // Add event listeners for the arrow buttons to scroll the carousel left and right
+    const totalItems = originalSlidesCount; // Count original slides and clones
     wrapper.querySelector(previousElAction)?.addEventListener('click', () => {
       const value = firstCardWidth;
-      carousel.scrollLeft += -value;
+      carousel.scrollLeft -= value;
       if (onChange) {
         onChange({ target: carousel.children[Math.floor(carousel.scrollLeft / value) - 1] });
       }
@@ -49,10 +50,18 @@ export default function Carousel({
     wrapper.querySelector(nextElAction)?.addEventListener('click', () => {
       const value = firstCardWidth;
       carousel.scrollLeft += value;
+      // Calculate the current scroll position
+      const currentScrollLeft = carousel.scrollLeft;
+      // Calculate nextIndex based on current scroll position
+      const nextIndex = Math.floor(currentScrollLeft / value);
+      // Use modulo to wrap around if reaching the end
+      const nextItemIndex = nextIndex % totalItems;
+      // If currentScrollLeft exceeds total width, reset
+      if (nextItemIndex < nextIndex) {
+        carousel.scrollLeft = value; // Reset to first item
+      }
+      // Call onChange with the updated target
       if (onChange) {
-        const nextIndex = Math.floor(carousel.scrollLeft / value) + 1;
-        const nextItemIndex = carousel.children.length === nextIndex ? 0 : nextIndex;
-        console.log(carousel.children.length, carousel.scrollLeft, value, nextItemIndex);
         onChange({ target: carousel.children[nextItemIndex] });
       }
     });
@@ -77,35 +86,38 @@ export default function Carousel({
     const autoPlay = () => {
       // Return if window is smaller than 800 or isAutoPlay is false
       if (window.innerWidth < 800 || !isAutoPlay) return;
+      clearTimeout(timeoutId);
       // Autoplay the carousel after every {delay} ms
       const value = firstCardWidth;
       timeoutId = setTimeout(() => {
-        carousel.scrollLeft += value;
+        if (carousel.scrollLeft + value >= carousel.scrollWidth) {
+          carousel.scrollLeft = value; // Reset to the first card if reached the end
+        }
+        autoPlay(); // Recursively call autoPlay
       }, delay);
     };
     const infiniteScroll = debounce(() => {
+      const value = firstCardWidth;
       // [ ELSE IF ] the carousel is at the end, scroll to the beginning
+      const maxScrollLeft = carousel.scrollWidth - carousel.offsetWidth;
       if (carousel.scrollLeft <= 10) {
-        carousel.classList.remove('scroll-smooth');
-        carousel.classList.add('no-transition', 'scroll-auto');
-        carousel.scrollLeft = carousel.scrollWidth - 2 * carousel.offsetWidth;
-        carousel.classList.remove('no-transition', 'scroll-auto');
-        carousel.classList.add('scroll-smooth');
+        // Jump to the end
+        carousel.scrollLeft = maxScrollLeft;
       }
-      if (Math.ceil(carousel.scrollLeft) === carousel.scrollWidth - carousel.offsetWidth) {
-        carousel.classList.remove('scroll-smooth');
-        carousel.classList.add('no-transition', 'scroll-auto');
-        carousel.scrollLeft = carousel.offsetWidth;
-        carousel.classList.remove('no-transition', 'scroll-auto');
-        carousel.classList.add('scroll-smooth');
+      if (Math.ceil(carousel.scrollLeft) >= maxScrollLeft) {
+        // Jump to the beginning
+        carousel.scrollLeft = value; // Reset to first item
+      }
+      // Update the visible item based on the current scroll position
+      const currentScrollLeft = carousel.scrollLeft;
+      //const totalItems = originalSlidesCount;
+      const currentIndex = Math.floor(currentScrollLeft / value) % totalItems;
+      if (onChange) {
+        onChange({ target: carousel.children[currentIndex] });
       }
       // Clear existing timeout & start autoplay if mouse is not hovering over carousel
       clearTimeout(timeoutId);
       if (wrapper && !wrapper.matches(':hover') && isAutoPlay) {
-        if (onChange) {
-          const target = Math.floor(carousel.scrollLeft / (firstCardWidth));
-          onChange({ target: carousel.children[target] });
-        }
         autoPlay();
       }
     });
