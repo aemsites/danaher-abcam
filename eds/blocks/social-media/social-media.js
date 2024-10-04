@@ -10,7 +10,7 @@ export default function decorate(block) {
   block.classList.add(...'max-w-4xl mx-auto mb-8 text-gray-600 pt-4 pb-0 md:pb-10'.split(' '));
   const socialLinksDiv = div({ class: 'space-y-2' });
   socialLinksDiv.prepend(
-    p({ class: 'text-base font-bold' }, 'Share'),
+    p({ class: 'text-base font-bold text-black' }, 'Share'),
     ul(
       { class: 'flex gap-x-2' },
       li(a({ href: 'javascript:window.open(\'//twitter.com/intent/tweet?\' + location.href + \'&title=\' + encodeURI(document.title))' }, span({ class: 'icon icon-twitter-circle' }))),

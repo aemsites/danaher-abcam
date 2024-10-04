@@ -18,7 +18,7 @@ export default function decorate(block) {
     `Back to ${articleType}`,
   );
   if (document.querySelector('.section.no-section-padding')) {
-    goParentBack.classList.add('px-6', 'lg:px-80');
+    goParentBack.classList.add('px-7','lg:px-8');
   }
   decorateIcons(goParentBack);
   block.firstElementChild.append(goParentBack);
