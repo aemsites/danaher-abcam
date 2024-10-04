@@ -14,7 +14,8 @@ export default function Carousel({
   else {
     const carousel = wrapper?.querySelector(mainEl);
     const carouselChildrens = [...carousel.children];
-    if (carouselChildrens.length <= 1) return;
+    const originalSlidesCount = carouselChildrens.length;
+    if (originalSlidesCount <= 1) return;
     let isDragging = false;
     let startX;
     let startScrollLeft;
@@ -23,7 +24,6 @@ export default function Carousel({
     const firstCardWidth = carousel.querySelector('.carousel-slider').offsetWidth;
     // Get the number of cards that can fit in the carousel at once
     const cardPerView = Math.round(carousel.offsetWidth / firstCardWidth);
-
     // Insert copies of the last few cards to beginning of carousel for infinite scrolling
     const copiesLastThree = carouselChildrens.slice(-cardPerView).reverse();
     copiesLastThree.map((card) => {
@@ -39,9 +39,10 @@ export default function Carousel({
       return null;
     });
     // Add event listeners for the arrow buttons to scroll the carousel left and right
+    const totalItems = originalSlidesCount;
     wrapper.querySelector(previousElAction)?.addEventListener('click', () => {
       const value = firstCardWidth;
-      carousel.scrollLeft += -value;
+      carousel.scrollLeft -= value;
       if (onChange) {
         onChange({ target: carousel.children[Math.floor(carousel.scrollLeft / value) - 1] });
       }
@@ -49,8 +50,15 @@ export default function Carousel({
     wrapper.querySelector(nextElAction)?.addEventListener('click', () => {
       const value = firstCardWidth;
       carousel.scrollLeft += value;
+      const currentScrollLeft = carousel.scrollLeft;
+      const nextIndex = Math.floor(currentScrollLeft / value);
+      const nextItemIndex = nextIndex % totalItems;
+      // If currentScrollLeft exceeds total width, reset
+      if (nextItemIndex < nextIndex) {
+        carousel.scrollLeft = value; // Reset to first item
+      }
       if (onChange) {
-        onChange({ target: carousel.children[Math.floor(carousel.scrollLeft / value) + 1] });
+        onChange({ target: carousel.children[nextItemIndex] });
       }
     });
     const dragStart = (e) => {
@@ -81,28 +89,23 @@ export default function Carousel({
       }, delay);
     };
     const infiniteScroll = debounce(() => {
+      const value = firstCardWidth;
       // [ ELSE IF ] the carousel is at the end, scroll to the beginning
+      const maxScrollLeft = carousel.scrollWidth - carousel.offsetWidth;
       if (carousel.scrollLeft <= 10) {
-        carousel.classList.remove('scroll-smooth');
-        carousel.classList.add('no-transition', 'scroll-auto');
-        carousel.scrollLeft = carousel.scrollWidth - 2 * carousel.offsetWidth;
-        carousel.classList.remove('no-transition', 'scroll-auto');
-        carousel.classList.add('scroll-smooth');
+        carousel.scrollLeft = maxScrollLeft;
       }
-      if (Math.ceil(carousel.scrollLeft) === carousel.scrollWidth - carousel.offsetWidth) {
-        carousel.classList.remove('scroll-smooth');
-        carousel.classList.add('no-transition', 'scroll-auto');
-        carousel.scrollLeft = carousel.offsetWidth;
-        carousel.classList.remove('no-transition', 'scroll-auto');
-        carousel.classList.add('scroll-smooth');
+      if (Math.ceil(carousel.scrollLeft) >= maxScrollLeft) {
+        carousel.scrollLeft = value; // Reset to first item
       }
-      // Clear existing timeout & start autoplay if mouse is not hovering over carousel
+      // Update the visible item based on the current scroll position
+      const currentScrollLeft = carousel.scrollLeft;
+      const currentIndex = Math.floor(currentScrollLeft / value) % totalItems;
+      if (onChange) {
+        onChange({ target: carousel.children[currentIndex] });
+      }
       clearTimeout(timeoutId);
       if (wrapper && !wrapper.matches(':hover') && isAutoPlay) {
-        if (onChange) {
-          const target = Math.floor(carousel.scrollLeft / (firstCardWidth));
-          onChange({ target: carousel.children[target] });
-        }
         autoPlay();
       }
     });

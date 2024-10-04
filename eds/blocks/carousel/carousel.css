@@ -10,8 +10,8 @@
   border-width: 0
 }
 
-.carousel-wrapper :is(.absolute) {
-  position: absolute
+.carousel-wrapper :is(.visible) {
+  visibility: visible
 }
 
 .carousel-wrapper :is(.relative) {
@@ -35,11 +35,6 @@
   margin-right: auto
 }
 
-.carousel-wrapper :is(.\!my-0) {
-  margin-top: 0px !important;
-  margin-bottom: 0px !important
-}
-
 .carousel-wrapper :is(.my-0) {
   margin-top: 0px;
   margin-bottom: 0px
@@ -47,14 +42,6 @@
 
 .carousel-wrapper :is(.mt-10) {
   margin-top: 2.5rem
-}
-
-.carousel-wrapper :is(.ml-4) {
-  margin-left: 1rem
-}
-
-.carousel-wrapper :is(.mt-4) {
-  margin-top: 1rem
 }
 
 .carousel-wrapper :is(.mt-6) {
@@ -81,10 +68,6 @@
   height: 0.75rem
 }
 
-.carousel-wrapper :is(.h-48) {
-  height: 12rem
-}
-
 .carousel-wrapper :is(.h-5) {
   height: 1.25rem
 }
@@ -93,20 +76,16 @@
   height: 2rem
 }
 
+.carousel-wrapper :is(.h-\[31\.5rem\]) {
+  height: 31.5rem
+}
+
 .carousel-wrapper :is(.h-auto) {
   height: auto
 }
 
 .carousel-wrapper :is(.h-full) {
   height: 100%
-}
-
-.carousel-wrapper :is(.h-3\/4) {
-  height: 75%
-}
-
-.carousel-wrapper :is(.h-\[31\.5rem\]) {
-  height: 31.5rem
 }
 
 .carousel-wrapper :is(.min-h-\[30rem\]) {
@@ -248,14 +227,14 @@
   border-color: rgb(0 0 0 / var(--tw-border-opacity))
 }
 
-.carousel-wrapper :is(.bg-white) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity))
-}
-
 .carousel-wrapper :is(.bg-black) {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity))
+}
+
+.carousel-wrapper :is(.bg-white) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity))
 }
 
 .carousel-wrapper :is(.object-contain) {
@@ -296,16 +275,13 @@
   padding-top: 2rem
 }
 
-.carousel-wrapper :is(.pl-10) {
-  padding-left: 2.5rem
-}
-
 .carousel-wrapper :is(.text-left) {
   text-align: left
 }
 
-.carousel-wrapper :is(.text-center) {
-  text-align: center
+.carousel-wrapper :is(.\!text-3xl) {
+  font-size: 1.875rem !important;
+  line-height: 2.25rem !important
 }
 
 .carousel-wrapper :is(.text-2xl) {
@@ -318,11 +294,6 @@
   line-height: 1.5rem
 }
 
-.carousel-wrapper :is(.\!text-3xl) {
-  font-size: 1.875rem !important;
-  line-height: 2.25rem !important
-}
-
 .carousel-wrapper :is(.text-sm) {
   font-size: 0.875rem;
   line-height: 1.25rem
@@ -330,10 +301,6 @@
 
 .carousel-wrapper :is(.font-bold) {
   font-weight: 700
-}
-
-.carousel-wrapper :is(.font-extralight) {
-  font-weight: 200
 }
 
 .carousel-wrapper :is(.font-medium) {
@@ -393,22 +360,6 @@
 }
 
 @media (min-width: 768px) {
-  .carousel-wrapper :is(.md\:absolute) {
-    position: absolute
-  }
-
-  .carousel-wrapper :is(.md\:bottom-16) {
-    bottom: 4rem
-  }
-
-  .carousel-wrapper :is(.md\:h-\[35rem\]) {
-    height: 35rem
-  }
-
-  .carousel-wrapper :is(.md\:min-h-\[37rem\]) {
-    min-height: 37rem
-  }
-
   .carousel-wrapper :is(.md\:flex-row) {
     flex-direction: row
   }
@@ -450,10 +401,6 @@
     margin-bottom: auto
   }
 
-  .carousel-wrapper :is(.lg\:ml-\[12rem\]) {
-    margin-left: 12rem
-  }
-
   .carousel-wrapper :is(.lg\:w-1\/2) {
     width: 50%
   }
@@ -468,6 +415,11 @@
        object-fit: cover
   }
 
+  .carousel-wrapper :is(.lg\:px-4) {
+    padding-left: 1rem;
+    padding-right: 1rem
+  }
+
   .carousel-wrapper :is(.lg\:px-8) {
     padding-left: 2rem;
     padding-right: 2rem
@@ -478,29 +430,8 @@
     padding-bottom: 0px
   }
 
-  .carousel-wrapper :is(.lg\:px-4) {
-    padding-left: 1rem;
-    padding-right: 1rem
-  }
-
-  .carousel-wrapper :is(.lg\:pl-\[22rem\]) {
-    padding-left: 22rem
-  }
-
   .carousel-wrapper :is(.lg\:pr-10) {
     padding-right: 2.5rem
-  }
-
-  .carousel-wrapper :is(.lg\:pl-\[15rem\]) {
-    padding-left: 15rem
-  }
-
-  .carousel-wrapper :is(.lg\:pl-40) {
-    padding-left: 10rem
-  }
-
-  .carousel-wrapper :is(.lg\:pl-0) {
-    padding-left: 0px
   }
 
   .carousel-wrapper :is(.lg\:text-\[40px\]) {
@@ -509,64 +440,16 @@
 }
 
 @media (min-width: 1280px) {
-  .carousel-wrapper :is(.xl\:ml-\[10rem\]) {
-    margin-left: 10rem
-  }
-
-  .carousel-wrapper :is(.xl\:pr-10) {
-    padding-right: 2.5rem
-  }
-
-  .carousel-wrapper :is(.xl\:pl-64) {
-    padding-left: 16rem
-  }
-
-  .carousel-wrapper :is(.xl\:pl-\[17\.5rem\]) {
-    padding-left: 17.5rem
-  }
-
-  .carousel-wrapper :is(.xl\:pl-72) {
-    padding-left: 18rem
+  .carousel-wrapper :is(.xl\:pl-0) {
+    padding-left: 0px
   }
 
   .carousel-wrapper :is(.xl\:pr-2) {
     padding-right: 0.5rem
   }
-
-  .carousel-wrapper :is(.xl\:pl-0) {
-    padding-left: 0px
-  }
 }
 
 @media (min-width: 1536px) {
-  .carousel-wrapper :is(.\32xl\:pl-72) {
-    padding-left: 18rem
-  }
-
-  .carousel-wrapper :is(.\32xl\:pl-\[17\.5\]) {
-    padding-left: 17.5
-  }
-
-  .carousel-wrapper :is(.\32xl\:pl-\[17\.5rem\]) {
-    padding-left: 17.5rem
-  }
-
-  .carousel-wrapper :is(.\32xl\:pl-\[17\.8rem\]) {
-    padding-left: 17.8rem
-  }
-
-  .carousel-wrapper :is(.\32xl\:pl-\[18rem\]) {
-    padding-left: 18rem
-  }
-
-  .carousel-wrapper :is(.\32xl\:pl-\[20rem\]) {
-    padding-left: 20rem
-  }
-
-  .carousel-wrapper :is(.\32xl\:pl-\[18\.5rem\]) {
-    padding-left: 18.5rem
-  }
-
   .carousel-wrapper :is(.\32xl\:pl-\[19rem\]) {
     padding-left: 19rem
   }
