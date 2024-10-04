@@ -87,6 +87,11 @@
         @apply pl-6 list-decimal;
     }
 
+    body.stories main .story-middle-container,
+    body.appear main .section.story-hub-container {
+        @apply px-6;
+    }
+
     main .section .default-content-wrapper a {
         @apply font-bold text-[#378189];
     }

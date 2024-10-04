@@ -831,6 +831,12 @@ header {
   padding-left: 1.5rem;
 }
 
+body.stories main .story-middle-container,
+    body.appear main .section.story-hub-container {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
 main .section .default-content-wrapper a {
   font-weight: 700;
   --tw-text-opacity: 1;
