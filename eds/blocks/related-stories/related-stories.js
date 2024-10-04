@@ -63,18 +63,21 @@ export default async function decorate(block) {
   let contentType;
   pagetags.forEach((tag) => {
     if (tag.includes('stories-type')) {
-      storyType = tag;
+      storyType = tag.trim();
     }
     if (tag.includes('content-type')) {
-      contentType = tag;
+      contentType = tag.trim();
     }
   });
 
   let articles = await ffetch('/en-us/stories/query-index.json')
-    .filter((item) => item.title !== getMetadata('og:title'))
-    .filter((item) => item.tags.includes(storyType) && item.tags.includes(contentType))
-    .all();
-
+  .filter((item) => {
+    const url = new URL(getMetadata('og:url'));
+    return item.path !== url.pathname;
+  })
+  .filter((item) => item.tags.includes(storyType) && item.tags.includes(contentType))
+  .all();
+  
   articles = articles.sort((item1, item2) => item2.publishDate - item1.publishDate).slice(0, 3);
 
   const cardList = ul({
