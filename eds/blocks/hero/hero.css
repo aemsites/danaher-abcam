@@ -814,6 +814,12 @@
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
 }
 
+@media (min-width: 1024px) {
+  .hero-wrapper :is(.\[\&_img\]\:lg\:h-\[496px\] img) {
+    height: 496px
+  }
+}
+
 .hero-wrapper :is(.\[\&_p\]\:leading-4 p) {
   line-height: 1rem
 }

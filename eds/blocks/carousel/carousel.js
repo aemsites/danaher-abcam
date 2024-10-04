@@ -37,10 +37,10 @@ function configurePagination(carouselControls, totalSlides) {
 }
 
 export default function decorate(block) {
-  block.parentElement.parentElement.querySelector('h1')?.classList.add('text-center');
+  block.parentElement.parentElement.querySelector('h1')?.classList.add('text-left');
   const uuid = crypto.randomUUID(4).substring(0, 6);
   if (block.querySelector('a[title="link"]')) block.parentElement.parentElement.classList.add(...'!px-6 !py-16 !sm:py-16'.split(' '));
-  block.classList.add(...'relative min-h-[30rem] md:min-h-[37rem]'.split(' '));
+  block.classList.add(...'relative min-h-[30rem]'.split(' '));
   block.style = 'grid-auto-columns: 100%; scrollbar-width: none;';
   // block.classList.remove('block');
   block.classList.add(...'grid grid-flow-col overflow-x-auto space-x-2 snap-x snap-mandatory gap-6 scroll-smooth'.split(' '));
@@ -53,16 +53,32 @@ export default function decorate(block) {
     if (contentEl) {
       const content = contentEl.closest('div');
       content.append(ele.querySelector('.button-container'));
-      content.prepend(ele.querySelector('h4'));
-      content.classList.add(...'px-4 lg:px-8 lg:pr-10 lg:pl-[22rem]'.split(' '));
+      const h3Element = ele.querySelector('h3');
+      if (h3Element) {
+        h3Element.classList.add('!text-3xl');
+        content.prepend(h3Element);
+      }
+      const h4Element = ele.querySelector('h4');
+      if (h4Element) {
+        h4Element.classList.add('text-sm');
+        content.prepend(h4Element);
+      }
+      const h5Element = ele.querySelector('h5');
+      if (h5Element) {
+        h5Element.classList.add('text-sm');
+        content.prepend(h5Element);
+      }
+      content.classList.add(...'px-4 lg:px-8 lg:pr-10 gap-y-2'.split(' '));
       const heading = content.querySelector('h2');
-      const paragraphs = content.querySelectorAll('p:not(.button-container)');
+      const buttonParagrah = content.querySelector('div.button-container > p');
+      if (buttonParagrah) buttonParagrah.parentElement.classList.add('mt-6');
+      const paragraphs = content.querySelectorAll('div > p:not(div.button-container > p)');
       const allBtns = content.querySelectorAll('p.button-container');
       if (heading) heading.classList.add(...'lg:text-[40px] text-2xl md:text-4xl tracking-wide md:tracking-tight m-0 font-medium leading-6 md:leading-[44px]'.split(' '));
       paragraphs.forEach((paragraph) => {
         if (!paragraph.querySelector('a[title="link"]')) {
           if (paragraph.nextElementSibling && ['H1', 'H2', 'H3'].includes(paragraph.nextElementSibling.nodeName)) paragraph.classList.add(...'eyebrow'.split(' '));
-          else paragraph.classList.add(...'font-extralight tracking-tight leading-7'.split(' '));
+          else paragraph.classList.add(...'font-semibold tracking-tight leading-7 my-0'.split(' '));
         } else {
           const linkBtn = paragraph.querySelector('a[title="link"]');
           if (linkBtn.title === 'link') paragraph.classList.add(...'btn btn-lg font-medium btn-primary-purple rounded-full px-6 mt-10'.split(' '));
@@ -90,11 +106,11 @@ export default function decorate(block) {
         });
         content.append(actions);
       }
-      ele.append(div({ class: 'lg:my-auto lg:w-1/2 h-auto max-w-7xl py-8 lg:py-0 pt-24 overflow-hidden' }, content));
+      ele.append(div({ class: 'lg:my-auto lg:w-1/2 h-auto max-w-7xl py-8 lg:py-0 pt-24 xl:pl-0 2xl:pl-[19rem] overflow-hidden' }, content));
     }
     if (picture) {
       picture.querySelector('img').classList.add(...'lg:absolute lg:bottom-0 h-full w-full object-contain lg:object-cover'.split(' '));
-      ele.append(div({ class: 'relative h-48 w-full md:h-[35rem] block lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 px-6 bg-black lg:bg-white' }, picture));
+      ele.append(div({ class: 'relative h-[31.5rem] w-full block lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 px-6 bg-black lg:bg-white' }, picture));
     }
     changedBtn = 0;
     decorateModals(ele);
@@ -104,7 +120,7 @@ export default function decorate(block) {
     block.parentElement.classList.add(...'relative w-full'.split(' '));
     block.parentElement.setAttribute('data-carousel', 'slide');
     block.parentElement.setAttribute('id', uuid);
-    const carouselControls = div({ class: 'relative md:absolute md:bottom-16 flex gap-x-4 items-center space-x-3 z-10 px-4 lg:px-8 xl:pr-10 pt-8' });
+    const carouselControls = div({ class: 'relative md:absolute md:bottom-16 flex gap-x-4 items-center space-x-3 z-10 px-4 lg:px-4 xl:pr-2 pt-8' });
     configurePagination(carouselControls, slides.length);
     configureNavigation(carouselControls);
     block.parentElement.append(div({ class: 'carousel-controls relative max-w-7xl mx-auto' }, carouselControls));

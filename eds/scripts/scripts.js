@@ -21,6 +21,17 @@ import { buildVideoSchema } from './schema.js';
 
 const LCP_BLOCKS = ['hero', 'hero-video', 'carousel']; // add your LCP blocks to the list
 
+export function getStoryType(pageTags) {
+  const tags = pageTags ? pageTags : getMetadata('pagetags');
+  let type = null;
+  tags?.split(',').forEach((tag) => {
+    if (tag.includes('content-type')) {
+      type = tag.split('/').pop();
+    }
+  });
+  return type;
+}
+
 /**
  * 
  * @param {*} config 
@@ -497,10 +508,10 @@ function decorateVideo(main) {
         if (link.title === "video") {
           firstVideo += 1;
           const videoId = extractVideoId(link.href);
-          const posterImage = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+          const posterImage = `https://img.youtube.com/vi/${videoId}/sddefault.jpg`;
 
           const playButtonHTML = `
-            <div class="relative w-full h-full">
+            <div class="aspect-video relative w-full h-full">
               <img src="${posterImage}" class="relative inset-0 w-full h-full object-cover" />
               <button id="play-button-${videoId}" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 rounded-full p-4">
                 <span class = "video-play-icon icon icon-video-play"/>
@@ -509,7 +520,7 @@ function decorateVideo(main) {
           `;
           const linkContainer = link.parentElement;
           linkContainer.innerHTML = playButtonHTML;
-          decorateIcons(linkContainer);
+          decorateIcons(linkContainer, 50, 50);
 
           if (linkContainer.closest('.image-full-width')) {
             linkContainer.className = 'relative lg:absolute w-full lg:w-1/2 h-full object-cover lg:right-0 lg:bottom-6';
@@ -817,7 +828,7 @@ export function createFilters({
         categoryIndex >= limit ? { class: 'hidden' } : '',
         label(
           {
-            class: 'w-full flex items-center gap-3 py-1 md:hover:px-1 md:hover:bg-gray-50 text-sm font-medium break-all capitalize cursor-pointer',
+            class: 'w-full flex items-center gap-3 py-1 md:hover:px-1 md:hover:bg-gray-50 text-sm font-medium break-all cursor-pointer',
             for: `${[categoryKey]}-${categoryValue}`
           },
           input({
@@ -829,7 +840,7 @@ export function createFilters({
               listActionHandler(categoryKey, categoryValue);
             }
           }),
-          categoryValue,
+          categoryValue.replace(/-/g, ' ').replace(/^\w/, char => char.toUpperCase()),
         ),
       ));
     });
@@ -869,6 +880,7 @@ export function createFilters({
           class: 'icon icon-chevron-down size-5 cursor-pointer',
           onclick: () => {
             lists.parentElement.classList.toggle('hidden');
+            lists.parentElement.previousElementSibling.children[1].classList.toggle('rotate-180');
           },
         }),
       ),
@@ -894,6 +906,9 @@ export function createCard({
   bodyEl = '',
   footerEl = '',
   path = '/',
+  tags = '',
+  time = '',
+  isStoryCard = false,
 }) {
   const card = li(
     {
@@ -919,6 +934,24 @@ export function createCard({
       footerEl,
     )
   );
+  if(isStoryCard){
+    let minRead;
+    switch (getStoryType(tags)) {
+      case 'podcast':
+        minRead = ` | ${time} mins listen`;
+        break;
+      case 'film':
+        minRead = ` | ${time} mins watch`;
+        break;
+      default:
+        minRead = ` | ${time} mins read`;
+        break;
+    }
+    card.querySelector('.flex-1').prepend(
+      span({ class: 'capitalize font-normal text-sm' }, `${getStoryType(tags)}`),
+      span({ class: 'font-normal text-sm' }, `${minRead}`),
+    );
+  }
   return card;
 }
 
