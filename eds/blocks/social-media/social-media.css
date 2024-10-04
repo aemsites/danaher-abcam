@@ -52,6 +52,11 @@
   color: rgb(75 85 99 / var(--tw-text-opacity))
 }
 
+.social-media-wrapper :is(.text-black) {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity))
+}
+
 @media (min-width: 768px) {
   .social-media-wrapper :is(.md\:pb-10) {
     padding-bottom: 2.5rem

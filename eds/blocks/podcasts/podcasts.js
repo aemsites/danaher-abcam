@@ -30,7 +30,7 @@ function decoratePodcast(podcast) {
   decorateIcons(iconContainer);
 
   const button = podcast.querySelector('div.button-container');
-  applyClasses(button, 'h-10 mt-2');
+  applyClasses(button, 'h-10 !mt-2');
   applyClasses(button.querySelector('p'), '!my-0');
   allButtons.append(button, iconContainer);
   contentDiv.append(allButtons);

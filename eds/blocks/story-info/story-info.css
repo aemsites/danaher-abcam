@@ -93,3 +93,8 @@
 .story-info-wrapper :is(.leading-6) {
   line-height: 1.5rem
 }
+
+.story-info-wrapper :is(.text-\[\#65697C\]) {
+  --tw-text-opacity: 1;
+  color: rgb(101 105 124 / var(--tw-text-opacity))
+}

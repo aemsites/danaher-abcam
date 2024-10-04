@@ -45,7 +45,7 @@
     }
 
     .button-primary {
-        @apply bg-[#378189] hover:bg-[#2A5F65] whitespace-nowrap rounded-full items-center py-[1px] px-3 text-white text-sm capitalize justify-self-end w-fit;
+        @apply bg-[#378189] hover:bg-[#2A5F65] whitespace-nowrap rounded-full items-center py-px px-3 text-white text-sm capitalize justify-self-end w-fit;
     }
 
     main .section .button-secondary {
@@ -53,7 +53,7 @@
     }
 
     main .section .button-tertiary-outline {
-        @apply bg-white hover:bg-[#071112]/[5%] outline outline-1 outline-black text-black text-sm font-semibold whitespace-nowrap rounded-full py-2 px-3 capitalize w-fit;
+        @apply bg-white hover:bg-[#071112]/[5%] outline outline-1 outline-black text-black text-sm font-semibold whitespace-nowrap rounded-full lg:mt-14 py-2 px-3 capitalize w-fit;
     }
  
     main .section .button-tertiary-filled {
@@ -71,10 +71,6 @@
         @apply h-28 md:h-16 lg:h-32;
     }
 
-    .default-content-wrapper:first-child {
-        @apply pb-8;
-    }
-
     .default-content-wrapper h1:first-of-type {
         @apply pt-4 px-6 mx-auto max-w-7xl;
     }
@@ -89,6 +85,11 @@
 
     .default-content-wrapper > ol {
         @apply pl-6 list-decimal;
+    }
+
+    body.stories main .story-middle-container,
+    body.appear main .section.story-hub-container {
+        @apply px-6;
     }
 
     main .section .default-content-wrapper a {
@@ -208,7 +209,7 @@
     }
 
     .stories main .section.no-section-padding .columns-wrapper {
-        @apply w-full mx-auto lg:h-[28rem] relative;
+        @apply w-full mx-auto lg:h-[31rem] relative;
     }
 
     .stories main .section.no-section-padding.columns-container {

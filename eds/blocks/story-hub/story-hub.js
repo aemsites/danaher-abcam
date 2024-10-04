@@ -15,7 +15,7 @@ let lists = [];
 let filterContainer = {};
 const hub = div();
 const allSelectedTags = div(
-  { class: 'w-fit flex flex-row-reverse items-start gap-2 mb-4 [&_*:empty+span]:hidden' },
+  { class: 'w-fit flex flex-row-reverse items-start gap-2 mb-4 [&_*:empty+span]:hidden [&_*:empty]:mb-8' },
   ul({ class: 'inline-flex items-center flex-wrap gap-2 [&_.showmoretags.active~*:not(.clear-all)]:hidden md:[&_.showmoretags.active~*:not(.clear-all):not(.showlesstags)]:flex md:[&_.showmoretags~*:not(.showlesstags)]:flex' }),
   span({ class: 'text-xs font-semibold text-[#07111299]' }, 'Filters:'),
 );
@@ -81,7 +81,7 @@ function handleRenderTags() {
               },
             },
             filt,
-            span({ class: 'icon icon-close size-4 text-emerald-800' }),
+            span({ class: 'icon icon-tab-close size-4' }),
           ));
         });
       }
@@ -170,9 +170,6 @@ function handleChangeFilter(key, value, mode) {
           if (key !== 'stories-type' && filterContainer[key].length === 0) delete filterContainer[key];
         } else filterContainer[key].push(value);
       } else filterContainer[key] = [value];
-      // newLists = lists.filter((list) => (filterContainer[key]
-      //   ? list.tags.includes(filterContainer[key])
-      //   : true));
       const totalFilterKeys = Object.keys(filterContainer);
       newLists = lists.map((list) => {
         const totalChecks = totalFilterKeys.filter((filt) => {
@@ -235,7 +232,6 @@ function toggleTabs(tabId, tabElement) {
   if (!filterContainer[key].includes(value)) {
     handleResetFilters(value);
   }
-  // filterContainer[key] = [value];
   tabs.forEach((tab) => {
     if (tab.id === tabId) {
       tab.classList.add('active', 'border-b-8', 'border-[#ff7223]');
