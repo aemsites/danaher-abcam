@@ -1,7 +1,7 @@
 import ffetch from '../../scripts/ffetch.js';
-import { imageHelper } from '../../scripts/scripts.js';
+import { imageHelper, getStoryType } from '../../scripts/scripts.js';
 import {
-  ul, li, p, a, div, h3,
+  ul, li, p, a, div, h3, span,
 } from '../../scripts/dom-builder.js';
 import { getMetadata } from '../../scripts/aem.js';
 
@@ -24,11 +24,27 @@ function createCard(article, firstCard = false) {
       break;
   }
 
+  const tags = '';
+  let minRead;
+  switch (getStoryType(tags)) {
+    case 'podcast':
+      minRead = ` | ${article.readingTime} mins listen`;
+      break;
+    case 'film':
+      minRead = ` | ${article.readingTime} mins watch`;
+      break;
+    default:
+      minRead = ` | ${article.readingTime} mins read`;
+      break;
+  }
+
   const cardWrapper = a(
     { class: 'group h-full', href: article.path, title: article.title },
     imageHelper(article.image, article.title, firstCard),
     div(
       { class: 'py-2' },
+      span({ class: 'capitalize font-normal text-sm' }, `${getStoryType(tags)}`),
+      span({ class: 'font-normal text-sm' }, `${minRead}`),
       h3(
         {
           class:
@@ -82,7 +98,7 @@ export default async function decorate(block) {
 
   const cardList = ul({
     class:
-          'container grid max-w-7xl w-full mx-auto gap-6 grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 px-3 sm:px-0 justify-items-center mt-3 mb-3',
+          'container grid max-w-7xl w-full mx-auto gap-6 grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 px-3 lg:px-10 sm:px-0 justify-items-center mt-3 mb-3',
   });
   articles.forEach((article, index) => {
     cardList.appendChild(createCard(article, index === 0));
