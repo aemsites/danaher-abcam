@@ -132,7 +132,7 @@ function handleRenderContent(newLists = lists) {
         footerLink = 'Read article';
         break;
     }
-    const imageUrl = new URL(article.image);
+    const imageUrl = new URL(article.image, window.location);
 
     cardList.appendChild(createCard({
       titleImage: imageHelper(imageUrl.pathname, article.title, (index === 0)),
