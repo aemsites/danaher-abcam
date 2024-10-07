@@ -22,4 +22,8 @@ export default function decorate(block) {
   }
   decorateIcons(goParentBack);
   block.firstElementChild.append(goParentBack);
+  if(block?.firstElementChild.querySelector(':scope > div')) {
+    block?.firstElementChild.removeChild(block?.firstElementChild.querySelector(':scope > div'));
+  }
+  block.classList.add(...'ml-[-4px] md:ml-72'.split(' '));
 }
