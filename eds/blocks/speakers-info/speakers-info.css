@@ -35,15 +35,6 @@
   flex-direction: column
 }
 
-.speakers-info-wrapper :is(.gap-y-4) {
-  row-gap: 1rem
-}
-
-.speakers-info-wrapper :is(.gap-x-4) {
-  -moz-column-gap: 1rem;
-       column-gap: 1rem
-}
-
 .speakers-info-wrapper :is(.gap-x-2) {
   -moz-column-gap: 0.5rem;
        column-gap: 0.5rem
@@ -53,17 +44,9 @@
   border-radius: 9999px
 }
 
-.speakers-info-wrapper :is(.px-2) {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem
-}
-
-.speakers-info-wrapper :is(.pb-0) {
-  padding-bottom: 0px
-}
-
-.speakers-info-wrapper :is(.\!pb-0) {
-  padding-bottom: 0px !important
+.speakers-info-wrapper :is(.text-base) {
+  font-size: 1rem;
+  line-height: 1.5rem
 }
 
 .speakers-info-wrapper :is(.text-lg) {
@@ -76,9 +59,14 @@
   line-height: 1.25rem
 }
 
-.speakers-info-wrapper :is(.text-base) {
-  font-size: 1rem;
-  line-height: 1.5rem
+.speakers-info-wrapper :is(.\!text-base) {
+  font-size: 1rem !important;
+  line-height: 1.5rem !important
+}
+
+.speakers-info-wrapper :is(.text-2xl) {
+  font-size: 1.5rem;
+  line-height: 2rem
 }
 
 .speakers-info-wrapper :is(.font-normal) {
@@ -89,12 +77,24 @@
   font-weight: 600
 }
 
+.speakers-info-wrapper :is(.font-medium) {
+  font-weight: 500
+}
+
+.speakers-info-wrapper :is(.\!font-medium) {
+  font-weight: 500 !important
+}
+
 .speakers-info-wrapper :is(.leading-6) {
   line-height: 1.5rem
 }
 
 .speakers-info-wrapper :is(.leading-7) {
   line-height: 1.75rem
+}
+
+.speakers-info-wrapper :is(.\!leading-7) {
+  line-height: 1.75rem !important
 }
 
 .speakers-info-wrapper :is(.tracking-normal) {
@@ -106,14 +106,24 @@
   color: rgb(7 17 18 / var(--tw-text-opacity))
 }
 
+.speakers-info-wrapper :is(.text-\[\#378189\]) {
+  --tw-text-opacity: 1;
+  color: rgb(55 129 137 / var(--tw-text-opacity))
+}
+
 .speakers-info-wrapper :is(.text-\[\#65797C\]) {
   --tw-text-opacity: 1;
   color: rgb(101 121 124 / var(--tw-text-opacity))
 }
 
-.speakers-info-wrapper :is(.text-\[\#378189\]) {
+.speakers-info-wrapper :is(.text-black) {
   --tw-text-opacity: 1;
-  color: rgb(55 129 137 / var(--tw-text-opacity))
+  color: rgb(0 0 0 / var(--tw-text-opacity))
+}
+
+.speakers-info-wrapper :is(.\!text-black) {
+  --tw-text-opacity: 1 !important;
+  color: rgb(0 0 0 / var(--tw-text-opacity)) !important
 }
 
 .speakers-info-wrapper :is(.underline) {

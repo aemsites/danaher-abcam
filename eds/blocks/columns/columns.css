@@ -32,10 +32,6 @@
   }
 }
 
-.columns-wrapper :is(.absolute) {
-  position: absolute
-}
-
 .columns-wrapper :is(.relative) {
   position: relative
 }
@@ -66,36 +62,12 @@
   display: none
 }
 
-.columns-wrapper :is(.aspect-video) {
-  aspect-ratio: 16 / 9
-}
-
 .columns-wrapper :is(.h-full) {
   height: 100%
 }
 
 .columns-wrapper :is(.w-full) {
   width: 100%
-}
-
-.columns-wrapper :is(.w-1\/2) {
-  width: 50%
-}
-
-.columns-wrapper :is(.w-1\/4) {
-  width: 25%
-}
-
-.columns-wrapper :is(.w-2\/5) {
-  width: 40%
-}
-
-.columns-wrapper :is(.w-3\/4) {
-  width: 75%
-}
-
-.columns-wrapper :is(.w-3\/5) {
-  width: 60%
 }
 
 .columns-wrapper :is(.max-w-7xl) {
@@ -151,75 +123,15 @@
   color: rgb(139 139 139 / var(--tw-text-opacity))
 }
 
-@media (min-width: 640px) {
-  .columns-wrapper :is(.sm\:aspect-video) {
-    aspect-ratio: 16 / 9
-  }
-
-  .columns-wrapper :is(.sm\:w-3\/5) {
-    width: 60%
-  }
-}
-
 @media (min-width: 768px) {
-  .columns-wrapper :is(.md\:absolute) {
-    position: absolute
-  }
-
-  .columns-wrapper :is(.md\:relative) {
-    position: relative
-  }
-
-  .columns-wrapper :is(.md\:left-16) {
-    left: 4rem
-  }
-
-  .columns-wrapper :is(.md\:left-20) {
-    left: 5rem
-  }
-
-  .columns-wrapper :is(.md\:left-32) {
-    left: 8rem
-  }
-
-  .columns-wrapper :is(.md\:aspect-video) {
-    aspect-ratio: 16 / 9
-  }
-
-  .columns-wrapper :is(.md\:w-1\/2) {
-    width: 50%
-  }
-
-  .columns-wrapper :is(.md\:w-3\/4) {
-    width: 75%
-  }
-
-  .columns-wrapper :is(.md\:w-3\/5) {
-    width: 60%
-  }
-
   .columns-wrapper :is(.md\:flex-row) {
     flex-direction: row
-  }
-
-  .columns-wrapper :is(.md\:px-0) {
-    padding-left: 0px;
-    padding-right: 0px
-  }
-
-  .columns-wrapper :is(.md\:px-6) {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem
   }
 }
 
 @media (min-width: 1024px) {
   .columns-wrapper :is(.lg\:absolute) {
     position: absolute
-  }
-
-  .columns-wrapper :is(.lg\:relative) {
-    position: relative
   }
 
   .columns-wrapper :is(.lg\:bottom-6) {
@@ -240,10 +152,6 @@
 
   .columns-wrapper :is(.lg\:w-1\/2) {
     width: 50%
-  }
-
-  .columns-wrapper :is(.lg\:w-full) {
-    width: 100%
   }
 
   .columns-wrapper :is(.lg\:w-1\/4) {
@@ -269,11 +177,6 @@
   .columns-wrapper :is(.lg\:py-6) {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem
-  }
-
-  .columns-wrapper :is(.lg\:py-10) {
-    padding-top: 2.5rem;
-    padding-bottom: 2.5rem
   }
 
   .columns-wrapper :is(.lg\:pr-6) {

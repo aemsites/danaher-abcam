@@ -1,4 +1,4 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
+import { createOptimizedPicture, getMetadata } from '../../scripts/aem.js';
 import { div } from '../../scripts/dom-builder.js';
 import { applyClasses, getStoryType } from '../../scripts/scripts.js';
 

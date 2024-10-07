@@ -5,7 +5,11 @@ import {
   div, span,
 } from '../../scripts/dom-builder.js';
 
-export default function decorate(block) {
+export default function decorate(block) {  
+  const parentBlock = block.parentElement.parentElement.firstElementChild;
+  const parentBlockTitle = parentBlock.querySelector('p');
+  parentBlockTitle.classList.add(...'text-black text-2xl font-medium leading-7'.split(' '));
+
   const pictureEl = block.querySelector('picture');
   pictureEl?.classList.add(...'shrink-0'.split(' '));
   const img = pictureEl?.querySelector('img');
