@@ -313,21 +313,13 @@ function decorateStoryPage(main) {
 }
 
 function decorateWebinarPage(main){
-  const sectionEl2 = main.querySelector(':scope > div.section.webinartitle-container.back-navigation-container.columns-container');
-  const sectionEl = main.querySelector(':scope > div.section.abcam-button-container');
-  if(sectionEl){
-    const toBeRemoved = ['abcam-button-wrapper'];
-    const rightSideElements = div({class: 'w-full'});
-    Array.from(sectionEl?.children).forEach((element) => {
-      if (!toBeRemoved.includes(element.classList[0])) {
-        rightSideElements.append(element);
-      }
-    });
-    sectionEl?.append(rightSideElements);
-    const divEl = div({class: 'ml-6 md:ml-[311px] mt-6 md:mt-[-7rem] my-auto'});
-    divEl.append(sectionEl?.querySelector('.abcam-button-wrapper'));
-    sectionEl2?.appendChild(divEl);
-  }
+  const sectionEl = main.querySelector(':scope > div.section.webinartitle-container');
+  const subTitleEl = sectionEl?.querySelector('div.default-content-wrapper > h4');
+  const coumnEl = sectionEl?.querySelector('.columns-wrapper');
+  const divEl = div({class: 'flex md:inline-flex text-align-center items-center justify-between w-full'});
+  subTitleEl?.classList.add(...'text-xs text-[#378189] bg-[#EDF6F7] font-semibold rounded capitalize py-1 px-2'.split(' '));
+  divEl.append(subTitleEl);
+  coumnEl?.firstElementChild?.firstElementChild?.firstElementChild.prepend(divEl);
 }
 
 /**

@@ -66,9 +66,11 @@ export default function decorate(block) {
           };
         }
       } else {
-        const readingTime = getMetadata('readingtime');
-        const expectedPublishFormat = new Date(getMetadata('published-time'));
-        block.firstElementChild?.firstElementChild?.append(div({ class: 'font-normal text-sm leading-4 text-[#8B8B8B] capitalize mb-2 pt-4' }, `${expectedPublishFormat.getDate()} ${expectedPublishFormat.toLocaleString('default', { month: 'long' })}, ${expectedPublishFormat.getFullYear()} | ${readingTime} Mins`));
+        if(window.location.pathname.includes('/webinars/')) {
+          const readingTime = getMetadata('readingtime');
+          const expectedPublishFormat = new Date(getMetadata('published-time'));
+          block.firstElementChild?.firstElementChild?.append(div({ class: 'font-normal text-sm leading-4 text-[#8B8B8B] capitalize mb-2 pt-4' }, `${expectedPublishFormat.getDate()} ${expectedPublishFormat.toLocaleString('default', { month: 'long' })}, ${expectedPublishFormat.getFullYear()} | ${readingTime} Mins`));
+        }
         col.classList.add('mx-auto');
       }
     });
