@@ -417,7 +417,6 @@ async function getOgImage() {
   const articles = await ffetch('/en-us/stories/query-index.json')
     .filter((item) => item.tags.includes('content-type/film'))
     .all();
-  console.log(articles);
   return articles;
 }
 
