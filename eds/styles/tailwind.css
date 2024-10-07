@@ -16,16 +16,16 @@
         @apply font-heading my-2;
     }
 
-    p {
+    div > p:not(div.button-container > p) {
         @apply my-2;
     }
 
     h1 {
-        @apply md:!leading-[3rem] !font-medium !text-3xl md:!text-4xl;
+        @apply md:!leading-[3rem] !font-bold !text-5xl md:!text-4xl;
     }
 
     h2 { 
-        @apply !leading-9 !font-medium !text-2xl md:!text-3xl;
+        @apply !leading-9 !font-bold !text-4xl md:!text-3xl;
     }
 
     h3 { 
@@ -45,15 +45,15 @@
     }
 
     .button-primary {
-        @apply bg-[#378189] hover:bg-[#2A5F65] whitespace-nowrap rounded-full items-center py-[1px] px-3 text-white text-sm capitalize justify-self-end w-fit;
+        @apply bg-[#378189] hover:bg-[#2A5F65] whitespace-nowrap rounded-full items-center py-px px-3 text-white text-sm capitalize justify-self-end w-fit;
     }
 
     main .section .button-secondary {
-        @apply bg-black hover:bg-[#3B3B3B] whitespace-nowrap rounded-full items-center py-[1px] px-3 text-white text-sm capitalize justify-self-end w-fit;
+        @apply bg-black hover:bg-[#3B3B3B] whitespace-nowrap rounded-full items-center py-3 px-6 font-semibold text-white text-sm capitalize justify-self-end w-fit;
     }
 
     main .section .button-tertiary-outline {
-        @apply bg-white hover:bg-[#071112]/[5%] outline outline-1 outline-black text-black text-sm font-semibold whitespace-nowrap rounded-full py-2 px-3 capitalize w-fit;
+        @apply bg-white hover:bg-[#071112]/[5%] outline outline-1 outline-black text-black text-sm font-semibold whitespace-nowrap rounded-full lg:mt-14 py-2 px-3 capitalize w-fit;
     }
  
     main .section .button-tertiary-filled {
@@ -71,12 +71,8 @@
         @apply h-28 md:h-16 lg:h-32;
     }
 
-    .default-content-wrapper:first-child {
-        @apply pb-8;
-    }
-
-    .webinars main .section.speakers-info-container .default-content-wrapper:first-child {
-        @apply pb-0 font-bold text-2xl;
+    .default-content-wrapper h1:first-of-type {
+        @apply pt-4 px-6 mx-auto max-w-7xl;
     }
 
     .default-content-wrapper:not(:first-child, :last-child) {
@@ -91,16 +87,25 @@
         @apply pl-6 list-decimal;
     }
 
+    body.stories main .story-middle-container,
+    body.appear main .section.story-hub-container {
+        @apply px-6;
+    }
+
     main .section .default-content-wrapper a {
         @apply font-bold text-[#378189];
     }
 
     main .section:not(.no-section-padding, .title-card-container) {
-        @apply mx-auto xl:max-w-7xl px-6 py-10;
+        @apply mx-auto xl:max-w-7xl px-6 lg:px-0 py-10;
+    }
+
+    main .section.carousel-container h1 {
+        @apply !pt-20;
     }
 
     main .section .default-content-wrapper h2{
-        @apply font-medium leading-8 lg:leading-5 text-4xl py-8;
+        @apply font-medium leading-8 lg:leading-5 text-4xl !my-0 pt-8;
     }
 
     main .section .title-card-wrapper {
@@ -204,7 +209,7 @@
     }
 
     .stories main .section.no-section-padding .columns-wrapper, .webinars main .section.no-section-padding .columns-wrapper {
-        @apply w-full mx-auto lg:h-[28rem] relative;
+        @apply w-full mx-auto lg:h-[31rem] relative;
     }
 
     .stories main .section.no-section-padding.columns-container, .webinars main .section.no-section-padding.columns-container {

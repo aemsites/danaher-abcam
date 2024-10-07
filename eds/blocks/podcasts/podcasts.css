@@ -1,37 +1,3 @@
-.container {
-  width: 100%
-}
-
-@media (min-width: 640px) {
-  .container {
-    max-width: 640px
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    max-width: 768px
-  }
-}
-
-@media (min-width: 1024px) {
-  .container {
-    max-width: 1024px
-  }
-}
-
-@media (min-width: 1280px) {
-  .container {
-    max-width: 1280px
-  }
-}
-
-@media (min-width: 1536px) {
-  .container {
-    max-width: 1536px
-  }
-}
-
 .podcasts-wrapper :is(.relative) {
   position: relative
 }
@@ -61,6 +27,10 @@
   margin-top: 0.5rem
 }
 
+.podcasts-wrapper :is(.\!mt-2) {
+  margin-top: 0.5rem !important
+}
+
 .podcasts-wrapper :is(.block) {
   display: block
 }
@@ -77,8 +47,8 @@
   height: 2.5rem
 }
 
-.podcasts-wrapper :is(.h-32) {
-  height: 8rem
+.podcasts-wrapper :is(.h-64) {
+  height: 16rem
 }
 
 .podcasts-wrapper :is(.w-full) {

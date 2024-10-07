@@ -15,7 +15,7 @@ let lists = [];
 let filterContainer = {};
 const hub = div();
 const allSelectedTags = div(
-  { class: 'w-fit flex flex-row-reverse items-start gap-2 mb-4 [&_*:empty+span]:hidden' },
+  { class: 'w-fit flex flex-row-reverse items-start gap-2 mb-4 [&_*:empty+span]:hidden [&_*:empty]:mb-8' },
   ul({ class: 'inline-flex items-center flex-wrap gap-2 [&_.showmoretags.active~*:not(.clear-all)]:hidden md:[&_.showmoretags.active~*:not(.clear-all):not(.showlesstags)]:flex md:[&_.showmoretags~*:not(.showlesstags)]:flex' }),
   span({ class: 'text-xs font-semibold text-[#07111299]' }, 'Filters:'),
 );
@@ -40,7 +40,7 @@ const hubDesktopFilters = div(
     ),
   ),
 );
-const cardList = ul({ class: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-stretch' });
+const cardList = ul({ class: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-16 justify-items-stretch' });
 const filterBackdrop = div({ class: 'h-screen fixed top-0 left-0 bg-white z-40 transition-all -translate-y-full' });
 
 function showMoreOrLessTags(mode) {
@@ -65,24 +65,26 @@ function handleRenderTags() {
   if (Object.keys(filterContainer).length > 0) {
     let filterCount = 0;
     Object.keys(filterContainer).forEach((filterArr) => {
-      filterContainer[filterArr].forEach((filt) => {
-        filterCount += 1;
-        tagsList.append(li(
-          {
-            class: 'flex items-center gap-x-1 text-xs text-[#378189] font-semibold bg-[#EDF6F7] px-2 py-1 rounded cursor-pointer capitalize',
-            title: filt,
-            onclick: () => {
-              const selectedTag = allSelectedTags.querySelector(`ul li[title=${filt}]`);
-              selectedTag.outerHTML = '';
-              hub.querySelector(`#${filterArr}-${filt}`).checked = false;
-              // eslint-disable-next-line no-use-before-define
-              handleChangeFilter(filterArr, filt);
+      if (filterArr !== 'stories-type') {
+        filterContainer[filterArr].forEach((filt) => {
+          filterCount += 1;
+          tagsList.append(li(
+            {
+              class: 'flex items-center gap-x-1 text-xs text-[#378189] font-semibold bg-[#EDF6F7] px-2 py-1 rounded cursor-pointer capitalize',
+              title: filt,
+              onclick: () => {
+                const selectedTag = allSelectedTags.querySelector(`ul li[title=${filt}]`);
+                selectedTag.outerHTML = '';
+                hub.querySelector(`#${filterArr}-${filt}`).checked = false;
+                // eslint-disable-next-line no-use-before-define
+                handleChangeFilter(filterArr, filt);
+              },
             },
-          },
-          filt,
-          span({ class: 'icon icon-close size-4 text-emerald-800' }),
-        ));
-      });
+            filt,
+            span({ class: 'icon icon-tab-close size-4' }),
+          ));
+        });
+      }
     });
     if (filterCount > 2) {
       tagsList.insertBefore(
@@ -100,7 +102,7 @@ function handleRenderTags() {
         tagsList.childNodes[tagsList.children - 2],
       );
     }
-    tagsList.append(li({ class: 'clear-all' }, clearAllEl));
+    if (filterCount >= 1) tagsList.append(li({ class: 'clear-all' }, clearAllEl));
     decorateIcons(tagsList);
   }
 }
@@ -137,6 +139,9 @@ function handleRenderContent(newLists = lists) {
       description: article.description,
       footerLink,
       path: article.path,
+      tags: article.tags,
+      time: article.readingTime,
+      isStoryCard: true,
     }));
   });
   // const paginationElements = createPagination(newLists, page, limitPerPage);
@@ -148,8 +153,9 @@ function handleRenderContent(newLists = lists) {
 }
 
 function handleChangeFilter(key, value, mode) {
+  // console.log(key, value, mode, filterContainer);
   let newLists = lists;
-  if (key === 'stories-type') {
+  if (!(key in filterContainer) && key === 'stories-type') {
     newLists = lists.filter((list) => (value
       ? list.tags.includes(value)
       : true));
@@ -160,20 +166,31 @@ function handleChangeFilter(key, value, mode) {
         delete filterContainer[key];
       } else if (key in filterContainer) {
         if (filterContainer[key].includes(value)) {
-          filterContainer[key] = filterContainer[key].filter((val) => val !== value);
-          if (filterContainer[key].length === 0) delete filterContainer[key];
+          if (key !== 'stories-type') filterContainer[key] = filterContainer[key].filter((val) => val !== value);
+          if (key !== 'stories-type' && filterContainer[key].length === 0) delete filterContainer[key];
         } else filterContainer[key].push(value);
       } else filterContainer[key] = [value];
-      newLists = lists.filter((list) => (filterContainer[key]
-        ? list.tags.includes(filterContainer[key])
-        : true));
+      const totalFilterKeys = Object.keys(filterContainer);
+      newLists = lists.map((list) => {
+        const totalChecks = totalFilterKeys.filter((filt) => {
+          if (filterContainer[filt].length > 0) {
+            const arrNameRes = filterContainer[filt].filter((arrName) => {
+              if (filt === 'stories-type' && arrName === '') return true;
+              return list.tags.includes(arrName);
+            });
+            if (arrNameRes.length > 0) return true;
+          }
+          return false;
+        });
+        return totalChecks.length === totalFilterKeys.length && list;
+      }).filter(Boolean);
     }
     handleRenderTags();
     handleRenderContent(newLists);
   }
 }
 
-function handleResetFilters() {
+function handleResetFilters(value = '') {
   Object.keys(filterContainer).forEach((filt) => {
     for (let eachFilt = 0; eachFilt < filterContainer[filt].length; eachFilt += 1) {
       const filterInp = hub.querySelector(`#${filt}-${filterContainer[filt][eachFilt]}`);
@@ -181,6 +198,7 @@ function handleResetFilters() {
     }
   });
   filterContainer = {};
+  filterContainer['stories-type'] = [value];
   // eslint-disable-next-line no-use-before-define
   handleChangeFilter(null, null, 'skip-filter');
 }
@@ -211,6 +229,9 @@ function toggleMobileFilters(mode) {
 function toggleTabs(tabId, tabElement) {
   const tabs = tabElement.querySelectorAll('.tab');
   const [key, value] = tabId.split('/');
+  if (!filterContainer[key].includes(value)) {
+    handleResetFilters(value);
+  }
   tabs.forEach((tab) => {
     if (tab.id === tabId) {
       tab.classList.add('active', 'border-b-8', 'border-[#ff7223]');
@@ -221,14 +242,18 @@ function toggleTabs(tabId, tabElement) {
   });
 }
 
+async function initiateRequest() {
+  const response = await ffetch('/en-us/stories/query-index.json')
+    .filter(({ path }) => !excludedPages.includes(path))
+    .chunks(500)
+    .all();
+  lists = [...response];
+}
+
 export default async function decorate(block) {
   if (block.children.length > 0) {
     const filterNames = block.querySelector(':scope > div > div > p')?.textContent?.split(',');
-    const response = await ffetch('/en-us/stories/query-index.json')
-      .filter(({ path }) => !excludedPages.includes(path))
-      .chunks(500)
-      .all();
-    lists = [...response];
+    await initiateRequest();
     buildStoryHubSchema(lists);
     const allFilters = p({ class: 'h-5/6 mb-3 overflow-visible' });
     createFilters({
@@ -289,13 +314,11 @@ export default async function decorate(block) {
       const btn = button({
         class: 'tab md:py-1.5 pb-4 mr-8 active border-b-8 border-[#ff7223]',
         id: tab.tabId,
-      });
-      btn.innerHTML = tab.name;
+        onclick: () => toggleTabs(tab.tabId, tabElement),
+      }, tab.name);
       tabElement.appendChild(btn);
-      btn.addEventListener('click', () => {
-        toggleTabs(tab.tabId, tabElement);
-      });
     });
+    filterContainer['stories-type'] = [''];
     toggleTabs(tabs[0].tabId, tabElement);
     block.innerHTML = '';
     block.append(tabElement, horizondalLine, hub);

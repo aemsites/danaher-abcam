@@ -163,6 +163,10 @@
   justify-items: stretch
 }
 
+.story-hub-wrapper :is(.gap-10) {
+  gap: 2.5rem
+}
+
 .story-hub-wrapper :is(.gap-2) {
   gap: 0.5rem
 }
@@ -320,11 +324,6 @@
   color: rgb(0 0 0 / var(--tw-text-opacity))
 }
 
-.story-hub-wrapper :is(.text-emerald-800) {
-  --tw-text-opacity: 1;
-  color: rgb(6 95 70 / var(--tw-text-opacity))
-}
-
 .story-hub-wrapper :is(.text-white) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity))
@@ -437,10 +436,26 @@
   .story-hub-wrapper :is(.lg\:grid-cols-3) {
     grid-template-columns: repeat(3, minmax(0, 1fr))
   }
+
+  .story-hub-wrapper :is(.lg\:gap-16) {
+    gap: 4rem
+  }
+}
+
+.story-hub-wrapper :is(.\[\&_\*\:empty\+span\]\:mb-12 *:empty+span) {
+  margin-bottom: 3rem
 }
 
 .story-hub-wrapper :is(.\[\&_\*\:empty\+span\]\:hidden *:empty+span) {
   display: none
+}
+
+.story-hub-wrapper :is(.\[\&_\*\:empty\]\:mb-12 *:empty) {
+  margin-bottom: 3rem
+}
+
+.story-hub-wrapper :is(.\[\&_\*\:empty\]\:mb-8 *:empty) {
+  margin-bottom: 2rem
 }
 
 .story-hub-wrapper :is(.\[\&_\*\:has\(input\:checked\)\~\*_\.clear-all\]\:block *:has(input:checked)~* .clear-all) {
