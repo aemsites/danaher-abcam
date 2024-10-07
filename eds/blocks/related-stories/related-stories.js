@@ -37,10 +37,11 @@ function createCard(article, firstCard = false) {
       minRead = ` | ${article.readingTime} mins read`;
       break;
   }
+  const imageUrl = new URL(article.image, window.location);
 
   const cardWrapper = a(
     { class: 'group h-full', href: article.path, title: article.title },
-    imageHelper(article.image, article.title, firstCard),
+    imageHelper(imageUrl.pathname, article.title, firstCard),
     div(
       { class: 'py-2' },
       span({ class: 'capitalize font-normal text-sm' }, `${getStoryType(tags)}`),
