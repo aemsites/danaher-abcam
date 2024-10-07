@@ -5,7 +5,7 @@ import {
   div, span,
 } from '../../scripts/dom-builder.js';
 
-export default function decorate(block) {  
+export default function decorate(block) {
   const parentBlock = block.parentElement.parentElement.firstElementChild;
   const parentBlockTitle = parentBlock.querySelector('p');
   parentBlockTitle.classList.add(...'text-black text-2xl font-medium leading-7'.split(' '));
