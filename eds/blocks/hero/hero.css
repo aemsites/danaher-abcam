@@ -801,10 +801,6 @@
   display: none
 }
 
-.hero-wrapper :is(.\[\&_img\]\:h-\[496px\] img) {
-  height: 496px
-}
-
 .hero-wrapper :is(.\[\&_img\]\:w-full img) {
   width: 100%
 }
