@@ -447,7 +447,12 @@ video {
 }
 
 body {
+  display: none;
   font-family: Noto Sans;
+}
+
+body.appear {
+  display: block;
 }
 
 h1,
