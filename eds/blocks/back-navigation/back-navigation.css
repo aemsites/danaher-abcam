@@ -2,6 +2,10 @@
   margin-bottom: 2.5rem
 }
 
+.back-navigation-wrapper :is(.ml-\[-4px\]) {
+  margin-left: -4px
+}
+
 .back-navigation-wrapper :is(.block) {
   display: block
 }
@@ -21,11 +25,6 @@
 
 .back-navigation-wrapper :is(.gap-2) {
   gap: 0.5rem
-}
-
-.back-navigation-wrapper :is(.px-6) {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem
 }
 
 .back-navigation-wrapper :is(.px-7) {
@@ -51,14 +50,13 @@
   .back-navigation-wrapper :is(.md\:mb-0) {
     margin-bottom: 0px
   }
+
+  .back-navigation-wrapper :is(.md\:ml-72) {
+    margin-left: 18rem
+  }
 }
 
 @media (min-width: 1024px) {
-  .back-navigation-wrapper :is(.lg\:px-80) {
-    padding-left: 20rem;
-    padding-right: 20rem
-  }
-
   .back-navigation-wrapper :is(.lg\:px-8) {
     padding-left: 2rem;
     padding-right: 2rem
