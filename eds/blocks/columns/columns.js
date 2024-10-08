@@ -1,4 +1,4 @@
-import { createOptimizedPicture, getMetadata } from '../../scripts/aem.js';
+import { createOptimizedPicture } from '../../scripts/aem.js';
 import { div } from '../../scripts/dom-builder.js';
 import { applyClasses, getStoryType } from '../../scripts/scripts.js';
 
@@ -66,11 +66,6 @@ export default function decorate(block) {
           };
         }
       } else {
-        if (window.location.pathname.includes('/webinars/')) {
-          const readingTime = getMetadata('readingtime');
-          const expectedPublishFormat = new Date(getMetadata('published-time'));
-          block.firstElementChild?.firstElementChild?.append(div({ class: 'font-normal text-sm leading-4 text-[#8B8B8B] capitalize mb-2 pt-4' }, `${expectedPublishFormat.getDate()} ${expectedPublishFormat.toLocaleString('default', { month: 'long' })}, ${expectedPublishFormat.getFullYear()} | ${readingTime} Mins`));
-        }
         col.classList.add('mx-auto');
       }
     });
