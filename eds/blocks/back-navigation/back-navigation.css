@@ -2,10 +2,6 @@
   margin-bottom: 2.5rem
 }
 
-.back-navigation-wrapper :is(.ml-0) {
-  margin-left: 0px
-}
-
 .back-navigation-wrapper :is(.ml-\[-4px\]) {
   margin-left: -4px
 }
