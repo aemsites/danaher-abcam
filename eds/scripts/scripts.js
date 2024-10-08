@@ -312,21 +312,6 @@ function decorateStoryPage(main) {
   }
 }
 
-function decorateWebinarPage(main){
-  const sectionEl = main.querySelector(':scope > div.section.webinar-container');
-  const subTitleEl = sectionEl?.querySelector('div.default-content-wrapper');
-  const coumnEl = sectionEl?.querySelector('.columns-wrapper');
-  const divEl = div({class: 'flex md:inline-flex text-align-center items-center justify-between w-full'});
-  subTitleEl?.querySelector('h4')?.classList.add(...'text-xs text-[#378189] bg-[#EDF6F7] font-semibold rounded capitalize py-1 px-2'.split(' '));
-  divEl.append(subTitleEl);
-  coumnEl?.firstElementChild?.firstElementChild?.firstElementChild.prepend(divEl);
-  const readTimeEl = sectionEl?.querySelector('div.readdatetime-wrapper');
-  coumnEl?.firstElementChild?.firstElementChild?.firstElementChild.append(readTimeEl);
-  const buttonEl = sectionEl?.querySelector('div.abcam-button-wrapper');
-  buttonEl?.classList.add(...'mt-32'.split(' '));
-  coumnEl?.firstElementChild?.firstElementChild?.firstElementChild.append(buttonEl);
-}
-
 /**
  * Decorates the sticky right navigation block from main element.
  * @param {Element} main The main element
@@ -584,7 +569,6 @@ export function decorateMain(main) {
   decorateVideo(main);
   decorateStickyRightNav(main);
   decorateStoryPage(main);
-  decorateWebinarPage(main);
 }
 
 export const applyClasses = (element, classes) => element?.classList.add(...classes.split(' '));
