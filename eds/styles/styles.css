@@ -1994,6 +1994,10 @@ audio::-webkit-media-controls-panel {
   line-height: 1.25rem;
 }
 
+.leading-\[21px\] {
+  line-height: 21px;
+}
+
 .tracking-wider {
   letter-spacing: 0.05em;
 }
