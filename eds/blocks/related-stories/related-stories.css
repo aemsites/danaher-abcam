@@ -159,6 +159,10 @@
   padding-bottom: 1.25rem
 }
 
+.related-stories-wrapper :is(.pt-6) {
+  padding-top: 1.5rem
+}
+
 .related-stories-wrapper :is(.text-base) {
   font-size: 1rem;
   line-height: 1.5rem
