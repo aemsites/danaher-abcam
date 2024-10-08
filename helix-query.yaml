@@ -1,0 +1,33 @@
+version: 1
+indices:
+  stories:
+    include:
+      - /en-us/stories/articles/**
+      - /en-us/stories/films/**
+      - /en-us/stories/podcasts/**
+    target: /en-us/stories/query-index.json
+    properties:
+      lastModified:
+        select: head > meta[name="modified-time"]
+        value: parseTimestamp(attribute(el, "content"), "ddd, DD MMM YYYY hh:mm:ss GMT")
+      title:
+        select: head > meta[property="og:title"]
+        value: attribute(el, "content")
+      description:
+        select: head > meta[property="og:description"]
+        value: attribute(el, "content")
+      image:
+        select: head > meta[property="og:image"]
+        value: attribute(el, "content")
+      tags:
+        select: head > meta[name="pagetags"]
+        value: attribute(el, "content")
+      readingTime:
+        select: head > meta[name="readingtime"]
+        value: attribute(el, "content")
+      publishDate:
+        select: head > meta[name="published-time"]
+        value: parseTimestamp(attribute(el, "content"), "ddd, DD MMM YYYY hh:mm:ss GMT")
+      template:
+        select: head > meta[name="template"]
+        value: attribute(el, "content")

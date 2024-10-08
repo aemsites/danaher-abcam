@@ -9,19 +9,19 @@
           {
             "component": "text",
             "valueType": "string",
-            "name": "jcr:title",
+            "name": "title",
             "label": "Title"
           },
           {
             "component": "text",
             "valueType": "string",
-            "name": "jcr:description",
+            "name": "description",
             "label": "Description"
           },
           {
             "component": "text",
             "valueType": "string",
-            "name": "cq:canonicalUrl",
+            "name": "canonical",
             "label": "Canonical"
           },
           {
@@ -41,10 +41,11 @@
             "valueFormat": null
           },
           {
-            "component": "text",
+            "component": "reference",
             "valueType": "string",
-            "name": "navTitle",
-            "label": "Navigation Title"
+            "name": "image",
+            "label": "Image",
+            "multi": false
           },
           {
             "component": "aem-tag",
@@ -62,7 +63,7 @@
             "component": "reference",
             "valueType": "string",
             "name": "authorImage",
-            "label": "Image",
+            "label": "Author Image",
             "multi": false
           },
           {
@@ -1564,6 +1565,30 @@
           {
             "name": "Supprot and Download",
             "value": "download"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "story-hub",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "filterName",
+        "label": "Filter Name",
+        "options": [
+          {
+            "name": "Content Type",
+            "value": "content-type"
+          },
+          {
+            "name": "Research Areas",
+            "value": "research-areas"
+          },
+          {
+            "name": "Applications",
+            "value": "applications"
           }
         ]
       }
