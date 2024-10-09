@@ -144,7 +144,7 @@ export function createFilters(articles, viewAll = false) {
 
 export default async function decorate(block) {
   const currentPath = window.location.pathname;
-  if (currentPath === '/en-us/training') {
+  if (currentPath.includes('/en-us/training')) {
   // Execute this code for the /training path
     const request = await ffetch('/eds/blocks/dynamic-cards/training_mock.json').all();
     const cardList = ul({
