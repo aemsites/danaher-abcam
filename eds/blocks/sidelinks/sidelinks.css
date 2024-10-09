@@ -1,0 +1,82 @@
+.sidelinks-wrapper :is(.mx-0) {
+  margin-left: 0px;
+  margin-right: 0px
+}
+
+.sidelinks-wrapper :is(.mt-2) {
+  margin-top: 0.5rem
+}
+
+.sidelinks-wrapper :is(.block) {
+  display: block
+}
+
+.sidelinks-wrapper :is(.flex) {
+  display: flex
+}
+
+.sidelinks-wrapper :is(.w-auto) {
+  width: auto
+}
+
+.sidelinks-wrapper :is(.w-full) {
+  width: 100%
+}
+
+.sidelinks-wrapper :is(.flex-col) {
+  flex-direction: column
+}
+
+.sidelinks-wrapper :is(.gap-y-3) {
+  row-gap: 0.75rem
+}
+
+.sidelinks-wrapper :is(.border-b) {
+  border-bottom-width: 1px
+}
+
+.sidelinks-wrapper :is(.border-b-gray-300) {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(209 213 219 / var(--tw-border-opacity))
+}
+
+.sidelinks-wrapper :is(.py-2) {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem
+}
+
+.sidelinks-wrapper :is(.pb-3) {
+  padding-bottom: 0.75rem
+}
+
+.sidelinks-wrapper :is(.text-base) {
+  font-size: 1rem;
+  line-height: 1.5rem
+}
+
+.sidelinks-wrapper :is(.text-sm) {
+  font-size: 0.875rem;
+  line-height: 1.25rem
+}
+
+.sidelinks-wrapper :is(.font-bold) {
+  font-weight: 700
+}
+
+.sidelinks-wrapper :is(.font-medium) {
+  font-weight: 500
+}
+
+.sidelinks-wrapper :is(.leading-5) {
+  line-height: 1.25rem
+}
+
+.sidelinks-wrapper :is(.text-\[\#378189\]) {
+  --tw-text-opacity: 1;
+  color: rgb(55 129 137 / var(--tw-text-opacity))
+}
+
+.sidelinks-wrapper :is(.text-black) {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity))
+}
