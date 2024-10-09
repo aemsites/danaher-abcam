@@ -1928,6 +1928,10 @@ audio::-webkit-media-controls-panel {
   text-align: center;
 }
 
+.font-\[\"rockwell\"\] {
+  font-family: "rockwell";
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -1994,10 +1998,6 @@ audio::-webkit-media-controls-panel {
   line-height: 1.25rem;
 }
 
-.leading-\[21px\] {
-  line-height: 21px;
-}
-
 .tracking-wider {
   letter-spacing: 0.05em;
 }
@@ -2035,6 +2035,11 @@ audio::-webkit-media-controls-panel {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-\[\#65697C\] {
+  --tw-text-opacity: 1;
+  color: rgb(101 105 124 / var(--tw-text-opacity));
 }
 
 .underline {

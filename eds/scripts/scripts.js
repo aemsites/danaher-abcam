@@ -943,7 +943,7 @@ export function createCard({
       ),
       footerLink !== ''
         ? a({
-          class: 'text-base leading-5 text-[#378089] font-bold p-2 pl-0 group-hover:tracking-wide group-hover:underline transition duration-700 mt-2',
+          class: 'text-base leading-5 text-[#378189] font-bold p-2 pl-0 group-hover:tracking-wide group-hover:underline transition duration-700 mt-2',
           href: path,
         }, footerLink)
         : '',
@@ -964,8 +964,8 @@ export function createCard({
         break;
     }
     card.querySelector('.flex-1').prepend(
-      span({ class: 'capitalize font-normal text-sm' }, `${getStoryType(tags)}`),
-      span({ class: 'font-normal text-sm' }, `${minRead}`),
+      span({ class: 'capitalize font-normal text-sm text-[#65697C] font-["rockwell"]' }, `${getStoryType(tags)}`),
+      span({ class: 'font-normal text-sm text-[#65697C] font-["rockwell"]' }, `${minRead}`),
     );
   }
   return card;
