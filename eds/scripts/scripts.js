@@ -921,9 +921,14 @@ export function createCard({
   path = '/',
   tags = '',
   time = '',
+  trainingDescription = '',
+  showStatus = '',
   isStoryCard = false,
 }) {
-  const card = li(
+const currentPath = window.location.pathname;
+let card;
+if (currentPath === '/en-us/training') {
+  card = li(
     {
       class: 'card relative overflow-hidden bg-transparent',
       title,
@@ -935,7 +940,23 @@ export function createCard({
         { class: 'flex-1' },
         h3({ class: 'text-black font-medium mt-4 break-words line-clamp-4' }, title),
         p({ class: 'line-clamp-3' }, description),
-        bodyEl,
+        p({ class: 'line-clamp-3 text-sm' }, trainingDescription),
+        div(
+          { class: 'items-center text-[#65697C] flex justify-start col-span-1 my-4 pt-2' },
+          span(
+            { class: 'icon icon-reading size-6 items-center' },
+            img({
+              'data-icon-name': 'reading',
+              src: '/eds/icons/reading.svg',
+              alt: 'reading',
+              width: 20,
+              height: 20,
+              loading: 'lazy',
+            })
+          ),
+          p({ class: 'text-xs' }, bodyEl, " Hours (Estimated) "),
+        ),
+        p({ class: 'text-base leading-5 text-[#378089] font-bold p-2 pl-0 group-hover:tracking-wide group-hover:underline transition duration-700 mt-2' }, showStatus, "View Training")
       ),
       footerLink !== ''
         ? a({
@@ -946,6 +967,31 @@ export function createCard({
       footerEl,
     ),
   );
+} else {
+  card = li(
+    {
+      class: 'card relative overflow-hidden bg-transparent',
+      title,
+    },
+    a(
+      { class: 'size-full flex flex-col justify-center group', href: path },
+      titleImage,
+      div(
+        { class: 'flex-1' },
+        h3({ class: 'text-black font-medium mt-4 break-words line-clamp-4' }, title),
+        p({ class: 'line-clamp-3' }, description),
+        p({ class: 'line-clamp-3 text-sm' }, trainingDescription),
+      ),
+      footerLink !== ''
+        ? a({
+          class: 'text-base leading-5 text-[#378089] font-bold p-2 pl-0 group-hover:tracking-wide group-hover:underline transition duration-700 mt-2',
+          href: path,
+        }, footerLink)
+        : '',
+      footerEl,
+    ),
+  );
+}
   if (isStoryCard) {
     let minRead;
     switch (getStoryType(tags)) {
