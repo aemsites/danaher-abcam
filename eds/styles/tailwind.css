@@ -104,6 +104,10 @@
         @apply mx-auto xl:max-w-7xl px-6 lg:px-0 py-10;
     }
 
+    main .section .back-navigation-wrapper{
+        @apply mx-auto max-w-[84rem];
+    }
+
     main .section.carousel-container h1 {
         @apply !pt-20;
     }
