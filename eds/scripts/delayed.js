@@ -1,8 +1,21 @@
 // eslint-disable-next-line import/no-cycle
-import { sampleRUM } from './aem.js';
+import { sampleRUM, loadScript } from './aem.js';
 
 // Core Web Vitals RUM collection
 sampleRUM('cwv');
+
+// OneTrust Cookies Consent Notice start
+if (!window.location.host.includes('hlx.page') && !window.location.host.includes('localhost')) {
+  loadScript('https://cdn.cookielaw.org/scripttemplates/otSDKStub.js', {
+    type: 'text/javascript',
+    charset: 'UTF-8',
+    'data-domain-script': 'b5320615-0900-4f85-996b-7737cc0c62f2',
+  });
+
+  window.OptanonWrapper = () => {
+  };
+}
+// OneTrust Cookies Consent Notice end
 
 // google tag manager -start
 function loadGTM() {
@@ -37,7 +50,7 @@ function loadGTM() {
 
 if (
   !window.location.hostname.includes('localhost')
-      && !window.location.hostname.includes('.hlx')
+  && !window.location.hostname.includes('.hlx')
 ) {
   loadGTM();
 }
