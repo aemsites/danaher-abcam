@@ -927,7 +927,7 @@ export function createCard({
 }) {
 const currentPath = window.location.pathname;
 let card;
-if (currentPath === '/en-us/training') {
+if (currentPath.includes('/en-us/training')) {
   card = li(
     {
       class: 'card relative overflow-hidden bg-transparent',

@@ -257,6 +257,11 @@
   padding-bottom: 1rem
 }
 
+.dynamic-cards-wrapper :is(.px-2) {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem
+}
+
 .dynamic-cards-wrapper :is(.pb-5) {
   padding-bottom: 1.25rem
 }
@@ -380,5 +385,20 @@
 @media (min-width: 1024px) {
   .dynamic-cards-wrapper :is(.lg\:grid-cols-3) {
     grid-template-columns: repeat(3, minmax(0, 1fr))
+  }
+
+  .dynamic-cards-wrapper :is(.lg\:px-2) {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem
+  }
+
+  .dynamic-cards-wrapper :is(.lg\:px-4) {
+    padding-left: 1rem;
+    padding-right: 1rem
+  }
+
+  .dynamic-cards-wrapper :is(.lg\:px-6) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem
   }
 }

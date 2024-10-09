@@ -148,7 +148,7 @@ export default async function decorate(block) {
   // Execute this code for the /training path
     const request = await ffetch('/eds/blocks/dynamic-cards/training_mock.json').all();
     const cardList = ul({
-      class: 'container grid max-w-7xl w-full mx-auto gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-4 sm:px-0 justify-items-center mt-3 mb-3',
+      class: 'container grid max-w-7xl w-full mx-auto lg:px-6 gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-4 sm:px-0 justify-items-center mt-3 mb-3',
     });
     request.forEach((article, index) => {
       const imageUrl = new URL(article.image, window.location);
