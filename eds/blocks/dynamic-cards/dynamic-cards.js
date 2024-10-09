@@ -5,7 +5,7 @@ import {
 
 import { getMetadata, toClassName } from '../../scripts/aem.js';
 import createArticleCard from './articleCard.js';
-import { createCard, imageHelper} from '../../scripts/scripts.js';
+import { createCard, imageHelper } from '../../scripts/scripts.js';
 
 const getSelectionFromUrl = () => (window.location.pathname.indexOf('topics') > -1 ? toClassName(window.location.pathname.replace('.html', '').split('/').pop()) : '');
 export const getPageFromUrl = () => toClassName(new URLSearchParams(window.location.search).get('page')) || '';
@@ -143,54 +143,54 @@ export function createFilters(articles, viewAll = false) {
 }
 
 export default async function decorate(block) {
-const currentPath = window.location.pathname;
-if (currentPath === '/en-us/training') {
+  const currentPath = window.location.pathname;
+  if (currentPath === '/en-us/training') {
   // Execute this code for the /training path
-  const request = await ffetch('/eds/blocks/dynamic-cards/training_mock.json').all();
-  const cardList = ul({
-    class: 'container grid max-w-7xl w-full mx-auto gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-4 sm:px-0 justify-items-center mt-3 mb-3'
-  });
-  request.forEach((article, index) => {
-    const imageUrl = new URL(article.image, window.location);
-    cardList.appendChild(createCard({
-      titleImage: imageHelper(imageUrl.pathname, article.title, (index === 0)),
-      title: article.title,
-      trainingDescription: article.description,
-      bodyEl: article.trainingtime,
-    }));
-  });
-  block.innerHTML = '';
-  block.append(cardList);
-} else {
+    const request = await ffetch('/eds/blocks/dynamic-cards/training_mock.json').all();
+    const cardList = ul({
+      class: 'container grid max-w-7xl w-full mx-auto gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-4 sm:px-0 justify-items-center mt-3 mb-3',
+    });
+    request.forEach((article, index) => {
+      const imageUrl = new URL(article.image, window.location);
+      cardList.appendChild(createCard({
+        titleImage: imageHelper(imageUrl.pathname, article.title, (index === 0)),
+        title: article.title,
+        trainingDescription: article.description,
+        bodyEl: article.trainingtime,
+      }));
+    });
+    block.innerHTML = '';
+    block.append(cardList);
+  } else {
   // Execute this code for all other paths
-  const articleType = 'blog';
-  const articles = await ffetch('https://stage.lifesciences.danaher.com/us/en/article-index.json')
-    .chunks(500)
-    .filter(({ type }) => type.toLowerCase() === articleType)
-    .filter((article) => !article.path.includes('/topics-template'))
-    .all();
-  let filteredArticles = articles;
-  const activeTagFilter = block.classList.contains('url-filtered') ? getSelectionFromUrl() : '';
-  if (activeTagFilter) {
-    filteredArticles = articles.filter(
-      (item) => toClassName(item.topics).toLowerCase().indexOf(activeTagFilter) > -1,
-    );
+    const articleType = 'blog';
+    const articles = await ffetch('https://stage.lifesciences.danaher.com/us/en/article-index.json')
+      .chunks(500)
+      .filter(({ type }) => type.toLowerCase() === articleType)
+      .filter((article) => !article.path.includes('/topics-template'))
+      .all();
+    let filteredArticles = articles;
+    const activeTagFilter = block.classList.contains('url-filtered') ? getSelectionFromUrl() : '';
+    if (activeTagFilter) {
+      filteredArticles = articles.filter(
+        (item) => toClassName(item.topics).toLowerCase().indexOf(activeTagFilter) > -1,
+      );
+    }
+    filteredArticles.sort((card1, card2) => card2.publishDate - card1.publishDate);
+    let page = parseInt(getPageFromUrl(), 10);
+    page = Number.isNaN(page) ? 1 : page;
+    const limitPerPage = 18;
+    const start = (page - 1) * limitPerPage;
+    const articlesToDisplay = filteredArticles.slice(start, start + limitPerPage);
+    const cardList = ul({
+      class: 'container grid max-w-7xl w-full mx-auto gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-4 sm:px-0 justify-items-center mt-3 mb-3',
+    });
+    articlesToDisplay.forEach((article, index) => {
+      cardList.appendChild(createArticleCard(article, index === 0));
+    });
+    // Render pagination and filters
+    const filterTags = createFilters(articles, true);
+    const paginationElements = createPagination(filteredArticles, page, limitPerPage);
+    block.append(filterTags, cardList, paginationElements);
   }
-  filteredArticles.sort((card1, card2) => card2.publishDate - card1.publishDate);
-  let page = parseInt(getPageFromUrl(), 10);
-  page = Number.isNaN(page) ? 1 : page;
-  const limitPerPage = 18;
-  const start = (page - 1) * limitPerPage;
-  const articlesToDisplay = filteredArticles.slice(start, start + limitPerPage);
-  const cardList = ul({
-    class: 'container grid max-w-7xl w-full mx-auto gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-4 sm:px-0 justify-items-center mt-3 mb-3',
-  });
-  articlesToDisplay.forEach((article, index) => {
-    cardList.appendChild(createArticleCard(article, index === 0));
-  });
-  // Render pagination and filters
-  const filterTags = createFilters(articles, true);
-  const paginationElements = createPagination(filteredArticles, page, limitPerPage);
-  block.append(filterTags, cardList, paginationElements);
-}
 }
