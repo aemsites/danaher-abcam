@@ -61,12 +61,21 @@
   width: 100%
 }
 
+.sidelinks-wrapper :is(.flex-row) {
+  flex-direction: row
+}
+
 .sidelinks-wrapper :is(.flex-col) {
   flex-direction: column
 }
 
 .sidelinks-wrapper :is(.justify-between) {
   justify-content: space-between
+}
+
+.sidelinks-wrapper :is(.gap-x-2) {
+  -moz-column-gap: 0.5rem;
+       column-gap: 0.5rem
 }
 
 .sidelinks-wrapper :is(.gap-y-2) {
@@ -129,6 +138,16 @@
 .sidelinks-wrapper :is(.text-black) {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity))
+}
+
+@media (min-width: 640px) {
+  .sidelinks-wrapper :is(.sm\:flex-col) {
+    flex-direction: column
+  }
+
+  .sidelinks-wrapper :is(.sm\:gap-y-2) {
+    row-gap: 0.5rem
+  }
 }
 
 @media (min-width: 1024px) {

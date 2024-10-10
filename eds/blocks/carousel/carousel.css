@@ -64,6 +64,10 @@
   display: grid
 }
 
+.carousel-wrapper :is(.aspect-video) {
+  aspect-ratio: 16 / 9
+}
+
 .carousel-wrapper :is(.h-3) {
   height: 0.75rem
 }
@@ -86,6 +90,18 @@
 
 .carousel-wrapper :is(.h-full) {
   height: 100%
+}
+
+.carousel-wrapper :is(.h-72) {
+  height: 18rem
+}
+
+.carousel-wrapper :is(.h-80) {
+  height: 20rem
+}
+
+.carousel-wrapper :is(.h-96) {
+  height: 24rem
 }
 
 .carousel-wrapper :is(.min-h-\[30rem\]) {
@@ -275,6 +291,10 @@
   padding-top: 2rem
 }
 
+.carousel-wrapper :is(.pt-10) {
+  padding-top: 2.5rem
+}
+
 .carousel-wrapper :is(.text-left) {
   text-align: left
 }
@@ -359,7 +379,17 @@
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 
+@media (min-width: 640px) {
+  .carousel-wrapper :is(.sm\:h-72) {
+    height: 18rem
+  }
+}
+
 @media (min-width: 768px) {
+  .carousel-wrapper :is(.md\:h-72) {
+    height: 18rem
+  }
+
   .carousel-wrapper :is(.md\:flex-row) {
     flex-direction: row
   }
@@ -401,6 +431,14 @@
     margin-bottom: auto
   }
 
+  .carousel-wrapper :is(.lg\:h-\[31\.5rem\]) {
+    height: 31.5rem
+  }
+
+  .carousel-wrapper :is(.lg\:h-auto) {
+    height: auto
+  }
+
   .carousel-wrapper :is(.lg\:w-1\/2) {
     width: 50%
   }
@@ -428,6 +466,11 @@
   .carousel-wrapper :is(.lg\:py-0) {
     padding-top: 0px;
     padding-bottom: 0px
+  }
+
+  .carousel-wrapper :is(.lg\:px-6) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem
   }
 
   .carousel-wrapper :is(.lg\:pr-10) {
