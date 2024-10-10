@@ -1,0 +1,113 @@
+.speakers-info-wrapper :is(.m-0) {
+  margin: 0px
+}
+
+.speakers-info-wrapper :is(.my-auto) {
+  margin-top: auto;
+  margin-bottom: auto
+}
+
+.speakers-info-wrapper :is(.block) {
+  display: block
+}
+
+.speakers-info-wrapper :is(.flex) {
+  display: flex
+}
+
+.speakers-info-wrapper :is(.h-16) {
+  height: 4rem
+}
+
+.speakers-info-wrapper :is(.w-16) {
+  width: 4rem
+}
+
+.speakers-info-wrapper :is(.w-full) {
+  width: 100%
+}
+
+.speakers-info-wrapper :is(.shrink-0) {
+  flex-shrink: 0
+}
+
+.speakers-info-wrapper :is(.flex-col) {
+  flex-direction: column
+}
+
+.speakers-info-wrapper :is(.gap-x-2) {
+  -moz-column-gap: 0.5rem;
+       column-gap: 0.5rem
+}
+
+.speakers-info-wrapper :is(.rounded-full) {
+  border-radius: 9999px
+}
+
+.speakers-info-wrapper :is(.text-2xl) {
+  font-size: 1.5rem;
+  line-height: 2rem
+}
+
+.speakers-info-wrapper :is(.text-base) {
+  font-size: 1rem;
+  line-height: 1.5rem
+}
+
+.speakers-info-wrapper :is(.text-lg) {
+  font-size: 1.125rem;
+  line-height: 1.75rem
+}
+
+.speakers-info-wrapper :is(.text-sm) {
+  font-size: 0.875rem;
+  line-height: 1.25rem
+}
+
+.speakers-info-wrapper :is(.font-medium) {
+  font-weight: 500
+}
+
+.speakers-info-wrapper :is(.font-normal) {
+  font-weight: 400
+}
+
+.speakers-info-wrapper :is(.font-semibold) {
+  font-weight: 600
+}
+
+.speakers-info-wrapper :is(.leading-6) {
+  line-height: 1.5rem
+}
+
+.speakers-info-wrapper :is(.leading-7) {
+  line-height: 1.75rem
+}
+
+.speakers-info-wrapper :is(.tracking-normal) {
+  letter-spacing: 0em
+}
+
+.speakers-info-wrapper :is(.text-\[\#071112\]) {
+  --tw-text-opacity: 1;
+  color: rgb(7 17 18 / var(--tw-text-opacity))
+}
+
+.speakers-info-wrapper :is(.text-\[\#378189\]) {
+  --tw-text-opacity: 1;
+  color: rgb(55 129 137 / var(--tw-text-opacity))
+}
+
+.speakers-info-wrapper :is(.text-\[\#65797C\]) {
+  --tw-text-opacity: 1;
+  color: rgb(101 121 124 / var(--tw-text-opacity))
+}
+
+.speakers-info-wrapper :is(.text-black) {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity))
+}
+
+.speakers-info-wrapper :is(.underline) {
+  text-decoration-line: underline
+}
