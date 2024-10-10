@@ -278,6 +278,11 @@ const fileMappings = [
     output: './eds/blocks/dynamic-cards/dynamic-cards.css',
     wrapper: 'dynamic-cards-wrapper',
   },
+  {
+    content: './eds/blocks/sidelinks/sidelinks.js',
+    output: './eds/blocks/sidelinks/sidelinks.css',
+    wrapper: 'sidelinks-wrapper',
+  },
 ];
 
 const watch = process.argv[2];
