@@ -98,6 +98,37 @@
   .learn-more-wrapper :is(.md\:justify-between) {
     justify-content: space-between
   }
+
+  .learn-more-wrapper :is(.md\:px-2) {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem
+  }
+
+  .learn-more-wrapper :is(.md\:px-4) {
+    padding-left: 1rem;
+    padding-right: 1rem
+  }
+
+  .learn-more-wrapper :is(.md\:px-8) {
+    padding-left: 2rem;
+    padding-right: 2rem
+  }
+
+  .learn-more-wrapper :is(.md\:pl-4) {
+    padding-left: 1rem
+  }
+
+  .learn-more-wrapper :is(.md\:pr-4) {
+    padding-right: 1rem
+  }
+
+  .learn-more-wrapper :is(.md\:pl-2) {
+    padding-left: 0.5rem
+  }
+
+  .learn-more-wrapper :is(.md\:pl-8) {
+    padding-left: 2rem
+  }
 }
 
 @media (min-width: 1024px) {
