@@ -13,6 +13,7 @@ import {
   loadCSS,
   toClassName,
   getMetadata,
+  loadScript,
   createOptimizedPicture,
 } from './aem.js';
 import {
@@ -965,6 +966,18 @@ export function createCard({
     );
   }
   return card;
+}
+
+if (!window.location.pathname.includes('/en-us/')) {
+  loadScript('https://link.edgepilot.com/s/3860bc5f/F7Wc9LCTVU2zTxqhs68tBA?u=https://www.onelink-edge.com/moxie.min.js', {
+    type: 'text/javascript',
+    charset: 'UTF-8',
+    referrerPolicy: 'no-referrer-when-downgrade',
+    'data-oljs': 'P40B9-6A17-377D-0038',
+  });
+
+  // eslint-disable-next-line no-console
+  console.log('This is not the /en-us/ path');
 }
 
 /**
