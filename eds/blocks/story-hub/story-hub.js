@@ -248,7 +248,7 @@ async function initiateRequest() {
     .filter(({ path }) => !excludedPages.includes(path))
     .chunks(500)
     .all();
-  lists = [...response];
+  lists = response.flat().sort((a, b) => a.title.localeCompare(b.title));
 }
 
 export default async function decorate(block) {
