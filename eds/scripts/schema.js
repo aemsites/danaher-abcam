@@ -43,7 +43,9 @@ export function buildVideoSchema(posterImage, embedURL) {
   const data = {
     '@context': 'http://schema.org',
     '@type': 'VideoObject',
+    name: document.querySelector('h1') ? document.querySelector('h1').textContent : getMetadata('og:title'),
     thumbnailUrl: posterImage,
+    uploadDate: getMetadata('publishdate'),
     embedUrl: embedURL,
     publisher: {
       '@type': 'Organization',
