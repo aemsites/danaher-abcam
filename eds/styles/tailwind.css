@@ -25,7 +25,7 @@
     }
 
     h1 {
-        @apply md:!leading-[3rem] !font-bold !text-5xl md:!text-4xl;
+        @apply md:!leading-[3rem] !font-bold !text-[32px] lg:!text-5xl md:!text-4xl;
     }
 
     h2 { 
@@ -234,4 +234,5 @@
     audio::-webkit-media-controls-panel {
         background-color: white;
     }
+   
 }   
