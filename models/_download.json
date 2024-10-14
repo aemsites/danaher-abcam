@@ -15,7 +15,7 @@
     ],
     "models": [
       {
-        "id": "abcam-button",
+        "id": "download",
         "fields": [
             {
                 "...": "./_common.json#/button-fields"
