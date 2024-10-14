@@ -6,7 +6,7 @@ import { getMetadata } from '../../scripts/aem.js';
 export default function decorate(block) {
   const title = getMetadata('og:title');
   const { href } = window.location;
-  const downloadBlock = div(
+  const downloadDiv = div(
     { class: 'flex flex-col bg-[#f2f2f2] rounded-lg p-6 max-w-[544px] mb-10' },
     h6({ class: 'download-title' }, `${title}`),
     a({
@@ -15,5 +15,5 @@ export default function decorate(block) {
     }, 'Download'),
     p({ class: 'text-xs text-black-0' }, 'PDF'),
   );
-  block.append(downloadBlock);
+  block.append(downloadDiv);
 }
