@@ -190,14 +190,14 @@
   color: rgb(55 128 137 / var(--tw-text-opacity))
 }
 
-.related-stories-wrapper :is(.text-black) {
-  --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity))
-}
-
 .related-stories-wrapper :is(.text-\[\#65697C\]) {
   --tw-text-opacity: 1;
   color: rgb(101 105 124 / var(--tw-text-opacity))
+}
+
+.related-stories-wrapper :is(.text-black) {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity))
 }
 
 .related-stories-wrapper :is(.filter) {
