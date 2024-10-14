@@ -54,11 +54,6 @@
   padding-bottom: 2rem
 }
 
-.learn-more-wrapper :is(.px-4) {
-  padding-left: 1rem;
-  padding-right: 1rem
-}
-
 .learn-more-wrapper :is(.pb-8) {
   padding-bottom: 2rem
 }
