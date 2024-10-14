@@ -662,7 +662,7 @@ main .story-middle-container .default-content-wrapper p:not(a) {
   line-height: 1.5rem;
 }
 
-main .story-middle-container .default-content-wrapper p:not(:first-child):not(a) {
+main .story-middle-container .default-content-wrapper p:not(:first-child, a) {
   margin-top: 1.5rem;
 }
 

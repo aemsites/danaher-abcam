@@ -72,7 +72,7 @@
         @apply text-lg leading-6 font-sans font-normal;
     }
 
-    main .story-middle-container .default-content-wrapper p:not(:first-child):not(a) {
+    main .story-middle-container .default-content-wrapper p:not(:first-child, a) {
         @apply mt-6;
     }
 }
