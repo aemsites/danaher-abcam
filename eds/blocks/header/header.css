@@ -42,6 +42,10 @@
   justify-content: center
 }
 
+.header-wrapper :is(.border-b-4) {
+  border-bottom-width: 4px
+}
+
 .header-wrapper :is(.bg-black) {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity))
@@ -69,4 +73,9 @@
 
 .header-wrapper :is(.ease-out) {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1)
+}
+
+.header-wrapper :is(.hover\:border-\[\#ff7223\]:hover) {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 114 35 / var(--tw-border-opacity))
 }
