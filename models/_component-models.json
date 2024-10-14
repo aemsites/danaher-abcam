@@ -18,6 +18,9 @@
     "...": "./_abcam-button.json#/models"
   },
   {
+    "...": "./_download.json#/models"
+  },
+  {
     "...": "./_text.json#/models"
   },
   {
