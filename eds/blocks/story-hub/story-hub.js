@@ -243,10 +243,11 @@ function toggleTabs(tabId, tabElement) {
 }
 
 async function initiateRequest() {
-  const response = await ffetch('/en-us/stories/query-index.json')
+  let response = await ffetch('/en-us/stories/query-index.json')
     .filter(({ path }) => !excludedPages.includes(path))
     .chunks(500)
     .all();
+  response = [...response].sort((x, y) => new Date(x.publishDate) - new Date(y.publishDate));
   lists = [...response];
 }
 

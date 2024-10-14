@@ -258,6 +258,7 @@ const TEMPLATE_LIST = [
   'product-detail',
   'search-results',
   'stories',
+  'webinars',
 ];
 
 async function decorateTemplates(main) {
@@ -823,7 +824,6 @@ export function createFilters({
     const parts = list?.tags?.split(', ');
     parts.forEach((part) => {
       const [key, value] = part.split('/');
-      // console.log(part, key, value);
       filterNames.forEach((name) => {
         if (key.includes(name)) {
           if (!(name in tempArr)) tempArr[name] = [];
@@ -978,6 +978,13 @@ function getDLPage() {
   const page = {
     type: 'Content',
   };
+  const path = window.location.pathname;
+  if (path.includes('/en-us/stories')) {
+    page.event = 'Virtual Page View';
+    page.type = 'Stories';
+    page.path = path;
+    page.subType = null;
+  }
   return page;
 }
 

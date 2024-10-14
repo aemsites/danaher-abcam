@@ -109,8 +109,8 @@ export default function decorate(block) {
       ele.append(div({ class: 'lg:my-auto lg:w-1/2 h-auto max-w-7xl py-8 lg:py-0 pt-24 xl:pl-0 2xl:pl-[19rem] overflow-hidden' }, content));
     }
     if (picture) {
-      picture.querySelector('img').classList.add(...'lg:absolute lg:bottom-0 h-full w-full object-contain lg:object-cover'.split(' '));
-      ele.append(div({ class: 'relative h-[31.5rem] w-full block lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 px-6 bg-black lg:bg-white' }, picture));
+      picture.querySelector('img').classList.add(...'lg:absolute lg:bottom-0 h-full w-full object-cover'.split(' '));
+      ele.append(div({ class: 'relative h-[31.5rem] flex-auto w-full block lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 px-0 md:px-6 bg-black lg:bg-white' }, picture));
     }
     changedBtn = 0;
     decorateModals(ele);

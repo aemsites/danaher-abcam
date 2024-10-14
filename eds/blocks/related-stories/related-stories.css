@@ -181,19 +181,14 @@
   text-transform: capitalize
 }
 
-.related-stories-wrapper :is(.text-\[\#378089\]) {
+.related-stories-wrapper :is(.text-\[\#378189\]) {
   --tw-text-opacity: 1;
-  color: rgb(55 128 137 / var(--tw-text-opacity))
+  color: rgb(55 129 137 / var(--tw-text-opacity))
 }
 
 .related-stories-wrapper :is(.text-black) {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity))
-}
-
-.related-stories-wrapper :is(.text-\[\#378189\]) {
-  --tw-text-opacity: 1;
-  color: rgb(55 129 137 / var(--tw-text-opacity))
 }
 
 .related-stories-wrapper :is(.filter) {
