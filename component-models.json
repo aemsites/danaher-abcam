@@ -1685,7 +1685,8 @@
       {
         "component": "text",
         "name": "linkText",
-        "label": "Text"
+        "label": "Text",
+        "value": "Download"
       },
       {
         "component": "select",
