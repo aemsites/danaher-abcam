@@ -72,7 +72,7 @@
         @apply text-lg leading-6 font-sans font-normal;
     }
 
-    main .story-middle-container .default-content-wrapper p:not(:first-child):not(a) {
+    main .story-middle-container .default-content-wrapper p:not(:first-child, a) {
         @apply mt-6;
     }
 }
@@ -109,6 +109,10 @@
 
     main .section:not(.no-section-padding, .title-card-container) {
         @apply mx-auto xl:max-w-7xl px-6 lg:px-0 py-10;
+    }
+
+    main .section .back-navigation-wrapper{
+        @apply mx-auto max-w-[84rem];
     }
 
     main .section.carousel-container h1 {
@@ -219,11 +223,11 @@
         @apply flex flex-col gap-x-0 lg:flex-row lg:gap-x-16;
     }
 
-    .stories main .section.no-section-padding .columns-wrapper {
+    .stories main .section.no-section-padding .columns-wrapper, .webinars main .section.no-section-padding .columns-wrapper {
         @apply w-full mx-auto lg:h-[31rem] relative;
     }
 
-    .stories main .section.no-section-padding.columns-container {
+    .stories main .section.no-section-padding.columns-container, .webinars main .section.no-section-padding.columns-container {
         @apply pt-8;
     }
 
