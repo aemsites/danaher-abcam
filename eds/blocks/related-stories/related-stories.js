@@ -53,7 +53,7 @@ function createCard(article, firstCard = false) {
         },
         cardTitle,
       ),
-      p({ class: 'text-sm font-normal line-clamp-3 break-words !h-28' }, article.description),
+      p({ class: 'text-sm font-normal line-clamp-3 break-words !h-[7.5rem]' }, article.description),
       div(
         {
           class:
