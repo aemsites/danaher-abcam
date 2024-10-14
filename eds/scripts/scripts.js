@@ -975,6 +975,13 @@ function getDLPage() {
   const page = {
     type: 'Content',
   };
+  const path = window.location.pathname;
+  if (path.includes('/en-us/stories')) {
+    page.event = 'Virtual Page View';
+    page.type = 'Stories';
+    page.path = path;
+    page.subType = null;
+  }
   return page;
 }
 
