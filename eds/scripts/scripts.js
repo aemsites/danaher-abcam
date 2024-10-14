@@ -662,26 +662,6 @@ async function loadEager(doc) {
       });
     }
 
-    let atjsPromise = Promise.resolve();
-    atjsPromise = initATJS('./at.js', {
-      clientCode: 'danaher',
-      serverDomain: 'danaher.tt.omtrdc.net',
-      imsOrgId: '08333E7B636A2D4D0A495C34@AdobeOrg',
-      bodyHidingEnabled: false,
-      cookieDomain: window.location.hostname,
-      pageLoadEnabled: false,
-      secureOnly: true,
-      viewsEnabled: false,
-      withWebGLRenderer: false,
-    }).catch((e) => {
-      // eslint-disable-next-line no-console
-      console.error('Error loading at.js', e);
-    });
-    document.addEventListener('at-library-loaded', () => getAndApplyOffers());
-
-    document.body.classList.add('appear');
-    await atjsPromise;
-
     await new Promise((resolve) => {
       window.requestAnimationFrame(async () => {
         document.body.classList.add('appear');
