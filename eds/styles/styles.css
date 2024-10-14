@@ -472,8 +472,7 @@ div > p:not(div.button-container > p) {
 }
 
 h1 {
-  font-size: 3rem !important;
-  line-height: 1 !important;
+  font-size: 32px !important;
   font-weight: 700 !important;
 }
 
@@ -481,6 +480,13 @@ h1 {
   h1 {
     font-size: 2.25rem !important;
     line-height: 3rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 3rem !important;
+    line-height: 1 !important;
   }
 }
 
