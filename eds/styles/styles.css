@@ -655,6 +655,17 @@ main .section .button-text-only:hover {
   text-decoration-line: underline;
 }
 
+main .story-middle-container .default-content-wrapper p:not(a) {
+  font-family: Noto Sans;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+}
+
+main .story-middle-container .default-content-wrapper p:not(:first-child):not(a) {
+  margin-top: 1.5rem;
+}
+
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
