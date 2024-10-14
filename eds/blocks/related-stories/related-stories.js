@@ -44,8 +44,8 @@ function createCard(article, firstCard = false) {
     imageHelper(imageUrl.pathname, article.title, firstCard),
     div(
       { class: 'py-2' },
-      span({ class: 'capitalize font-normal text-sm' }, `${getStoryType(tags)}`),
-      span({ class: 'font-normal text-sm' }, `${minRead}`),
+      span({ class: 'capitalize font-[rockwell] text-[#65697C] text-sm' }, `${getStoryType(tags)}`),
+      span({ class: 'font-[rockwell] text-[#65697C] text-sm' }, `${minRead}`),
       h3(
         {
           class:
