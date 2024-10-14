@@ -4,7 +4,8 @@ import {
 import { getMetadata } from '../../scripts/aem.js';
 
 export default function decorate(block) {
-  const title = getMetadata('og:title');
+  console.log('decorating download block :', block);
+  const title = getMetadata('og:title');  
   const { href } = window.location;
   const downloadDiv = div(
     { class: 'flex flex-col bg-[#f2f2f2] rounded-lg p-6 max-w-[544px] mb-10' },

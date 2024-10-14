@@ -1679,17 +1679,50 @@
     "fields": [
       {
         "component": "text",
-        "valueType": "string",
-        "name": "download_title",
-        "value": "",
-        "label": "Title"
+        "name": "linkText",
+        "label": "Text"
       },
       {
-        "component": "text",
-        "name": "download_titleType",
-        "label": "",
-        "valueType": "string",
-        "hidden": true
+        "component": "select",
+        "name": "linkTitle",
+        "label": "Button or Link",
+        "options": [
+          {
+            "name": "Button",
+            "value": "button"
+          },
+          {
+            "name": "Link",
+            "value": "link"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "linkVariant",
+        "label": "Link Variant",
+        "options": [
+          {
+            "name": "Primary",
+            "value": "button-primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "button-secondary"
+          },
+          {
+            "name": "Tertiary Outline",
+            "value": "button-tertiary-outline"
+          },
+          {
+            "name": "Tertiary Filled",
+            "value": "button-tertiary-filled"
+          },
+          {
+            "name": "Text Only",
+            "value": "button-text-only"
+          }
+        ]
       }
     ]
   }  
