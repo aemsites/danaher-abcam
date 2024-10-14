@@ -72,7 +72,7 @@
 
 @layer components {
     header {
-        @apply h-28 md:h-16 lg:h-32;
+        @apply h-36 md:h-28 lg:h-36;
     }
 
     .default-content-wrapper h1:first-of-type {
