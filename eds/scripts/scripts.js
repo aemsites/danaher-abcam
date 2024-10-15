@@ -527,7 +527,7 @@ async function decorateVideo(main) {
 
           const playButtonHTML = `
             <div class="aspect-video relative w-full h-full">
-              <img src="${posterImage}" class="relative inset-0 w-full h-full object-cover" />
+              <img src="${posterImage}" class="relative inset-0 w-full h-full object-cover" alt="More episodes in the Series" aria-label="More episodes in the Series"/>
               <button id="play-button-${videoId}" class="absolute inset-0 flex items-center justify-center bg-opacity-50 rounded-full p-4">
                 <span class = "video-play-icon icon icon-video-play"/>
               </button>
@@ -662,26 +662,6 @@ async function loadEager(doc) {
       });
     }
 
-    let atjsPromise = Promise.resolve();
-    atjsPromise = initATJS('./at.js', {
-      clientCode: 'danaher',
-      serverDomain: 'danaher.tt.omtrdc.net',
-      imsOrgId: '08333E7B636A2D4D0A495C34@AdobeOrg',
-      bodyHidingEnabled: false,
-      cookieDomain: window.location.hostname,
-      pageLoadEnabled: false,
-      secureOnly: true,
-      viewsEnabled: false,
-      withWebGLRenderer: false,
-    }).catch((e) => {
-      // eslint-disable-next-line no-console
-      console.error('Error loading at.js', e);
-    });
-    document.addEventListener('at-library-loaded', () => getAndApplyOffers());
-
-    document.body.classList.add('appear');
-    await atjsPromise;
-
     await new Promise((resolve) => {
       window.requestAnimationFrame(async () => {
         document.body.classList.add('appear');
@@ -753,7 +733,7 @@ function loadDelayed() {
   // eslint-disable-next-line import/no-cycle
   window.setTimeout(() => import('./delayed.js'), 3000);
   // load anything that can be postponed to the latest here
-  import('./sidekick.js').then(({ initSidekick }) => initSidekick());
+  // import('./sidekick.js').then(({ initSidekick }) => initSidekick());
 }
 
 /**
