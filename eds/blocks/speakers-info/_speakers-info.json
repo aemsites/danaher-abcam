@@ -20,7 +20,7 @@
   ],
   "models": [
     {
-      "id": "alternating",
+      "id": "speakers-info",
       "fields": [
         {
           "component": "text",
