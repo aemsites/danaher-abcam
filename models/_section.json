@@ -93,6 +93,8 @@
         "dynamic-cards",
         "form",
         "carousel",
+        "story-hub",
+        "speakers-info",
         "timeline-steps"
       ]
     }
