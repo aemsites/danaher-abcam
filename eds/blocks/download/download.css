@@ -3,10 +3,6 @@
   margin-bottom: 1rem
 }
 
-.download-wrapper :is(.mb-10) {
-  margin-bottom: 2.5rem
-}
-
 .download-wrapper :is(.mb-2) {
   margin-bottom: 0.5rem
 }

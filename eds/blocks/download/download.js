@@ -9,7 +9,7 @@ export default function decorate(block) {
   let linkText;
   let linkHref;
   let docType;
-  let downloadDiv;
+  let downloadDiv = [];
   block.querySelectorAll('p').forEach((element) => {
     if (element.querySelector('a')) {
       linkText = element.textContent;
