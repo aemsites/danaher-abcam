@@ -7,18 +7,6 @@
   margin-bottom: 2.5rem
 }
 
-.download-wrapper :is(.mb-4) {
-  margin-bottom: 1rem
-}
-
-.download-wrapper :is(.mt-6) {
-  margin-top: 1.5rem
-}
-
-.download-wrapper :is(.mb-2) {
-  margin-bottom: 0.5rem
-}
-
 .download-wrapper :is(.block) {
   display: block
 }
