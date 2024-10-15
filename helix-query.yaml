@@ -31,7 +31,7 @@ indices:
       template:
         select: head > meta[name="template"]
         value: attribute(el, "content")
-guides:
+  guides:
     include:
       - /en-us/technical-resources/guides/**
     target: /en-us/technical-resources/guides/query-index.json
