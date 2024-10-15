@@ -2594,13 +2594,25 @@ audio::-webkit-media-controls-panel {
 }
 
 @media (min-width: 1536px) {
-  .\32xl\:left-\[1032px\] {
-    left: 1032px;
-  }
-
   .\32xl\:mx-0 {
     margin-left: 0px;
     margin-right: 0px;
+  }
+}
+
+@media (min-width: 1899px) {
+  .min-\[1899px\]\:left-\[1023px\] {
+    left: 1023px;
+  }
+}
+
+@media (min-width: 1900px) {
+  .min-\[1900px\]\:left-\[930px\] {
+    left: 930px;
+  }
+
+  .min-\[1900px\]\:left-\[1023px\] {
+    left: 1023px;
   }
 }
 
