@@ -139,9 +139,9 @@ const fileMappings = [
     wrapper: 'drawer-wrapper',
   },
   {
-    content: './eds/blocks/download-block/download-block.js',
-    output: './eds/blocks/download-block/download-block.css',
-    wrapper: 'download-block-wrapper',
+    content: './eds/blocks/download/download.js',
+    output: './eds/blocks/download/download.css',
+    wrapper: 'download-wrapper',
   },
   {
     content: './eds/blocks/tab-component/tab-component.js',
