@@ -1,0 +1,74 @@
+{
+  "total": 6,
+  "offset": 0,
+  "limit": 6,
+  "data": [
+    {
+      "path": "/training/cell-imaging-training",
+      "title": "Fluorescent imaging",
+      "description": "Become an imaging expert. Improve your fluorescence work and take your science up a notch. Now available on-demand - sign up now to instantly access the full course.",
+      "lastModified": "",
+      "date": "",
+      "image": "/training/media_1aef1027fe660eb574157aa3a35ee042e4791b34a.jpeg?width=1200&#x26;format=pjpg&#x26;optimize=medium",
+      "pagetags": "abcam:training",
+      "trainingtime": "12",
+      "template": "training"
+    },
+    {
+      "path": "/training/antibody-basics-training",
+      "title": "Antibody basics",
+      "description": "Achieve the best possible results from your assays by becoming a confident antibody user.",
+      "lastModified": "",
+      "date": "",
+      "image": "/training/media_1aef1027fe660eb574157aa3a35ee042e4791b34a.jpeg?width=1200&#x26;format=pjpg&#x26;optimize=medium",
+      "pagetags": "abcam:training",
+      "trainingtime": "12",
+      "template": "training"
+    },
+    {
+      "path": "/training/chip-training",
+      "title": "ChIP",
+      "description": "Master this epigenetic technique and produce robust and consistent ChIP results.",
+      "lastModified": "",
+      "date": "",
+      "image": "/training/media_1aef1027fe660eb574157aa3a35ee042e4791b34a.jpeg?width=1200&#x26;format=pjpg&#x26;optimize=medium",
+      "pagetags": "abcam:training",
+      "trainingtime": "12",
+      "template": "training"
+    },
+    {
+      "path": "/training/flow-cytometry-training",
+      "title": "Flow cytometry",
+      "description": "Remove the complexity. Get to grips with flow cytometry and get the best possible data from your cells.",
+      "lastModified": "",
+      "date": "",
+      "image": "/training/media_1aef1027fe660eb574157aa3a35ee042e4791b34a.jpeg?width=1200&#x26;format=pjpg&#x26;optimize=medium",
+      "pagetags": "abcam:training",
+      "trainingtime": "12",
+      "template": "training"
+    },
+    {
+      "path": "/training/ihc-training",
+     "title": "IHC",
+      "description": "Easy IHC. Master this central technique and produce robust and consistent tissue stainings.",
+      "lastModified": "",
+      "date": "",
+      "image": "/training/media_1aef1027fe660eb574157aa3a35ee042e4791b34a.jpeg?width=1200&#x26;format=pjpg&#x26;optimize=medium",
+      "pagetags": "abcam:training",
+      "trainingtime": "12",
+      "template": "training"
+    },
+    {
+      "path": "/training/western-blot-training",
+      "title": "Western blot",
+      "description": "Straight forward blotting. Work through essential skills and then move on to optimization and more advanced techniques.",
+      "lastModified": "",
+      "date": "",
+      "image": "/training/media_1aef1027fe660eb574157aa3a35ee042e4791b34a.jpeg?width=1200&#x26;format=pjpg&#x26;optimize=medium",
+      "pagetags": "abcam:training",
+      "trainingtime": "12",
+      "template": "training"
+    }
+  ],
+  ":type": "sheet"
+}
