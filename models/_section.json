@@ -1,0 +1,101 @@
+{
+  "definitions": [
+    {
+      "title": "Section",
+      "id": "section",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/section/v1/section",
+            "template": {
+              "model": "section"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "section",
+      "fields": [
+        {
+          "component": "multiselect",
+          "name": "style",
+          "label": "Style",
+          "options": [
+            {
+              "name": "No Section Padding",
+              "value": "no-section-padding"
+            },
+            {
+              "name": "Highlight",
+              "value": "highlight"
+            }
+          ]
+        },
+        {
+          "component": "select",
+          "name": "tabName",
+          "value": "",
+          "label": "Select PDP Tabs",
+          "options": [
+            {
+              "name": "Overview",
+              "value": "Overview"
+            },
+            {
+              "name": "Datasheet",
+              "value": "Datasheet"
+            },
+            {
+              "name": "Support & Downloads",
+              "value": "Support & Downloads"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "section",
+      "components": [
+        "text",
+        "image",
+        "button",
+        "title",
+        "media",
+        "abcam-button",
+        "hero",
+        "cards",
+        "columns",
+        "mini-teasers",
+        "alternating",
+        "fragment",
+        "teasers",
+        "title-card",
+        "podcasts",
+        "alert-banner",
+        "product-tabs",
+        "product-overview",
+        "product-buybox",
+        "product-reactivity",
+        "product-target-data",
+        "recommended-products",
+        "recently-viewed",
+        "product-datasheet",
+        "product-downloads",
+        "product-protocols",
+        "product-list",
+        "learn-more",
+        "related-stories",
+        "dynamic-cards",
+        "form",
+        "carousel",
+        "story-hub",
+        "speakers-info"
+      ]
+    }
+  ]
+}

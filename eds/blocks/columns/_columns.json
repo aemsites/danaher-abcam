@@ -1,0 +1,96 @@
+{
+  "definitions": [
+    {
+      "title": "Columns",
+      "id": "columns",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/columns/v1/columns",
+            "template": {
+              "columns": "2",
+              "rows": "1"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "columns",
+      "fields": [
+        {
+          "component": "multiselect",
+          "name": "classes",
+          "value": "",
+          "label": "Style",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "Text Center",
+              "value": "text-center-align"
+            },
+            {
+              "name": "Media full width",
+              "value": "image-full-width"
+            },
+            {
+              "name": "2 Columns (50-50)",
+              "value": "2-col-width-1-2"
+            },
+            {
+              "name": "2 Columns (75-25)",
+              "value": "2-col-width-3-4"
+            },
+            {
+              "name": "2 Columns (25-75)",
+              "value": "2-col-width-1-4"
+            },
+            {
+              "name": "2 Columns (60-40)",
+              "value": "2-col-width-3-5"
+            },
+            {
+              "name": "2 Columns (40-60)",
+              "value": "2-col-width-2-5"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "valueType": "number",
+          "name": "columns",
+          "value": "",
+          "label": "Columns"
+        },
+        {
+          "component": "text",
+          "valueType": "number",
+          "name": "rows",
+          "value": "",
+          "label": "Rows"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "columns",
+      "components": [
+        "column"
+      ]
+    },
+    {
+      "id": "column",
+      "components": [
+        "text",
+        "image",
+        "button",
+        "title",
+        "abcam-button",
+        "media"
+      ]
+    }
+  ]
+}

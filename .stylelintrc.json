@@ -1,9 +1,8 @@
 {
   "extends": ["stylelint-config-standard"],
   "ignoreFiles": [
-    "styles/styles.css",
-    "blocks/**/*.css",
-    "!**/*.dev.css"
+    "eds/styles/styles.css",
+    "eds/blocks/**/*.css"
   ],
   "rules": {
     "at-rule-no-unknown": [

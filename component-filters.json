@@ -6,27 +6,14 @@
     ]
   },
   {
-    "id": "columns",
-    "components": []
-  },
-  {
-    "id": "column",
-    "components": [
-      "text",
-      "image",
-      "button",
-      "title",
-      "video"
-    ]
-  },
-  {
     "id": "section",
     "components": [
       "text",
       "image",
       "button",
       "title",
-      "video",
+      "media",
+      "abcam-button",
       "hero",
       "cards",
       "columns",
@@ -37,7 +24,6 @@
       "title-card",
       "podcasts",
       "alert-banner",
-      "hero-video",
       "product-tabs",
       "product-overview",
       "product-buybox",
@@ -50,7 +36,12 @@
       "product-protocols",
       "product-list",
       "learn-more",
-      "related-stories"
+      "related-stories",
+      "dynamic-cards",
+      "form",
+      "carousel",
+      "story-hub",
+      "speakers-info"
     ]
   },
   {
@@ -60,37 +51,44 @@
     ]
   },
   {
+    "id": "carousel",
+    "components": [
+      "carousel-item"
+    ]
+  },
+  {
+    "id": "columns",
+    "components": [
+      "column"
+    ]
+  },
+  {
+    "id": "column",
+    "components": [
+      "text",
+      "image",
+      "button",
+      "title",
+      "abcam-button",
+      "media"
+    ]
+  },
+  {
     "id": "mini-teasers",
     "components": [
       "mini-teaser"
     ]
   },
   {
-    "id": "alternating",
-    "components": []
+    "id": "podcasts",
+    "components": [
+      "podcast"
+    ]
   },
   {
     "id": "teasers",
     "components": [
       "teaser"
     ]
-  },
-  {
-    "id": "title-card",
-    "components": []
-  },
-  {
-    "id": "podcasts",
-    "components": [
-      "podcast"
-    ]
-  }, 
-  {
-    "id": "alert-banner",
-    "components": []
-  },
-  {
-    "id": "hero-video",
-    "components": []
   }
 ]

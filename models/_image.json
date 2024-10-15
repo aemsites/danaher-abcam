@@ -1,0 +1,26 @@
+{
+  "definitions": [
+    {
+      "title": "Image",
+      "id": "image",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/image/v1/image",
+            "template": {}
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "image",
+      "fields": [
+        {
+          "...": "./_common.json#/image-fields"
+        }
+      ]
+    }
+  ]
+}

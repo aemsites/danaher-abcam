@@ -1,0 +1,29 @@
+[
+  {
+    "...": "./_page-metadata.json#/models"
+  },
+  {
+    "...": "./_title.json#/models"
+  },
+  {
+    "...": "./_image.json#/models"
+  },
+  {
+    "...": "./_button.json#/models"
+  },
+  {
+    "...": "./_media.json#/models"
+  },
+  {
+    "...": "./_abcam-button.json#/models"
+  },
+  {
+    "...": "./_text.json#/models"
+  },
+  {
+    "...": "./_section.json#/models"
+  },
+  {
+    "...": "../eds/blocks/*/_*.json#/models"
+  }
+]

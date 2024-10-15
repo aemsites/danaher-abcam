@@ -1,0 +1,14 @@
+[
+  {
+    "id": "main",
+    "components": [
+      "section"
+    ]
+  },
+  {
+    "...": "./_section.json#/filters"
+  },
+  {
+    "...": "../eds/blocks/*/_*.json#/filters"
+  }
+]

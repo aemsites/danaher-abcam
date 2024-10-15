@@ -1,0 +1,141 @@
+{
+  "button-fields": [
+    {
+      "component": "aem-content",
+      "name": "link",
+      "label": "Link"
+    },
+    {
+      "component": "text",
+      "name": "linkText",
+      "label": "Text"
+    },
+    {
+      "component": "select",
+      "name": "linkTitle",
+      "label": "Button or Link",
+      "options": [
+        {
+          "name": "Button",
+          "value": "button"
+        },
+        {
+          "name": "Link",
+          "value": "link"
+        }
+      ]
+    },
+    {
+      "component": "select",
+      "name": "linkVariant",
+      "label": "Link Variant",
+      "options": [
+        {
+          "name": "Primary",
+          "value": "button-primary"
+        },
+        {
+          "name": "Secondary",
+          "value": "button-secondary"
+        },
+        {
+          "name": "Tertiary Outline",
+          "value": "button-tertiary-outline"
+        },
+        {
+          "name": "Tertiary Filled",
+          "value": "button-tertiary-filled"
+        },
+        {
+          "name": "Text Only",
+          "value": "button-text-only"
+        }
+      ]
+    },
+    {
+      "component": "select",
+      "name": "linkIconType",
+      "label": "Icon Type",
+      "options": [
+        {
+          "name": "None",
+          "value": "icon-none"
+        },
+        {
+          "name": "Both",
+          "value": "icon-both"
+        },
+        {
+          "name": "Right",
+          "value": "icon-right"
+        },
+        {
+          "name": "Left",
+          "value": "icon-left"
+        },
+        {
+          "name": "Icon Only",
+          "value": "icon-only"
+        }
+      ]
+    }
+  ],
+  "image-fields": [
+    {
+      "component": "reference",
+      "valueType": "string",
+      "name": "image",
+      "label": "Image",
+      "multi": false
+    },
+    {
+      "component": "text",
+      "valueType": "string",
+      "name": "imageAlt",
+      "label": "Alt",
+      "value": ""
+    }
+  ],
+  "image-fields1": [
+    {
+      "component": "reference",
+      "valueType": "string",
+      "name": "image2",
+      "label": "Second Image",
+      "multi": false
+    },
+    {
+      "component": "text",
+      "valueType": "string",
+      "name": "imageAlt2",
+      "label": "Second Image Alt",
+      "value": ""
+    }
+  ],
+  "media-fields": [
+    {
+      "component": "text",
+      "valueType": "string",
+      "name": "media_href",
+      "value": "",
+      "label": "Media Link"
+    },
+    {
+      "component": "text",
+      "label": "Media Title",
+      "name": "media_hrefText",
+      "valueType": "string",
+      "value": ""
+    },
+    {
+      "component": "radio-group",
+      "label": "Media Type",
+      "name": "media_hrefTitle",
+      "valueType": "string",
+      "options": [
+        { "name": "Video", "value": "video" },
+        { "name": "Audio", "value": "audio" }
+      ]
+    }
+  ]
+}
