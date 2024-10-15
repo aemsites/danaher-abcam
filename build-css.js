@@ -109,9 +109,9 @@ const fileMappings = [
     wrapper: 'child-page-wrapper',
   },
   {
-    content: './eds/blocks/table-block/table-block.js',
-    output: './eds/blocks/table-block/table-block.css',
-    wrapper: 'table-block-wrapper',
+    content: './eds/blocks/table/table.js',
+    output: './eds/blocks/table/table.css',
+    wrapper: 'table-wrapper',
   },
   {
     content: './eds/blocks/title-card/title-card.js',
