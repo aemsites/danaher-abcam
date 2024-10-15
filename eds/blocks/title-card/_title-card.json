@@ -35,6 +35,9 @@
           ]
         },
         {
+          "...": "../../../models/_common.json#/image-fields"
+        },
+        {
           "component": "text",
           "valueType": "string",
           "name": "title-card_title",
@@ -54,9 +57,6 @@
           "value": "",
           "label": "Description",
           "valueType": "string"
-        },
-        {
-          "...": "../../../models/_common.json#/image-fields"
         }
       ]
     }
