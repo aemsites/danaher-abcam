@@ -942,6 +942,20 @@
     "id": "download",
     "fields": [
       {
+        "component": "text",
+        "valueType": "string",
+        "name": "download_title",
+        "value": "",
+        "label": "Title"
+      },
+      {
+        "component": "text",
+        "name": "download_titleType",
+        "hidden": true,
+        "label": "Title Type",
+        "valueType": "string"
+      },
+      {
         "component": "aem-content",
         "name": "link",
         "label": "Link"
