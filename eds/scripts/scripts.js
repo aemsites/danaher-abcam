@@ -969,7 +969,7 @@ export function createCard({
 }
 
 if (!window.location.pathname.includes('/en-us/')) {
-  loadScript('https://link.edgepilot.com/s/3860bc5f/F7Wc9LCTVU2zTxqhs68tBA?u=https://www.onelink-edge.com/moxie.min.js', {
+  loadScript('https://www.onelink-edge.com/moxie.min.js', {
     type: 'text/javascript',
     charset: 'UTF-8',
     referrerPolicy: 'no-referrer-when-downgrade',
