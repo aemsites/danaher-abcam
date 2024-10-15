@@ -26,7 +26,7 @@ export default function decorate(block) {
 
   const parentEl = block?.parentElement?.parentElement;
   const divEl = div({ class: 'flex text-base font-normal leading-6 text-[#378189] underline gap-x-2' });
-  if(parentEl?.lastElementChild !== null){
+  if (parentEl?.lastElementChild !== null) {
     parentEl?.lastElementChild.remove();
     const socialLinks = parentEl?.lastElementChild.querySelectorAll('p > a');
     socialLinks?.forEach((element) => {
