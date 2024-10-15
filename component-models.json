@@ -942,13 +942,6 @@
     "id": "download",
     "fields": [
       {
-        "component": "text",
-        "valueType": "string",
-        "name": "download_doctype",
-        "value": "",
-        "label": "Document Type"
-      },
-      {
         "component": "aem-content",
         "name": "link",
         "label": "Link"
@@ -1026,6 +1019,13 @@
             "value": "icon-only"
           }
         ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "download_doctype",
+        "value": "",
+        "label": "Document Type"
       }
     ]
   },

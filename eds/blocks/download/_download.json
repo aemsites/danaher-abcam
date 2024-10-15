@@ -21,14 +21,14 @@
       "id": "download",
       "fields": [
         {
+          "...": "../../../models/_common.json#/button-fields"
+        },
+        {
           "component": "text",
           "valueType": "string",
           "name": "download_doctype",
           "value": "",
           "label": "Document Type"
-        },
-        {
-          "...": "../../../models/_common.json#/button-fields"
         }
       ]
     }
