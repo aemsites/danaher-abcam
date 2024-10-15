@@ -944,16 +944,9 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "download_title",
+        "name": "download_doctype",
         "value": "",
-        "label": "Title"
-      },
-      {
-        "component": "text",
-        "name": "download_titleType",
-        "hidden": true,
-        "label": "Title Type",
-        "valueType": "string"
+        "label": "Document Type"
       },
       {
         "component": "aem-content",
