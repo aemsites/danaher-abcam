@@ -975,9 +975,13 @@ function getDLPage() {
     type: 'Content',
   };
   const path = window.location.pathname;
-  if (path.includes('/en-us/stories')) {
+  const langPrefix = '/en-us/';
+  const regex = new RegExp(`${langPrefix}([^/]+)`);
+  const match = path.match(regex);
+  if (match) {
+    const extractedPath = match[1];
     page.event = 'Virtual Page View';
-    page.type = 'Stories';
+    page.type = extractedPath;
     page.path = path;
     page.subType = null;
   }
