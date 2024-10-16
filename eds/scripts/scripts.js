@@ -259,6 +259,7 @@ const TEMPLATE_LIST = [
   'product-detail',
   'search-results',
   'stories',
+  'webinars',
 ];
 
 async function decorateTemplates(main) {
@@ -570,7 +571,7 @@ async function decorateVideo(main) {
 
           const playButtonHTML = `
             <div class="aspect-video relative w-full h-full">
-              <img src="${posterImage}" class="relative inset-0 w-full h-full object-cover" />
+              <img src="${posterImage}" class="relative inset-0 w-full h-full object-cover" alt="More episodes in the Series" aria-label="More episodes in the Series"/>
               <button id="play-button-${videoId}" class="absolute inset-0 flex items-center justify-center bg-opacity-50 rounded-full p-4">
                 <span class = "video-play-icon icon icon-video-play"/>
               </button>
@@ -705,26 +706,6 @@ async function loadEager(doc) {
       });
     }
 
-    let atjsPromise = Promise.resolve();
-    atjsPromise = initATJS('./at.js', {
-      clientCode: 'danaher',
-      serverDomain: 'danaher.tt.omtrdc.net',
-      imsOrgId: '08333E7B636A2D4D0A495C34@AdobeOrg',
-      bodyHidingEnabled: false,
-      cookieDomain: window.location.hostname,
-      pageLoadEnabled: false,
-      secureOnly: true,
-      viewsEnabled: false,
-      withWebGLRenderer: false,
-    }).catch((e) => {
-      // eslint-disable-next-line no-console
-      console.error('Error loading at.js', e);
-    });
-    document.addEventListener('at-library-loaded', () => getAndApplyOffers());
-
-    document.body.classList.add('appear');
-    await atjsPromise;
-
     await new Promise((resolve) => {
       window.requestAnimationFrame(async () => {
         document.body.classList.add('appear');
@@ -796,7 +777,7 @@ function loadDelayed() {
   // eslint-disable-next-line import/no-cycle
   window.setTimeout(() => import('./delayed.js'), 3000);
   // load anything that can be postponed to the latest here
-  import('./sidekick.js').then(({ initSidekick }) => initSidekick());
+  // import('./sidekick.js').then(({ initSidekick }) => initSidekick());
 }
 
 /**
@@ -860,28 +841,31 @@ export function createFilters({
   listActionHandler = () => {},
   clearFilterHandler = () => {},
   limit = 6,
+  sort = 'ASC',
 }) {
-  const output = filterNames.reduce((obj, key) => {
-    obj[key] = new Set();
-    return obj;
-  }, {});
-
+  const tempArr = {};
   lists.forEach((list) => {
     const parts = list?.tags?.split(', ');
     parts.forEach((part) => {
       const [key, value] = part.split('/');
       filterNames.forEach((name) => {
         if (key.includes(name)) {
-          output[name].add(value);
+          if (!(name in tempArr)) tempArr[name] = [];
+          if (!tempArr[name].includes(value)) tempArr[name].push(value);
+        }
+        if (name in tempArr && tempArr[name].length > 0) {
+          sort.toUpperCase() === 'ASC'
+            ? tempArr[name].sort()
+            : tempArr[name].sort().reverse()
         }
       });
     });
   });
 
-  Object.keys(output).forEach((categoryKey, categoryIndex) => {
-    const lists = ul({ class: 'space-y-2 mt-2' });
-    [...output[categoryKey]].map((categoryValue, categoryIndex) => {
-      lists.append(li(
+  Object.keys(tempArr).forEach((categoryKey, categoryIndex) => {
+    const listsEl = ul({ class: 'space-y-2 mt-2' });
+    [...tempArr[categoryKey]].map((categoryValue, categoryIndex) => {
+      listsEl.append(li(
         categoryIndex >= limit ? { class: 'hidden' } : '',
         label(
           {
@@ -903,8 +887,8 @@ export function createFilters({
     });
 
     // Add "Show More" button if needed
-    if (limit !== 0 && output[categoryKey].length > limit) {
-      lists.append(
+    if (limit !== 0 && tempArr[categoryKey].length > limit) {
+      listsEl.append(
         li(
           span(
             {
@@ -931,19 +915,19 @@ export function createFilters({
     const accordionSection = div(
       { class: `flex flex-col px-6 py-4 border-b md:border border-gray-300 ${categoryIndex > 0 ? 'md:mt-4' : ''} md:rounded-xl [&_div:not(.hidden)~p]:mb-3 [&_div:not(.hidden)~p_.icon]:rotate-180` },
       p(
-        { class: 'flex items-center justify-between my-0' },
-        span({ class: 'text-base font-bold capitalize' }, categoryKey.replace('-', ' ')),
-        span({
-          class: 'icon icon-chevron-down size-5 cursor-pointer',
+        {
+          class: 'flex items-center justify-between my-0 cursor-pointer',
           onclick: () => {
-            lists.parentElement.classList.toggle('hidden');
-            lists.parentElement.previousElementSibling.children[1].classList.toggle('rotate-180');
+            listsEl.parentElement.classList.toggle('hidden');
+            listsEl.parentElement.previousElementSibling.children[1].classList.toggle('rotate-180');
           },
-        }),
+        },
+        span({ class: 'text-base font-bold capitalize' }, categoryKey.replace('-', ' ')),
+        span({ class: 'icon icon-chevron-down size-5 rotate-180' }),
       ),
       div(
         { class: 'flex flex-col-reverse [&_ul:has(:checked)+*]:block' },
-        lists,
+        listsEl,
         span({
           class: 'hidden text-xs leading-5 font-medium text-[#378189] mt-1 cursor-pointer hover:underline underline-offset-1',
           onclick: () => clearFilterHandler(categoryKey),
@@ -951,7 +935,7 @@ export function createFilters({
       ),
     );
 
-    if (lists.children.length > 0) element.append(accordionSection);
+    if (listsEl.children.length > 0) element.append(accordionSection);
   });
 }
 
@@ -978,12 +962,12 @@ export function createCard({
       div(
         { class: 'flex-1' },
         h3({ class: 'text-black font-medium mt-4 break-words line-clamp-4' }, title),
-        p({ class: 'line-clamp-3' }, description),
+        p({ class: 'text-sm line-clamp-3' }, description),
         bodyEl,
       ),
       footerLink !== ''
         ? a({
-          class: 'text-base leading-5 text-[#378089] font-bold p-2 pl-0 group-hover:tracking-wide group-hover:underline transition duration-700 mt-2',
+          class: 'text-base leading-5 text-[#378189] font-bold p-2 pl-0 group-hover:tracking-wide group-hover:underline transition duration-700 mt-2',
           href: path,
         }, footerLink)
         : '',
@@ -1004,8 +988,8 @@ export function createCard({
         break;
     }
     card.querySelector('.flex-1').prepend(
-      span({ class: 'capitalize font-normal text-sm' }, `${getStoryType(tags)}`),
-      span({ class: 'font-normal text-sm' }, `${minRead}`),
+      span({ class: 'capitalize font-normal text-sm text-[#65697C] font-["rockwell"]' }, `${getStoryType(tags)}`),
+      span({ class: 'font-normal text-sm text-[#65697C] font-["rockwell"]' }, `${minRead}`),
     );
   }
   return card;
@@ -1018,6 +1002,13 @@ function getDLPage() {
   const page = {
     type: 'Content',
   };
+  const path = window.location.pathname;
+  if (path.includes('/en-us/stories')) {
+    page.event = 'Virtual Page View';
+    page.type = 'Stories';
+    page.path = path;
+    page.subType = null;
+  }
   return page;
 }
 
