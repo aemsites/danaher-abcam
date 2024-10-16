@@ -43,7 +43,8 @@
       "story-hub",
       "speakers-info",
       "download",
-      "table"
+      "table",
+      "timeline-steps"
     ]
   },
   {
@@ -121,6 +122,12 @@
     "id": "teasers",
     "components": [
       "teaser"
+    ]
+  },
+  {
+    "id": "timeline-steps",
+    "components": [
+      "steps"
     ]
   }
 ]

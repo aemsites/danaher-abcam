@@ -1907,6 +1907,37 @@
     ]
   },
   {
+    "id": "timeline-steps",
+    "fields": [
+      {
+        "component": "text",
+        "name": "timeline-steps_title",
+        "value": "",
+        "label": "Title",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "timeline-steps_titleType",
+        "label": "",
+        "valueType": "string",
+        "hidden": true
+      }
+    ]
+  },
+  {
+    "id": "steps",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "steps_stepdata",
+        "value": "",
+        "label": "Steps Data",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "title-card",
     "fields": [
       {
