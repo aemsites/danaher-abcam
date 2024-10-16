@@ -31,6 +31,10 @@
   margin-left: 0px
 }
 
+.podcasts-wrapper :is(.mt-6) {
+  margin-top: 1.5rem
+}
+
 .podcasts-wrapper :is(.block) {
   display: block
 }

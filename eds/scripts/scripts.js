@@ -454,10 +454,10 @@ async function decorateVideo(main) {
           if (videoId) {
             const embedURL = `https://www.youtube.com/embed/${videoId}?enablejsapi=1`;
             const embedHTML = `
-            <div class="relative w-full h-full">
+            <div class="relative w-full h-0 pt-[56.25%]">
               <iframe id="youtubePlayer" src="${embedURL}"
-              class="relative w-full h-full border-0 top-0 left-0" 
-              allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" 
+              class="absolute h-full w-full top-0 left-0 border-0"
+              allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture"
               scrolling="no" title="Content from Youtube" loading="eager"></iframe>
             </div>`;
             linkContainer.innerHTML = embedHTML;
