@@ -2614,10 +2614,6 @@ audio::-webkit-media-controls-panel {
   .min-\[1900px\]\:left-\[930px\] {
     left: 930px;
   }
-
-  .min-\[1900px\]\:left-\[1023px\] {
-    left: 1023px;
-  }
 }
 
 @media (min-width: 640px) {
