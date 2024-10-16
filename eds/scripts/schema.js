@@ -43,6 +43,7 @@ export function buildVideoSchema(posterImage, embedURL) {
   const data = {
     '@context': 'http://schema.org',
     '@type': 'VideoObject',
+    name: getMetadata('media_hrefText') ? getMetadata('media_hrefText') : getMetadata('og:title'),
     thumbnailUrl: posterImage,
     embedUrl: embedURL,
     publisher: {
@@ -66,6 +67,7 @@ export function buildVideoSchema(posterImage, embedURL) {
       },
     ],
   };
+  if (getMetadata('mediaPublishDate')) data.uploadDate = getMetadata('mediaPublishDate');
 
   setJsonLd(data, 'video');
 }
