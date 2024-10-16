@@ -236,7 +236,7 @@
     }
 
     main .section.related-stories-container .default-content-wrapper h2{
-        @apply lg:px-6 xl:px-0;
+        @apply lg:px-6 xl:px-0 !pt-0;
     }
    
 }   

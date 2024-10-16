@@ -1190,6 +1190,10 @@ audio::-webkit-media-controls-panel {
   background-color: white;
 }
 
+main .section.related-stories-container .default-content-wrapper h2 {
+  padding-top: 0px !important;
+}
+
 @media (min-width: 1024px) {
   main .section.related-stories-container .default-content-wrapper h2 {
     padding-left: 1.5rem;
@@ -1202,6 +1206,18 @@ audio::-webkit-media-controls-panel {
     padding-left: 0px;
     padding-right: 0px;
   }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 .visible {
