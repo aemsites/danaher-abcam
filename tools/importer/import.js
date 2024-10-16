@@ -14,6 +14,7 @@
 import createTable from './table.js';
 import createMetadata from './metadata.js';
 import titlecard from './titleCard.js';
+import download from './download.js';
 export default {
   /**
      * Apply DOM operations to the provided document and return
@@ -33,12 +34,14 @@ export default {
     createTable(main, document, html, params, url);
     titlecard(main, document);
     createMetadata(main, document, html, params, url);
+    download(main, document);
     // use helper method to remove header, footer, etc.
     WebImporter.DOMUtils.remove(main, [
       'header',
       'footer',
       'component',
       'nav',
+      'ul',
       'noscript',
       'div.social',
       'div.cloudservice.testandtarget',

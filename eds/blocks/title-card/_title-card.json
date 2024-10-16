@@ -22,22 +22,6 @@
       "id": "title-card",
       "fields": [
         {
-          "component": "multiselect",
-          "valueType": "string",
-          "name": "classes",
-          "value": "",
-          "label": "Search Options",
-          "options": [
-            {
-              "name": "Podcast",
-              "value": "title-image"
-            }
-          ]
-        },
-        {
-          "...": "../../../models/_common.json#/image-fields"
-        },
-        {
           "component": "text",
           "valueType": "string",
           "name": "title-card_title",
