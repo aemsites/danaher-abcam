@@ -7,8 +7,8 @@ import {
 import { applyClasses } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
-  const parentBlock = block.parentElement.parentElement.firstElementChild;
-  const parentBlockTitle = parentBlock.querySelector('p');
+  const parentBlock = block.parentElement.parentElement;
+  const parentBlockTitle = parentBlock?.firstElementChild.querySelector('p');
   applyClasses(parentBlockTitle, 'text-black text-2xl font-medium leading-7');
 
   const pictureEl = block.querySelector('picture');
@@ -26,15 +26,17 @@ export default function decorate(block) {
 
   const parentEl = block?.parentElement?.parentElement;
   const divEl = div({ class: 'flex text-base font-normal leading-6 text-[#378189] underline gap-x-2' });
-  const socialLinks = parentEl.lastElementChild.querySelectorAll('p > a');
-  parentEl.lastElementChild.remove();
-  socialLinks.forEach((element) => {
-    if (element.textContent.includes('Linkedin')) {
-      divEl.append(span({ class: 'icon icon-linkedin-blue' }), element);
-    } else {
-      divEl.append(span({ class: 'icon icon-twitter-black' }), element);
-    }
-  });
+  if (parentEl?.lastElementChild !== null) {
+    parentEl?.lastElementChild.remove();
+    const socialLinks = parentEl?.lastElementChild.querySelectorAll('p > a');
+    socialLinks?.forEach((element) => {
+      if (element.textContent.includes('Linkedin')) {
+        divEl.append(span({ class: 'icon icon-linkedin-blue' }), element);
+      } else {
+        divEl.append(span({ class: 'icon icon-twitter-black' }), element);
+      }
+    });
+  }
 
   const mainDiv = div(
     { class: 'flex flex-col' },
@@ -46,6 +48,7 @@ export default function decorate(block) {
     div({ class: 'w-full' }, descriptionEl),
     divEl,
   );
+
   block.innerHTML = '';
   block.appendChild(mainDiv);
   decorateIcons(block);
