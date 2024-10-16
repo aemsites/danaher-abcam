@@ -21,8 +21,12 @@ const allSelectedTags = div(
 );
 const clearAllEl = span({
   class: 'shrink-0 text-xs font-semibold underline cursor-pointer',
-  // eslint-disable-next-line no-use-before-define
-  onclick: () => handleResetFilters(),
+  onclick: async () => {
+    // eslint-disable-next-line no-use-before-define
+    await initiateRequest();
+    // eslint-disable-next-line no-use-before-define
+    handleResetFilters();
+  },
 }, 'Clear All');
 const hubDesktopFilters = div(
   { class: 'md:col-span-2 w-full h-screen md:h-auto fixed md:relative flex flex-col-reverse justify-end top-0 left-0 z-50 md:z-auto transition-all duration-150 -translate-y-full md:translate-y-0 [&_*:has(input:checked)~*_.clear-all]:block' },
@@ -33,14 +37,18 @@ const hubDesktopFilters = div(
       { class: 'flex md:hidden flex-row items-center gap-x-2 my-0' },
       span({
         class: 'clear-all hidden shrink-0 text-xs font-semibold underline cursor-pointer',
-        // eslint-disable-next-line no-use-before-define
-        onclick: () => handleResetFilters(),
+        onclick: async () => {
+          // eslint-disable-next-line no-use-before-define
+          await initiateRequest();
+          // eslint-disable-next-line no-use-before-define
+          handleResetFilters();
+        },
       }, 'Clear All'),
       span({ class: 'icon icon-close size-8 invert p-1' }),
     ),
   ),
 );
-const cardList = ul({ class: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-16 justify-items-stretch' });
+const cardList = ul({ class: 'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-y-10 gap-x-6 md:gap-y-16 justify-items-stretch' });
 const filterBackdrop = div({ class: 'h-screen fixed top-0 left-0 bg-white z-40 transition-all -translate-y-full' });
 
 function showMoreOrLessTags(mode) {
@@ -110,12 +118,6 @@ function handleRenderTags() {
 // eslint-disable-next-line default-param-last
 function handleRenderContent(newLists = lists) {
   newLists.sort((card1, card2) => card2.publishDate - card1.publishDate);
-
-  // let pageNo = page || parseInt(getPageFromUrl(), 10);
-  // pageNo = Number.isNaN(pageNo) ? 1 : pageNo;
-  // const limitPerPage = 12;
-  // const start = (pageNo - 1) * limitPerPage;
-  // const listsToDisplay = newLists.slice(start, start + limitPerPage);
   cardList.innerHTML = '';
 
   newLists.forEach((article, index) => {
@@ -160,7 +162,6 @@ function handleChangeFilter(key, value, mode) {
     newLists = lists.filter((list) => (value
       ? list.tags.includes(value)
       : true));
-    handleRenderContent(newLists, 1);
   } else {
     if (mode !== 'skip-filter') {
       if (key !== 'undefined' && (value === 'undefined' || value === null)) {
@@ -187,8 +188,8 @@ function handleChangeFilter(key, value, mode) {
       }).filter(Boolean);
     }
     handleRenderTags();
-    handleRenderContent(newLists);
   }
+  handleRenderContent(newLists);
 }
 
 function handleResetFilters(value = '') {
@@ -230,9 +231,7 @@ function toggleMobileFilters(mode) {
 function toggleTabs(tabId, tabElement) {
   const tabs = tabElement.querySelectorAll('.tab');
   const [key, value] = tabId.split('/');
-  if (!filterContainer[key].includes(value)) {
-    handleResetFilters(value);
-  }
+  if (!filterContainer[key].includes(value)) handleResetFilters(value);
   tabs.forEach((tab) => {
     if (tab.id === tabId) {
       tab.classList.add('active', 'border-b-8', 'border-[#ff7223]');
@@ -244,10 +243,11 @@ function toggleTabs(tabId, tabElement) {
 }
 
 async function initiateRequest() {
-  const response = await ffetch('/en-us/stories/query-index.json')
+  let response = await ffetch('/en-us/stories/query-index.json')
     .filter(({ path }) => !excludedPages.includes(path))
     .chunks(500)
     .all();
+  response = [...response].sort((x, y) => new Date(x.publishDate) - new Date(y.publishDate));
   lists = [...response];
 }
 
@@ -261,8 +261,14 @@ export default async function decorate(block) {
       lists,
       filterNames,
       element: allFilters,
-      listActionHandler: handleChangeFilter,
-      clearFilterHandler: handleClearCategoryFilter,
+      listActionHandler: async (categoryKey, categoryValue) => {
+        await initiateRequest();
+        handleChangeFilter(categoryKey, categoryValue);
+      },
+      clearFilterHandler: async (categoryKey) => {
+        await initiateRequest();
+        handleClearCategoryFilter(categoryKey);
+      },
     });
 
     const hubContent = div(
@@ -315,7 +321,10 @@ export default async function decorate(block) {
       const btn = button({
         class: 'tab md:py-1.5 pb-4 mr-8 active border-b-8 border-[#ff7223]',
         id: tab.tabId,
-        onclick: () => toggleTabs(tab.tabId, tabElement),
+        onclick: async () => {
+          await initiateRequest();
+          toggleTabs(tab.tabId, tabElement);
+        },
       }, tab.name);
       tabElement.appendChild(btn);
     });
