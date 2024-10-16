@@ -896,7 +896,7 @@ export function createFilters({
 }
 
 export function createCard({
-  titleImage,
+  titleImage = '',
   title = '',
   description = '',
   footerLink = '',
@@ -917,8 +917,8 @@ export function createCard({
       titleImage,
       div(
         { class: 'flex-1' },
-        h3({ class: 'text-black font-medium mt-4 break-words line-clamp-4' }, title),
-        p({ class: 'text-sm line-clamp-3' }, description),
+        title && h3({ class: 'text-black font-medium mt-4 break-words line-clamp-4' }, title),
+        description && p({ class: 'text-sm line-clamp-3' }, description),
         bodyEl,
       ),
       footerLink !== ''
