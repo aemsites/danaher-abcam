@@ -1616,6 +1616,60 @@
     ]
   },
   {
+    "id": "speakers-info",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "speakers_title",
+        "value": "",
+        "label": "Title"
+      },
+      {
+        "component": "text",
+        "name": "speakers_titleType",
+        "label": "",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "speakers_subTitle",
+        "value": "",
+        "label": "SubTitle"
+      },
+      {
+        "component": "text",
+        "name": "speakers_subTitleType",
+        "label": "",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "richtext",
+        "name": "speakers_description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Alt",
+        "value": ""
+      }
+    ]
+  },
+  {
     "id": "story-hub",
     "fields": [
       {
