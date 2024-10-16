@@ -136,6 +136,15 @@
         { "name": "Video", "value": "video" },
         { "name": "Audio", "value": "audio" }
       ]
-    }
+    },
+    {
+      "component": "date-time",
+      "valueType": "date-time",
+      "name": "mediaPublishDate",
+      "label": "Video Publish Date",
+      "placeholder": "YYYY-MM-DD",
+      "displayFormat": null,
+      "valueFormat": null
+    },
   ]
 }
