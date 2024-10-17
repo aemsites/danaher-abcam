@@ -2,14 +2,19 @@ import { ul, p, span } from '../../scripts/dom-builder.js';
 import { createCard } from '../../scripts/scripts.js';
 
 export default async function decorate(block) {
+  console.log('story');
   const articles = [];
-  [...block.children].forEach((article) => {
-    const obj = {
-      title: article.querySelector('p:not(a)'),
-      path: article.querySelector('p a')?.href,
-    };
-    articles.push(obj);
-  });
+  if (block.children.length > 0) {
+    [...block.children].forEach((article) => {
+      if (article.children.length > 0) {
+        const obj = {
+          title: article.querySelector('p:not(a)'),
+          path: article.querySelector('p a')?.href,
+        };
+        articles.push(obj);
+      }
+    });
+  }
 
   block.innerHTML = '';
   if (articles.length > 0) {
