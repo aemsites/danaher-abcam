@@ -1616,6 +1616,25 @@
     ]
   },
   {
+    "id": "related-link",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "link_name",
+        "value": "",
+        "label": "Link Name"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "link_path",
+        "value": "",
+        "label": "Link Path"
+      }
+    ]
+  },
+  {
     "id": "speakers-info",
     "fields": [
       {
@@ -1666,25 +1685,6 @@
         "name": "imageAlt",
         "label": "Alt",
         "value": ""
-      }
-    ]
-  },
-  {
-    "id": "sticky-link",
-    "fields": [
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "link_name",
-        "value": "",
-        "label": "Link Name"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "link_path",
-        "value": "",
-        "label": "Link Path"
       }
     ]
   },

@@ -8,9 +8,10 @@ export default async function decorate(block) {
       if (article.children.length > 0) {
         const obj = {};
         article.classList.add('hidden');
-        if (article.querySelector('p:not(a)')) obj['title'] = article.querySelector('p:not(a)');
-        if (article.querySelector('p a')) obj['path'] = article.querySelector('p a');
-        console.log(obj);
+        const linkName = article.querySelector('p:not(a)');
+        const linkPath = article.querySelector('p a');
+        if (linkName) obj.title = linkName;
+        if (linkPath) obj.path = linkPath;
         if (Object.keys(obj).length === 2) {
           cardList.appendChild(createCard({
             path: obj.path?.href,

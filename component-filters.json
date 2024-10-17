@@ -44,7 +44,7 @@
       "speakers-info",
       "download",
       "table",
-      "sticky-links"
+      "related-links"
     ]
   },
   {
@@ -89,9 +89,9 @@
     ]
   },
   {
-    "id": "sticky-links",
+    "id": "related-links",
     "components": [
-      "sticky-link"
+      "related-link"
     ]
   },
   {

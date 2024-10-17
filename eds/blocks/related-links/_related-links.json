@@ -1,30 +1,30 @@
 {
     "definitions": [
       {
-        "title": "Sticky Links",
-        "id": "sticky-links",
+        "title": "Related Links",
+        "id": "related-links",
         "plugins": {
           "xwalk": {
             "page": {
               "resourceType": "core/franklin/components/block/v1/block",
               "template": {
-                "name": "Sticky Links",
-                "filter": "sticky-links"
+                "name": "Related Links",
+                "filter": "related-links"
               }
             }
           }
         }
       },
       {
-        "title": "Sticky Link",
-        "id": "sticky-link",
+        "title": "Related Link",
+        "id": "related-link",
         "plugins": {
           "xwalk": {
             "page": {
               "resourceType": "core/franklin/components/block/v1/block/item",
               "template": {
-                "name": "Sticky Link",
-                "model": "sticky-link"
+                "name": "Related Link",
+                "model": "related-link"
               }
             }
           }
@@ -33,7 +33,7 @@
     ],
     "models": [
       {
-        "id": "sticky-link",
+        "id": "related-link",
         "fields": [
           {
             "component": "text",
@@ -54,9 +54,9 @@
     ],
     "filters": [
       {
-        "id": "sticky-links",
+        "id": "related-links",
         "components": [
-          "sticky-link"
+          "related-link"
         ]
       }
     ]
