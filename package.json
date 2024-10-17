@@ -43,6 +43,7 @@
     "tailwindcss": "^3.4.3"
   },
   "dependencies": {
-    "@adobe/aem-cli": "^16.3.16"
+    "@adobe/aem-cli": "^16.3.16",
+    "@adobe/helix-importer": "github:mhaack/helix-importer#html2jcr"
   }
 }
