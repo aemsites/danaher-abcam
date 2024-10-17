@@ -1,37 +1,29 @@
 const mapTable = (table, document) => {
-    let colSpan;
-    // const tableDiv = document.createElement('div');
     const tRows = table.querySelectorAll('tr');
+    const colSpan = tRows[0].querySelectorAll('td').length;    
     table.innerHTML = '';
-    tRows.forEach((row, index) => {
-        // const rowDiv = document.createElement('div');
-        const tHead = row.querySelectorAll('th');
-        const tDatas = row.querySelectorAll('td');
-        colSpan = tDatas.length;
-        row.innerHTML = '';
-        tHead.forEach((head) => {
-            // const dataDiv = document.createElement('div');
-            // dataDiv.textContent = head.textContent;
-            // rowDiv.appendChild(dataDiv);
-            // head.removeAttribute('colspan');
-            // head.removeAttribute('rowspan');
-            const newData = document.createElement('td');
-            newData.textContent = head.textContent;
-            row.append(newData);
-        });
+    const newRow = document.createElement('tr');
+    const newData = document.createElement('td');
+    newData.setAttribute('colspan', colSpan);
+    const tableName = `table-${colSpan}-columns`;
+    newData.textContent = tableName;
+    newRow.append(newData);
+    table.append(newRow);
 
+    tRows.forEach((row, index) => {
+        const tDatas = row.querySelectorAll('td');
+        row.innerHTML = '';
+        const newData = document.createElement('td');
+        const newDiv = document.createElement('div');
         tDatas.forEach((data) => {
-            // const dataDiv = document.createElement('div');
-            // dataDiv.textContent = data.textContent;
-            // rowDiv.appendChild(dataDiv);
-            data.removeAttribute('colspan');
-            data.removeAttribute('rowspan');
-            const newData = document.createElement('td');
-            newData.textContent = data.textContent;
-            row.append(newData);
+            const newDivData = document.createElement('div');
+            newDivData.textContent = data.textContent;
+            newDiv.append(newDivData);
         });
+        newData.append(newDiv);
+        row.append(newData);
         table.append(row);
-        // tableDiv.appendChild(rowDiv);
+
     });
     let tHead = table.querySelector('thead');
     if (!tHead) {
@@ -41,16 +33,9 @@ const mapTable = (table, document) => {
         const row = tHead.insertRow(0);
         const th = document.createElement('th');
         th.setAttribute('colspan', colSpan);
-        th.textContent = 'Table';
+        th.textContent = tableName;
         row.appendChild(th);
     }
-    // const cells = [['table']];
-    // cells.push([tableDiv]);
-    // if (cells.length > 1) {
-    //     table.innerHTML = '';
-    //     const block = WebImporter.DOMUtils.createTable(cells, document);
-    //     table.append(block, document.createElement('hr'));
-    // }
 };
 
 const createTable = (main, document, html, params, urlStr) => {

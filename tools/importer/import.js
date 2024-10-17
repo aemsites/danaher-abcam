@@ -41,7 +41,6 @@ export default {
       'footer',
       'component',
       'nav',
-      'ul',
       'noscript',
       'div.social',
       'div.cloudservice.testandtarget',

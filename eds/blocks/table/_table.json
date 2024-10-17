@@ -24,7 +24,7 @@
             "page": {
               "resourceType": "core/franklin/components/block/v1/block/item",
               "template": {
-                "name": "Row",
+                "name": "table-row",
                 "model": "table-row",
                 "column1text" : "Column1"
               }
@@ -34,14 +34,14 @@
       },
       {
         "title": "Row",
-        "id": "table-col-2",
+        "id": "table-row-col-2",
         "plugins": {
           "xwalk": {
             "page": {
               "resourceType": "core/franklin/components/block/v1/block/item",
               "template": {
-                "name": "Row",
-                "model": "table-col-2",
+                "name": "table-row-col-2",
+                "model": "table-row-col-2",
                 "column1text" : "Column1",
                 "column2text": "Column2"
               }
@@ -51,14 +51,14 @@
       },
       {
         "title": "Row",
-        "id": "table-col-3",
+        "id": "table-row-col-3",
         "plugins": {
           "xwalk": {
             "page": {
               "resourceType": "core/franklin/components/block/v1/block/item",
               "template": {
-                "name": "Row",
-                "model": "table-col-3",
+                "name": "table-row-col-3",
+                "model": "table-row-col-3",
                 "column1text" : "Column1",
                 "column2text": "Column2",
                 "column3text": "Column3"
@@ -69,14 +69,14 @@
       },
       {
         "title": "Row",
-        "id": "table-col-4",
+        "id": "table-row-col-4",
         "plugins": {
           "xwalk": {
             "page": {
               "resourceType": "core/franklin/components/block/v1/block/item",
               "template": {
-                "name": "Row",
-                "model": "table-col-4",
+                "name": "table-row-col-4",
+                "model": "table-row-col-4",
                 "column1text" : "Column1",
                 "column2text": "Column2",
                 "column3text": "Column3",
@@ -88,14 +88,14 @@
       },
       {
         "title": "Row",
-        "id": "table-col-5",
+        "id": "table-row-col-5",
         "plugins": {
           "xwalk": {
             "page": {
               "resourceType": "core/franklin/components/block/v1/block/item",
               "template": {
-                "name": "Row",
-                "model": "table-col-5",
+                "name": "table-row-col-5",
+                "model": "table-row-col-5",
                 "column1text" : "Column1",
                 "column2text": "Column2",
                 "column3text": "Column3",
@@ -111,37 +111,6 @@
       {
         "id": "table",
         "fields": [
-          {
-            "component": "multiselect",
-            "name": "classes",
-            "value": "",
-            "label": "Options",
-            "valueType": "string",
-            "options": [
-              {
-                "name": "Border",
-                "children": [
-                  {
-                    "name": "Striped",
-                    "value": "striped"
-                  },
-                  {
-                    "name": "Bordered",
-                    "value": "bordered"
-                  }
-                ]
-              },
-              {
-                "name": "Header",
-                "children": [
-                  {
-                    "name": "No Header",
-                    "value": "no-header"
-                  }
-                ]
-              }
-            ]
-          },
           {
             "component":"select",
             "name":"filter",
