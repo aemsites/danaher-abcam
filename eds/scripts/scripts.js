@@ -545,7 +545,10 @@ async function decorateVideo(main) {
             e.preventDefault();
             toggleModalPopUp(link.href, linkContainer);
           });
-          if (firstVideo === 1) buildVideoSchema(posterImage, link.href);
+          const publishDate = getMetadata('publishdate');
+          const publishTime = getMetadata('published-time');
+          const videoPublishDate = publishDate ? new Date(publishDate) : new Date(publishTime);
+          if (firstVideo === 1) buildVideoSchema(videoPublishDate, posterImage, link.href);
           const modalPopUp = createModalPopUp(link.href, linkContainer);
           linkContainer.appendChild(modalPopUp);
         }
