@@ -1473,6 +1473,10 @@ audio::-webkit-media-controls-panel {
   height: 3rem;
 }
 
+.h-0 {
+  height: 0px;
+}
+
 .h-36 {
   height: 9rem;
 }
@@ -2131,6 +2135,10 @@ audio::-webkit-media-controls-panel {
 
 .pt-\[3px\] {
   padding-top: 3px;
+}
+
+.pt-\[56\.25\%\] {
+  padding-top: 56.25%;
 }
 
 .text-left {
