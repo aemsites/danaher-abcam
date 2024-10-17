@@ -14,9 +14,39 @@
             }
           }
         }
+      },
+      {
+        "title": "Sticky Link",
+        "id": "sticky-link",
+        "plugins": {
+          "xwalk": {
+            "page": {
+              "resourceType": "core/franklin/components/block/v1/block/item",
+              "template": {
+                "name": "Sticky Link",
+                "model": "sticky-link"
+              }
+            }
+          }
+        }
       }
     ],
     "models": [],
-    "filters": []
+    "filters": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "link_name",
+        "value": "",
+        "label": "Link Name"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "link_path",
+        "value": "",
+        "label": "Link Path"
+      }
+    ]
   }
   

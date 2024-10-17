@@ -44,7 +44,8 @@
       "speakers-info",
       "download",
       "table",
-      "sticky-links"
+      "sticky-links",
+      "sticky-link"
     ]
   },
   {
@@ -89,6 +90,20 @@
     ]
   },
   {
+    "component": "text",
+    "valueType": "string",
+    "name": "link_name",
+    "value": "",
+    "label": "Link Name"
+  },
+  {
+    "component": "text",
+    "valueType": "string",
+    "name": "link_path",
+    "value": "",
+    "label": "Link Path"
+  },
+  {
     "id": "table",
     "components": [
       "table-row"
@@ -122,6 +137,12 @@
     "id": "teasers",
     "components": [
       "teaser"
+    ]
+  },
+  {
+    "id": "sticky-links",
+    "components": [
+      "sticky-link"
     ]
   }
 ]

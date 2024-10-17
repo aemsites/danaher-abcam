@@ -598,6 +598,21 @@
           }
         },
         {
+          "title": "Sticky Link",
+          "id": "sticky-link",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Sticky Link",
+                  "model": "sticky-link"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Story Hub",
           "id": "story-hub",
           "plugins": {
