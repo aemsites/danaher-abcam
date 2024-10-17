@@ -11,7 +11,10 @@ export default async function decorate(block) {
         if (article.querySelector('p:not(a)')) obj['title'] = article.querySelector('p:not(a)');
         if (article.querySelector('p a')) obj['path'] = article.querySelector('p a')?.href;
         console.log(obj);
-        if (Object.keys(obj).length === 2) articles.push(obj);
+        if (Object.keys(obj).length === 2) {
+          articles.push(obj);
+          article.remove();
+        }
       }
     });
     console.log(articles);
@@ -24,7 +27,7 @@ export default async function decorate(block) {
           isStoryCard: false,
         }));
       });
-      block.innerHTML = '';
+      // block.innerHTML = '';
       const spanEl = p({ class: 'text-sm leading-6 font-semibold uppercase text-[#65797C]' }, 'RELATED LINKS');
       block.append(spanEl, cardList);
     }
