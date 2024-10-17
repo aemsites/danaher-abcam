@@ -7,12 +7,11 @@ export default async function decorate(block) {
   if (block.children.length > 0) {
     [...block.children].forEach((article) => {
       if (article.children.length > 0) {
-        const obj = {
-          title: article.querySelector('p:not(a)'),
-          path: article.querySelector('p a')?.href,
-        };
+        const obj = {};
+        if (article.querySelector('p:not(a)')) obj['title'] = article.querySelector('p:not(a)');
+        if (article.querySelector('p a')) obj['path'] = article.querySelector('p a')?.href;
         console.log(obj);
-        articles.push(obj);
+        if (Object.keys(obj).length === 2) articles.push(obj);
       }
     });
     console.log(articles);
