@@ -11,9 +11,11 @@ export default async function decorate(block) {
           title: article.querySelector('p:not(a)'),
           path: article.querySelector('p a')?.href,
         };
+        console.log(obj);
         articles.push(obj);
       }
     });
+    console.log(articles);
     if (articles.length > 0) {
       const cardList = ul({ class: 'w-full my-3' });
       articles.forEach((article) => {
