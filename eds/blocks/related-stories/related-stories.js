@@ -57,7 +57,7 @@ function createCard(article, firstCard = false) {
       div(
         {
           class:
-            'mt-auto inline-flex w-full pb-5 text-base text-[#378089] font-semibold',
+            'mt-auto inline-flex w-full pb-5 text-base text-[#378189] font-semibold',
         },
         `${footerLink} →`,
       ),

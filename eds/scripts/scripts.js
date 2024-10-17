@@ -23,6 +23,7 @@ import { buildVideoSchema } from './schema.js';
 import ffetch from './ffetch.js';
 
 const LCP_BLOCKS = ['hero', 'hero-video', 'carousel']; // add your LCP blocks to the list
+let ytPlayer;
 
 export function getStoryType(pageTags) {
   const tags = pageTags || getMetadata('pagetags');
@@ -393,7 +394,16 @@ function playAudio({ src = '#' }) {
   return `<audio controls preload="metadata" class = "audio-play-bar" style="width: 100%;" src=${src}/>`;
 }
 
+// Function to check if the video is playing
+function checkVideoStatus() {
+  const state = ytPlayer.getPlayerState();
+  if (state === 1) {
+    ytPlayer.pauseVideo();
+  }
+}
+
 let currentlyPlayingAudio = null; // Global variable to track the currently playing audio
+let previousPlayingAudio = null;
 
 function pauseCurrentAudio() {
   if (currentlyPlayingAudio) {
@@ -410,6 +420,7 @@ function pauseCurrentAudio() {
       }
     }
     currentlyPlayingAudio = null;
+    previousPlayingAudio = null;
   }
 }
 
@@ -419,6 +430,12 @@ async function getOgImage() {
     .filter((item) => item.tags.includes('content-type/film'))
     .all();
   return articles;
+}
+
+//This function is to add the title to the audio if it not the link
+function isValidUrl(string) {
+  const urlPattern = /^(https?:\/\/)?([a-z0-9\-]+\.)+[a-z]{2,}(:\d+)?(\/[^\s]*)?$/i;
+  return urlPattern.test(string);
 }
 
 async function decorateVideo(main) {
@@ -435,15 +452,32 @@ async function decorateVideo(main) {
           linkContainer.classList.add('h-full');
           const videoId = new URL(link.href).searchParams.get('v');
           if (videoId) {
-            const embedURL = `https://www.youtube.com/embed/${videoId}`;
+            const embedURL = `https://www.youtube.com/embed/${videoId}?enablejsapi=1`;
             const embedHTML = `
-              <div class="relative w-full h-full">
-                <iframe src="${embedURL}"
-                class="relative w-full h-full border-0 top-0 left-0" 
-                allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" 
-                scrolling="no" title="Content from Youtube" loading="eager"></iframe>
-              </div>`;
+            <div class="relative w-full h-0 pt-[56.25%]">
+              <iframe id="youtubePlayer" src="${embedURL}"
+              class="absolute h-full w-full top-0 left-0 border-0"
+              allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture"
+              scrolling="no" title="Content from Youtube" loading="eager"></iframe>
+            </div>`;
             linkContainer.innerHTML = embedHTML;
+            const scriptTag = document.createElement('script');
+            scriptTag.src = 'https://www.youtube.com/iframe_api';
+            const firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(scriptTag, firstScriptTag);
+            window.onYouTubeIframeAPIReady = function () {
+              ytPlayer = new YT.Player('youtubePlayer', {
+                events: {
+                  onStateChange: onPlayerStateChange,
+                },
+              });
+            };
+            function onPlayerStateChange(event) {
+              if (event.data === 1 || event.data === -1) {
+                currentlyPlayingAudio = previousPlayingAudio;
+                pauseCurrentAudio();
+              }
+            }
           } else {
             const embedHTML = `<div class="relative w-full h-full">
               <iframe src="${link.href}"
@@ -454,12 +488,12 @@ async function decorateVideo(main) {
             linkContainer.innerHTML = embedHTML;
           }
         } else if (link.title === 'audio') {
-          link.textContent = '';
+          let linkTitle = isValidUrl(link.textContent) ? '' : link.textContent;
           const audioContainer = div(
             { class: 'flex flex-col' },
-            p({ class: 'audio-label text-black no-underline ' }, link.text || ''),
-            span({ class: 'audio-play-icon cursor-pointer w-14 icon icon-Play' }),
-            span({ class: 'audio-play-pause-icon hidden cursor-pointer w-14 icon icon-play-pause' }),
+            p({ class: 'audio-label text-black no-underline ' }, linkTitle || ''),
+            span({ class: 'checkStatus audio-play-icon cursor-pointer w-14 icon icon-Play' }),
+            span({ class: 'checkStatus audio-play-pause-icon hidden cursor-pointer w-14 icon icon-play-pause' }),
           );
 
           const parent = link.parentElement;
@@ -491,6 +525,10 @@ async function decorateVideo(main) {
               currentlyPlayingAudio = audioElement; // Update the currently playing audio
               isPlaying = true;
               updateIconVisibility();
+              if (playIcon.closest('.columns')) {
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'none';
+              }
             }
           });
 
@@ -503,16 +541,22 @@ async function decorateVideo(main) {
           });
 
           audioElement.addEventListener('play', () => {
+            if (previousPlayingAudio){
+              previousPlayingAudio.pause();
+            }
+            previousPlayingAudio = audioElement;
+            checkVideoStatus();        
             isPlaying = true;
             updateIconVisibility();
           });
-
           audioElement.addEventListener('pause', () => {
+            if (audioElement === previousPlayingAudio)
+              previousPlayingAudio = null;
             isPlaying = false;
             updateIconVisibility();
           });
-
           updateIconVisibility();
+          audioContainer.querySelector('.checkStatus')?.addEventListener('click', checkVideoStatus);
         }
       });
     } else if (type.includes('film')) {
@@ -545,7 +589,10 @@ async function decorateVideo(main) {
             e.preventDefault();
             toggleModalPopUp(link.href, linkContainer);
           });
-          if (firstVideo === 1) buildVideoSchema(posterImage, link.href);
+          const publishDate = getMetadata('publishdate');
+          const publishTime = getMetadata('published-time');
+          const videoPublishDate = publishDate ? new Date(publishDate) : new Date(publishTime);
+          if (firstVideo === 1) buildVideoSchema(videoPublishDate, posterImage, link.href);
           const modalPopUp = createModalPopUp(link.href, linkContainer);
           linkContainer.appendChild(modalPopUp);
         }
@@ -797,28 +844,31 @@ export function createFilters({
   listActionHandler = () => {},
   clearFilterHandler = () => {},
   limit = 6,
+  sort = 'ASC',
 }) {
-  const output = filterNames.reduce((obj, key) => {
-    obj[key] = new Set();
-    return obj;
-  }, {});
-
+  const tempArr = {};
   lists.forEach((list) => {
     const parts = list?.tags?.split(', ');
     parts.forEach((part) => {
       const [key, value] = part.split('/');
       filterNames.forEach((name) => {
         if (key.includes(name)) {
-          output[name].add(value);
+          if (!(name in tempArr)) tempArr[name] = [];
+          if (!tempArr[name].includes(value)) tempArr[name].push(value);
+        }
+        if (name in tempArr && tempArr[name].length > 0) {
+          sort.toUpperCase() === 'ASC'
+            ? tempArr[name].sort()
+            : tempArr[name].sort().reverse()
         }
       });
     });
   });
 
-  Object.keys(output).forEach((categoryKey, categoryIndex) => {
-    const lists = ul({ class: 'space-y-2 mt-2' });
-    [...output[categoryKey]].map((categoryValue, categoryIndex) => {
-      lists.append(li(
+  Object.keys(tempArr).forEach((categoryKey, categoryIndex) => {
+    const listsEl = ul({ class: 'space-y-2 mt-2' });
+    [...tempArr[categoryKey]].map((categoryValue, categoryIndex) => {
+      listsEl.append(li(
         categoryIndex >= limit ? { class: 'hidden' } : '',
         label(
           {
@@ -840,8 +890,8 @@ export function createFilters({
     });
 
     // Add "Show More" button if needed
-    if (limit !== 0 && output[categoryKey].length > limit) {
-      lists.append(
+    if (limit !== 0 && tempArr[categoryKey].length > limit) {
+      listsEl.append(
         li(
           span(
             {
@@ -868,19 +918,19 @@ export function createFilters({
     const accordionSection = div(
       { class: `flex flex-col px-6 py-4 border-b md:border border-gray-300 ${categoryIndex > 0 ? 'md:mt-4' : ''} md:rounded-xl [&_div:not(.hidden)~p]:mb-3 [&_div:not(.hidden)~p_.icon]:rotate-180` },
       p(
-        { class: 'flex items-center justify-between my-0' },
-        span({ class: 'text-base font-bold capitalize' }, categoryKey.replace('-', ' ')),
-        span({
-          class: 'icon icon-chevron-down size-5 cursor-pointer',
+        {
+          class: 'flex items-center justify-between my-0 cursor-pointer',
           onclick: () => {
-            lists.parentElement.classList.toggle('hidden');
-            lists.parentElement.previousElementSibling.children[1].classList.toggle('rotate-180');
+            listsEl.parentElement.classList.toggle('hidden');
+            listsEl.parentElement.previousElementSibling.children[1].classList.toggle('rotate-180');
           },
-        }),
+        },
+        span({ class: 'text-base font-bold capitalize' }, categoryKey.replace('-', ' ')),
+        span({ class: 'icon icon-chevron-down size-5 rotate-180' }),
       ),
       div(
         { class: 'flex flex-col-reverse [&_ul:has(:checked)+*]:block' },
-        lists,
+        listsEl,
         span({
           class: 'hidden text-xs leading-5 font-medium text-[#378189] mt-1 cursor-pointer hover:underline underline-offset-1',
           onclick: () => clearFilterHandler(categoryKey),
@@ -888,7 +938,7 @@ export function createFilters({
       ),
     );
 
-    if (lists.children.length > 0) element.append(accordionSection);
+    if (listsEl.children.length > 0) element.append(accordionSection);
   });
 }
 
@@ -915,12 +965,12 @@ export function createCard({
       div(
         { class: 'flex-1' },
         h3({ class: 'text-black font-medium mt-4 break-words line-clamp-4' }, title),
-        p({ class: 'line-clamp-3' }, description),
+        p({ class: 'text-sm line-clamp-3' }, description),
         bodyEl,
       ),
       footerLink !== ''
         ? a({
-          class: 'text-base leading-5 text-[#378089] font-bold p-2 pl-0 group-hover:tracking-wide group-hover:underline transition duration-700 mt-2',
+          class: 'text-base leading-5 text-[#378189] font-bold p-2 pl-0 group-hover:tracking-wide group-hover:underline transition duration-700 mt-2',
           href: path,
         }, footerLink)
         : '',
@@ -941,8 +991,8 @@ export function createCard({
         break;
     }
     card.querySelector('.flex-1').prepend(
-      span({ class: 'capitalize font-normal text-sm' }, `${getStoryType(tags)}`),
-      span({ class: 'font-normal text-sm' }, `${minRead}`),
+      span({ class: 'capitalize font-normal text-sm text-[#65697C] font-["rockwell"]' }, `${getStoryType(tags)}`),
+      span({ class: 'font-normal text-sm text-[#65697C] font-["rockwell"]' }, `${minRead}`),
     );
   }
   return card;
@@ -956,9 +1006,13 @@ function getDLPage() {
     type: 'Content',
   };
   const path = window.location.pathname;
-  if (path.includes('/en-us/stories')) {
+  const langPrefix = '/en-us/';
+  const regex = new RegExp(`${langPrefix}([^/]+)`);
+  const match = path.match(regex);
+  if (match) {
+    const extractedPath = match[1];
     page.event = 'Virtual Page View';
-    page.type = 'Stories';
+    page.type = extractedPath;
     page.path = path;
     page.subType = null;
   }
