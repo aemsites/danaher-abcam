@@ -288,9 +288,9 @@ const fileMappings = [
     wrapper: 'speakers-info-wrapper',
   },
   {
-    content: './eds/blocks/sticky-links/sticky-links.js',
-    output: './eds/blocks/sticky-links/sticky-links.css',
-    wrapper: 'sticky-links-wrapper',
+    content: './eds/blocks/related-links/related-links.js',
+    output: './eds/blocks/related-links/related-links.css',
+    wrapper: 'related-links-wrapper',
   },
 ];
 
