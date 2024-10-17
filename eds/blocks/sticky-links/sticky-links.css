@@ -7,6 +7,10 @@
   display: block
 }
 
+.sticky-links-wrapper :is(.hidden) {
+  display: none
+}
+
 .sticky-links-wrapper :is(.w-full) {
   width: 100%
 }
