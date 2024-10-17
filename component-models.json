@@ -258,15 +258,6 @@
             "value": "audio"
           }
         ]
-      },
-      {
-        "component": "date-time",
-        "valueType": "date-time",
-        "name": "media_publishDate",
-        "label": "Video Publish Date",
-        "placeholder": "YYYY-MM-DD",
-        "displayFormat": null,
-        "valueFormat": null
       }
     ]
   },
@@ -1489,15 +1480,6 @@
             "value": "audio"
           }
         ]
-      },
-      {
-        "component": "date-time",
-        "valueType": "date-time",
-        "name": "media_publishDate",
-        "label": "Video Publish Date",
-        "placeholder": "YYYY-MM-DD",
-        "displayFormat": null,
-        "valueFormat": null
       }
     ]
   },
