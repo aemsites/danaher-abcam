@@ -31,21 +31,37 @@
         }
       }
     ],
-    "models": [],
-    "filters": [
+    "models": [
       {
-        "component": "text",
-        "valueType": "string",
-        "name": "link_name",
-        "value": "",
-        "label": "Link Name"
+        "id": "sticky-links",
+        "fields": []
       },
       {
-        "component": "text",
-        "valueType": "string",
-        "name": "link_path",
-        "value": "",
-        "label": "Link Path"
+        "id": "sticky-link",
+        "fields": [
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "link_name",
+            "value": "",
+            "label": "Link Name"
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "link_path",
+            "value": "",
+            "label": "Link Path"
+          }
+        ]
+      }
+    ],
+    "filters": [
+      {
+        "id": "sticky-links",
+        "components": [
+          "sticky-link"
+        ]
       }
     ]
   }
