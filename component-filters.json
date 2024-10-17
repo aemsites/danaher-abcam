@@ -96,25 +96,25 @@
   {
     "id": "table-2-columns",
     "components": [
-      "table-col-2"
+      "table-row-col-2"
     ]
   },
   {
     "id": "table-3-columns",
     "components": [
-      "table-col-3"
+      "table-row-col-3"
     ]
   },
   {
     "id": "table-4-columns",
     "components": [
-      "table-col-4"
+      "table-row-col-4"
     ]
   },
   {
     "id": "table-5-columns",
     "components": [
-      "table-col-5"
+      "table-row-col-5"
     ]
   },
   {

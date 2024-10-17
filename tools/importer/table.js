@@ -13,15 +13,14 @@ const mapTable = (table, document) => {
     tRows.forEach((row, index) => {
         const tDatas = row.querySelectorAll('td');
         row.innerHTML = '';
-        const newData = document.createElement('td');
-        const newDiv = document.createElement('div');
+
         tDatas.forEach((data) => {
-            const newDivData = document.createElement('div');
-            newDivData.textContent = data.textContent;
-            newDiv.append(newDivData);
+            const newData = document.createElement('td');
+            //const newDivData = document.createElement('div');
+            newData.textContent = data.textContent;
+            // newData.append(newDivData);
+            row.append(newData);
         });
-        newData.append(newDiv);
-        row.append(newData);
         table.append(row);
 
     });
@@ -33,7 +32,7 @@ const mapTable = (table, document) => {
         const row = tHead.insertRow(0);
         const th = document.createElement('th');
         th.setAttribute('colspan', colSpan);
-        th.textContent = tableName;
+        th.textContent = `table-row-col-${colSpan}`;
         row.appendChild(th);
     }
 };
