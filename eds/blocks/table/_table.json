@@ -38,7 +38,7 @@
         "plugins": {
           "xwalk": {
             "page": {
-              "resourceType": "core/franklin/components/block/v1/block",
+              "resourceType": "core/franklin/components/block/v1/block/item",
               "template": {
                 "name": "table-row-col-2",
                 "model": "table-row-col-2",
@@ -56,7 +56,7 @@
         "plugins": {
           "xwalk": {
             "page": {
-              "resourceType": "core/franklin/components/block/v1/block",
+              "resourceType": "core/franklin/components/block/v1/block/item",
               "template": {
                 "name": "table-row-col-3",
                 "model": "table-row-col-3",
@@ -75,7 +75,7 @@
         "plugins": {
           "xwalk": {
             "page": {
-              "resourceType": "core/franklin/components/block/v1/block",
+              "resourceType": "core/franklin/components/block/v1/block/item",
               "template": {
                 "name": "table-row-col-4",
                 "model": "table-row-col-4",
@@ -105,6 +105,28 @@
                 "column3text": "Column3",
                 "column4text": "Column4",
                 "column5text": "Column5"
+              }
+            }
+          }
+        }
+      },
+      {
+        "title": "Table Row 6",
+        "id": "table-row-col-6",
+        "plugins": {
+          "xwalk": {
+            "page": {
+              "resourceType": "core/franklin/components/block/v1/block/item",
+              "template": {
+                "name": "table-row-col-6",
+                "model": "table-row-col-6",
+                "filter": "table-6-columns",
+                "column1text" : "Column1",
+                "column2text": "Column2",
+                "column3text": "Column3",
+                "column4text": "Column4",
+                "column5text": "Column5",
+                "column6text": "Column6"
               }
             }
           }
@@ -261,6 +283,47 @@
             "label": "Column5"
           }
         ]
+      },
+      {
+        "id": "table-row-col-6",
+        "fields": [
+          {
+            "component": "richtext",
+            "valueType": "string",
+            "name": "column1text",
+            "label": "Column1"
+          },
+          {
+            "component": "richtext",
+            "valueType": "string",
+            "name": "column2text",
+            "label": "Column2"
+          },
+          {
+            "component": "richtext",
+            "valueType": "string",
+            "name": "column3text",
+            "label": "Column3"
+          },
+          {
+            "component": "richtext",
+            "valueType": "string",
+            "name": "column4text",
+            "label": "Column4"
+          },
+          {
+            "component": "richtext",
+            "valueType": "string",
+            "name": "column5text",
+            "label": "Column5"
+          },
+          {
+            "component": "richtext",
+            "valueType": "string",
+            "name": "column6text",
+            "label": "Column6"
+          }
+        ]
       }
     ],
     "filters": [
@@ -285,6 +348,10 @@
       {
         "id":"table-5-columns",
         "components":["table-row-col-5"]
+      },
+      {
+        "id":"table-6-columns",
+        "components":["table-row-col-6"]
       }
     ]
   }

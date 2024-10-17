@@ -1,6 +1,6 @@
 const mapTable = (table, document) => {
     const tRows = table.querySelectorAll('tr');
-    const colSpan = tRows[0].querySelectorAll('td').length;    
+    const colSpan = tRows[0].querySelectorAll('th').length === 0 ? tRows[0].querySelectorAll('td').length : tRows[0].querySelectorAll('th').length;    
     table.innerHTML = '';
     const newRow = document.createElement('tr');
     const newData = document.createElement('td');
@@ -10,15 +10,15 @@ const mapTable = (table, document) => {
     newRow.append(newData);
     table.append(newRow);
 
-    tRows.forEach((row, index) => {
+    tRows.forEach((row) => {
         const tDatas = row.querySelectorAll('td');
         row.innerHTML = '';
 
         tDatas.forEach((data) => {
             const newData = document.createElement('td');
-            //const newDivData = document.createElement('div');
-            newData.textContent = data.textContent;
-            // newData.append(newDivData);
+            const newDiv = document.createElement('div');
+            newDiv.textContent = data.textContent;
+            newData.append(newDiv);
             row.append(newData);
         });
         table.append(row);
@@ -33,6 +33,7 @@ const mapTable = (table, document) => {
         const th = document.createElement('th');
         th.setAttribute('colspan', colSpan);
         th.textContent = `table-row-col-${colSpan}`;
+        console.log(colSpan);
         row.appendChild(th);
     }
 };

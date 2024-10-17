@@ -118,6 +118,12 @@
     ]
   },
   {
+    "id": "table-6-columns",
+    "components": [
+      "table-row-col-6"
+    ]
+  },
+  {
     "id": "teasers",
     "components": [
       "teaser"
