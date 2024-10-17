@@ -11,7 +11,7 @@ export default function decorate(block) {
   const articleType = getMetadata('template').toLowerCase();
   const goParentBack = a(
     {
-      class: 'flex items-center gap-2 text-base text-[#378189] font-bold mb-10 md:mb-0',
+      class: 'flex items-center gap-2 text-base text-[#378189] font-bold mb-10',
       href: goBack(),
     },
     span({ class: 'icon icon-arrow-left size-6 items-center' }),
