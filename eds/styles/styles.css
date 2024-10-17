@@ -1513,6 +1513,10 @@ audio::-webkit-media-controls-panel {
   height: 100vh;
 }
 
+.h-0 {
+  height: 0px;
+}
+
 .w-1\/2 {
   width: 50%;
 }
@@ -2131,6 +2135,10 @@ audio::-webkit-media-controls-panel {
 
 .pt-\[3px\] {
   padding-top: 3px;
+}
+
+.pt-\[56\.25\%\] {
+  padding-top: 56.25%;
 }
 
 .text-left {

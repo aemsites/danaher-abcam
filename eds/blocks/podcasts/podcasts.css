@@ -14,6 +14,10 @@
   grid-column: span 3 / span 3
 }
 
+.podcasts-wrapper :is(.m-0) {
+  margin: 0px
+}
+
 .podcasts-wrapper :is(.\!my-0) {
   margin-top: 0px !important;
   margin-bottom: 0px !important
@@ -25,6 +29,10 @@
 
 .podcasts-wrapper :is(.ml-0) {
   margin-left: 0px
+}
+
+.podcasts-wrapper :is(.mt-6) {
+  margin-top: 1.5rem
 }
 
 .podcasts-wrapper :is(.block) {
@@ -67,6 +75,10 @@
   align-items: center
 }
 
+.podcasts-wrapper :is(.\!items-center) {
+  align-items: center !important
+}
+
 .podcasts-wrapper :is(.justify-between) {
   justify-content: space-between
 }
@@ -77,6 +89,10 @@
 
 .podcasts-wrapper :is(.gap-6) {
   gap: 1.5rem
+}
+
+.podcasts-wrapper :is(.gap-4) {
+  gap: 1rem
 }
 
 .podcasts-wrapper :is(.border-b-2) {
@@ -98,6 +114,11 @@
   padding-bottom: 2rem
 }
 
+.podcasts-wrapper :is(.\!text-lg) {
+  font-size: 1.125rem !important;
+  line-height: 1.75rem !important
+}
+
 @media (min-width: 1024px) {
   .podcasts-wrapper :is(.lg\:absolute) {
     position: absolute
@@ -111,8 +132,16 @@
     top: 0px
   }
 
+  .podcasts-wrapper :is(.lg\:right-8) {
+    right: 2rem
+  }
+
   .podcasts-wrapper :is(.lg\:ml-6) {
     margin-left: 1.5rem
+  }
+
+  .podcasts-wrapper :is(.lg\:mt-0) {
+    margin-top: 0px
   }
 
   .podcasts-wrapper :is(.lg\:h-48) {
@@ -137,6 +166,20 @@
 
   .podcasts-wrapper :is(.lg\:gap-4) {
     gap: 1rem
+  }
+
+  .podcasts-wrapper :is(.lg\:gap-2) {
+    gap: 0.5rem
+  }
+
+  .podcasts-wrapper :is(.lg\:px-8) {
+    padding-left: 2rem;
+    padding-right: 2rem
+  }
+
+  .podcasts-wrapper :is(.lg\:\!text-2xl) {
+    font-size: 1.5rem !important;
+    line-height: 2rem !important
   }
 }
 
