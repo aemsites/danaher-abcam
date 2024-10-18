@@ -44,8 +44,8 @@ function createCard(article, firstCard = false) {
     imageHelper(imageUrl.pathname, article.title, firstCard),
     div(
       { class: 'py-2' },
-      span({ class: 'capitalize font-normal text-sm' }, `${getStoryType(tags)}`),
-      span({ class: 'font-normal text-sm' }, `${minRead}`),
+      span({ class: 'capitalize font-[rockwell] text-[#65697C] text-sm' }, `${getStoryType(tags)}`),
+      span({ class: 'font-[rockwell] text-[#65697C] text-sm' }, `${minRead}`),
       h3(
         {
           class:
@@ -53,7 +53,7 @@ function createCard(article, firstCard = false) {
         },
         cardTitle,
       ),
-      p({ class: 'text-sm font-normal line-clamp-3 break-words !h-28' }, article.description),
+      p({ class: 'text-sm font-normal line-clamp-3 break-words !h-[7.5rem]' }, article.description),
       div(
         {
           class:
@@ -99,7 +99,7 @@ export default async function decorate(block) {
 
   const cardList = ul({
     class:
-          'container grid max-w-7xl w-full mx-auto gap-6 grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 px-3 lg:px-6 xl:px-0 sm:px-0 justify-items-center mt-3 mb-3',
+          'container grid max-w-7xl w-full mx-auto gap-6 grid-cols-1 sm:grid-cols-1 sm:px-0 lg:grid-cols-3 lg:px-6 xl:px-0  justify-items-center mt-3 mb-3',
   });
   articles.forEach((article, index) => {
     cardList.appendChild(createCard(article, index === 0));
