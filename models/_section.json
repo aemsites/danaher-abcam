@@ -33,12 +33,8 @@
               "value": "highlight"
             },
             {
-              "name": "2 Columns (50-50)",
-              "value": "2-col-width-1-2"
-            },
-            {
-              "name": "2 Columns (25-75)",
-              "value": "2-col-width-1-4"
+              "name": "2 Columns",
+              "value": "cols-2"
             }            
           ]
         },
