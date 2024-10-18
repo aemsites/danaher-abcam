@@ -91,6 +91,10 @@
         @apply pl-6 list-decimal;
     }
 
+    .default-content-wrapper > ul {
+        @apply pl-6 list-disc;
+    }
+
     body.stories main .story-middle-container,
     body.appear main .section.story-hub-container {
         @apply px-6;

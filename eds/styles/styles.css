@@ -836,6 +836,11 @@ header {
   padding-left: 1.5rem;
 }
 
+.default-content-wrapper > ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
 body.stories main .story-middle-container,
     body.appear main .section.story-hub-container {
   padding-left: 1.5rem;
