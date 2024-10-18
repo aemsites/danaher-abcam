@@ -259,6 +259,7 @@ const TEMPLATE_LIST = [
   'search-results',
   'stories',
   'webinars',
+  'guides'
 ];
 
 async function decorateTemplates(main) {
