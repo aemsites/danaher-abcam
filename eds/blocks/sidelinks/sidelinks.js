@@ -26,7 +26,7 @@ export default function decorate(block) {
     if (imgElement) {
       // Set the width and height for apple-podcast icon
       imgElement.setAttribute('width', '202');
-      imgElement.setAttribute('height', '44'); 
+      imgElement.setAttribute('height', '44');
     }
     container.prepend(iconContainer);
   }
