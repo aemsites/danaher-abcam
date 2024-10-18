@@ -32,7 +32,7 @@ const mapTable = (table, document) => {
         const row = tHead.insertRow(0);
         const th = document.createElement('th');
         th.setAttribute('colspan', colSpan);
-        th.textContent = `table-row-col-${colSpan}`;
+        th.textContent = `table-col-${colSpan}`;
         console.log(colSpan);
         row.appendChild(th);
     }

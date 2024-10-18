@@ -34,14 +34,14 @@
       },
       {
         "title": "Table Row 2",
-        "id": "table-row-col-2",
+        "id": "table-col-2",
         "plugins": {
           "xwalk": {
             "page": {
               "resourceType": "core/franklin/components/block/v1/block/item",
               "template": {
-                "name": "table-row-col-2",
-                "model": "table-row-col-2",
+                "name": "table-col-2",
+                "model": "table-col-2",
                 "filter": "table-2-columns",
                 "column1text" : "Column1",
                 "column2text": "Column2"
@@ -52,14 +52,14 @@
       },
       {
         "title": "Table Row 3",
-        "id": "table-row-col-3",
+        "id": "table-col-3",
         "plugins": {
           "xwalk": {
             "page": {
               "resourceType": "core/franklin/components/block/v1/block/item",
               "template": {
-                "name": "table-row-col-3",
-                "model": "table-row-col-3",
+                "name": "table-col-3",
+                "model": "table-col-3",
                 "filter": "table-3-columns",
                 "column1text" : "Column1",
                 "column2text": "Column2",
@@ -71,14 +71,14 @@
       },
       {
         "title": "Table Row 3",
-        "id": "table-row-col-4",
+        "id": "table-col-4",
         "plugins": {
           "xwalk": {
             "page": {
               "resourceType": "core/franklin/components/block/v1/block/item",
               "template": {
-                "name": "table-row-col-4",
-                "model": "table-row-col-4",
+                "name": "table-col-4",
+                "model": "table-col-4",
                 "filter": "table-4-columns",
                 "column1text" : "Column1",
                 "column2text": "Column2",
@@ -91,14 +91,14 @@
       },
       {
         "title": "Table Row 5",
-        "id": "table-row-col-5",
+        "id": "table-col-5",
         "plugins": {
           "xwalk": {
             "page": {
               "resourceType": "core/franklin/components/block/v1/block/item",
               "template": {
-                "name": "table-row-col-5",
-                "model": "table-row-col-5",
+                "name": "table-col-5",
+                "model": "table-col-5",
                 "filter": "table-5-columns",
                 "column1text" : "Column1",
                 "column2text": "Column2",
@@ -112,14 +112,14 @@
       },
       {
         "title": "Table Row 6",
-        "id": "table-row-col-6",
+        "id": "table-col-6",
         "plugins": {
           "xwalk": {
             "page": {
               "resourceType": "core/franklin/components/block/v1/block/item",
               "template": {
-                "name": "table-row-col-6",
-                "model": "table-row-col-6",
+                "name": "table-col-6",
+                "model": "table-col-6",
                 "filter": "table-6-columns",
                 "column1text" : "Column1",
                 "column2text": "Column2",
@@ -181,7 +181,7 @@
         ]
       },
       {
-        "id": "table-row-col-2",
+        "id": "table-col-2",
         "fields": [
           {
             "component": "richtext",
@@ -198,7 +198,7 @@
         ]
       },
       {
-        "id": "table-row-col-3",
+        "id": "table-col-3",
         "fields": [
           {
             "component": "richtext",
@@ -221,7 +221,7 @@
         ]
       },
       {
-        "id": "table-row-col-4",
+        "id": "table-col-4",
         "fields": [
           {
             "component": "richtext",
@@ -250,7 +250,7 @@
         ]
       },
       {
-        "id": "table-row-col-5",
+        "id": "table-col-5",
         "fields": [
           {
             "component": "richtext",
@@ -285,7 +285,7 @@
         ]
       },
       {
-        "id": "table-row-col-6",
+        "id": "table-col-6",
         "fields": [
           {
             "component": "richtext",
@@ -335,23 +335,23 @@
       },
       {
         "id":"table-2-columns",
-        "components":["table-row-col-2"]
+        "components":["table-col-2"]
       },
       {
         "id":"table-3-columns",
-        "components":["table-row-col-3"]
+        "components":["table-col-3"]
       },
       {
         "id":"table-4-columns",
-        "components":["table-row-col-4"]
+        "components":["table-col-4"]
       },
       {
         "id":"table-5-columns",
-        "components":["table-row-col-5"]
+        "components":["table-col-5"]
       },
       {
         "id":"table-6-columns",
-        "components":["table-row-col-6"]
+        "components":["table-col-6"]
       }
     ]
   }
