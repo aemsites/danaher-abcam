@@ -53,10 +53,6 @@
   display: flex
 }
 
-.sidelinks-wrapper :is(.aspect-video) {
-  aspect-ratio: 16 / 9
-}
-
 .sidelinks-wrapper :is(.w-auto) {
   width: auto
 }
