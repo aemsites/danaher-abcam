@@ -19,11 +19,15 @@ export default function decorate(block) {
         link.textContent = '';
         link.append(icon);
         iconContainer.querySelector('.icon-container')?.append(link);
-        const iconspan = iconContainer.querySelector('span');
-        applyClasses(iconspan, 'aspect-video');
       }
     });
-    decorateIcons(iconContainer, 202);
+    decorateIcons(iconContainer, 135, 44);
+    const imgElement = iconContainer.querySelector('span.icon img[data-icon-name="apple-podcast"]');
+    if (imgElement) {
+      // Set the width and height for apple-podcast icon
+      imgElement.setAttribute('width', '202');
+      imgElement.setAttribute('height', '44'); 
+    }
     container.prepend(iconContainer);
   }
   const divEl = block.querySelector('div > div');
