@@ -109,9 +109,9 @@ const fileMappings = [
     wrapper: 'child-page-wrapper',
   },
   {
-    content: './eds/blocks/table-block/table-block.js',
-    output: './eds/blocks/table-block/table-block.css',
-    wrapper: 'table-block-wrapper',
+    content: './eds/blocks/table/table.js',
+    output: './eds/blocks/table/table.css',
+    wrapper: 'table-wrapper',
   },
   {
     content: './eds/blocks/title-card/title-card.js',
@@ -139,9 +139,9 @@ const fileMappings = [
     wrapper: 'drawer-wrapper',
   },
   {
-    content: './eds/blocks/download-block/download-block.js',
-    output: './eds/blocks/download-block/download-block.css',
-    wrapper: 'download-block-wrapper',
+    content: './eds/blocks/download/download.js',
+    output: './eds/blocks/download/download.css',
+    wrapper: 'download-wrapper',
   },
   {
     content: './eds/blocks/tab-component/tab-component.js',
@@ -277,6 +277,15 @@ const fileMappings = [
     content: ['./eds/blocks/dynamic-cards/dynamic-cards.js', './eds/blocks/dynamic-cards/articleCard.js'],
     output: './eds/blocks/dynamic-cards/dynamic-cards.css',
     wrapper: 'dynamic-cards-wrapper',
+  },
+  {
+    content: './eds/templates/webinars/webinars.js',
+    output: './eds/templates/webinars/webinars.css',
+  },
+  {
+    content: './eds/blocks/speakers-info/speakers-info.js',
+    output: './eds/blocks/speakers-info/speakers-info.css',
+    wrapper: 'speakers-info-wrapper',
   },
   {
     content: './eds/blocks/sidelinks/sidelinks.js',

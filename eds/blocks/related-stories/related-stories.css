@@ -88,8 +88,8 @@
   height: 4rem !important
 }
 
-.related-stories-wrapper :is(.\!h-28) {
-  height: 7rem !important
+.related-stories-wrapper :is(.\!h-\[7\.5rem\]) {
+  height: 7.5rem !important
 }
 
 .related-stories-wrapper :is(.h-full) {
@@ -141,11 +141,6 @@
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
 }
 
-.related-stories-wrapper :is(.px-3) {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem
-}
-
 .related-stories-wrapper :is(.py-2) {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem
@@ -153,6 +148,10 @@
 
 .related-stories-wrapper :is(.pb-5) {
   padding-bottom: 1.25rem
+}
+
+.related-stories-wrapper :is(.font-\[rockwell\]) {
+  font-family: rockwell
 }
 
 .related-stories-wrapper :is(.text-base) {
@@ -181,9 +180,14 @@
   text-transform: capitalize
 }
 
-.related-stories-wrapper :is(.text-\[\#378089\]) {
+.related-stories-wrapper :is(.text-\[\#378189\]) {
   --tw-text-opacity: 1;
-  color: rgb(55 128 137 / var(--tw-text-opacity))
+  color: rgb(55 129 137 / var(--tw-text-opacity))
+}
+
+.related-stories-wrapper :is(.text-\[\#65697C\]) {
+  --tw-text-opacity: 1;
+  color: rgb(101 105 124 / var(--tw-text-opacity))
 }
 
 .related-stories-wrapper :is(.text-black) {

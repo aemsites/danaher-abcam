@@ -1,0 +1,11 @@
+.table-wrapper :is(.\!block) {
+  display: block !important
+}
+
+.table-wrapper :is(.block) {
+  display: block
+}
+
+.table-wrapper :is(.table) {
+  display: table
+}
