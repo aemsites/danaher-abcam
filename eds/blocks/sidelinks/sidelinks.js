@@ -1,5 +1,6 @@
 import { div, p, span } from '../../scripts/dom-builder.js';
 import { getMetadata, decorateIcons } from '../../scripts/aem.js';
+import { applyClasses } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
   const main = document.querySelector('.sidelinks-container .w-full .default-content-wrapper');
@@ -18,19 +19,21 @@ export default function decorate(block) {
         link.textContent = '';
         link.append(icon);
         iconContainer.querySelector('.icon-container')?.append(link);
+        const iconspan = iconContainer.querySelector('span');
+        applyClasses(iconspan, 'aspect-video');
       }
     });
     decorateIcons(iconContainer, 202);
     container.prepend(iconContainer);
   }
   const divEl = block.querySelector('div > div');
-  divEl.classList.add(...'sidelinks leading-5 text-sm font-bold text-black flex flex-col gap-y-3'.split(' '));
+  applyClasses(divEl, 'sidelinks leading-5 text-sm font-bold text-black flex flex-col gap-y-3');
   const allParagraphs = main.querySelectorAll('p a[title="link"]');
   const linkHeading = 'Explore our products';
   if (allParagraphs.length > 0) {
     divEl.append(p(linkHeading));
     allParagraphs.forEach((elPara) => {
-      elPara.classList.add(...'border-b border-b-gray-300 py-2 mx-0 w-auto mt-2 pb-3'.split(' '));
+      applyClasses(elPara, 'border-b border-b-gray-300 py-2 mx-0 w-auto mt-2 pb-3');
       divEl.append(p({ class: 'leading-5 text-base font-medium text-[#378189]' }, elPara));
     });
   }
