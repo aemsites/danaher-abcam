@@ -47,6 +47,11 @@
   justify-content: center
 }
 
+.breadcrumb-wrapper :is(.px-\[30px\]) {
+  padding-left: 30px;
+  padding-right: 30px
+}
+
 .breadcrumb-wrapper :is(.font-sans) {
   font-family: Noto Sans
 }

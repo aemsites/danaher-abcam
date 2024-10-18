@@ -360,6 +360,10 @@
           {
             "name": "Highlight",
             "value": "highlight"
+          },
+          {
+            "name": "2 Columns",
+            "value": "cols-2"
           }
         ]
       },
