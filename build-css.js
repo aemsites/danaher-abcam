@@ -287,6 +287,11 @@ const fileMappings = [
     output: './eds/blocks/speakers-info/speakers-info.css',
     wrapper: 'speakers-info-wrapper',
   },
+  {
+    content: './eds/blocks/sidelinks/sidelinks.js',
+    output: './eds/blocks/sidelinks/sidelinks.css',
+    wrapper: 'sidelinks-wrapper',
+  },
 ];
 
 const watch = process.argv[2];

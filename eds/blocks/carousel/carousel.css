@@ -64,6 +64,10 @@
   display: grid
 }
 
+.carousel-wrapper :is(.aspect-video) {
+  aspect-ratio: 16 / 9
+}
+
 .carousel-wrapper :is(.h-3) {
   height: 0.75rem
 }
@@ -76,12 +80,12 @@
   height: 2rem
 }
 
-.carousel-wrapper :is(.h-\[31\.5rem\]) {
-  height: 31.5rem
+.carousel-wrapper :is(.h-96) {
+  height: 24rem
 }
 
-.carousel-wrapper :is(.h-auto) {
-  height: auto
+.carousel-wrapper :is(.h-\[31\.5rem\]) {
+  height: 31.5rem
 }
 
 .carousel-wrapper :is(.h-full) {
@@ -110,10 +114,6 @@
 
 .carousel-wrapper :is(.max-w-7xl) {
   max-width: 80rem
-}
-
-.carousel-wrapper :is(.flex-auto) {
-  flex: 1 1 auto
 }
 
 .carousel-wrapper :is(.transform) {
@@ -231,19 +231,9 @@
   border-color: rgb(0 0 0 / var(--tw-border-opacity))
 }
 
-.carousel-wrapper :is(.bg-black) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity))
-}
-
 .carousel-wrapper :is(.bg-white) {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
-}
-
-.carousel-wrapper :is(.object-cover) {
-  -o-object-fit: cover;
-     object-fit: cover
 }
 
 .carousel-wrapper :is(.\!px-6) {
@@ -254,11 +244,6 @@
 .carousel-wrapper :is(.\!py-16) {
   padding-top: 4rem !important;
   padding-bottom: 4rem !important
-}
-
-.carousel-wrapper :is(.px-0) {
-  padding-left: 0px;
-  padding-right: 0px
 }
 
 .carousel-wrapper :is(.px-4) {
@@ -276,8 +261,8 @@
   padding-bottom: 2rem
 }
 
-.carousel-wrapper :is(.pt-24) {
-  padding-top: 6rem
+.carousel-wrapper :is(.pt-10) {
+  padding-top: 2.5rem
 }
 
 .carousel-wrapper :is(.pt-8) {
@@ -369,13 +354,12 @@
 }
 
 @media (min-width: 768px) {
-  .carousel-wrapper :is(.md\:flex-row) {
-    flex-direction: row
+  .carousel-wrapper :is(.md\:h-72) {
+    height: 18rem
   }
 
-  .carousel-wrapper :is(.md\:px-6) {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem
+  .carousel-wrapper :is(.md\:flex-row) {
+    flex-direction: row
   }
 
   .carousel-wrapper :is(.md\:text-4xl) {
@@ -415,13 +399,17 @@
     margin-bottom: auto
   }
 
+  .carousel-wrapper :is(.lg\:h-auto) {
+    height: auto
+  }
+
   .carousel-wrapper :is(.lg\:w-1\/2) {
     width: 50%
   }
 
-  .carousel-wrapper :is(.lg\:bg-white) {
-    --tw-bg-opacity: 1;
-    background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+  .carousel-wrapper :is(.lg\:object-cover) {
+    -o-object-fit: cover;
+       object-fit: cover
   }
 
   .carousel-wrapper :is(.lg\:px-4) {
