@@ -1469,12 +1469,12 @@ audio::-webkit-media-controls-panel {
   height: 100%;
 }
 
-.h-12 {
-  height: 3rem;
-}
-
 .h-0 {
   height: 0px;
+}
+
+.h-12 {
+  height: 3rem;
 }
 
 .h-36 {

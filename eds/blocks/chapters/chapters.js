@@ -26,19 +26,16 @@ function renderChapters(navItems) {
 export default async function decorate(block) {
   let navItems = [];
   let chaptersElements = div();
-  const currentPath = window.location.pathname;
-  if (currentPath.includes('/en-us/webinars')) {
-    navItems = await ffetch('/en-us/stories/query-index.json').all();
-    const chapters = navItems.map((element) => {
-      return {
-        title: element.title,
-        description: element.description,
-        path: element.path,
-      };
-    });
-    const filteredChapters = chapters.filter((item) => item.title !== undefined);
-    const navHeadingDiv = p({ class: 'text-sm leading-6 font-semibold uppercase text-[#65797C] px-4' }, 'CHAPTERS');
-    chaptersElements = renderChapters(filteredChapters);
-    block.append(navHeadingDiv, chaptersElements);
-  }
+  navItems = await ffetch('/en-us/stories/query-index.json').all();
+  const chapters = navItems.map((element) => {
+    return {
+      title: element.title,
+      description: element.description,
+      path: element.path,
+    };
+  });
+  const filteredChapters = chapters.filter((item) => item.title !== undefined);
+  const navHeadingDiv = p({ class: 'text-sm leading-6 font-semibold uppercase text-[#65797C] px-4' }, 'CHAPTERS');
+  chaptersElements = renderChapters(filteredChapters);
+  block.append(navHeadingDiv, chaptersElements);
 }
