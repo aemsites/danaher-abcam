@@ -7,7 +7,7 @@ function renderChapters(navItems) {
   navItems.forEach((navItem) => {
     navElements.append(div(
       {
-          class: 'w-full hover:bg-[#3B3B3B] border-b border-gray-300',
+          class: 'w-full',
       },
       div(
           {

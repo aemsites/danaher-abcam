@@ -4,7 +4,7 @@ import { div } from '../../scripts/dom-builder.js';
 export default async function buildAutoBlocks() {
   const main = document.querySelector('main');
   const mainEl = main.querySelector('div');
-  const sectionMiddle = getMetadata('pagetags').includes('guides')
+  const sectionMiddle = getMetadata('template').includes('guides')
     ? main.querySelector(':scope > div:nth-child(2)')
     : main.querySelector(':scope > div:nth-child(3)');
 
@@ -16,5 +16,4 @@ export default async function buildAutoBlocks() {
   const breadcrumbBlock = buildBlock('breadcrumb', { elems: [] });
   headerSection.append(breadcrumbBlock);
   main.insertBefore(headerSection, mainEl);
-  // const sectionEl = main.querySelector('div.chapters');
 }

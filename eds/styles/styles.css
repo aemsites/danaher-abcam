@@ -1142,6 +1142,21 @@ dialog .modal-content .section > .default-content-wrapper p {
   color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 
+.guides main .chapters-container {
+  display: flex;
+  flex-direction: column;
+  -moz-column-gap: 0px;
+       column-gap: 0px;
+}
+
+@media (min-width: 1024px) {
+  .guides main .chapters-container {
+    flex-direction: row;
+    -moz-column-gap: 4rem;
+         column-gap: 4rem;
+  }
+}
+
 .stories main .story-middle-container {
   display: flex;
   flex-direction: column;

@@ -314,6 +314,24 @@ function decorateStoryPage(main) {
   }
 }
 
+function decorateGuidesPage(main) {
+  const sectionEl = main.querySelector(':scope > div.section.chapters-container');
+  if (sectionEl) {
+    const toBeRemoved = ['chapters-wrapper'];
+    const rightSideElements = div({ class: 'w-full' });
+
+    Array.from(sectionEl?.children).forEach((element) => {
+      if (!toBeRemoved.includes(element.classList[0])) {
+        rightSideElements.append(element);
+      }
+    });
+    sectionEl?.append(rightSideElements);
+    const divEl = div({ class: 'ml-4 xl:ml-0 min-w-56 lg:max-w-72 flex flex-col gap-y-2' });
+    divEl.append(sectionEl?.querySelector('.chapters-wrapper'));
+    sectionEl?.prepend(divEl);
+  }
+}
+
 /**
  * Decorates the sticky right navigation block from main element.
  * @param {Element} main The main element
@@ -617,6 +635,7 @@ export function decorateMain(main) {
   decorateVideo(main);
   decorateStickyRightNav(main);
   decorateStoryPage(main);
+  // decorateGuidesPage(main);
 }
 
 export const applyClasses = (element, classes) => element?.classList.add(...classes.split(' '));

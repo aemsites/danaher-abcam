@@ -1,0 +1,90 @@
+.chapters-wrapper :is(.block) {
+  display: block
+}
+
+.chapters-wrapper :is(.flex) {
+  display: flex
+}
+
+.chapters-wrapper :is(.w-full) {
+  width: 100%
+}
+
+.chapters-wrapper :is(.flex-col) {
+  flex-direction: column
+}
+
+.chapters-wrapper :is(.items-start) {
+  align-items: flex-start
+}
+
+.chapters-wrapper :is(.gap-3) {
+  gap: 0.75rem
+}
+
+.chapters-wrapper :is(.border-b) {
+  border-bottom-width: 1px
+}
+
+.chapters-wrapper :is(.border-gray-300) {
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity))
+}
+
+.chapters-wrapper :is(.border-b-\[\#D8D8D8\]) {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(216 216 216 / var(--tw-border-opacity))
+}
+
+.chapters-wrapper :is(.p-4) {
+  padding: 1rem
+}
+
+.chapters-wrapper :is(.px-4) {
+  padding-left: 1rem;
+  padding-right: 1rem
+}
+
+.chapters-wrapper :is(.pt-6) {
+  padding-top: 1.5rem
+}
+
+.chapters-wrapper :is(.text-sm) {
+  font-size: 0.875rem;
+  line-height: 1.25rem
+}
+
+.chapters-wrapper :is(.font-semibold) {
+  font-weight: 600
+}
+
+.chapters-wrapper :is(.uppercase) {
+  text-transform: uppercase
+}
+
+.chapters-wrapper :is(.leading-6) {
+  line-height: 1.5rem
+}
+
+.chapters-wrapper :is(.text-\[\#378189\]) {
+  --tw-text-opacity: 1;
+  color: rgb(55 129 137 / var(--tw-text-opacity))
+}
+
+.chapters-wrapper :is(.text-\[\#65797C\]) {
+  --tw-text-opacity: 1;
+  color: rgb(101 121 124 / var(--tw-text-opacity))
+}
+
+.chapters-wrapper :is(.filter) {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
+}
+
+.chapters-wrapper :is(.hover\:bg-\[\#3B3B3B\]:hover) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 59 59 / var(--tw-bg-opacity))
+}
+
+.chapters-wrapper :is(.hover\:underline:hover) {
+  text-decoration-line: underline
+}
