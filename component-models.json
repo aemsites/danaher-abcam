@@ -362,8 +362,8 @@
             "value": "highlight"
           },
           {
-            "name": "2 Columns",
-            "value": "cols-2"
+            "name": "2 Column Section",
+            "value": "section-col-2"
           }
         ]
       },
