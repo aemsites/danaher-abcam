@@ -8,14 +8,14 @@ function renderChapters(chapterItems) {
   chapterItems.forEach((item) => {
     chaptersDiv.append(div(
       {
-        class: 'w-full',
+        class: 'w-full border-b border-b-[#D8D8D8]',
       },
       div(
         {
           class: 'flex gap-3',
         },
         a({
-          class: 'block text-sm leading-6 font-semibold text-[#378189] p-4 border-b border-b-[#D8D8D8] hover:underline',
+          class: 'block text-sm leading-6 font-semibold text-[#378189] p-2 hover:underline',
           href: makePublicUrl(item.path),
         }, item.title),
       ),
@@ -42,6 +42,6 @@ export default async function decorate(block) {
     path: element.path,
   }));
   const filteredChapters = chapters.filter((item) => item.title !== undefined);
-  const navHeadingDiv = p({ class: 'text-sm leading-6 font-semibold uppercase text-[#65797C] px-4' }, 'CHAPTERS');
+  const navHeadingDiv = p({ class: 'text-sm leading-6 font-semibold uppercase text-[#65797C] p-2' }, 'CHAPTERS');
   if(chapters.length > 0) block.append(navHeadingDiv, renderChapters(filteredChapters));
 }

@@ -5,7 +5,8 @@ import {
 // breadcrumb functionality implementation
 export default function decorate(block) {
   const path = window.location.pathname.split('/').slice(2);
-  const title = getMetadata('og:title');
+  const ogTitle = getMetadata('og:title');
+  const title = ogTitle.indexOf('| abcam') > -1 ? ogTitle.split('| abcam')[0] : ogTitle;
   const navigation = getMetadata('navigation');
   if (navigation !== 'false' || navigation === null) {
     const { length } = path;

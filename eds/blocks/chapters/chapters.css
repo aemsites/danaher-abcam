@@ -1,3 +1,7 @@
+.chapters-wrapper :is(.ml-4) {
+  margin-left: 1rem
+}
+
 .chapters-wrapper :is(.block) {
   display: block
 }
@@ -40,6 +44,10 @@
   padding: 1rem
 }
 
+.chapters-wrapper :is(.p-2) {
+  padding: 0.5rem
+}
+
 .chapters-wrapper :is(.px-4) {
   padding-left: 1rem;
   padding-right: 1rem
@@ -47,6 +55,10 @@
 
 .chapters-wrapper :is(.pt-6) {
   padding-top: 1.5rem
+}
+
+.chapters-wrapper :is(.pr-4) {
+  padding-right: 1rem
 }
 
 .chapters-wrapper :is(.text-sm) {
