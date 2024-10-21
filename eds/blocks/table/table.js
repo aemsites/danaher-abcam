@@ -36,4 +36,3 @@ export default async function decorate(block) {
   t.append(tblHead, tblBody);
   block.replaceChildren(t);
 }
-
