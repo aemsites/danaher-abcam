@@ -1,19 +1,5 @@
 version: 1
 indices:
-  index-us:
-    include:
-      - /en-us/**
-    target: /en-us/query-index.json
-    properties:
-      title:
-        select: head > meta[property="og:title"]
-        value: attribute(el, "content")
-      lastModified:
-        select: head > meta[name="modified-time"]
-        value: parseTimestamp(attribute(el, "content"), "YYYY-MM-DDTHH:mm:ss")      
-      robots:
-        select: head > meta[name="robots"]
-        value: attribute(el, "content")
   stories:
     include:
       - /en-us/stories/articles/**
@@ -23,7 +9,7 @@ indices:
     properties:
       lastModified:
         select: head > meta[name="modified-time"]
-        value: parseTimestamp(attribute(el, "content"), "YYYY-MM-DDTHH:mm:ss")
+        value: parseTimestamp(attribute(el, "content"), "ddd, DD MMM YYYY hh:mm:ss GMT")
       title:
         select: head > meta[property="og:title"]
         value: attribute(el, "content")
@@ -41,7 +27,7 @@ indices:
         value: attribute(el, "content")
       publishDate:
         select: head > meta[name="published-time"]
-        value: parseTimestamp(attribute(el, "content"), "YYYY-MM-DDTHH:mm:ss")
+        value: parseTimestamp(attribute(el, "content"), "ddd, DD MMM YYYY hh:mm:ss GMT")
       template:
         select: head > meta[name="template"]
         value: attribute(el, "content")
@@ -56,7 +42,3 @@ indices:
       description:
         select: head > meta[property="og:description"]
         value: attribute(el, "content")
-      parent:
-        select: head > meta[property="og:url"]
-        value: match(attribute(el, "content"), "\/([^\/]+)\/[^\/]+$")
-

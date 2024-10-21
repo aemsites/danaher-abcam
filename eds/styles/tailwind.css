@@ -25,7 +25,7 @@
     }
 
     h1 {
-        @apply md:!leading-[3rem] !font-bold !text-[32px] lg:!text-5xl md:!text-4xl;
+        @apply md:!leading-[3rem] !font-bold !text-5xl md:!text-4xl;
     }
 
     h2 { 
@@ -67,19 +67,12 @@
     main .section .button-text-only {
         @apply hover:underline decoration-2 whitespace-nowrap rounded-full py-2 px-3 text-black text-lg font-semibold capitalize w-fit;
     }
-
-    main .story-middle-container .default-content-wrapper p:not(a) {
-        @apply text-lg leading-6 font-sans font-normal;
-    }
-
-    main .story-middle-container .default-content-wrapper p:not(:first-child, a) {
-        @apply mt-6;
-    }
+ 
 }
 
 @layer components {
     header {
-        @apply h-36 md:h-28 lg:h-36;
+        @apply h-28 md:h-16 lg:h-32;
     }
 
     .default-content-wrapper h1:first-of-type {
@@ -96,10 +89,6 @@
 
     .default-content-wrapper > ol {
         @apply pl-6 list-decimal;
-    }
-
-    .default-content-wrapper > ul {
-        @apply pl-6 list-disc;
     }
 
     body.stories main .story-middle-container,
@@ -238,9 +227,4 @@
     audio::-webkit-media-controls-panel {
         background-color: white;
     }
-
-    main .section.related-stories-container .default-content-wrapper h2{
-        @apply lg:px-6 xl:px-0 !pt-0;
-    }
-   
 }   

@@ -39,11 +39,10 @@ export function buildArticleSchema() {
 }
 
 // eslint-disable-next-line import/prefer-default-export
-export function buildVideoSchema(publishDate, posterImage, embedURL) {
+export function buildVideoSchema(posterImage, embedURL) {
   const data = {
     '@context': 'http://schema.org',
     '@type': 'VideoObject',
-    name: getMetadata('media_hrefText') ? getMetadata('media_hrefText') : getMetadata('og:title'),
     thumbnailUrl: posterImage,
     embedUrl: embedURL,
     publisher: {
@@ -67,7 +66,6 @@ export function buildVideoSchema(publishDate, posterImage, embedURL) {
       },
     ],
   };
-  if (publishDate) data.uploadDate = publishDate;
 
   setJsonLd(data, 'video');
 }
