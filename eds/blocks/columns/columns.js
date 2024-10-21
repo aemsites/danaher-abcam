@@ -26,7 +26,7 @@ export default function decorate(block) {
         block.firstElementChild?.firstElementChild
           ?.prepend(
             div(
-              { class: 'font-normal text-sm leading-4 text-[#435656] capitalize mb-2' },
+              { class: 'font-[rockwell] text-sm leading-4 text-[#435656] capitalize mb-2' },
               getStoryType(),
             ),
           );
