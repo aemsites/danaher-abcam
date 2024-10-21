@@ -635,7 +635,7 @@ export function decorateMain(main) {
   decorateVideo(main);
   decorateStickyRightNav(main);
   decorateStoryPage(main);
-  // decorateGuidesPage(main);
+  decorateGuidesPage(main);
 }
 
 export const applyClasses = (element, classes) => element?.classList.add(...classes.split(' '));

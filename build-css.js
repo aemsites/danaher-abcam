@@ -295,7 +295,7 @@ const fileMappings = [
   {
     content: './eds/templates/guides/guides.js',
     output: './eds/templates/guides/guides.css',
-  },   
+  },
 ];
 
 const watch = process.argv[2];
