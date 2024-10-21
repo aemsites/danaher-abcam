@@ -10,7 +10,7 @@ indices:
         value: attribute(el, "content")
       lastModified:
         select: head > meta[name="modified-time"]
-        value: parseTimestamp(attribute(el, "content"), "YYYY-MM-DDTHH:mm:ss.SSSZ")      
+        value: parseTimestamp(attribute(el, "content"), "YYYY-MM-DDTHH:mm:ss")      
       robots:
         select: head > meta[name="robots"]
         value: attribute(el, "content")
@@ -23,7 +23,7 @@ indices:
     properties:
       lastModified:
         select: head > meta[name="modified-time"]
-        value: parseTimestamp(attribute(el, "content"), "YYYY-MM-DDTHH:mm:ss.SSSZ")
+        value: parseTimestamp(attribute(el, "content"), "YYYY-MM-DDTHH:mm:ss")
       title:
         select: head > meta[property="og:title"]
         value: attribute(el, "content")
@@ -41,7 +41,7 @@ indices:
         value: attribute(el, "content")
       publishDate:
         select: head > meta[name="published-time"]
-        value: parseTimestamp(attribute(el, "content"), "YYYY-MM-DDTHH:mm:ss.SSSZ")
+        value: parseTimestamp(attribute(el, "content"), "YYYY-MM-DDTHH:mm:ss")
       template:
         select: head > meta[name="template"]
         value: attribute(el, "content")
