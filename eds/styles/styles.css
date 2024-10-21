@@ -485,7 +485,7 @@ h1 {
 
 @media (min-width: 1024px) {
   h1 {
-    font-size: 3rem !important;
+    font-size: 3.75rem !important;
     line-height: 1 !important;
   }
 }
