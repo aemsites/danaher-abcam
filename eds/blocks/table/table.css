@@ -19,50 +19,12 @@
   border-color: rgb(39 63 63 / var(--tw-border-opacity))
 }
 
-.table-wrapper :is(.border-black) {
-  --tw-border-opacity: 1;
-  border-color: rgb(0 0 0 / var(--tw-border-opacity))
-}
-
-.table-wrapper :is(.border-white) {
-  --tw-border-opacity: 1;
-  border-color: rgb(255 255 255 / var(--tw-border-opacity))
-}
-
 .table-wrapper :is(.border-opacity-25) {
   --tw-border-opacity: 0.25
 }
 
 .table-wrapper :is(.p-4) {
   padding: 1rem
-}
-
-.table-wrapper :is(.px-4) {
-  padding-left: 1rem;
-  padding-right: 1rem
-}
-
-.table-wrapper :is(.py-2) {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem
-}
-
-.table-wrapper :is(.py-4) {
-  padding-top: 1rem;
-  padding-bottom: 1rem
-}
-
-.table-wrapper :is(.\!py-4) {
-  padding-top: 1rem !important;
-  padding-bottom: 1rem !important
-}
-
-.table-wrapper :is(.pr-4) {
-  padding-right: 1rem
-}
-
-.table-wrapper :is(.pb-2) {
-  padding-bottom: 0.5rem
 }
 
 .table-wrapper :is(.text-left) {

@@ -18,14 +18,6 @@
   width: 100%
 }
 
-.learn-more-wrapper :is(.w-1\/4) {
-  width: 25%
-}
-
-.learn-more-wrapper :is(.w-3\/4) {
-  width: 75%
-}
-
 .learn-more-wrapper :is(.max-w-3xl) {
   max-width: 48rem
 }
@@ -40,6 +32,11 @@
 
 .learn-more-wrapper :is(.items-center) {
   align-items: center
+}
+
+.learn-more-wrapper :is(.gap-x-2) {
+  -moz-column-gap: 0.5rem;
+       column-gap: 0.5rem
 }
 
 .learn-more-wrapper :is(.gap-x-4) {
@@ -126,14 +123,6 @@
 }
 
 @media (min-width: 1024px) {
-  .learn-more-wrapper :is(.lg\:max-w-3xl) {
-    max-width: 48rem
-  }
-
-  .learn-more-wrapper :is(.lg\:max-w-56) {
-    max-width: 14rem
-  }
-
   .learn-more-wrapper :is(.lg\:pt-0) {
     padding-top: 0px
   }
