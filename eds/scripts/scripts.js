@@ -1053,6 +1053,31 @@ function getDLPage() {
   return page;
 }
 
+// Add hreflang tags
+const hrefAlt = document.createElement('link');
+hrefAlt.rel = 'alternate';
+hrefAlt.hreflang = 'en-us';
+hrefAlt.href = 'https://www.abcam.com' + window.location.pathname;
+document.head.appendChild(hrefAlt);
+
+const hrefDefault = document.createElement('link');
+hrefDefault.rel = 'alternate';
+hrefDefault.hreflang = 'x-default';
+hrefDefault.href = 'https://www.abcam.com' + window.location.pathname;
+document.head.appendChild(hrefDefault);
+
+const hrefChina = document.createElement('link');
+hrefChina.rel = 'alternate';
+hrefChina.hreflang = 'zh-cn';
+hrefChina.href = 'https://www.abcam.cn' + window.location.pathname;
+document.head.appendChild(hrefChina);
+
+const hrefJapan = document.createElement('link');
+hrefJapan.rel = 'alternate';
+hrefJapan.hreflang = 'ja-jp';
+hrefJapan.href = 'https://www.abcam.co.jp' + window.location.pathname;
+document.head.appendChild(hrefJapan);
+
 // Datalayer Start
 window.dataLayer = [];
 window.dataLayer.push({
