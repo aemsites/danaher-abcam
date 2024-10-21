@@ -1,29 +1,39 @@
-import { moveInstrumentation } from '../../scripts/scripts.js';
+import { applyClasses, moveInstrumentation } from '../../scripts/scripts.js';
+import {
+  table, tbody, td, th, thead, tr,
+} from '../../scripts/dom-builder.js';
 
 /**
  *
  * @param {Element} block
  */
 export default async function decorate(block) {
-  const table = document.createElement('table');
-  const thead = document.createElement('thead');
-  const tbody = document.createElement('tbody');
+  const t = table();
+  const tblHead = thead();
+  const tblBody = tbody();
   const header = !block.classList.contains('no-header');
 
   [...block.children].forEach((row, i) => {
-    const tr = document.createElement('tr');
-    moveInstrumentation(row, tr);
+    const tblRow = tr();
+    moveInstrumentation(row, tblRow);
 
     [...row.children].forEach((cell) => {
-      const td = document.createElement(i === 0 && header ? 'th' : 'td');
-
-      if (i === 0) td.setAttribute('scope', 'column');
-      td.innerHTML = cell.innerHTML;
-      tr.append(td);
+      const tblData = (i === 0 && header) ? th() : td();
+      applyClasses(tblData, 'p-4');
+      if (i === 0) tblData.setAttribute('scope', 'column');
+      tblData.innerHTML = cell.innerHTML;
+      if (tblData.hasChildNodes() || i === 0) {
+        applyClasses(tblData, 'border-t border-[#273F3F] border-opacity-25 text-left');
+        tblData.querySelectorAll('a').forEach((aEl) => {
+          applyClasses(aEl, 'text-[#378189] underline');
+        });
+      }
+      tblRow.append(tblData);
     });
-    if (i === 0 && header) thead.append(tr);
-    else tbody.append(tr);
+    if (i === 0 && header) tblHead.append(tblRow);
+    else tblBody.append(tblRow);
   });
-  table.append(thead, tbody);
-  block.replaceChildren(table);
+  t.append(tblHead, tblBody);
+  block.replaceChildren(t);
 }
+
