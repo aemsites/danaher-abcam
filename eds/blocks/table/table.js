@@ -23,11 +23,11 @@ export default async function decorate(block) {
       if (i === 0) tblData.setAttribute('scope', 'column');
       tblData.innerHTML = cell.innerHTML;
       if (tblData.hasChildNodes() || i === 0) {
+        applyClasses(tblData, 'border-t border-[#273F3F] border-opacity-25 text-left');
         tblData.querySelectorAll('a').forEach((aEl) => {
           applyClasses(aEl, 'text-[#378189] underline');
         });
       }
-      applyClasses(tblRow, 'border-t border-[#273F3F] border-opacity-25 text-left');
       tblRow.append(tblData);
     });
     if (i === 0 && header) tblHead.append(tblRow);
