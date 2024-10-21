@@ -104,6 +104,10 @@ const fileMappings = [
     output: './eds/templates/stories/stories.css',
   },
   {
+    content: './eds/templates/guides/guides.js',
+    output: './eds/templates/guides/guides.css',
+  },
+  {
     content: './eds/blocks/child-page/child-page.js',
     output: './eds/blocks/child-page/child-page.css',
     wrapper: 'child-page-wrapper',
