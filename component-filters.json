@@ -125,6 +125,12 @@
     ]
   },
   {
+    "id": "table-6-columns",
+    "components": [
+      "table-col-6"
+    ]
+  },
+  {
     "id": "teasers",
     "components": [
       "teaser"

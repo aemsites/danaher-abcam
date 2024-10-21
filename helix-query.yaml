@@ -1,5 +1,19 @@
 version: 1
 indices:
+  index-us:
+    include:
+      - /en-us/**
+    target: /en-us/query-index.json
+    properties:
+      title:
+        select: head > meta[property="og:title"]
+        value: attribute(el, "content")
+      lastModified:
+        select: head > meta[name="modified-time"]
+        value: parseTimestamp(attribute(el, "content"), "ddd, DD MMM YYYY hh:mm:ss GMT")      
+      robots:
+        select: head > meta[name="robots"]
+        value: attribute(el, "content")
   stories:
     include:
       - /en-us/stories/articles/**
