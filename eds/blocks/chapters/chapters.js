@@ -28,7 +28,7 @@ export default async function decorate(block) {
   const currentPage = window.location.pathname.split('/').slice(3);
   const currentPath = currentPage.join('/');
 
-  let chapterItems = await ffetch('/en-us/technical-resources/guides/query-index.json')
+  const chapterItems = await ffetch('/en-us/technical-resources/guides/query-index.json')
     .filter((item) => {
       const url = new URL(getMetadata('og:url'));
       return item.path !== url.pathname;
@@ -37,11 +37,11 @@ export default async function decorate(block) {
     .all();
 
   const chapters = chapterItems.map((element) => ({
-    title: element.title.indexOf('| abcam') > -1 ? element.title.split('| abcam')[0] : element.title, 
-    description: element.description, 
+    title: element.title.indexOf('| abcam') > -1 ? element.title.split('| abcam')[0] : element.title,
+    description: element.description,
     path: element.path,
   }));
   const filteredChapters = chapters.filter((item) => item.title !== undefined);
   const navHeadingDiv = p({ class: 'text-sm leading-6 font-semibold uppercase text-[#65797C] p-2' }, 'CHAPTERS');
-  if(chapters.length > 0) block.append(navHeadingDiv, renderChapters(filteredChapters));
+  if (chapters.length > 0) block.append(navHeadingDiv, renderChapters(filteredChapters));
 }
