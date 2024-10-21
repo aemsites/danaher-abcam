@@ -492,7 +492,7 @@ async function decorateVideo(main) {
               <iframe id="youtubePlayer" src="${embedURL}"
               class="absolute h-full w-full top-0 left-0 border-0"
               allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture"
-              scrolling="no" title="Content from Youtube" loading="eager"></iframe>
+              scrolling="no" title="Content from Youtube" loading="lazy"></iframe>
             </div>`;
             linkContainer.innerHTML = embedHTML;
             const scriptTag = document.createElement('script');
@@ -517,7 +517,7 @@ async function decorateVideo(main) {
               <iframe src="${link.href}"
               class="relative w-full h-full border-0 top-0 left-0" 
               allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" 
-              scrolling="no" title="Content from Youtube" loading="eager"></iframe>
+              scrolling="no" title="Content from Youtube" loading="lazy"></iframe>
             </div>`;
             linkContainer.innerHTML = embedHTML;
           }
