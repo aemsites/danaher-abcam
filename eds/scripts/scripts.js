@@ -23,6 +23,7 @@ import { buildVideoSchema } from './schema.js';
 import ffetch from './ffetch.js';
 
 const LCP_BLOCKS = ['hero', 'hero-video', 'carousel']; // add your LCP blocks to the list
+let ytPlayer;
 
 export function getStoryType(pageTags) {
   const tags = pageTags || getMetadata('pagetags');
@@ -33,6 +34,40 @@ export function getStoryType(pageTags) {
     }
   });
   return type;
+}
+
+/**
+ * Moves all the attributes from a given elmenet to another given element.
+ * @param {Element} from the element to copy attributes from
+ * @param {Element} to the element to copy attributes to
+ */
+export function moveAttributes(from, to, attributes) {
+  if (!attributes) {
+    // eslint-disable-next-line no-param-reassign
+    attributes = [...from.attributes].map(({ nodeName }) => nodeName);
+  }
+  attributes.forEach((attr) => {
+    const value = from.getAttribute(attr);
+    if (value) {
+      to?.setAttribute(attr, value);
+      from.removeAttribute(attr);
+    }
+  });
+}
+
+/**
+ * Move instrumentation attributes from a given element to another given element.
+ * @param {Element} from the element to copy attributes from
+ * @param {Element} to the element to copy attributes to
+ */
+export function moveInstrumentation(from, to) {
+  moveAttributes(
+    from,
+    to,
+    [...from.attributes]
+      .map(({ nodeName }) => nodeName)
+      .filter((attr) => attr.startsWith('data-aue-') || attr.startsWith('data-richtext-')),
+  );
 }
 
 /**
@@ -393,7 +428,16 @@ function playAudio({ src = '#' }) {
   return `<audio controls preload="metadata" class = "audio-play-bar" style="width: 100%;" src=${src}/>`;
 }
 
+// Function to check if the video is playing
+function checkVideoStatus() {
+  const state = ytPlayer.getPlayerState();
+  if (state === 1) {
+    ytPlayer.pauseVideo();
+  }
+}
+
 let currentlyPlayingAudio = null; // Global variable to track the currently playing audio
+let previousPlayingAudio = null;
 
 function pauseCurrentAudio() {
   if (currentlyPlayingAudio) {
@@ -410,6 +454,7 @@ function pauseCurrentAudio() {
       }
     }
     currentlyPlayingAudio = null;
+    previousPlayingAudio = null;
   }
 }
 
@@ -419,6 +464,12 @@ async function getOgImage() {
     .filter((item) => item.tags.includes('content-type/film'))
     .all();
   return articles;
+}
+
+//This function is to add the title to the audio if it not the link
+function isValidUrl(string) {
+  const urlPattern = /^(https?:\/\/)?([a-z0-9\-]+\.)+[a-z]{2,}(:\d+)?(\/[^\s]*)?$/i;
+  return urlPattern.test(string);
 }
 
 async function decorateVideo(main) {
@@ -435,15 +486,32 @@ async function decorateVideo(main) {
           linkContainer.classList.add('h-full');
           const videoId = new URL(link.href).searchParams.get('v');
           if (videoId) {
-            const embedURL = `https://www.youtube.com/embed/${videoId}`;
+            const embedURL = `https://www.youtube.com/embed/${videoId}?enablejsapi=1`;
             const embedHTML = `
-              <div class="relative w-full h-full">
-                <iframe src="${embedURL}"
-                class="relative w-full h-full border-0 top-0 left-0" 
-                allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" 
-                scrolling="no" title="Content from Youtube" loading="eager"></iframe>
-              </div>`;
+            <div class="relative w-full h-0 pt-[56.25%]">
+              <iframe id="youtubePlayer" src="${embedURL}"
+              class="absolute h-full w-full top-0 left-0 border-0"
+              allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture"
+              scrolling="no" title="Content from Youtube" loading="eager"></iframe>
+            </div>`;
             linkContainer.innerHTML = embedHTML;
+            const scriptTag = document.createElement('script');
+            scriptTag.src = 'https://www.youtube.com/iframe_api';
+            const firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(scriptTag, firstScriptTag);
+            window.onYouTubeIframeAPIReady = function () {
+              ytPlayer = new YT.Player('youtubePlayer', {
+                events: {
+                  onStateChange: onPlayerStateChange,
+                },
+              });
+            };
+            function onPlayerStateChange(event) {
+              if (event.data === 1 || event.data === -1) {
+                currentlyPlayingAudio = previousPlayingAudio;
+                pauseCurrentAudio();
+              }
+            }
           } else {
             const embedHTML = `<div class="relative w-full h-full">
               <iframe src="${link.href}"
@@ -454,12 +522,12 @@ async function decorateVideo(main) {
             linkContainer.innerHTML = embedHTML;
           }
         } else if (link.title === 'audio') {
-          link.textContent = '';
+          let linkTitle = isValidUrl(link.textContent) ? '' : link.textContent;
           const audioContainer = div(
             { class: 'flex flex-col' },
-            p({ class: 'audio-label text-black no-underline ' }, link.text || ''),
-            span({ class: 'audio-play-icon cursor-pointer w-14 icon icon-Play' }),
-            span({ class: 'audio-play-pause-icon hidden cursor-pointer w-14 icon icon-play-pause' }),
+            p({ class: 'audio-label text-black no-underline ' }, linkTitle || ''),
+            span({ class: 'checkStatus audio-play-icon cursor-pointer w-14 icon icon-Play' }),
+            span({ class: 'checkStatus audio-play-pause-icon hidden cursor-pointer w-14 icon icon-play-pause' }),
           );
 
           const parent = link.parentElement;
@@ -491,6 +559,10 @@ async function decorateVideo(main) {
               currentlyPlayingAudio = audioElement; // Update the currently playing audio
               isPlaying = true;
               updateIconVisibility();
+              if (playIcon.closest('.columns')) {
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'none';
+              }
             }
           });
 
@@ -503,16 +575,22 @@ async function decorateVideo(main) {
           });
 
           audioElement.addEventListener('play', () => {
+            if (previousPlayingAudio){
+              previousPlayingAudio.pause();
+            }
+            previousPlayingAudio = audioElement;
+            checkVideoStatus();        
             isPlaying = true;
             updateIconVisibility();
           });
-
           audioElement.addEventListener('pause', () => {
+            if (audioElement === previousPlayingAudio)
+              previousPlayingAudio = null;
             isPlaying = false;
             updateIconVisibility();
           });
-
           updateIconVisibility();
+          audioContainer.querySelector('.checkStatus')?.addEventListener('click', checkVideoStatus);
         }
       });
     } else if (type.includes('film')) {
@@ -545,7 +623,10 @@ async function decorateVideo(main) {
             e.preventDefault();
             toggleModalPopUp(link.href, linkContainer);
           });
-          if (firstVideo === 1) buildVideoSchema(posterImage, link.href);
+          const publishDate = getMetadata('publishdate');
+          const publishTime = getMetadata('published-time');
+          const videoPublishDate = publishDate ? new Date(publishDate) : new Date(publishTime);
+          if (firstVideo === 1) buildVideoSchema(videoPublishDate, posterImage, link.href);
           const modalPopUp = createModalPopUp(link.href, linkContainer);
           linkContainer.appendChild(modalPopUp);
         }
@@ -959,9 +1040,13 @@ function getDLPage() {
     type: 'Content',
   };
   const path = window.location.pathname;
-  if (path.includes('/en-us/stories')) {
+  const langPrefix = '/en-us/';
+  const regex = new RegExp(`${langPrefix}([^/]+)`);
+  const match = path.match(regex);
+  if (match) {
+    const extractedPath = match[1];
     page.event = 'Virtual Page View';
-    page.type = 'Stories';
+    page.type = extractedPath;
     page.path = path;
     page.subType = null;
   }

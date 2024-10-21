@@ -42,12 +42,6 @@
   color: rgb(55 129 137 / var(--tw-text-opacity))
 }
 
-@media (min-width: 768px) {
-  .back-navigation-wrapper :is(.md\:mb-0) {
-    margin-bottom: 0px
-  }
-}
-
 @media (min-width: 1024px) {
   .back-navigation-wrapper :is(.lg\:px-8) {
     padding-left: 2rem;
