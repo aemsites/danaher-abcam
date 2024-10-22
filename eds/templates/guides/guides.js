@@ -9,7 +9,6 @@ export default async function buildAutoBlocks() {
     : main.querySelector(':scope > div:nth-child(3)');
 
   sectionMiddle?.classList.add(...'guides-middle-container w-full'.split(' '));
-  sectionMiddle?.prepend(buildBlock('related-links', { elems: [] }));
   sectionMiddle?.prepend(buildBlock('chapters', { elems: [] }));
   const headerSection = div();
   const breadcrumbBlock = buildBlock('breadcrumb', { elems: [] });
