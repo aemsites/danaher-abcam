@@ -328,6 +328,7 @@ function buildAutoBlocks(main) {
 }
 
 function decorateStoryPage(main) {
+  console.log('decorateStoryPage');
   const sectionEl = main.querySelector(':scope > div.section.story-info-container.social-media-container.sidelinks-container');
   if (sectionEl) {
     const toBeRemoved = ['story-info-wrapper', 'social-media-wrapper', 'sidelinks-wrapper'];
