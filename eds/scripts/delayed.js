@@ -51,7 +51,6 @@ function loadGTM() {
 // New relic Script -start
 function loadrelicScript() {
   const scriptTag = document.createElement('script');
-  console.log('relic script inclusion');
   scriptTag.type = 'module';
   scriptTag.setAttribute('id', 'relic-script-loader');
   scriptTag.src = '/eds/scripts/nr-loader-spa-1.236.0.min.js';
