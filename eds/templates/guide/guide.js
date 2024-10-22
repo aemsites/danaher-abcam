@@ -4,13 +4,13 @@ import { div } from '../../scripts/dom-builder.js';
 export default async function buildAutoBlocks() {
   const main = document.querySelector('main');
   const mainEl = main.querySelector('div');
-  const sectionMiddle = getMetadata('template').includes('guides')
+  const sectionMiddle = getMetadata('template').includes('guide')
     ? main.querySelector(':scope > div:nth-child(2)')
     : main.querySelector(':scope > div:nth-child(3)');
 
   sectionMiddle.classList.add(...'guides-middle-container w-full'.split(' '));
   sectionMiddle.prepend(
-    buildBlock('chapters', { elems: [] }),
+    buildBlock('chapter-links', { elems: [] }),
   );
   const headerSection = div();
   const breadcrumbBlock = buildBlock('breadcrumb', { elems: [] });

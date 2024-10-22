@@ -1,7 +1,6 @@
 import ffetch from '../../scripts/ffetch.js';
 import { a, div, p } from '../../scripts/dom-builder.js';
 import { makePublicUrl } from '../../scripts/scripts.js';
-import { getMetadata } from '../../scripts/aem.js';
 
 function renderChapters(chapterItems) {
   const chaptersDiv = div({ class: 'flex flex-col items-start pt-6' });
@@ -28,15 +27,12 @@ export default async function decorate(block) {
   const currentPage = window.location.pathname.split('/').pop();
   const parentURL = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/'));
   const parentPage = parentURL.split('/').pop();
-  console.log(parentPage, currentPage);
-
   const chapterItems = await ffetch('/en-us/technical-resources/guides/query-index.json')
     .filter((item) => {
-      if(parentPage === 'guides') {
+      if (parentPage === 'guides') {
         return item.parent === currentPage;
-      }else {
-        return item.parent === parentPage;
       }
+      return item.parent === parentPage;
     })
     .all();
 

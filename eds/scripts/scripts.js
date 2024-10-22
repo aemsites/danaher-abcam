@@ -294,7 +294,7 @@ const TEMPLATE_LIST = [
   'search-results',
   'stories',
   'webinars',
-  'guides',
+  'guide',
 ];
 
 async function decorateTemplates(main) {
@@ -348,10 +348,10 @@ function decorateStoryPage(main) {
   }
 }
 
-function decorateGuidesPage(main) {
-  const sectionEl = main.querySelector(':scope > div.section.chapters-container');
+function decorateGuidePage(main) {
+  const sectionEl = main.querySelector(':scope > div.section.chapter-links-container');
   if (sectionEl) {
-    const toBeRemoved = ['chapters-wrapper'];
+    const toBeRemoved = ['chapter-links-wrapper'];
     const rightSideElements = div({ class: 'w-full' });
 
     Array.from(sectionEl?.children).forEach((element) => {
@@ -361,7 +361,7 @@ function decorateGuidesPage(main) {
     });
     sectionEl?.append(rightSideElements);
     const divEl = div({ class: 'ml-4 xl:ml-0 min-w-56 lg:max-w-72 flex flex-col gap-y-2' });
-    divEl.append(sectionEl?.querySelector('.chapters-wrapper'));
+    divEl.append(sectionEl?.querySelector('.chapter-links-wrapper'));
     sectionEl?.prepend(divEl);
   }
 }
@@ -669,7 +669,7 @@ export function decorateMain(main) {
   decorateVideo(main);
   decorateStickyRightNav(main);
   decorateStoryPage(main);
-  decorateGuidesPage(main);
+  decorateGuidePage(main);
 }
 
 export const applyClasses = (element, classes) => element?.classList.add(...classes.split(' '));
