@@ -61,8 +61,8 @@ function loadrelicScript() {
           let licenseKeyVal = (window.location.host === 'www.abcam.com') ? '703e14c59a' : '703e14c59a';
           let applicationIDVal = (window.location.host === 'www.abcam.com') ? '1588836701' : '1588833183';
           ;window.NREUM||(NREUM={});NREUM.init={distributed_tracing:{enabled:true},privacy:{cookies_enabled:true},ajax:{deny_list:["bam.nr-data.net"]}};
-;NREUM.loader_config={accountID:"147203",trustKey:"147203",agentID:1588833183,licenseKey:703e14c59a,applicationID:1588833183};
-;NREUM.info={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",licenseKey:703e14c59a,applicationID:1588833183,sa:1};
+;NREUM.loader_config={accountID:"147203",trustKey:"147203",agentID:agentIDVal,licenseKey:licenseKeyVal,applicationID:applicationIDVal};
+;NREUM.info={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",licenseKey:licenseKeyVal,applicationID:applicationIDVal,sa:1};
 `;
   document.head.prepend(scriptTag);
 }
