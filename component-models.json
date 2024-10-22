@@ -96,10 +96,6 @@
         "label": "Title Type",
         "options": [
           {
-            "name": "p",
-            "value": "p"
-          },
-          {
             "name": "h1",
             "value": "h1"
           },
