@@ -55,7 +55,6 @@ function loadrelicScript() {
   scriptTag.type = 'text/javascript';
   scriptTag.setAttribute('id', 'relic-script-loader');
   scriptTag.src = '/eds/scripts/nr-loader-spa-1.236.0.min.js';
-  /*
   scriptTag.innerHTML = `
           let agentIDVal = (window.location.host === 'www.abcam.com') ? '1588836701' : '1588833183';
           let licenseKeyVal = (window.location.host === 'www.abcam.com') ? '703e14c59a' : '703e14c59a';
@@ -63,7 +62,7 @@ function loadrelicScript() {
           ;window.NREUM||(NREUM={});NREUM.init={distributed_tracing:{enabled:true},privacy:{cookies_enabled:true},ajax:{deny_list:["bam.nr-data.net"]}};
 ;NREUM.loader_config={accountID:"147203",trustKey:"147203",agentID:agentIDVal,licenseKey:licenseKeyVal,applicationID:applicationIDVal};
 ;NREUM.info={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",licenseKey:licenseKeyVal,applicationID:applicationIDVal,sa:1};
-`; */
+`;
   document.head.prepend(scriptTag);
 }
 // New relic Script -end
