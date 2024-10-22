@@ -1999,5 +1999,24 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "video-time-stamp",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "video-time-stamp_title",
+        "value": "",
+        "label": "API Key"
+      },
+      {
+        "component": "text",
+        "name": "video-time-stamp_id",
+        "value": "",
+        "label": "Video Id",
+        "valueType": "string"
+      }
+    ]
   }
 ]
