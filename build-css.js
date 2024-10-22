@@ -295,6 +295,9 @@ const fileMappings = [
   {
     content: './eds/templates/guides/guides.js',
     output: './eds/templates/guides/guides.css',
+    content: './eds/blocks/sidelinks/sidelinks.js',
+    output: './eds/blocks/sidelinks/sidelinks.css',
+    wrapper: 'sidelinks-wrapper',
   },
 ];
 
