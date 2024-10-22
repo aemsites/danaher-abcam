@@ -53,7 +53,7 @@ function loadrelicScript() {
   const scriptTag = document.createElement('script');
   scriptTag.type = 'text/javascript';
   scriptTag.setAttribute('id', 'relic-script-loader');
-  scriptTag.src = 'nr-loader-spa-1.236.0.min.js';
+  scriptTag.src = '/eds/scripts/nr-loader-spa-1.236.0.min.js';
   scriptTag.innerHTML = `
           let agentIDVal = (window.location.host === 'www.abcam.com') ? '1588836701' : '1588833183';
           let licenseKeyVal = (window.location.host === 'www.abcam.com') ? '703e14c59a' : '703e14c59a';
