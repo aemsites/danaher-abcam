@@ -21,6 +21,7 @@ import {
 // eslint-disable-next-line import/prefer-default-export
 import { buildVideoSchema } from './schema.js';
 import ffetch from './ffetch.js';
+import { yetiToPWSurlsMap } from './pws.js';
 
 const LCP_BLOCKS = ['hero', 'hero-video', 'carousel']; // add your LCP blocks to the list
 let ytPlayer;
@@ -1054,6 +1055,14 @@ function getDLPage() {
 }
 
 // Add hreflang tags
+
+const currentPath = window.location.pathname;
+const pathWithoutLocale = currentPath.replace(/^\/[a-z]{2}-[a-z]{2}\//, '/');
+let pwsUrl = currentPath;
+if (yetiToPWSurlsMap.hasOwnProperty(pathWithoutLocale)) {
+  pwsUrl = yetiToPWSurlsMap[pathWithoutLocale];
+}
+
 const hrefAlt = document.createElement('link');
 hrefAlt.rel = 'alternate';
 hrefAlt.hreflang = 'en-us';
@@ -1069,13 +1078,13 @@ document.head.appendChild(hrefDefault);
 const hrefChina = document.createElement('link');
 hrefChina.rel = 'alternate';
 hrefChina.hreflang = 'zh-cn';
-hrefChina.href = 'https://www.abcam.cn' + window.location.pathname;
+hrefChina.href = 'https://www.abcam.cn' + pwsUrl;
 document.head.appendChild(hrefChina);
 
 const hrefJapan = document.createElement('link');
 hrefJapan.rel = 'alternate';
 hrefJapan.hreflang = 'ja-jp';
-hrefJapan.href = 'https://www.abcam.co.jp' + window.location.pathname;
+hrefJapan.href = 'https://www.abcam.co.jp' + pwsUrl;
 document.head.appendChild(hrefJapan);
 
 // Datalayer Start
