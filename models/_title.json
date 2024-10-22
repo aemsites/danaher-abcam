@@ -30,6 +30,10 @@
           "label": "Title Type",
           "options": [
             {
+              "name": "none",
+              "value": ""
+            },
+            {
               "name": "h1",
               "value": "h1"
             },
