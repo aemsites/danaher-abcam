@@ -292,6 +292,10 @@ const fileMappings = [
     output: './eds/blocks/related-links/related-links.css',
     wrapper: 'related-links-wrapper',
   },
+  {
+    content: './eds/templates/guides/guides.js',
+    output: './eds/templates/guides/guides.css',
+  },
 ];
 
 const watch = process.argv[2];
