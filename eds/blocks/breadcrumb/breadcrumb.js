@@ -4,8 +4,9 @@ import {
 } from '../../scripts/dom-builder.js';
 // breadcrumb functionality implementation
 export default function decorate(block) {
-  const path = window.location.pathname.split('/').slice(1);
-  const title = getMetadata('og:title');
+  const path = window.location.pathname.split('/').slice(2);
+  const ogTitle = getMetadata('og:title');
+  const title = ogTitle.indexOf('| abcam') > -1 ? ogTitle.split('| abcam')[0] : ogTitle;
   const navigation = getMetadata('navigation');
   if (navigation !== 'false' || navigation === null) {
     const { length } = path;
@@ -27,7 +28,7 @@ export default function decorate(block) {
       { class: 'breadcrumb-wrapper relative z-10 flex max-w-max flex-1 items-center' },
       div({ style: 'position:relative' }, ul(breadcrumbLiLinks)),
     );
-    block.classList.add(...'w-3/4 m-auto mt-20 font-sans text-base flex flex-col justify-center'.split(' '));
+    block.classList.add(...'px-[30px] m-auto font-sans text-base flex flex-col justify-center'.split(' '));
     block.appendChild(breadcrumNav);
   }
 }
