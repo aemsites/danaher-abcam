@@ -64,6 +64,10 @@
   display: grid
 }
 
+.carousel-wrapper :is(.aspect-video) {
+  aspect-ratio: 16 / 9
+}
+
 .carousel-wrapper :is(.h-3) {
   height: 0.75rem
 }
@@ -86,6 +90,10 @@
 
 .carousel-wrapper :is(.h-full) {
   height: 100%
+}
+
+.carousel-wrapper :is(.h-96) {
+  height: 24rem
 }
 
 .carousel-wrapper :is(.min-h-\[30rem\]) {
@@ -284,6 +292,10 @@
   padding-top: 2rem
 }
 
+.carousel-wrapper :is(.pt-10) {
+  padding-top: 2.5rem
+}
+
 .carousel-wrapper :is(.text-left) {
   text-align: left
 }
@@ -369,6 +381,10 @@
 }
 
 @media (min-width: 768px) {
+  .carousel-wrapper :is(.md\:h-72) {
+    height: 18rem
+  }
+
   .carousel-wrapper :is(.md\:flex-row) {
     flex-direction: row
   }
@@ -415,6 +431,10 @@
     margin-bottom: auto
   }
 
+  .carousel-wrapper :is(.lg\:h-auto) {
+    height: auto
+  }
+
   .carousel-wrapper :is(.lg\:w-1\/2) {
     width: 50%
   }
@@ -422,6 +442,11 @@
   .carousel-wrapper :is(.lg\:bg-white) {
     --tw-bg-opacity: 1;
     background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+  }
+
+  .carousel-wrapper :is(.lg\:object-cover) {
+    -o-object-fit: cover;
+       object-fit: cover
   }
 
   .carousel-wrapper :is(.lg\:px-4) {

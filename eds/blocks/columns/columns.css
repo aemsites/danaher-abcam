@@ -101,10 +101,6 @@
   line-height: 1.25rem
 }
 
-.columns-wrapper :is(.font-normal) {
-  font-weight: 400
-}
-
 .columns-wrapper :is(.capitalize) {
   text-transform: capitalize
 }
