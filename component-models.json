@@ -96,8 +96,8 @@
         "label": "Title Type",
         "options": [
           {
-            "name": "none",
-            "value": " "
+            "name": "p",
+            "value": "p"
           },
           {
             "name": "h1",
