@@ -1,4 +1,4 @@
-import { buildBlock, getMetadata } from '../../scripts/aem.js';
+import { buildBlock } from '../../scripts/aem.js';
 import { div } from '../../scripts/dom-builder.js';
 
 export default async function buildAutoBlocks() {
