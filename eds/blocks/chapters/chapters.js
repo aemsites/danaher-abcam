@@ -25,15 +25,19 @@ function renderChapters(chapterItems) {
 }
 
 export default async function decorate(block) {
-  const currentPage = window.location.pathname.split('/').slice(3);
-  const currentPath = currentPage.join('/');
+  const currentPage = window.location.pathname.split('/').pop();
+  const parentURL = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/'));
+  const parentPage = parentURL.split('/').pop();
+  console.log(parentPage, currentPage);
 
   const chapterItems = await ffetch('/en-us/technical-resources/guides/query-index.json')
     .filter((item) => {
-      const url = new URL(getMetadata('og:url'));
-      return item.path !== url.pathname;
+      if(parentPage === 'guides') {
+        return item.parent === currentPage;
+      }else {
+        return item.parent === parentPage;
+      }
     })
-    .filter((item) => item.path.includes(currentPath))
     .all();
 
   const chapters = chapterItems.map((element) => ({
