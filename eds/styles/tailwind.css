@@ -223,7 +223,7 @@
         @apply font-normal text-gray-900 mb-2;
     }
 
-    .stories main .story-middle-container {
+    .stories main .story-middle-container, .guide main .chapter-links-container {
         @apply flex flex-col gap-x-0 lg:flex-row lg:gap-x-16;
     }
 
