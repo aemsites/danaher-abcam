@@ -9,6 +9,7 @@ export default async function buildAutoBlocks() {
   sectionMiddle.classList.add(...'guides-middle-container w-full'.split(' '));
   sectionMiddle.prepend(
     buildBlock('chapter-links', { elems: [] }),
+    buildBlock('sidelinks', { elems: [] }),
   );
   const headerSection = div();
   const breadcrumbBlock = buildBlock('breadcrumb', { elems: [] });

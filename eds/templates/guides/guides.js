@@ -2,7 +2,6 @@ import { buildBlock, getMetadata } from '../../scripts/aem.js';
 import { div } from '../../scripts/dom-builder.js';
 
 export default async function buildAutoBlocks() {
-  console.log('Guides');
   const main = document.querySelector('main');
   const mainEl = main.querySelector('div');
   const sectionMiddle = getMetadata('template').includes('guides')
