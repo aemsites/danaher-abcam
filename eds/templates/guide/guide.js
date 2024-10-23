@@ -9,6 +9,9 @@ export default async function buildAutoBlocks() {
   sectionMiddle.prepend(
     buildBlock('chapter-links', { elems: [] }),
   );
+  sectionMiddle.prepend(
+    buildBlock('sticky-right-navigation', { elems: [] }),
+  );
   const headerSection = div();
   const breadcrumbBlock = buildBlock('breadcrumb', { elems: [] });
   headerSection.append(breadcrumbBlock);
