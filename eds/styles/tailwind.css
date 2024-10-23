@@ -227,6 +227,10 @@
         @apply flex flex-col gap-x-0 lg:flex-row lg:gap-x-16;
     }
 
+    .guide main .chapter-links-container {
+        @apply flex-col-reverse;
+    }
+
     .stories main .section.no-section-padding .columns-wrapper, .webinars main .section.no-section-padding .columns-wrapper {
         @apply w-full mx-auto lg:h-[31rem] relative;
     }
