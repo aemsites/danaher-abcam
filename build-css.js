@@ -301,6 +301,15 @@ const fileMappings = [
     output: './eds/blocks/sidelinks/sidelinks.css',
     wrapper: 'sidelinks-wrapper',
   },
+  {
+    content: './eds/templates/guides-hub/guides-hub.js',
+    output: './eds/templates/guides-hub/guides-hub.css',
+  },
+  {
+    content: './eds/blocks/guides-hub-links/guides-hub-links.js',
+    output: './eds/blocks/guides-hub-links/guides-hub-links.css',
+    wrapper: 'guides-hub-links-wrapper',
+  },
 ];
 
 const watch = process.argv[2];
