@@ -24,7 +24,7 @@ function renderModal(el) {
   );
 
   const modalContent = div({ class: 'bg-white w-96 m-4 rounded' });
-  const modalClose = div({ class: 'flex w-full h-9 justify-center mt-4 text-sm leading-6 font-semibold' }, closeButton);
+  const modalClose = div({ class: 'flex w-full h-14 justify-center mt-4 text-sm leading-6 font-semibold px-4 pb-4' }, closeButton);
   const modalList = div({ class: 'flex flex-col gap-2' }, el);
   modalContent.append(modalList, modalClose);
   modal.append(modalContent);
@@ -34,7 +34,7 @@ function renderModal(el) {
 
 function renderChapters(chapterItems) {
   const chaptersDesktopDiv = div({ class: 'hidden md:flex flex-col items-start' });
-  const chaptersMobileDiv = div({ class: 'max-h-96 md:hidden [&_span]:pl-2 overflow-scroll pr-6' });
+  const chaptersMobileDiv = div({ class: 'max-h-96 md:hidden [&_span]:pl-2 overflow-scroll pr-6 pl-6' });
   const url = new URL(window.location.href);
   const currentPage = url.pathname;
   const navHeadingDiv = p({ class: 'text-sm leading-6 font-semibold uppercase text-[#65797C] p-2' }, 'CHAPTERS');
