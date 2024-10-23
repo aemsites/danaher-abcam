@@ -92,13 +92,13 @@
   padding-right: 1.5rem
 }
 
+.columns-wrapper :is(.font-\[rockwell\]) {
+  font-family: rockwell
+}
+
 .columns-wrapper :is(.text-sm) {
   font-size: 0.875rem;
   line-height: 1.25rem
-}
-
-.columns-wrapper :is(.font-normal) {
-  font-weight: 400
 }
 
 .columns-wrapper :is(.capitalize) {

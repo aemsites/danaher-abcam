@@ -64,6 +64,10 @@
   display: grid
 }
 
+.carousel-wrapper :is(.aspect-video) {
+  aspect-ratio: 16 / 9
+}
+
 .carousel-wrapper :is(.h-3) {
   height: 0.75rem
 }
@@ -76,12 +80,12 @@
   height: 2rem
 }
 
-.carousel-wrapper :is(.h-\[31\.5rem\]) {
-  height: 31.5rem
+.carousel-wrapper :is(.h-96) {
+  height: 24rem
 }
 
-.carousel-wrapper :is(.h-auto) {
-  height: auto
+.carousel-wrapper :is(.h-\[31\.5rem\]) {
+  height: 31.5rem
 }
 
 .carousel-wrapper :is(.h-full) {
@@ -227,19 +231,9 @@
   border-color: rgb(0 0 0 / var(--tw-border-opacity))
 }
 
-.carousel-wrapper :is(.bg-black) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity))
-}
-
 .carousel-wrapper :is(.bg-white) {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
-}
-
-.carousel-wrapper :is(.object-contain) {
-  -o-object-fit: contain;
-     object-fit: contain
 }
 
 .carousel-wrapper :is(.\!px-6) {
@@ -267,8 +261,8 @@
   padding-bottom: 2rem
 }
 
-.carousel-wrapper :is(.pt-24) {
-  padding-top: 6rem
+.carousel-wrapper :is(.pt-10) {
+  padding-top: 2.5rem
 }
 
 .carousel-wrapper :is(.pt-8) {
@@ -360,6 +354,10 @@
 }
 
 @media (min-width: 768px) {
+  .carousel-wrapper :is(.md\:h-72) {
+    height: 18rem
+  }
+
   .carousel-wrapper :is(.md\:flex-row) {
     flex-direction: row
   }
@@ -401,13 +399,12 @@
     margin-bottom: auto
   }
 
-  .carousel-wrapper :is(.lg\:w-1\/2) {
-    width: 50%
+  .carousel-wrapper :is(.lg\:h-auto) {
+    height: auto
   }
 
-  .carousel-wrapper :is(.lg\:bg-white) {
-    --tw-bg-opacity: 1;
-    background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+  .carousel-wrapper :is(.lg\:w-1\/2) {
+    width: 50%
   }
 
   .carousel-wrapper :is(.lg\:object-cover) {
