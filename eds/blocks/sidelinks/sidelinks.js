@@ -31,14 +31,14 @@ export default function decorate(block) {
     container.prepend(iconContainer);
   }
   const divEl = block.querySelector('div > div');
-  applyClasses(divEl, 'sidelinks leading-5 text-sm font-bold text-black flex flex-col gap-y-3');
+  applyClasses(divEl, 'sidelinks leading-5 text-sm font-bold text-black flex flex-col');
   const allParagraphs = main.querySelectorAll('p a[title="link"]');
-  const linkHeading = 'Explore our products';
+  const linkHeading = getMetadata('template').includes('guide') ? 'Related Links' : 'Explore our products';
   if (allParagraphs.length > 0) {
-    divEl.append(p(linkHeading));
+    divEl.append(p({ class: 'text-sm leading-6 font-semibold uppercase text-[#65797C] px-2' }, linkHeading));
     allParagraphs.forEach((elPara) => {
-      applyClasses(elPara, 'border-b border-b-gray-300 py-2 mx-0 w-auto mt-2 pb-3');
-      divEl.append(p({ class: 'leading-5 text-base font-medium text-[#378189]' }, elPara));
+      applyClasses(elPara, 'block text-sm leading-6 font-semibold text-[#378189] p-2 border-b border-b-[#D8D8D8] hover:underline');
+      divEl.append(p({ class: 'leading-5 text-base font-medium text-[#378189] my-0' }, elPara));
     });
   }
 }

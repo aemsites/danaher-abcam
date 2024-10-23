@@ -8,6 +8,7 @@ export default async function buildAutoBlocks() {
   sectionMiddle.classList.add(...'guides-middle-container w-full pt-4'.split(' '));
   sectionMiddle.prepend(
     buildBlock('chapter-links', { elems: [] }),
+    buildBlock('sidelinks', { elems: [] }),
   );
   sectionMiddle.prepend(
     buildBlock('sticky-right-navigation', { elems: [] }),
