@@ -4,10 +4,10 @@ import {
 } from '../../scripts/dom-builder.js';
 import { applyClasses } from '../../scripts/scripts.js';
 import { decorateIcons } from '../../scripts/aem.js';
- 
+
 export default function decorate(block) {
   applyClasses(block.parentElement, 'sticky top-0 bg-white z-10');
- 
+
   const dropdownContainer = div(
     { class: 'flex items-center relative' },
     div({ class: 'jump-to-label text-[#65797c] text-sm w-28  md:!w-24 lg:!w-20 ' }, 'JUMP TO:'),
@@ -19,12 +19,12 @@ export default function decorate(block) {
     ),
   );
   decorateIcons(dropdownContainer);
- 
+
   const h2Eles = document.querySelectorAll('h2');
   if (h2Eles.length > 0) {
     const ddOptionsContainer = dropdownContainer.querySelector('.dd-options');
     const ddSelected = dropdownContainer.querySelector('.dd-selected');
- 
+
     if (h2Eles.length > 0) {
       ddSelected.textContent = h2Eles[0].textContent || 'Section 1';
       h2Eles.forEach((h2Ele, index) => {
@@ -42,7 +42,7 @@ export default function decorate(block) {
               behavior: 'smooth',
             });
           }
- 
+
           Array.from(ddOptionsContainer.children).forEach((opt) => {
             opt.classList.remove('bg-[#273F3F]', 'bg-opacity-10', 'text-[#273F3F]');
           });
