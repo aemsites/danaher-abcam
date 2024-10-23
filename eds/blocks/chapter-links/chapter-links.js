@@ -34,7 +34,7 @@ function renderModal(el) {
 
 function renderChapters(chapterItems) {
   const chaptersDesktopDiv = div({ class: 'hidden md:flex flex-col items-start' });
-  const chaptersMobileDiv = div({ class: 'max-h-96 md:hidden [&_span]:pl-2 overflow-scroll pr-6' });
+  const chaptersMobileDiv = div({ class: 'max-h-96 md:hidden [&_span]:pl-2 overflow-scroll pr-6 pl-6' });
   const url = new URL(window.location.href);
   const currentPage = url.pathname;
   const navHeadingDiv = p({ class: 'text-sm leading-6 font-semibold uppercase text-[#65797C] p-2' }, 'CHAPTERS');
