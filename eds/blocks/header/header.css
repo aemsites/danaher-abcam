@@ -2,8 +2,16 @@
   position: fixed
 }
 
+.header-wrapper :is(.relative) {
+  position: relative
+}
+
 .header-wrapper :is(.z-40) {
   z-index: 40
+}
+
+.header-wrapper :is(.z-50) {
+  z-index: 50
 }
 
 .header-wrapper :is(.block) {

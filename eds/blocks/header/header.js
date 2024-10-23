@@ -7,7 +7,7 @@ function megaMeunu() {
 
 export default async function decorate(block) {
   const resp = await fetch('/eds/fragments/header.html');
-  block.classList.add(...'bg-black flex justify-center flex-col pt-4'.split(' '));
+  block.classList.add(...'relative bg-black flex justify-center flex-col pt-4 z-40'.split(' '));
   if (resp.ok) {
     const html = await resp.text();
     block.innerHTML = html;
