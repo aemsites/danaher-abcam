@@ -1,40 +1,91 @@
 import {
-  ul, li, a, h3,
+  div,
+  span,
 } from '../../scripts/dom-builder.js';
-
+import { applyClasses } from '../../scripts/scripts.js';
+import { decorateIcons } from '../../scripts/aem.js';
+ 
 export default function decorate(block) {
-  const sectionHead = h3({ class: 'text-xs leading-normal tracking-[.03125rem] text-[#65797c] pr-3.5 pl-3.5 py-2.5 border-t border-gray-300' });
-  sectionHead.textContent = 'SECTIONS';
-  block.appendChild(sectionHead);
-  const rightNavLinks = document.querySelectorAll('h2');
-  const navLinksUl = ul({ class: 'flex flex-row flex-wrap sticky-ul mt-4 items-center' });
-  const items = [];
-  rightNavLinks.forEach((rightNavLink, index) => {
-    const liElement = li({ class: 'w-50 pr-3.5 pl-3.5 py-2.5 border-r border-gray-200' });
-    const anchorElement = a({ class: 'text-base text-blue-500 block w-full hover:underline' });
-    anchorElement.textContent = rightNavLink.textContent;
-    anchorElement.href = `#${rightNavLink.id}`;
-    liElement.appendChild(anchorElement);
-    navLinksUl.appendChild(liElement);
-    items.push(liElement);
-  });
-  items.forEach((item, index) => {
-    if (index > 3) {
-      item.style.display = 'none';
+  applyClasses(block.parentElement, 'sticky top-0 bg-white z-10');
+ 
+  const dropdownContainer = div(
+    { class: 'flex items-center relative' },
+    div({ class: 'jump-to-label text-[#65797c] text-sm w-28  md:!w-24 lg:!w-20 ' }, 'JUMP TO:'),
+    div(
+      { class: 'dd-container text-sm border bg-[#273F3F] bg-opacity-5 rounded-3xl py-2.5 px-6 w-full bg-white cursor-pointer relative' },
+      span({ class: 'icon icon-chevron-down absolute top-2 right-6 z-50' }),
+      span({ class: 'dd-selected' }, ''),
+      div({ class: 'dd-options shadow-2xl absolute hidden top-full left-0 w-full bg-white rounded-3xl z-20 border pt-5 mt-1' }),
+    ),
+  );
+  decorateIcons(dropdownContainer);
+ 
+  const h2Eles = document.querySelectorAll('h2');
+  if (h2Eles.length > 0) {
+    const ddOptionsContainer = dropdownContainer.querySelector('.dd-options');
+    const ddSelected = dropdownContainer.querySelector('.dd-selected');
+ 
+    if (h2Eles.length > 0) {
+      ddSelected.textContent = h2Eles[0].textContent || 'Section 1';
+      h2Eles.forEach((h2Ele, index) => {
+        const optionEle = div(
+          { class: 'dd-option p-2 hover:bg-[#f2f2f2] hover:text-black cursor-pointer' },
+          h2Ele.textContent || `Section ${index + 1}`,
+        );
+        optionEle.dataset.value = h2Ele.id;
+        optionEle.addEventListener('click', function optionSelection(event) {
+          ddSelected.textContent = this.textContent;
+          const selectedSection = document.getElementById(this.dataset.value);
+          if (selectedSection) {
+            window.scrollTo({
+              top: selectedSection.offsetTop,
+              behavior: 'smooth',
+            });
+          }
+ 
+          Array.from(ddOptionsContainer.children).forEach((opt) => {
+            opt.classList.remove('bg-[#273F3F]', 'bg-opacity-10', 'text-[#273F3F]');
+          });
+          applyClasses(this, 'bg-[#273F3F] bg-opacity-10 text-[#273F3F]');
+          ddOptionsContainer.classList.add('hidden');
+          event.stopPropagation();
+        });
+        ddOptionsContainer.appendChild(optionEle);
+      });
+      applyClasses(ddOptionsContainer.children[0], 'bg-[#273F3F] bg-opacity-10 text-[#273F3F]');
     }
-  });
-  const showMoreBtn = document.createElement('div');
-  showMoreBtn.textContent = 'See All';
-  showMoreBtn.className = 'cursor-pointer underline mt-2 ml-3';
-  let showingAll = false;
-  showMoreBtn.addEventListener('click', () => {
-    showingAll = !showingAll;
-    items.forEach((item, index) => {
-      item.style.display = showingAll || index < 4 ? 'block' : 'none';
+    dropdownContainer.querySelector('.dd-container').addEventListener('click', () => {
+      ddOptionsContainer.classList.toggle('hidden');
     });
-    navLinksUl.style.display = 'flex';
-    showMoreBtn.textContent = showingAll ? 'Show Less' : 'See All';
-  });
-  navLinksUl.appendChild(showMoreBtn);
-  block.appendChild(navLinksUl);
+    window.addEventListener('click', (e) => {
+      if (!dropdownContainer.contains(e.target)) {
+        ddOptionsContainer.classList.add('hidden');
+      }
+    });
+    ddOptionsContainer.addEventListener('click', (event) => {
+      event.stopPropagation();
+    });
+    block.replaceChildren(dropdownContainer);
+    window.addEventListener('scroll', () => {
+      let lastCrossedHeadingId = '';
+      h2Eles.forEach((heading) => {
+        const headingTop = heading.offsetTop;
+        const headingHeight = heading.offsetHeight;
+        if (window.scrollY >= headingTop - headingHeight / 3) {
+          lastCrossedHeadingId = heading.id;
+        }
+      });
+      if (lastCrossedHeadingId) {
+        const matchingOption = Array.from(ddOptionsContainer.children)
+          .find((option) => option.dataset.value === lastCrossedHeadingId);
+        ddSelected.textContent = matchingOption.textContent;
+        Array.from(ddOptionsContainer.children).forEach((option) => {
+          option.classList.remove('bg-[#273F3F]', 'bg-opacity-10', 'text-[#273F3F]');
+        });
+        applyClasses(matchingOption, 'bg-[#273F3F] bg-opacity-10 text-[#273F3F]');
+      } else {
+        ddSelected.textContent = h2Eles[0].textContent || 'Section 1';
+      }
+    });
+  }
 }
