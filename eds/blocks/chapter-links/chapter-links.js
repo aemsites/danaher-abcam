@@ -10,7 +10,7 @@ function renderModal(el) {
   const closeButton = button(
     {
       type: 'button',
-      class: 'size-full flex items-center gap-x-2 justify-center focus:outline-none border border-solid border-black rounded-full text-black [&_span]:pl-2',
+      class: 'size-full flex items-center gap-x-2 justify-center focus:outline-none border border-solid border-black rounded-full text-black text-sm leading-6 font-semibold',
       onclick: () => {
         modal.classList.toggle('-translate-y-full');
       },
@@ -24,7 +24,7 @@ function renderModal(el) {
   );
 
   const modalContent = div({ class: 'bg-white w-96 m-4 rounded' });
-  const modalClose = div({ class: 'flex w-full h-9 justify-center mt-4 text-sm leading-6 font-semibold' }, closeButton);
+  const modalClose = div({ class: 'flex w-full justify-center mt-4 p-1' }, closeButton);
   const modalList = div({ class: 'flex flex-col gap-2' }, el);
   modalContent.append(modalList, modalClose);
   modal.append(modalContent);

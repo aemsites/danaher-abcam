@@ -2,10 +2,6 @@
   position: fixed
 }
 
-.chapter-links-wrapper :is(.absolute) {
-  position: absolute
-}
-
 .chapter-links-wrapper :is(.inset-0) {
   inset: 0px
 }
@@ -18,64 +14,20 @@
   top: 0px
 }
 
-.chapter-links-wrapper :is(.right-\[0px\]) {
-  right: 0px
-}
-
-.chapter-links-wrapper :is(.top-\[-30px\]) {
-  top: -30px
-}
-
-.chapter-links-wrapper :is(.right-4) {
-  right: 1rem
-}
-
-.chapter-links-wrapper :is(.top-6) {
-  top: 1.5rem
-}
-
-.chapter-links-wrapper :is(.z-50) {
-  z-index: 50
-}
-
 .chapter-links-wrapper :is(.z-30) {
   z-index: 30
 }
 
-.chapter-links-wrapper :is(.float-right) {
-  float: right
+.chapter-links-wrapper :is(.z-40) {
+  z-index: 40
 }
 
 .chapter-links-wrapper :is(.m-4) {
   margin: 1rem
 }
 
-.chapter-links-wrapper :is(.my-1) {
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem
-}
-
-.chapter-links-wrapper :is(.my-0) {
-  margin-top: 0px;
-  margin-bottom: 0px
-}
-
-.chapter-links-wrapper :is(.my-0\.5) {
-  margin-top: 0.125rem;
-  margin-bottom: 0.125rem
-}
-
-.chapter-links-wrapper :is(.my-2) {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem
-}
-
 .chapter-links-wrapper :is(.mt-4) {
   margin-top: 1rem
-}
-
-.chapter-links-wrapper :is(.box-border) {
-  box-sizing: border-box
 }
 
 .chapter-links-wrapper :is(.block) {
@@ -100,53 +52,28 @@
   height: 100%
 }
 
-.chapter-links-wrapper :is(.size-10) {
-  width: 2.5rem;
-  height: 2.5rem
-}
-
-.chapter-links-wrapper :is(.h-3) {
-  height: 0.75rem
+.chapter-links-wrapper :is(.h-9) {
+  height: 2.25rem
 }
 
 .chapter-links-wrapper :is(.h-screen) {
   height: 100vh
 }
 
-.chapter-links-wrapper :is(.h-full) {
-  height: 100%
-}
-
-.chapter-links-wrapper :is(.h-9) {
-  height: 2.25rem
-}
-
-.chapter-links-wrapper :is(.max-h-\[600px\]) {
-  max-height: 600px
-}
-
-.chapter-links-wrapper :is(.max-h-\[500px\]) {
-  max-height: 500px
-}
-
-.chapter-links-wrapper :is(.max-h-80) {
-  max-height: 20rem
+.chapter-links-wrapper :is(.h-8) {
+  height: 2rem
 }
 
 .chapter-links-wrapper :is(.max-h-96) {
   max-height: 24rem
 }
 
-.chapter-links-wrapper :is(.w-full) {
-  width: 100%
-}
-
-.chapter-links-wrapper :is(.w-3) {
-  width: 0.75rem
-}
-
 .chapter-links-wrapper :is(.w-96) {
   width: 24rem
+}
+
+.chapter-links-wrapper :is(.w-full) {
+  width: 100%
 }
 
 .chapter-links-wrapper :is(.w-screen) {
@@ -156,25 +83,6 @@
 .chapter-links-wrapper :is(.-translate-y-full) {
   --tw-translate-y: -100%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
-}
-
-.chapter-links-wrapper :is(.rotate-0) {
-  --tw-rotate: 0deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
-}
-
-.chapter-links-wrapper :is(.rotate-90) {
-  --tw-rotate: 90deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
-}
-
-.chapter-links-wrapper :is(.-rotate-90) {
-  --tw-rotate: -90deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
-}
-
-.chapter-links-wrapper :is(.cursor-pointer) {
-  cursor: pointer
 }
 
 .chapter-links-wrapper :is(.flex-col) {
@@ -189,25 +97,16 @@
   align-items: center
 }
 
-.chapter-links-wrapper :is(.justify-end) {
-  justify-content: flex-end
-}
-
 .chapter-links-wrapper :is(.justify-center) {
   justify-content: center
-}
-
-.chapter-links-wrapper :is(.gap-3) {
-  gap: 0.75rem
 }
 
 .chapter-links-wrapper :is(.gap-2) {
   gap: 0.5rem
 }
 
-.chapter-links-wrapper :is(.gap-x-3) {
-  -moz-column-gap: 0.75rem;
-       column-gap: 0.75rem
+.chapter-links-wrapper :is(.gap-3) {
+  gap: 0.75rem
 }
 
 .chapter-links-wrapper :is(.gap-x-2) {
@@ -215,20 +114,21 @@
        column-gap: 0.5rem
 }
 
-.chapter-links-wrapper :is(.overflow-scroll) {
-  overflow: scroll
+.chapter-links-wrapper :is(.gap-x-3) {
+  -moz-column-gap: 0.75rem;
+       column-gap: 0.75rem
 }
 
-.chapter-links-wrapper :is(.rounded-full) {
-  border-radius: 9999px
+.chapter-links-wrapper :is(.overflow-scroll) {
+  overflow: scroll
 }
 
 .chapter-links-wrapper :is(.rounded) {
   border-radius: 0.25rem
 }
 
-.chapter-links-wrapper :is(.rounded-2xl) {
-  border-radius: 1rem
+.chapter-links-wrapper :is(.rounded-full) {
+  border-radius: 9999px
 }
 
 .chapter-links-wrapper :is(.border) {
@@ -237,10 +137,6 @@
 
 .chapter-links-wrapper :is(.border-b) {
   border-bottom-width: 1px
-}
-
-.chapter-links-wrapper :is(.border-t) {
-  border-top-width: 1px
 }
 
 .chapter-links-wrapper :is(.border-solid) {
@@ -255,16 +151,6 @@
 .chapter-links-wrapper :is(.border-b-\[\#D8D8D8\]) {
   --tw-border-opacity: 1;
   border-bottom-color: rgb(216 216 216 / var(--tw-border-opacity))
-}
-
-.chapter-links-wrapper :is(.border-t-\[\#D8D8D8\]) {
-  --tw-border-opacity: 1;
-  border-top-color: rgb(216 216 216 / var(--tw-border-opacity))
-}
-
-.chapter-links-wrapper :is(.bg-\[\#378189\]) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(55 129 137 / var(--tw-bg-opacity))
 }
 
 .chapter-links-wrapper :is(.bg-\[\#EDF6F7\]) {
@@ -282,65 +168,16 @@
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
 }
 
-.chapter-links-wrapper :is(.bg-opacity-50) {
-  --tw-bg-opacity: 0.5
-}
-
-.chapter-links-wrapper :is(.bg-opacity-100) {
-  --tw-bg-opacity: 1
-}
-
-.chapter-links-wrapper :is(.bg-opacity-75) {
-  --tw-bg-opacity: 0.75
-}
-
-.chapter-links-wrapper :is(.bg-opacity-85) {
-  --tw-bg-opacity: 0.85
-}
-
 .chapter-links-wrapper :is(.bg-opacity-80) {
   --tw-bg-opacity: 0.8
-}
-
-.chapter-links-wrapper :is(.bg-gradient-to-bl) {
-  background-image: linear-gradient(to bottom left, var(--tw-gradient-stops))
-}
-
-.chapter-links-wrapper :is(.from-black) {
-  --tw-gradient-from: #000 var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(0 0 0 / 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
-}
-
-.chapter-links-wrapper :is(.to-gray-800) {
-  --tw-gradient-to: #1f2937 var(--tw-gradient-to-position)
 }
 
 .chapter-links-wrapper :is(.p-2) {
   padding: 0.5rem
 }
 
-.chapter-links-wrapper :is(.p-4) {
-  padding: 1rem
-}
-
-.chapter-links-wrapper :is(.p-\[10px\]) {
-  padding: 10px
-}
-
-.chapter-links-wrapper :is(.py-2) {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem
-}
-
-.chapter-links-wrapper :is(.px-2) {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem
-}
-
-.chapter-links-wrapper :is(.py-1) {
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem
+.chapter-links-wrapper :is(.p-1) {
+  padding: 0.25rem
 }
 
 .chapter-links-wrapper :is(.px-12) {
@@ -348,26 +185,22 @@
   padding-right: 3rem
 }
 
-.chapter-links-wrapper :is(.py-4) {
-  padding-top: 1rem;
-  padding-bottom: 1rem
-}
-
 .chapter-links-wrapper :is(.px-6) {
   padding-left: 1.5rem;
   padding-right: 1.5rem
 }
 
-.chapter-links-wrapper :is(.pt-6) {
-  padding-top: 1.5rem
-}
-
-.chapter-links-wrapper :is(.pr-10) {
-  padding-right: 2.5rem
+.chapter-links-wrapper :is(.py-4) {
+  padding-top: 1rem;
+  padding-bottom: 1rem
 }
 
 .chapter-links-wrapper :is(.pr-6) {
   padding-right: 1.5rem
+}
+
+.chapter-links-wrapper :is(.pt-6) {
+  padding-top: 1.5rem
 }
 
 .chapter-links-wrapper :is(.text-sm) {
@@ -407,10 +240,6 @@
   color: rgb(255 255 255 / var(--tw-text-opacity))
 }
 
-.chapter-links-wrapper :is(.opacity-100) {
-  opacity: 1
-}
-
 .chapter-links-wrapper :is(.invert) {
   --tw-invert: invert(100%);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
@@ -435,6 +264,18 @@
   outline-offset: 2px
 }
 
+@media (max-width: 768px) {
+  .chapter-links-wrapper :is(.max-\[768px\]\:hidden) {
+    display: none
+  }
+}
+
+@media (min-width: 640px) {
+  .chapter-links-wrapper :is(.sm\:hidden) {
+    display: none
+  }
+}
+
 @media (min-width: 768px) {
   .chapter-links-wrapper :is(.md\:flex) {
     display: flex
@@ -443,18 +284,6 @@
   .chapter-links-wrapper :is(.md\:hidden) {
     display: none
   }
-}
-
-.chapter-links-wrapper :is(.\[\&_\#search-content\]\:hidden #search-content) {
-  display: none
-}
-
-.chapter-links-wrapper :is(.\[\&_\#search-product\]\:hidden #search-product) {
-  display: none
-}
-
-.chapter-links-wrapper :is(.\[\&_a\]\:pl-2 a) {
-  padding-left: 0.5rem
 }
 
 .chapter-links-wrapper :is(.\[\&_span\]\:pl-2 span) {
