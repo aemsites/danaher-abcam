@@ -24,7 +24,7 @@ function renderModal(el) {
   );
 
   const modalContent = div({ class: 'bg-white w-96 m-4 rounded' });
-  const modalClose = div({ class: 'flex w-full justify-center mt-4 p-1' }, closeButton);
+  const modalClose = div({ class: 'flex w-full h-14 justify-center mt-4 p-1' }, closeButton);
   const modalList = div({ class: 'flex flex-col gap-2' }, el);
   modalContent.append(modalList, modalClose);
   modal.append(modalContent);

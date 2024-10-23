@@ -68,6 +68,14 @@
   height: 3.5rem
 }
 
+.chapter-links-wrapper :is(.h-10) {
+  height: 2.5rem
+}
+
+.chapter-links-wrapper :is(.h-12) {
+  height: 3rem
+}
+
 .chapter-links-wrapper :is(.max-h-96) {
   max-height: 24rem
 }
