@@ -25,7 +25,7 @@
     }
 
     h1 {
-        @apply md:!leading-[3rem] !font-bold !text-[32px] lg:!text-5xl md:!text-4xl;
+        @apply md:!leading-[3rem] !font-bold !text-[32px] lg:!text-6xl !text-4xl;
     }
 
     h2 { 
@@ -223,7 +223,7 @@
         @apply font-normal text-gray-900 mb-2;
     }
 
-    .stories main .story-middle-container {
+    .stories main .story-middle-container, .guide main .chapter-links-container {
         @apply flex flex-col gap-x-0 lg:flex-row lg:gap-x-16;
     }
 

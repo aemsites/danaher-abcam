@@ -473,19 +473,20 @@ div > p:not(div.button-container > p) {
 
 h1 {
   font-size: 32px !important;
+  font-size: 2.25rem !important;
+  line-height: 2.5rem !important;
   font-weight: 700 !important;
 }
 
 @media (min-width: 768px) {
   h1 {
-    font-size: 2.25rem !important;
     line-height: 3rem !important;
   }
 }
 
 @media (min-width: 1024px) {
   h1 {
-    font-size: 3rem !important;
+    font-size: 3.75rem !important;
     line-height: 1 !important;
   }
 }
@@ -1159,7 +1160,7 @@ dialog .modal-content .section > .default-content-wrapper p {
   color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 
-.stories main .story-middle-container {
+.stories main .story-middle-container, .guide main .chapter-links-container {
   display: flex;
   flex-direction: column;
   -moz-column-gap: 0px;
@@ -1167,7 +1168,7 @@ dialog .modal-content .section > .default-content-wrapper p {
 }
 
 @media (min-width: 1024px) {
-  .stories main .story-middle-container {
+  .stories main .story-middle-container, .guide main .chapter-links-container {
     flex-direction: row;
     -moz-column-gap: 4rem;
          column-gap: 4rem;

@@ -287,6 +287,29 @@ const fileMappings = [
     output: './eds/blocks/speakers-info/speakers-info.css',
     wrapper: 'speakers-info-wrapper',
   },
+  {
+    content: './eds/blocks/chapter-links/chapter-links.js',
+    output: './eds/blocks/chapter-links/chapter-links.css',
+    wrapper: 'chapter-links-wrapper',
+  },
+  {
+    content: './eds/templates/guide/guide.js',
+    output: './eds/templates/guide/guide.css',
+  },
+  {
+    content: './eds/blocks/sidelinks/sidelinks.js',
+    output: './eds/blocks/sidelinks/sidelinks.css',
+    wrapper: 'sidelinks-wrapper',
+  },
+  {
+    content: './eds/templates/guides-hub/guides-hub.js',
+    output: './eds/templates/guides-hub/guides-hub.css',
+  },
+  {
+    content: './eds/blocks/guides-hub-links/guides-hub-links.js',
+    output: './eds/blocks/guides-hub-links/guides-hub-links.css',
+    wrapper: 'guides-hub-links-wrapper',
+  },
 ];
 
 const watch = process.argv[2];
