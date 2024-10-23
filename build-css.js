@@ -288,11 +288,6 @@ const fileMappings = [
     wrapper: 'speakers-info-wrapper',
   },
   {
-    content: './eds/blocks/related-links/related-links.js',
-    output: './eds/blocks/related-links/related-links.css',
-    wrapper: 'related-links-wrapper',
-  },
-  {
     content: './eds/blocks/chapter-links/chapter-links.js',
     output: './eds/blocks/chapter-links/chapter-links.css',
     wrapper: 'chapter-links-wrapper',

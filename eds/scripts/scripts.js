@@ -351,7 +351,6 @@ function decorateStoryPage(main) {
 
 function decorateGuidePage(main) {
   const sectionEl = main.querySelector(':scope > div.section.chapter-links-container.sidelinks-container');
-  console.log('decorateGuidePage', sectionEl?.children);
   if (sectionEl) {
     const toBeRemoved = ['chapter-links-wrapper', 'sidelinks-wrapper'];
     const rightSideElements = div({ class: 'w-full' });

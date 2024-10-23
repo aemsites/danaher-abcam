@@ -43,8 +43,7 @@
       "story-hub",
       "speakers-info",
       "download",
-      "table",
-      "related-links"
+      "table"
     ]
   },
   {
@@ -86,12 +85,6 @@
     "id": "podcasts",
     "components": [
       "podcast"
-    ]
-  },
-  {
-    "id": "related-links",
-    "components": [
-      "related-link"
     ]
   },
   {
