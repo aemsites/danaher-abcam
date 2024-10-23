@@ -2496,6 +2496,10 @@ main .section.related-stories-container .default-content-wrapper h2 {
     display: block !important;
   }
 
+  .md\:hidden {
+    display: none;
+  }
+
   .md\:h-64 {
     height: 16rem;
   }
