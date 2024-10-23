@@ -2,7 +2,7 @@ import { getMetadata } from '../../scripts/aem.js';
 import {
   div, nav, ul, li, a,
 } from '../../scripts/dom-builder.js';
-// breadcrumb functionality implementation
+
 export default function decorate(block) {
   const path = window.location.pathname.split('/').slice(2);
   const ogTitle = getMetadata('og:title');
