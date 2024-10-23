@@ -1,6 +1,6 @@
 export default function decorate(block) {
 
-  const apiKey = 'AIzaSyAw4MBHZN8tupaMH7UkuHBE273nIVHhAsA';
+  const apiKey = '';
   const videoId = '0EtzSC_1ROI';
 
   fetch(`https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${apiKey}&part=snippet`)
