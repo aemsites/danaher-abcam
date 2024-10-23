@@ -2,24 +2,18 @@ import ffetch from '../../scripts/ffetch.js';
 import {
   a, button, div, p, span,
 } from '../../scripts/dom-builder.js';
-import { makePublicUrl } from '../../scripts/scripts.js';
+import { decorateBottomChapterSkeleton, makePublicUrl } from '../../scripts/scripts.js';
 import { decorateIcons } from '../../scripts/aem.js';
 
 function renderModal(el) {
-  const modal = div({ class: 'w-screen h-screen top-0 left-0 fixed inset-0 z-30 bg-black bg-opacity-80 flex justify-center items-center transition-all -translate-y-full' });
+  const modal = div({ class: 'w-screen h-screen top-0 left-0 fixed block md:hidden inset-0 z-30 bg-black bg-opacity-80 flex justify-center items-center transition-all -translate-y-full' });
   const closeButton = button(
     {
       type: 'button',
-      class: 'size-full flex items-center gap-x-2 justify-center focus:outline-none border border-solid border-black rounded-full text-black text-sm leading-6 font-semibold',
-      onclick: () => {
-        modal.classList.toggle('-translate-y-full');
-      },
+      class: 'size-full flex items-center gap-x-2 justify-center focus:outline-none border border-solid border-black rounded-full text-black text-sm font-semibold',
+      onclick: () => modal.classList.toggle('-translate-y-full'),
     },
-    span(
-      {
-        class: 'icon icon-close invert',
-      },
-    ),
+    span({ class: 'icon icon-close invert' }),
     'Close',
   );
 
@@ -113,5 +107,5 @@ export default async function decorate(block) {
     'Browse Chapters',
   );
   decorateIcons(toggleButton);
-  footerEl.after(div({ class: 'bg-white py-4 px-6' }, toggleButton));
+  footerEl.after(decorateBottomChapterSkeleton(toggleButton));
 }

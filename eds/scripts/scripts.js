@@ -367,6 +367,10 @@ function decorateGuidePage(main) {
   }
 }
 
+export function decorateBottomChapterSkeleton(toggleButton) {
+  return div({ class: 'sticky bottom-0 block lg:hidden bg-white py-4 px-6' }, toggleButton);
+}
+
 /**
  * Decorates the sticky right navigation block from main element.
  * @param {Element} main The main element

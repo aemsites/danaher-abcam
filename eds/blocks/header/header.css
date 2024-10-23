@@ -10,10 +10,6 @@
   z-index: 40
 }
 
-.header-wrapper :is(.z-50) {
-  z-index: 50
-}
-
 .header-wrapper :is(.block) {
   display: block
 }

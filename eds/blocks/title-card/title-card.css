@@ -54,11 +54,6 @@
   padding-right: 30px
 }
 
-.title-card-wrapper :is(.py-12) {
-  padding-top: 3rem;
-  padding-bottom: 3rem
-}
-
 .title-card-wrapper :is(.pb-4) {
   padding-bottom: 1rem
 }
@@ -104,11 +99,6 @@
 }
 
 @media (min-width: 768px) {
-  .title-card-wrapper :is(.md\:px-\[30px\]) {
-    padding-left: 30px;
-    padding-right: 30px
-  }
-
   .title-card-wrapper :is(.md\:text-6xl) {
     font-size: 3.75rem;
     line-height: 1
@@ -116,11 +106,6 @@
 }
 
 @media (min-width: 1024px) {
-  .title-card-wrapper :is(.lg\:px-\[30px\]) {
-    padding-left: 30px;
-    padding-right: 30px
-  }
-
   .title-card-wrapper :is(.lg\:px-0) {
     padding-left: 0px;
     padding-right: 0px
