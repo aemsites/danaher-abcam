@@ -11,7 +11,7 @@ export default async function buildAutoBlocks() {
     buildBlock('sidelinks', { elems: [] }),
   );
   sectionMiddle.prepend(
-    buildBlock('sticky-right-navigation', { elems: [] }),
+    buildBlock('sticky-sections-list', { elems: [] }),
   );
   const headerSection = div();
   const breadcrumbBlock = buildBlock('breadcrumb', { elems: [] });
