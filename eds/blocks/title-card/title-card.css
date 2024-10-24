@@ -54,6 +54,11 @@
   padding-right: 30px
 }
 
+.title-card-wrapper :is(.py-12) {
+  padding-top: 3rem;
+  padding-bottom: 3rem
+}
+
 .title-card-wrapper :is(.pb-4) {
   padding-bottom: 1rem
 }
