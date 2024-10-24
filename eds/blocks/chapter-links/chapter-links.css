@@ -56,6 +56,10 @@
   height: 100vh
 }
 
+.chapter-links-wrapper :is(.h-full) {
+  height: 100%
+}
+
 .chapter-links-wrapper :is(.max-h-96) {
   max-height: 24rem
 }
@@ -111,8 +115,20 @@
        column-gap: 0.75rem
 }
 
+.chapter-links-wrapper :is(.overflow-hidden) {
+  overflow: hidden
+}
+
 .chapter-links-wrapper :is(.overflow-scroll) {
   overflow: scroll
+}
+
+.chapter-links-wrapper :is(.overflow-x-hidden) {
+  overflow-x: hidden
+}
+
+.chapter-links-wrapper :is(.overflow-y-scroll) {
+  overflow-y: scroll
 }
 
 .chapter-links-wrapper :is(.rounded) {

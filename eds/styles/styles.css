@@ -1192,6 +1192,16 @@ dialog .modal-content .section > .default-content-wrapper p {
   padding-top: 2rem;
 }
 
+.guide main .chapter-links-container {
+  flex-direction: column-reverse;
+}
+
+@media (min-width: 1024px) {
+  .guide main .chapter-links-container {
+    flex-direction: row;
+  }
+}
+
 audio::-webkit-media-controls-panel {
   background-color: white;
 }

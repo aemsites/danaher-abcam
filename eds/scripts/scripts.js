@@ -372,7 +372,7 @@ function decorateGuidePage(main) {
 }
 
 export function decorateBottomChapterSkeleton(toggleButton) {
-  return div({ class: 'sticky bottom-0 block md:hidden bg-white py-4 px-6' }, toggleButton);
+  return div({ class: 'sticky bottom-0 block md:hidden bg-transparent py-4 px-6' }, toggleButton);
 }
 
 /**
