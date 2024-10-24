@@ -355,16 +355,18 @@ function decorateGuidePage(main) {
   if (sectionEl) {
     const toBeRemoved = ['chapter-links-wrapper', 'sidelinks-wrapper'];
     const rightSideElements = div({ class: 'w-full' });
-    const divEl = div({ class: 'ml-4 xl:ml-0 min-w-56 lg:max-w-72 flex flex-col gap-y-2' });
+    const divEl = div({ class: 'ml-0 md:ml-4 xl:ml-0 min-w-56 lg:max-w-72 flex flex-col gap-y-2' });
 
+    toBeRemoved.forEach((ele) => {
+      const existingEl = sectionEl?.querySelector(`.${ele}`);
+      divEl.append(existingEl);
+    });
     Array.from(sectionEl?.children).forEach((element) => {
       if (!toBeRemoved.includes(element.classList[0])) {
         rightSideElements.append(element);
-      } else {
-        divEl.append(sectionEl?.querySelector(`.${element.classList[0]}`));
-        sectionEl?.prepend(divEl);
       }
     });
+    sectionEl?.prepend(divEl);
     sectionEl?.append(rightSideElements);
   }
 }
@@ -379,7 +381,7 @@ function decorateStickyRightNav(main) {
     const divEl = div();
     stickySection.classList.add('flex');
     const stricyBlock = stickySection.querySelector('.sticky-right-navigation-wrapper')?.firstElementChild;
-    stricyBlock?.classList.add('sticky', 'top-32', 'mt-4', 'ml-20', 'mr-[-8rem]');
+    stricyBlock?.classList.add('sticky', 'top-32', 'mt-4', 'ml-20');
     [...stickySection.children].forEach((child, index, childs) => {
       if (index !== childs.length - 1) {
         divEl.append(child);

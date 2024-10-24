@@ -47,26 +47,6 @@
 }
 
 @media (min-width: 1024px) {
-  .guides-hub-links-wrapper :is(.lg\:flex-row) {
-    flex-direction: row
-  }
-
-  .guides-hub-links-wrapper :is(.lg\:gap-10) {
-    gap: 2.5rem
-  }
-
-  .guides-hub-links-wrapper :is(.lg\:gap-52) {
-    gap: 13rem
-  }
-
-  .guides-hub-links-wrapper :is(.lg\:gap-y-10) {
-    row-gap: 2.5rem
-  }
-
-  .guides-hub-links-wrapper :is(.lg\:gap-y-52) {
-    row-gap: 13rem
-  }
-
   .guides-hub-links-wrapper :is(.lg\:gap-x-52) {
     -moz-column-gap: 13rem;
          column-gap: 13rem

@@ -59,6 +59,10 @@
   padding-bottom: 3rem
 }
 
+.title-card-wrapper :is(.pb-4) {
+  padding-bottom: 1rem
+}
+
 .title-card-wrapper :is(.text-center) {
   text-align: center
 }
@@ -107,6 +111,11 @@
 }
 
 @media (min-width: 1024px) {
+  .title-card-wrapper :is(.lg\:px-0) {
+    padding-left: 0px;
+    padding-right: 0px
+  }
+
   .title-card-wrapper :is(.lg\:text-3xl) {
     font-size: 1.875rem;
     line-height: 2.25rem
