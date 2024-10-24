@@ -1304,10 +1304,6 @@ main .section.related-stories-container .default-content-wrapper h2 {
   top: 0.75rem;
 }
 
-.top-32 {
-  top: 8rem;
-}
-
 .top-\[70px\] {
   top: 70px;
 }
@@ -1404,10 +1400,6 @@ main .section.related-stories-container .default-content-wrapper h2 {
 
 .ml-2 {
   margin-left: 0.5rem;
-}
-
-.ml-20 {
-  margin-left: 5rem;
 }
 
 .ml-4 {
@@ -1628,6 +1620,10 @@ main .section.related-stories-container .default-content-wrapper h2 {
 
 .max-w-\[2464px\] {
   max-width: 2464px;
+}
+
+.max-w-full {
+  max-width: 100%;
 }
 
 .flex-1 {

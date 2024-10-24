@@ -40,6 +40,10 @@
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
 }
 
+.guides-hub-links-wrapper :is(.hover\:underline:hover) {
+  text-decoration-line: underline
+}
+
 @media (min-width: 768px) {
   .guides-hub-links-wrapper :is(.md\:flex-row) {
     flex-direction: row
