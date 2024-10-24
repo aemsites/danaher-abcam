@@ -5,7 +5,7 @@ import { sampleRUM, loadScript } from './aem.js';
 sampleRUM('cwv');
 
 // OneTrust Cookies Consent Notice start
-if (!window.location.host.includes('hlx.page') && !window.location.host.includes('localhost')) {
+if (!window.location.host.includes('.page') && !window.location.host.includes('.live') && !window.location.host.includes('localhost')) {
   loadScript('https://cdn.cookielaw.org/scripttemplates/otSDKStub.js', {
     type: 'text/javascript',
     charset: 'UTF-8',
