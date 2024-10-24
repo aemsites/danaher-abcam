@@ -667,7 +667,16 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
-  decorateVideo(main);
+  
+  const observer = new IntersectionObserver((entries) => {
+    if (entries.some((e) => e.isIntersecting)) {
+      observer.disconnect();
+      setTimeout(() => {
+        decorateVideo(main);
+      }, 2000);
+    }
+  });
+
   decorateStickyRightNav(main);
   decorateStoryPage(main);
   decorateGuidePage(main);
