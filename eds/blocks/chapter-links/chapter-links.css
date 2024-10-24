@@ -64,12 +64,12 @@
   max-height: 24rem
 }
 
-.chapter-links-wrapper :is(.w-full) {
-  width: 100%
-}
-
 .chapter-links-wrapper :is(.w-96) {
   width: 24rem
+}
+
+.chapter-links-wrapper :is(.w-full) {
+  width: 100%
 }
 
 .chapter-links-wrapper :is(.w-screen) {
@@ -97,12 +97,12 @@
   justify-content: center
 }
 
-.chapter-links-wrapper :is(.gap-3) {
-  gap: 0.75rem
-}
-
 .chapter-links-wrapper :is(.gap-2) {
   gap: 0.5rem
+}
+
+.chapter-links-wrapper :is(.gap-3) {
+  gap: 0.75rem
 }
 
 .chapter-links-wrapper :is(.gap-x-2) {
@@ -121,14 +121,6 @@
 
 .chapter-links-wrapper :is(.overflow-scroll) {
   overflow: scroll
-}
-
-.chapter-links-wrapper :is(.overflow-x-hidden) {
-  overflow-x: hidden
-}
-
-.chapter-links-wrapper :is(.overflow-y-scroll) {
-  overflow-y: scroll
 }
 
 .chapter-links-wrapper :is(.rounded) {
@@ -180,12 +172,12 @@
   --tw-bg-opacity: 0.8
 }
 
-.chapter-links-wrapper :is(.p-2) {
-  padding: 0.5rem
-}
-
 .chapter-links-wrapper :is(.p-1) {
   padding: 0.25rem
+}
+
+.chapter-links-wrapper :is(.p-2) {
+  padding: 0.5rem
 }
 
 .chapter-links-wrapper :is(.px-12) {
@@ -196,10 +188,6 @@
 .chapter-links-wrapper :is(.py-4) {
   padding-top: 1rem;
   padding-bottom: 1rem
-}
-
-.chapter-links-wrapper :is(.pt-6) {
-  padding-top: 1.5rem
 }
 
 .chapter-links-wrapper :is(.pl-6) {
@@ -277,6 +265,16 @@
   }
 
   .chapter-links-wrapper :is(.md\:hidden) {
+    display: none
+  }
+}
+
+@media (min-width: 1024px) {
+  .chapter-links-wrapper :is(.lg\:flex) {
+    display: flex
+  }
+
+  .chapter-links-wrapper :is(.lg\:hidden) {
     display: none
   }
 }
