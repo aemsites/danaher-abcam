@@ -15,7 +15,7 @@ export default function decorate(block) {
       { class: 'dd-container text-sm border border-[#273F3F] border-opacity-5 bg-[#273F3F] bg-opacity-5 rounded-3xl py-2.5 px-6 w-full bg-white cursor-pointer relative' },
       span({ class: 'icon icon-chevron-down absolute top-3 right-6 z-50' }),
       span({ class: 'dd-selected' }, ''),
-      div({ class: 'dd-options shadow-2xl absolute hidden top-full left-0 w-full bg-white rounded-3xl z-20 border pt-5 mt-1' }),
+      div({ class: 'dd-options shadow-2xl absolute hidden top-full left-0 w-full bg-white rounded-3xl z-20 border pt-5 mt-1 max-h-screen overflow-y-auto' }),
     ),
   );
   decorateIcons(dropdownContainer, 20, 20);
