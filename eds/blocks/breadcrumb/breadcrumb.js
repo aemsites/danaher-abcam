@@ -22,13 +22,10 @@ export default function decorate(block) {
       url = `${url}/${path[i]}`;
       let link = i === length - 1 ? title : path[i].charAt(0).toUpperCase() + path[i].slice(1);
       link = link.toLowerCase().replace(/\b[a-z]/g, (letter) => letter.toUpperCase());
-      //if (i !== 0) link = ` / ${link}`;
       if (i !== length - 1) breadcrumbLinks = a({ class: '\'breadcrumblink hover:underline  text-lg\'', href: newUrl + url }, (`${link}`));
       else { breadcrumbLinks = span({ class: '\'breadcrumblink underline text-lg\'', href: newUrl + url }, (`${link}`)); }
       breadcrumbLiLinks.appendChild(breadcrumbLinks);
-      if( i !== length-1)
-        breadcrumbLiLinks.append(' / ');
-      
+      if (i !== length - 1) breadcrumbLiLinks.append(' / ');
     }
     const breadcrumNav = nav(
       { class: 'breadcrumb-wrapper relative z-10 flex max-w-max flex-1 items-center' },
