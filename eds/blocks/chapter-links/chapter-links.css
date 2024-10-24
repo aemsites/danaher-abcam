@@ -2,6 +2,10 @@
   position: fixed
 }
 
+.chapter-links-wrapper :is(.sticky) {
+  position: sticky
+}
+
 .chapter-links-wrapper :is(.inset-0) {
   inset: 0px
 }
@@ -12,6 +16,10 @@
 
 .chapter-links-wrapper :is(.top-0) {
   top: 0px
+}
+
+.chapter-links-wrapper :is(.bottom-0) {
+  bottom: 0px
 }
 
 .chapter-links-wrapper :is(.z-30) {
@@ -164,6 +172,10 @@
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
 }
 
+.chapter-links-wrapper :is(.bg-transparent) {
+  background-color: transparent
+}
+
 .chapter-links-wrapper :is(.bg-opacity-80) {
   --tw-bg-opacity: 0.8
 }
@@ -184,6 +196,11 @@
 .chapter-links-wrapper :is(.py-4) {
   padding-top: 1rem;
   padding-bottom: 1rem
+}
+
+.chapter-links-wrapper :is(.px-6) {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem
 }
 
 .chapter-links-wrapper :is(.pl-6) {

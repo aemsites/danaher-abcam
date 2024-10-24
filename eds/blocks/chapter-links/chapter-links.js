@@ -2,7 +2,7 @@ import ffetch from '../../scripts/ffetch.js';
 import {
   a, button, div, p, span,
 } from '../../scripts/dom-builder.js';
-import { decorateBottomChapterSkeleton, makePublicUrl } from '../../scripts/scripts.js';
+import { makePublicUrl } from '../../scripts/scripts.js';
 import { decorateIcons } from '../../scripts/aem.js';
 
 function renderModal(el) {
@@ -107,5 +107,6 @@ export default async function decorate(block) {
     'Browse Chapters',
   );
   decorateIcons(toggleButton);
-  footerEl.after(decorateBottomChapterSkeleton(toggleButton));
+  const stickyChapterLinks = div({ class: 'sticky bottom-0 block lg:hidden bg-transparent py-4 px-6' }, toggleButton);
+  footerEl.after(stickyChapterLinks);
 }
