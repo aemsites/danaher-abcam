@@ -15,7 +15,7 @@ export default async function decorate(block) {
   appGuides.forEach((element) => {
     applicationGuidesDiv.querySelector('ul').appendChild(
       li(
-        { class: 'mb-1 font-semibold text-lg text-[#378189]' },
+        { class: 'mb-1 font-semibold text-lg text-[#378189] hover:underline' },
         a({ href: element.path }, element.title.replace(/\s*\|\s*abcam$/i, '')),
       ),
     );
