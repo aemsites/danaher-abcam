@@ -12,13 +12,13 @@ export default function decorate(block) {
     { class: 'flex items-center relative' },
     div({ class: 'jump-to-label text-[#65797c] text-sm w-28  md:!w-24 lg:!w-20 ' }, 'JUMP TO:'),
     div(
-      { class: 'dd-container text-sm border bg-[#273F3F] bg-opacity-5 rounded-3xl py-2.5 px-6 w-full bg-white cursor-pointer relative' },
-      span({ class: 'icon icon-chevron-down absolute top-2 right-6 z-50' }),
+      { class: 'dd-container text-sm border border-[#273F3F] border-opacity-5 bg-[#273F3F] bg-opacity-5 rounded-3xl py-2.5 px-6 w-full bg-white cursor-pointer relative' },
+      span({ class: 'icon icon-chevron-down absolute top-3 right-6 z-50' }),
       span({ class: 'dd-selected' }, ''),
       div({ class: 'dd-options shadow-2xl absolute hidden top-full left-0 w-full bg-white rounded-3xl z-20 border pt-5 mt-1' }),
     ),
   );
-  decorateIcons(dropdownContainer);
+  decorateIcons(dropdownContainer, 20, 20);
 
   const h2Eles = document.querySelectorAll('h2');
   if (h2Eles.length > 0) {
@@ -38,7 +38,7 @@ export default function decorate(block) {
           const selectedSection = document.getElementById(this.dataset.value);
           if (selectedSection) {
             window.scrollTo({
-              top: selectedSection.offsetTop,
+              top: selectedSection.offsetTop - 20,
               behavior: 'smooth',
             });
           }
@@ -71,7 +71,7 @@ export default function decorate(block) {
       h2Eles.forEach((heading) => {
         const headingTop = heading.offsetTop;
         const headingHeight = heading.offsetHeight;
-        if (window.scrollY >= headingTop - headingHeight / 3) {
+        if (window.scrollY >= (headingTop - headingHeight) - 100 / 3) {
           lastCrossedHeadingId = heading.id;
         }
       });
