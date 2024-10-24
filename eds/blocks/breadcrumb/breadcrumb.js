@@ -1,6 +1,6 @@
 import { getMetadata } from '../../scripts/aem.js';
 import {
-  div, nav, ul, li, a, span,
+  div, nav, ul, li, a,
 } from '../../scripts/dom-builder.js';
 
 export default function decorate(block) {
@@ -13,7 +13,7 @@ export default function decorate(block) {
   }
   const { length } = path;
   if (length > 0) {
-    const breadcrumbLiLinks = li({class: "flex gap-x-2"});
+    const breadcrumbLiLinks = li({ class: 'flex gap-x-2' });
     let url = '';
     let breadcrumbLinks = a({ class: '\'breadcrumblink hover:underline text-lg\'', href: '/en-us' }, 'Home');
     breadcrumbLiLinks.appendChild(breadcrumbLinks);
