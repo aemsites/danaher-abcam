@@ -355,16 +355,18 @@ function decorateGuidePage(main) {
   if (sectionEl) {
     const toBeRemoved = ['chapter-links-wrapper', 'sidelinks-wrapper'];
     const rightSideElements = div({ class: 'w-full' });
-    const divEl = div({ class: 'ml-4 xl:ml-0 min-w-56 lg:max-w-72 flex flex-col gap-y-2' });
+    const divEl = div({ class: 'ml-0 md:ml-4 xl:ml-0 min-w-56 lg:max-w-72 flex flex-col gap-y-2' });
 
+    toBeRemoved.forEach((ele) => {
+      const existingEl = sectionEl?.querySelector(`.${ele}`);
+      divEl.append(existingEl);
+    });
     Array.from(sectionEl?.children).forEach((element) => {
       if (!toBeRemoved.includes(element.classList[0])) {
         rightSideElements.append(element);
-      } else {
-        divEl.append(sectionEl?.querySelector(`.${element.classList[0]}`));
-        sectionEl?.prepend(divEl);
       }
     });
+    sectionEl?.prepend(divEl);
     sectionEl?.append(rightSideElements);
   }
 }
@@ -379,7 +381,7 @@ function decorateStickyRightNav(main) {
     const divEl = div();
     stickySection.classList.add('flex');
     const stricyBlock = stickySection.querySelector('.sticky-right-navigation-wrapper')?.firstElementChild;
-    stricyBlock?.classList.add('sticky', 'top-32', 'mt-4', 'ml-20', 'mr-[-8rem]');
+    stricyBlock?.classList.add('sticky', 'top-32', 'mt-4', 'ml-20');
     [...stickySection.children].forEach((child, index, childs) => {
       if (index !== childs.length - 1) {
         divEl.append(child);
@@ -514,7 +516,7 @@ async function decorateVideo(main) {
               <iframe id="youtubePlayer" src="${embedURL}"
               class="absolute h-full w-full top-0 left-0 border-0"
               allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture"
-              scrolling="no" title="Content from Youtube" loading="eager"></iframe>
+              scrolling="no" title="Content from Youtube" loading="lazy"></iframe>
             </div>`;
             linkContainer.innerHTML = embedHTML;
             const scriptTag = document.createElement('script');
@@ -539,7 +541,7 @@ async function decorateVideo(main) {
               <iframe src="${link.href}"
               class="relative w-full h-full border-0 top-0 left-0" 
               allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" 
-              scrolling="no" title="Content from Youtube" loading="eager"></iframe>
+              scrolling="no" title="Content from Youtube" loading="lazy"></iframe>
             </div>`;
             linkContainer.innerHTML = embedHTML;
           }
@@ -669,7 +671,16 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
-  decorateVideo(main);
+  
+  const observer = new IntersectionObserver((entries) => {
+    if (entries.some((e) => e.isIntersecting)) {
+      observer.disconnect();
+      setTimeout(() => {
+        decorateVideo(main);
+      }, 2000);
+    }
+  });
+
   decorateStickyRightNav(main);
   decorateStoryPage(main);
   decorateGuidePage(main);

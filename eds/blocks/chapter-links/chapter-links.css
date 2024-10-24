@@ -2,6 +2,10 @@
   position: fixed
 }
 
+.chapter-links-wrapper :is(.sticky) {
+  position: sticky
+}
+
 .chapter-links-wrapper :is(.inset-0) {
   inset: 0px
 }
@@ -12,6 +16,10 @@
 
 .chapter-links-wrapper :is(.top-0) {
   top: 0px
+}
+
+.chapter-links-wrapper :is(.bottom-0) {
+  bottom: 0px
 }
 
 .chapter-links-wrapper :is(.z-30) {
@@ -50,10 +58,6 @@
 
 .chapter-links-wrapper :is(.h-14) {
   height: 3.5rem
-}
-
-.chapter-links-wrapper :is(.h-screen) {
-  height: 100vh
 }
 
 .chapter-links-wrapper :is(.h-full) {
@@ -168,6 +172,10 @@
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
 }
 
+.chapter-links-wrapper :is(.bg-transparent) {
+  background-color: transparent
+}
+
 .chapter-links-wrapper :is(.bg-opacity-80) {
   --tw-bg-opacity: 0.8
 }
@@ -190,16 +198,17 @@
   padding-bottom: 1rem
 }
 
+.chapter-links-wrapper :is(.px-6) {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem
+}
+
 .chapter-links-wrapper :is(.pl-6) {
   padding-left: 1.5rem
 }
 
 .chapter-links-wrapper :is(.pr-6) {
   padding-right: 1.5rem
-}
-
-.chapter-links-wrapper :is(.pt-6) {
-  padding-top: 1.5rem
 }
 
 .chapter-links-wrapper :is(.text-sm) {

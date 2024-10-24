@@ -1192,6 +1192,16 @@ dialog .modal-content .section > .default-content-wrapper p {
   padding-top: 2rem;
 }
 
+.guide main .chapter-links-container {
+  flex-direction: column-reverse;
+}
+
+@media (min-width: 1024px) {
+  .guide main .chapter-links-container {
+    flex-direction: row;
+  }
+}
+
 audio::-webkit-media-controls-panel {
   background-color: white;
 }
@@ -1260,6 +1270,10 @@ main .section.related-stories-container .default-content-wrapper h2 {
 
 .-top-\[23px\] {
   top: -23px;
+}
+
+.bottom-0 {
+  bottom: 0px;
 }
 
 .left-0 {
@@ -1384,6 +1398,10 @@ main .section.related-stories-container .default-content-wrapper h2 {
   margin-bottom: 28px;
 }
 
+.ml-0 {
+  margin-left: 0px;
+}
+
 .ml-2 {
   margin-left: 0.5rem;
 }
@@ -1410,10 +1428,6 @@ main .section.related-stories-container .default-content-wrapper h2 {
 
 .mr-5 {
   margin-right: 1.25rem;
-}
-
-.mr-\[-8rem\] {
-  margin-right: -8rem;
 }
 
 .mt-1 {
@@ -2484,12 +2498,20 @@ main .section.related-stories-container .default-content-wrapper h2 {
     margin-bottom: 0.5rem;
   }
 
+  .md\:ml-4 {
+    margin-left: 1rem;
+  }
+
   .md\:mt-4 {
     margin-top: 1rem;
   }
 
   .md\:\!block {
     display: block !important;
+  }
+
+  .md\:hidden {
+    display: none;
   }
 
   .md\:h-64 {
