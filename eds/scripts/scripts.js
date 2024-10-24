@@ -330,6 +330,7 @@ function buildAutoBlocks(main) {
 
 function decorateStoryPage(main) {
   const sectionEl = main.querySelector(':scope > div.section.story-info-container.social-media-container.sidelinks-container');
+  
   if (sectionEl) {
     const toBeRemoved = ['story-info-wrapper', 'social-media-wrapper', 'sidelinks-wrapper'];
     const rightSideElements = div({ class: 'w-full' });
@@ -350,20 +351,21 @@ function decorateStoryPage(main) {
 }
 
 function decorateGuidePage(main) {
-  const sectionEl = main.querySelector(':scope > div.section.chapter-links-container');
+  const sectionEl = main.querySelector(':scope > div.section.chapter-links-container.sidelinks-container');
   if (sectionEl) {
-    const toBeRemoved = ['chapter-links-wrapper'];
+    const toBeRemoved = ['chapter-links-wrapper', 'sidelinks-wrapper'];
     const rightSideElements = div({ class: 'w-full' });
+    const divEl = div({ class: 'ml-4 xl:ml-0 min-w-56 lg:max-w-72 flex flex-col gap-y-2' });
 
     Array.from(sectionEl?.children).forEach((element) => {
       if (!toBeRemoved.includes(element.classList[0])) {
         rightSideElements.append(element);
+      } else {
+        divEl.append(sectionEl?.querySelector(`.${element.classList[0]}`));
+        sectionEl?.prepend(divEl);
       }
     });
     sectionEl?.append(rightSideElements);
-    const divEl = div({ class: 'ml-4 xl:ml-0 min-w-56 lg:max-w-72 flex flex-col gap-y-2' });
-    divEl.append(sectionEl?.querySelector('.chapter-links-wrapper'));
-    sectionEl?.prepend(divEl);
   }
 }
 
@@ -998,7 +1000,7 @@ export function createFilters({
 }
 
 export function createCard({
-  titleImage,
+  titleImage = '',
   title = '',
   description = '',
   footerLink = '',
@@ -1019,8 +1021,8 @@ export function createCard({
       titleImage,
       div(
         { class: 'flex-1' },
-        h3({ class: 'text-black font-medium mt-4 break-words line-clamp-4' }, title),
-        p({ class: 'text-sm line-clamp-3' }, description),
+        title && h3({ class: 'text-black font-medium mt-4 break-words line-clamp-4' }, title),
+        description && p({ class: 'text-sm line-clamp-3' }, description),
         bodyEl,
       ),
       footerLink !== ''
