@@ -13,18 +13,18 @@ export default function decorate(block) {
   }
   const { length } = path;
   if (length > 0) {
-    const breadcrumbLiLinks = li();
+    const breadcrumbLiLinks = li({ class: 'flex gap-x-2' });
     let url = '';
-    let breadcrumbLinks = '';
+    let breadcrumbLinks = a({ class: '\'breadcrumblink hover:underline text-lg\'', href: '/en-us' }, 'Home');
+    breadcrumbLiLinks.appendChild(breadcrumbLinks);
     for (let i = 0; i < length; i += 1) {
-      let underline = 'underline';
-      if (i !== length - 1) underline = `hover:${underline}`;
       url = `${url}/${path[i]}`;
       let link = i === length - 1 ? title : path[i].charAt(0).toUpperCase() + path[i].slice(1);
-      link = link.toLowerCase().replace(/\b[a-z]/g, (letter) => letter.toUpperCase());
-      if (i !== 0) link = ` / ${link}`;
-      if (i !== length - 1) breadcrumbLinks = a({ class: '\'breadcrumblink hover:underline  text-lg\'', href: newUrl + url }, (`${link}`));
-      else { breadcrumbLinks = a({ class: '\'breadcrumblink underline text-lg\'', href: newUrl + url }, (`${link}`)); }
+      link = link.replace(/-/g, ' ');
+      breadcrumbLinks = a({ class: '\'breadcrumblink text-lg\'', href: newUrl + url }, (`${link}`));
+      breadcrumbLinks.classList.toggle('underline', i === length - 1);
+      breadcrumbLinks.classList.toggle('hover:underline', i !== length - 1);
+      breadcrumbLiLinks.append('/');
       breadcrumbLiLinks.appendChild(breadcrumbLinks);
     }
     const breadcrumNav = nav(
