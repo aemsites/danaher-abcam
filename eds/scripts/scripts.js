@@ -547,6 +547,7 @@ async function decorateVideo(main) {
             linkContainer.innerHTML = embedHTML;
           }
         } else if (link.title === 'audio') {
+          const h3El = link.closest('div.grid')?.querySelector('h3');
           let linkTitle = isValidUrl(link.textContent) ? '' : link.textContent;
           const audioContainer = div(
             { class: 'flex flex-col' },
@@ -616,6 +617,11 @@ async function decorateVideo(main) {
           });
           updateIconVisibility();
           audioContainer.querySelector('.checkStatus')?.addEventListener('click', checkVideoStatus);
+
+          playIcon.addEventListener('click', () => {
+            h3El.after(audioPlayer);
+          });
+
         }
       });
     } else if (type.includes('film')) {
@@ -630,7 +636,7 @@ async function decorateVideo(main) {
 
           const playButtonHTML = `
             <div class="aspect-video relative w-full h-full">
-              <img src="${posterImage}" class="relative inset-0 w-full h-full object-cover" alt="More episodes in the Series" aria-label="More episodes in the Series"/>
+              <img src="${posterImage}" class="relative inset-0 w-full h-full object-cover" alt="More episodes in the Series" aria-label="More episodes in the Series" loading="lazy"/>
               <button id="play-button-${videoId}" class="absolute inset-0 flex items-center justify-center bg-opacity-50 rounded-full p-4">
                 <span class = "video-play-icon icon icon-video-play"/>
               </button>
@@ -672,16 +678,15 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
-  
   const observer = new IntersectionObserver((entries) => {
     if (entries.some((e) => e.isIntersecting)) {
       observer.disconnect();
       setTimeout(() => {
         decorateVideo(main);
-      }, 2000);
+      }, 3000);
     }
   });
-
+  observer.observe(main);
   decorateStickyRightNav(main);
   decorateStoryPage(main);
   decorateGuidePage(main);
