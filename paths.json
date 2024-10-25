@@ -6,7 +6,8 @@
     "/content/danaher/abcam/tags:/tags.json",
     "/content/danaher/abcam/configuration:/.helix/config.json",
     "/content/danaher/abcam/metadata:/metadata.json",
-    "/content/danaher/abcam/placeholders:/placeholders.json"
+    "/content/danaher/abcam/placeholders:/placeholders.json",
+    "/content/danaher/abcam/metadata-hreflang:/metadata-hreflang.json"
   ],
   "includes": [
     "/content/danaher/abcam"
