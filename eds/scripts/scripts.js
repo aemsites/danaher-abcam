@@ -683,7 +683,7 @@ export function decorateMain(main) {
       observer.disconnect();
       setTimeout(() => {
         decorateVideo(main);
-      }, 2000);
+      }, 3000);
     }
   });
   observer.observe(main);
