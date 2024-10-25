@@ -77,6 +77,12 @@
             "valueType": "string",
             "name": "template",
             "label": "Template"
+          },
+          {
+            "component": "text",
+            "valueType": "number",
+            "name": "pageOrder",
+            "label": "Page Order"
           }
         ]
       }
