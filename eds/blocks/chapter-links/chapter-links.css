@@ -211,6 +211,10 @@
   padding-right: 1.5rem
 }
 
+.chapter-links-wrapper :is(.pt-6) {
+  padding-top: 1.5rem
+}
+
 .chapter-links-wrapper :is(.text-sm) {
   font-size: 0.875rem;
   line-height: 1.25rem

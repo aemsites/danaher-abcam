@@ -62,4 +62,7 @@ indices:
       parent:
         select: head > meta[property="og:url"]
         value: match(attribute(el, "content"), "\/([^\/]+)\/[^\/]+$")
+      pageOrder:
+        select: head > meta[name="pageorder"]
+        value: attribute(el, "content")
 
