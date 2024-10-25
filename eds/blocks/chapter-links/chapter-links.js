@@ -86,7 +86,7 @@ export default async function decorate(block) {
     path: element.path,
   }));
   const filteredChapters = chapters.filter((item) => item.title !== undefined);
-  filteredChapters.sort((chapter1, chapter2) => chapter2.pageOrder - chapter1.pageOrder);
+  filteredChapters.sort((chapter1, chapter2) => chapter1.pageOrder.toString().localeCompare(chapter2.pageOrder.toString(), undefined, { numeric: true }));
 
   // Append button and chapters to block
   const { chaptersDesktopDiv, chaptersMobileDiv } = renderChapters(filteredChapters);
