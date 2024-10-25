@@ -1272,10 +1272,6 @@ main .section.related-stories-container .default-content-wrapper h2 {
   top: -23px;
 }
 
-.bottom-0 {
-  bottom: 0px;
-}
-
 .left-0 {
   left: 0px;
 }
@@ -2504,10 +2500,6 @@ main .section.related-stories-container .default-content-wrapper h2 {
 
   .md\:\!block {
     display: block !important;
-  }
-
-  .md\:hidden {
-    display: none;
   }
 
   .md\:h-64 {
