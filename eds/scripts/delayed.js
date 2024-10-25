@@ -17,6 +17,11 @@ if (!window.location.host.includes('.page') && !window.location.host.includes('.
 }
 // OneTrust Cookies Consent Notice end
 
+// Loading fathom script - start
+const attrs = JSON.parse('{"data-site": "DGRGXILD"}');
+loadScript('https://cdn.usefathom.com/script.js', attrs);
+// Loading fathom script - end
+
 // google tag manager -start
 function loadGTM() {
   const scriptTag = document.createElement('script');
