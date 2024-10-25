@@ -9,17 +9,17 @@ export default function decorate(block) {
   applyClasses(block.parentElement, 'sticky top-0 bg-white z-10');
 
   const dropdownContainer = div(
-    { class: 'flex items-center relative' },
+    { class: 'dd-main-container flex items-center relative pb-[24px] !border-b border-b-[#D8D8D8] font-semibold' },
     div({ class: 'jump-to-label text-[#65797c] text-sm w-28  md:!w-24 lg:!w-20 ' }, 'JUMP TO:'),
     div(
-      { class: 'dd-container text-sm border border-[#273F3F] border-opacity-5 bg-[#273F3F] bg-opacity-5 rounded-3xl py-2.5 px-6 w-full bg-white cursor-pointer relative' },
+      { class: 'dd-container !bg-[#F4F5F5] tracking-[0.2px] leading-4 text-xs border border-[#EAECEC] border-opacity-5 bg-[#273F3F] bg-opacity-5 rounded-3xl py-3 px-6 w-full bg-white cursor-pointer relative' },
       span({ class: 'icon icon-chevron-down absolute top-3 right-6 z-50' }),
       span({ class: 'dd-selected' }, ''),
-      div({ class: 'dd-options shadow-2xl absolute hidden top-full left-0 w-full bg-white rounded-3xl z-20 border pt-5 mt-1' }),
+      div({ class: 'dd-options h-[35rem] drop-shadow-2xl absolute hidden top-full lg:left-0 lg:w-full w-[110%] right-0 bg-white rounded-2xl z-20 border pt-5 mt-1 max-h-screen overflow-y-auto' }),
     ),
   );
+  
   decorateIcons(dropdownContainer, 20, 20);
-
   const h2Eles = document.querySelectorAll('h2');
   if (h2Eles.length > 0) {
     const ddOptionsContainer = dropdownContainer.querySelector('.dd-options');
@@ -29,7 +29,7 @@ export default function decorate(block) {
       ddSelected.textContent = h2Eles[0].textContent || 'Section 1';
       h2Eles.forEach((h2Ele, index) => {
         const optionEle = div(
-          { class: 'dd-option p-2 hover:bg-[#f2f2f2] hover:text-black cursor-pointer' },
+          { class: 'dd-option py-3 px-6 hover:bg-[#f2f2f2] hover:text-black cursor-pointer' },
           h2Ele.textContent || `Section ${index + 1}`,
         );
         optionEle.dataset.value = h2Ele.id;
@@ -38,7 +38,7 @@ export default function decorate(block) {
           const selectedSection = document.getElementById(this.dataset.value);
           if (selectedSection) {
             window.scrollTo({
-              top: selectedSection.offsetTop - 20,
+              top: selectedSection.offsetTop - 47,
               behavior: 'smooth',
             });
           }
