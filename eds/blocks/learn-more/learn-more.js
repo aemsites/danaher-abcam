@@ -32,6 +32,7 @@ export default function decorate(block) {
   } else {
     if (button) {
       firstDivEl?.append(button);
+      button.classList.add('!justify-self-start');
     }
     block.querySelector('div')?.classList.add(...'flex flex-col md:flex-row md:flex-row md:justify-between pt-0 pb-8 md:px-8'.split(' '));
     block.querySelector('h3')?.parentElement?.classList.add('max-w-3xl');
