@@ -1759,6 +1759,14 @@
           {
             "name": "5 Columns",
             "value": "table-5-columns"
+          },
+          {
+            "name": "6 Columns",
+            "value": "table-6-columns"
+          },
+          {
+            "name": "7 Columns",
+            "value": "table-7-columns"
           }
         ]
       }
@@ -1917,6 +1925,53 @@
         "valueType": "string",
         "name": "column6text",
         "label": "Column6"
+      }
+    ]
+  },
+  {
+    "id": "table-col-7",
+    "fields": [
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "column1text",
+        "label": "Column1"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "column2text",
+        "label": "Column2"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "column3text",
+        "label": "Column3"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "column4text",
+        "label": "Column4"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "column5text",
+        "label": "Column5"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "column6text",
+        "label": "Column6"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "column7text",
+        "label": "Column7"
       }
     ]
   },
