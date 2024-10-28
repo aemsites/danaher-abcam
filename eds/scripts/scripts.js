@@ -356,7 +356,7 @@ function decorateGuidePage(main) {
   if (sectionEl) {
     const toBeRemoved = ['chapter-links-wrapper', 'sidelinks-wrapper'];
     const rightSideElements = div({ class: 'w-full' });
-    const divEl = div({ class: 'ml-0 md:ml-4 xl:ml-0 min-w-56 lg:max-w-72 flex flex-col gap-y-2' });
+    const divEl = div({ class: 'ml-0 md:ml-4 xl:ml-4 min-w-56 lg:max-w-72 flex flex-col gap-y-2' });
 
     toBeRemoved.forEach((ele) => {
       const existingEl = sectionEl?.querySelector(`.${ele}`);

@@ -2646,6 +2646,14 @@ main .section.related-stories-container .default-content-wrapper h2 {
     margin-left: 0px;
   }
 
+  .xl\:ml-10 {
+    margin-left: 2.5rem;
+  }
+
+  .xl\:ml-4 {
+    margin-left: 1rem;
+  }
+
   .xl\:w-\[1120px\] {
     width: 1120px;
   }
