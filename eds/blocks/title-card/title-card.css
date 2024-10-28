@@ -98,6 +98,11 @@
   padding-right: 30px
 }
 
+.title-card-wrapper :is(.px-4) {
+  padding-left: 1rem;
+  padding-right: 1rem
+}
+
 .title-card-wrapper :is(.pb-4) {
   padding-bottom: 1rem
 }
@@ -143,6 +148,21 @@
 }
 
 @media (min-width: 768px) {
+  .title-card-wrapper :is(.md\:px-10) {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem
+  }
+
+  .title-card-wrapper :is(.md\:px-2) {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem
+  }
+
+  .title-card-wrapper :is(.md\:px-5) {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem
+  }
+
   .title-card-wrapper :is(.md\:text-6xl) {
     font-size: 3.75rem;
     line-height: 1
@@ -157,6 +177,16 @@
   .title-card-wrapper :is(.lg\:px-0) {
     padding-left: 0px;
     padding-right: 0px
+  }
+
+  .title-card-wrapper :is(.lg\:px-2) {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem
+  }
+
+  .title-card-wrapper :is(.lg\:px-10) {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem
   }
 
   .title-card-wrapper :is(.lg\:pb-8) {
@@ -177,5 +207,22 @@
   .title-card-wrapper :is(.xl\:px-0) {
     padding-left: 0px;
     padding-right: 0px
+  }
+
+  .title-card-wrapper :is(.xl\:px-10) {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem
+  }
+}
+
+@media (min-width: 1536px) {
+  .title-card-wrapper :is(.\32xl\:px-2) {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem
+  }
+
+  .title-card-wrapper :is(.\32xl\:px-12) {
+    padding-left: 3rem;
+    padding-right: 3rem
   }
 }
