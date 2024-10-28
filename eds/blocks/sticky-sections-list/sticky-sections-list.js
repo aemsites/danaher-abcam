@@ -18,7 +18,7 @@ export default function decorate(block) {
       div({ class: 'dd-options h-[35rem] drop-shadow-2xl absolute hidden top-full lg:left-0 lg:w-full w-[110%] right-0 bg-white rounded-2xl z-20 border pt-5 mt-1 max-h-screen overflow-y-auto' }),
     ),
   );
-  
+
   decorateIcons(dropdownContainer, 20, 20);
   const h2Eles = document.querySelectorAll('h2');
   if (h2Eles.length > 0) {

@@ -31,7 +31,7 @@ export default function decorate(block) {
       { class: 'breadcrumb-wrapper relative z-10 flex max-w-max flex-1 items-center' },
       div({ style: 'position:relative' }, ul(breadcrumbLiLinks)),
     );
-    block.classList.add(...'max-w-7xl px-0 lg:px-5 xl:px-0 pb-4 font-sans text-base flex flex-col justify-center'.split(' '));    
+    block.classList.add(...'max-w-7xl px-0 lg:px-5 xl:px-0 pb-4 font-sans text-base flex flex-col justify-center'.split(' '));
     block.appendChild(breadcrumNav);
   }
 }
