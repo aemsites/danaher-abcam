@@ -2,13 +2,16 @@
   "mappings": [
     "/content/danaher/abcam:/",
     "/content/danaher/abcam/:/",
+    "/content/experience-fragments/danaher/abcam/:/fragments/",
     "/content/danaher/abcam/redirects:/redirects.json",
     "/content/danaher/abcam/tags:/tags.json",
     "/content/danaher/abcam/configuration:/.helix/config.json",
     "/content/danaher/abcam/metadata:/metadata.json",
-    "/content/danaher/abcam/placeholders:/placeholders.json"
+    "/content/danaher/abcam/placeholders:/placeholders.json",
+    "/content/danaher.resource/fragments/guides/related-link-guides.html:/eds/fragments/related-link-guides.html"
   ],
   "includes": [
-    "/content/danaher/abcam"
+    "/content/danaher/abcam",
+    "/content/experience-fragments/danaher/abcam"
   ]
 }
