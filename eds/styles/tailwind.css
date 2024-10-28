@@ -1,0 +1,250 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply font-sans hidden;
+    }
+
+    body.appear {
+        @apply block;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-heading my-2;
+    }
+
+    div > p:not(div.button-container > p) {
+        @apply my-2;
+    }
+
+    h1 {
+        @apply md:!leading-[3rem] !font-bold !text-[32px] lg:!text-6xl !text-4xl;
+    }
+
+    h2 { 
+        @apply !leading-9 !font-bold !text-4xl md:!text-3xl;
+    }
+
+    h3 { 
+        @apply !leading-8 !font-medium !text-xl md:!text-2xl;
+    }
+
+    h4 { 
+        @apply leading-7 !font-medium text-xl; 
+    }
+
+    h5 {
+        @apply leading-7 font-normal text-lg; 
+    }
+
+    h6 {
+        @apply font-normal text-base; 
+    }
+
+    .button-primary {
+        @apply bg-[#378189] hover:bg-[#2A5F65] whitespace-nowrap rounded-full items-center py-px px-3 text-white text-sm capitalize justify-self-end w-fit;
+    }
+
+    main .section .button-secondary {
+        @apply bg-black hover:bg-[#3B3B3B] whitespace-nowrap rounded-full items-center py-3 px-6 font-semibold text-white text-sm capitalize justify-self-end w-fit;
+    }
+
+    main .section .button-tertiary-outline {
+        @apply bg-white hover:bg-[#071112]/[5%] outline outline-1 outline-black text-black text-sm font-semibold whitespace-nowrap rounded-full lg:mt-14 py-2 px-3 capitalize w-fit;
+    }
+ 
+    main .section .button-tertiary-filled {
+        @apply bg-[#071112]/[5%] hover:bg-[#071112]/[10%] whitespace-nowrap rounded-full py-2 px-3 text-black text-sm font-semibold capitalize w-fit;
+    }
+
+    main .section .button-text-only {
+        @apply hover:underline decoration-2 whitespace-nowrap rounded-full py-2 px-3 text-black text-lg font-semibold capitalize w-fit;
+    }
+
+    main .story-middle-container .default-content-wrapper p:not(a) {
+        @apply text-lg leading-6 font-sans font-normal;
+    }
+
+    main .story-middle-container .default-content-wrapper p:not(:first-child, a) {
+        @apply mt-6;
+    }
+}
+
+@layer components {
+    header {
+        @apply h-36 md:h-28 lg:h-36;
+    }
+
+    .default-content-wrapper h1:first-of-type {
+        @apply pt-4 px-6 mx-auto max-w-7xl;
+    }
+
+    .default-content-wrapper:not(:first-child, :last-child) {
+        @apply py-8;
+    }
+
+    .default-content-wrapper:last-child {
+        @apply pt-8;
+    }
+
+    .default-content-wrapper > ol {
+        @apply pl-6 list-decimal;
+    }
+
+    .default-content-wrapper > ul {
+        @apply pl-6 list-disc;
+    }
+
+    body.stories main .story-middle-container,
+    body.appear main .section.story-hub-container {
+        @apply px-6;
+    }
+
+    main .section .default-content-wrapper a {
+        @apply font-bold text-[#378189];
+    }
+
+    main .section:not(.no-section-padding, .title-card-container) {
+        @apply mx-auto xl:max-w-7xl px-6 lg:px-0 py-10;
+    }
+
+    main .section .back-navigation-wrapper{
+        @apply mx-auto max-w-[84rem];
+    }
+
+    main .section.carousel-container h1 {
+        @apply !pt-20;
+    }
+
+    main .section .default-content-wrapper h2{
+        @apply font-medium leading-8 lg:leading-5 text-4xl !my-0 pt-8;
+    }
+
+    main .section .title-card-wrapper {
+        @apply border-b;
+    }
+
+    .home-page main .section > div.hero-wrapper {
+        @apply h-[496px];
+    }
+
+    main .section.hide-section {
+        @apply !hidden;
+    }
+
+    main .section .cards-wrapper {
+        @apply m-auto mb-8;
+    }
+
+    main .section .cards-wrapper .cols-3 {
+        @apply grid grid-cols-3 gap-11 max-[799px]:grid-cols-1;
+    }
+
+    main .section .mini-teasers-wrapper {
+        @apply bg-black;
+    }
+
+    main .section .mini-teasers-wrapper .cols-4 {
+        @apply mx-auto bg-black w-4/5 py-20 space-y-11 min-[800px]:flex min-[800px]:space-x-11 min-[800px]:space-y-0;
+    }
+
+    main .section .alternating-wrapper {
+        @apply bg-gradient-to-b from-teal-400 via-gray-300 to-orange-500 mx-auto py-[72px] px-[30px] sm:px-[61px] w-full;
+    }
+    
+    main .section > div.episodes-wrapper {
+        @apply h-[2205px] lg:h-[1182px] bg-black text-white;
+    }
+
+    main .section > div.episodes-wrapper > div.episode-heading {
+        @apply text-center text-4xl font-semibold py-8;
+    }
+
+    main .section > .product-overview-wrapper {
+        @apply col-span-12 lg:col-span-8;
+    }
+
+    main .section > .product-buybox-wrapper {
+        @apply col-start-10 col-span-3;
+    }
+
+    main .section > .product-reactivity-wrapper {
+        @apply mx-auto max-[768px]:w-full;
+    }
+
+    main .section > .product-target-data-wrapper {
+        @apply mx-auto max-[768px]:w-full;
+    }
+
+    main .section > .recommended-products-wrapper {
+        @apply mx-auto  max-[768px]:w-full;
+    }
+
+    main .section > .recently-viewed-wrapper {
+        @apply mx-auto max-[768px]:w-full;
+    }
+
+    main .section.hub > div:first-child {
+        @apply col-span-12 md:col-span-3;
+    }
+
+    main .section.hub > div:last-child {
+        @apply col-span-12;
+    }
+
+    main .section.hub > div:nth-child(2) {
+        @apply col-span-12 md:col-span-9;
+    }
+
+    .search-results main {
+        @apply min-h-[91rem] h-auto w-full;
+    }
+
+    dialog .modal-content .section > .default-content-wrapper {
+        @apply flex flex-col justify-between gap-4 max-w-[600px] max-h-max m-2 px-6 py-2;
+    }
+
+    dialog .modal-content .section > .default-content-wrapper h2 {
+        @apply font-bold text-lg text-gray-900;
+    }
+    
+    dialog .modal-content .section > .default-content-wrapper h3 {
+        @apply font-bold text-base text-gray-900;
+    }
+
+    dialog .modal-content .section > .default-content-wrapper p {
+        @apply font-normal text-gray-900 mb-2;
+    }
+
+    .stories main .story-middle-container, .guide main .chapter-links-container {
+        @apply flex flex-col gap-x-0 lg:flex-row lg:gap-x-16;
+    }
+
+    .stories main .section.no-section-padding .columns-wrapper, .webinars main .section.no-section-padding .columns-wrapper {
+        @apply w-full mx-auto lg:h-[31rem] relative;
+    }
+
+    .stories main .section.no-section-padding.columns-container, .webinars main .section.no-section-padding.columns-container {
+        @apply pt-8;
+    }
+
+    .guide main .chapter-links-container {
+        @apply lg:flex-row flex-col-reverse;
+    }
+
+    audio::-webkit-media-controls-panel {
+        background-color: white;
+    }
+
+    main .section.related-stories-container .default-content-wrapper h2{
+        @apply lg:px-6 xl:px-0 !pt-0;
+    }
+   
+}   

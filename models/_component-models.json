@@ -15,12 +15,15 @@
     "...": "./_media.json#/models"
   },
   {
+    "...": "./_abcam-button.json#/models"
+  },
+  {
     "...": "./_text.json#/models"
   },
   {
     "...": "./_section.json#/models"
   },
   {
-    "...": "../blocks/*/_*.json#/models"
+    "...": "../eds/blocks/*/_*.json#/models"
   }
 ]

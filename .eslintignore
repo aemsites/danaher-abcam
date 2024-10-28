@@ -3,7 +3,7 @@ tailwind.config.js
 dist/
 node_modules/
 plugins/
-scripts/scripts.js
-scripts/aem.js
-scripts/at.js
-scripts/elouqa-script.js
+eds/scripts/scripts.js
+eds/scripts/aem.js
+eds/scripts/at.js
+eds/scripts/elouqa-script.js

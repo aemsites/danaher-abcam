@@ -59,7 +59,7 @@
       "options": [
         {
           "name": "None",
-          "value": ""
+          "value": "icon-none"
         },
         {
           "name": "Both",
@@ -110,6 +110,32 @@
       "name": "imageAlt2",
       "label": "Second Image Alt",
       "value": ""
+    }
+  ],
+  "media-fields": [
+    {
+      "component": "text",
+      "valueType": "string",
+      "name": "media_href",
+      "value": "",
+      "label": "Media Link"
+    },
+    {
+      "component": "text",
+      "label": "Media Title",
+      "name": "media_hrefText",
+      "valueType": "string",
+      "value": ""
+    },
+    {
+      "component": "radio-group",
+      "label": "Media Type",
+      "name": "media_hrefTitle",
+      "valueType": "string",
+      "options": [
+        { "name": "Video", "value": "video" },
+        { "name": "Audio", "value": "audio" }
+      ]
     }
   ]
 }

@@ -13,6 +13,7 @@
       "button",
       "title",
       "media",
+      "abcam-button",
       "hero",
       "cards",
       "columns",
@@ -36,8 +37,13 @@
       "product-list",
       "learn-more",
       "related-stories",
-      "card-list",
+      "dynamic-cards",
       "form",
+      "carousel",
+      "story-hub",
+      "speakers-info",
+      "download",
+      "table",
       "elouqa-form"
     ]
   },
@@ -45,6 +51,12 @@
     "id": "cards",
     "components": [
       "card"
+    ]
+  },
+  {
+    "id": "carousel",
+    "components": [
+      "carousel-item"
     ]
   },
   {
@@ -59,7 +71,9 @@
       "text",
       "image",
       "button",
-      "title"
+      "title",
+      "abcam-button",
+      "media"
     ]
   },
   {
@@ -76,6 +90,48 @@
     "id": "podcasts",
     "components": [
       "podcast"
+    ]
+  },
+  {
+    "id": "table",
+    "components": [
+      "table-row"
+    ]
+  },
+  {
+    "id": "table-2-columns",
+    "components": [
+      "table-col-2"
+    ]
+  },
+  {
+    "id": "table-3-columns",
+    "components": [
+      "table-col-3"
+    ]
+  },
+  {
+    "id": "table-4-columns",
+    "components": [
+      "table-col-4"
+    ]
+  },
+  {
+    "id": "table-5-columns",
+    "components": [
+      "table-col-5"
+    ]
+  },
+  {
+    "id": "table-6-columns",
+    "components": [
+      "table-col-6"
+    ]
+  },
+  {
+    "id": "table-7-columns",
+    "components": [
+      "table-col-7"
     ]
   },
   {

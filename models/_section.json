@@ -66,6 +66,7 @@
         "button",
         "title",
         "media",
+        "abcam-button",
         "hero",
         "cards",
         "columns",
@@ -89,8 +90,13 @@
         "product-list",
         "learn-more",
         "related-stories",
-        "card-list",
-        "form"
+        "dynamic-cards",
+        "form",
+        "carousel",
+        "story-hub",
+        "speakers-info",
+        "download",
+        "table"
       ]
     }
   ]

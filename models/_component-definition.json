@@ -14,6 +14,9 @@
           "...": "./_media.json#/definitions"
         },
         {
+          "...": "./_abcam-button.json#/definitions"
+        },
+        {
           "...": "./_image.json#/definitions"
         },
         {
@@ -35,7 +38,7 @@
       "id": "blocks",
       "components": [
         {
-          "...": "../blocks/*/_*.json#/definitions"
+          "...": "../eds/blocks/*/_*.json#/definitions"
         }
       ]
     }
