@@ -31,7 +31,7 @@ function renderChapters(chapterItems) {
   const chaptersMobileDiv = div({ class: 'max-h-96 lg:hidden [&_span]:pl-2 overflow-scroll pr-6 pl-6' });
   const url = new URL(window.location.href);
   const currentPage = url.pathname;
-  const navHeadingDiv = p({ class: 'text-sm leading-6 font-semibold uppercase text-[#65797C] p-2' }, 'CHAPTERS');
+  const navHeadingDiv = p({ class: 'text-sm leading-6 font-semibold uppercase text-[#65797C] pl-2 mb-9 mt-0' }, 'CHAPTERS');
   chapterItems.forEach((item) => {
     let chaptersEl;
     if (item.path === currentPage) {
@@ -56,7 +56,7 @@ function renderChapters(chapterItems) {
             href: makePublicUrl(item.path),
           },
           span({
-            class: 'block text-sm leading-6 font-semibold text-[#378189] p-2 hover:underline',
+            class: 'block text-base leading-7 font-medium text-[#378189] px-2 py-3 hover:underline tracking-[0.019em]',
           }, item.title),
         ),
       );
