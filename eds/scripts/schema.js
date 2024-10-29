@@ -186,11 +186,18 @@ export function buildGuidesCollectionSchema(srcObj) {
   srcObj.forEach((obj, index) => {
     data.hasPart.push(generateItemListElement(
       'WebPage',
-      index + 1,
       obj.path,
       obj.title,
     ));
   });
 
   setJsonLd(data, 'GuideCollection');
+}
+
+function generateGuideElement(type, url, name) {
+  return {
+    '@type': type,
+    url,
+    name,
+  };
 }
