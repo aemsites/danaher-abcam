@@ -262,6 +262,7 @@
     .guides-hub main .breadcrumb-container {
         @apply mx-auto xl:!max-w-[1120px] xl:px-0 px-[30px];
     }
+    
     .guides-hub main .breadcrumb {
         @apply lg:!px-0;
     }
