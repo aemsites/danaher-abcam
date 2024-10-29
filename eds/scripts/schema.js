@@ -5,12 +5,12 @@ import { makePublicUrl, setJsonLd } from './scripts.js';
 // eslint-disable-next-line import/prefer-default-export
 export function buildArticleSchema() {
   const data = {
-    '@context': 'http://schema.org',
+    '@context': 'https://schema.org',
     '@type': 'Article',
     '@id': `https://www.abcam.com${makePublicUrl(window.location.pathname)}`,
     headline: document.querySelector('h1') ? document.querySelector('h1').textContent : getMetadata('og:title'),
     image: getMetadata('og:image'),
-    datePublished: getMetadata('publishdate'),
+    datePublished: getMetadata('publishdate') ? new Date(getMetadata('publishdate')) : new Date(getMetadata('published-time')),
     publisher: {
       '@type': 'Organization',
       name: 'Abcam',
@@ -32,6 +32,7 @@ export function buildArticleSchema() {
     data.author = {
       '@type': 'Person',
       name: getMetadata('authorname'),
+      url: `https://abcam.com/en-us/profile/${getMetadata('authorname')}`,
     };
   }
 
@@ -41,7 +42,7 @@ export function buildArticleSchema() {
 // eslint-disable-next-line import/prefer-default-export
 export function buildVideoSchema(publishDate, posterImage, embedURL) {
   const data = {
-    '@context': 'http://schema.org',
+    '@context': 'https://schema.org',
     '@type': 'VideoObject',
     name: getMetadata('media_hrefText') ? getMetadata('media_hrefText') : getMetadata('og:title'),
     thumbnailUrl: posterImage,
@@ -75,7 +76,7 @@ export function buildVideoSchema(publishDate, posterImage, embedURL) {
 // eslint-disable-next-line import/prefer-default-export
 export function buildPodcastEpisodeSchema(mediaURL, episodeNum, seriesName, seriesURL, mode) {
   const data = {
-    '@context': 'http://schema.org',
+    '@context': 'https://schema.org',
     '@type': 'PodcastEpisode',
     url: `https://www.abcam.com${makePublicUrl(window.location.pathname)}`,
     name: getMetadata('og:title'),
@@ -114,7 +115,7 @@ export function buildPodcastEpisodeSchema(mediaURL, episodeNum, seriesName, seri
 // eslint-disable-next-line import/prefer-default-export
 export function buildPodcastSeriesSchema(mode) {
   const data = {
-    '@context': 'http://schema.org',
+    '@context': 'https://schema.org',
     '@type': 'PodcastSeries',
     name: getMetadata('og:title'),
     description: getMetadata('description'),
@@ -153,7 +154,7 @@ function generateItemListElement(type, position, url, name) {
 
 export function buildStoryHubSchema(srcObj) {
   const data = {
-    '@context': 'http://schema.org',
+    '@context': 'https://schema.org',
     '@type': 'ItemList',
     '@id': `https://www.abcam.com${makePublicUrl(window.location.pathname)}`,
     itemListElement: [],
@@ -169,4 +170,33 @@ export function buildStoryHubSchema(srcObj) {
   });
 
   setJsonLd(data, 'storyhub');
+}
+
+function generateGuideElement(type, url, name) {
+  return {
+    '@type': type,
+    url,
+    name,
+  };
+}
+
+export function buildGuidesCollectionSchema(srcObj) {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: document.querySelector('h1') ? document.querySelector('h1').textContent : getMetadata('og:title'),
+    description: getMetadata('description'),
+    url: `https://www.abcam.com${makePublicUrl(window.location.pathname)}`,
+    hasPart: [],
+  };
+
+  srcObj.forEach((obj) => {
+    data.hasPart.push(generateGuideElement(
+      'WebPage',
+      obj.path,
+      obj.title.replace(/\s*\|\s*abcam$/i, ''),
+    ));
+  });
+
+  setJsonLd(data, 'GuideCollection');
 }
