@@ -10,11 +10,6 @@
   margin: auto
 }
 
-.breadcrumb-wrapper :is(.mx-auto) {
-  margin-left: auto;
-  margin-right: auto
-}
-
 .breadcrumb-wrapper :is(.block) {
   display: block
 }
@@ -26,10 +21,6 @@
 .breadcrumb-wrapper :is(.max-w-max) {
   max-width: -moz-max-content;
   max-width: max-content
-}
-
-.breadcrumb-wrapper :is(.max-w-7xl) {
-  max-width: 80rem
 }
 
 .breadcrumb-wrapper :is(.flex-1) {
@@ -53,33 +44,9 @@
        column-gap: 0.5rem
 }
 
-.breadcrumb-wrapper :is(.px-\[30px\]) {
-  padding-left: 30px;
-  padding-right: 30px
-}
-
-.breadcrumb-wrapper :is(.px-4) {
-  padding-left: 1rem;
-  padding-right: 1rem
-}
-
-.breadcrumb-wrapper :is(.px-2) {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem
-}
-
 .breadcrumb-wrapper :is(.px-0) {
   padding-left: 0px;
   padding-right: 0px
-}
-
-.breadcrumb-wrapper :is(.px-5) {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem
-}
-
-.breadcrumb-wrapper :is(.pb-4) {
-  padding-bottom: 1rem
 }
 
 .breadcrumb-wrapper :is(.font-sans) {
@@ -104,38 +71,9 @@
   text-decoration-line: underline
 }
 
-@media (min-width: 768px) {
-  .breadcrumb-wrapper :is(.md\:px-4) {
-    padding-left: 1rem;
-    padding-right: 1rem
-  }
-
-  .breadcrumb-wrapper :is(.md\:px-\[30px\]) {
-    padding-left: 30px;
-    padding-right: 30px
-  }
-
-  .breadcrumb-wrapper :is(.md\:px-5) {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem
-  }
-}
-
 @media (min-width: 1024px) {
-  .breadcrumb-wrapper :is(.lg\:px-5) {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem
-  }
-
   .breadcrumb-wrapper :is(.lg\:px-4) {
     padding-left: 1rem;
     padding-right: 1rem
-  }
-}
-
-@media (min-width: 1280px) {
-  .breadcrumb-wrapper :is(.xl\:px-0) {
-    padding-left: 0px;
-    padding-right: 0px
   }
 }
