@@ -10,6 +10,10 @@
   inset: 0px
 }
 
+.chapter-links-wrapper :is(.bottom-0) {
+  bottom: 0px
+}
+
 .chapter-links-wrapper :is(.left-0) {
   left: 0px
 }
@@ -18,16 +22,24 @@
   top: 0px
 }
 
-.chapter-links-wrapper :is(.bottom-0) {
-  bottom: 0px
-}
-
 .chapter-links-wrapper :is(.z-30) {
   z-index: 30
 }
 
 .chapter-links-wrapper :is(.m-4) {
   margin: 1rem
+}
+
+.chapter-links-wrapper :is(.mb-\[13px\]) {
+  margin-bottom: 13px
+}
+
+.chapter-links-wrapper :is(.mb-\[23px\]) {
+  margin-bottom: 23px
+}
+
+.chapter-links-wrapper :is(.mt-0) {
+  margin-top: 0px
 }
 
 .chapter-links-wrapper :is(.mt-4) {
@@ -119,10 +131,6 @@
        column-gap: 0.75rem
 }
 
-.chapter-links-wrapper :is(.overflow-hidden) {
-  overflow: hidden
-}
-
 .chapter-links-wrapper :is(.overflow-scroll) {
   overflow: scroll
 }
@@ -167,13 +175,13 @@
   background-color: rgb(0 0 0 / var(--tw-bg-opacity))
 }
 
+.chapter-links-wrapper :is(.bg-transparent) {
+  background-color: transparent
+}
+
 .chapter-links-wrapper :is(.bg-white) {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
-}
-
-.chapter-links-wrapper :is(.bg-transparent) {
-  background-color: transparent
 }
 
 .chapter-links-wrapper :is(.bg-opacity-80) {
@@ -188,19 +196,29 @@
   padding: 0.5rem
 }
 
+.chapter-links-wrapper :is(.\!px-0) {
+  padding-left: 0px !important;
+  padding-right: 0px !important
+}
+
 .chapter-links-wrapper :is(.px-12) {
   padding-left: 3rem;
   padding-right: 3rem
 }
 
-.chapter-links-wrapper :is(.py-4) {
-  padding-top: 1rem;
-  padding-bottom: 1rem
-}
-
 .chapter-links-wrapper :is(.px-6) {
   padding-left: 1.5rem;
   padding-right: 1.5rem
+}
+
+.chapter-links-wrapper :is(.py-3) {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem
+}
+
+.chapter-links-wrapper :is(.py-4) {
+  padding-top: 1rem;
+  padding-bottom: 1rem
 }
 
 .chapter-links-wrapper :is(.pl-6) {
@@ -211,13 +229,23 @@
   padding-right: 1.5rem
 }
 
-.chapter-links-wrapper :is(.pt-6) {
-  padding-top: 1.5rem
+.chapter-links-wrapper :is(.text-base) {
+  font-size: 1rem;
+  line-height: 1.5rem
+}
+
+.chapter-links-wrapper :is(.text-lg) {
+  font-size: 1.125rem;
+  line-height: 1.75rem
 }
 
 .chapter-links-wrapper :is(.text-sm) {
   font-size: 0.875rem;
   line-height: 1.25rem
+}
+
+.chapter-links-wrapper :is(.font-medium) {
+  font-weight: 500
 }
 
 .chapter-links-wrapper :is(.font-semibold) {
@@ -230,6 +258,14 @@
 
 .chapter-links-wrapper :is(.leading-6) {
   line-height: 1.5rem
+}
+
+.chapter-links-wrapper :is(.leading-7) {
+  line-height: 1.75rem
+}
+
+.chapter-links-wrapper :is(.tracking-\[0\.3px\]) {
+  letter-spacing: 0.3px
 }
 
 .chapter-links-wrapper :is(.text-\[\#378189\]) {
@@ -274,16 +310,6 @@
 .chapter-links-wrapper :is(.focus\:outline-none:focus) {
   outline: 2px solid transparent;
   outline-offset: 2px
-}
-
-@media (min-width: 768px) {
-  .chapter-links-wrapper :is(.md\:flex) {
-    display: flex
-  }
-
-  .chapter-links-wrapper :is(.md\:hidden) {
-    display: none
-  }
 }
 
 @media (min-width: 1024px) {
