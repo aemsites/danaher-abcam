@@ -35,6 +35,11 @@
   margin-bottom: 0px
 }
 
+.story-hub-wrapper :is(.mx-auto) {
+  margin-left: auto;
+  margin-right: auto
+}
+
 .story-hub-wrapper :is(.mb-0) {
   margin-bottom: 0px
 }
@@ -53,6 +58,14 @@
 
 .story-hub-wrapper :is(.mr-8) {
   margin-right: 2rem
+}
+
+.story-hub-wrapper :is(.-mt-px) {
+  margin-top: -1px
+}
+
+.story-hub-wrapper :is(.mt-8) {
+  margin-top: 2rem
 }
 
 .story-hub-wrapper :is(.block) {
@@ -106,8 +119,20 @@
   width: 100vw
 }
 
+.story-hub-wrapper :is(.w-0) {
+  width: 0px
+}
+
+.story-hub-wrapper :is(.flex-1) {
+  flex: 1 1 0%
+}
+
 .story-hub-wrapper :is(.shrink-0) {
   flex-shrink: 0
+}
+
+.story-hub-wrapper :is(.grow) {
+  flex-grow: 1
 }
 
 .story-hub-wrapper :is(.-translate-y-full) {
@@ -153,6 +178,10 @@
 
 .story-hub-wrapper :is(.justify-end) {
   justify-content: flex-end
+}
+
+.story-hub-wrapper :is(.justify-center) {
+  justify-content: center
 }
 
 .story-hub-wrapper :is(.justify-between) {
@@ -214,6 +243,10 @@
   border-top-width: 1px
 }
 
+.story-hub-wrapper :is(.border-t-2) {
+  border-top-width: 2px
+}
+
 .story-hub-wrapper :is(.border-\[\#ff7223\]) {
   --tw-border-opacity: 1;
   border-color: rgb(255 114 35 / var(--tw-border-opacity))
@@ -267,8 +300,17 @@
   padding-bottom: 0.5rem
 }
 
+.story-hub-wrapper :is(.py-4) {
+  padding-top: 1rem;
+  padding-bottom: 1rem
+}
+
 .story-hub-wrapper :is(.pb-4) {
   padding-bottom: 1rem
+}
+
+.story-hub-wrapper :is(.pt-4) {
+  padding-top: 1rem
 }
 
 .story-hub-wrapper :is(.text-center) {
@@ -301,6 +343,10 @@
 
 .story-hub-wrapper :is(.font-semibold) {
   font-weight: 600
+}
+
+.story-hub-wrapper :is(.font-medium) {
+  font-weight: 500
 }
 
 .story-hub-wrapper :is(.capitalize) {
@@ -357,6 +403,20 @@
   transition-duration: 150ms
 }
 
+.story-hub-wrapper :is(.hover\:border-t-2:hover) {
+  border-top-width: 2px
+}
+
+.story-hub-wrapper :is(.hover\:border-gray-300:hover) {
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity))
+}
+
+.story-hub-wrapper :is(.hover\:text-gray-700:hover) {
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity))
+}
+
 @media (min-width: 768px) {
   .story-hub-wrapper :is(.md\:relative) {
     position: relative
@@ -374,8 +434,16 @@
     margin-bottom: 1rem
   }
 
+  .story-hub-wrapper :is(.md\:mt-12) {
+    margin-top: 3rem
+  }
+
   .story-hub-wrapper :is(.md\:block) {
     display: block
+  }
+
+  .story-hub-wrapper :is(.md\:flex) {
+    display: flex
   }
 
   .story-hub-wrapper :is(.md\:hidden) {
