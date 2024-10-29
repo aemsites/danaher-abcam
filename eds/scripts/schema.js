@@ -200,4 +200,3 @@ export function buildGuidesCollectionSchema(srcObj) {
 
   setJsonLd(data, 'GuideCollection');
 }
-
