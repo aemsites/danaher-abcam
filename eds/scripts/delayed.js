@@ -49,12 +49,10 @@ function loadGTM() {
 // google tag manager -end
 
 // New relic Script -start
-function loadrelicScript() {
+async function loadrelicScript() {
+  await loadScript('/eds/scripts/nr-loader-spa-1.236.0.min.js', {});
   const scriptTag = document.createElement('script');
   scriptTag.type = 'module';
-  scriptTag.setAttribute('id', 'relic-script-loader');
-  scriptTag.src = '/eds/scripts/nr-loader-spa-1.236.0.min.js';
-  scriptTag.crossorigin = 'use-credentials';
   scriptTag.innerHTML = `
           let agentIDVal = (window.location.host === 'www.abcam.com') ? '1588836701' : '1588833183';
           let licenseKeyVal = (window.location.host === 'www.abcam.com') ? '703e14c59a' : '703e14c59a';
