@@ -9,7 +9,7 @@ export default function decorate(block) {
   const title = ogTitle.indexOf('| abcam') > -1 ? ogTitle.split('| abcam')[0] : ogTitle;
   const newUrl = new URL(window.location);
   if (window.location.pathname.indexOf('technical-resources/guides') > -1) {
-    newUrl.pathname = window.location.pathname.substring(0, window.location.pathname.indexOf('/technical-resources/guides/'));
+    newUrl.pathname = window.location.pathname.substring(0, window.location.pathname.indexOf('/technical-resources/'));
   }
   const { length } = path;
   if (length > 0) {
