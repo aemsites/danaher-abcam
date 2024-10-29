@@ -39,5 +39,5 @@ export default async function decorate(block) {
     .filter((item) => item.parent === currentPage)
     .all();
   allGuides = allGuides.sort((item1, item2) => item1.title.localeCompare(item2.title));
-  buildGuidesCollectionSchema(allGuides);  
+  buildGuidesCollectionSchema(allGuides);
 }
