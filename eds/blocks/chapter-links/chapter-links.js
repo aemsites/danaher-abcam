@@ -2,23 +2,19 @@ import ffetch from '../../scripts/ffetch.js';
 import {
   a, button, div, p, span,
 } from '../../scripts/dom-builder.js';
-import { makePublicUrl } from '../../scripts/scripts.js';
+import { createStickyBottom, makePublicUrl } from '../../scripts/scripts.js';
 import { decorateIcons } from '../../scripts/aem.js';
 
 function renderModal(el) {
   const modal = div({ class: 'w-screen h-full top-0 left-0 fixed block lg:hidden inset-0 z-30 bg-black bg-opacity-80 flex justify-center items-center transition-all -translate-y-full' });
-  const closeButton = button(
-    {
-      type: 'button',
-      class: 'size-full flex items-center gap-x-2 justify-center focus:outline-none border border-solid border-black rounded-full text-black text-sm font-semibold',
-      onclick: () => modal.classList.toggle('-translate-y-full'),
-    },
-    span({ class: 'icon icon-close invert' }),
-    'Close',
-  );
+  const closeButton = button({
+    type: 'button',
+    class: 'size-full flex items-center gap-x-2 justify-center py-2 focus:outline-none border border-solid border-black rounded-full text-black text-sm font-semibold',
+    onclick: () => modal.classList.toggle('-translate-y-full'),
+  }, span({ class: 'icon icon-close invert' }), 'Close');
 
-  const modalContent = div({ class: 'bg-white w-96 m-4 rounded' });
-  const modalClose = div({ class: 'flex w-full h-14 justify-center mt-4 p-1' }, closeButton);
+  const modalContent = div({ class: 'bg-white w-96 m-4 rounded lg:hidden' });
+  const modalClose = div({ class: 'w-full flex justify-center px-3 py-4' }, closeButton);
   const modalList = div({ class: 'flex flex-col gap-2' }, el);
   modalContent.append(modalList, modalClose);
   modal.append(modalContent);
@@ -27,45 +23,27 @@ function renderModal(el) {
 }
 
 function renderChapters(chapterItems) {
-  const chaptersDesktopDiv = div({ class: 'hidden lg:flex flex-col items-start' });
-  const chaptersMobileDiv = div({ class: 'max-h-96 lg:hidden [&_span]:pl-2 overflow-scroll pr-6 pl-6' });
+  const chaptersDesktopEl = div({ class: 'hidden lg:flex flex-col items-start' });
+  const chaptersMobileEl = div({ class: 'max-h-96 lg:hidden [&_span]:pl-2 overflow-scroll px-4' });
   const url = new URL(window.location.href);
   const currentPage = url.pathname;
-  const navHeadingDiv = p({ class: 'text-sm leading-6 font-semibold uppercase text-[#65797C] p-2' }, 'CHAPTERS');
+  const navHeadingDiv = p({ class: 'text-sm leading-6 font-semibold uppercase text-[#65797C] px-3 py-2' }, 'CHAPTERS');
   chapterItems.forEach((item) => {
-    let chaptersEl;
-    if (item.path === currentPage) {
-      chaptersEl = div(
+    const chaptersEl = div(
+      { class: 'w-full border-b border-b-[#D8D8D8]' },
+      a(
         {
-          class: 'w-full border-b border-b-[#D8D8D8]',
+          href: makePublicUrl(item.path),
+          class: `block text-sm leading-6 font-semibold px-3 py-2 hover:underline ${item.path === currentPage ? 'text-black bg-[#EDF6F7]' : 'text-[#378189]'}`,
         },
-        div(
-          {
-            class: 'flex gap-3 text-sm leading-6 font-semibold text-black bg-[#EDF6F7] p-2',
-          },
-          item.title,
-        ),
-      );
-    } else {
-      chaptersEl = div(
-        {
-          class: 'w-full border-b border-b-[#D8D8D8]',
-        },
-        a(
-          {
-            href: makePublicUrl(item.path),
-          },
-          span({
-            class: 'block text-sm leading-6 font-semibold text-[#378189] p-2 hover:underline',
-          }, item.title),
-        ),
-      );
-    }
-    chaptersMobileDiv.append(chaptersEl);
+        item.title,
+      ),
+    );
+    chaptersMobileEl.append(chaptersEl);
   });
-  chaptersMobileDiv.prepend(navHeadingDiv);
-  chaptersDesktopDiv.innerHTML = chaptersMobileDiv.innerHTML;
-  return { chaptersDesktopDiv, chaptersMobileDiv };
+  chaptersMobileEl.prepend(navHeadingDiv);
+  chaptersDesktopEl.innerHTML = chaptersMobileEl.innerHTML;
+  return { chaptersDesktopEl, chaptersMobileEl };
 }
 
 export default async function decorate(block) {
@@ -74,12 +52,9 @@ export default async function decorate(block) {
   const parentPage = parentURL.split('/').pop();
   const chapterItems = await ffetch('/en-us/technical-resources/guides/query-index.json')
     .filter((item) => {
-      if (parentPage === 'guides') {
-        return item.parent === currentPage;
-      }
+      if (parentPage === 'guides') return item.parent === currentPage;
       return item.parent === parentPage;
-    })
-    .all();
+    }).all();
   const chapters = chapterItems.map((element) => ({
     title: element.title.indexOf('| abcam') > -1 ? element.title.split('| abcam')[0] : element.title,
     pageOrder: element.pageOrder,
@@ -89,9 +64,9 @@ export default async function decorate(block) {
   filteredChapters.sort((chapter1, chapter2) => chapter1.pageOrder - chapter2.pageOrder);
 
   // Append button and chapters to block
-  const { chaptersDesktopDiv, chaptersMobileDiv } = renderChapters(filteredChapters);
-  const modal = renderModal(chaptersMobileDiv);
-  block.append(chaptersDesktopDiv, modal);
+  const { chaptersDesktopEl, chaptersMobileEl } = renderChapters(filteredChapters);
+  const modal = renderModal(chaptersMobileEl);
+  block.append(chaptersDesktopEl, modal);
 
   // Create Show/Hide button - bottom of footer
   const footerEl = document.querySelector('footer');
@@ -99,14 +74,12 @@ export default async function decorate(block) {
     {
       type: 'button',
       class: 'size-full flex items-center gap-x-3 justify-center focus:outline-none bg-black rounded-full text-white px-12 py-4',
-      onclick: () => {
-        modal.classList.toggle('-translate-y-full');
-      },
+      onclick: () => modal.classList.toggle('-translate-y-full'),
     },
     span({ class: 'icon icon-chevron-right size-7 invert' }),
     'Browse Chapters',
   );
   decorateIcons(toggleButton);
-  const stickyChapterLinks = div({ class: 'sticky bottom-0 block lg:hidden bg-transparent py-4 px-6' }, toggleButton);
+  const stickyChapterLinks = createStickyBottom(toggleButton);
   footerEl.after(stickyChapterLinks);
 }

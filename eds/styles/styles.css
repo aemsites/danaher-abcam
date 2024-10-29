@@ -1304,6 +1304,10 @@ main .section.related-stories-container .default-content-wrapper h2 {
   top: 70px;
 }
 
+.bottom-0 {
+  bottom: 0px;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -2599,6 +2603,10 @@ main .section.related-stories-container .default-content-wrapper h2 {
     margin-bottom: 1rem;
   }
 
+  .lg\:ml-4 {
+    margin-left: 1rem;
+  }
+
   .lg\:\!block {
     display: block !important;
   }
@@ -2644,10 +2652,6 @@ main .section.related-stories-container .default-content-wrapper h2 {
 
   .xl\:ml-0 {
     margin-left: 0px;
-  }
-
-  .xl\:ml-10 {
-    margin-left: 2.5rem;
   }
 
   .xl\:ml-4 {
