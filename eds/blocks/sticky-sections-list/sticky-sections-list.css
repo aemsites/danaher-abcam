@@ -58,8 +58,8 @@
   display: none
 }
 
-.sticky-sections-list :is(.h-\[35rem\]) {
-  height: 35rem
+.sticky-sections-list :is(.h-\[400px\]) {
+  height: 400px
 }
 
 .sticky-sections-list :is(.max-h-screen) {
@@ -153,8 +153,12 @@
   padding-bottom: 0.75rem
 }
 
-.sticky-sections-list :is(.pb-\[24px\]) {
-  padding-bottom: 24px
+.sticky-sections-list :is(.pb-6) {
+  padding-bottom: 1.5rem
+}
+
+.sticky-sections-list :is(.pt-4) {
+  padding-top: 1rem
 }
 
 .sticky-sections-list :is(.pt-5) {
@@ -225,5 +229,11 @@
 
   .sticky-sections-list :is(.lg\:w-full) {
     width: 100%
+  }
+}
+
+@media (min-width: 1280px) {
+  .sticky-sections-list :is(.xl\:h-\[540px\]) {
+    height: 540px
   }
 }
