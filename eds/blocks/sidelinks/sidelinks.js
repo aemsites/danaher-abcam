@@ -39,7 +39,6 @@ export default function decorate(block) {
     allParagraphs.forEach((elPara) => {
       applyClasses(elPara?.parentElement, 'leading-5 text-base font-medium text-[#378189] my-0');
       applyClasses(elPara, 'block text-sm leading-6 font-semibold text-[#378189] px-3 py-2 border-b border-b-[#D8D8D8] hover:underline');
-      // divEl.append(p({ class: 'leading-5 text-base font-medium text-[#378189] my-0' }, elPara));
     });
   }
 }
