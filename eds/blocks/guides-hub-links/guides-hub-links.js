@@ -2,6 +2,7 @@ import {
   div, h2, ul, li, a,
 } from '../../scripts/dom-builder.js';
 import ffetch from '../../scripts/ffetch.js';
+import { buildGuidesCollectionSchema } from '../../scripts/schema.js';
 
 export default async function decorate(block) {
   const currentPage = window.location.pathname.split('/').pop();
@@ -33,4 +34,10 @@ export default async function decorate(block) {
   });
   block.innerText = '';
   block.appendChild(div({ class: 'flex flex-col md:flex-row lg:gap-x-52' }, applicationGuidesDiv, raGuidesDiv));
+
+  let allGuides = await ffetch('/en-us/technical-resources/guides/query-index.json')
+    .filter((item) => item.parent === currentPage)
+    .all();
+  allGuides = allGuides.sort((item1, item2) => item1.title.localeCompare(item2.title));
+  buildGuidesCollectionSchema(allGuides);  
 }
