@@ -49,14 +49,14 @@
   border-color: rgb(255 114 35 / var(--tw-border-opacity))
 }
 
-.title-card-wrapper :is(.px-\[30px\]) {
-  padding-left: 30px;
-  padding-right: 30px
-}
-
 .title-card-wrapper :is(.px-4) {
   padding-left: 1rem;
   padding-right: 1rem
+}
+
+.title-card-wrapper :is(.px-\[30px\]) {
+  padding-left: 30px;
+  padding-right: 30px
 }
 
 .title-card-wrapper :is(.pb-4) {
@@ -124,11 +124,6 @@
 }
 
 @media (min-width: 1024px) {
-  .title-card-wrapper :is(.lg\:px-0) {
-    padding-left: 0px;
-    padding-right: 0px
-  }
-
   .title-card-wrapper :is(.lg\:text-3xl) {
     font-size: 1.875rem;
     line-height: 2.25rem

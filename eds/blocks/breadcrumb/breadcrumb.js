@@ -15,13 +15,13 @@ export default function decorate(block) {
   if (length > 0) {
     const breadcrumbLiLinks = li({ class: 'flex gap-x-2' });
     let url = '';
-    let breadcrumbLinks = a({ class: '\'breadcrumblink hover:underline text-lg\'', href: '/en-us' }, 'Home');
+    let breadcrumbLinks = a({ class: 'breadcrumblink hover:underline text-sm md:text-lg', href: '/en-us' }, 'Home');
     breadcrumbLiLinks.appendChild(breadcrumbLinks);
     for (let i = 0; i < length; i += 1) {
       url = `${url}/${path[i]}`;
       let link = i === length - 1 ? title : path[i].charAt(0).toUpperCase() + path[i].slice(1);
       link = link.replace(/-/g, ' ');
-      breadcrumbLinks = a({ class: '\'breadcrumblink text-lg\'', href: newUrl + url }, (`${link}`));
+      breadcrumbLinks = a({ class: 'breadcrumblink text-sm md:text-lg', href: newUrl + url }, (`${link}`));
       breadcrumbLinks.classList.toggle('underline', i === length - 1);
       breadcrumbLinks.classList.toggle('hover:underline', i !== length - 1);
       breadcrumbLiLinks.append('/');

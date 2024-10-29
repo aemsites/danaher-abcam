@@ -1224,6 +1224,22 @@ main .section.related-stories-container .default-content-wrapper h2 {
   }
 }
 
+.guide .sticky-bottom {
+  position: sticky;
+  bottom: 0px;
+  background-color: transparent;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .guide .sticky-bottom {
+    display: none;
+  }
+}
+
 .guides-hub main .section .title-card {
   margin-left: auto;
   margin-right: auto;
@@ -1411,6 +1427,10 @@ main .section.guides-middle-container h2 {
 
 .z-10 {
   z-index: 10;
+}
+
+.z-20 {
+  z-index: 20;
 }
 
 .z-30 {
@@ -2285,6 +2305,10 @@ main .section.guides-middle-container h2 {
   padding-top: 1rem;
 }
 
+.pt-6 {
+  padding-top: 1.5rem;
+}
+
 .pt-\[3px\] {
   padding-top: 3px;
 }
@@ -2595,10 +2619,6 @@ main .section.guides-middle-container h2 {
     margin-bottom: 0.5rem;
   }
 
-  .md\:ml-4 {
-    margin-left: 1rem;
-  }
-
   .md\:mt-4 {
     margin-top: 1rem;
   }
@@ -2702,6 +2722,10 @@ main .section.guides-middle-container h2 {
 
   .lg\:mb-4 {
     margin-bottom: 1rem;
+  }
+
+  .lg\:ml-4 {
+    margin-left: 1rem;
   }
 
   .lg\:\!block {

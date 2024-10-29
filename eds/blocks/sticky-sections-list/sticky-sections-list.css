@@ -46,6 +46,10 @@
   margin-top: 0.25rem
 }
 
+.sticky-sections-list :is(.ml-auto) {
+  margin-left: auto
+}
+
 .sticky-sections-list :is(.block) {
   display: block
 }
@@ -56,6 +60,10 @@
 
 .sticky-sections-list :is(.hidden) {
   display: none
+}
+
+.sticky-sections-list :is(.h-\[35rem\]) {
+  height: 35rem
 }
 
 .sticky-sections-list :is(.h-\[400px\]) {
@@ -78,12 +86,33 @@
   width: 100%
 }
 
+.sticky-sections-list :is(.shrink-0) {
+  flex-shrink: 0
+}
+
 .sticky-sections-list :is(.cursor-pointer) {
   cursor: pointer
 }
 
+.sticky-sections-list :is(.flex-row) {
+  flex-direction: row
+}
+
+.sticky-sections-list :is(.flex-row-reverse) {
+  flex-direction: row-reverse
+}
+
 .sticky-sections-list :is(.items-center) {
   align-items: center
+}
+
+.sticky-sections-list :is(.justify-center) {
+  justify-content: center
+}
+
+.sticky-sections-list :is(.gap-x-4) {
+  -moz-column-gap: 1rem;
+       column-gap: 1rem
 }
 
 .sticky-sections-list :is(.overflow-y-auto) {
@@ -96,6 +125,10 @@
 
 .sticky-sections-list :is(.rounded-3xl) {
   border-radius: 1.5rem
+}
+
+.sticky-sections-list :is(.rounded-full) {
+  border-radius: 9999px
 }
 
 .sticky-sections-list :is(.border) {
@@ -153,16 +186,25 @@
   padding-bottom: 0.75rem
 }
 
+.sticky-sections-list :is(.py-6) {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem
+}
+
+.sticky-sections-list :is(.pb-\[24px\]) {
+  padding-bottom: 24px
+}
+
+.sticky-sections-list :is(.pt-5) {
+  padding-top: 1.25rem
+}
+
 .sticky-sections-list :is(.pb-6) {
   padding-bottom: 1.5rem
 }
 
 .sticky-sections-list :is(.pt-4) {
   padding-top: 1rem
-}
-
-.sticky-sections-list :is(.pt-5) {
-  padding-top: 1.25rem
 }
 
 .sticky-sections-list :is(.text-sm) {

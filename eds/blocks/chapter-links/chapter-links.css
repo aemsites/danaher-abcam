@@ -10,10 +10,6 @@
   inset: 0px
 }
 
-.chapter-links-wrapper :is(.bottom-0) {
-  bottom: 0px
-}
-
 .chapter-links-wrapper :is(.left-0) {
   left: 0px
 }
@@ -22,12 +18,25 @@
   top: 0px
 }
 
+.chapter-links-wrapper :is(.bottom-0) {
+  bottom: 0px
+}
+
 .chapter-links-wrapper :is(.z-30) {
   z-index: 30
 }
 
 .chapter-links-wrapper :is(.m-4) {
   margin: 1rem
+}
+
+.chapter-links-wrapper :is(.my-0) {
+  margin-top: 0px;
+  margin-bottom: 0px
+}
+
+.chapter-links-wrapper :is(.mt-4) {
+  margin-top: 1rem
 }
 
 .chapter-links-wrapper :is(.mb-\[13px\]) {
@@ -40,10 +49,6 @@
 
 .chapter-links-wrapper :is(.mt-0) {
   margin-top: 0px
-}
-
-.chapter-links-wrapper :is(.mt-4) {
-  margin-top: 1rem
 }
 
 .chapter-links-wrapper :is(.block) {
@@ -68,12 +73,12 @@
   height: 100%
 }
 
-.chapter-links-wrapper :is(.h-14) {
-  height: 3.5rem
-}
-
 .chapter-links-wrapper :is(.h-full) {
   height: 100%
+}
+
+.chapter-links-wrapper :is(.h-14) {
+  height: 3.5rem
 }
 
 .chapter-links-wrapper :is(.max-h-96) {
@@ -103,6 +108,10 @@
 
 .chapter-links-wrapper :is(.items-start) {
   align-items: flex-start
+}
+
+.chapter-links-wrapper :is(.items-end) {
+  align-items: flex-end
 }
 
 .chapter-links-wrapper :is(.items-center) {
@@ -175,13 +184,13 @@
   background-color: rgb(0 0 0 / var(--tw-bg-opacity))
 }
 
-.chapter-links-wrapper :is(.bg-transparent) {
-  background-color: transparent
-}
-
 .chapter-links-wrapper :is(.bg-white) {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+}
+
+.chapter-links-wrapper :is(.bg-transparent) {
+  background-color: transparent
 }
 
 .chapter-links-wrapper :is(.bg-opacity-80) {
@@ -196,19 +205,29 @@
   padding: 0.5rem
 }
 
-.chapter-links-wrapper :is(.\!px-0) {
-  padding-left: 0px !important;
-  padding-right: 0px !important
-}
-
 .chapter-links-wrapper :is(.px-12) {
   padding-left: 3rem;
   padding-right: 3rem
 }
 
-.chapter-links-wrapper :is(.px-6) {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem
+.chapter-links-wrapper :is(.px-3) {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem
+}
+
+.chapter-links-wrapper :is(.px-4) {
+  padding-left: 1rem;
+  padding-right: 1rem
+}
+
+.chapter-links-wrapper :is(.py-2) {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem
+}
+
+.chapter-links-wrapper :is(.py-4) {
+  padding-top: 1rem;
+  padding-bottom: 1rem
 }
 
 .chapter-links-wrapper :is(.py-3) {
@@ -216,9 +235,27 @@
   padding-bottom: 0.75rem
 }
 
-.chapter-links-wrapper :is(.py-4) {
-  padding-top: 1rem;
-  padding-bottom: 1rem
+.chapter-links-wrapper :is(.py-5) {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem
+}
+
+.chapter-links-wrapper :is(.px-6) {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem
+}
+
+.chapter-links-wrapper :is(.\!px-0) {
+  padding-left: 0px !important;
+  padding-right: 0px !important
+}
+
+.chapter-links-wrapper :is(.pb-1) {
+  padding-bottom: 0.25rem
+}
+
+.chapter-links-wrapper :is(.pt-2) {
+  padding-top: 0.5rem
 }
 
 .chapter-links-wrapper :is(.pl-6) {
@@ -227,6 +264,11 @@
 
 .chapter-links-wrapper :is(.pr-6) {
   padding-right: 1.5rem
+}
+
+.chapter-links-wrapper :is(.text-sm) {
+  font-size: 0.875rem;
+  line-height: 1.25rem
 }
 
 .chapter-links-wrapper :is(.text-base) {
@@ -239,17 +281,12 @@
   line-height: 1.75rem
 }
 
-.chapter-links-wrapper :is(.text-sm) {
-  font-size: 0.875rem;
-  line-height: 1.25rem
+.chapter-links-wrapper :is(.font-semibold) {
+  font-weight: 600
 }
 
 .chapter-links-wrapper :is(.font-medium) {
   font-weight: 500
-}
-
-.chapter-links-wrapper :is(.font-semibold) {
-  font-weight: 600
 }
 
 .chapter-links-wrapper :is(.uppercase) {
@@ -288,6 +325,10 @@
   color: rgb(255 255 255 / var(--tw-text-opacity))
 }
 
+.chapter-links-wrapper :is(.opacity-0) {
+  opacity: 0
+}
+
 .chapter-links-wrapper :is(.invert) {
   --tw-invert: invert(100%);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
@@ -319,6 +360,11 @@
 
   .chapter-links-wrapper :is(.lg\:hidden) {
     display: none
+  }
+
+  .chapter-links-wrapper :is(.lg\:text-sm) {
+    font-size: 0.875rem;
+    line-height: 1.25rem
   }
 }
 

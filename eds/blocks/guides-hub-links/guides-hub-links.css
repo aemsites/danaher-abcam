@@ -59,10 +59,6 @@
 }
 
 @media (min-width: 1024px) {
-  .guides-hub-links-wrapper :is(.lg\:flex-row) {
-    flex-direction: row
-  }
-
   .guides-hub-links-wrapper :is(.lg\:gap-x-52) {
     -moz-column-gap: 13rem;
          column-gap: 13rem

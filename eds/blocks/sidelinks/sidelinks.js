@@ -32,13 +32,13 @@ export default function decorate(block) {
   }
   const divEl = block.querySelector('div > div');
   applyClasses(divEl, 'sidelinks leading-5 text-sm font-bold text-black flex flex-col');
-  const allParagraphs = main.querySelectorAll('p a[title="link"]');
+  const allParagraphs = divEl.querySelectorAll('p a[title="link"]');
   const linkHeading = getMetadata('template').includes('guide') ? 'Related Links' : 'Explore our products';
   if (allParagraphs.length > 0) {
-    divEl.append(p({ class: 'text-sm leading-6 font-semibold uppercase text-[#65797C] px-2' }, linkHeading));
+    divEl.prepend(p({ class: 'text-sm leading-6 font-semibold uppercase text-[#65797C] px-3 pt-2 pb-1 my-0' }, linkHeading));
     allParagraphs.forEach((elPara) => {
-      applyClasses(elPara, 'block text-sm leading-6 font-semibold text-[#378189] p-2 border-b border-b-[#D8D8D8] hover:underline');
-      divEl.append(p({ class: 'leading-5 text-base font-medium text-[#378189] my-0' }, elPara));
+      applyClasses(elPara?.parentElement, 'leading-5 text-base font-medium text-[#378189] my-0');
+      applyClasses(elPara, 'block text-sm leading-6 font-semibold text-[#378189] px-3 py-2 border-b border-b-[#D8D8D8] hover:underline');
     });
   }
 }
