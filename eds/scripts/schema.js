@@ -184,7 +184,7 @@ export function buildGuidesCollectionSchema(srcObj) {
   };
 
   srcObj.forEach((obj, index) => {
-    data.hasPart.push(generateItemListElement(
+    data.hasPart.push(generateGuideElement(
       'WebPage',
       obj.path,
       obj.title,
