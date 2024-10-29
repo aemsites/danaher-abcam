@@ -4,6 +4,7 @@ import {
 } from '../../scripts/dom-builder.js';
 import { makePublicUrl } from '../../scripts/scripts.js';
 import { decorateIcons } from '../../scripts/aem.js';
+import { buildArticleSchema, buildGuidesCollectionSchema } from '../../scripts/schema.js';
 
 function renderModal(el) {
   const modal = div({ class: 'w-screen h-full top-0 left-0 fixed block lg:hidden inset-0 z-30 bg-black bg-opacity-80 flex justify-center items-center transition-all -translate-y-full' });
@@ -87,6 +88,11 @@ export default async function decorate(block) {
   }));
   const filteredChapters = chapters.filter((item) => item.title !== undefined);
   filteredChapters.sort((chapter1, chapter2) => chapter1.pageOrder - chapter2.pageOrder);
+  if (parentPage === 'guides') {
+    buildGuidesCollectionSchema(filteredChapters);
+  } else {
+    buildArticleSchema();
+  }
 
   // Append button and chapters to block
   const { chaptersDesktopDiv, chaptersMobileDiv } = renderChapters(filteredChapters);
