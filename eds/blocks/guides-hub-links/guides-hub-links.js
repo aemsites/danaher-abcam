@@ -29,7 +29,7 @@ export default async function decorate(block) {
   raGuides = raGuides.sort((item1, item2) => item1.title.localeCompare(item2.title));
   const raGuidesDiv = div({ class: 'pt-6 basis-1/2' }, h3('By Research area'), ul());
   raGuides.forEach((element) => {
-    raGuidesDiv.querySelector('ul').appendChild(li({ class: 'mb-4 font-semibold text-lg text-[#378189]' }, a({ href: element.path }, element.title.replace(/\s*\|\s*abcam$/i, ''))));
+    raGuidesDiv.querySelector('ul').appendChild(li({ class: 'mb-4 font-semibold text-lg text-[#378189] hover:underline' }, a({ href: element.path }, element.title.replace(/\s*\|\s*abcam$/i, ''))));
   });
   block.innerText = '';
   block.appendChild(div({ class: 'flex flex-col lg:flex-row' }, applicationGuidesDiv, raGuidesDiv));
