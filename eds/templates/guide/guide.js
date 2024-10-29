@@ -1,5 +1,5 @@
 import { buildBlock } from '../../scripts/aem.js';
-import { a, div } from '../../scripts/dom-builder.js';
+import { div } from '../../scripts/dom-builder.js';
 
 async function buildRelatedLinks(main) {
   const allLinks = [];
