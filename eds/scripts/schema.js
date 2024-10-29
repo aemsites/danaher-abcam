@@ -187,7 +187,7 @@ export function buildGuidesCollectionSchema(srcObj) {
     data.hasPart.push(generateGuideElement(
       'WebPage',
       obj.path,
-      obj.title,
+      obj.title.replace(/\s*\|\s*abcam$/i, ''),
     ));
   });
 
