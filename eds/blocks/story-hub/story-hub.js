@@ -1,10 +1,12 @@
 import ffetch from '../../scripts/ffetch.js';
-import { decorateIcons } from '../../scripts/aem.js';
+import { decorateIcons, toClassName } from '../../scripts/aem.js';
 import { buildStoryHubSchema } from '../../scripts/schema.js';
 import {
-  button, div, p, span, ul, li,
+  button, div, p, span, ul, li, a,
 } from '../../scripts/dom-builder.js';
 import { createCard, createFilters, imageHelper } from '../../scripts/scripts.js';
+
+const getPageFromUrl = () => toClassName(new URLSearchParams(window.location.search).get('page')) || '';
 
 const excludedPages = [
   '/en-us/stories/films',
@@ -67,6 +69,63 @@ function showMoreOrLessTags(mode) {
   }
 }
 
+const createPaginationLink = (page, label, current = false) => {
+  const newUrl = new URL(window.location);
+  newUrl.searchParams.set('page', page);
+  const link = a(
+    {
+      href: newUrl.toString(),
+      class:
+        'font-medium text-sm leading-5 pt-4 px-4 items-center inline-flex hover:border-t-2 hover:border-gray-300 hover:text-gray-700',
+    },
+    label || page,
+  );
+  if (current) {
+    link.setAttribute('aria-current', 'page');
+    link.classList.add('text-danaherpurple-500', 'border-danaherpurple-500', 'border-t-2');
+  } else {
+    link.classList.add('text-danahergray-700');
+  }
+  return link;
+};
+
+const createPagination = (entries, page, limit) => {
+  const paginationNav = document.createElement('nav');
+  paginationNav.className = 'flex items-center justify-between border-t py-4 md:py-0 mt-8 md:mt-12';
+
+  if (entries.length > limit) {
+    const maxPages = Math.ceil(entries.length / limit);
+    const paginationPrev = div({ class: 'flex flex-1 w-0 -mt-px' });
+    const paginationPages = div({ class: 'hidden md:flex grow justify-center w-0 -mt-px' });
+    const paginationNext = div({ class: 'flex flex-1 w-0 -mt-px justify-end' });
+
+    if (page > 1) {
+      paginationPrev.append(createPaginationLink(page - 1, '← Previous'));
+    }
+    for (let i = 1; i <= maxPages; i += 1) {
+      if (i === 1 || i === maxPages || (i >= page - 2 && i <= page + 2)) {
+        paginationPages.append(createPaginationLink(i, i, i === page));
+      } else if (
+        paginationPages.lastChild && !paginationPages.lastChild.classList.contains('ellipsis')
+      ) {
+        paginationPages.append(
+          span(
+            { class: 'ellipsis font-medium text-sm leading-5 pt-4 px-4 items-center inline-flex' },
+            '...',
+          ),
+        );
+      }
+    }
+    if (page < maxPages) {
+      paginationNext.append(createPaginationLink(page + 1, 'Next →'));
+    }
+
+    paginationNav.append(paginationPrev, paginationPages, paginationNext);
+  }
+  const listPagination = div({ class: 'mx-auto' }, paginationNav);
+  return listPagination;
+};
+
 function handleRenderTags() {
   const tagsList = allSelectedTags.querySelector('ul');
   tagsList.innerHTML = '';
@@ -119,8 +178,12 @@ function handleRenderTags() {
 function handleRenderContent(newLists = lists) {
   newLists.sort((card1, card2) => card2.publishDate - card1.publishDate);
   cardList.innerHTML = '';
-
-  newLists.forEach((article, index) => {
+  let page = parseInt(getPageFromUrl(), 10);
+  page = Number.isNaN(page) ? 1 : page;
+  const limitPerPage = 9;
+  const start = (page - 1) * limitPerPage;
+  const storiesToDisplay = newLists.slice(start, start + limitPerPage);
+  storiesToDisplay.forEach((article, index) => {
     let footerLink = '';
     const type = article.path.split('/')[3];
     switch (type) {
@@ -147,11 +210,13 @@ function handleRenderContent(newLists = lists) {
       isStoryCard: true,
     }));
   });
-  // const paginationElements = createPagination(newLists, page, limitPerPage);
+
+  const paginationElements = createPagination(newLists, page, limitPerPage);
+  console.log(storiesToDisplay, page, limitPerPage);
   const paginateEl = hub.querySelector('.paginate');
   if (paginateEl) {
     paginateEl.innerHTML = '';
-    // paginateEl.append(paginationElements);
+    paginateEl.append(paginationElements);
   }
 }
 
