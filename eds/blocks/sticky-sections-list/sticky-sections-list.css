@@ -66,6 +66,10 @@
   height: 35rem
 }
 
+.sticky-sections-list :is(.h-\[400px\]) {
+  height: 400px
+}
+
 .sticky-sections-list :is(.max-h-screen) {
   max-height: 100vh
 }
@@ -199,6 +203,10 @@
   padding-bottom: 1.5rem
 }
 
+.sticky-sections-list :is(.pt-4) {
+  padding-top: 1rem
+}
+
 .sticky-sections-list :is(.text-sm) {
   font-size: 0.875rem;
   line-height: 1.25rem
@@ -263,5 +271,11 @@
 
   .sticky-sections-list :is(.lg\:w-full) {
     width: 100%
+  }
+}
+
+@media (min-width: 1280px) {
+  .sticky-sections-list :is(.xl\:h-\[540px\]) {
+    height: 540px
   }
 }

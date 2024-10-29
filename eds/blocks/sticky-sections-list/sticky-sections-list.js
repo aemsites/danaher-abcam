@@ -15,7 +15,7 @@ export default function decorate(block) {
       { class: 'dd-container flex flex-row items-center gap-x-4 !bg-[#F4F5F5] tracking-[0.2px] leading-4 text-xs border border-[#EAECEC] border-opacity-5 bg-[#273F3F] bg-opacity-5 rounded-full py-3 px-6 w-full bg-white cursor-pointer relative' },
       span({ class: 'dd-selected' }, ''),
       span({ class: 'icon icon-chevron-down shrink-0 ml-auto' }),
-      div({ class: 'dd-options h-[35rem] drop-shadow-2xl absolute hidden top-full lg:left-0 lg:w-full w-[110%] right-0 bg-white rounded-2xl z-20 border pt-5 mt-1 max-h-screen overflow-y-auto' }),
+      div({ class: 'dd-options h-[400px] xl:h-[540px] drop-shadow-2xl absolute hidden top-full lg:left-0 lg:w-full w-[110%] right-0 bg-white rounded-2xl z-20 border pt-5 mt-1 max-h-screen overflow-y-auto' }),
     ),
   );
 

@@ -1324,6 +1324,10 @@ main .section.related-stories-container .default-content-wrapper h2 {
   z-index: 10;
 }
 
+.z-20 {
+  z-index: 20;
+}
+
 .z-30 {
   z-index: 30;
 }
@@ -1338,10 +1342,6 @@ main .section.related-stories-container .default-content-wrapper h2 {
 
 .z-\[99\] {
   z-index: 99;
-}
-
-.z-20 {
-  z-index: 20;
 }
 
 .order-last {
@@ -2200,20 +2200,16 @@ main .section.related-stories-container .default-content-wrapper h2 {
   padding-top: 1rem;
 }
 
+.pt-6 {
+  padding-top: 1.5rem;
+}
+
 .pt-\[3px\] {
   padding-top: 3px;
 }
 
 .pt-\[56\.25\%\] {
   padding-top: 56.25%;
-}
-
-.pt-6 {
-  padding-top: 1.5rem;
-}
-
-.pt-7 {
-  padding-top: 1.75rem;
 }
 
 .text-left {
