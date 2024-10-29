@@ -2,15 +2,22 @@ import ffetch from '../../scripts/ffetch.js';
 import {
   a, button, div, p, span,
 } from '../../scripts/dom-builder.js';
-import { createStickyBottom, makePublicUrl } from '../../scripts/scripts.js';
+import { makePublicUrl } from '../../scripts/scripts.js';
 import { decorateIcons } from '../../scripts/aem.js';
 
+const modal = div({ class: 'w-screen h-full top-0 left-0 fixed block lg:hidden inset-0 z-30 bg-black bg-opacity-80 flex justify-center items-end transition-all -translate-y-full' });
+const stickyChapterLinks = div({ class: 'sticky-bottom' });
+
+function toggleModal() {
+  modal.classList.toggle('-translate-y-full');
+  stickyChapterLinks.classList.toggle('hidden');
+}
+
 function renderModal(el) {
-  const modal = div({ class: 'w-screen h-full top-0 left-0 fixed block lg:hidden inset-0 z-30 bg-black bg-opacity-80 flex justify-center items-center transition-all -translate-y-full' });
   const closeButton = button({
     type: 'button',
     class: 'size-full flex items-center gap-x-2 justify-center py-2 focus:outline-none border border-solid border-black rounded-full text-black text-sm font-semibold',
-    onclick: () => modal.classList.toggle('-translate-y-full'),
+    onclick: () => toggleModal(),
   }, span({ class: 'icon icon-close invert' }), 'Close');
 
   const modalContent = div({ class: 'bg-white w-96 m-4 rounded lg:hidden' });
@@ -19,7 +26,6 @@ function renderModal(el) {
   modalContent.append(modalList, modalClose);
   modal.append(modalContent);
   decorateIcons(modal);
-  return modal;
 }
 
 function renderChapters(chapterItems) {
@@ -27,21 +33,21 @@ function renderChapters(chapterItems) {
   const chaptersMobileEl = div({ class: 'max-h-96 lg:hidden [&_span]:pl-2 overflow-scroll px-4' });
   const url = new URL(window.location.href);
   const currentPage = url.pathname;
-  const navHeadingDiv = p({ class: 'text-sm leading-6 font-semibold uppercase text-[#65797C] px-3 py-2' }, 'CHAPTERS');
+  const navHeadingEl = p({ class: 'text-sm leading-6 font-semibold uppercase text-[#65797C] px-3 pt-2 pb-1 my-0' }, 'CHAPTERS');
   chapterItems.forEach((item) => {
     const chaptersEl = div(
       { class: 'w-full border-b border-b-[#D8D8D8]' },
       a(
         {
           href: makePublicUrl(item.path),
-          class: `block text-sm leading-6 font-semibold px-3 py-2 hover:underline ${item.path === currentPage ? 'text-black bg-[#EDF6F7]' : 'text-[#378189]'}`,
+          class: `block text-base lg:text-sm leading-6 font-semibold px-3 py-4 hover:underline ${item.path === currentPage ? 'text-black bg-[#EDF6F7]' : 'text-[#378189]'}`,
         },
         item.title,
       ),
     );
     chaptersMobileEl.append(chaptersEl);
   });
-  chaptersMobileEl.prepend(navHeadingDiv);
+  chaptersMobileEl.prepend(navHeadingEl);
   chaptersDesktopEl.innerHTML = chaptersMobileEl.innerHTML;
   return { chaptersDesktopEl, chaptersMobileEl };
 }
@@ -65,7 +71,7 @@ export default async function decorate(block) {
 
   // Append button and chapters to block
   const { chaptersDesktopEl, chaptersMobileEl } = renderChapters(filteredChapters);
-  const modal = renderModal(chaptersMobileEl);
+  renderModal(chaptersMobileEl);
   block.append(chaptersDesktopEl, modal);
 
   // Create Show/Hide button - bottom of footer
@@ -74,12 +80,12 @@ export default async function decorate(block) {
     {
       type: 'button',
       class: 'size-full flex items-center gap-x-3 justify-center focus:outline-none bg-black rounded-full text-white px-12 py-4',
-      onclick: () => modal.classList.toggle('-translate-y-full'),
+      onclick: () => toggleModal(),
     },
     span({ class: 'icon icon-chevron-right size-7 invert' }),
     'Browse Chapters',
   );
   decorateIcons(toggleButton);
-  const stickyChapterLinks = createStickyBottom(toggleButton);
+  stickyChapterLinks.append(toggleButton);
   footerEl.after(stickyChapterLinks);
 }

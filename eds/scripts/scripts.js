@@ -356,11 +356,12 @@ function decorateGuidePage(main) {
   if (sectionEl) {
     const toBeRemoved = ['chapter-links-wrapper', 'sidelinks-wrapper'];
     const rightSideElements = div({ class: 'w-full' });
-    const divEl = div({ class: 'ml-0 lg:ml-4 xl:ml-4 min-w-56 lg:max-w-72 flex flex-col gap-y-2' });
+    const sticky = div({ class: 'sticky top-0 space-y-4 pt-6' });
+    const divEl = div({ class: 'ml-0 lg:ml-4 xl:ml-4 min-w-56 lg:max-w-72 flex flex-col gap-y-2 z-20' }, sticky);
 
     toBeRemoved.forEach((ele) => {
       const existingEl = sectionEl?.querySelector(`.${ele}`);
-      divEl.append(existingEl);
+      sticky.append(existingEl);
     });
     Array.from(sectionEl?.children).forEach((element) => {
       if (!toBeRemoved.includes(element.classList[0])) {
@@ -907,10 +908,6 @@ async function loadPage() {
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();
-}
-
-export function createStickyBottom(element) {
-  return div({ class: 'sticky bottom-0 block lg:hidden bg-transparent py-4 px-6' }, element);
 }
 
 export function createFilters({

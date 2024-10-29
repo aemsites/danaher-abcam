@@ -246,5 +246,8 @@
     main .section.related-stories-container .default-content-wrapper h2{
         @apply lg:px-6 xl:px-0 !pt-0;
     }
-   
-}   
+
+    .guide .sticky-bottom {
+        @apply sticky bottom-0 lg:hidden bg-transparent py-4 px-6;
+    }
+}

@@ -1224,6 +1224,22 @@ main .section.related-stories-container .default-content-wrapper h2 {
   }
 }
 
+.guide .sticky-bottom {
+  position: sticky;
+  bottom: 0px;
+  background-color: transparent;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .guide .sticky-bottom {
+    display: none;
+  }
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -1304,10 +1320,6 @@ main .section.related-stories-container .default-content-wrapper h2 {
   top: 70px;
 }
 
-.bottom-0 {
-  bottom: 0px;
-}
-
 .z-10 {
   z-index: 10;
 }
@@ -1326,6 +1338,10 @@ main .section.related-stories-container .default-content-wrapper h2 {
 
 .z-\[99\] {
   z-index: 99;
+}
+
+.z-20 {
+  z-index: 20;
 }
 
 .order-last {
@@ -2192,6 +2208,14 @@ main .section.related-stories-container .default-content-wrapper h2 {
   padding-top: 56.25%;
 }
 
+.pt-6 {
+  padding-top: 1.5rem;
+}
+
+.pt-7 {
+  padding-top: 1.75rem;
+}
+
 .text-left {
   text-align: left;
 }
@@ -2494,10 +2518,6 @@ main .section.related-stories-container .default-content-wrapper h2 {
     margin-bottom: 0.5rem;
   }
 
-  .md\:ml-4 {
-    margin-left: 1rem;
-  }
-
   .md\:mt-4 {
     margin-top: 1rem;
   }
@@ -2706,4 +2726,4 @@ main .section.related-stories-container .default-content-wrapper h2 {
 
 .\[\&_ul\:has\(\:checked\)\+\*\]\:block ul:has(:checked)+* {
   display: block;
-}   
+}
