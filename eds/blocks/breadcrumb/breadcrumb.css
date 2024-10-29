@@ -53,35 +53,6 @@
        column-gap: 0.5rem
 }
 
-.breadcrumb-wrapper :is(.px-\[30px\]) {
-  padding-left: 30px;
-  padding-right: 30px
-}
-
-.breadcrumb-wrapper :is(.px-4) {
-  padding-left: 1rem;
-  padding-right: 1rem
-}
-
-.breadcrumb-wrapper :is(.px-2) {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem
-}
-
-.breadcrumb-wrapper :is(.px-0) {
-  padding-left: 0px;
-  padding-right: 0px
-}
-
-.breadcrumb-wrapper :is(.px-5) {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem
-}
-
-.breadcrumb-wrapper :is(.pb-4) {
-  padding-bottom: 1rem
-}
-
 .breadcrumb-wrapper :is(.font-sans) {
   font-family: Noto Sans
 }

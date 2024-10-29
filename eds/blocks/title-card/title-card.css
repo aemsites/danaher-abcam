@@ -98,11 +98,6 @@
   padding-right: 30px
 }
 
-.title-card-wrapper :is(.px-4) {
-  padding-left: 1rem;
-  padding-right: 1rem
-}
-
 .title-card-wrapper :is(.pb-4) {
   padding-bottom: 1rem
 }
