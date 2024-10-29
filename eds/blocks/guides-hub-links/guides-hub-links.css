@@ -1,5 +1,5 @@
-.guides-hub-links-wrapper :is(.mb-1) {
-  margin-bottom: 0.25rem
+.guides-hub-links-wrapper :is(.mb-4) {
+  margin-bottom: 1rem
 }
 
 .guides-hub-links-wrapper :is(.block) {
@@ -10,12 +10,12 @@
   display: flex
 }
 
-.guides-hub-links-wrapper :is(.flex-col) {
-  flex-direction: column
+.guides-hub-links-wrapper :is(.basis-1\/2) {
+  flex-basis: 50%
 }
 
-.guides-hub-links-wrapper :is(.pl-6) {
-  padding-left: 1.5rem
+.guides-hub-links-wrapper :is(.flex-col) {
+  flex-direction: column
 }
 
 .guides-hub-links-wrapper :is(.pt-6) {
@@ -44,15 +44,8 @@
   text-decoration-line: underline
 }
 
-@media (min-width: 768px) {
-  .guides-hub-links-wrapper :is(.md\:flex-row) {
-    flex-direction: row
-  }
-}
-
 @media (min-width: 1024px) {
-  .guides-hub-links-wrapper :is(.lg\:gap-x-52) {
-    -moz-column-gap: 13rem;
-         column-gap: 13rem
+  .guides-hub-links-wrapper :is(.lg\:flex-row) {
+    flex-direction: row
   }
 }
