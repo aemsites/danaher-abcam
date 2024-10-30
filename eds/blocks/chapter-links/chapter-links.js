@@ -30,6 +30,7 @@ function renderModal(el) {
 }
 
 function renderChapters(chapterItems) {
+  console.log(chapterItems);
   const chaptersDesktopEl = div({ class: 'hidden lg:flex flex-col items-start' });
   const chaptersMobileEl = div({ class: 'max-h-96 lg:hidden [&_span]:pl-2 overflow-scroll px-4' });
   const url = new URL(window.location.href);
@@ -40,7 +41,7 @@ function renderChapters(chapterItems) {
       { class: 'w-full border-b border-b-[#D8D8D8]' },
       a(
         {
-          href: makePublicUrl(item.path),
+          href: item.path,
           class: `block text-base lg:text-sm leading-6 font-semibold px-3 py-4 hover:underline ${item.path === currentPage ? 'text-black bg-[#EDF6F7]' : 'text-[#378189]'}`,
         },
         item.title,
