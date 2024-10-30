@@ -28,12 +28,12 @@ let ytPlayer;
 
 export function getCookie(name) {
   const cookieArr = document.cookie.split(';');
-  cookieArr.forEach((cookie) => {
-    const cookieTrimmed = cookie.trim();
-    if (cookieTrimmed.startsWith(`${name}=`)) {
-      return decodeURIComponent(cookieTrimmed.substring(name.length + 1));
+  for (let i = 0; i < cookieArr.length; i++) {
+    const cookie = cookieArr[i].trim();
+    if (cookie.startsWith(`${name}=`)) {
+      return decodeURIComponent(cookie.substring(name.length + 1));
     }
-  })
+  }
   return null;
 }
 
