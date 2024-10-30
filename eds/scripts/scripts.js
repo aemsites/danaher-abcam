@@ -21,8 +21,10 @@ import {
 // eslint-disable-next-line import/prefer-default-export
 import { buildVideoSchema } from './schema.js';
 import ffetch from './ffetch.js';
+import { yetiToPWSurlsMap } from './pws.js';
 
 const LCP_BLOCKS = ['hero', 'hero-video', 'carousel']; // add your LCP blocks to the list
+let ytPlayer;
 
 export function getStoryType(pageTags) {
   const tags = pageTags || getMetadata('pagetags');
@@ -33,6 +35,40 @@ export function getStoryType(pageTags) {
     }
   });
   return type;
+}
+
+/**
+ * Moves all the attributes from a given elmenet to another given element.
+ * @param {Element} from the element to copy attributes from
+ * @param {Element} to the element to copy attributes to
+ */
+export function moveAttributes(from, to, attributes) {
+  if (!attributes) {
+    // eslint-disable-next-line no-param-reassign
+    attributes = [...from.attributes].map(({ nodeName }) => nodeName);
+  }
+  attributes.forEach((attr) => {
+    const value = from.getAttribute(attr);
+    if (value) {
+      to?.setAttribute(attr, value);
+      from.removeAttribute(attr);
+    }
+  });
+}
+
+/**
+ * Move instrumentation attributes from a given element to another given element.
+ * @param {Element} from the element to copy attributes from
+ * @param {Element} to the element to copy attributes to
+ */
+export function moveInstrumentation(from, to) {
+  moveAttributes(
+    from,
+    to,
+    [...from.attributes]
+      .map(({ nodeName }) => nodeName)
+      .filter((attr) => attr.startsWith('data-aue-') || attr.startsWith('data-richtext-')),
+  );
 }
 
 /**
@@ -258,6 +294,9 @@ const TEMPLATE_LIST = [
   'product-detail',
   'search-results',
   'stories',
+  'webinars',
+  'guide',
+  'guides-hub',
 ];
 
 async function decorateTemplates(main) {
@@ -292,6 +331,7 @@ function buildAutoBlocks(main) {
 
 function decorateStoryPage(main) {
   const sectionEl = main.querySelector(':scope > div.section.story-info-container.social-media-container.sidelinks-container');
+  
   if (sectionEl) {
     const toBeRemoved = ['story-info-wrapper', 'social-media-wrapper', 'sidelinks-wrapper'];
     const rightSideElements = div({ class: 'w-full' });
@@ -311,6 +351,28 @@ function decorateStoryPage(main) {
   }
 }
 
+function decorateGuidePage(main) {
+  const sectionEl = main.querySelector(':scope > div.section.chapter-links-container.sidelinks-container');
+  if (sectionEl) {
+    const toBeRemoved = ['chapter-links-wrapper', 'sidelinks-wrapper'];
+    const rightSideElements = div({ class: 'w-full' });
+    const sticky = div({ class: 'sticky top-0 space-y-4 pt-6' });
+    const divEl = div({ class: 'ml-0 lg:ml-4 xl:ml-4 min-w-56 lg:max-w-72 flex flex-col gap-y-2 z-20' }, sticky);
+
+    toBeRemoved.forEach((ele) => {
+      const existingEl = sectionEl?.querySelector(`.${ele}`);
+      sticky.append(existingEl);
+    });
+    Array.from(sectionEl?.children).forEach((element) => {
+      if (!toBeRemoved.includes(element.classList[0])) {
+        rightSideElements.append(element);
+      }
+    });
+    sectionEl?.prepend(divEl);
+    sectionEl?.append(rightSideElements);
+  }
+}
+
 /**
  * Decorates the sticky right navigation block from main element.
  * @param {Element} main The main element
@@ -319,13 +381,11 @@ function decorateStickyRightNav(main) {
   const stickySection = main.querySelector('div.sticky-right-navigation-container');
   if (stickySection) {
     const divEl = div();
-    stickySection.classList.add('flex');
+    stickySection.classList.add('max-w-full');
     const stricyBlock = stickySection.querySelector('.sticky-right-navigation-wrapper')?.firstElementChild;
-    stricyBlock?.classList.add('sticky', 'top-32', 'mt-4', 'ml-20', 'mr-[-8rem]');
+    stricyBlock?.classList.add('w-full');
     [...stickySection.children].forEach((child, index, childs) => {
-      if (index !== childs.length - 1) {
-        divEl.append(child);
-      }
+      if (index !== childs.length - 1) divEl.append(child);
     });
     stickySection.prepend(divEl);
   }
@@ -392,7 +452,16 @@ function playAudio({ src = '#' }) {
   return `<audio controls preload="metadata" class = "audio-play-bar" style="width: 100%;" src=${src}/>`;
 }
 
+// Function to check if the video is playing
+function checkVideoStatus() {
+  const state = ytPlayer.getPlayerState();
+  if (state === 1) {
+    ytPlayer.pauseVideo();
+  }
+}
+
 let currentlyPlayingAudio = null; // Global variable to track the currently playing audio
+let previousPlayingAudio = null;
 
 function pauseCurrentAudio() {
   if (currentlyPlayingAudio) {
@@ -409,6 +478,7 @@ function pauseCurrentAudio() {
       }
     }
     currentlyPlayingAudio = null;
+    previousPlayingAudio = null;
   }
 }
 
@@ -418,6 +488,12 @@ async function getOgImage() {
     .filter((item) => item.tags.includes('content-type/film'))
     .all();
   return articles;
+}
+
+//This function is to add the title to the audio if it not the link
+function isValidUrl(string) {
+  const urlPattern = /^(https?:\/\/)?([a-z0-9\-]+\.)+[a-z]{2,}(:\d+)?(\/[^\s]*)?$/i;
+  return urlPattern.test(string);
 }
 
 async function decorateVideo(main) {
@@ -434,31 +510,49 @@ async function decorateVideo(main) {
           linkContainer.classList.add('h-full');
           const videoId = new URL(link.href).searchParams.get('v');
           if (videoId) {
-            const embedURL = `https://www.youtube.com/embed/${videoId}`;
+            const embedURL = `https://www.youtube.com/embed/${videoId}?enablejsapi=1`;
             const embedHTML = `
-              <div class="relative w-full h-full">
-                <iframe src="${embedURL}"
-                class="relative w-full h-full border-0 top-0 left-0" 
-                allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" 
-                scrolling="no" title="Content from Youtube" loading="eager"></iframe>
-              </div>`;
+            <div class="relative w-full h-0 pt-[56.25%]">
+              <iframe id="youtubePlayer" src="${embedURL}"
+              class="absolute h-full w-full top-0 left-0 border-0"
+              allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture"
+              scrolling="no" title="Content from Youtube" loading="lazy"></iframe>
+            </div>`;
             linkContainer.innerHTML = embedHTML;
+            const scriptTag = document.createElement('script');
+            scriptTag.src = 'https://www.youtube.com/iframe_api';
+            const firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(scriptTag, firstScriptTag);
+            window.onYouTubeIframeAPIReady = function () {
+              ytPlayer = new YT.Player('youtubePlayer', {
+                events: {
+                  onStateChange: onPlayerStateChange,
+                },
+              });
+            };
+            function onPlayerStateChange(event) {
+              if (event.data === 1 || event.data === -1) {
+                currentlyPlayingAudio = previousPlayingAudio;
+                pauseCurrentAudio();
+              }
+            }
           } else {
             const embedHTML = `<div class="relative w-full h-full">
               <iframe src="${link.href}"
               class="relative w-full h-full border-0 top-0 left-0" 
               allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" 
-              scrolling="no" title="Content from Youtube" loading="eager"></iframe>
+              scrolling="no" title="Content from Youtube" loading="lazy"></iframe>
             </div>`;
             linkContainer.innerHTML = embedHTML;
           }
         } else if (link.title === 'audio') {
-          link.textContent = '';
+          const h3El = link.closest('div.grid')?.querySelector('h3');
+          let linkTitle = isValidUrl(link.textContent) ? '' : link.textContent;
           const audioContainer = div(
             { class: 'flex flex-col' },
-            p({ class: 'audio-label text-black no-underline ' }, link.text || ''),
-            span({ class: 'audio-play-icon cursor-pointer w-14 icon icon-Play' }),
-            span({ class: 'audio-play-pause-icon hidden cursor-pointer w-14 icon icon-play-pause' }),
+            p({ class: 'audio-label text-black no-underline ' }, linkTitle || ''),
+            span({ class: 'checkStatus audio-play-icon cursor-pointer w-14 icon icon-Play' }),
+            span({ class: 'checkStatus audio-play-pause-icon hidden cursor-pointer w-14 icon icon-play-pause' }),
           );
 
           const parent = link.parentElement;
@@ -490,6 +584,10 @@ async function decorateVideo(main) {
               currentlyPlayingAudio = audioElement; // Update the currently playing audio
               isPlaying = true;
               updateIconVisibility();
+              if (playIcon.closest('.columns')) {
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'none';
+              }
             }
           });
 
@@ -502,16 +600,27 @@ async function decorateVideo(main) {
           });
 
           audioElement.addEventListener('play', () => {
+            if (previousPlayingAudio){
+              previousPlayingAudio.pause();
+            }
+            previousPlayingAudio = audioElement;
+            checkVideoStatus();        
             isPlaying = true;
             updateIconVisibility();
           });
-
           audioElement.addEventListener('pause', () => {
+            if (audioElement === previousPlayingAudio)
+              previousPlayingAudio = null;
             isPlaying = false;
             updateIconVisibility();
           });
-
           updateIconVisibility();
+          audioContainer.querySelector('.checkStatus')?.addEventListener('click', checkVideoStatus);
+
+          playIcon.addEventListener('click', () => {
+            h3El.after(audioPlayer);
+          });
+
         }
       });
     } else if (type.includes('film')) {
@@ -526,7 +635,7 @@ async function decorateVideo(main) {
 
           const playButtonHTML = `
             <div class="aspect-video relative w-full h-full">
-              <img src="${posterImage}" class="relative inset-0 w-full h-full object-cover" />
+              <img src="${posterImage}" class="relative inset-0 w-full h-full object-cover" alt="More episodes in the Series" aria-label="More episodes in the Series" loading="lazy"/>
               <button id="play-button-${videoId}" class="absolute inset-0 flex items-center justify-center bg-opacity-50 rounded-full p-4">
                 <span class = "video-play-icon icon icon-video-play"/>
               </button>
@@ -544,7 +653,10 @@ async function decorateVideo(main) {
             e.preventDefault();
             toggleModalPopUp(link.href, linkContainer);
           });
-          if (firstVideo === 1) buildVideoSchema(posterImage, link.href);
+          const publishDate = getMetadata('publishdate');
+          const publishTime = getMetadata('published-time');
+          const videoPublishDate = publishDate ? new Date(publishDate) : new Date(publishTime);
+          if (firstVideo === 1) buildVideoSchema(videoPublishDate, posterImage, link.href);
           const modalPopUp = createModalPopUp(link.href, linkContainer);
           linkContainer.appendChild(modalPopUp);
         }
@@ -565,9 +677,18 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
-  decorateVideo(main);
+  const observer = new IntersectionObserver((entries) => {
+    if (entries.some((e) => e.isIntersecting)) {
+      observer.disconnect();
+      setTimeout(() => {
+        decorateVideo(main);
+      }, 3000);
+    }
+  });
+  observer.observe(main);
   decorateStickyRightNav(main);
   decorateStoryPage(main);
+  decorateGuidePage(main);
 }
 
 export const applyClasses = (element, classes) => element?.classList.add(...classes.split(' '));
@@ -661,26 +782,6 @@ async function loadEager(doc) {
       });
     }
 
-    let atjsPromise = Promise.resolve();
-    atjsPromise = initATJS('./at.js', {
-      clientCode: 'danaher',
-      serverDomain: 'danaher.tt.omtrdc.net',
-      imsOrgId: '08333E7B636A2D4D0A495C34@AdobeOrg',
-      bodyHidingEnabled: false,
-      cookieDomain: window.location.hostname,
-      pageLoadEnabled: false,
-      secureOnly: true,
-      viewsEnabled: false,
-      withWebGLRenderer: false,
-    }).catch((e) => {
-      // eslint-disable-next-line no-console
-      console.error('Error loading at.js', e);
-    });
-    document.addEventListener('at-library-loaded', () => getAndApplyOffers());
-
-    document.body.classList.add('appear');
-    await atjsPromise;
-
     await new Promise((resolve) => {
       window.requestAnimationFrame(async () => {
         document.body.classList.add('appear');
@@ -752,7 +853,7 @@ function loadDelayed() {
   // eslint-disable-next-line import/no-cycle
   window.setTimeout(() => import('./delayed.js'), 3000);
   // load anything that can be postponed to the latest here
-  import('./sidekick.js').then(({ initSidekick }) => initSidekick());
+  // import('./sidekick.js').then(({ initSidekick }) => initSidekick());
 }
 
 /**
@@ -816,28 +917,31 @@ export function createFilters({
   listActionHandler = () => {},
   clearFilterHandler = () => {},
   limit = 6,
+  sort = 'ASC',
 }) {
-  const output = filterNames.reduce((obj, key) => {
-    obj[key] = new Set();
-    return obj;
-  }, {});
-
+  const tempArr = {};
   lists.forEach((list) => {
     const parts = list?.tags?.split(', ');
     parts.forEach((part) => {
       const [key, value] = part.split('/');
       filterNames.forEach((name) => {
         if (key.includes(name)) {
-          output[name].add(value);
+          if (!(name in tempArr)) tempArr[name] = [];
+          if (!tempArr[name].includes(value)) tempArr[name].push(value);
+        }
+        if (name in tempArr && tempArr[name].length > 0) {
+          sort.toUpperCase() === 'ASC'
+            ? tempArr[name].sort()
+            : tempArr[name].sort().reverse()
         }
       });
     });
   });
 
-  Object.keys(output).forEach((categoryKey, categoryIndex) => {
-    const lists = ul({ class: 'space-y-2 mt-2' });
-    [...output[categoryKey]].map((categoryValue, categoryIndex) => {
-      lists.append(li(
+  Object.keys(tempArr).forEach((categoryKey, categoryIndex) => {
+    const listsEl = ul({ class: 'space-y-2 mt-2' });
+    [...tempArr[categoryKey]].map((categoryValue, categoryIndex) => {
+      listsEl.append(li(
         categoryIndex >= limit ? { class: 'hidden' } : '',
         label(
           {
@@ -859,8 +963,8 @@ export function createFilters({
     });
 
     // Add "Show More" button if needed
-    if (limit !== 0 && output[categoryKey].length > limit) {
-      lists.append(
+    if (limit !== 0 && tempArr[categoryKey].length > limit) {
+      listsEl.append(
         li(
           span(
             {
@@ -887,19 +991,19 @@ export function createFilters({
     const accordionSection = div(
       { class: `flex flex-col px-6 py-4 border-b md:border border-gray-300 ${categoryIndex > 0 ? 'md:mt-4' : ''} md:rounded-xl [&_div:not(.hidden)~p]:mb-3 [&_div:not(.hidden)~p_.icon]:rotate-180` },
       p(
-        { class: 'flex items-center justify-between my-0' },
-        span({ class: 'text-base font-bold capitalize' }, categoryKey.replace('-', ' ')),
-        span({
-          class: 'icon icon-chevron-down size-5 cursor-pointer',
+        {
+          class: 'flex items-center justify-between my-0 cursor-pointer',
           onclick: () => {
-            lists.parentElement.classList.toggle('hidden');
-            lists.parentElement.previousElementSibling.children[1].classList.toggle('rotate-180');
+            listsEl.parentElement.classList.toggle('hidden');
+            listsEl.parentElement.previousElementSibling.children[1].classList.toggle('rotate-180');
           },
-        }),
+        },
+        span({ class: 'text-base font-bold capitalize' }, categoryKey.replace('-', ' ')),
+        span({ class: 'icon icon-chevron-down size-5 rotate-180' }),
       ),
       div(
         { class: 'flex flex-col-reverse [&_ul:has(:checked)+*]:block' },
-        lists,
+        listsEl,
         span({
           class: 'hidden text-xs leading-5 font-medium text-[#378189] mt-1 cursor-pointer hover:underline underline-offset-1',
           onclick: () => clearFilterHandler(categoryKey),
@@ -907,12 +1011,12 @@ export function createFilters({
       ),
     );
 
-    if (lists.children.length > 0) element.append(accordionSection);
+    if (listsEl.children.length > 0) element.append(accordionSection);
   });
 }
 
 export function createCard({
-  titleImage,
+  titleImage = '',
   title = '',
   description = '',
   footerLink = '',
@@ -933,13 +1037,13 @@ export function createCard({
       titleImage,
       div(
         { class: 'flex-1' },
-        h3({ class: 'text-black font-medium mt-4 break-words line-clamp-4' }, title),
-        p({ class: 'line-clamp-3' }, description),
+        title && h3({ class: 'text-black font-medium mt-4 break-words line-clamp-4' }, title),
+        description && p({ class: 'text-sm line-clamp-3' }, description),
         bodyEl,
       ),
       footerLink !== ''
         ? a({
-          class: 'text-base leading-5 text-[#378089] font-bold p-2 pl-0 group-hover:tracking-wide group-hover:underline transition duration-700 mt-2',
+          class: 'text-base leading-5 text-[#378189] font-bold p-2 pl-0 group-hover:tracking-wide group-hover:underline transition duration-700 mt-2',
           href: path,
         }, footerLink)
         : '',
@@ -960,8 +1064,8 @@ export function createCard({
         break;
     }
     card.querySelector('.flex-1').prepend(
-      span({ class: 'capitalize font-normal text-sm' }, `${getStoryType(tags)}`),
-      span({ class: 'font-normal text-sm' }, `${minRead}`),
+      span({ class: 'capitalize font-normal text-sm text-[#65697C] font-["rockwell"]' }, `${getStoryType(tags)}`),
+      span({ class: 'font-normal text-sm text-[#65697C] font-["rockwell"]' }, `${minRead}`),
     );
   }
   return card;
@@ -974,8 +1078,52 @@ function getDLPage() {
   const page = {
     type: 'Content',
   };
+  const path = window.location.pathname;
+  const langPrefix = '/en-us/';
+  const regex = new RegExp(`${langPrefix}([^/]+)`);
+  const match = path.match(regex);
+  if (match) {
+    const extractedPath = match[1];
+    page.event = 'Virtual Page View';
+    page.type = extractedPath;
+    page.path = path;
+    page.subType = null;
+  }
   return page;
 }
+
+// Add hreflang tags
+
+const currentPath = window.location.pathname;
+const pathWithoutLocale = currentPath.replace(/^\/[a-z]{2}-[a-z]{2}\//, '/');
+let pwsUrl = currentPath;
+if (yetiToPWSurlsMap.hasOwnProperty(pathWithoutLocale)) {
+  pwsUrl = yetiToPWSurlsMap[pathWithoutLocale];
+}
+
+const hrefAlt = document.createElement('link');
+hrefAlt.rel = 'alternate';
+hrefAlt.hreflang = 'en-us';
+hrefAlt.href = 'https://www.abcam.com' + window.location.pathname;
+document.head.appendChild(hrefAlt);
+
+const hrefDefault = document.createElement('link');
+hrefDefault.rel = 'alternate';
+hrefDefault.hreflang = 'x-default';
+hrefDefault.href = 'https://www.abcam.com' + window.location.pathname;
+document.head.appendChild(hrefDefault);
+
+const hrefChina = document.createElement('link');
+hrefChina.rel = 'alternate';
+hrefChina.hreflang = 'zh-cn';
+hrefChina.href = 'https://www.abcam.cn' + pwsUrl;
+document.head.appendChild(hrefChina);
+
+const hrefJapan = document.createElement('link');
+hrefJapan.rel = 'alternate';
+hrefJapan.hreflang = 'ja-jp';
+hrefJapan.href = 'https://www.abcam.co.jp' + pwsUrl;
+document.head.appendChild(hrefJapan);
 
 // Datalayer Start
 window.dataLayer = [];

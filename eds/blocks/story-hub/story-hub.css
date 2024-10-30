@@ -163,10 +163,6 @@
   justify-items: stretch
 }
 
-.story-hub-wrapper :is(.gap-10) {
-  gap: 2.5rem
-}
-
 .story-hub-wrapper :is(.gap-2) {
   gap: 0.5rem
 }
@@ -183,6 +179,15 @@
 .story-hub-wrapper :is(.gap-x-2) {
   -moz-column-gap: 0.5rem;
        column-gap: 0.5rem
+}
+
+.story-hub-wrapper :is(.gap-x-6) {
+  -moz-column-gap: 1.5rem;
+       column-gap: 1.5rem
+}
+
+.story-hub-wrapper :is(.gap-y-10) {
+  row-gap: 2.5rem
 }
 
 .story-hub-wrapper :is(.overflow-visible) {
@@ -390,6 +395,10 @@
     grid-template-columns: repeat(2, minmax(0, 1fr))
   }
 
+  .story-hub-wrapper :is(.md\:gap-y-16) {
+    row-gap: 4rem
+  }
+
   .story-hub-wrapper :is(.md\:px-0) {
     padding-left: 0px;
     padding-right: 0px
@@ -432,26 +441,16 @@
   .story-hub-wrapper :is(.lg\:grid-cols-12) {
     grid-template-columns: repeat(12, minmax(0, 1fr))
   }
-
-  .story-hub-wrapper :is(.lg\:grid-cols-3) {
-    grid-template-columns: repeat(3, minmax(0, 1fr))
-  }
-
-  .story-hub-wrapper :is(.lg\:gap-16) {
-    gap: 4rem
-  }
 }
 
-.story-hub-wrapper :is(.\[\&_\*\:empty\+span\]\:mb-12 *:empty+span) {
-  margin-bottom: 3rem
+@media (min-width: 1280px) {
+  .story-hub-wrapper :is(.xl\:grid-cols-3) {
+    grid-template-columns: repeat(3, minmax(0, 1fr))
+  }
 }
 
 .story-hub-wrapper :is(.\[\&_\*\:empty\+span\]\:hidden *:empty+span) {
   display: none
-}
-
-.story-hub-wrapper :is(.\[\&_\*\:empty\]\:mb-12 *:empty) {
-  margin-bottom: 3rem
 }
 
 .story-hub-wrapper :is(.\[\&_\*\:empty\]\:mb-8 *:empty) {

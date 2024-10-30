@@ -1,0 +1,41 @@
+.table-wrapper :is(.\!block) {
+  display: block !important
+}
+
+.table-wrapper :is(.block) {
+  display: block
+}
+
+.table-wrapper :is(.table) {
+  display: table
+}
+
+.table-wrapper :is(.border-t) {
+  border-top-width: 1px
+}
+
+.table-wrapper :is(.border-\[\#273F3F\]) {
+  --tw-border-opacity: 1;
+  border-color: rgb(39 63 63 / var(--tw-border-opacity))
+}
+
+.table-wrapper :is(.border-opacity-25) {
+  --tw-border-opacity: 0.25
+}
+
+.table-wrapper :is(.p-4) {
+  padding: 1rem
+}
+
+.table-wrapper :is(.text-left) {
+  text-align: left
+}
+
+.table-wrapper :is(.text-\[\#378189\]) {
+  --tw-text-opacity: 1;
+  color: rgb(55 129 137 / var(--tw-text-opacity))
+}
+
+.table-wrapper :is(.underline) {
+  text-decoration-line: underline
+}
