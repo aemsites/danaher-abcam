@@ -2,7 +2,6 @@ import ffetch from '../../scripts/ffetch.js';
 import {
   a, button, div, p, span,
 } from '../../scripts/dom-builder.js';
-import { makePublicUrl } from '../../scripts/scripts.js';
 import { decorateIcons } from '../../scripts/aem.js';
 import { buildArticleSchema, buildGuidesCollectionSchema } from '../../scripts/schema.js';
 
@@ -40,7 +39,7 @@ function renderChapters(chapterItems) {
       { class: 'w-full border-b border-b-[#D8D8D8]' },
       a(
         {
-          href: makePublicUrl(item.path),
+          href: item.path,
           class: `block text-base lg:text-sm leading-6 font-semibold px-3 py-4 hover:underline ${item.path === currentPage ? 'text-black bg-[#EDF6F7]' : 'text-[#378189]'}`,
         },
         item.title,
