@@ -26,6 +26,17 @@ import { yetiToPWSurlsMap } from './pws.js';
 const LCP_BLOCKS = ['hero', 'hero-video', 'carousel']; // add your LCP blocks to the list
 let ytPlayer;
 
+export function getCookie(name) {
+  const cookieArr = document.cookie.split(';');
+  for (let i = 0; i < cookieArr.length; i++) {
+    const cookie = cookieArr[i].trim();
+    if (cookie.startsWith(`${name}=`)) {
+      return decodeURIComponent(cookie.substring(name.length + 1));
+    }
+  }
+  return null;
+}
+
 export function getStoryType(pageTags) {
   const tags = pageTags || getMetadata('pagetags');
   let type = null;

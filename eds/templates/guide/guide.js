@@ -1,11 +1,12 @@
 import { buildBlock } from '../../scripts/aem.js';
 import { div, p } from '../../scripts/dom-builder.js';
+import { getCookie } from '../../scripts/scripts.js';
 
 async function buildRelatedLinks(main) {
   const allLinks = [];
   const fragmentBlock = main.querySelector('div.fragment');
   const fragmentPath = fragmentBlock?.querySelector('a')?.getAttribute('href');
-  fragmentBlock?.remove();
+  if (getCookie('cq-authoring-mode') !== 'TOUCH') fragmentBlock?.remove();
   const resp = await fetch(`${fragmentPath}.plain.html`);
   if (resp.ok) {
     const fragment = div();
