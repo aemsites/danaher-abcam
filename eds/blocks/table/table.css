@@ -6,6 +6,14 @@
   margin-bottom: 0.5rem
 }
 
+.table-wrapper :is(.ms-2) {
+  margin-inline-start: 0.5rem
+}
+
+.table-wrapper :is(.mt-auto) {
+  margin-top: auto
+}
+
 .table-wrapper :is(.\!block) {
   display: block !important
 }
@@ -16,6 +24,10 @@
 
 .table-wrapper :is(.flex) {
   display: flex
+}
+
+.table-wrapper :is(.inline-flex) {
+  display: inline-flex
 }
 
 .table-wrapper :is(.table) {
@@ -34,6 +46,15 @@
   table-layout: auto
 }
 
+.table-wrapper :is(.items-center) {
+  align-items: center
+}
+
+.table-wrapper :is(.gap-x-3) {
+  -moz-column-gap: 0.75rem;
+       column-gap: 0.75rem
+}
+
 .table-wrapper :is(.space-y-1 > :not([hidden]) ~ :not([hidden])) {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
@@ -42,6 +63,10 @@
 
 .table-wrapper :is(.overflow-x-auto) {
   overflow-x: auto
+}
+
+.table-wrapper :is(.rounded-full) {
+  border-radius: 9999px
 }
 
 .table-wrapper :is(.rounded-lg) {
@@ -66,6 +91,11 @@
   border-color: rgb(209 213 219 / var(--tw-border-opacity))
 }
 
+.table-wrapper :is(.border-teal-700) {
+  --tw-border-opacity: 1;
+  border-color: rgb(15 118 110 / var(--tw-border-opacity))
+}
+
 .table-wrapper :is(.border-opacity-25) {
   --tw-border-opacity: 0.25
 }
@@ -73,6 +103,15 @@
 .table-wrapper :is(.bg-gray-50) {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity))
+}
+
+.table-wrapper :is(.bg-teal-700) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(15 118 110 / var(--tw-bg-opacity))
+}
+
+.table-wrapper :is(.p-4) {
+  padding: 1rem
 }
 
 .table-wrapper :is(.p-2) {
@@ -83,8 +122,14 @@
   padding: 0.625rem
 }
 
-.table-wrapper :is(.p-4) {
-  padding: 1rem
+.table-wrapper :is(.px-5) {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem
+}
+
+.table-wrapper :is(.py-2) {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem
 }
 
 .table-wrapper :is(.text-left) {
@@ -96,12 +141,20 @@
   line-height: 1.25rem
 }
 
+.table-wrapper :is(.font-medium) {
+  font-weight: 500
+}
+
 .table-wrapper :is(.font-semibold) {
   font-weight: 600
 }
 
 .table-wrapper :is(.leading-5) {
   line-height: 1.25rem
+}
+
+.table-wrapper :is(.tracking-wide) {
+  letter-spacing: 0.025em
 }
 
 .table-wrapper :is(.text-\[\#378189\]) {
@@ -119,12 +172,22 @@
   color: rgb(148 163 184 / var(--tw-text-opacity))
 }
 
+.table-wrapper :is(.text-white) {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+
 .table-wrapper :is(.underline) {
   text-decoration-line: underline
 }
 
 .table-wrapper :is(.filter) {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
+}
+
+.table-wrapper :is(.hover\:bg-teal-800:hover) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(17 94 89 / var(--tw-bg-opacity))
 }
 
 @media (min-width: 768px) {

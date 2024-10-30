@@ -2090,5 +2090,24 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "video-transcript",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "video_transcript_title",
+        "value": "",
+        "label": "Title"
+      },
+      {
+        "component": "richtext",
+        "name": "video_transcript_description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      }
+    ]
   }
 ]
