@@ -1,10 +1,24 @@
 import { buildBlock } from '../../scripts/aem.js';
 import { div, p } from '../../scripts/dom-builder.js';
 
+function getCookie(name) {
+  const cookieArr = document.cookie.split(";");
+
+  for (let i = 0; i < cookieArr.length; i++) {
+      let cookie = cookieArr[i].trim();
+
+      if (cookie.startsWith(name + "=")) {
+          return decodeURIComponent(cookie.substring(name.length + 1));
+      }
+  }
+  return null;
+}
+
 async function buildRelatedLinks(main) {
   const allLinks = [];
   const fragmentBlock = main.querySelector('div.fragment');
   const fragmentPath = fragmentBlock?.querySelector('a')?.getAttribute('href');
+  console.log(getCookie('WCMMODE'));
   fragmentBlock?.remove();
   const resp = await fetch(`${fragmentPath}.plain.html`);
   if (resp.ok) {
