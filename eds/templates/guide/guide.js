@@ -3,7 +3,6 @@ import { div, p } from '../../scripts/dom-builder.js';
 
 function getCookie(name) {
   const cookieArr = document.cookie.split(";");
-  console.log(cookieArr);
   for (let i = 0; i < cookieArr.length; i++) {
       let cookie = cookieArr[i].trim();
 
