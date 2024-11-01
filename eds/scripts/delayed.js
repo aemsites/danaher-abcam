@@ -76,12 +76,12 @@ function loadFreshChat() {
   const FRESHCHAT_TOKEN = (window.location.host === 'www.abcam.com') ? '471c9cd0-248c-41d7-a173-fb32d90b8729' : '471c9cd0-248c-41d7-a173-fb32d90b8729';
   const FRESHCHAT_HOST = (window.location.host === 'www.abcam.com') ? 'https://abcam.freshchat.com' : 'https://abcam.freshchat.com';
   const FRESHCHAT_UUID = (window.location.host === 'www.abcam.com') ? '72b36250-f7cd-4488-857c-3bf672e0c6e9' : '72b36250-f7cd-4488-857c-3bf672e0c6e9';
-  let FRESHCHAT_NEW_SCRIPT_URL = '//eu.fw-cdn.com/12712287/710605.js';
-  const freshchat_scriptTag = document.createElement('script');
-  freshchat_scriptTag.type = 'text/javascript';
-  freshchat_scriptTag.src = `${FRESHCHAT_HOST}/js/widget.js?t=` + Date.now();
-  document.head.appendChild(freshchat_scriptTag);
-  window.fcSettings = { token:FRESHCHAT_TOKEN, host:FRESHCHAT_HOST, uuid:FRESHCHAT_UUID };
+  const FRESHCHAT_NEW_SCRIPT_URL = '//eu.fw-cdn.com/12712287/710605.js';
+  const fcScriptTag = document.createElement('script');
+  fcScriptTag.type = 'text/javascript';
+  fcScriptTag.src = `${FRESHCHAT_HOST}/js/widget.js?t=` + Date.now();
+  document.head.appendChild(fcScriptTag);
+  window.fcSettings = { token: FRESHCHAT_TOKEN, host: FRESHCHAT_HOST, uuid: FRESHCHAT_UUID };
 }
 // freshchat -end
 
@@ -91,7 +91,7 @@ if (
 ) {
   loadGTM();
   loadrelicScript();
-  if(isOTEnabled) {
+  if (isOTEnabled) {
     loadFreshChat();
   }
 }
