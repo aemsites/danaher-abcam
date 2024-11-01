@@ -58,6 +58,10 @@
   max-height: 100vh
 }
 
+.sticky-sections-list :is(.max-h-\[400px\]) {
+  max-height: 400px
+}
+
 .sticky-sections-list :is(.w-28) {
   width: 7rem
 }
@@ -264,5 +268,9 @@
 @media (min-width: 1280px) {
   .sticky-sections-list :is(.xl\:h-\[540px\]) {
     height: 540px
+  }
+
+  .sticky-sections-list :is(.xl\:max-h-\[500px\]) {
+    max-height: 500px
   }
 }

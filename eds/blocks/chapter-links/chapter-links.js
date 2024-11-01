@@ -23,7 +23,6 @@ function renderModal(el) {
 
   const modalContent = div({ class: 'relative flex flex-col bg-white w-11/12 max-h-[70%] mb-4 rounded lg:hidden' });
   const modalClose = div({ class: 'w-full bottom-0 flex justify-center px-3 py-4' }, closeButton);
-  const modalList = el.classList.add(...'flex flex-col gap-2'.split(' '));
   modalContent.append(el, modalClose);
   modal.append(modalContent);
   decorateIcons(modal);
