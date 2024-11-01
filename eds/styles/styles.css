@@ -1256,6 +1256,13 @@ main .section.related-stories-container .default-content-wrapper h2 {
   }
 }
 
+.guides-hub main .section .title-card p {
+  font-size: 1.125rem !important;
+  font-weight: 400 !important;
+  line-height: 1.75rem !important;
+  letter-spacing: 0.3px !important;
+}
+
 main .guides-hub-links-container .default-content-wrapper {
   margin-left: auto;
   margin-right: auto;
@@ -1332,19 +1339,21 @@ main .guides-hub-links-container .default-content-wrapper {
   }
 }
 
-main .section.guides-middle-container .default-content-wrapper p {
-  margin-bottom: 1.5rem;
-  font-size: 1.125rem;
-  font-weight: 400;
-  line-height: 1.75rem;
-  letter-spacing: 0.3px;
+main .section.guides-middle-container p {
+  margin-top: 0px !important;
+  margin-bottom: 1.5rem !important;
+  font-size: 1.125rem !important;
+  font-weight: 400 !important;
+  line-height: 1.75rem !important;
+  letter-spacing: 0.3px !important;
 }
 
 main .section.guides-middle-container h2 {
+  margin-bottom: 0.5rem !important;
   font-size: 1.5rem !important;
   font-weight: 400 !important;
   line-height: 1.75rem !important;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.3px !important;
 }
 
 .sr-only {
@@ -2289,6 +2298,10 @@ main .section.guides-middle-container h2 {
   padding-left: 1rem;
 }
 
+.pr-0 {
+  padding-right: 0px;
+}
+
 .pr-2 {
   padding-right: 0.5rem;
 }
@@ -2327,18 +2340,6 @@ main .section.guides-middle-container h2 {
 
 .pt-\[56\.25\%\] {
   padding-top: 56.25%;
-}
-
-.pr-8 {
-  padding-right: 2rem;
-}
-
-.pr-4 {
-  padding-right: 1rem;
-}
-
-.pr-0 {
-  padding-right: 0px;
 }
 
 .text-left {
@@ -2714,10 +2715,6 @@ main .section.guides-middle-container h2 {
 
   .md\:pt-4 {
     padding-top: 1rem;
-  }
-
-  .md\:pr-8 {
-    padding-right: 2rem;
   }
 
   .md\:hover\:bg-gray-50:hover {
