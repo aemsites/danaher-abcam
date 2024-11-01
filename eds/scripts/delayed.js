@@ -70,10 +70,21 @@ function loadrelicScript() {
 }
 // New relic Script -end
 
+// freshchat -start
+function loadFreshChat() {
+  const freshchat_scriptTag = document.createElement('script');
+  freshchat_scriptTag.type = 'text/javascript';
+  freshchat_scriptTag.src = 'https://abcam.freshchat.com/js/widget.js?t=' + Date.now();
+  document.head.appendChild(freshchat_scriptTag);
+  window.fsSettings = { token:'471c9cd0-248c-41d7-a173-fb32d90b8729', host:'https://abcam.freshchat.com', uuid:'72b36250-f7cd-4488-857c-3bf672e0c6e9' };
+}
+// freshchat -end
+
 if (
   !window.location.hostname.includes('localhost')
   && !window.location.hostname.includes('.hlx')
 ) {
   loadGTM();
   loadrelicScript();
+  loadFreshChat();
 }
