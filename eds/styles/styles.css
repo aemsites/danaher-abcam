@@ -1227,6 +1227,7 @@ main .section.related-stories-container .default-content-wrapper h2 {
 .guide .sticky-bottom {
   position: sticky;
   bottom: 0px;
+  z-index: 20;
   background-color: transparent;
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -1331,18 +1332,19 @@ main .guides-hub-links-container .default-content-wrapper {
   }
 }
 
-main .section.guides-middle-container p {
-  font-size: 1.125rem !important;
-  font-weight: 400 !important;
-  line-height: 1.75rem !important;
-  letter-spacing: 0.3px !important;
+main .section.guides-middle-container .default-content-wrapper p {
+  margin-bottom: 1.5rem;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.75rem;
+  letter-spacing: 0.3px;
 }
 
 main .section.guides-middle-container h2 {
   font-size: 1.5rem !important;
   font-weight: 400 !important;
   line-height: 1.75rem !important;
-  letter-spacing: 0.3px !important;
+  letter-spacing: 0.3px;
 }
 
 .sr-only {
@@ -1739,6 +1741,10 @@ main .section.guides-middle-container h2 {
   min-width: 14rem;
 }
 
+.min-w-60 {
+  min-width: 15rem;
+}
+
 .max-w-\[2464px\] {
   max-width: 2464px;
 }
@@ -1916,6 +1922,12 @@ main .section.guides-middle-container h2 {
   --tw-space-x-reverse: 0;
   margin-right: calc(1rem * var(--tw-space-x-reverse));
   margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-y-12 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(3rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(3rem * var(--tw-space-y-reverse));
 }
 
 .space-y-2 > :not([hidden]) ~ :not([hidden]) {
@@ -2317,6 +2329,18 @@ main .section.guides-middle-container h2 {
   padding-top: 56.25%;
 }
 
+.pr-8 {
+  padding-right: 2rem;
+}
+
+.pr-4 {
+  padding-right: 1rem;
+}
+
+.pr-0 {
+  padding-right: 0px;
+}
+
 .text-left {
   text-align: left;
 }
@@ -2692,6 +2716,10 @@ main .section.guides-middle-container h2 {
     padding-top: 1rem;
   }
 
+  .md\:pr-8 {
+    padding-right: 2rem;
+  }
+
   .md\:hover\:bg-gray-50:hover {
     --tw-bg-opacity: 1;
     background-color: rgb(249 250 251 / var(--tw-bg-opacity));
@@ -2762,6 +2790,10 @@ main .section.guides-middle-container h2 {
 
   .lg\:flex-col {
     flex-direction: column;
+  }
+
+  .lg\:pr-8 {
+    padding-right: 2rem;
   }
 }
 

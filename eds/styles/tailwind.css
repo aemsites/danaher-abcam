@@ -29,7 +29,7 @@
     }
 
     h2 { 
-        @apply !leading-9 !font-bold !text-4xl md:!text-3xl;
+        @apply !text-4xl !leading-9 !font-bold md:!text-3xl;
     }
 
     h3 { 
@@ -248,7 +248,7 @@
     }
 
     .guide .sticky-bottom {
-        @apply sticky bottom-0 lg:hidden bg-transparent py-4 px-6;
+        @apply sticky bottom-0 lg:hidden bg-transparent py-4 px-6 z-20;
     }
 
     .guides-hub main .section .title-card {
@@ -271,12 +271,12 @@
         @apply lg:!px-0;
     }
  
-    main .section.guides-middle-container p{
-        @apply !font-normal !text-lg !leading-7 !tracking-[0.3px]
+    main .section.guides-middle-container .default-content-wrapper p {
+        @apply text-lg font-normal leading-7 tracking-[0.3px] mb-6;
     }
  
     main .section.guides-middle-container h2{
-        @apply !font-normal !text-2xl !leading-7 !tracking-[0.3px]
+        @apply !text-2xl !font-normal !leading-7 tracking-[0.3px];
     }
    
 }   
