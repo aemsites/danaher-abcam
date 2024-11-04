@@ -54,7 +54,7 @@ function loadGTM() {
 // google tag manager -end
 
 // New relic Script -start
-async function loadrelicScript() {
+function loadrelicScript() {
   const scriptTag = document.createElement('script');
   scriptTag.type = 'text/javascript';
   scriptTag.src = (window.location.host === 'www.abcam.com') ? '/eds/scripts/newrelic.js' : '/eds/scripts/newrelicstage.js';
