@@ -10,6 +10,11 @@
   z-index: 40
 }
 
+.header-wrapper :is(.my-0) {
+  margin-top: 0px;
+  margin-bottom: 0px
+}
+
 .header-wrapper :is(.block) {
   display: block
 }
@@ -34,6 +39,10 @@
   max-width: 24rem
 }
 
+.header-wrapper :is(.max-w-\[2464px\]) {
+  max-width: 2464px
+}
+
 .header-wrapper :is(.transform) {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
@@ -46,9 +55,18 @@
   justify-content: center
 }
 
+.header-wrapper :is(.gap-0) {
+  gap: 0px
+}
+
 .header-wrapper :is(.bg-black) {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity))
+}
+
+.header-wrapper :is(.bg-red-500) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity))
 }
 
 .header-wrapper :is(.px-3) {
@@ -61,8 +79,31 @@
   padding-bottom: 1rem
 }
 
+.header-wrapper :is(.py-2) {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem
+}
+
+.header-wrapper :is(.px-\[30px\]) {
+  padding-left: 30px;
+  padding-right: 30px
+}
+
 .header-wrapper :is(.pt-4) {
   padding-top: 1rem
+}
+
+.header-wrapper :is(.text-center) {
+  text-align: center
+}
+
+.header-wrapper :is(.font-bold) {
+  font-weight: 700
+}
+
+.header-wrapper :is(.text-white) {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity))
 }
 
 .header-wrapper :is(.transition-all) {
@@ -73,4 +114,11 @@
 
 .header-wrapper :is(.ease-out) {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1)
+}
+
+@media (min-width: 1280px) {
+  .header-wrapper :is(.xl\:px-\[80px\]) {
+    padding-left: 80px;
+    padding-right: 80px
+  }
 }

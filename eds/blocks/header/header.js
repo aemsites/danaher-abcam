@@ -5,6 +5,14 @@ function megaMeunu() {
   return div({ class: 'w-[360px] z-40 hidden max-w-sm fixed h-full bg-black px-3 py-4 ease-out transition-all' });
 }
 
+function createAlertBar() {
+  return div(
+    { class: 'alert-bar text-white my-0 gap-0 px-[30px] xl:px-[80px] max-w-[2464px]' },
+    div({ class: 'font-bold' }, 'Planned system maintenance'),
+    div({}, 'All order confirmation emails and status updates may be delayed from Nov 8-11. Order delivery time is not affected. Thank you for your patience.')
+  );
+}
+
 export default async function decorate(block) {
   const resp = await fetch('/eds/fragments/header.html');
   block.classList.add(...'relative bg-black flex justify-center flex-col pt-4 z-40'.split(' '));
@@ -12,6 +20,10 @@ export default async function decorate(block) {
     const html = await resp.text();
     block.innerHTML = html;
   }
+
+  // Inject the alert bar before the header block
+  const alertBar = createAlertBar();
+  block.prepend(alertBar);
 
   block.append(megaMeunu());
   decorateIcons(block.querySelector('.abcam-logo'));
