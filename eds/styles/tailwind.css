@@ -235,12 +235,48 @@
         @apply pt-8;
     }
 
+    .guide main .chapter-links-container {
+        @apply lg:flex-row flex-col-reverse;
+    }
+
     audio::-webkit-media-controls-panel {
         background-color: white;
     }
 
     main .section.related-stories-container .default-content-wrapper h2{
         @apply lg:px-6 xl:px-0 !pt-0;
+    }
+
+    .guide .sticky-bottom {
+        @apply sticky bottom-0 lg:hidden bg-transparent py-4 px-6;
+    }
+
+    .guides-hub main .section .title-card {
+        @apply mx-auto xl:!max-w-[1120px] xl:px-0 px-[30px];
+    }
+
+    main .guides-hub-links-container .default-content-wrapper {
+        @apply mx-auto xl:!max-w-[1120px] sm:!px-0 lg:!px-[30px] xl:!px-0;
+    }
+
+    .guides-hub main .guides-hub-links-container .guides-hub-links-wrapper {
+        @apply mx-auto xl:!max-w-[1120px] sm:!px-0 lg:!px-[30px] xl:!px-0;
+    }
+
+    .guides-hub main .breadcrumb-container {
+        @apply mx-auto xl:!max-w-[1120px] xl:px-0 px-[30px];
+    }
+    
+    .guides-hub main .breadcrumb {
+        @apply lg:!px-0;
+    }
+ 
+    main .section.guides-middle-container p{
+        @apply !font-normal !text-lg !leading-7 !tracking-[0.3px]
+    }
+ 
+    main .section.guides-middle-container h2{
+        @apply !font-normal !text-2xl !leading-7 !tracking-[0.3px]
     }
    
 }   

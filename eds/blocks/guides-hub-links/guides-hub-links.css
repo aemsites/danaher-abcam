@@ -2,12 +2,20 @@
   margin-bottom: 0.25rem
 }
 
+.guides-hub-links-wrapper :is(.mb-4) {
+  margin-bottom: 1rem
+}
+
 .guides-hub-links-wrapper :is(.block) {
   display: block
 }
 
 .guides-hub-links-wrapper :is(.flex) {
   display: flex
+}
+
+.guides-hub-links-wrapper :is(.basis-1\/2) {
+  flex-basis: 50%
 }
 
 .guides-hub-links-wrapper :is(.flex-col) {
@@ -40,6 +48,10 @@
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
 }
 
+.guides-hub-links-wrapper :is(.hover\:underline:hover) {
+  text-decoration-line: underline
+}
+
 @media (min-width: 768px) {
   .guides-hub-links-wrapper :is(.md\:flex-row) {
     flex-direction: row
@@ -49,22 +61,6 @@
 @media (min-width: 1024px) {
   .guides-hub-links-wrapper :is(.lg\:flex-row) {
     flex-direction: row
-  }
-
-  .guides-hub-links-wrapper :is(.lg\:gap-10) {
-    gap: 2.5rem
-  }
-
-  .guides-hub-links-wrapper :is(.lg\:gap-52) {
-    gap: 13rem
-  }
-
-  .guides-hub-links-wrapper :is(.lg\:gap-y-10) {
-    row-gap: 2.5rem
-  }
-
-  .guides-hub-links-wrapper :is(.lg\:gap-y-52) {
-    row-gap: 13rem
   }
 
   .guides-hub-links-wrapper :is(.lg\:gap-x-52) {

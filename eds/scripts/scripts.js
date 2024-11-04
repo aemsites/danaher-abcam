@@ -21,9 +21,21 @@ import {
 // eslint-disable-next-line import/prefer-default-export
 import { buildVideoSchema } from './schema.js';
 import ffetch from './ffetch.js';
+import { yetiToPWSurlsMap } from './pws.js';
 
 const LCP_BLOCKS = ['hero', 'hero-video', 'carousel']; // add your LCP blocks to the list
 let ytPlayer;
+
+export function getCookie(name) {
+  const cookieArr = document.cookie.split(';');
+  for (let i = 0; i < cookieArr.length; i++) {
+    const cookie = cookieArr[i].trim();
+    if (cookie.startsWith(`${name}=`)) {
+      return decodeURIComponent(cookie.substring(name.length + 1));
+    }
+  }
+  return null;
+}
 
 export function getStoryType(pageTags) {
   const tags = pageTags || getMetadata('pagetags');
@@ -330,6 +342,7 @@ function buildAutoBlocks(main) {
 
 function decorateStoryPage(main) {
   const sectionEl = main.querySelector(':scope > div.section.story-info-container.social-media-container.sidelinks-container');
+  
   if (sectionEl) {
     const toBeRemoved = ['story-info-wrapper', 'social-media-wrapper', 'sidelinks-wrapper'];
     const rightSideElements = div({ class: 'w-full' });
@@ -350,20 +363,24 @@ function decorateStoryPage(main) {
 }
 
 function decorateGuidePage(main) {
-  const sectionEl = main.querySelector(':scope > div.section.chapter-links-container');
+  const sectionEl = main.querySelector(':scope > div.section.chapter-links-container.sidelinks-container');
   if (sectionEl) {
-    const toBeRemoved = ['chapter-links-wrapper'];
+    const toBeRemoved = ['chapter-links-wrapper', 'sidelinks-wrapper'];
     const rightSideElements = div({ class: 'w-full' });
+    const sticky = div({ class: 'sticky top-0 space-y-4 pt-6' });
+    const divEl = div({ class: 'ml-0 lg:ml-4 xl:ml-4 min-w-56 lg:max-w-72 flex flex-col gap-y-2 z-20' }, sticky);
 
+    toBeRemoved.forEach((ele) => {
+      const existingEl = sectionEl?.querySelector(`.${ele}`);
+      sticky.append(existingEl);
+    });
     Array.from(sectionEl?.children).forEach((element) => {
       if (!toBeRemoved.includes(element.classList[0])) {
         rightSideElements.append(element);
       }
     });
-    sectionEl?.append(rightSideElements);
-    const divEl = div({ class: 'ml-4 xl:ml-0 min-w-56 lg:max-w-72 flex flex-col gap-y-2' });
-    divEl.append(sectionEl?.querySelector('.chapter-links-wrapper'));
     sectionEl?.prepend(divEl);
+    sectionEl?.append(rightSideElements);
   }
 }
 
@@ -375,13 +392,11 @@ function decorateStickyRightNav(main) {
   const stickySection = main.querySelector('div.sticky-right-navigation-container');
   if (stickySection) {
     const divEl = div();
-    stickySection.classList.add('flex');
+    stickySection.classList.add('max-w-full');
     const stricyBlock = stickySection.querySelector('.sticky-right-navigation-wrapper')?.firstElementChild;
-    stricyBlock?.classList.add('sticky', 'top-32', 'mt-4', 'ml-20', 'mr-[-8rem]');
+    stricyBlock?.classList.add('w-full');
     [...stickySection.children].forEach((child, index, childs) => {
-      if (index !== childs.length - 1) {
-        divEl.append(child);
-      }
+      if (index !== childs.length - 1) divEl.append(child);
     });
     stickySection.prepend(divEl);
   }
@@ -512,7 +527,7 @@ async function decorateVideo(main) {
               <iframe id="youtubePlayer" src="${embedURL}"
               class="absolute h-full w-full top-0 left-0 border-0"
               allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture"
-              scrolling="no" title="Content from Youtube" loading="eager"></iframe>
+              scrolling="no" title="Content from Youtube" loading="lazy"></iframe>
             </div>`;
             linkContainer.innerHTML = embedHTML;
             const scriptTag = document.createElement('script');
@@ -537,11 +552,12 @@ async function decorateVideo(main) {
               <iframe src="${link.href}"
               class="relative w-full h-full border-0 top-0 left-0" 
               allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" 
-              scrolling="no" title="Content from Youtube" loading="eager"></iframe>
+              scrolling="no" title="Content from Youtube" loading="lazy"></iframe>
             </div>`;
             linkContainer.innerHTML = embedHTML;
           }
         } else if (link.title === 'audio') {
+          const h3El = link.closest('div.grid')?.querySelector('h3');
           let linkTitle = isValidUrl(link.textContent) ? '' : link.textContent;
           const audioContainer = div(
             { class: 'flex flex-col' },
@@ -611,6 +627,11 @@ async function decorateVideo(main) {
           });
           updateIconVisibility();
           audioContainer.querySelector('.checkStatus')?.addEventListener('click', checkVideoStatus);
+
+          playIcon.addEventListener('click', () => {
+            h3El.after(audioPlayer);
+          });
+
         }
       });
     } else if (type.includes('film')) {
@@ -625,7 +646,7 @@ async function decorateVideo(main) {
 
           const playButtonHTML = `
             <div class="aspect-video relative w-full h-full">
-              <img src="${posterImage}" class="relative inset-0 w-full h-full object-cover" alt="More episodes in the Series" aria-label="More episodes in the Series"/>
+              <img src="${posterImage}" class="relative inset-0 w-full h-full object-cover" alt="More episodes in the Series" aria-label="More episodes in the Series" loading="lazy"/>
               <button id="play-button-${videoId}" class="absolute inset-0 flex items-center justify-center bg-opacity-50 rounded-full p-4">
                 <span class = "video-play-icon icon icon-video-play"/>
               </button>
@@ -667,7 +688,15 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
-  decorateVideo(main);
+  const observer = new IntersectionObserver((entries) => {
+    if (entries.some((e) => e.isIntersecting)) {
+      observer.disconnect();
+      setTimeout(() => {
+        decorateVideo(main);
+      }, 3000);
+    }
+  });
+  observer.observe(main);
   decorateStickyRightNav(main);
   decorateStoryPage(main);
   decorateGuidePage(main);
@@ -998,7 +1027,7 @@ export function createFilters({
 }
 
 export function createCard({
-  titleImage,
+  titleImage = '',
   title = '',
   description = '',
   footerLink = '',
@@ -1019,8 +1048,8 @@ export function createCard({
       titleImage,
       div(
         { class: 'flex-1' },
-        h3({ class: 'text-black font-medium mt-4 break-words line-clamp-4' }, title),
-        p({ class: 'text-sm line-clamp-3' }, description),
+        title && h3({ class: 'text-black font-medium mt-4 break-words line-clamp-4' }, title),
+        description && p({ class: 'text-sm line-clamp-3' }, description),
         bodyEl,
       ),
       footerLink !== ''
@@ -1073,6 +1102,39 @@ function getDLPage() {
   }
   return page;
 }
+
+// Add hreflang tags
+
+const currentPath = window.location.pathname;
+const pathWithoutLocale = currentPath.replace(/^\/[a-z]{2}-[a-z]{2}\//, '/');
+let pwsUrl = currentPath;
+if (yetiToPWSurlsMap.hasOwnProperty(pathWithoutLocale)) {
+  pwsUrl = yetiToPWSurlsMap[pathWithoutLocale];
+}
+
+const hrefAlt = document.createElement('link');
+hrefAlt.rel = 'alternate';
+hrefAlt.hreflang = 'en-us';
+hrefAlt.href = 'https://www.abcam.com' + window.location.pathname;
+document.head.appendChild(hrefAlt);
+
+const hrefDefault = document.createElement('link');
+hrefDefault.rel = 'alternate';
+hrefDefault.hreflang = 'x-default';
+hrefDefault.href = 'https://www.abcam.com' + window.location.pathname;
+document.head.appendChild(hrefDefault);
+
+const hrefChina = document.createElement('link');
+hrefChina.rel = 'alternate';
+hrefChina.hreflang = 'zh-cn';
+hrefChina.href = 'https://www.abcam.cn' + pwsUrl;
+document.head.appendChild(hrefChina);
+
+const hrefJapan = document.createElement('link');
+hrefJapan.rel = 'alternate';
+hrefJapan.hreflang = 'ja-jp';
+hrefJapan.href = 'https://www.abcam.co.jp' + pwsUrl;
+document.head.appendChild(hrefJapan);
 
 // Datalayer Start
 window.dataLayer = [];

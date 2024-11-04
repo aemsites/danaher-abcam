@@ -6,10 +6,6 @@
   z-index: 10
 }
 
-.breadcrumb-wrapper :is(.m-auto) {
-  margin: auto
-}
-
 .breadcrumb-wrapper :is(.block) {
   display: block
 }
@@ -39,9 +35,14 @@
   justify-content: center
 }
 
-.breadcrumb-wrapper :is(.px-\[30px\]) {
-  padding-left: 30px;
-  padding-right: 30px
+.breadcrumb-wrapper :is(.gap-x-2) {
+  -moz-column-gap: 0.5rem;
+       column-gap: 0.5rem
+}
+
+.breadcrumb-wrapper :is(.px-0) {
+  padding-left: 0px;
+  padding-right: 0px
 }
 
 .breadcrumb-wrapper :is(.font-sans) {
@@ -51,6 +52,11 @@
 .breadcrumb-wrapper :is(.text-base) {
   font-size: 1rem;
   line-height: 1.5rem
+}
+
+.breadcrumb-wrapper :is(.text-sm) {
+  font-size: 0.875rem;
+  line-height: 1.25rem
 }
 
 .breadcrumb-wrapper :is(.text-lg) {
@@ -64,4 +70,18 @@
 
 .breadcrumb-wrapper :is(.hover\:underline:hover) {
   text-decoration-line: underline
+}
+
+@media (min-width: 768px) {
+  .breadcrumb-wrapper :is(.md\:text-lg) {
+    font-size: 1.125rem;
+    line-height: 1.75rem
+  }
+}
+
+@media (min-width: 1024px) {
+  .breadcrumb-wrapper :is(.lg\:px-4) {
+    padding-left: 1rem;
+    padding-right: 1rem
+  }
 }

@@ -57,9 +57,9 @@ const fileMappings = [
     wrapper: 'teasers-wrapper',
   },
   {
-    content: './eds/blocks/sticky-right-navigation/sticky-right-navigation.js',
-    output: './eds/blocks/sticky-right-navigation/sticky-right-navigation.css',
-    wrapper: 'sticky-right-navigation',
+    content: './eds/blocks/sticky-sections-list/sticky-sections-list.js',
+    output: './eds/blocks/sticky-sections-list/sticky-sections-list.css',
+    wrapper: 'sticky-sections-list',
   },
   {
     content: './eds/templates/home-page/home-page.js',

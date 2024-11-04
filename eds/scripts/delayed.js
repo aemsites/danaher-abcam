@@ -5,7 +5,7 @@ import { sampleRUM, loadScript } from './aem.js';
 sampleRUM('cwv');
 
 // OneTrust Cookies Consent Notice start
-if (!window.location.host.includes('hlx.page') && !window.location.host.includes('localhost')) {
+if (!window.location.host.includes('.page') && !window.location.host.includes('.live') && !window.location.host.includes('localhost')) {
   loadScript('https://cdn.cookielaw.org/scripttemplates/otSDKStub.js', {
     type: 'text/javascript',
     charset: 'UTF-8',
@@ -16,6 +16,11 @@ if (!window.location.host.includes('hlx.page') && !window.location.host.includes
   };
 }
 // OneTrust Cookies Consent Notice end
+
+// Loading fathom script - start
+const attrs = JSON.parse('{"data-site": "DGRGXILD"}');
+loadScript('https://cdn.usefathom.com/script.js', attrs);
+// Loading fathom script - end
 
 // google tag manager -start
 function loadGTM() {

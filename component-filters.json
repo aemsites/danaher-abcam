@@ -124,6 +124,12 @@
     ]
   },
   {
+    "id": "table-7-columns",
+    "components": [
+      "table-col-7"
+    ]
+  },
+  {
     "id": "teasers",
     "components": [
       "teaser"

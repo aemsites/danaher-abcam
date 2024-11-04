@@ -1,1 +1,9 @@
-/* No comments */
+/* Lubalin Graph Std Font-family for Headings */
+
+@font-face {
+    font-family: 'Lubalin Graph Std';
+    src: url('https://www.abcam.com/fonts/lubalingraphstd-demi.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
