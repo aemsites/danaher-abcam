@@ -15,6 +15,8 @@ const excludedPages = [
 ];
 let lists = [];
 let filterContainer = {};
+let itemsPerPage;
+
 const hub = div();
 const allSelectedTags = div(
   { class: 'w-fit flex flex-row-reverse items-start gap-2 mb-4 [&_*:empty+span]:hidden [&_*:empty]:mb-8' },
@@ -180,9 +182,8 @@ function handleRenderContent(newLists = lists) {
   cardList.innerHTML = '';
   let page = parseInt(getPageFromUrl(), 10);
   page = Number.isNaN(page) ? 1 : page;
-  const limitPerPage = 9;
-  const start = (page - 1) * limitPerPage;
-  const storiesToDisplay = newLists.slice(start, start + limitPerPage);
+  const start = (page - 1) * itemsPerPage;
+  const storiesToDisplay = newLists.slice(start, start + itemsPerPage);
   storiesToDisplay.forEach((article, index) => {
     let footerLink = '';
     const type = article.path.split('/')[3];
@@ -211,8 +212,7 @@ function handleRenderContent(newLists = lists) {
     }));
   });
 
-  const paginationElements = createPagination(newLists, page, limitPerPage);
-  console.log(storiesToDisplay, page, limitPerPage);
+  const paginationElements = createPagination(newLists, page, itemsPerPage);
   const paginateEl = hub.querySelector('.paginate');
   if (paginateEl) {
     paginateEl.innerHTML = '';
@@ -221,7 +221,6 @@ function handleRenderContent(newLists = lists) {
 }
 
 function handleChangeFilter(key, value, mode) {
-  // console.log(key, value, mode, filterContainer);
   let newLists = lists;
   if (!(key in filterContainer) && key === 'stories-type') {
     newLists = lists.filter((list) => (value
@@ -254,6 +253,17 @@ function handleChangeFilter(key, value, mode) {
     }
     handleRenderTags();
   }
+  if(mode === 'reset-page') {
+    let url = new URL(window.location.href);
+    let params = new URLSearchParams(url.search);
+    params.delete('page');
+    let newUrl = url.pathname;
+    if (params.toString()) {
+        newUrl += `?${params.toString()}`;
+    }
+    window.history.replaceState({}, '', newUrl);
+  }
+    
   handleRenderContent(newLists);
 }
 
@@ -319,6 +329,8 @@ async function initiateRequest() {
 export default async function decorate(block) {
   if (block.children.length > 0) {
     const filterNames = block.querySelector(':scope > div > div > p')?.textContent?.split(',');
+    itemsPerPage = block.querySelector(':scope > div:nth-child(2) > div > p')?.textContent;
+    itemsPerPage = itemsPerPage ? Number(itemsPerPage) : 12;
     await initiateRequest();
     buildStoryHubSchema(lists);
     const allFilters = p({ class: 'h-5/6 mb-3 overflow-visible' });
@@ -328,7 +340,7 @@ export default async function decorate(block) {
       element: allFilters,
       listActionHandler: async (categoryKey, categoryValue) => {
         await initiateRequest();
-        handleChangeFilter(categoryKey, categoryValue);
+        handleChangeFilter(categoryKey, categoryValue, 'reset-page');
       },
       clearFilterHandler: async (categoryKey) => {
         await initiateRequest();

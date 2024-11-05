@@ -30,14 +30,18 @@
   grid-column: span 9 / span 9
 }
 
+.story-hub-wrapper :is(.mx-auto) {
+  margin-left: auto;
+  margin-right: auto
+}
+
 .story-hub-wrapper :is(.my-0) {
   margin-top: 0px;
   margin-bottom: 0px
 }
 
-.story-hub-wrapper :is(.mx-auto) {
-  margin-left: auto;
-  margin-right: auto
+.story-hub-wrapper :is(.-mt-px) {
+  margin-top: -1px
 }
 
 .story-hub-wrapper :is(.mb-0) {
@@ -58,10 +62,6 @@
 
 .story-hub-wrapper :is(.mr-8) {
   margin-right: 2rem
-}
-
-.story-hub-wrapper :is(.-mt-px) {
-  margin-top: -1px
 }
 
 .story-hub-wrapper :is(.mt-8) {
@@ -106,6 +106,10 @@
   height: 100vh
 }
 
+.story-hub-wrapper :is(.w-0) {
+  width: 0px
+}
+
 .story-hub-wrapper :is(.w-fit) {
   width: -moz-fit-content;
   width: fit-content
@@ -117,10 +121,6 @@
 
 .story-hub-wrapper :is(.w-screen) {
   width: 100vw
-}
-
-.story-hub-wrapper :is(.w-0) {
-  width: 0px
 }
 
 .story-hub-wrapper :is(.flex-1) {
@@ -337,16 +337,16 @@
   line-height: 1rem
 }
 
+.story-hub-wrapper :is(.font-medium) {
+  font-weight: 500
+}
+
 .story-hub-wrapper :is(.font-normal) {
   font-weight: 400
 }
 
 .story-hub-wrapper :is(.font-semibold) {
   font-weight: 600
-}
-
-.story-hub-wrapper :is(.font-medium) {
-  font-weight: 500
 }
 
 .story-hub-wrapper :is(.capitalize) {
