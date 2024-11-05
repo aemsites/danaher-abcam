@@ -35,10 +35,6 @@
        column-gap: 1rem
 }
 
-.learn-more-wrapper :is(.justify-self-start) {
-  justify-self: start
-}
-
 .learn-more-wrapper :is(.\!justify-self-start) {
   justify-self: start !important
 }
@@ -68,14 +64,6 @@
 
 .learn-more-wrapper :is(.pt-10) {
   padding-top: 2.5rem
-}
-
-.learn-more-wrapper :is(.text-left) {
-  text-align: left
-}
-
-.learn-more-wrapper :is(.\!text-left) {
-  text-align: left !important
 }
 
 .learn-more-wrapper :is(.text-base) {

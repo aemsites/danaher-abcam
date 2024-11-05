@@ -9,13 +9,13 @@ export default function decorate(block) {
   applyClasses(block.parentElement, 'sticky top-0 bg-white z-10');
 
   const dropdownContainer = div(
-    { class: 'dd-main-container flex items-center relative pb-[24px] !border-b border-b-[#D8D8D8] font-semibold' },
+    { class: 'dd-main-container flex items-center relative py-6 !border-b border-b-[#D8D8D8] font-semibold' },
     div({ class: 'jump-to-label text-[#65797c] text-sm w-28  md:!w-24 lg:!w-20 ' }, 'JUMP TO:'),
     div(
-      { class: 'dd-container !bg-[#F4F5F5] tracking-[0.2px] leading-4 text-xs border border-[#EAECEC] border-opacity-5 bg-[#273F3F] bg-opacity-5 rounded-3xl py-3 px-6 w-full bg-white cursor-pointer relative' },
-      span({ class: 'icon icon-chevron-down absolute top-3 right-6 z-50' }),
+      { class: 'dd-container flex flex-row items-center gap-x-4 !bg-[#F4F5F5] tracking-[0.2px] leading-4 text-xs border border-[#EAECEC] border-opacity-5 bg-[#273F3F] bg-opacity-5 rounded-full py-3 px-6 w-full bg-white cursor-pointer relative' },
       span({ class: 'dd-selected' }, ''),
-      div({ class: 'dd-options h-[35rem] drop-shadow-2xl absolute hidden top-full lg:left-0 lg:w-full w-[110%] right-0 bg-white rounded-2xl z-20 border pt-5 mt-1 max-h-screen overflow-y-auto' }),
+      span({ class: 'icon icon-chevron-down shrink-0 ml-auto' }),
+      div({ class: 'dd-options h-[400px] xl:h-[540px] drop-shadow-2xl absolute hidden top-full lg:left-0 lg:w-full w-[110%] right-0 bg-white rounded-2xl z-20 border pt-5 mt-1 max-h-screen overflow-y-auto' }),
     ),
   );
 
