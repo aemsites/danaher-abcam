@@ -14,16 +14,8 @@
   right: 0px
 }
 
-.sticky-sections-list :is(.right-6) {
-  right: 1.5rem
-}
-
 .sticky-sections-list :is(.top-0) {
   top: 0px
-}
-
-.sticky-sections-list :is(.top-3) {
-  top: 0.75rem
 }
 
 .sticky-sections-list :is(.top-full) {
@@ -38,16 +30,12 @@
   z-index: 20
 }
 
-.sticky-sections-list :is(.z-50) {
-  z-index: 50
+.sticky-sections-list :is(.ml-auto) {
+  margin-left: auto
 }
 
 .sticky-sections-list :is(.mt-1) {
   margin-top: 0.25rem
-}
-
-.sticky-sections-list :is(.ml-auto) {
-  margin-left: auto
 }
 
 .sticky-sections-list :is(.block) {
@@ -60,10 +48,6 @@
 
 .sticky-sections-list :is(.hidden) {
   display: none
-}
-
-.sticky-sections-list :is(.h-\[35rem\]) {
-  height: 35rem
 }
 
 .sticky-sections-list :is(.h-\[400px\]) {
@@ -98,16 +82,8 @@
   flex-direction: row
 }
 
-.sticky-sections-list :is(.flex-row-reverse) {
-  flex-direction: row-reverse
-}
-
 .sticky-sections-list :is(.items-center) {
   align-items: center
-}
-
-.sticky-sections-list :is(.justify-center) {
-  justify-content: center
 }
 
 .sticky-sections-list :is(.gap-x-4) {
@@ -121,10 +97,6 @@
 
 .sticky-sections-list :is(.rounded-2xl) {
   border-radius: 1rem
-}
-
-.sticky-sections-list :is(.rounded-3xl) {
-  border-radius: 1.5rem
 }
 
 .sticky-sections-list :is(.rounded-full) {
@@ -191,20 +163,8 @@
   padding-bottom: 1.5rem
 }
 
-.sticky-sections-list :is(.pb-\[24px\]) {
-  padding-bottom: 24px
-}
-
 .sticky-sections-list :is(.pt-5) {
   padding-top: 1.25rem
-}
-
-.sticky-sections-list :is(.pb-6) {
-  padding-bottom: 1.5rem
-}
-
-.sticky-sections-list :is(.pt-4) {
-  padding-top: 1rem
 }
 
 .sticky-sections-list :is(.text-sm) {
