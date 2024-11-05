@@ -253,17 +253,17 @@ function handleChangeFilter(key, value, mode) {
     }
     handleRenderTags();
   }
-  if(mode === 'reset-page') {
-    let url = new URL(window.location.href);
-    let params = new URLSearchParams(url.search);
+  if (mode === 'reset-page') {
+    const url = new URL(window.location.href);
+    const params = new URLSearchParams(url.search);
     params.delete('page');
     let newUrl = url.pathname;
     if (params.toString()) {
-        newUrl += `?${params.toString()}`;
+      newUrl += `?${params.toString()}`;
     }
     window.history.replaceState({}, '', newUrl);
   }
-    
+
   handleRenderContent(newLists);
 }
 
