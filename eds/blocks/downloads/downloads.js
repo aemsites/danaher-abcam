@@ -8,7 +8,6 @@ export default function decorate(block) {
 
   console.log('decorate downloads block: ', block);
   block.classList.add(...'flex flex-row justify-between w-full gap-4 border-b border-solid border-gray-300 py-8'.split(' '));
-  const documentIcon = span({ class: 'icon icon-document' });
   const divs = document.querySelectorAll('div');
   divs.forEach((div) => {
     if (divs.innerHTML === '' || div.textContent === '') {
@@ -17,22 +16,12 @@ export default function decorate(block) {
   });
   [...block.children].forEach((element) => {
     element.classList.add(...'w-full items-center flex flex-row'.split(' '));
-    // const titleEl = block.querySelector('h6');
-    // const docTitle = titleEl.textContent;
     const pEl = element.querySelector('p');
     if (pEl) {
       pEl.parentElement.classList.add(...'w-1/2'.split(' '));
-      console.log('pEl: ', pEl);
-      if (pEl.textContent.includes('Doc')) {
-        pEl.textContent = pEl.textContent.replace('Doc', '');
-        pEl.append(span({ class: 'icon icon-document' }));
-      } else if (pEl.textContent.includes('PDF')) {
-        pEl.textContent = pEl.textContent.replace('PDF', '');
-        pEl.append(span({ class: 'icon icon-document' }));
-      } else if (pEl.textContent.includes('PPT')) {
-        pEl.textContent = pEl.textContent.replace('PPT', '');
-        pEl.append(span({ class: 'icon icon-document' }));
-      }
+      console.log('pEl: ', pEl.textContent.toLowerCase());      
+      pEl.append(span({ class: `icon icon-${pEl.textContent.toLowerCase()}` }));
+      // pEl.textContent.replace(pEl.textContent, '');
     }
     const icon = span({ class: 'icon icon-arrow-down-circle' });
     const link = element.querySelector('p > a');
