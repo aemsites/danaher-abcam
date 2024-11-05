@@ -1,3 +1,12 @@
+.downloads-wrapper :is(.m-0) {
+  margin: 0px
+}
+
+.downloads-wrapper :is(.my-auto) {
+  margin-top: auto;
+  margin-bottom: auto
+}
+
 .downloads-wrapper :is(.block) {
   display: block
 }
@@ -18,6 +27,10 @@
   flex-direction: row
 }
 
+.downloads-wrapper :is(.flex-col) {
+  flex-direction: column
+}
+
 .downloads-wrapper :is(.items-center) {
   align-items: center
 }
@@ -28,6 +41,11 @@
 
 .downloads-wrapper :is(.gap-4) {
   gap: 1rem
+}
+
+.downloads-wrapper :is(.gap-x-2) {
+  -moz-column-gap: 0.5rem;
+       column-gap: 0.5rem
 }
 
 .downloads-wrapper :is(.border-b) {
@@ -46,4 +64,35 @@
 .downloads-wrapper :is(.py-8) {
   padding-top: 2rem;
   padding-bottom: 2rem
+}
+
+.downloads-wrapper :is(.text-base) {
+  font-size: 1rem;
+  line-height: 1.5rem
+}
+
+.downloads-wrapper :is(.font-normal) {
+  font-weight: 400
+}
+
+.downloads-wrapper :is(.font-semibold) {
+  font-weight: 600
+}
+
+.downloads-wrapper :is(.leading-6) {
+  line-height: 1.5rem
+}
+
+.downloads-wrapper :is(.text-\[\#378189\]) {
+  --tw-text-opacity: 1;
+  color: rgb(55 129 137 / var(--tw-text-opacity))
+}
+
+.downloads-wrapper :is(.text-\[\#071112\]) {
+  --tw-text-opacity: 1;
+  color: rgb(7 17 18 / var(--tw-text-opacity))
+}
+
+.downloads-wrapper :is(.underline) {
+  text-decoration-line: underline
 }
