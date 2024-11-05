@@ -76,6 +76,12 @@
     ]
   },
   {
+    "id": "downloads",
+    "components": [
+      "download"
+    ]
+  },
+  {
     "id": "mini-teasers",
     "components": [
       "mini-teaser"
