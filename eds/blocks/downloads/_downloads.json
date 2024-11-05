@@ -34,8 +34,31 @@
   "models": [
     {
       "id": "download-item",
-      "components": [
-        "download"
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "download_title",
+          "value": "",
+          "label": "Title"
+        },
+        {
+          "component": "text",
+          "name": "download_titleType",
+          "hidden": true,
+          "label": "Title Type",
+          "valueType": "string"
+        },        
+        {
+          "...": "../../../models/_common.json#/button-fields"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "download_doctype",
+          "value": "",
+          "label": "Document Type"
+        }
       ]
     }
   ],
