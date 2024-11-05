@@ -43,7 +43,8 @@
       "story-hub",
       "speakers-info",
       "download",
-      "table"
+      "table",
+      "downloads"
     ]
   },
   {
@@ -78,7 +79,7 @@
   {
     "id": "downloads",
     "components": [
-      "download"
+      "downloads-item"
     ]
   },
   {

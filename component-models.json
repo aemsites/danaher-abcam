@@ -1050,18 +1050,18 @@
     ]
   },
   {
-    "id": "download",
+    "id": "downloads-item",
     "fields": [
       {
         "component": "text",
         "valueType": "string",
-        "name": "download_title",
+        "name": "downloads_title",
         "value": "",
         "label": "Title"
       },
       {
         "component": "text",
-        "name": "download_titleType",
+        "name": "downloads_titleType",
         "hidden": true,
         "label": "Title Type",
         "valueType": "string"
@@ -1148,7 +1148,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "download_doctype",
+        "name": "downloads_doctype",
         "value": "",
         "label": "Document Type"
       }

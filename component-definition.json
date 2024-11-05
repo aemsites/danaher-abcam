@@ -255,6 +255,21 @@
           }
         },
         {
+          "title": "Downloads Item",
+          "id": "downloads-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Downloads Item",
+                  "model": "downloads-item"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Dynamic Cards",
           "id": "dynamic-cards",
           "plugins": {
