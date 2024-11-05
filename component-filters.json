@@ -79,7 +79,7 @@
   {
     "id": "downloads",
     "components": [
-      "downloads-item"
+      "download-item"
     ]
   },
   {
