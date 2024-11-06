@@ -311,8 +311,8 @@ const fileMappings = [
     wrapper: 'guides-hub-links-wrapper',
   },
   {
-    content: './eds/templates/topics/topics.js',
-    output: './eds/templates/topics/topics.css',
+    content: './eds/templates/topic/topic.js',
+    output: './eds/templates/topic/topic.css',
   },
 ];
 
