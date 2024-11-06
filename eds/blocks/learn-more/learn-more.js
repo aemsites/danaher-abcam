@@ -2,14 +2,14 @@ import {
   a, div, li, p, span, ul,
 } from '../../scripts/dom-builder.js';
 import { decorateIcons } from '../../scripts/aem.js';
- 
+
 export default function decorate(block) {
   block.classList.add(...'px-6 py-8 w-full border-y'.split(' '));
   block.querySelector('div')?.classList.add(...'flex flex-col sm:flex-row md:flex-row md:justify-between pt-0 pb-8'.split(' '));
   block.querySelector('h3')?.parentElement?.classList.add('learnmore-content');
   block.querySelector('h3')?.classList.add('text-xl', 'font-bold');
   block.querySelector('div > p:not(div.button-container > p)')?.classList.add('text-base', 'font-normal');
- 
+
   const socialLinksDiv = div({ class: 'md:w-1/4 pt-10 lg:pt-0 md:pl-8' });
   socialLinksDiv.prepend(
     p(
@@ -38,14 +38,14 @@ export default function decorate(block) {
     block.querySelector('h3')?.classList.add('text-xl', 'font-bold');
     block.querySelector('p')?.parentElement?.classList.add('md:w-3/4');
     block.querySelector('p')?.classList.add('explore-para', 'mt-0', 'text-sm', '!font-bold', 'leading-7', 'tracking-[0.3px]');
-   
+
     block.querySelector('div > p:not(div.button-container > p)')?.classList.add('text-base', 'font-normal', 'mb-5');
     decorateIcons(socialLinksDiv);
   }
   const exploreElm = block.querySelector('.button-container');
   const learnMoreElm = block.querySelector('.learnmore-content');
-  const learnMorePara = block.querySelector('.learnmore-content p').classList.add('mb-6', 'mt-0');
- 
+  block.querySelector('.learnmore-content p').classList.add('mb-6', 'mt-0');
+
   if (exploreElm && learnMoreElm) {
     exploreElm.insertAdjacentElement('beforebegin', learnMoreElm);
   }
