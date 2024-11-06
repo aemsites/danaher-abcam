@@ -2,6 +2,10 @@
   position: fixed
 }
 
+.chapter-links-wrapper :is(.relative) {
+  position: relative
+}
+
 .chapter-links-wrapper :is(.inset-0) {
   inset: 0px
 }
@@ -12,6 +16,10 @@
 
 .chapter-links-wrapper :is(.top-0) {
   top: 0px
+}
+
+.chapter-links-wrapper :is(.bottom-0) {
+  bottom: 0px
 }
 
 .chapter-links-wrapper :is(.z-30) {
@@ -25,6 +33,10 @@
 .chapter-links-wrapper :is(.my-0) {
   margin-top: 0px;
   margin-bottom: 0px
+}
+
+.chapter-links-wrapper :is(.mb-4) {
+  margin-bottom: 1rem
 }
 
 .chapter-links-wrapper :is(.block) {
@@ -57,6 +69,10 @@
   max-height: 24rem
 }
 
+.chapter-links-wrapper :is(.max-h-\[70\%\]) {
+  max-height: 70%
+}
+
 .chapter-links-wrapper :is(.w-96) {
   width: 24rem
 }
@@ -69,8 +85,17 @@
   width: 100vw
 }
 
+.chapter-links-wrapper :is(.w-11\/12) {
+  width: 91.666667%
+}
+
 .chapter-links-wrapper :is(.-translate-y-full) {
   --tw-translate-y: -100%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+
+.chapter-links-wrapper :is(.translate-y-full) {
+  --tw-translate-y: 100%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 
@@ -183,7 +208,12 @@
 
 .chapter-links-wrapper :is(.py-4) {
   padding-top: 1rem;
-  padding-bottom: 1rem
+  padding-bottom: 1rem;
+}
+
+.chapter-links-wrapper :is(.py-3) {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .chapter-links-wrapper :is(.pb-1) {
@@ -214,6 +244,10 @@
 
 .chapter-links-wrapper :is(.leading-6) {
   line-height: 1.5rem
+}
+
+.chapter-links-wrapper :is(.leading-7) {
+  line-height: 1.75rem
 }
 
 .chapter-links-wrapper :is(.text-\[\#378189\]) {

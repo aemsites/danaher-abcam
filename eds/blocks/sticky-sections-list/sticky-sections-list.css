@@ -58,6 +58,10 @@
   max-height: 100vh
 }
 
+.sticky-sections-list :is(.max-h-\[400px\]) {
+  max-height: 400px
+}
+
 .sticky-sections-list :is(.w-28) {
   width: 7rem
 }
@@ -72,6 +76,25 @@
 
 .sticky-sections-list :is(.shrink-0) {
   flex-shrink: 0
+}
+
+.sticky-sections-list :is(.rotate-90) {
+  --tw-rotate: 90deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+
+.sticky-sections-list :is(.-rotate-180) {
+  --tw-rotate: -180deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+
+.sticky-sections-list :is(.rotate-180) {
+  --tw-rotate: 180deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+
+.sticky-sections-list :is(.transform) {
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 
 .sticky-sections-list :is(.cursor-pointer) {
@@ -204,6 +227,14 @@
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
 }
 
+.sticky-sections-list :is(.transition) {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms
+}
+
 .sticky-sections-list :is(.hover\:bg-\[\#f2f2f2\]:hover) {
   --tw-bg-opacity: 1;
   background-color: rgb(242 242 242 / var(--tw-bg-opacity))
@@ -237,5 +268,9 @@
 @media (min-width: 1280px) {
   .sticky-sections-list :is(.xl\:h-\[540px\]) {
     height: 540px
+  }
+
+  .sticky-sections-list :is(.xl\:max-h-\[500px\]) {
+    max-height: 500px
   }
 }
