@@ -1235,6 +1235,13 @@
       {
         "component": "text",
         "valueType": "string",
+        "name": "explore_title",
+        "value": "",
+        "label": "Explore Title"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
         "name": "learn-more_title",
         "value": "",
         "label": "Title"
