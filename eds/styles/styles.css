@@ -1227,6 +1227,7 @@ main .section.related-stories-container .default-content-wrapper h2 {
 .guide .sticky-bottom {
   position: sticky;
   bottom: 0px;
+  z-index: 20;
   background-color: transparent;
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -1253,6 +1254,13 @@ main .section.related-stories-container .default-content-wrapper h2 {
     padding-left: 0px;
     padding-right: 0px;
   }
+}
+
+.guides-hub main .section .title-card p {
+  font-size: 1.125rem !important;
+  font-weight: 400 !important;
+  line-height: 1.75rem !important;
+  letter-spacing: 0.3px !important;
 }
 
 main .guides-hub-links-container .default-content-wrapper {
@@ -1331,7 +1339,9 @@ main .guides-hub-links-container .default-content-wrapper {
   }
 }
 
-main .section.guides-middle-container p {
+main .section.guides-middle-container p ~ p {
+  margin-top: 0px !important;
+  margin-bottom: 1.5rem !important;
   font-size: 1.125rem !important;
   font-weight: 400 !important;
   line-height: 1.75rem !important;
@@ -1339,6 +1349,7 @@ main .section.guides-middle-container p {
 }
 
 main .section.guides-middle-container h2 {
+  margin-bottom: 0.5rem !important;
   font-size: 1.5rem !important;
   font-weight: 400 !important;
   line-height: 1.75rem !important;
@@ -1739,6 +1750,10 @@ main .section.guides-middle-container h2 {
   min-width: 14rem;
 }
 
+.min-w-60 {
+  min-width: 15rem;
+}
+
 .max-w-\[2464px\] {
   max-width: 2464px;
 }
@@ -1916,6 +1931,12 @@ main .section.guides-middle-container h2 {
   --tw-space-x-reverse: 0;
   margin-right: calc(1rem * var(--tw-space-x-reverse));
   margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-y-12 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(3rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(3rem * var(--tw-space-y-reverse));
 }
 
 .space-y-2 > :not([hidden]) ~ :not([hidden]) {
@@ -2275,6 +2296,10 @@ main .section.guides-middle-container h2 {
 
 .pl-4 {
   padding-left: 1rem;
+}
+
+.pr-0 {
+  padding-right: 0px;
 }
 
 .pr-2 {
@@ -2762,6 +2787,10 @@ main .section.guides-middle-container h2 {
 
   .lg\:flex-col {
     flex-direction: column;
+  }
+
+  .lg\:pr-8 {
+    padding-right: 2rem;
   }
 }
 

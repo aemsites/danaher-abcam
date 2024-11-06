@@ -366,9 +366,9 @@ function decorateGuidePage(main) {
   const sectionEl = main.querySelector(':scope > div.section.chapter-links-container.sidelinks-container');
   if (sectionEl) {
     const toBeRemoved = ['chapter-links-wrapper', 'sidelinks-wrapper'];
-    const rightSideElements = div({ class: 'w-full' });
-    const sticky = div({ class: 'sticky top-0 space-y-4 pt-6' });
-    const divEl = div({ class: 'ml-0 lg:ml-4 xl:ml-4 min-w-56 lg:max-w-72 flex flex-col gap-y-2 z-20' }, sticky);
+    const rightSideElements = div({ class: 'w-full pr-0 lg:pr-8' });
+    const sticky = div({ class: 'sticky top-0 space-y-12 pt-6' });
+    const divEl = div({ class: 'ml-0 lg:ml-4 xl:ml-4 min-w-60 lg:max-w-72 flex flex-col gap-y-2 z-20' }, sticky);
 
     toBeRemoved.forEach((ele) => {
       const existingEl = sectionEl?.querySelector(`.${ele}`);
