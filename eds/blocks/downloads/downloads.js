@@ -1,13 +1,11 @@
 import {
-  div,
   span,
 } from '../../scripts/dom-builder.js';
 import { decorateIcons } from '../../scripts/aem.js';
+import { applyClasses } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
-
-  console.log('decorate downloads block: ', block);
-  block.classList.add(...'flex flex-row justify-between w-full gap-4 border-b border-solid border-gray-300 py-8'.split(' '));
+  applyClasses(block, 'flex flex-row justify-around w-full gap-4 border-b border-solid border-gray-300 py-4');
   const divs = document.querySelectorAll('div');
   divs.forEach((div) => {
     if (divs.innerHTML === '' || div.textContent === '') {
@@ -15,20 +13,20 @@ export default function decorate(block) {
     }
   });
   [...block.children].forEach((element) => {
-    element.classList.add(...'w-full items-center flex flex-row'.split(' '));
+    applyClasses(element, 'w-full flex flex-row gap-x-6 items-center');
     const pEl = element.querySelector('p');
     if (pEl) {
-      pEl.parentElement.classList.add(...'w-1/2'.split(' '));
-      console.log('pEl: ', pEl.textContent.toLowerCase());      
-      pEl.append(span({ class: `icon icon-${pEl.textContent.toLowerCase()}` }));
-      // pEl.textContent.replace(pEl.textContent, '');
+      const docType = pEl.textContent.toLowerCase();
+      const icon = span({ class: `icon icon-${docType} size-6` });
+      applyClasses(pEl.parentElement, 'flex flex-row-reverse gap-x-3');
+      pEl.textContent = '';
+      pEl.append(icon);
     }
     const icon = span({ class: 'icon icon-arrow-down-circle' });
-    const link = element.querySelector('p > a');
-    if (link) {
-      link.parentElement.parentElement.classList.add(...'w-1/2'.split(' '));
-      link.textContent = '';
-      link.append(icon);
+    const linkEl = element.querySelector('p > a');
+    if (linkEl) {
+      linkEl.textContent = '';
+      linkEl.append(icon);
     }
   });
   decorateIcons(block);
