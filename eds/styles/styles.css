@@ -1173,7 +1173,7 @@ dialog .modal-content .section > .default-content-wrapper p {
   }
 }
 
-.stories main .section.no-section-padding .columns-wrapper, .webinars main .section.no-section-padding .columns-wrapper {
+.stories main .section.no-section-padding .columns-wrapper, .webinar main .section.no-section-padding .columns-wrapper {
   position: relative;
   margin-left: auto;
   margin-right: auto;
@@ -1181,12 +1181,12 @@ dialog .modal-content .section > .default-content-wrapper p {
 }
 
 @media (min-width: 1024px) {
-  .stories main .section.no-section-padding .columns-wrapper, .webinars main .section.no-section-padding .columns-wrapper {
+  .stories main .section.no-section-padding .columns-wrapper, .webinar main .section.no-section-padding .columns-wrapper {
     height: 31rem;
   }
 }
 
-.stories main .section.no-section-padding.columns-container, .webinars main .section.no-section-padding.columns-container {
+.stories main .section.no-section-padding.columns-container, .webinar main .section.no-section-padding.columns-container {
   padding-top: 2rem;
 }
 
@@ -1335,10 +1335,6 @@ main .guides-hub-links-container .default-content-wrapper {
     padding-left: 0px !important;
     padding-right: 0px !important;
   }
-}
-
-main .section.downloads-container .default-content-wrapper:last-child {
-  padding-top: 0px;
 }
 
 main .section.guides-middle-container p ~ p {
