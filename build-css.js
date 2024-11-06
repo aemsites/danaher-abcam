@@ -279,8 +279,8 @@ const fileMappings = [
     wrapper: 'dynamic-cards-wrapper',
   },
   {
-    content: './eds/templates/webinars/webinars.js',
-    output: './eds/templates/webinars/webinars.css',
+    content: './eds/templates/webinar/webinar.js',
+    output: './eds/templates/webinar/webinar.css',
   },
   {
     content: './eds/blocks/speakers-info/speakers-info.js',

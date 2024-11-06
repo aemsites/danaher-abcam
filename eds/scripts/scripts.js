@@ -305,7 +305,7 @@ const TEMPLATE_LIST = [
   'product-detail',
   'search-results',
   'stories',
-  'webinars',
+  'webinar',
   'guide',
   'guides-hub',
 ];
