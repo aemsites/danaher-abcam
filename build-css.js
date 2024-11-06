@@ -320,6 +320,10 @@ const fileMappings = [
     output: './eds/blocks/video-transcript/video-transcript.css',
     wrapper: 'video-transcript-wrapper',
   },
+  {
+    content: './eds/templates/topics/topics.js',
+    output: './eds/templates/topics/topics.css',
+  },
 ];
 
 const watch = process.argv[2];
