@@ -1,4 +1,4 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
+import { createOptimizedPicture, getMetadata } from '../../scripts/aem.js';
 import { div } from '../../scripts/dom-builder.js';
 import { applyClasses, getStoryType } from '../../scripts/scripts.js';
 
@@ -11,6 +11,7 @@ const widthRatios = [
 ];
 
 export default function decorate(block) {
+  const template = getMetadata('template');
   const cols = [...block.firstElementChild.children];
   block.classList.add(`columns-${cols.length}-cols`);
   const imageAspectRatio = 1.7778;
@@ -70,4 +71,36 @@ export default function decorate(block) {
       }
     });
   });
+  if (template === 'webinar') {
+    const column = block?.querySelector(':scope > div');
+    const columnsFirstEl = column?.firstElementChild;
+    if (columnsFirstEl?.firstElementChild?.tagName !== 'PICTURE') {
+      const subTitleEl = columnsFirstEl?.querySelector('h4');
+      if (subTitleEl) {
+        applyClasses(subTitleEl, 'text-xs text-[#378189] bg-[#EDF6F7] font-semibold rounded capitalize py-1 px-2');
+        const divEl = div({ class: 'flex md:inline-flex text-align-center items-center justify-between w-full' });
+        divEl.append(subTitleEl);
+        columnsFirstEl.prepend(divEl);
+      }
+
+      const readingTime = getMetadata('readingtime');
+      const expectedPublishFormat = new Date(getMetadata('published-time'));
+      if (expectedPublishFormat && readingTime) {
+        const formattedDate = `${expectedPublishFormat.toLocaleString('default', { month: 'long' })} ${expectedPublishFormat.getDate()} ${expectedPublishFormat.getFullYear()} | ${readingTime} Mins`;
+        const readDateTimeDiv = div(
+          {
+            class: 'readdatetime font-normal text-sm leading-4 text-[#8B8B8B] capitalize mb-2 pt-4', // Valid class name
+          },
+          formattedDate, // Correctly pass the formatted date as the content
+        );
+        columnsFirstEl.append(readDateTimeDiv);
+      }
+
+      const buttonEl = columnsFirstEl?.querySelector('.button-container');
+      if (buttonEl) {
+        buttonEl.classList.add(...'mt-8 md:mt-12'.split(' '));
+        columnsFirstEl.append(buttonEl);
+      }
+    }
+  }
 }

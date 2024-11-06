@@ -539,7 +539,6 @@ h6 {
   width: -moz-fit-content;
   width: fit-content;
   align-items: center;
-  justify-self: end;
   white-space: nowrap;
   border-radius: 9999px;
   --tw-bg-opacity: 1;
@@ -564,7 +563,6 @@ main .section .button-secondary {
   width: -moz-fit-content;
   width: fit-content;
   align-items: center;
-  justify-self: end;
   white-space: nowrap;
   border-radius: 9999px;
   --tw-bg-opacity: 1;

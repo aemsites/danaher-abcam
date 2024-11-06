@@ -305,7 +305,7 @@ const TEMPLATE_LIST = [
   'product-detail',
   'search-results',
   'stories',
-  'webinars',
+  'webinar',
   'guide',
   'guides-hub',
 ];
@@ -831,6 +831,15 @@ export function formatDate(date) {
   const formattedDate = new Intl.DateTimeFormat('en-us', options).format(lastModifiedDate);
   const formatDate = formattedDate.replace(/,/g, '');
   return formatDate;
+}
+
+// Check if OneTrust is accepted
+export function isOTEnabled() {
+  const otCookie = getCookie("OptanonConsent");
+  if (typeof otCookie === "string") {
+      return otCookie.includes("C0002:1")
+  }
+  return true;
 }
 
 /**
