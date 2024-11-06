@@ -35,12 +35,12 @@
   width: 360px
 }
 
-.header-wrapper :is(.max-w-sm) {
-  max-width: 24rem
-}
-
 .header-wrapper :is(.max-w-\[2464px\]) {
   max-width: 2464px
+}
+
+.header-wrapper :is(.max-w-sm) {
+  max-width: 24rem
 }
 
 .header-wrapper :is(.transform) {
@@ -64,24 +64,9 @@
   background-color: rgb(0 0 0 / var(--tw-bg-opacity))
 }
 
-.header-wrapper :is(.bg-red-500) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(239 68 68 / var(--tw-bg-opacity))
-}
-
 .header-wrapper :is(.px-3) {
   padding-left: 0.75rem;
   padding-right: 0.75rem
-}
-
-.header-wrapper :is(.py-4) {
-  padding-top: 1rem;
-  padding-bottom: 1rem
-}
-
-.header-wrapper :is(.py-2) {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem
 }
 
 .header-wrapper :is(.px-\[30px\]) {
@@ -89,12 +74,13 @@
   padding-right: 30px
 }
 
-.header-wrapper :is(.pt-4) {
-  padding-top: 1rem
+.header-wrapper :is(.py-4) {
+  padding-top: 1rem;
+  padding-bottom: 1rem
 }
 
-.header-wrapper :is(.text-center) {
-  text-align: center
+.header-wrapper :is(.pt-4) {
+  padding-top: 1rem
 }
 
 .header-wrapper :is(.font-bold) {

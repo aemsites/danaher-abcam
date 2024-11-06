@@ -816,7 +816,7 @@ main .story-middle-container .default-content-wrapper p:not(:first-child, a) {
 }
 
 header {
-  height: 9rem;
+  height: 10rem;
 }
 
 @media (min-width: 768px) {
@@ -827,7 +827,7 @@ header {
 
 @media (min-width: 1024px) {
   header {
-    height: 9rem;
+    height: 18rem;
   }
 }
 

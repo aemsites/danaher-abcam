@@ -1,4 +1,4 @@
-import { div } from '../../scripts/dom-builder.js';
+import { div, h2, p } from '../../scripts/dom-builder.js';
 import { decorateIcons } from '../../scripts/aem.js';
 
 function megaMeunu() {
@@ -7,9 +7,9 @@ function megaMeunu() {
 
 function createAlertBar() {
   return div(
-    { class: 'alert-bar text-white my-0 gap-0 px-[30px] xl:px-[80px] max-w-[2464px]' },
-    div({ class: 'font-bold' }, 'Planned system maintenance'),
-    div({}, 'All order confirmation emails and status updates may be delayed from Nov 8-11. Order delivery time is not affected. Thank you for your patience.')
+    { id: 'migration-maintenance-banner', style: 'background-color: black; color: white; padding: 8px 80px; border-bottom: 1px solid white; margin-bottom: 10px' },
+    h2({ style: 'margin-bottom: 20px;' }, 'Planned system maintenance'),
+    p({}, 'All order confirmation emails and status updates may be delayed from Nov 8-11. Order delivery time is not affected. Thank you for your patience.')
   );
 }
 
