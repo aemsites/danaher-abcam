@@ -410,4 +410,75 @@ export default async function decorate(block) {
     block.innerHTML = '';
     block.append(tabElement, horizondalLine, hub);
   }
+
+  const sortByContainer = div(
+    { class: 'sb-main-container flex items-center w-max relative py-6 !border-b border-b-[#D8D8D8] font-semibold' },
+    div({ class: 'sort-by text-[#65797c] text-xs font-semibold not-italic mr-2' }, 'Sort By:'),
+    div(
+      { class: 'sb-container w-36 flex flex-row items-center gap-x-4 !bg-[#F4F5F5] tracking-[0.2px] leading-4 text-xs border border-[#EAECEC] border-opacity-5 bg-[#273F3F] bg-opacity-5 rounded-full py-3 px-6 w-auto bg-white cursor-pointer relative' },
+      span({ class: 'sb-selected' }, ''),
+      span({ class: 'icon icon-chevron-down shrink-0 ml-auto' }),
+      div({ class: 'sb-options w-max h-auto drop-shadow-2xl absolute hidden top-full lg:left-0 right-0 bg-white rounded-2xl z-20 border pt-5 mt-1 max-h-screen overflow-y-auto' }),
+    ),
+  );
+  block.append(sortByContainer);
+
+  decorateIcons(sortByContainer, 20, 20);
+
+   // Dummy data
+  const webinars = [
+    { title: 'JavaScript for Beginners', date: '2023-11-05', views: 100 },
+    { title: 'Advanced React Techniques', date: '2023-11-03', views: 200 },
+    { title: 'Machine Learning with Python', date: '2023-11-07', views: 150 },
+    { title: 'Java for Beginners', date: '2023-11-05', views: 140 },
+    { title: 'Advanced Angular Techniques', date: '2023-11-03', views: 280 },
+    { title: 'AI with Python', date: '2023-11-07', views: 350 }
+  ];
+
+  // Sort options
+  const sortOptions = [
+    { label: 'Relevance', value: 'relevance' },
+    { label: 'Date - Descending', value: 'date-desc' },
+    { label: 'Date - Ascending', value: 'date-asc' },
+    { label: 'Most Viewed', value: 'most-viewed' },
+    { label: 'Most Viewed Most Viewed Most Viewed Most Viewed Most Viewed Most Viewed', value: 'most-viewed' }
+  ];
+
+  const h2Eles = sortOptions;
+  if (h2Eles.length > 0) {
+    const sbOptionsContainer = sortByContainer.querySelector('.sb-options');
+    const sbSelected = sortByContainer.querySelector('.sb-selected');
+
+    if (h2Eles.length > 0) {
+      sbSelected.textContent = h2Eles[0].label || 'Section 1';
+      h2Eles.forEach((h2Ele, index) => {
+        const optionEle = div(
+          { class: 'sb-option py-3 px-6 hover:bg-[#f2f2f2] hover:text-black cursor-pointer' },
+          h2Ele.label || `Section ${index + 1}`,
+        );
+        optionEle.dataset.value = index;
+        optionEle.addEventListener('click', function optionSelection(event) {
+
+          sbSelected.textContent = this.textContent;
+          Array.from(sbOptionsContainer.children).forEach((opt) => {
+            opt.classList.remove('bg-[#273F3F]', 'bg-opacity-10', 'text-[#273F3F]');
+          });
+          sbOptionsContainer.classList.add('hidden');
+          event.stopPropagation();
+        });
+        sbOptionsContainer.appendChild(optionEle);
+      });
+    }
+    sortByContainer.querySelector('.sb-container').addEventListener('click', () => {
+      sbOptionsContainer.classList.toggle('hidden');
+    });
+    window.addEventListener('click', (e) => {
+      if (!sortByContainer.contains(e.target)) {
+        sbOptionsContainer.classList.add('hidden');
+      }
+    });
+    sbOptionsContainer.addEventListener('click', (event) => {
+      event.stopPropagation();
+    });
+  }
 }
