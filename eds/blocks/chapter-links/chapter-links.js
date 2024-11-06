@@ -4,7 +4,6 @@ import {
 } from '../../scripts/dom-builder.js';
 import { decorateIcons } from '../../scripts/aem.js';
 import { buildArticleSchema, buildGuidesCollectionSchema } from '../../scripts/schema.js';
-import { makePublicUrl } from '../../scripts/scripts.js';
 
 const modal = div({ class: 'w-screen h-full top-0 left-0 fixed block lg:hidden inset-0 z-30 bg-black bg-opacity-80 flex justify-center items-end transition-all translate-y-full' });
 const stickyChapterLinks = div({ class: 'sticky-bottom' });
@@ -18,7 +17,7 @@ function renderModal(el) {
   const closeButton = button({
     type: 'button',
     class: 'size-full flex items-center gap-x-2 justify-center py-2 focus:outline-none border border-solid border-black rounded-full text-black text-sm font-semibold',
-    onclick: () => toggleModal(),
+    onclick: toggleModal,
   }, span({ class: 'icon icon-close invert' }), 'Close');
 
   const modalContent = div({ class: 'relative flex flex-col bg-white w-11/12 max-h-[70%] mb-4 rounded lg:hidden' });
@@ -39,7 +38,7 @@ function renderChapters(chapterItems) {
       { class: 'w-full border-b border-b-[#D8D8D8]' },
       a(
         {
-          href: makePublicUrl(item.path),
+          href: item.path,
           class: `block text-base leading-7 font-semibold px-3 py-3 hover:underline ${item.path === currentPage ? 'text-black bg-[#EDF6F7]' : 'text-[#378189]'}`,
         },
         item.title,
@@ -86,7 +85,7 @@ export default async function decorate(block) {
     {
       type: 'button',
       class: 'size-full flex items-center gap-x-3 justify-center focus:outline-none bg-black rounded-full text-white px-12 py-4',
-      onclick: () => toggleModal(),
+      onclick: toggleModal,
     },
     span({ class: 'icon icon-chevron-right size-7 invert' }),
     'Browse Chapters',

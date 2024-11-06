@@ -1696,6 +1696,13 @@
             "value": "applications"
           }
         ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "itemsPerPage",
+        "value": "",
+        "label": "Items per page"
       }
     ]
   },
