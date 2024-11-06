@@ -1339,7 +1339,7 @@ main .guides-hub-links-container .default-content-wrapper {
   }
 }
 
-main .section.guides-middle-container p {
+main .section.guides-middle-container p ~ p {
   margin-top: 0px !important;
   margin-bottom: 1.5rem !important;
   font-size: 1.125rem !important;
