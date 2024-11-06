@@ -1,13 +1,13 @@
 import { getMetadata } from './aem.js';
 // eslint-disable-next-line import/no-cycle
-import { makePublicUrl, setJsonLd } from './scripts.js';
+import { setJsonLd } from './scripts.js';
 
 // eslint-disable-next-line import/prefer-default-export
 export function buildArticleSchema() {
   const data = {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    '@id': `https://www.abcam.com${makePublicUrl(window.location.pathname)}`,
+    '@id': `https://www.abcam.com${window.location.pathname}`,
     headline: document.querySelector('h1') ? document.querySelector('h1').textContent : getMetadata('og:title'),
     image: getMetadata('og:image'),
     datePublished: getMetadata('publishdate') ? new Date(getMetadata('publishdate')) : new Date(getMetadata('published-time')),
@@ -22,7 +22,7 @@ export function buildArticleSchema() {
     description: getMetadata('description'),
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://www.abcam.com${makePublicUrl(window.location.pathname)}`,
+      '@id': `https://www.abcam.com${window.location.pathname}`,
     },
   };
 
@@ -78,7 +78,7 @@ export function buildPodcastEpisodeSchema(mediaURL, episodeNum, seriesName, seri
   const data = {
     '@context': 'https://schema.org',
     '@type': 'PodcastEpisode',
-    url: `https://www.abcam.com${makePublicUrl(window.location.pathname)}`,
+    url: `https://www.abcam.com${window.location.pathname}`,
     name: getMetadata('og:title'),
     datePublished: getMetadata('publishdate'),
     timeRequired: getMetadata('readingtime'),
@@ -119,7 +119,7 @@ export function buildPodcastSeriesSchema(mode) {
     '@type': 'PodcastSeries',
     name: getMetadata('og:title'),
     description: getMetadata('description'),
-    url: `https://www.abcam.com${makePublicUrl(window.location.pathname)}`,
+    url: `https://www.abcam.com${window.location.pathname}`,
     inLanguage: 'en',
     publisher: {
       '@type': 'Organization',
@@ -156,7 +156,7 @@ export function buildStoryHubSchema(srcObj) {
   const data = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    '@id': `https://www.abcam.com${makePublicUrl(window.location.pathname)}`,
+    '@id': `https://www.abcam.com${window.location.pathname}`,
     itemListElement: [],
   };
 
@@ -186,7 +186,7 @@ export function buildGuidesCollectionSchema(srcObj) {
     '@type': 'CollectionPage',
     name: document.querySelector('h1') ? document.querySelector('h1').textContent : getMetadata('og:title'),
     description: getMetadata('description'),
-    url: `https://www.abcam.com${makePublicUrl(window.location.pathname)}`,
+    url: `https://www.abcam.com${window.location.pathname}`,
     hasPart: [],
   };
 
