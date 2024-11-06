@@ -6,3 +6,5 @@ plugins/
 eds/scripts/scripts.js
 eds/scripts/aem.js
 eds/scripts/at.js
+eds/scripts/newrelic.js
+eds/scripts/newrelicstage.js
