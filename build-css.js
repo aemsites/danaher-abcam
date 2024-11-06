@@ -310,6 +310,11 @@ const fileMappings = [
     output: './eds/blocks/guides-hub-links/guides-hub-links.css',
     wrapper: 'guides-hub-links-wrapper',
   },
+  {
+    content: ['./eds/blocks/webinar-hub/webinar-hub.js', './eds/blocks/story-hub/story-hub.js'],
+    output: './eds/blocks/webinar-hub/webinar-hub.css',
+    wrapper: 'webinar-hub-wrapper',
+  },
 ];
 
 const watch = process.argv[2];
