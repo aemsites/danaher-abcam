@@ -14,6 +14,8 @@ export default function decorate(block) {
   });
   [...block.children].forEach((element) => {
     applyClasses(element, 'w-full flex flex-row gap-x-6 items-center');
+    const parentEl = element.parentElement?.parentElement?.parentElement;
+    applyClasses(parentEl?.lastElementChild, 'text-base leading-6 font-semibold text-[#378189] pt-0 hover:underline');
     const pEl = element.querySelector('p');
     if (pEl) {
       const docType = pEl.textContent.toLowerCase();

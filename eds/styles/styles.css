@@ -1339,6 +1339,10 @@ main .guides-hub-links-container .default-content-wrapper {
   }
 }
 
+main .section.downloads-container .default-content-wrapper:last-child {
+  padding-top: 0px;
+}
+
 main .section.guides-middle-container p ~ p {
   margin-top: 0px !important;
   margin-bottom: 1.5rem !important;

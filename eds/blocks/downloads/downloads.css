@@ -1,3 +1,7 @@
+.downloads-wrapper :is(.m-0) {
+  margin: 0px
+}
+
 .downloads-wrapper :is(.mb-6) {
   margin-bottom: 1.5rem
 }
@@ -17,6 +21,11 @@
 .downloads-wrapper :is(.size-6) {
   width: 1.5rem;
   height: 1.5rem
+}
+
+.downloads-wrapper :is(.size-8) {
+  width: 2rem;
+  height: 2rem
 }
 
 .downloads-wrapper :is(.w-1\/2) {
@@ -112,6 +121,14 @@
   border-color: rgb(209 213 219 / var(--tw-border-opacity))
 }
 
+.downloads-wrapper :is(.p-0) {
+  padding: 0px
+}
+
+.downloads-wrapper :is(.p-10) {
+  padding: 2.5rem
+}
+
 .downloads-wrapper :is(.py-8) {
   padding-top: 2rem;
   padding-bottom: 2rem
@@ -137,6 +154,19 @@
   padding-bottom: 1rem
 }
 
+.downloads-wrapper :is(.px-3) {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem
+}
+
+.downloads-wrapper :is(.pt-10) {
+  padding-top: 2.5rem
+}
+
+.downloads-wrapper :is(.pt-0) {
+  padding-top: 0px
+}
+
 .downloads-wrapper :is(.text-xs) {
   font-size: 0.75rem;
   line-height: 1rem
@@ -150,6 +180,21 @@
 .downloads-wrapper :is(.text-lg) {
   font-size: 1.125rem;
   line-height: 1.75rem
+}
+
+.downloads-wrapper :is(.text-xl) {
+  font-size: 1.25rem;
+  line-height: 1.75rem
+}
+
+.downloads-wrapper :is(.text-2xl) {
+  font-size: 1.5rem;
+  line-height: 2rem
+}
+
+.downloads-wrapper :is(.text-base) {
+  font-size: 1rem;
+  line-height: 1.5rem
 }
 
 .downloads-wrapper :is(.font-bold) {
@@ -172,8 +217,30 @@
   line-height: 1rem
 }
 
+.downloads-wrapper :is(.leading-7) {
+  line-height: 1.75rem
+}
+
+.downloads-wrapper :is(.leading-6) {
+  line-height: 1.5rem
+}
+
 .downloads-wrapper :is(.tracking-wider) {
   letter-spacing: 0.05em
+}
+
+.downloads-wrapper :is(.text-\[\#071112\]) {
+  --tw-text-opacity: 1;
+  color: rgb(7 17 18 / var(--tw-text-opacity))
+}
+
+.downloads-wrapper :is(.text-\[\#378189\]) {
+  --tw-text-opacity: 1;
+  color: rgb(55 129 137 / var(--tw-text-opacity))
+}
+
+.downloads-wrapper :is(.hover\:underline:hover) {
+  text-decoration-line: underline
 }
 
 @media (min-width: 1024px) {

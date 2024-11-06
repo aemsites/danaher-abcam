@@ -274,6 +274,10 @@
     .guides-hub main .breadcrumb {
         @apply lg:!px-0;
     }
+    
+    main .section.downloads-container .default-content-wrapper:last-child {
+        @apply pt-0;
+    }
 
     main .section.guides-middle-container p ~ p {
         @apply !font-normal !text-lg !leading-7 !tracking-[0.3px] !mt-0 !mb-6;
