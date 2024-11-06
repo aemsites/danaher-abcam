@@ -33,7 +33,7 @@ export default function decorate(block) {
   const divEl = block.querySelector('div > div');
   applyClasses(divEl, 'sidelinks leading-5 text-sm font-bold text-black flex flex-col');
   const allParagraphs = divEl.querySelectorAll('p a[title="link"]');
-  const linkHeading = getMetadata('template').includes('guide') ? 'Related Links' : 'Explore our products';
+  const linkHeading = getMetadata('template').includes('stories') ? 'Explore our products' : 'Related Links';
   if (allParagraphs.length > 0) {
     divEl.prepend(p({ class: 'text-sm leading-6 font-semibold uppercase text-[#65797C] px-3 pt-2 pb-1 my-0' }, linkHeading));
     allParagraphs.forEach((elPara) => {

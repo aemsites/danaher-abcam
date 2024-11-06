@@ -2,7 +2,7 @@ import ffetch from '../../scripts/ffetch.js';
 import {
   a, button, div, p, span,
 } from '../../scripts/dom-builder.js';
-import { decorateIcons } from '../../scripts/aem.js';
+import { decorateIcons, getMetadata } from '../../scripts/aem.js';
 import { buildArticleSchema, buildGuidesCollectionSchema } from '../../scripts/schema.js';
 
 const modal = div({ class: 'w-screen h-full top-0 left-0 fixed block lg:hidden inset-0 z-30 bg-black bg-opacity-80 flex justify-center items-end transition-all -translate-y-full' });
@@ -28,12 +28,12 @@ function renderModal(el) {
   decorateIcons(modal);
 }
 
-function renderChapters(chapterItems) {
+function renderChapters(chapterItems,navHeading) {
   const chaptersDesktopEl = div({ class: 'hidden lg:flex flex-col items-start' });
   const chaptersMobileEl = div({ class: 'max-h-96 lg:hidden [&_span]:pl-2 overflow-scroll px-4' });
   const url = new URL(window.location.href);
   const currentPage = url.pathname;
-  const navHeadingEl = p({ class: 'text-sm leading-6 font-semibold uppercase text-[#65797C] px-3 pt-2 pb-1 my-0' }, 'CHAPTERS');
+  const navHeadingEl = p({ class: 'text-sm leading-6 font-semibold uppercase text-[#65797C] px-3 pt-2 pb-1 my-0' }, navHeading);
   chapterItems.forEach((item) => {
     const chaptersEl = div(
       { class: 'w-full border-b border-b-[#D8D8D8]' },
@@ -56,9 +56,12 @@ export default async function decorate(block) {
   const currentPage = window.location.pathname.split('/').pop();
   const parentURL = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/'));
   const parentPage = parentURL.split('/').pop();
-  const chapterItems = await ffetch('/en-us/technical-resources/guides/query-index.json')
+  let templateName = getMetadata('template').toLowerCase();
+  templateName = (templateName=='guide')?templateName+'s':templateName;
+  console.log(templateName);
+  const chapterItems = await ffetch(`/en-us/technical-resources/${templateName}/query-index.json`)
     .filter((item) => {
-      if (parentPage === 'guides') return item.parent === currentPage;
+      if (parentPage === templateName) return item.parent === currentPage;
       return item.parent === parentPage;
     }).all();
   const chapters = chapterItems.map((element) => ({
@@ -68,18 +71,20 @@ export default async function decorate(block) {
   }));
   const filteredChapters = chapters.filter((item) => item.title !== undefined);
   filteredChapters.sort((chapter1, chapter2) => chapter1.pageOrder - chapter2.pageOrder);
-  if (parentPage === 'guides') {
+  if (parentPage === templateName) {
     buildGuidesCollectionSchema(filteredChapters);
   } else {
     buildArticleSchema();
   }
 
   // Append button and chapters to block
-  const { chaptersDesktopEl, chaptersMobileEl } = renderChapters(filteredChapters);
+  const navHeading = (templateName=='topics')? 'Related Articles' :'Chapters' ;
+  const { chaptersDesktopEl, chaptersMobileEl } = renderChapters(filteredChapters,navHeading);
   renderModal(chaptersMobileEl);
   block.append(chaptersDesktopEl, modal);
 
   // Create Show/Hide button - bottom of footer
+  const browseHeading = (templateName=='guides')? 'Browse Chapters' :'Browse Related Articles' ;
   const footerEl = document.querySelector('footer');
   const toggleButton = button(
     {
@@ -88,7 +93,7 @@ export default async function decorate(block) {
       onclick: () => toggleModal(),
     },
     span({ class: 'icon icon-chevron-right size-7 invert' }),
-    'Browse Chapters',
+    browseHeading,
   );
   decorateIcons(toggleButton);
   stickyChapterLinks.append(toggleButton);
