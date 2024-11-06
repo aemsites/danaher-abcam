@@ -7,7 +7,7 @@ import { isOTEnabled } from './scripts.js';
 sampleRUM('cwv');
 
 // OneTrust Cookies Consent Notice start
-if (!window.location.host.includes('.page') && !window.location.host.includes('.live') && !window.location.host.includes('localhost')) {
+if (window.location.host.includes('abcam.com')) {
   loadScript('https://cdn.cookielaw.org/scripttemplates/otSDKStub.js', {
     type: 'text/javascript',
     charset: 'UTF-8',
