@@ -28,7 +28,7 @@ function renderModal(el) {
   decorateIcons(modal);
 }
 
-function renderChapters(chapterItems,navHeading) {
+function renderChapters(chapterItems, navHeading) {
   const chaptersDesktopEl = div({ class: 'hidden lg:flex flex-col items-start' });
   const chaptersMobileEl = div({ class: 'max-h-96 lg:hidden [&_span]:pl-2 overflow-scroll px-4' });
   const url = new URL(window.location.href);
@@ -57,8 +57,7 @@ export default async function decorate(block) {
   const parentURL = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/'));
   const parentPage = parentURL.split('/').pop();
   let templateName = getMetadata('template').toLowerCase();
-  templateName = (templateName=='guide')?templateName+'s':templateName;
-  console.log(templateName);
+  templateName = (templateName === 'guide') ? `${templateName}s` : templateName;
   const chapterItems = await ffetch(`/en-us/technical-resources/${templateName}/query-index.json`)
     .filter((item) => {
       if (parentPage === templateName) return item.parent === currentPage;
@@ -78,13 +77,13 @@ export default async function decorate(block) {
   }
 
   // Append button and chapters to block
-  const navHeading = (templateName=='topics')? 'Related Articles' :'Chapters' ;
-  const { chaptersDesktopEl, chaptersMobileEl } = renderChapters(filteredChapters,navHeading);
+  const navHeading = (templateName === 'topics') ? 'Related Articles' : 'Chapters';
+  const { chaptersDesktopEl, chaptersMobileEl } = renderChapters(filteredChapters, navHeading);
   renderModal(chaptersMobileEl);
   block.append(chaptersDesktopEl, modal);
 
   // Create Show/Hide button - bottom of footer
-  const browseHeading = (templateName=='guides')? 'Browse Chapters' :'Browse Related Articles' ;
+  const browseHeading = (templateName === 'guides') ? 'Browse Chapters' : 'Browse Related Articles';
   const footerEl = document.querySelector('footer');
   const toggleButton = button(
     {
