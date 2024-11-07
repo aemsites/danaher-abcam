@@ -44,8 +44,8 @@
       "speakers-info",
       "download",
       "table",
-      "elouqa-form",
-      "downloads"
+      "downloads",
+      "elouqa-form"
     ]
   },
   {
@@ -78,14 +78,14 @@
     ]
   },
   {
-    "id": "elouqa-form",
-    "components": []
-  },
-  {
     "id": "downloads",
     "components": [
       "download"
     ]
+  },
+  {
+    "id": "elouqa-form",
+    "components": []
   },
   {
     "id": "mini-teasers",

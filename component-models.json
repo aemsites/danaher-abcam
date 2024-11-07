@@ -945,10 +945,6 @@
     ]
   },
   {
-    "id": "elouqa-form",
-    "fields": []
-  },
-  {
     "id": "download",
     "fields": [
       {
@@ -1068,6 +1064,18 @@
             "value": "other"
           }
         ]
+      }
+    ]
+  },
+  {
+    "id": "elouqa-form",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "video_link",
+        "value": "",
+        "label": "Video Link"
       }
     ]
   },

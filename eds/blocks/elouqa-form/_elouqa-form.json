@@ -20,7 +20,15 @@
     "models": [
         {
             "id": "elouqa-form",
-            "fields": []
+            "fields": [
+                {
+                    "component": "text",
+                    "valueType": "string",
+                    "name": "video_link",
+                    "value": "",
+                    "label": "Video Link"
+                }
+            ]
         }
     ],
     "filters": [
