@@ -1,6 +1,6 @@
 import { applyClasses, moveInstrumentation } from '../../scripts/scripts.js';
 import {
-  table, tbody, td, th, thead, tr, input, form, label, button
+  table, tbody, td, th, thead, tr, input, div, form, label, button
 } from '../../scripts/dom-builder.js';
 
 // const tableEl = table({ class: 'table-auto' });
