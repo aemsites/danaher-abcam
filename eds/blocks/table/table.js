@@ -61,7 +61,7 @@ export default async function decorate(block) {
   const tblHead = thead();
   const tblBody = tbody();
   const header = !block.classList.contains('no-header');
-  const searchFlag = block.classList.contains('search-filter');
+  // const searchFlag = block.classList.contains('search-filter');
   block.parentElement.classList.add(...'relative overflow-x-auto'.split(' '));
 
   [...block.children].forEach((row, i) => {
@@ -84,10 +84,9 @@ export default async function decorate(block) {
   });
   tableEl.append(tblHead, tblBody);
   // instance = tableEl;
-  /* if (searchFlag) {
+  if (true) {
     block.replaceChildren(formEl, tableEl);
   } else {
     block.replaceChildren(tableEl);
-  } */
-  block.replaceChildren(formEl, tableEl);
+  }
 }
