@@ -47,19 +47,15 @@
           "options": [
             {
               "name": "Document",
-              "value": "doc"
+              "value": "DOC"
             },
             {
               "name": "PDF",
-              "value": "pdf"
+              "value": "PDF"
             },
             {
               "name": "Presentation",
-              "value": "ppt"
-            },
-            {
-              "name": "Other",
-              "value": "other"
+              "value": "PPT"
             }
           ]
         }

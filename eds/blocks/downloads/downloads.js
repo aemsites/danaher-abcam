@@ -5,7 +5,7 @@ import { decorateIcons } from '../../scripts/aem.js';
 import { applyClasses } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
-  applyClasses(block, 'grid max-w-7xl w-full mx-auto gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 sm:px-0 mt-3 mb-3 justify-around border-b border-solid border-gray-300 py-4');
+  applyClasses(block, 'grid max-w-7xl w-full mx-auto gap-6 grid-cols-1 md:grid-cols-3 lg:grid-cols-4 auto-rows-max sm:px-0 mt-3 mb-3 justify-around border-b border-solid border-gray-300 py-4');
   const divs = document.querySelectorAll('div');
   divs.forEach((div) => {
     if (divs.innerHTML === '' || div.textContent === '') {
