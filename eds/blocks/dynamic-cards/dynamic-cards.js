@@ -6,11 +6,10 @@ import {
 import { getMetadata, toClassName } from '../../scripts/aem.js';
 import createArticleCard from './articleCard.js';
 
-const getSelectionFromUrl = () => (window.location.pathname.indexOf('topics') > -1 ? toClassName(window.location.pathname.replace('.html', '').split('/').pop()) : '');
+const getSelectionFromUrl = () => (window.location.pathname.indexOf('category') > -1 ? toClassName(window.location.pathname.replace('.html', '').split('/').pop()) : '');
 export const getPageFromUrl = () => toClassName(new URLSearchParams(window.location.search).get('page')) || '';
 
 const createTopicUrl = (currentUrl, keyword = '') => {
-  console.log(currentUrl, keyword);
   if (currentUrl.indexOf('category') > -1) {
     return currentUrl.substring(0, currentUrl.lastIndexOf('/') + 1) + toClassName(keyword).toLowerCase();
   }
@@ -89,12 +88,12 @@ export function createFilters(articles, viewAll = false) {
   });
   const keywords = new Set([].concat(...allKeywords));
   keywords.delete('');
-
+  
   // render tag cloud
   const newUrl = new URL(window.location);
   newUrl.searchParams.delete('page');
-  if (window.location.pathname.indexOf('topics') > -1) {
-    newUrl.pathname = window.location.pathname.substring(0, window.location.pathname.indexOf('/topics/'));
+  if (window.location.pathname.indexOf('category') > -1) {
+    newUrl.pathname = window.location.pathname.substring(0, window.location.pathname.indexOf('/category/'));
   }
   const tags = viewAll ? div(
     { class: 'flex flex-wrap gap-2 gap-y-0 mb-4' },
@@ -138,8 +137,8 @@ export function createFilters(articles, viewAll = false) {
     }
   });
 
-  // patch banner heading with selected tag only on topics pages
-  if (getMetadata('heading') && window.location.pathname.indexOf('topics') > -1) {
+  // patch banner heading with selected tag only on category pages
+  if (getMetadata('heading') && window.location.pathname.indexOf('category') > -1) {
     patchBannerHeading();
   }
 
@@ -147,18 +146,19 @@ export function createFilters(articles, viewAll = false) {
 }
 
 export default async function decorate(block) {
-  const articleType = 'blog';
-
   // fetch and sort all articles
   const articles = await ffetch('/en-us/stories/query-index.json')
     .chunks(500)
-    .filter((article) => !article.path.includes('/topics-template'))
+    .filter((article) => article.path !== '/en-us/stories/podcasts')
+    .filter((article) => article.path !== '/en-us/stories/films')
+    .filter((article) => article.path !== '/en-us/stories/articles')
     .all();
   let filteredArticles = articles;
-  const activeTagFilter = block.classList.contains('url-filtered') ? getSelectionFromUrl() : '';
+  const activeTagFilter = getSelectionFromUrl();
+  console.log(activeTagFilter);
   if (activeTagFilter) {
     filteredArticles = articles.filter(
-      (item) => toClassName(item.topics).toLowerCase().indexOf(activeTagFilter) > -1,
+      (item) => toClassName(item.tags).toLowerCase().indexOf(activeTagFilter) > -1,
     );
   }
   // render cards application style
@@ -166,7 +166,7 @@ export default async function decorate(block) {
 
   let page = parseInt(getPageFromUrl(), 10);
   page = Number.isNaN(page) ? 1 : page;
-  const limitPerPage = 18;
+  const limitPerPage = 9;
   const start = (page - 1) * limitPerPage;
   const articlesToDisplay = filteredArticles.slice(start, start + limitPerPage);
 
