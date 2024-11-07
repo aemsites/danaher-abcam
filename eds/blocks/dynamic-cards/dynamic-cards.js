@@ -81,13 +81,13 @@ export const createPagination = (entries, page, limit) => {
 export function createFilters(articles, viewAll = false) {
   // collect tag filters
   const allKeywords = articles.map((item) => {
-    let allTags = item?.tags?.split("/").pop()
-    allTags = allTags?.replace(/-/g, " ");
+    let allTags = item?.tags?.split('/').pop();
+    allTags = allTags?.replace(/-/g, ' ');
     return allTags;
   });
   const keywords = new Set([].concat(...allKeywords));
   keywords.delete('');
-  
+
   // render tag cloud
   const newUrl = new URL(window.location);
   newUrl.searchParams.delete('page');
@@ -154,7 +154,6 @@ export default async function decorate(block) {
     .all();
   let filteredArticles = articles;
   const activeTagFilter = getSelectionFromUrl();
-  console.log(activeTagFilter);
   if (activeTagFilter) {
     filteredArticles = articles.filter(
       (item) => toClassName(item.tags).toLowerCase().indexOf(activeTagFilter) > -1,

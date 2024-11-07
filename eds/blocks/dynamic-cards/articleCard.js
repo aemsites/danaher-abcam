@@ -4,17 +4,15 @@ import {
 } from '../../scripts/dom-builder.js';
 
 export default function createCard(article, firstCard = false, cardType = 'story') {
-
   const titleImage = imageHelper(article.image, article.title, firstCard);
-  const title = article.title;
-  const description = article.description;
-  const path = article.path;
-  const tags = article.tags;
+  const { title } = article;
+  const { description } = article;
+  const { path } = article;
+  const { tags } = article;
   const time = article.readingTime;
 
   let footerLink;
   let minRead;
-  const type = article.path.split('/')[3];
   switch (getStoryType(tags)) {
     case 'podcast':
       footerLink = 'Listen to podcast';
@@ -41,7 +39,7 @@ export default function createCard(article, firstCard = false, cardType = 'story
       div(
         { class: 'flex-1' },
         title && h3({ class: 'text-black font-medium mt-4 break-words line-clamp-4' }, title),
-        description && p({ class: 'text-sm line-clamp-3' }, description)
+        description && p({ class: 'text-sm line-clamp-3' }, description),
       ),
       footerLink !== ''
         ? a({

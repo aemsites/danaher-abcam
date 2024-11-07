@@ -5,7 +5,7 @@ import {
   button, div, p, span, ul, li, a,
 } from '../../scripts/dom-builder.js';
 import { createFilters } from '../../scripts/scripts.js';
-import createCard from '../../blocks/dynamic-cards/articleCard.js';
+import createCard from '../dynamic-cards/articleCard.js';
 
 const getPageFromUrl = () => toClassName(new URLSearchParams(window.location.search).get('page')) || '';
 
