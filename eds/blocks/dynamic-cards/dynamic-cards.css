@@ -32,12 +32,40 @@
   }
 }
 
+.dynamic-cards-wrapper :is(.fixed) {
+  position: fixed
+}
+
 .dynamic-cards-wrapper :is(.relative) {
   position: relative
 }
 
+.dynamic-cards-wrapper :is(.bottom-0) {
+  bottom: 0px
+}
+
+.dynamic-cards-wrapper :is(.left-0) {
+  left: 0px
+}
+
+.dynamic-cards-wrapper :is(.top-0) {
+  top: 0px
+}
+
+.dynamic-cards-wrapper :is(.z-40) {
+  z-index: 40
+}
+
+.dynamic-cards-wrapper :is(.z-50) {
+  z-index: 50
+}
+
 .dynamic-cards-wrapper :is(.col-span-1) {
   grid-column: span 1 / span 1
+}
+
+.dynamic-cards-wrapper :is(.col-span-9) {
+  grid-column: span 9 / span 9
 }
 
 .dynamic-cards-wrapper :is(.mx-auto) {
@@ -48,6 +76,11 @@
 .dynamic-cards-wrapper :is(.my-2) {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem
+}
+
+.dynamic-cards-wrapper :is(.my-0) {
+  margin-top: 0px;
+  margin-bottom: 0px
 }
 
 .dynamic-cards-wrapper :is(.-mt-px) {
@@ -78,11 +111,34 @@
   margin-top: auto
 }
 
+.dynamic-cards-wrapper :is(.mt-2) {
+  margin-top: 0.5rem
+}
+
+.dynamic-cards-wrapper :is(.mb-0) {
+  margin-bottom: 0px
+}
+
+.dynamic-cards-wrapper :is(.mb-8) {
+  margin-bottom: 2rem
+}
+
+.dynamic-cards-wrapper :is(.mr-8) {
+  margin-right: 2rem
+}
+
 .dynamic-cards-wrapper :is(.line-clamp-3) {
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3
+}
+
+.dynamic-cards-wrapper :is(.line-clamp-4) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4
 }
 
 .dynamic-cards-wrapper :is(.block) {
@@ -109,6 +165,21 @@
   display: none
 }
 
+.dynamic-cards-wrapper :is(.size-full) {
+  width: 100%;
+  height: 100%
+}
+
+.dynamic-cards-wrapper :is(.size-4) {
+  width: 1rem;
+  height: 1rem
+}
+
+.dynamic-cards-wrapper :is(.size-8) {
+  width: 2rem;
+  height: 2rem
+}
+
 .dynamic-cards-wrapper :is(.\!h-16) {
   height: 4rem !important
 }
@@ -121,12 +192,29 @@
   height: 100%
 }
 
+.dynamic-cards-wrapper :is(.h-5\/6) {
+  height: 83.333333%
+}
+
+.dynamic-cards-wrapper :is(.h-screen) {
+  height: 100vh
+}
+
 .dynamic-cards-wrapper :is(.w-0) {
   width: 0px
 }
 
 .dynamic-cards-wrapper :is(.w-full) {
   width: 100%
+}
+
+.dynamic-cards-wrapper :is(.w-fit) {
+  width: -moz-fit-content;
+  width: fit-content
+}
+
+.dynamic-cards-wrapper :is(.w-screen) {
+  width: 100vw
 }
 
 .dynamic-cards-wrapper :is(.max-w-7xl) {
@@ -137,24 +225,53 @@
   flex: 1 1 0%
 }
 
+.dynamic-cards-wrapper :is(.shrink-0) {
+  flex-shrink: 0
+}
+
 .dynamic-cards-wrapper :is(.grow) {
   flex-grow: 1
+}
+
+.dynamic-cards-wrapper :is(.-translate-y-full) {
+  --tw-translate-y: -100%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 
 .dynamic-cards-wrapper :is(.transform) {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 
+.dynamic-cards-wrapper :is(.cursor-pointer) {
+  cursor: pointer
+}
+
 .dynamic-cards-wrapper :is(.grid-cols-1) {
   grid-template-columns: repeat(1, minmax(0, 1fr))
+}
+
+.dynamic-cards-wrapper :is(.flex-row) {
+  flex-direction: row
+}
+
+.dynamic-cards-wrapper :is(.flex-row-reverse) {
+  flex-direction: row-reverse
 }
 
 .dynamic-cards-wrapper :is(.flex-col) {
   flex-direction: column
 }
 
+.dynamic-cards-wrapper :is(.flex-col-reverse) {
+  flex-direction: column-reverse
+}
+
 .dynamic-cards-wrapper :is(.flex-wrap) {
   flex-wrap: wrap
+}
+
+.dynamic-cards-wrapper :is(.items-start) {
+  align-items: flex-start
 }
 
 .dynamic-cards-wrapper :is(.items-center) {
@@ -177,6 +294,10 @@
   justify-items: center
 }
 
+.dynamic-cards-wrapper :is(.justify-items-stretch) {
+  justify-items: stretch
+}
+
 .dynamic-cards-wrapper :is(.gap-2) {
   gap: 0.5rem
 }
@@ -189,8 +310,31 @@
   row-gap: 0px
 }
 
+.dynamic-cards-wrapper :is(.gap-x-1) {
+  -moz-column-gap: 0.25rem;
+       column-gap: 0.25rem
+}
+
+.dynamic-cards-wrapper :is(.gap-x-2) {
+  -moz-column-gap: 0.5rem;
+       column-gap: 0.5rem
+}
+
+.dynamic-cards-wrapper :is(.gap-x-6) {
+  -moz-column-gap: 1.5rem;
+       column-gap: 1.5rem
+}
+
+.dynamic-cards-wrapper :is(.gap-y-10) {
+  row-gap: 2.5rem
+}
+
 .dynamic-cards-wrapper :is(.overflow-hidden) {
   overflow: hidden
+}
+
+.dynamic-cards-wrapper :is(.overflow-visible) {
+  overflow: visible
 }
 
 .dynamic-cards-wrapper :is(.break-words) {
@@ -201,7 +345,15 @@
   border-radius: 9999px
 }
 
+.dynamic-cards-wrapper :is(.rounded) {
+  border-radius: 0.25rem
+}
+
 .dynamic-cards-wrapper :is(.border-\[1px\]) {
+  border-width: 1px
+}
+
+.dynamic-cards-wrapper :is(.border) {
   border-width: 1px
 }
 
@@ -213,9 +365,18 @@
   border-top-width: 2px
 }
 
+.dynamic-cards-wrapper :is(.border-b-8) {
+  border-bottom-width: 8px
+}
+
 .dynamic-cards-wrapper :is(.border-black) {
   --tw-border-opacity: 1;
   border-color: rgb(0 0 0 / var(--tw-border-opacity))
+}
+
+.dynamic-cards-wrapper :is(.border-\[\#ff7223\]) {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 114 35 / var(--tw-border-opacity))
 }
 
 .dynamic-cards-wrapper :is(.\!bg-black) {
@@ -226,6 +387,32 @@
 .dynamic-cards-wrapper :is(.bg-white) {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+}
+
+.dynamic-cards-wrapper :is(.bg-transparent) {
+  background-color: transparent
+}
+
+.dynamic-cards-wrapper :is(.bg-\[\#378189\]) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(55 129 137 / var(--tw-bg-opacity))
+}
+
+.dynamic-cards-wrapper :is(.bg-\[\#EDF6F7\]) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(237 246 247 / var(--tw-bg-opacity))
+}
+
+.dynamic-cards-wrapper :is(.p-2) {
+  padding: 0.5rem
+}
+
+.dynamic-cards-wrapper :is(.p-1) {
+  padding: 0.25rem
+}
+
+.dynamic-cards-wrapper :is(.p-3) {
+  padding: 0.75rem
 }
 
 .dynamic-cards-wrapper :is(.px-4) {
@@ -253,6 +440,16 @@
   padding-bottom: 1rem
 }
 
+.dynamic-cards-wrapper :is(.px-2) {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem
+}
+
+.dynamic-cards-wrapper :is(.py-1) {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem
+}
+
 .dynamic-cards-wrapper :is(.pb-5) {
   padding-bottom: 1.25rem
 }
@@ -261,8 +458,20 @@
   padding-top: 1rem
 }
 
+.dynamic-cards-wrapper :is(.pl-0) {
+  padding-left: 0px
+}
+
+.dynamic-cards-wrapper :is(.pb-4) {
+  padding-bottom: 1rem
+}
+
 .dynamic-cards-wrapper :is(.text-center) {
   text-align: center
+}
+
+.dynamic-cards-wrapper :is(.font-\[\"rockwell\"\]) {
+  font-family: "rockwell"
 }
 
 .dynamic-cards-wrapper :is(.text-base) {
@@ -273,6 +482,16 @@
 .dynamic-cards-wrapper :is(.text-sm) {
   font-size: 0.875rem;
   line-height: 1.25rem
+}
+
+.dynamic-cards-wrapper :is(.text-lg) {
+  font-size: 1.125rem;
+  line-height: 1.75rem
+}
+
+.dynamic-cards-wrapper :is(.text-xs) {
+  font-size: 0.75rem;
+  line-height: 1rem
 }
 
 .dynamic-cards-wrapper :is(.font-medium) {
@@ -287,8 +506,20 @@
   font-weight: 600
 }
 
+.dynamic-cards-wrapper :is(.font-bold) {
+  font-weight: 700
+}
+
+.dynamic-cards-wrapper :is(.capitalize) {
+  text-transform: capitalize
+}
+
 .dynamic-cards-wrapper :is(.leading-5) {
   line-height: 1.25rem
+}
+
+.dynamic-cards-wrapper :is(.tracking-wide) {
+  letter-spacing: 0.025em
 }
 
 .dynamic-cards-wrapper :is(.\!text-white) {
@@ -299,6 +530,34 @@
 .dynamic-cards-wrapper :is(.text-black) {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity))
+}
+
+.dynamic-cards-wrapper :is(.text-\[\#378189\]) {
+  --tw-text-opacity: 1;
+  color: rgb(55 129 137 / var(--tw-text-opacity))
+}
+
+.dynamic-cards-wrapper :is(.text-\[\#65697C\]) {
+  --tw-text-opacity: 1;
+  color: rgb(101 105 124 / var(--tw-text-opacity))
+}
+
+.dynamic-cards-wrapper :is(.text-\[\#07111299\]) {
+  color: #07111299
+}
+
+.dynamic-cards-wrapper :is(.text-white) {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+
+.dynamic-cards-wrapper :is(.underline) {
+  text-decoration-line: underline
+}
+
+.dynamic-cards-wrapper :is(.invert) {
+  --tw-invert: invert(100%);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
 }
 
 .dynamic-cards-wrapper :is(.filter) {
@@ -313,8 +572,22 @@
   transition-duration: 150ms
 }
 
+.dynamic-cards-wrapper :is(.transition-all) {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms
+}
+
 .dynamic-cards-wrapper :is(.duration-500) {
   transition-duration: 500ms
+}
+
+.dynamic-cards-wrapper :is(.duration-700) {
+  transition-duration: 700ms
+}
+
+.dynamic-cards-wrapper :is(.duration-150) {
+  transition-duration: 150ms
 }
 
 .dynamic-cards-wrapper :is(.hover\:scale-105:hover) {
@@ -347,6 +620,14 @@
   color: rgb(255 255 255 / var(--tw-text-opacity))
 }
 
+.dynamic-cards-wrapper :is(.group:hover .group-hover\:tracking-wide) {
+  letter-spacing: 0.025em
+}
+
+.dynamic-cards-wrapper :is(.group:hover .group-hover\:underline) {
+  text-decoration-line: underline
+}
+
 @media (min-width: 640px) {
   .dynamic-cards-wrapper :is(.sm\:px-0) {
     padding-left: 0px;
@@ -355,26 +636,133 @@
 }
 
 @media (min-width: 768px) {
+  .dynamic-cards-wrapper :is(.md\:relative) {
+    position: relative
+  }
+
+  .dynamic-cards-wrapper :is(.md\:z-auto) {
+    z-index: auto
+  }
+
+  .dynamic-cards-wrapper :is(.md\:col-span-2) {
+    grid-column: span 2 / span 2
+  }
+
   .dynamic-cards-wrapper :is(.md\:mt-12) {
     margin-top: 3rem
+  }
+
+  .dynamic-cards-wrapper :is(.md\:mb-4) {
+    margin-bottom: 1rem
+  }
+
+  .dynamic-cards-wrapper :is(.md\:block) {
+    display: block
   }
 
   .dynamic-cards-wrapper :is(.md\:flex) {
     display: flex
   }
 
+  .dynamic-cards-wrapper :is(.md\:hidden) {
+    display: none
+  }
+
+  .dynamic-cards-wrapper :is(.md\:h-auto) {
+    height: auto
+  }
+
+  .dynamic-cards-wrapper :is(.md\:translate-y-0) {
+    --tw-translate-y: 0px;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+  }
+
   .dynamic-cards-wrapper :is(.md\:grid-cols-2) {
     grid-template-columns: repeat(2, minmax(0, 1fr))
+  }
+
+  .dynamic-cards-wrapper :is(.md\:gap-y-16) {
+    row-gap: 4rem
   }
 
   .dynamic-cards-wrapper :is(.md\:py-0) {
     padding-top: 0px;
     padding-bottom: 0px
   }
+
+  .dynamic-cards-wrapper :is(.md\:px-0) {
+    padding-left: 0px;
+    padding-right: 0px
+  }
+
+  .dynamic-cards-wrapper :is(.md\:py-1) {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem
+  }
+
+  .dynamic-cards-wrapper :is(.md\:py-1\.5) {
+    padding-top: 0.375rem;
+    padding-bottom: 0.375rem
+  }
+
+  .dynamic-cards-wrapper :is(.md\:text-xl) {
+    font-size: 1.25rem;
+    line-height: 1.75rem
+  }
+
+  .dynamic-cards-wrapper :is(.md\:font-bold) {
+    font-weight: 700
+  }
+
+  .dynamic-cards-wrapper :is(.md\:leading-5) {
+    line-height: 1.25rem
+  }
 }
 
 @media (min-width: 1024px) {
+  .dynamic-cards-wrapper :is(.lg\:col-span-3) {
+    grid-column: span 3 / span 3
+  }
+
   .dynamic-cards-wrapper :is(.lg\:grid-cols-3) {
     grid-template-columns: repeat(3, minmax(0, 1fr))
+  }
+
+  .dynamic-cards-wrapper :is(.lg\:grid-cols-12) {
+    grid-template-columns: repeat(12, minmax(0, 1fr))
+  }
+}
+
+@media (min-width: 1280px) {
+  .dynamic-cards-wrapper :is(.xl\:grid-cols-3) {
+    grid-template-columns: repeat(3, minmax(0, 1fr))
+  }
+}
+
+.dynamic-cards-wrapper :is(.\[\&_\*\:empty\+span\]\:hidden *:empty+span) {
+  display: none
+}
+
+.dynamic-cards-wrapper :is(.\[\&_\*\:empty\]\:mb-8 *:empty) {
+  margin-bottom: 2rem
+}
+
+.dynamic-cards-wrapper :is(.\[\&_\*\:has\(input\:checked\)\~\*_\.clear-all\]\:block *:has(input:checked)~* .clear-all) {
+  display: block
+}
+
+@media (min-width: 768px) {
+  .dynamic-cards-wrapper :is(.md\:\[\&_\.showmoretags\.active\~\*\:not\(\.clear-all\)\:not\(\.showlesstags\)\]\:flex .showmoretags.active~*:not(.clear-all):not(.showlesstags)) {
+    display: flex
+  }
+}
+
+.dynamic-cards-wrapper :is(.\[\&_\.showmoretags\.active\~\*\:not\(\.clear-all\)\]\:hidden .showmoretags.active~*:not(.clear-all)) {
+  display: none
+}
+
+@media (min-width: 768px) {
+  .dynamic-cards-wrapper :is(.md\:\[\&_\.showmoretags\~\*\:not\(\.showlesstags\)\]\:flex .showmoretags~*:not(.showlesstags)) {
+    display: flex
   }
 }

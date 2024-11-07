@@ -10,10 +10,11 @@ const getSelectionFromUrl = () => (window.location.pathname.indexOf('topics') > 
 export const getPageFromUrl = () => toClassName(new URLSearchParams(window.location.search).get('page')) || '';
 
 const createTopicUrl = (currentUrl, keyword = '') => {
-  if (currentUrl.indexOf('topics') > -1) {
+  console.log(currentUrl, keyword);
+  if (currentUrl.indexOf('category') > -1) {
     return currentUrl.substring(0, currentUrl.lastIndexOf('/') + 1) + toClassName(keyword).toLowerCase();
   }
-  return `${currentUrl.replace('.html', '')}/topics/${toClassName(keyword).toLowerCase()}`;
+  return `${currentUrl.replace('.html', '')}/category/${toClassName(keyword).toLowerCase()}`;
 };
 
 const patchBannerHeading = () => {
@@ -79,11 +80,15 @@ export const createPagination = (entries, page, limit) => {
 
 export function createFilters(articles, viewAll = false) {
   // collect tag filters
-  const allKeywords = articles.map((item) => item.topics.replace(/,\s*/g, ',').split(','));
+  // const allKeywords = articles.map((item) => item?.tags?.replace(/,\s*/g, ',').split(','));
+  const allKeywords = articles.map((item) => {
+    let allTags = item?.tags?.split("/").pop()
+    allTags = allTags?.replace(/-/g, " ");
+    allTags = allTags?.charAt(0).toUpperCase() + allTags?.replace(/-/g, " ").slice(1)
+    return allTags;
+  });
   const keywords = new Set([].concat(...allKeywords));
   keywords.delete('');
-  keywords.delete('Blog'); // filter out generic blog tag
-  keywords.delete('News'); // filter out generic news tag
 
   // render tag cloud
   const newUrl = new URL(window.location);
@@ -145,9 +150,8 @@ export default async function decorate(block) {
   const articleType = 'blog';
 
   // fetch and sort all articles
-  const articles = await ffetch('https://stage.lifesciences.danaher.com/us/en/article-index.json')
+  const articles = await ffetch('/en-us/stories/query-index.json')
     .chunks(500)
-    .filter(({ type }) => type.toLowerCase() === articleType)
     .filter((article) => !article.path.includes('/topics-template'))
     .all();
   let filteredArticles = articles;
@@ -171,7 +175,7 @@ export default async function decorate(block) {
         'container grid max-w-7xl w-full mx-auto gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-4 sm:px-0 justify-items-center mt-3 mb-3',
   });
   articlesToDisplay.forEach((article, index) => {
-    cardList.appendChild(createArticleCard(article, index === 0));
+    cardList.appendChild(createArticleCard(article, index === 0, 'topic'));
   });
 
   // render pagination and filters
