@@ -4,7 +4,8 @@ import { buildStoryHubSchema } from '../../scripts/schema.js';
 import {
   button, div, p, span, ul, li, a,
 } from '../../scripts/dom-builder.js';
-import { createCard, createFilters, imageHelper } from '../../scripts/scripts.js';
+import { createFilters } from '../../scripts/scripts.js';
+import createCard from '../dynamic-cards/articleCard.js';
 
 const getPageFromUrl = () => toClassName(new URLSearchParams(window.location.search).get('page')) || '';
 
@@ -15,6 +16,7 @@ const excludedPages = [
 ];
 let lists = [];
 let filterContainer = {};
+
 let itemsPerPage;
 
 const hub = div();
@@ -185,31 +187,7 @@ function handleRenderContent(newLists = lists) {
   const start = (page - 1) * itemsPerPage;
   const storiesToDisplay = newLists.slice(start, start + itemsPerPage);
   storiesToDisplay.forEach((article, index) => {
-    let footerLink = '';
-    const type = article.path.split('/')[3];
-    switch (type) {
-      case 'podcasts':
-        footerLink = 'Listen to podcast';
-        break;
-      case 'films':
-        footerLink = 'Watch film';
-        break;
-      default:
-        footerLink = 'Read article';
-        break;
-    }
-    const imageUrl = new URL(article.image, window.location);
-
-    cardList.appendChild(createCard({
-      titleImage: imageHelper(imageUrl.pathname, article.title, (index === 0)),
-      title: article.title,
-      description: article.description,
-      footerLink,
-      path: article.path,
-      tags: article.tags,
-      time: article.readingTime,
-      isStoryCard: true,
-    }));
+    cardList.appendChild(createCard(article, index === 0));
   });
 
   const paginationElements = createPagination(newLists, page, itemsPerPage);
