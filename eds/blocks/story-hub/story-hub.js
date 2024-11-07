@@ -1,10 +1,13 @@
 import ffetch from '../../scripts/ffetch.js';
-import { decorateIcons } from '../../scripts/aem.js';
+import { decorateIcons, toClassName } from '../../scripts/aem.js';
 import { buildStoryHubSchema } from '../../scripts/schema.js';
 import {
-  button, div, p, span, ul, li,
+  button, div, p, span, ul, li, a,
 } from '../../scripts/dom-builder.js';
-import { createCard, createFilters, imageHelper } from '../../scripts/scripts.js';
+import { createFilters } from '../../scripts/scripts.js';
+import createCard from '../dynamic-cards/articleCard.js';
+
+const getPageFromUrl = () => toClassName(new URLSearchParams(window.location.search).get('page')) || '';
 
 const excludedPages = [
   '/en-us/stories/films',
@@ -13,6 +16,9 @@ const excludedPages = [
 ];
 let lists = [];
 let filterContainer = {};
+
+let itemsPerPage;
+
 const hub = div();
 const allSelectedTags = div(
   { class: 'w-fit flex flex-row-reverse items-start gap-2 mb-4 [&_*:empty+span]:hidden [&_*:empty]:mb-8' },
@@ -67,6 +73,63 @@ function showMoreOrLessTags(mode) {
   }
 }
 
+const createPaginationLink = (page, label, current = false) => {
+  const newUrl = new URL(window.location);
+  newUrl.searchParams.set('page', page);
+  const link = a(
+    {
+      href: newUrl.toString(),
+      class:
+        'font-medium text-sm leading-5 pt-4 px-4 items-center inline-flex hover:border-t-2 hover:border-gray-300 hover:text-gray-700',
+    },
+    label || page,
+  );
+  if (current) {
+    link.setAttribute('aria-current', 'page');
+    link.classList.add('text-danaherpurple-500', 'border-danaherpurple-500', 'border-t-2');
+  } else {
+    link.classList.add('text-danahergray-700');
+  }
+  return link;
+};
+
+const createPagination = (entries, page, limit) => {
+  const paginationNav = document.createElement('nav');
+  paginationNav.className = 'flex items-center justify-between border-t py-4 md:py-0 mt-8 md:mt-12';
+
+  if (entries.length > limit) {
+    const maxPages = Math.ceil(entries.length / limit);
+    const paginationPrev = div({ class: 'flex flex-1 w-0 -mt-px' });
+    const paginationPages = div({ class: 'hidden md:flex grow justify-center w-0 -mt-px' });
+    const paginationNext = div({ class: 'flex flex-1 w-0 -mt-px justify-end' });
+
+    if (page > 1) {
+      paginationPrev.append(createPaginationLink(page - 1, '← Previous'));
+    }
+    for (let i = 1; i <= maxPages; i += 1) {
+      if (i === 1 || i === maxPages || (i >= page - 2 && i <= page + 2)) {
+        paginationPages.append(createPaginationLink(i, i, i === page));
+      } else if (
+        paginationPages.lastChild && !paginationPages.lastChild.classList.contains('ellipsis')
+      ) {
+        paginationPages.append(
+          span(
+            { class: 'ellipsis font-medium text-sm leading-5 pt-4 px-4 items-center inline-flex' },
+            '...',
+          ),
+        );
+      }
+    }
+    if (page < maxPages) {
+      paginationNext.append(createPaginationLink(page + 1, 'Next →'));
+    }
+
+    paginationNav.append(paginationPrev, paginationPages, paginationNext);
+  }
+  const listPagination = div({ class: 'mx-auto' }, paginationNav);
+  return listPagination;
+};
+
 function handleRenderTags() {
   const tagsList = allSelectedTags.querySelector('ul');
   tagsList.innerHTML = '';
@@ -119,44 +182,23 @@ function handleRenderTags() {
 function handleRenderContent(newLists = lists) {
   newLists.sort((card1, card2) => card2.publishDate - card1.publishDate);
   cardList.innerHTML = '';
-
-  newLists.forEach((article, index) => {
-    let footerLink = '';
-    const type = article.path.split('/')[3];
-    switch (type) {
-      case 'podcasts':
-        footerLink = 'Listen to podcast';
-        break;
-      case 'films':
-        footerLink = 'Watch film';
-        break;
-      default:
-        footerLink = 'Read article';
-        break;
-    }
-    const imageUrl = new URL(article.image, window.location);
-
-    cardList.appendChild(createCard({
-      titleImage: imageHelper(imageUrl.pathname, article.title, (index === 0)),
-      title: article.title,
-      description: article.description,
-      footerLink,
-      path: article.path,
-      tags: article.tags,
-      time: article.readingTime,
-      isStoryCard: true,
-    }));
+  let page = parseInt(getPageFromUrl(), 10);
+  page = Number.isNaN(page) ? 1 : page;
+  const start = (page - 1) * itemsPerPage;
+  const storiesToDisplay = newLists.slice(start, start + itemsPerPage);
+  storiesToDisplay.forEach((article, index) => {
+    cardList.appendChild(createCard(article, index === 0));
   });
-  // const paginationElements = createPagination(newLists, page, limitPerPage);
+
+  const paginationElements = createPagination(newLists, page, itemsPerPage);
   const paginateEl = hub.querySelector('.paginate');
   if (paginateEl) {
     paginateEl.innerHTML = '';
-    // paginateEl.append(paginationElements);
+    paginateEl.append(paginationElements);
   }
 }
 
 function handleChangeFilter(key, value, mode) {
-  // console.log(key, value, mode, filterContainer);
   let newLists = lists;
   if (!(key in filterContainer) && key === 'stories-type') {
     newLists = lists.filter((list) => (value
@@ -189,6 +231,17 @@ function handleChangeFilter(key, value, mode) {
     }
     handleRenderTags();
   }
+  if (mode === 'reset-page') {
+    const url = new URL(window.location.href);
+    const params = new URLSearchParams(url.search);
+    params.delete('page');
+    let newUrl = url.pathname;
+    if (params.toString()) {
+      newUrl += `?${params.toString()}`;
+    }
+    window.history.replaceState({}, '', newUrl);
+  }
+
   handleRenderContent(newLists);
 }
 
@@ -254,6 +307,8 @@ async function initiateRequest() {
 export default async function decorate(block) {
   if (block.children.length > 0) {
     const filterNames = block.querySelector(':scope > div > div > p')?.textContent?.split(',');
+    itemsPerPage = block.querySelector(':scope > div:nth-child(2) > div > p')?.textContent;
+    itemsPerPage = itemsPerPage ? Number(itemsPerPage) : 12;
     await initiateRequest();
     buildStoryHubSchema(lists);
     const allFilters = p({ class: 'h-5/6 mb-3 overflow-visible' });
@@ -263,7 +318,7 @@ export default async function decorate(block) {
       element: allFilters,
       listActionHandler: async (categoryKey, categoryValue) => {
         await initiateRequest();
-        handleChangeFilter(categoryKey, categoryValue);
+        handleChangeFilter(categoryKey, categoryValue, 'reset-page');
       },
       clearFilterHandler: async (categoryKey) => {
         await initiateRequest();

@@ -2,8 +2,8 @@
   position: fixed
 }
 
-.chapter-links-wrapper :is(.sticky) {
-  position: sticky
+.chapter-links-wrapper :is(.relative) {
+  position: relative
 }
 
 .chapter-links-wrapper :is(.inset-0) {
@@ -26,29 +26,13 @@
   z-index: 30
 }
 
-.chapter-links-wrapper :is(.m-4) {
-  margin: 1rem
-}
-
 .chapter-links-wrapper :is(.my-0) {
   margin-top: 0px;
   margin-bottom: 0px
 }
 
-.chapter-links-wrapper :is(.mt-4) {
-  margin-top: 1rem
-}
-
-.chapter-links-wrapper :is(.mb-\[13px\]) {
-  margin-bottom: 13px
-}
-
-.chapter-links-wrapper :is(.mb-\[23px\]) {
-  margin-bottom: 23px
-}
-
-.chapter-links-wrapper :is(.mt-0) {
-  margin-top: 0px
+.chapter-links-wrapper :is(.mb-4) {
+  margin-bottom: 1rem
 }
 
 .chapter-links-wrapper :is(.block) {
@@ -73,20 +57,16 @@
   height: 100%
 }
 
-.chapter-links-wrapper :is(.h-14) {
-  height: 3.5rem
-}
-
 .chapter-links-wrapper :is(.h-full) {
   height: 100%
 }
 
-.chapter-links-wrapper :is(.max-h-96) {
-  max-height: 24rem
+.chapter-links-wrapper :is(.max-h-\[70\%\]) {
+  max-height: 70%
 }
 
-.chapter-links-wrapper :is(.w-96) {
-  width: 24rem
+.chapter-links-wrapper :is(.w-11\/12) {
+  width: 91.666667%
 }
 
 .chapter-links-wrapper :is(.w-full) {
@@ -97,8 +77,8 @@
   width: 100vw
 }
 
-.chapter-links-wrapper :is(.-translate-y-full) {
-  --tw-translate-y: -100%;
+.chapter-links-wrapper :is(.translate-y-full) {
+  --tw-translate-y: 100%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 
@@ -120,14 +100,6 @@
 
 .chapter-links-wrapper :is(.justify-center) {
   justify-content: center
-}
-
-.chapter-links-wrapper :is(.gap-2) {
-  gap: 0.5rem
-}
-
-.chapter-links-wrapper :is(.gap-3) {
-  gap: 0.75rem
 }
 
 .chapter-links-wrapper :is(.gap-x-2) {
@@ -184,10 +156,6 @@
   background-color: rgb(0 0 0 / var(--tw-bg-opacity))
 }
 
-.chapter-links-wrapper :is(.bg-transparent) {
-  background-color: transparent
-}
-
 .chapter-links-wrapper :is(.bg-white) {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
@@ -197,37 +165,9 @@
   --tw-bg-opacity: 0.8
 }
 
-.chapter-links-wrapper :is(.p-1) {
-  padding: 0.25rem
-}
-
-.chapter-links-wrapper :is(.p-2) {
-  padding: 0.5rem
-}
-
 .chapter-links-wrapper :is(.px-12) {
   padding-left: 3rem;
   padding-right: 3rem
-}
-
-.chapter-links-wrapper :is(.px-6) {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem
-}
-
-.chapter-links-wrapper :is(.py-4) {
-  padding-top: 1rem;
-  padding-bottom: 1rem
-}
-
-.chapter-links-wrapper :is(.\!px-0) {
-  padding-left: 0px !important;
-  padding-right: 0px !important
-}
-
-.chapter-links-wrapper :is(.py-3) {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem
 }
 
 .chapter-links-wrapper :is(.px-3) {
@@ -245,12 +185,14 @@
   padding-bottom: 0.5rem
 }
 
-.chapter-links-wrapper :is(.pl-6) {
-  padding-left: 1.5rem
+.chapter-links-wrapper :is(.py-3) {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem
 }
 
-.chapter-links-wrapper :is(.pr-6) {
-  padding-right: 1.5rem
+.chapter-links-wrapper :is(.py-4) {
+  padding-top: 1rem;
+  padding-bottom: 1rem
 }
 
 .chapter-links-wrapper :is(.pb-1) {
@@ -261,27 +203,18 @@
   padding-top: 0.5rem
 }
 
-.chapter-links-wrapper :is(.text-sm) {
-  font-size: 0.875rem;
-  line-height: 1.25rem
-}
-
 .chapter-links-wrapper :is(.text-base) {
   font-size: 1rem;
   line-height: 1.5rem
 }
 
-.chapter-links-wrapper :is(.text-lg) {
-  font-size: 1.125rem;
-  line-height: 1.75rem
+.chapter-links-wrapper :is(.text-sm) {
+  font-size: 0.875rem;
+  line-height: 1.25rem
 }
 
 .chapter-links-wrapper :is(.font-semibold) {
   font-weight: 600
-}
-
-.chapter-links-wrapper :is(.font-medium) {
-  font-weight: 500
 }
 
 .chapter-links-wrapper :is(.uppercase) {
@@ -294,10 +227,6 @@
 
 .chapter-links-wrapper :is(.leading-7) {
   line-height: 1.75rem
-}
-
-.chapter-links-wrapper :is(.tracking-\[0\.3px\]) {
-  letter-spacing: 0.3px
 }
 
 .chapter-links-wrapper :is(.text-\[\#378189\]) {
@@ -351,11 +280,6 @@
 
   .chapter-links-wrapper :is(.lg\:hidden) {
     display: none
-  }
-
-  .chapter-links-wrapper :is(.lg\:text-sm) {
-    font-size: 0.875rem;
-    line-height: 1.25rem
   }
 }
 
