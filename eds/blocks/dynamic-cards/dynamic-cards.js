@@ -80,11 +80,9 @@ export const createPagination = (entries, page, limit) => {
 
 export function createFilters(articles, viewAll = false) {
   // collect tag filters
-  // const allKeywords = articles.map((item) => item?.tags?.replace(/,\s*/g, ',').split(','));
   const allKeywords = articles.map((item) => {
     let allTags = item?.tags?.split("/").pop()
     allTags = allTags?.replace(/-/g, " ");
-    allTags = allTags?.charAt(0).toUpperCase() + allTags?.replace(/-/g, " ").slice(1)
     return allTags;
   });
   const keywords = new Set([].concat(...allKeywords));
@@ -121,7 +119,7 @@ export function createFilters(articles, viewAll = false) {
     const tagAnchor = a(
       {
         class:
-          'text-center my-2 inline-block border-[1px] rounded-full border-black px-4 py-0.5 font-semibold text-black bg-white hover:text-white hover:bg-black',
+          'text-center my-2 inline-block border-[1px] rounded-full border-black px-4 py-0.5 font-semibold text-black bg-white hover:text-white hover:bg-black capitalize',
         href: newUrl.toString(),
       },
       keyword,
