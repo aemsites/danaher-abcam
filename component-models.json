@@ -1755,6 +1755,15 @@
                 "value": "no-header"
               }
             ]
+          },
+          {
+            "name": "Search",
+            "children": [
+              {
+                "name": "Include Search Filter",
+                "value": "search-filter"
+              }
+            ]
           }
         ]
       },
