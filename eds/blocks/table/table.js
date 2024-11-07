@@ -1,34 +1,34 @@
 import { applyClasses, moveInstrumentation } from '../../scripts/scripts.js';
 import {
-  table, tbody, td, th, thead, tr, input, div, form, label, button
+  table, tbody, td, th, thead, tr, input, div, form, label, button,
 } from '../../scripts/dom-builder.js';
 
 // const tableEl = table({ class: 'table-auto' });
-//let instance;
+// let instance;
 
 function handleFilter(event) {
   event.preventDefault();
   const data = new FormData(event.target);
-  console.log(event, data.get('modification'));
+  // console.log(event, data.get('modification'));
   let value = data.get('modification');
   value = value.trim();
   const bodyEl = event.target.parentElement.querySelector('table').querySelector('tbody');
   if (value !== '') {
-    var filter = value.toLowerCase();
-    [...bodyEl.children].forEach((row, i) => {
+    let filter = value.toLowerCase();
+    [...bodyEl.children].forEach((row) => {
       [...row.children].forEach((cell) => {
-        if(cell.innerHTML.toLowerCase().includes(filter)){
+        if (cell.innerHTML.toLowerCase().includes(filter)) {
           applyClasses(row, 'match');
         }
       });
-      if (!row.classList.contains('match')){
+      if (!row.classList.contains('match')) {
         row.style.display = 'none';
       }
     });
   } else {
-    [...bodyEl.children].forEach((row, i) => {
-          row.classList.remove('match');
-          row.style.display = '';
+    [...bodyEl.children].forEach((row) => {
+      row.classList.remove('match');
+      row.style.display = '';
     });
   }
 }
@@ -83,9 +83,9 @@ export default async function decorate(block) {
     else tblBody.append(tblRow);
   });
   tableEl.append(tblHead, tblBody);
-  //instance = tableEl;
-  
-  if (true) {  // check searchFlag from authoring
+  // instance = tableEl;
+  searchFlag = true;
+  if (searchFlag) {
     block.replaceChildren(formEl, tableEl);
   } else {
     block.replaceChildren(tableEl);
