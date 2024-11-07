@@ -2,6 +2,10 @@
   position: fixed
 }
 
+.webinar-hub-wrapper :is(.absolute) {
+  position: absolute
+}
+
 .webinar-hub-wrapper :is(.relative) {
   position: relative
 }
@@ -18,12 +22,24 @@
   top: 0px
 }
 
+.webinar-hub-wrapper :is(.right-0) {
+  right: 0px
+}
+
+.webinar-hub-wrapper :is(.top-full) {
+  top: 100%
+}
+
 .webinar-hub-wrapper :is(.z-40) {
   z-index: 40
 }
 
 .webinar-hub-wrapper :is(.z-50) {
   z-index: 50
+}
+
+.webinar-hub-wrapper :is(.z-20) {
+  z-index: 20
 }
 
 .webinar-hub-wrapper :is(.col-span-9) {
@@ -68,6 +84,18 @@
   margin-top: 2rem
 }
 
+.webinar-hub-wrapper :is(.ml-auto) {
+  margin-left: auto
+}
+
+.webinar-hub-wrapper :is(.mr-2) {
+  margin-right: 0.5rem
+}
+
+.webinar-hub-wrapper :is(.mt-1) {
+  margin-top: 0.25rem
+}
+
 .webinar-hub-wrapper :is(.block) {
   display: block
 }
@@ -106,6 +134,14 @@
   height: 100vh
 }
 
+.webinar-hub-wrapper :is(.h-auto) {
+  height: auto
+}
+
+.webinar-hub-wrapper :is(.max-h-screen) {
+  max-height: 100vh
+}
+
 .webinar-hub-wrapper :is(.w-0) {
   width: 0px
 }
@@ -121,6 +157,19 @@
 
 .webinar-hub-wrapper :is(.w-screen) {
   width: 100vw
+}
+
+.webinar-hub-wrapper :is(.w-36) {
+  width: 9rem
+}
+
+.webinar-hub-wrapper :is(.w-auto) {
+  width: auto
+}
+
+.webinar-hub-wrapper :is(.w-max) {
+  width: -moz-max-content;
+  width: max-content
 }
 
 .webinar-hub-wrapper :is(.flex-1) {
@@ -219,8 +268,21 @@
   row-gap: 2.5rem
 }
 
+.webinar-hub-wrapper :is(.gap-x-4) {
+  -moz-column-gap: 1rem;
+       column-gap: 1rem
+}
+
+.webinar-hub-wrapper :is(.justify-self-end) {
+  justify-self: end
+}
+
 .webinar-hub-wrapper :is(.overflow-visible) {
   overflow: visible
+}
+
+.webinar-hub-wrapper :is(.overflow-y-auto) {
+  overflow-y: auto
 }
 
 .webinar-hub-wrapper :is(.rounded) {
@@ -229,6 +291,10 @@
 
 .webinar-hub-wrapper :is(.rounded-full) {
   border-radius: 9999px
+}
+
+.webinar-hub-wrapper :is(.rounded-2xl) {
+  border-radius: 1rem
 }
 
 .webinar-hub-wrapper :is(.border) {
@@ -247,6 +313,10 @@
   border-top-width: 2px
 }
 
+.webinar-hub-wrapper :is(.\!border-b) {
+  border-bottom-width: 1px !important
+}
+
 .webinar-hub-wrapper :is(.border-\[\#ff7223\]) {
   --tw-border-opacity: 1;
   border-color: rgb(255 114 35 / var(--tw-border-opacity))
@@ -255,6 +325,20 @@
 .webinar-hub-wrapper :is(.border-black) {
   --tw-border-opacity: 1;
   border-color: rgb(0 0 0 / var(--tw-border-opacity))
+}
+
+.webinar-hub-wrapper :is(.border-\[\#EAECEC\]) {
+  --tw-border-opacity: 1;
+  border-color: rgb(234 236 236 / var(--tw-border-opacity))
+}
+
+.webinar-hub-wrapper :is(.border-b-\[\#D8D8D8\]) {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(216 216 216 / var(--tw-border-opacity))
+}
+
+.webinar-hub-wrapper :is(.border-opacity-5) {
+  --tw-border-opacity: 0.05
 }
 
 .webinar-hub-wrapper :is(.bg-\[\#378189\]) {
@@ -270,6 +354,24 @@
 .webinar-hub-wrapper :is(.bg-white) {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+}
+
+.webinar-hub-wrapper :is(.\!bg-\[\#F4F5F5\]) {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(244 245 245 / var(--tw-bg-opacity)) !important
+}
+
+.webinar-hub-wrapper :is(.bg-\[\#273F3F\]) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(39 63 63 / var(--tw-bg-opacity))
+}
+
+.webinar-hub-wrapper :is(.bg-opacity-10) {
+  --tw-bg-opacity: 0.1
+}
+
+.webinar-hub-wrapper :is(.bg-opacity-5) {
+  --tw-bg-opacity: 0.05
 }
 
 .webinar-hub-wrapper :is(.p-1) {
@@ -305,12 +407,31 @@
   padding-bottom: 1rem
 }
 
+.webinar-hub-wrapper :is(.px-6) {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem
+}
+
+.webinar-hub-wrapper :is(.py-3) {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem
+}
+
+.webinar-hub-wrapper :is(.py-6) {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem
+}
+
 .webinar-hub-wrapper :is(.pb-4) {
   padding-bottom: 1rem
 }
 
 .webinar-hub-wrapper :is(.pt-4) {
   padding-top: 1rem
+}
+
+.webinar-hub-wrapper :is(.pt-5) {
+  padding-top: 1.25rem
 }
 
 .webinar-hub-wrapper :is(.text-center) {
@@ -353,12 +474,24 @@
   text-transform: capitalize
 }
 
+.webinar-hub-wrapper :is(.not-italic) {
+  font-style: normal
+}
+
 .webinar-hub-wrapper :is(.leading-5) {
   line-height: 1.25rem
 }
 
+.webinar-hub-wrapper :is(.leading-4) {
+  line-height: 1rem
+}
+
 .webinar-hub-wrapper :is(.tracking-wide) {
   letter-spacing: 0.025em
+}
+
+.webinar-hub-wrapper :is(.tracking-\[0\.2px\]) {
+  letter-spacing: 0.2px
 }
 
 .webinar-hub-wrapper :is(.text-\[\#07111299\]) {
@@ -380,8 +513,23 @@
   color: rgb(255 255 255 / var(--tw-text-opacity))
 }
 
+.webinar-hub-wrapper :is(.text-\[\#273F3F\]) {
+  --tw-text-opacity: 1;
+  color: rgb(39 63 63 / var(--tw-text-opacity))
+}
+
+.webinar-hub-wrapper :is(.text-\[\#65797c\]) {
+  --tw-text-opacity: 1;
+  color: rgb(101 121 124 / var(--tw-text-opacity))
+}
+
 .webinar-hub-wrapper :is(.underline) {
   text-decoration-line: underline
+}
+
+.webinar-hub-wrapper :is(.drop-shadow-2xl) {
+  --tw-drop-shadow: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
 }
 
 .webinar-hub-wrapper :is(.invert) {
@@ -412,9 +560,19 @@
   border-color: rgb(209 213 219 / var(--tw-border-opacity))
 }
 
+.webinar-hub-wrapper :is(.hover\:bg-\[\#f2f2f2\]:hover) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(242 242 242 / var(--tw-bg-opacity))
+}
+
 .webinar-hub-wrapper :is(.hover\:text-gray-700:hover) {
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity))
+}
+
+.webinar-hub-wrapper :is(.hover\:text-black:hover) {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity))
 }
 
 @media (min-width: 768px) {
@@ -502,6 +660,10 @@
 }
 
 @media (min-width: 1024px) {
+  .webinar-hub-wrapper :is(.lg\:left-0) {
+    left: 0px
+  }
+
   .webinar-hub-wrapper :is(.lg\:col-span-3) {
     grid-column: span 3 / span 3
   }

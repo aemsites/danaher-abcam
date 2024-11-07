@@ -32,6 +32,18 @@ const clearAllEl = span({
     handleResetFilters();
   },
 }, 'Clear All');
+const sortByContainer = div(
+  { class: 'sb-main-container flex items-center justify-self-end w-max relative py-6 !border-b border-b-[#D8D8D8] font-semibold' },
+  div({ class: 'sort-by text-[#65797c] text-xs font-semibold not-italic mr-2' }, 'Sort By:'),
+  div(
+    { class: 'sb-container w-36 flex flex-row items-center gap-x-4 !bg-[#F4F5F5] tracking-[0.2px] leading-4 text-xs border border-[#EAECEC] border-opacity-5 bg-[#273F3F] bg-opacity-5 rounded-full py-3 px-6 w-auto bg-white cursor-pointer relative' },
+    span({ class: 'sb-selected' }, ''),
+    span({ class: 'icon icon-chevron-down shrink-0 ml-auto' }),
+    div({ class: 'sb-options w-max h-auto drop-shadow-2xl absolute hidden top-full lg:left-0 right-0 bg-white rounded-2xl z-20 border pt-5 mt-1 max-h-screen overflow-y-auto' }),
+  ),
+);
+//decorateIcons(sortByContainer, 20, 20);
+
 const hubDesktopFilters = div(
   { class: 'md:col-span-2 w-full h-screen md:h-auto fixed md:relative flex flex-col-reverse justify-end top-0 left-0 z-50 md:z-auto transition-all duration-150 -translate-y-full md:translate-y-0 [&_*:has(input:checked)~*_.clear-all]:block' },
   p(
@@ -317,6 +329,53 @@ function toggleTabs(tabId, tabElement) {
   });
 }
 
+
+// Sort options
+const sortOptions = [
+  { label: 'Relevance', value: 'relevance' },
+  { label: 'Date - Descending', value: 'date-desc' },
+  { label: 'Date - Ascending', value: 'date-asc' },
+  { label: 'Most Viewed', value: 'most-viewed' },
+];
+
+const h2Eles = sortOptions;
+if (h2Eles.length > 0) {
+  const sbOptionsContainer = sortByContainer.querySelector('.sb-options');
+  const sbSelected = sortByContainer.querySelector('.sb-selected');
+
+  if (h2Eles.length > 0) {
+    sbSelected.textContent = h2Eles[0].label || 'Section 1';
+    h2Eles.forEach((h2Ele, index) => {
+      const optionEle = div(
+        { class: 'sb-option py-3 px-6 hover:bg-[#f2f2f2] hover:text-black cursor-pointer' },
+        h2Ele.label || `Section ${index + 1}`,
+      );
+      optionEle.dataset.value = index;
+      optionEle.addEventListener('click', function optionSelection(event) {
+
+        sbSelected.textContent = this.textContent;
+        Array.from(sbOptionsContainer.children).forEach((opt) => {
+          opt.classList.remove('bg-[#273F3F]', 'bg-opacity-10', 'text-[#273F3F]');
+        });
+        sbOptionsContainer.classList.add('hidden');
+        event.stopPropagation();
+      });
+      sbOptionsContainer.appendChild(optionEle);
+    });
+  }
+  sortByContainer.querySelector('.sb-container').addEventListener('click', () => {
+    sbOptionsContainer.classList.toggle('hidden');
+  });
+  window.addEventListener('click', (e) => {
+    if (!sortByContainer.contains(e.target)) {
+      sbOptionsContainer.classList.add('hidden');
+    }
+  });
+  sbOptionsContainer.addEventListener('click', (event) => {
+    event.stopPropagation();
+  });
+}
+
 async function initiateRequest() {
   let response = await ffetch('/en-us/stories/query-index.json')
     .filter(({ path }) => !excludedPages.includes(path))
@@ -351,6 +410,7 @@ export default async function decorate(block) {
     const hubContent = div(
       { class: 'col-span-9' },
       allSelectedTags,
+      sortByContainer,
       cardList,
     );
 
@@ -388,26 +448,26 @@ export default async function decorate(block) {
     decorateIcons(hub);
 
     const horizondalLine = div({ class: 'flex items-center justify-between border-t mb-8 md:py-0' });
-    const tabElement = div({ class: 'font-semibold text-base text-black md:block flex' });
-    const tabs = [
-      { name: 'All stories', tabId: 'stories-type/' },
-      { name: 'Community stories', tabId: 'stories-type/community' },
-      { name: 'Product stories', tabId: 'stories-type/products' },
-    ];
-    tabs.forEach((tab) => {
-      const btn = button({
-        class: 'tab md:py-1.5 pb-4 mr-8 active border-b-8 border-[#ff7223]',
-        id: tab.tabId,
-        onclick: async () => {
-          await initiateRequest();
-          toggleTabs(tab.tabId, tabElement);
-        },
-      }, tab.name);
-      tabElement.appendChild(btn);
-    });
-    filterContainer['stories-type'] = [''];
-    toggleTabs(tabs[0].tabId, tabElement);
+    // const tabElement = div({ class: 'font-semibold text-base text-black md:block flex' });
+    // const tabs = [
+    //   { name: 'All stories', tabId: 'stories-type/' },
+    //   { name: 'Community stories', tabId: 'stories-type/community' },
+    //   { name: 'Product stories', tabId: 'stories-type/products' },
+    // ];
+    // tabs.forEach((tab) => {
+    //   const btn = button({
+    //     class: 'tab md:py-1.5 pb-4 mr-8 active border-b-8 border-[#ff7223]',
+    //     id: tab.tabId,
+    //     onclick: async () => {
+    //       await initiateRequest();
+    //       toggleTabs(tab.tabId, tabElement);
+    //     },
+    //   }, tab.name);
+    //   tabElement.appendChild(btn);
+    // });
+    // filterContainer['stories-type'] = [''];
+    // toggleTabs(tabs[0=.tabId, tabElement);
     block.innerHTML = '';
-    block.append(tabElement, horizondalLine, hub);
+    block.append(horizondalLine, hub);
   }
 }
