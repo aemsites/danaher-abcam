@@ -43,7 +43,8 @@
       "story-hub",
       "speakers-info",
       "download",
-      "table"
+      "table",
+      "downloads"
     ]
   },
   {
@@ -73,6 +74,12 @@
       "title",
       "abcam-button",
       "media"
+    ]
+  },
+  {
+    "id": "downloads",
+    "components": [
+      "download"
     ]
   },
   {

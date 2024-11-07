@@ -16,6 +16,7 @@ const excludedPages = [
 ];
 let lists = [];
 let filterContainer = {};
+
 let itemsPerPage;
 
 const hub = div();
@@ -186,7 +187,7 @@ function handleRenderContent(newLists = lists) {
   const start = (page - 1) * itemsPerPage;
   const storiesToDisplay = newLists.slice(start, start + itemsPerPage);
   storiesToDisplay.forEach((article, index) => {
-    // cardList.appendChild(createCard(article, index === 0));
+    cardList.appendChild(createCard(article, index === 0));
   });
 
   const paginationElements = createPagination(newLists, page, itemsPerPage);
