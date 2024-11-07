@@ -5,6 +5,7 @@ import {
 
 import { getMetadata, toClassName } from '../../scripts/aem.js';
 import createArticleCard from './articleCard.js';
+import { applyClasses } from '../../scripts/scripts.js';
 
 const getSelectionFromUrl = () => (window.location.pathname.indexOf('category') > -1 ? toClassName(window.location.pathname.replace('.html', '').split('/').pop()) : '');
 export const getPageFromUrl = () => toClassName(new URLSearchParams(window.location.search).get('page')) || '';
@@ -181,5 +182,7 @@ export default async function decorate(block) {
   // render pagination and filters
   const filterTags = createFilters(articles, true);
   const paginationElements = createPagination(filteredArticles, page, limitPerPage);
+  block.innerHTML = '';
+  applyClasses(block, 'mx-auto pt-8');
   block.append(filterTags, cardList, paginationElements);
 }

@@ -466,6 +466,10 @@
   padding-bottom: 1rem
 }
 
+.dynamic-cards-wrapper :is(.pt-8) {
+  padding-top: 2rem
+}
+
 .dynamic-cards-wrapper :is(.text-center) {
   text-align: center
 }
