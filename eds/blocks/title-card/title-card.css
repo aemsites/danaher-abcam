@@ -91,11 +91,6 @@
   line-height: 1.75rem
 }
 
-.title-card-wrapper :is(.\!text-2xl) {
-  font-size: 1.5rem !important;
-  line-height: 2rem !important
-}
-
 .title-card-wrapper :is(.font-light) {
   font-weight: 300
 }
@@ -108,29 +103,35 @@
   letter-spacing: 0em
 }
 
+@media (min-width: 640px) {
+  .title-card-wrapper :is(.sm\:\!text-\[24px\]) {
+    font-size: 24px !important
+  }
+}
+
 @media (min-width: 768px) {
   .title-card-wrapper :is(.md\:flex) {
     display: flex
+  }
+
+  .title-card-wrapper :is(.md\:\!text-\[42px\]) {
+    font-size: 42px !important
   }
 
   .title-card-wrapper :is(.md\:text-6xl) {
     font-size: 3.75rem;
     line-height: 1
   }
-
-  .title-card-wrapper :is(.md\:\!text-\[42px\]) {
-    font-size: 42px !important
-  }
 }
 
 @media (min-width: 1024px) {
+  .title-card-wrapper :is(.lg\:\!text-\[56px\]) {
+    font-size: 56px !important
+  }
+
   .title-card-wrapper :is(.lg\:text-3xl) {
     font-size: 1.875rem;
     line-height: 2.25rem
-  }
-
-  .title-card-wrapper :is(.lg\:\!text-\[56px\]) {
-    font-size: 56px !important
   }
 }
 

@@ -227,11 +227,11 @@
         @apply flex flex-col gap-x-0 lg:flex-row lg:gap-x-16;
     }
 
-    .stories main .section.no-section-padding .columns-wrapper, .webinars main .section.no-section-padding .columns-wrapper {
+    .stories main .section.no-section-padding .columns-wrapper, .webinar main .section.no-section-padding .columns-wrapper {
         @apply w-full mx-auto lg:h-[31rem] relative;
     }
 
-    .stories main .section.no-section-padding.columns-container, .webinars main .section.no-section-padding.columns-container {
+    .stories main .section.no-section-padding.columns-container, .webinar main .section.no-section-padding.columns-container {
         @apply pt-8;
     }
 
@@ -274,7 +274,7 @@
     .guides-hub main .breadcrumb {
         @apply lg:!px-0;
     }
-
+    
     main .section.guides-middle-container p ~ p {
         @apply !font-normal !text-lg !leading-7 !tracking-[0.3px] !mt-0 !mb-6;
     }
