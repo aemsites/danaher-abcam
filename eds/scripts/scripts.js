@@ -26,6 +26,17 @@ import { yetiToPWSurlsMap } from './pws.js';
 const LCP_BLOCKS = ['hero', 'hero-video', 'carousel']; // add your LCP blocks to the list
 let ytPlayer;
 
+export function getCookie(name) {
+  const cookieArr = document.cookie.split(';');
+  for (let i = 0; i < cookieArr.length; i++) {
+    const cookie = cookieArr[i].trim();
+    if (cookie.startsWith(`${name}=`)) {
+      return decodeURIComponent(cookie.substring(name.length + 1));
+    }
+  }
+  return null;
+}
+
 export function getStoryType(pageTags) {
   const tags = pageTags || getMetadata('pagetags');
   let type = null;
@@ -294,7 +305,7 @@ const TEMPLATE_LIST = [
   'product-detail',
   'search-results',
   'stories',
-  'webinars',
+  'webinar',
   'guide',
   'guides-hub',
 ];
@@ -355,12 +366,13 @@ function decorateGuidePage(main) {
   const sectionEl = main.querySelector(':scope > div.section.chapter-links-container.sidelinks-container');
   if (sectionEl) {
     const toBeRemoved = ['chapter-links-wrapper', 'sidelinks-wrapper'];
-    const rightSideElements = div({ class: 'w-full' });
-    const divEl = div({ class: 'ml-0 md:ml-4 xl:ml-4 min-w-56 lg:max-w-72 flex flex-col gap-y-2' });
+    const rightSideElements = div({ class: 'w-full pr-0 lg:pr-8' });
+    const sticky = div({ class: 'sticky top-0 space-y-12 pt-6' });
+    const divEl = div({ class: 'ml-0 lg:ml-4 xl:ml-4 min-w-60 lg:max-w-72 flex flex-col gap-y-2 z-20' }, sticky);
 
     toBeRemoved.forEach((ele) => {
       const existingEl = sectionEl?.querySelector(`.${ele}`);
-      divEl.append(existingEl);
+      sticky.append(existingEl);
     });
     Array.from(sectionEl?.children).forEach((element) => {
       if (!toBeRemoved.includes(element.classList[0])) {
@@ -384,9 +396,7 @@ function decorateStickyRightNav(main) {
     const stricyBlock = stickySection.querySelector('.sticky-right-navigation-wrapper')?.firstElementChild;
     stricyBlock?.classList.add('w-full');
     [...stickySection.children].forEach((child, index, childs) => {
-      if (index !== childs.length - 1) {
-        divEl.append(child);
-      }
+      if (index !== childs.length - 1) divEl.append(child);
     });
     stickySection.prepend(divEl);
   }
@@ -823,6 +833,15 @@ export function formatDate(date) {
   return formatDate;
 }
 
+// Check if OneTrust is accepted
+export function isOTEnabled() {
+  const otCookie = getCookie("OptanonConsent");
+  if (typeof otCookie === "string") {
+      return otCookie.includes("C0002:1")
+  }
+  return true;
+}
+
 /**
  * Loads everything that doesn't need to be delayed.
  * @param {Element} doc The container element
@@ -855,34 +874,6 @@ function loadDelayed() {
   window.setTimeout(() => import('./delayed.js'), 3000);
   // load anything that can be postponed to the latest here
   // import('./sidekick.js').then(({ initSidekick }) => initSidekick());
-}
-
-/**
- * Returns the valid public url with or without .html extension
- * @param {string} url
- * @returns new string with the formatted url
- */
-export function makePublicUrl(url) {
-  const isProd = window.location.hostname.includes('abcam.com');
-  try {
-    const newURL = new URL(url, window.location.origin);
-    if (isProd) {
-      if (newURL.pathname.endsWith('.html')) {
-        return newURL.pathname;
-      }
-      newURL.pathname += '.html';
-      return newURL.pathname;
-    }
-    if (newURL.pathname.endsWith('.html')) {
-      newURL.pathname = newURL.pathname.slice(0, -5);
-      return newURL.pathname;
-    }
-    return newURL.pathname;
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error('Invalid URL:', error);
-    return url;
-  }
 }
 
 /**

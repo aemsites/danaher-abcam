@@ -29,7 +29,7 @@
     }
 
     h2 { 
-        @apply !leading-9 !font-bold !text-4xl md:!text-3xl;
+        @apply !text-4xl !leading-9 !font-bold md:!text-3xl;
     }
 
     h3 { 
@@ -49,11 +49,11 @@
     }
 
     .button-primary {
-        @apply bg-[#378189] hover:bg-[#2A5F65] whitespace-nowrap rounded-full items-center py-px px-3 text-white text-sm capitalize justify-self-end w-fit;
+        @apply bg-[#378189] hover:bg-[#2A5F65] whitespace-nowrap rounded-full items-center py-px px-3 text-white text-sm capitalize w-fit;
     }
 
     main .section .button-secondary {
-        @apply bg-black hover:bg-[#3B3B3B] whitespace-nowrap rounded-full items-center py-3 px-6 font-semibold text-white text-sm capitalize justify-self-end w-fit;
+        @apply bg-black hover:bg-[#3B3B3B] whitespace-nowrap rounded-full items-center py-3 px-6 font-semibold text-white text-sm capitalize w-fit;
     }
 
     main .section .button-tertiary-outline {
@@ -227,11 +227,11 @@
         @apply flex flex-col gap-x-0 lg:flex-row lg:gap-x-16;
     }
 
-    .stories main .section.no-section-padding .columns-wrapper, .webinars main .section.no-section-padding .columns-wrapper {
+    .stories main .section.no-section-padding .columns-wrapper, .webinar main .section.no-section-padding .columns-wrapper {
         @apply w-full mx-auto lg:h-[31rem] relative;
     }
 
-    .stories main .section.no-section-padding.columns-container, .webinars main .section.no-section-padding.columns-container {
+    .stories main .section.no-section-padding.columns-container, .webinar main .section.no-section-padding.columns-container {
         @apply pt-8;
     }
 
@@ -245,6 +245,42 @@
 
     main .section.related-stories-container .default-content-wrapper h2{
         @apply lg:px-6 xl:px-0 !pt-0;
+    }
+
+    .guide .sticky-bottom {
+        @apply sticky bottom-0 lg:hidden bg-transparent py-4 px-6 z-20;
+    }
+
+    .guides-hub main .section .title-card {
+        @apply mx-auto xl:!max-w-[1120px] xl:px-0 px-[30px];
+    }
+
+    .guides-hub main .section .title-card p{
+        @apply !font-normal !text-lg !leading-7 !tracking-[0.3px];
+    }
+    
+    main .guides-hub-links-container .default-content-wrapper {
+        @apply mx-auto xl:!max-w-[1120px] sm:!px-0 lg:!px-[30px] xl:!px-0;
+    }
+
+    .guides-hub main .guides-hub-links-container .guides-hub-links-wrapper {
+        @apply mx-auto xl:!max-w-[1120px] sm:!px-0 lg:!px-[30px] xl:!px-0;
+    }
+
+    .guides-hub main .breadcrumb-container {
+        @apply mx-auto xl:!max-w-[1120px] xl:px-0 px-[30px];
+    }
+    
+    .guides-hub main .breadcrumb {
+        @apply lg:!px-0;
+    }
+    
+    main .section.guides-middle-container p ~ p {
+        @apply !font-normal !text-lg !leading-7 !tracking-[0.3px] !mt-0 !mb-6;
+    }
+ 
+    main .section.guides-middle-container h2{
+        @apply !font-normal !text-2xl !leading-7 !tracking-[0.3px] !mb-2;
     }
    
 }   

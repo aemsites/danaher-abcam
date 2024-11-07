@@ -8,10 +8,11 @@ import {
  * @param {Element} block
  */
 export default async function decorate(block) {
-  const t = table();
+  const t = table({ class: 'table-auto' });
   const tblHead = thead();
   const tblBody = tbody();
   const header = !block.classList.contains('no-header');
+  block.parentElement.classList.add(...'relative overflow-x-auto'.split(' '));
 
   [...block.children].forEach((row, i) => {
     const tblRow = tr();

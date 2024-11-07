@@ -1,7 +1,8 @@
 import {
-  div, h2, ul, li, a,
+  div, h3, ul, li, a,
 } from '../../scripts/dom-builder.js';
 import ffetch from '../../scripts/ffetch.js';
+import { buildGuidesCollectionSchema } from '../../scripts/schema.js';
 
 export default async function decorate(block) {
   const currentPage = window.location.pathname.split('/').pop();
@@ -11,11 +12,11 @@ export default async function decorate(block) {
     .all();
 
   appGuides = appGuides.sort((item1, item2) => item1.title.localeCompare(item2.title));
-  const applicationGuidesDiv = div({ class: 'pt-6 pl-6' }, h2('By Application'), ul());
+  const applicationGuidesDiv = div({ class: 'pt-6 basis-1/2' }, h3('By Application'), ul());
   appGuides.forEach((element) => {
     applicationGuidesDiv.querySelector('ul').appendChild(
       li(
-        { class: 'mb-1 font-semibold text-lg text-[#378189] hover:underline' },
+        { class: 'mb-4 font-semibold text-lg text-[#378189] hover:underline' },
         a({ href: element.path }, element.title.replace(/\s*\|\s*abcam$/i, '')),
       ),
     );
@@ -27,10 +28,16 @@ export default async function decorate(block) {
     .all();
 
   raGuides = raGuides.sort((item1, item2) => item1.title.localeCompare(item2.title));
-  const raGuidesDiv = div({ class: 'pt-6 pl-6' }, h2('By Research area'), ul());
+  const raGuidesDiv = div({ class: 'pt-6 basis-1/2' }, h3('By Research area'), ul());
   raGuides.forEach((element) => {
-    raGuidesDiv.querySelector('ul').appendChild(li({ class: 'mb-1 font-semibold text-lg text-[#378189]' }, a({ href: element.path }, element.title.replace(/\s*\|\s*abcam$/i, ''))));
+    raGuidesDiv.querySelector('ul').appendChild(li({ class: 'mb-4 font-semibold text-lg text-[#378189] hover:underline' }, a({ href: element.path }, element.title.replace(/\s*\|\s*abcam$/i, ''))));
   });
   block.innerText = '';
   block.appendChild(div({ class: 'flex flex-col md:flex-row lg:gap-x-52' }, applicationGuidesDiv, raGuidesDiv));
+
+  let allGuides = await ffetch('/en-us/technical-resources/guides/query-index.json')
+    .filter((item) => item.parent === currentPage)
+    .all();
+  allGuides = allGuides.sort((item1, item2) => item1.title.localeCompare(item2.title));
+  buildGuidesCollectionSchema(allGuides);
 }

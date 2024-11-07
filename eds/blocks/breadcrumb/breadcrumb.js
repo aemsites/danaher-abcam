@@ -9,19 +9,19 @@ export default function decorate(block) {
   const title = ogTitle.indexOf('| abcam') > -1 ? ogTitle.split('| abcam')[0] : ogTitle;
   const newUrl = new URL(window.location);
   if (window.location.pathname.indexOf('technical-resources/guides') > -1) {
-    newUrl.pathname = window.location.pathname.substring(0, window.location.pathname.indexOf('/technical-resources/guides/'));
+    newUrl.pathname = window.location.pathname.substring(0, window.location.pathname.indexOf('/technical-resources/'));
   }
   const { length } = path;
   if (length > 0) {
     const breadcrumbLiLinks = li({ class: 'flex gap-x-2' });
     let url = '';
-    let breadcrumbLinks = a({ class: '\'breadcrumblink hover:underline text-lg\'', href: '/en-us' }, 'Home');
+    let breadcrumbLinks = a({ class: 'breadcrumblink hover:underline text-sm md:text-lg', href: '/en-us' }, 'Home');
     breadcrumbLiLinks.appendChild(breadcrumbLinks);
     for (let i = 0; i < length; i += 1) {
       url = `${url}/${path[i]}`;
       let link = i === length - 1 ? title : path[i].charAt(0).toUpperCase() + path[i].slice(1);
       link = link.replace(/-/g, ' ');
-      breadcrumbLinks = a({ class: '\'breadcrumblink text-lg\'', href: newUrl + url }, (`${link}`));
+      breadcrumbLinks = a({ class: 'breadcrumblink text-sm md:text-lg', href: newUrl + url }, (`${link}`));
       breadcrumbLinks.classList.toggle('underline', i === length - 1);
       breadcrumbLinks.classList.toggle('hover:underline', i !== length - 1);
       breadcrumbLiLinks.append('/');

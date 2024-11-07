@@ -539,7 +539,6 @@ h6 {
   width: -moz-fit-content;
   width: fit-content;
   align-items: center;
-  justify-self: end;
   white-space: nowrap;
   border-radius: 9999px;
   --tw-bg-opacity: 1;
@@ -564,7 +563,6 @@ main .section .button-secondary {
   width: -moz-fit-content;
   width: fit-content;
   align-items: center;
-  justify-self: end;
   white-space: nowrap;
   border-radius: 9999px;
   --tw-bg-opacity: 1;
@@ -1175,7 +1173,7 @@ dialog .modal-content .section > .default-content-wrapper p {
   }
 }
 
-.stories main .section.no-section-padding .columns-wrapper, .webinars main .section.no-section-padding .columns-wrapper {
+.stories main .section.no-section-padding .columns-wrapper, .webinar main .section.no-section-padding .columns-wrapper {
   position: relative;
   margin-left: auto;
   margin-right: auto;
@@ -1183,12 +1181,12 @@ dialog .modal-content .section > .default-content-wrapper p {
 }
 
 @media (min-width: 1024px) {
-  .stories main .section.no-section-padding .columns-wrapper, .webinars main .section.no-section-padding .columns-wrapper {
+  .stories main .section.no-section-padding .columns-wrapper, .webinar main .section.no-section-padding .columns-wrapper {
     height: 31rem;
   }
 }
 
-.stories main .section.no-section-padding.columns-container, .webinars main .section.no-section-padding.columns-container {
+.stories main .section.no-section-padding.columns-container, .webinar main .section.no-section-padding.columns-container {
   padding-top: 2rem;
 }
 
@@ -1222,6 +1220,138 @@ main .section.related-stories-container .default-content-wrapper h2 {
     padding-left: 0px;
     padding-right: 0px;
   }
+}
+
+.guide .sticky-bottom {
+  position: sticky;
+  bottom: 0px;
+  z-index: 20;
+  background-color: transparent;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .guide .sticky-bottom {
+    display: none;
+  }
+}
+
+.guides-hub main .section .title-card {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+@media (min-width: 1280px) {
+  .guides-hub main .section .title-card {
+    max-width: 1120px !important;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
+.guides-hub main .section .title-card p {
+  font-size: 1.125rem !important;
+  font-weight: 400 !important;
+  line-height: 1.75rem !important;
+  letter-spacing: 0.3px !important;
+}
+
+main .guides-hub-links-container .default-content-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 640px) {
+  main .guides-hub-links-container .default-content-wrapper {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  main .guides-hub-links-container .default-content-wrapper {
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  main .guides-hub-links-container .default-content-wrapper {
+    max-width: 1120px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+}
+
+.guides-hub main .guides-hub-links-container .guides-hub-links-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 640px) {
+  .guides-hub main .guides-hub-links-container .guides-hub-links-wrapper {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .guides-hub main .guides-hub-links-container .guides-hub-links-wrapper {
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .guides-hub main .guides-hub-links-container .guides-hub-links-wrapper {
+    max-width: 1120px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+}
+
+.guides-hub main .breadcrumb-container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+@media (min-width: 1280px) {
+  .guides-hub main .breadcrumb-container {
+    max-width: 1120px !important;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .guides-hub main .breadcrumb {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+}
+
+main .section.guides-middle-container p ~ p {
+  margin-top: 0px !important;
+  margin-bottom: 1.5rem !important;
+  font-size: 1.125rem !important;
+  font-weight: 400 !important;
+  line-height: 1.75rem !important;
+  letter-spacing: 0.3px !important;
+}
+
+main .section.guides-middle-container h2 {
+  margin-bottom: 0.5rem !important;
+  font-size: 1.5rem !important;
+  font-weight: 400 !important;
+  line-height: 1.75rem !important;
+  letter-spacing: 0.3px !important;
 }
 
 .sr-only {
@@ -1306,6 +1436,10 @@ main .section.related-stories-container .default-content-wrapper h2 {
 
 .z-10 {
   z-index: 10;
+}
+
+.z-20 {
+  z-index: 20;
 }
 
 .z-30 {
@@ -1614,6 +1748,10 @@ main .section.related-stories-container .default-content-wrapper h2 {
   min-width: 14rem;
 }
 
+.min-w-60 {
+  min-width: 15rem;
+}
+
 .max-w-\[2464px\] {
   max-width: 2464px;
 }
@@ -1791,6 +1929,12 @@ main .section.related-stories-container .default-content-wrapper h2 {
   --tw-space-x-reverse: 0;
   margin-right: calc(1rem * var(--tw-space-x-reverse));
   margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-y-12 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(3rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(3rem * var(--tw-space-y-reverse));
 }
 
 .space-y-2 > :not([hidden]) ~ :not([hidden]) {
@@ -2152,6 +2296,10 @@ main .section.related-stories-container .default-content-wrapper h2 {
   padding-left: 1rem;
 }
 
+.pr-0 {
+  padding-right: 0px;
+}
+
 .pr-2 {
   padding-right: 0.5rem;
 }
@@ -2178,6 +2326,10 @@ main .section.related-stories-container .default-content-wrapper h2 {
 
 .pt-4 {
   padding-top: 1rem;
+}
+
+.pt-6 {
+  padding-top: 1.5rem;
 }
 
 .pt-\[3px\] {
@@ -2490,10 +2642,6 @@ main .section.related-stories-container .default-content-wrapper h2 {
     margin-bottom: 0.5rem;
   }
 
-  .md\:ml-4 {
-    margin-left: 1rem;
-  }
-
   .md\:mt-4 {
     margin-top: 1rem;
   }
@@ -2599,6 +2747,10 @@ main .section.related-stories-container .default-content-wrapper h2 {
     margin-bottom: 1rem;
   }
 
+  .lg\:ml-4 {
+    margin-left: 1rem;
+  }
+
   .lg\:\!block {
     display: block !important;
   }
@@ -2633,6 +2785,10 @@ main .section.related-stories-container .default-content-wrapper h2 {
 
   .lg\:flex-col {
     flex-direction: column;
+  }
+
+  .lg\:pr-8 {
+    padding-right: 2rem;
   }
 }
 
