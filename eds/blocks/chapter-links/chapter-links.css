@@ -10,6 +10,10 @@
   inset: 0px
 }
 
+.chapter-links-wrapper :is(.bottom-0) {
+  bottom: 0px
+}
+
 .chapter-links-wrapper :is(.left-0) {
   left: 0px
 }
@@ -18,16 +22,8 @@
   top: 0px
 }
 
-.chapter-links-wrapper :is(.bottom-0) {
-  bottom: 0px
-}
-
 .chapter-links-wrapper :is(.z-30) {
   z-index: 30
-}
-
-.chapter-links-wrapper :is(.m-4) {
-  margin: 1rem
 }
 
 .chapter-links-wrapper :is(.my-0) {
@@ -65,16 +61,12 @@
   height: 100%
 }
 
-.chapter-links-wrapper :is(.max-h-96) {
-  max-height: 24rem
-}
-
 .chapter-links-wrapper :is(.max-h-\[70\%\]) {
   max-height: 70%
 }
 
-.chapter-links-wrapper :is(.w-96) {
-  width: 24rem
+.chapter-links-wrapper :is(.w-11\/12) {
+  width: 91.666667%
 }
 
 .chapter-links-wrapper :is(.w-full) {
@@ -83,15 +75,6 @@
 
 .chapter-links-wrapper :is(.w-screen) {
   width: 100vw
-}
-
-.chapter-links-wrapper :is(.w-11\/12) {
-  width: 91.666667%
-}
-
-.chapter-links-wrapper :is(.-translate-y-full) {
-  --tw-translate-y: -100%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 
 .chapter-links-wrapper :is(.translate-y-full) {
@@ -117,10 +100,6 @@
 
 .chapter-links-wrapper :is(.justify-center) {
   justify-content: center
-}
-
-.chapter-links-wrapper :is(.gap-2) {
-  gap: 0.5rem
 }
 
 .chapter-links-wrapper :is(.gap-x-2) {
@@ -206,14 +185,14 @@
   padding-bottom: 0.5rem
 }
 
-.chapter-links-wrapper :is(.py-4) {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
 .chapter-links-wrapper :is(.py-3) {
   padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+  padding-bottom: 0.75rem
+}
+
+.chapter-links-wrapper :is(.py-4) {
+  padding-top: 1rem;
+  padding-bottom: 1rem
 }
 
 .chapter-links-wrapper :is(.pb-1) {
@@ -301,11 +280,6 @@
 
   .chapter-links-wrapper :is(.lg\:hidden) {
     display: none
-  }
-
-  .chapter-links-wrapper :is(.lg\:text-sm) {
-    font-size: 0.875rem;
-    line-height: 1.25rem
   }
 }
 
