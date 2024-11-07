@@ -14,7 +14,7 @@ function handleFilter(event) {
   value = value.trim();
   const bodyEl = event.target.parentElement.querySelector('table').querySelector('tbody');
   if (value !== '') {
-    let filter = value.toLowerCase();
+    const filter = value.toLowerCase();
     [...bodyEl.children].forEach((row) => {
       [...row.children].forEach((cell) => {
         if (cell.innerHTML.toLowerCase().includes(filter)) {
@@ -61,7 +61,7 @@ export default async function decorate(block) {
   const tblHead = thead();
   const tblBody = tbody();
   const header = !block.classList.contains('no-header');
-  const searchFlag = block.classList.contains('search-filter');
+  const searchFlag = block.classList.contains('search-filter') ? true : false;
   block.parentElement.classList.add(...'relative overflow-x-auto'.split(' '));
 
   [...block.children].forEach((row, i) => {
@@ -84,7 +84,6 @@ export default async function decorate(block) {
   });
   tableEl.append(tblHead, tblBody);
   // instance = tableEl;
-  searchFlag = true;
   if (searchFlag) {
     block.replaceChildren(formEl, tableEl);
   } else {
