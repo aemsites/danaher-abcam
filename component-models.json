@@ -2102,6 +2102,13 @@
         "label": "Title"
       },
       {
+        "component": "select",
+        "name": "video_transcript_titleType",
+        "hidden": true,
+        "label": "Title Type",
+        "valueType": "string"
+      },
+      {
         "component": "richtext",
         "name": "video_transcript_description",
         "value": "",
