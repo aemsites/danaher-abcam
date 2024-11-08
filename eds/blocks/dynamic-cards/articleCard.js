@@ -23,12 +23,12 @@ export default function createCard(article, firstCard = false, cardType = 'story
       minRead = ` | ${time} mins watch`;
       break;
     case 'upcoming-webinar':
-        footerLink = 'Register';
-        break;
+      footerLink = 'Register';
+      break;
     case 'on-demand-webinar':
-        footerLink = 'Watch webinar';
-        minRead = ` | ${time} mintues`;
-        break;
+      footerLink = 'Watch webinar';
+      minRead = ` | ${time} mintues`;
+      break;
     default:
       footerLink = 'Read article';
       minRead = ` | ${time} mins read`;

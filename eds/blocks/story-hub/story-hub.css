@@ -64,8 +64,30 @@
   margin-right: 2rem
 }
 
+.story-hub-wrapper :is(.mt-2) {
+  margin-top: 0.5rem
+}
+
+.story-hub-wrapper :is(.mt-4) {
+  margin-top: 1rem
+}
+
 .story-hub-wrapper :is(.mt-8) {
   margin-top: 2rem
+}
+
+.story-hub-wrapper :is(.line-clamp-3) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3
+}
+
+.story-hub-wrapper :is(.line-clamp-4) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4
 }
 
 .story-hub-wrapper :is(.block) {
@@ -96,6 +118,11 @@
 .story-hub-wrapper :is(.size-8) {
   width: 2rem;
   height: 2rem
+}
+
+.story-hub-wrapper :is(.size-full) {
+  width: 100%;
+  height: 100%
 }
 
 .story-hub-wrapper :is(.h-5\/6) {
@@ -219,8 +246,16 @@
   row-gap: 2.5rem
 }
 
+.story-hub-wrapper :is(.overflow-hidden) {
+  overflow: hidden
+}
+
 .story-hub-wrapper :is(.overflow-visible) {
   overflow: visible
+}
+
+.story-hub-wrapper :is(.break-words) {
+  overflow-wrap: break-word
 }
 
 .story-hub-wrapper :is(.rounded) {
@@ -267,6 +302,10 @@
   background-color: rgb(237 246 247 / var(--tw-bg-opacity))
 }
 
+.story-hub-wrapper :is(.bg-transparent) {
+  background-color: transparent
+}
+
 .story-hub-wrapper :is(.bg-white) {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
@@ -274,6 +313,10 @@
 
 .story-hub-wrapper :is(.p-1) {
   padding: 0.25rem
+}
+
+.story-hub-wrapper :is(.p-2) {
+  padding: 0.5rem
 }
 
 .story-hub-wrapper :is(.p-3) {
@@ -309,12 +352,20 @@
   padding-bottom: 1rem
 }
 
+.story-hub-wrapper :is(.pl-0) {
+  padding-left: 0px
+}
+
 .story-hub-wrapper :is(.pt-4) {
   padding-top: 1rem
 }
 
 .story-hub-wrapper :is(.text-center) {
   text-align: center
+}
+
+.story-hub-wrapper :is(.font-\[\"rockwell\"\]) {
+  font-family: "rockwell"
 }
 
 .story-hub-wrapper :is(.text-base) {
@@ -335,6 +386,10 @@
 .story-hub-wrapper :is(.text-xs) {
   font-size: 0.75rem;
   line-height: 1rem
+}
+
+.story-hub-wrapper :is(.font-bold) {
+  font-weight: 700
 }
 
 .story-hub-wrapper :is(.font-medium) {
@@ -370,6 +425,11 @@
   color: rgb(55 129 137 / var(--tw-text-opacity))
 }
 
+.story-hub-wrapper :is(.text-\[\#65697C\]) {
+  --tw-text-opacity: 1;
+  color: rgb(101 105 124 / var(--tw-text-opacity))
+}
+
 .story-hub-wrapper :is(.text-black) {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity))
@@ -393,6 +453,14 @@
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
 }
 
+.story-hub-wrapper :is(.transition) {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms
+}
+
 .story-hub-wrapper :is(.transition-all) {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -401,6 +469,10 @@
 
 .story-hub-wrapper :is(.duration-150) {
   transition-duration: 150ms
+}
+
+.story-hub-wrapper :is(.duration-700) {
+  transition-duration: 700ms
 }
 
 .story-hub-wrapper :is(.hover\:border-t-2:hover) {
@@ -415,6 +487,14 @@
 .story-hub-wrapper :is(.hover\:text-gray-700:hover) {
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity))
+}
+
+.story-hub-wrapper :is(.group:hover .group-hover\:tracking-wide) {
+  letter-spacing: 0.025em
+}
+
+.story-hub-wrapper :is(.group:hover .group-hover\:underline) {
+  text-decoration-line: underline
 }
 
 @media (min-width: 768px) {
