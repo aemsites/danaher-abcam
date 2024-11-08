@@ -1,5 +1,5 @@
 import ffetch from '../../scripts/ffetch.js';
-import { imageHelper, getStoryType } from '../../scripts/scripts.js';
+import { imageHelper, getContentType } from '../../scripts/scripts.js';
 import {
   ul, li, p, a, div, h3, span,
 } from '../../scripts/dom-builder.js';
@@ -26,7 +26,7 @@ function createCard(article, firstCard = false) {
 
   const tags = '';
   let minRead;
-  switch (getStoryType(tags)) {
+  switch (getContentType(tags)) {
     case 'podcast':
       minRead = ` | ${article.readingTime} mins listen`;
       break;
@@ -44,7 +44,7 @@ function createCard(article, firstCard = false) {
     imageHelper(imageUrl.pathname, article.title, firstCard),
     div(
       { class: 'py-2' },
-      span({ class: 'capitalize font-[rockwell] text-[#65697C] text-sm' }, `${getStoryType(tags)}`),
+      span({ class: 'capitalize font-[rockwell] text-[#65697C] text-sm' }, `${getContentType(tags)}`),
       span({ class: 'font-[rockwell] text-[#65697C] text-sm' }, `${minRead}`),
       h3(
         {

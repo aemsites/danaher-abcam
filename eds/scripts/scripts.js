@@ -37,7 +37,7 @@ export function getCookie(name) {
   return null;
 }
 
-export function getStoryType(pageTags) {
+export function getContentType(pageTags) {
   const tags = pageTags || getMetadata('pagetags');
   let type = null;
   tags?.split(',').forEach((tag) => {
@@ -1044,7 +1044,7 @@ export function createCard({
   );
   if (isStoryCard) {
     let minRead;
-    switch (getStoryType(tags)) {
+    switch (getContentType(tags)) {
       case 'podcast':
         minRead = ` | ${time} mins listen`;
         break;
@@ -1056,7 +1056,7 @@ export function createCard({
         break;
     }
     card.querySelector('.flex-1').prepend(
-      span({ class: 'capitalize font-normal text-sm text-[#65697C] font-["rockwell"]' }, `${getStoryType(tags)}`),
+      span({ class: 'capitalize font-normal text-sm text-[#65697C] font-["rockwell"]' }, `${getContentType(tags)}`),
       span({ class: 'font-normal text-sm text-[#65697C] font-["rockwell"]' }, `${minRead}`),
     );
   }
