@@ -36,10 +36,6 @@
   position: relative
 }
 
-.dynamic-cards-wrapper :is(.col-span-1) {
-  grid-column: span 1 / span 1
-}
-
 .dynamic-cards-wrapper :is(.mx-auto) {
   margin-left: auto;
   margin-right: auto
@@ -62,6 +58,10 @@
   margin-bottom: 1rem
 }
 
+.dynamic-cards-wrapper :is(.mt-2) {
+  margin-top: 0.5rem
+}
+
 .dynamic-cards-wrapper :is(.mt-3) {
   margin-top: 0.75rem
 }
@@ -74,15 +74,18 @@
   margin-top: 2rem
 }
 
-.dynamic-cards-wrapper :is(.mt-auto) {
-  margin-top: auto
-}
-
 .dynamic-cards-wrapper :is(.line-clamp-3) {
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3
+}
+
+.dynamic-cards-wrapper :is(.line-clamp-4) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4
 }
 
 .dynamic-cards-wrapper :is(.block) {
@@ -109,15 +112,8 @@
   display: none
 }
 
-.dynamic-cards-wrapper :is(.\!h-16) {
-  height: 4rem !important
-}
-
-.dynamic-cards-wrapper :is(.\!h-28) {
-  height: 7rem !important
-}
-
-.dynamic-cards-wrapper :is(.h-full) {
+.dynamic-cards-wrapper :is(.size-full) {
+  width: 100%;
   height: 100%
 }
 
@@ -139,10 +135,6 @@
 
 .dynamic-cards-wrapper :is(.grow) {
   flex-grow: 1
-}
-
-.dynamic-cards-wrapper :is(.transform) {
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 
 .dynamic-cards-wrapper :is(.grid-cols-1) {
@@ -223,9 +215,17 @@
   background-color: rgb(0 0 0 / var(--tw-bg-opacity)) !important
 }
 
+.dynamic-cards-wrapper :is(.bg-transparent) {
+  background-color: transparent
+}
+
 .dynamic-cards-wrapper :is(.bg-white) {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+}
+
+.dynamic-cards-wrapper :is(.p-2) {
+  padding: 0.5rem
 }
 
 .dynamic-cards-wrapper :is(.px-4) {
@@ -243,26 +243,29 @@
   padding-bottom: 0.125rem
 }
 
-.dynamic-cards-wrapper :is(.py-2) {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem
-}
-
 .dynamic-cards-wrapper :is(.py-4) {
   padding-top: 1rem;
   padding-bottom: 1rem
 }
 
-.dynamic-cards-wrapper :is(.pb-5) {
-  padding-bottom: 1.25rem
+.dynamic-cards-wrapper :is(.pl-0) {
+  padding-left: 0px
 }
 
 .dynamic-cards-wrapper :is(.pt-4) {
   padding-top: 1rem
 }
 
+.dynamic-cards-wrapper :is(.pt-8) {
+  padding-top: 2rem
+}
+
 .dynamic-cards-wrapper :is(.text-center) {
   text-align: center
+}
+
+.dynamic-cards-wrapper :is(.font-\[\"rockwell\"\]) {
+  font-family: "rockwell"
 }
 
 .dynamic-cards-wrapper :is(.text-base) {
@@ -273,6 +276,10 @@
 .dynamic-cards-wrapper :is(.text-sm) {
   font-size: 0.875rem;
   line-height: 1.25rem
+}
+
+.dynamic-cards-wrapper :is(.font-bold) {
+  font-weight: 700
 }
 
 .dynamic-cards-wrapper :is(.font-medium) {
@@ -287,6 +294,10 @@
   font-weight: 600
 }
 
+.dynamic-cards-wrapper :is(.capitalize) {
+  text-transform: capitalize
+}
+
 .dynamic-cards-wrapper :is(.leading-5) {
   line-height: 1.25rem
 }
@@ -294,6 +305,16 @@
 .dynamic-cards-wrapper :is(.\!text-white) {
   --tw-text-opacity: 1 !important;
   color: rgb(255 255 255 / var(--tw-text-opacity)) !important
+}
+
+.dynamic-cards-wrapper :is(.text-\[\#378189\]) {
+  --tw-text-opacity: 1;
+  color: rgb(55 129 137 / var(--tw-text-opacity))
+}
+
+.dynamic-cards-wrapper :is(.text-\[\#65697C\]) {
+  --tw-text-opacity: 1;
+  color: rgb(101 105 124 / var(--tw-text-opacity))
 }
 
 .dynamic-cards-wrapper :is(.text-black) {
@@ -313,14 +334,8 @@
   transition-duration: 150ms
 }
 
-.dynamic-cards-wrapper :is(.duration-500) {
-  transition-duration: 500ms
-}
-
-.dynamic-cards-wrapper :is(.hover\:scale-105:hover) {
-  --tw-scale-x: 1.05;
-  --tw-scale-y: 1.05;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+.dynamic-cards-wrapper :is(.duration-700) {
+  transition-duration: 700ms
 }
 
 .dynamic-cards-wrapper :is(.hover\:border-t-2:hover) {
@@ -345,6 +360,14 @@
 .dynamic-cards-wrapper :is(.hover\:text-white:hover) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+
+.dynamic-cards-wrapper :is(.group:hover .group-hover\:tracking-wide) {
+  letter-spacing: 0.025em
+}
+
+.dynamic-cards-wrapper :is(.group:hover .group-hover\:underline) {
+  text-decoration-line: underline
 }
 
 @media (min-width: 640px) {

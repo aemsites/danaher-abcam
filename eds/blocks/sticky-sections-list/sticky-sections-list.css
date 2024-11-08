@@ -50,16 +50,12 @@
   display: none
 }
 
-.sticky-sections-list :is(.h-\[400px\]) {
-  height: 400px
+.sticky-sections-list :is(.max-h-\[400px\]) {
+  max-height: 400px
 }
 
 .sticky-sections-list :is(.max-h-screen) {
   max-height: 100vh
-}
-
-.sticky-sections-list :is(.max-h-\[400px\]) {
-  max-height: 400px
 }
 
 .sticky-sections-list :is(.w-28) {
@@ -78,22 +74,8 @@
   flex-shrink: 0
 }
 
-.sticky-sections-list :is(.rotate-90) {
-  --tw-rotate: 90deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
-}
-
-.sticky-sections-list :is(.-rotate-180) {
-  --tw-rotate: -180deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
-}
-
 .sticky-sections-list :is(.rotate-180) {
   --tw-rotate: 180deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
-}
-
-.sticky-sections-list :is(.transform) {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 
@@ -195,11 +177,6 @@
   line-height: 1.25rem
 }
 
-.sticky-sections-list :is(.text-xs) {
-  font-size: 0.75rem;
-  line-height: 1rem
-}
-
 .sticky-sections-list :is(.font-semibold) {
   font-weight: 600
 }
@@ -266,10 +243,6 @@
 }
 
 @media (min-width: 1280px) {
-  .sticky-sections-list :is(.xl\:h-\[540px\]) {
-    height: 540px
-  }
-
   .sticky-sections-list :is(.xl\:max-h-\[500px\]) {
     max-height: 500px
   }
