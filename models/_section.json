@@ -96,7 +96,8 @@
         "story-hub",
         "speakers-info",
         "download",
-        "table",
+        "table",        
+        "downloads",
         "video-transcript"
       ]
     }

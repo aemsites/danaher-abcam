@@ -249,7 +249,7 @@ const fileMappings = [
     wrapper: 'story-info-wrapper',
   },
   {
-    content: './eds/blocks/story-hub/story-hub.js',
+    content: ['./eds/blocks/story-hub/story-hub.js', './eds/blocks/dynamic-cards/articleCard.js'],
     output: './eds/blocks/story-hub/story-hub.css',
     wrapper: 'story-hub-wrapper',
   },
@@ -279,8 +279,8 @@ const fileMappings = [
     wrapper: 'dynamic-cards-wrapper',
   },
   {
-    content: './eds/templates/webinars/webinars.js',
-    output: './eds/templates/webinars/webinars.css',
+    content: './eds/templates/webinar/webinar.js',
+    output: './eds/templates/webinar/webinar.css',
   },
   {
     content: './eds/blocks/speakers-info/speakers-info.js',
@@ -309,6 +309,11 @@ const fileMappings = [
     content: './eds/blocks/guides-hub-links/guides-hub-links.js',
     output: './eds/blocks/guides-hub-links/guides-hub-links.css',
     wrapper: 'guides-hub-links-wrapper',
+  },
+  {
+    content: './eds/blocks/downloads/downloads.js',
+    output: './eds/blocks/downloads/downloads.css',
+    wrapper: 'downloads-wrapper',
   },
 ];
 

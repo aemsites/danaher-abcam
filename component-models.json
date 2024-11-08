@@ -1041,11 +1041,29 @@
         ]
       },
       {
-        "component": "text",
+        "component": "multiselect",
         "valueType": "string",
         "name": "download_doctype",
         "value": "",
-        "label": "Document Type"
+        "label": "Document Type",
+        "options": [
+          {
+            "name": "Document",
+            "value": "doc"
+          },
+          {
+            "name": "PDF",
+            "value": "pdf"
+          },
+          {
+            "name": "Presentation",
+            "value": "ppt"
+          },
+          {
+            "name": "Other",
+            "value": "other"
+          }
+        ]
       }
     ]
   },
@@ -1696,6 +1714,13 @@
             "value": "applications"
           }
         ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "itemsPerPage",
+        "value": "",
+        "label": "Items per page"
       }
     ]
   },

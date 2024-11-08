@@ -44,6 +44,7 @@
       "speakers-info",
       "download",
       "table",
+      "downloads",
       "video-transcript"
     ]
   },
@@ -74,6 +75,12 @@
       "title",
       "abcam-button",
       "media"
+    ]
+  },
+  {
+    "id": "downloads",
+    "components": [
+      "download"
     ]
   },
   {

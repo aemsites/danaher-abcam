@@ -14,16 +14,8 @@
   right: 0px
 }
 
-.sticky-sections-list :is(.right-6) {
-  right: 1.5rem
-}
-
 .sticky-sections-list :is(.top-0) {
   top: 0px
-}
-
-.sticky-sections-list :is(.top-3) {
-  top: 0.75rem
 }
 
 .sticky-sections-list :is(.top-full) {
@@ -38,16 +30,12 @@
   z-index: 20
 }
 
-.sticky-sections-list :is(.z-50) {
-  z-index: 50
+.sticky-sections-list :is(.ml-auto) {
+  margin-left: auto
 }
 
 .sticky-sections-list :is(.mt-1) {
   margin-top: 0.25rem
-}
-
-.sticky-sections-list :is(.ml-auto) {
-  margin-left: auto
 }
 
 .sticky-sections-list :is(.block) {
@@ -62,12 +50,8 @@
   display: none
 }
 
-.sticky-sections-list :is(.h-\[35rem\]) {
-  height: 35rem
-}
-
-.sticky-sections-list :is(.h-\[400px\]) {
-  height: 400px
+.sticky-sections-list :is(.max-h-\[400px\]) {
+  max-height: 400px
 }
 
 .sticky-sections-list :is(.max-h-screen) {
@@ -90,6 +74,11 @@
   flex-shrink: 0
 }
 
+.sticky-sections-list :is(.rotate-180) {
+  --tw-rotate: 180deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+
 .sticky-sections-list :is(.cursor-pointer) {
   cursor: pointer
 }
@@ -98,16 +87,8 @@
   flex-direction: row
 }
 
-.sticky-sections-list :is(.flex-row-reverse) {
-  flex-direction: row-reverse
-}
-
 .sticky-sections-list :is(.items-center) {
   align-items: center
-}
-
-.sticky-sections-list :is(.justify-center) {
-  justify-content: center
 }
 
 .sticky-sections-list :is(.gap-x-4) {
@@ -121,10 +102,6 @@
 
 .sticky-sections-list :is(.rounded-2xl) {
   border-radius: 1rem
-}
-
-.sticky-sections-list :is(.rounded-3xl) {
-  border-radius: 1.5rem
 }
 
 .sticky-sections-list :is(.rounded-full) {
@@ -191,30 +168,13 @@
   padding-bottom: 1.5rem
 }
 
-.sticky-sections-list :is(.pb-\[24px\]) {
-  padding-bottom: 24px
-}
-
 .sticky-sections-list :is(.pt-5) {
   padding-top: 1.25rem
-}
-
-.sticky-sections-list :is(.pb-6) {
-  padding-bottom: 1.5rem
-}
-
-.sticky-sections-list :is(.pt-4) {
-  padding-top: 1rem
 }
 
 .sticky-sections-list :is(.text-sm) {
   font-size: 0.875rem;
   line-height: 1.25rem
-}
-
-.sticky-sections-list :is(.text-xs) {
-  font-size: 0.75rem;
-  line-height: 1rem
 }
 
 .sticky-sections-list :is(.font-semibold) {
@@ -242,6 +202,14 @@
 .sticky-sections-list :is(.drop-shadow-2xl) {
   --tw-drop-shadow: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
+}
+
+.sticky-sections-list :is(.transition) {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms
 }
 
 .sticky-sections-list :is(.hover\:bg-\[\#f2f2f2\]:hover) {
@@ -275,7 +243,7 @@
 }
 
 @media (min-width: 1280px) {
-  .sticky-sections-list :is(.xl\:h-\[540px\]) {
-    height: 540px
+  .sticky-sections-list :is(.xl\:max-h-\[500px\]) {
+    max-height: 500px
   }
 }
