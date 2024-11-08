@@ -27,7 +27,8 @@ export default async function buildAutoBlocks() {
   const sectionMiddle = main.querySelector(':scope > div:nth-child(2)');
   sectionMiddle?.classList.add(...'topic-middle-container w-full pt-4'.split(' '));
   sectionMiddle?.prepend(
-    buildBlock('chapter-links', { elems: [] }),
+    buildBlock('related-articles', { elems: [] }),
+    // buildBlock('chapter-links', { elems: [] }),
     buildBlock('sidelinks', { elems: allLinks }),
   );
   sectionMiddle?.prepend(

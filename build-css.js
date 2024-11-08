@@ -293,6 +293,11 @@ const fileMappings = [
     wrapper: 'chapter-links-wrapper',
   },
   {
+    content: ['./eds/blocks/related-articles/related-articles.js', './eds/blocks/chapter-links/chapter-links.js'],
+    output: './eds/blocks/related-articles/related-articles.css',
+    wrapper: 'related-articles-wrapper',
+  },
+  {
     content: './eds/templates/guide/guide.js',
     output: './eds/templates/guide/guide.css',
   },

@@ -8,12 +8,12 @@ import { buildArticleSchema, buildGuidesCollectionSchema } from '../../scripts/s
 const modal = div({ class: 'w-screen h-full top-0 left-0 fixed block lg:hidden inset-0 z-30 bg-black bg-opacity-80 flex justify-center items-end transition-all translate-y-full' });
 const stickyChapterLinks = div({ class: 'sticky-bottom' });
 
-function toggleModal() {
+export function toggleModal() {
   modal.classList.toggle('translate-y-full');
   stickyChapterLinks.classList.toggle('hidden');
 }
 
-function renderModal(el) {
+export function renderModal(el) {
   const closeButton = button({
     type: 'button',
     class: 'size-full flex items-center gap-x-2 justify-center py-2 focus:outline-none border border-solid border-black rounded-full text-black text-sm font-semibold',
@@ -27,12 +27,12 @@ function renderModal(el) {
   decorateIcons(modal);
 }
 
-function renderChapters(chapterItems) {
+export function renderChapters(chapterItems, navHeading) {
   const chaptersDesktopEl = div({ class: 'hidden lg:flex flex-col items-start' });
   const chaptersMobileEl = div({ class: 'lg:hidden [&_span]:pl-2 overflow-scroll px-4' });
   const url = new URL(window.location.href);
   const currentPage = url.pathname;
-  const navHeadingEl = p({ class: 'text-sm leading-6 font-semibold uppercase text-[#65797C] px-3 pt-2 pb-1 my-0' }, 'CHAPTERS');
+  const navHeadingEl = p({ class: 'text-sm leading-6 font-semibold uppercase text-[#65797C] px-3 pt-2 pb-1 my-0' }, navHeading);
   chapterItems.forEach((item) => {
     const chaptersEl = div(
       { class: 'w-full border-b border-b-[#D8D8D8]' },
@@ -74,7 +74,7 @@ export default async function decorate(block) {
   }
 
   // Append button and chapters to block
-  const { chaptersDesktopEl, chaptersMobileEl } = renderChapters(filteredChapters);
+  const { chaptersDesktopEl, chaptersMobileEl } = renderChapters(filteredChapters, 'chapters');
   renderModal(chaptersMobileEl);
   block.innerHTML = '';
   block.append(chaptersDesktopEl, modal);
