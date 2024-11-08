@@ -1,5 +1,5 @@
 import ffetch from '../../scripts/ffetch.js';
-import { decorateIcons, toClassName } from '../../scripts/aem.js';
+import { decorateIcons, getMetadata, toClassName } from '../../scripts/aem.js';
 import { buildStoryHubSchema } from '../../scripts/schema.js';
 import {
   button, div, p, span, ul, li, a,
@@ -210,6 +210,10 @@ function handleRenderContent(newLists = lists) {
         footerLink = 'Read article';
         break;
     }
+    let publishdate = new Date(getMetadata('published-time'));
+    console.log(publishdate);
+    const formattedDate = `${publishdate.toLocaleString('default', { month: 'long' })} ${publishdate.getDate()} ${publishdate.getFullYear()} | ${article.readingTime} Mins`;
+    console.log(formattedDate);
     const imageUrl = new URL(article.image, window.location);
 
     cardList.appendChild(createCard({
@@ -218,8 +222,7 @@ function handleRenderContent(newLists = lists) {
       description: article.description,
       footerLink,
       path: article.path,
-      tags: article.tags,
-      time: article.readingTime,
+      formattedDate,
       isStoryCard: true,
     }));
   });
