@@ -1,5 +1,18 @@
+.table-wrapper :is(.absolute) {
+  position: absolute
+}
+
 .table-wrapper :is(.relative) {
   position: relative
+}
+
+.table-wrapper :is(.inset-y-0) {
+  top: 0px;
+  bottom: 0px
+}
+
+.table-wrapper :is(.end-0) {
+  inset-inline-end: 0px
 }
 
 .table-wrapper :is(.mb-2) {
@@ -32,6 +45,10 @@
 
 .table-wrapper :is(.table) {
   display: table
+}
+
+.table-wrapper :is(.hidden) {
+  display: none
 }
 
 .table-wrapper :is(.w-full) {
@@ -128,6 +145,18 @@
   padding-bottom: 0.5rem
 }
 
+.table-wrapper :is(.pe-3) {
+  padding-inline-end: 0.75rem
+}
+
+.table-wrapper :is(.pe-5) {
+  padding-inline-end: 1.25rem
+}
+
+.table-wrapper :is(.pe-8) {
+  padding-inline-end: 2rem
+}
+
 .table-wrapper :is(.text-left) {
   text-align: left
 }
@@ -177,6 +206,11 @@
   text-decoration-line: underline
 }
 
+.table-wrapper :is(.invert) {
+  --tw-invert: invert(100%);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
+}
+
 .table-wrapper :is(.filter) {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
 }
@@ -184,4 +218,44 @@
 .table-wrapper :is(.hover\:bg-teal-800:hover) {
   --tw-bg-opacity: 1;
   background-color: rgb(17 94 89 / var(--tw-bg-opacity))
+}
+
+.table-wrapper :is(.focus\:border-blue-500:focus) {
+  --tw-border-opacity: 1;
+  border-color: rgb(59 130 246 / var(--tw-border-opacity))
+}
+
+.table-wrapper :is(.focus\:ring:focus) {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)
+}
+
+.table-wrapper :is(.focus\:ring-blue-500:focus) {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(59 130 246 / var(--tw-ring-opacity))
+}
+
+.table-wrapper :is(.\[\&_input\:empty\+\.icon\]\:hidden input:empty+.icon) {
+  display: none
+}
+
+.table-wrapper :is(.\[\&_input\:empty\~\.icon\]\:hidden input:empty~.icon) {
+  display: none
+}
+
+.table-wrapper :is(.\[\&_input\:empty\~button\]\:hidden input:empty~button) {
+  display: none
+}
+
+.table-wrapper :is(.\[\&_input\:empty\~button_\.icon\]\:hidden input:empty~button .icon) {
+  display: none
+}
+
+.table-wrapper :is(.\[\&_input\:not\(\:empty\)\~button_\.icon\]\:hidden input:not(:empty)~button .icon) {
+  display: none
+}
+
+.table-wrapper :is(.\[\&_input\[value\=\"\"\]\~button\]\:hidden input[value=""]~button) {
+  display: none
 }
