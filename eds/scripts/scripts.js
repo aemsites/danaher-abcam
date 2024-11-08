@@ -308,6 +308,7 @@ const TEMPLATE_LIST = [
   'webinar',
   'guide',
   'guides-hub',
+  'topic',
 ];
 
 async function decorateTemplates(main) {
