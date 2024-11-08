@@ -1,6 +1,6 @@
 import { createOptimizedPicture, getMetadata } from '../../scripts/aem.js';
 import { div } from '../../scripts/dom-builder.js';
-import { applyClasses, getStoryType } from '../../scripts/scripts.js';
+import { applyClasses, getContentType } from '../../scripts/scripts.js';
 
 const widthRatios = [
   { value: '2-col-width-1-2', first: 'lg:w-1/2', second: 'lg:w-1/2' },
@@ -23,12 +23,12 @@ export default function decorate(block) {
 
     if (block.classList.contains('text-center-align') || block.classList.contains('image-full-width')) {
       applyClasses(row, 'container max-w-7xl mx-auto');
-      if (getStoryType()) {
+      if (getContentType()) {
         block.firstElementChild?.firstElementChild
           ?.prepend(
             div(
               { class: 'font-[rockwell] text-sm leading-4 text-[#435656] capitalize mb-2' },
-              getStoryType(),
+              getContentType(),
             ),
           );
       }
