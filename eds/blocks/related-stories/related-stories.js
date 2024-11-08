@@ -95,31 +95,24 @@ export default async function decorate(block) {
       contentType = tag.trim();
     }
   });
-  console.log(templateName);
-  let articles ;
-if(templateName == 'stories'){
-   articles = await ffetch('/en-us/stories/query-index.json')
-    .filter((item) => {
-      const url = new URL(getMetadata('og:url'));
-      return item.path !== url.pathname;
-    })
-    .filter((item) =>
-      item.tags.includes(storyType) && item.tags.includes(contentType)
-    
-  )
-    .all();
-}else{
-  articles = await ffetch(`/en-us/${templateName}/query-index.json`)
-    .filter((item) => {
-      const url = new URL(getMetadata('og:url'));
-      return item.path !== url.pathname;
-    })
-    .filter((item) =>
-      item.tags.includes(contentType)
-    
-  )
-    .all();
-}
+  let articles;
+  if (templateName === 'stories') {
+    articles = await ffetch('/en-us/stories/query-index.json')
+      .filter((item) => {
+        const url = new URL(getMetadata('og:url'));
+        return item.path !== url.pathname;
+      })
+      .filter((item) => item.tags.includes(storyType) && item.tags.includes(contentType))
+      .all();
+  } else {
+    articles = await ffetch(`/en-us/${templateName}/query-index.json`)
+      .filter((item) => {
+        const url = new URL(getMetadata('og:url'));
+        return item.path !== url.pathname;
+      })
+      .filter((item) => item.tags.includes(contentType))
+      .all();
+  }
 
   articles = articles?.sort((item1, item2) => item2.publishDate - item1.publishDate).slice(0, 3);
 
