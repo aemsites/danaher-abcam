@@ -56,7 +56,7 @@ export default async function decorate(block) {
   const tblHead = thead();
   const tblBody = tbody();
   const header = !block.classList.contains('no-header');
-  const searchFilter = !block.classList.contains('search-filter');
+  const searchFilter = block.classList.contains('search-filter');
   block.parentElement.classList.add(...'relative overflow-x-auto'.split(' '));
 
   [...block.children].forEach((row, i) => {
