@@ -32,7 +32,7 @@ export default async function decorate(block) {
   }
 
   // Append button and chapters to block
-  const { chaptersDesktopEl, chaptersMobileEl } = renderChapters(filteredChapters, 'related Articles');
+  const { chaptersDesktopEl, chaptersMobileEl } = renderChapters(filteredChapters, 'Related Articles');
   renderModal(chaptersMobileEl);
   block.innerHTML = '';
   block.append(chaptersDesktopEl, modal);
