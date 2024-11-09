@@ -28,7 +28,6 @@ export default async function buildAutoBlocks() {
   sectionMiddle?.classList.add(...'topic-middle-container w-full pt-4'.split(' '));
   sectionMiddle?.prepend(
     buildBlock('related-articles', { elems: [] }),
-    // buildBlock('chapter-links', { elems: [] }),
     buildBlock('sidelinks', { elems: allLinks }),
   );
   sectionMiddle?.prepend(
