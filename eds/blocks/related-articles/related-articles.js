@@ -10,16 +10,13 @@ const modal = div({ class: 'w-screen h-full top-0 left-0 fixed block lg:hidden i
 const stickyChapterLinks = div({ class: 'sticky-bottom' });
 
 export default async function decorate(block) {
-  const currentPage = window.location.pathname.split('/').pop();
   const parentURL = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/'));
   const parentPage = parentURL.split('/').pop();
   const chapterItems = await ffetch('/en-us/technical-resources/guides/query-index.json')
-    .filter((item) => {
-      if (parentPage === 'topics') return item.parent === currentPage;
-      return item.parent === parentPage;
-    }).all();
+    .filter((item) => item.tags && item.tags.includes('abcam:applications')).all();
   const chapters = chapterItems.map((element) => ({
     title: element.title.indexOf('| abcam') > -1 ? element.title.split('| abcam')[0] : element.title,
+    description: element.description,
     pageOrder: element.pageOrder,
     path: element.path,
   }));
@@ -32,7 +29,7 @@ export default async function decorate(block) {
   }
 
   // Append button and chapters to block
-  const { chaptersDesktopEl, chaptersMobileEl } = renderChapters(filteredChapters, 'Related Articles');
+  const { chaptersDesktopEl, chaptersMobileEl } = renderChapters(filteredChapters, 'Related Articles', true);
   renderModal(chaptersMobileEl);
   block.innerHTML = '';
   block.append(chaptersDesktopEl, modal);

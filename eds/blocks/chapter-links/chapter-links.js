@@ -27,7 +27,7 @@ export function renderModal(el) {
   decorateIcons(modal);
 }
 
-export function renderChapters(chapterItems, navHeading) {
+export function renderChapters(chapterItems, navHeading, withDescription = false) {
   const chaptersDesktopEl = div({ class: 'hidden lg:flex flex-col items-start' });
   const chaptersMobileEl = div({ class: 'lg:hidden [&_span]:pl-2 overflow-scroll px-4' });
   const url = new URL(window.location.href);
@@ -44,6 +44,15 @@ export function renderChapters(chapterItems, navHeading) {
         item.title,
       ),
     );
+
+    if (withDescription && item.description) {
+      const descriptionEl = p(
+        { class: 'text-sm text-[#65797C] px-3 py-2' },
+        item.description,
+      );
+      chaptersEl.append(descriptionEl);
+    }
+
     chaptersMobileEl.append(chaptersEl);
   });
   chaptersMobileEl.prepend(navHeadingEl);
