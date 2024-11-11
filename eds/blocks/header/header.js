@@ -53,10 +53,10 @@ async function displayResults(query, resultsContainer, block) {
       const flagElement = block.querySelector('.country-flag-icon');
       switch (code) {
         case 'CN':
-          window.location.replace('https://www.abcam.cn/');
+          window.location.href= 'https://www.abcam.cn/';
           break;
         case 'JP':
-          window.location.replace('https://www.abcam.co.jp/');
+          window.location.href = 'https://www.abcam.co.jp/';
           break;
 
         default:
