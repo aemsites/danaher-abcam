@@ -53,12 +53,12 @@ async function displayResults(query, resultsContainer, block) {
       const flagElement = block.querySelector('.country-flag-icon');
       switch (code) {
         case 'CN':
-          window.location.replace("https://www.abcam.cn/");
+          window.location.replace('https://www.abcam.cn/');
           break;
         case 'JP':
-          window.location.replace("https://www.abcam.co.jp/");
-        break;
-      
+          window.location.replace('https://www.abcam.co.jp/');
+          break;
+
         default:
           break;
       }
@@ -67,8 +67,7 @@ async function displayResults(query, resultsContainer, block) {
       }
       rotateDropdownIcon(block);
       e.stopPropagation();
-      if (code !== 'JP' && code !== 'CN')
-      setOrUpdateCookie('NEXT_COUNTRY', code.toUpperCase());
+      if (code !== 'JP' && code !== 'CN') setOrUpdateCookie('NEXT_COUNTRY', code.toUpperCase());
       document.querySelector('.country-search')?.classList.add('hidden');
       document.getElementById('country-search-input').value = '';
       resultsContainer.replaceChildren();
