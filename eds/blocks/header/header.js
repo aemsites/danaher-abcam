@@ -51,11 +51,23 @@ async function displayResults(query, resultsContainer, block) {
     resultItem.querySelector('.result-flag-container').title = country;
     resultItem.addEventListener('click', (e) => {
       const flagElement = block.querySelector('.country-flag-icon');
+      switch (code) {
+        case 'CN':
+          window.location.replace("https://www.abcam.cn/");
+          break;
+        case 'JP':
+          window.location.replace("https://www.abcam.co.jp/");
+        break;
+      
+        default:
+          break;
+      }
       if (flagElement) {
         flagElement.src = `https://www.abcam.com/flags/${code.toLowerCase()}.svg`;
       }
       rotateDropdownIcon(block);
       e.stopPropagation();
+      if (code !== 'JP' && code !== 'CN')
       setOrUpdateCookie('NEXT_COUNTRY', code.toUpperCase());
       document.querySelector('.country-search')?.classList.add('hidden');
       document.getElementById('country-search-input').value = '';
