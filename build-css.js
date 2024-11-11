@@ -315,6 +315,10 @@ const fileMappings = [
     output: './eds/blocks/downloads/downloads.css',
     wrapper: 'downloads-wrapper',
   },
+  {
+    content: './eds/templates/topic/topic.js',
+    output: './eds/templates/topic/topic.css',
+  },
 ];
 
 const watch = process.argv[2];

@@ -1,4 +1,4 @@
-import { getStoryType, imageHelper } from '../../scripts/scripts.js';
+import { getContentType, imageHelper } from '../../scripts/scripts.js';
 import {
   li, a, p, div, h3, span,
 } from '../../scripts/dom-builder.js';
@@ -13,7 +13,7 @@ export default function createCard(article, firstCard = false, cardType = 'story
 
   let footerLink;
   let minRead;
-  switch (getStoryType(tags)) {
+  switch (getContentType(tags)) {
     case 'podcast':
       footerLink = 'Listen to podcast';
       minRead = ` | ${time} mins listen`;
@@ -21,6 +21,13 @@ export default function createCard(article, firstCard = false, cardType = 'story
     case 'film':
       footerLink = 'Watch film';
       minRead = ` | ${time} mins watch`;
+      break;
+    case 'upcoming-webinar':
+      footerLink = 'Register';
+      break;
+    case 'on-demand-webinar':
+      footerLink = 'Watch webinar';
+      minRead = ` | ${time} mintues`;
       break;
     default:
       footerLink = 'Read article';
@@ -51,7 +58,7 @@ export default function createCard(article, firstCard = false, cardType = 'story
   );
   if (cardType === 'story') {
     card.querySelector('.flex-1').prepend(
-      span({ class: 'capitalize font-normal text-sm text-[#65697C] font-["rockwell"]' }, `${getStoryType(tags)}`),
+      span({ class: 'capitalize font-normal text-sm text-[#65697C] font-["rockwell"]' }, `${getContentType(tags)}`),
       span({ class: 'font-normal text-sm text-[#65697C] font-["rockwell"]' }, `${minRead}`),
     );
   }
