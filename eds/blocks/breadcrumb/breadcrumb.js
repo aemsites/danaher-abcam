@@ -5,8 +5,8 @@ import {
 
 export default function decorate(block) {
   const pageUrl = window.location.pathname;
-  const path = pageUrl.split('/').slice(2);
-  const ogTitle = getMetadata('og:title');
+  const path = window.location.pathname.split('/').slice(2);
+  const ogTitle = getMetadata('og:title').toLowerCase();
   const title = ogTitle.indexOf('| abcam') > -1 ? ogTitle.split('| abcam')[0] : ogTitle;
   const newUrl = new URL(window.location);
   if (pageUrl.indexOf('technical-resources/guides') > -1) {
