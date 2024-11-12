@@ -8,12 +8,12 @@ import { buildArticleSchema, buildGuidesCollectionSchema } from '../../scripts/s
 const modal = div({ class: 'w-screen h-full top-0 left-0 fixed block lg:hidden inset-0 z-30 bg-black bg-opacity-80 flex justify-center items-end transition-all translate-y-full' });
 const stickyChapterLinks = div({ class: 'sticky-bottom' });
 
-export function toggleModal() {
+function toggleModal() {
   modal.classList.toggle('translate-y-full');
   stickyChapterLinks.classList.toggle('hidden');
 }
 
-export function renderModal(el) {
+function renderModal(el) {
   const closeButton = button({
     type: 'button',
     class: 'size-full flex items-center gap-x-2 justify-center py-2 focus:outline-none border border-solid border-black rounded-full text-black text-sm font-semibold',

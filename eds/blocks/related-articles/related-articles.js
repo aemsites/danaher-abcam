@@ -4,10 +4,29 @@ import {
 } from '../../scripts/dom-builder.js';
 import { decorateIcons } from '../../scripts/aem.js';
 import { buildArticleSchema, buildGuidesCollectionSchema } from '../../scripts/schema.js';
-import { renderChapters, renderModal, toggleModal } from '../chapter-links/chapter-links.js';
+import { renderChapters } from '../chapter-links/chapter-links.js';
 
 const modal = div({ class: 'w-screen h-full top-0 left-0 fixed block lg:hidden inset-0 z-30 bg-black bg-opacity-80 flex justify-center items-end transition-all translate-y-full' });
 const stickyChapterLinks = div({ class: 'sticky-bottom' });
+
+function toggleModal() {
+  modal.classList.toggle('translate-y-full');
+  stickyChapterLinks.classList.toggle('hidden');
+}
+
+function renderModal(el) {
+  const closeButton = button({
+    type: 'button',
+    class: 'size-full flex items-center gap-x-2 justify-center py-2 focus:outline-none border border-solid border-black rounded-full text-black text-sm font-semibold',
+    onclick: toggleModal,
+  }, span({ class: 'icon icon-close invert' }), 'Close');
+
+  const modalContent = div({ class: 'relative flex flex-col bg-white w-11/12 max-h-[70%] mb-4 rounded lg:hidden' });
+  const modalClose = div({ class: 'w-full bottom-0 flex justify-center px-3 py-4' }, closeButton);
+  modalContent.append(el, modalClose);
+  modal.append(modalContent);
+  decorateIcons(modal);
+}
 
 export default async function decorate(block) {
   const parentURL = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/'));
