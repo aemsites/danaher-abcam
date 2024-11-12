@@ -366,28 +366,24 @@
           {
             "name": "Highlight",
             "value": "highlight"
+          },
+          {
+            "name": "Tabs",
+            "value": "product-tabs"
+          },
+          {
+            "name": "Button Tabs",
+            "value": "button-tabs"
           }
         ]
       },
       {
-        "component": "select",
+        "component": "text",
         "name": "tabName",
         "value": "",
-        "label": "Select PDP Tabs",
-        "options": [
-          {
-            "name": "Overview",
-            "value": "Overview"
-          },
-          {
-            "name": "Datasheet",
-            "value": "Datasheet"
-          },
-          {
-            "name": "Support & Downloads",
-            "value": "Support & Downloads"
-          }
-        ]
+        "label": "Provide Tab Name",
+        "description": "Provide a name for the tab (Applicable only for Tabs and Button Tabs styles)",
+        "valueType": "string"
       }
     ]
   },

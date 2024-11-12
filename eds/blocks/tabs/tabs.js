@@ -9,7 +9,7 @@ const { productOverview, productDatasheet, productSupportdownloads } = placehold
 function toggleTabs(tabId, mmgTabs) {
   const contentSections = document.querySelectorAll('[data-tabname]');
   contentSections.forEach((section) => {
-    if (section.dataset.tabname === tabId) {
+    if (section.dataset.tabname?.toLowerCase() === tabId) {
       section.classList.remove('hide-section');
     } else {
       section.classList.add('hide-section');
@@ -25,7 +25,7 @@ function toggleTabs(tabId, mmgTabs) {
   });
 }
 
-export default async function decorate(block) {
+async function decorateProductTabs(block) {
   const response = await getProductResponse();
   const rawData = response?.at(0)?.raw;
   const { title } = rawData;
@@ -34,20 +34,21 @@ export default async function decorate(block) {
   }
   block.classList.add(...'md:border-b sm:border-b flex-col md:flex-col md:relative text-xl text-[#65797C]'.split(' '));
   const mmgTabs = div({ class: 'md:border-none border-b sm:border-none mmg-tabs md:absolute md:right-0 md:top-[-15px] font-semibold text-base text-black md:block flex order-1' });
-  const tabs = [
-    { name: productOverview, tabId: 'Overview' },
-    { name: productDatasheet, tabId: 'Datasheet' },
-    { name: productSupportdownloads, tabId: 'Support & Downloads' },
-  ];
+  const contentSections = document.querySelectorAll('[data-tabname]');
+  const tabName = new Set();
+  contentSections.forEach((section) => {
+    tabName.add(section.dataset.tabname?.toLowerCase());
+  });
+  const tabs = [...tabName];
   tabs.forEach((tab) => {
     const li = button({
-      class: 'tab md:py-1.5 pb-4 lg:mx-8 mr-8',
-      id: tab.tabId,
+      class: 'tab md:py-1.5 pb-4 lg:mx-8 mr-8 capitalize',
+      id: tab,
     });
-    li.innerHTML = tab.name;
+    li.innerHTML = tab;
     mmgTabs.appendChild(li);
     li.addEventListener('click', () => {
-      toggleTabs(tab.tabId, mmgTabs);
+      toggleTabs(tab, mmgTabs);
     });
   });
   const skuItem = toolTip('skuitem', 'skutooltip', response?.at(0).raw.productslug.split('-').slice(-1), true);
@@ -55,5 +56,9 @@ export default async function decorate(block) {
   block.appendChild(skuItem);
   block.appendChild(mmgTabs);
 
-  toggleTabs(tabs[0].tabId, mmgTabs);
+  toggleTabs(tabs[0], mmgTabs);
+}
+
+export default async function decorate(block) {
+  decorateProductTabs(block);
 }

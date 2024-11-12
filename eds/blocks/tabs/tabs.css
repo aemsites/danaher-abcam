@@ -49,6 +49,10 @@
   font-weight: 600
 }
 
+.product-tabs-wrapper :is(.capitalize) {
+  text-transform: capitalize
+}
+
 .product-tabs-wrapper :is(.text-\[\#65797C\]) {
   --tw-text-opacity: 1;
   color: rgb(101 121 124 / var(--tw-text-opacity))
