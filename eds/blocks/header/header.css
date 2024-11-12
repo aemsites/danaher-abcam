@@ -68,6 +68,11 @@
   background-color: rgb(0 0 0 / var(--tw-bg-opacity))
 }
 
+.header-wrapper :is(.bg-gray-200) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity))
+}
+
 .header-wrapper :is(.p-4) {
   padding: 1rem
 }

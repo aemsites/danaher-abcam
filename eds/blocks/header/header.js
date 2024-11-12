@@ -12,7 +12,6 @@ function getCookie(name) {
 }
 
 function setOrUpdateCookie(name, value, days) {
-  // Set or update the cookie
   let expires = '';
   if (days) {
     const date = new Date();
@@ -22,19 +21,32 @@ function setOrUpdateCookie(name, value, days) {
   } else document.cookie = `${name}=${value || ''}; path=/`;
 }
 
-function rotateDropdownIcon(block) {
-  const countrydd = block.querySelector('.country-dd');
+function rotateDropdownIcon(event) {
+  const input = document.getElementById('country-search-input');
+
+  const countrydd = document.querySelector('.country-dd');
   const ddImg = countrydd?.querySelector('img');
   if (countrydd?.classList.contains('rotate') && ddImg) {
     ddImg.style.transform = 'rotate(180deg)';
     countrydd.classList.remove('rotate');
-  } else {
+  } else if (event === undefined || event.target !== input) {
     ddImg.style.transform = 'rotate(0deg)';
     countrydd.classList.add('rotate');
   }
 }
 
-async function displayResults(query, resultsContainer, block) {
+function updateCountryButton(imageSrc, code) {
+  const flagElement = document.querySelector('.country-flag-icon');
+  if (flagElement) {
+    flagElement.src = imageSrc;
+  }
+  rotateDropdownIcon();
+  document.querySelector('.country-search')?.classList.add('hidden');
+  document.getElementById('country-search-input').value = '';
+  setOrUpdateCookie('NEXT_COUNTRY', code.toUpperCase());
+}
+
+async function displayResults(query, resultsContainer) {
   resultsContainer.replaceChildren();
   const filteredCountries = (await countriesAndCodes())
     .filter(({ country }) => country.toLowerCase().includes(query));
@@ -45,12 +57,11 @@ async function displayResults(query, resultsContainer, block) {
   filteredCountries.forEach(({ code, country }) => {
     const resultItem = div(
       { class: 'result-item flex flex-row gap-x-2 p-4 text-black hover:bg-[#f2f2f2]' },
-      img({ class: 'result-flag-container h-5 w-5', alt: country, src: `https://www.abcam.com/flags/${code.toLowerCase()}.svg` }),
+      img({ class: 'result-flag-container h-5 w-5', alt: code, src: `https://www.abcam.com/flags/${code.toLowerCase()}.svg` }),
       div({ class: 'result-country' }, country),
     );
     resultItem.querySelector('.result-flag-container').title = country;
     resultItem.addEventListener('click', (e) => {
-      const flagElement = block.querySelector('.country-flag-icon');
       switch (code) {
         case 'CN':
           window.location.href = 'https://www.abcam.cn/';
@@ -62,17 +73,22 @@ async function displayResults(query, resultsContainer, block) {
         default:
           break;
       }
-      if (flagElement) {
-        flagElement.src = `https://www.abcam.com/flags/${code.toLowerCase()}.svg`;
-      }
-      rotateDropdownIcon(block);
       e.stopPropagation();
-      if (code !== 'JP' && code !== 'CN') setOrUpdateCookie('NEXT_COUNTRY', code.toUpperCase());
-      document.querySelector('.country-search')?.classList.add('hidden');
-      document.getElementById('country-search-input').value = '';
+      updateCountryButton(`https://www.abcam.com/flags/${code}.svg`, code);
       resultsContainer.replaceChildren();
     });
     resultsContainer.appendChild(resultItem);
+  });
+}
+
+function updateActiveItem(items, currentIndex) {
+  items.forEach((item, index) => {
+    if (index === currentIndex) {
+      item.classList.add('bg-gray-200');
+      item.focus();
+    } else {
+      item.classList.remove('bg-gray-200');
+    }
   });
 }
 
@@ -84,16 +100,40 @@ function countrySelector(block) {
   input.addEventListener('focus', () => {
     resultsContainer.classList.remove('hidden');
   });
-  input.addEventListener('input', () => {
+  input.addEventListener('input', (e) => {
     const query = input.value.toLowerCase();
-    displayResults(query, resultsContainer, block);
+    e.stopPropagation();
+    displayResults(query, resultsContainer);
+  });
+
+  let currentIndex = -1;
+  input.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowDown') {
+      const items = resultsContainer.querySelectorAll('.result-item');
+      event.preventDefault();
+      currentIndex = (currentIndex + 1) % items.length;
+      updateActiveItem(items, currentIndex);
+    } else if (event.key === 'ArrowUp') {
+      const items = resultsContainer.querySelectorAll('.result-item');
+      event.preventDefault();
+      currentIndex = (currentIndex - 1 + items.length) % items.length;
+      updateActiveItem(items, currentIndex);
+    } else if (event.key === 'Enter') {
+      const items = resultsContainer.querySelectorAll('.result-item');
+      if (currentIndex >= 0 && currentIndex < items.length) {
+        const selectedItem = items[currentIndex];
+        updateCountryButton(selectedItem.querySelector('img').src || '', (selectedItem.querySelector('img').alt) || '');
+        resultsContainer.replaceChildren();
+        currentIndex = -1;
+      }
+    }
   });
 
   document.addEventListener('click', (e) => {
     if (!resultsContainer.contains(e.target) && e.target !== input) {
       resultsContainer?.classList.add('hidden');
       document.querySelector('.country-search')?.classList.add('hidden');
-      rotateDropdownIcon(block);
+      rotateDropdownIcon();
     }
     e.stopPropagation();
   });
@@ -181,7 +221,7 @@ export default async function decorate(block) {
       block.querySelector('#country-results')?.replaceChildren();
     }
     event.stopPropagation();
-    rotateDropdownIcon(block);
+    rotateDropdownIcon(event);
     countrySelector(block);
   });
   setOrUpdateCookie('NEXT_LOCALE', 'en-us', 365);
