@@ -93,7 +93,7 @@ function updateActiveItem(items, currentIndex) {
 }
 
 // country Selector
-function countrySelector(block) {
+function countrySelector() {
   const input = document.getElementById('country-search-input');
   const resultsContainer = document.getElementById('country-results');
 
