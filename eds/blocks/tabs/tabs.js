@@ -25,6 +25,15 @@ function toggleTabs(tabId, mmgTabs) {
   });
 }
 
+function getTabName() {
+  const contentSections = document.querySelectorAll('[data-tabname]');
+  const tabName = new Set();
+  contentSections.forEach((section) => {
+    tabName.add(section.dataset.tabname?.toLowerCase());
+  });
+  return [...tabName];
+}
+
 async function decorateProductTabs(block) {
   const response = await getProductResponse();
   const rawData = response?.at(0)?.raw;
@@ -34,12 +43,7 @@ async function decorateProductTabs(block) {
   }
   block.classList.add(...'md:border-b sm:border-b flex-col md:flex-col md:relative text-xl text-[#65797C]'.split(' '));
   const mmgTabs = div({ class: 'md:border-none border-b sm:border-none mmg-tabs md:absolute md:right-0 md:top-[-15px] font-semibold text-base text-black md:block flex order-1' });
-  const contentSections = document.querySelectorAll('[data-tabname]');
-  const tabName = new Set();
-  contentSections.forEach((section) => {
-    tabName.add(section.dataset.tabname?.toLowerCase());
-  });
-  const tabs = [...tabName];
+  const tabs = getTabName();
   tabs.forEach((tab) => {
     const li = button({
       class: 'tab md:py-1.5 pb-4 lg:mx-8 mr-8 capitalize',
@@ -59,6 +63,26 @@ async function decorateProductTabs(block) {
   toggleTabs(tabs[0], mmgTabs);
 }
 
+function decorateButtonTabs(block) {
+  const mmgTabs = div({ class: 'button-tabs' });
+  const tabs = getTabName();
+  tabs.forEach((tab) => {
+    const buttonTab = button({ 
+      class: 'px-6 py-2 border-black boarder-solid  bg-black text-white rounded-full capitalize', 
+      id: tab 
+    });
+    mmgTabs.appendChild(tab);
+    tab.addEventListener('click', () => {
+      toggleTabs(tab, mmgTabs);
+    });
+  });
+  block.innerHTML = '';
+  block.appendChild(mmgTabs);
+  toggleTabs(tabs[0], mmgTabs);
+}
+
 export default async function decorate(block) {
-  if(block.classList.contains('product-tabs')) decorateProductTabs(block);
+  const section = block.closest('.section');
+  if(section.classList.contains('product-tabs')) decorateProductTabs(block);
+  if(section.classList.contains('button-tabs')) decorateButtonTabs(block);
 }
