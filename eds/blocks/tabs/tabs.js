@@ -60,5 +60,5 @@ async function decorateProductTabs(block) {
 }
 
 export default async function decorate(block) {
-  decorateProductTabs(block);
+  if(block.classList.contains('product-tabs')) decorateProductTabs(block);
 }
