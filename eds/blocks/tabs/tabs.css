@@ -18,8 +18,17 @@
   flex-direction: column
 }
 
+.tabs-wrapper :is(.gap-x-6) {
+  -moz-column-gap: 1.5rem;
+       column-gap: 1.5rem
+}
+
 .tabs-wrapper :is(.rounded-full) {
   border-radius: 9999px
+}
+
+.tabs-wrapper :is(.border) {
+  border-width: 1px
 }
 
 .tabs-wrapper :is(.border-b) {
@@ -30,14 +39,23 @@
   border-bottom-width: 8px
 }
 
-.tabs-wrapper :is(.border-\[\#ff7223\]) {
-  --tw-border-opacity: 1;
-  border-color: rgb(255 114 35 / var(--tw-border-opacity))
+.tabs-wrapper :is(.border-solid) {
+  border-style: solid
 }
 
 .tabs-wrapper :is(.border-black) {
   --tw-border-opacity: 1;
   border-color: rgb(0 0 0 / var(--tw-border-opacity))
+}
+
+.tabs-wrapper :is(.border-\[\#ff7223\]) {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 114 35 / var(--tw-border-opacity))
+}
+
+.tabs-wrapper :is(.bg-white) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity))
 }
 
 .tabs-wrapper :is(.bg-black) {
@@ -67,6 +85,10 @@
 .tabs-wrapper :is(.text-xl) {
   font-size: 1.25rem;
   line-height: 1.75rem
+}
+
+.tabs-wrapper :is(.font-bold) {
+  font-weight: 700
 }
 
 .tabs-wrapper :is(.font-semibold) {
