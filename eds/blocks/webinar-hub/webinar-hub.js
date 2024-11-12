@@ -1,20 +1,17 @@
 import ffetch from '../../scripts/ffetch.js';
-import { decorateIcons, getMetadata, toClassName } from '../../scripts/aem.js';
+import { decorateIcons, toClassName } from '../../scripts/aem.js';
 import { buildStoryHubSchema } from '../../scripts/schema.js';
 import {
   button, div, p, span, ul, li, a,
 } from '../../scripts/dom-builder.js';
-import { createCard, createFilters, imageHelper } from '../../scripts/scripts.js';
+import { createFilters } from '../../scripts/scripts.js';
+import createCard from '../dynamic-cards/articleCard.js';
 
 const getPageFromUrl = () => toClassName(new URLSearchParams(window.location.search).get('page')) || '';
 
-const excludedPages = [
-  '/en-us/stories/films',
-  '/en-us/stories/podcasts',
-  '/en-us/stories/articles',
-];
 let lists = [];
 let filterContainer = {};
+
 let itemsPerPage;
 
 const hub = div();
@@ -22,7 +19,54 @@ const allSelectedTags = div(
   { class: 'w-fit flex flex-row-reverse items-start gap-2 mb-4 [&_*:empty+span]:hidden [&_*:empty]:mb-8' },
   ul({ class: 'inline-flex items-center flex-wrap gap-2 [&_.showmoretags.active~*:not(.clear-all)]:hidden md:[&_.showmoretags.active~*:not(.clear-all):not(.showlesstags)]:flex md:[&_.showmoretags~*:not(.showlesstags)]:flex' }),
   span({ class: 'text-xs font-semibold text-[#07111299]' }, 'Filters:'),
+  div({ class: 'sort-by text-[#65797c] text-xs font-semibold not-italic mr-2' }, 'Sort By:'),
+  div(
+    { class: 'sb-container w-36 flex flex-row items-center gap-x-4 !bg-[#F4F5F5] tracking-[0.2px] leading-4 text-xs border border-[#EAECEC] border-opacity-5 bg-[#273F3F] bg-opacity-5 rounded-full py-3 px-6 w-auto bg-white cursor-pointer relative' },
+    span({ class: 'sb-selected' }, ''),
+    span({ class: 'icon icon-chevron-down shrink-0 ml-auto' }),
+    div({ class: 'sb-options w-max h-auto drop-shadow-2xl absolute hidden top-full lg:left-0 right-0 bg-white rounded-2xl z-20 border pt-5 mt-1 max-h-screen overflow-y-auto' }),
+  ),
 );
+
+// const allSelectedTags = div(
+//   { class: 'w-fit flex flex-row-reverse items-start gap-2 mb-4 [&_*:empty+span]:hidden [&_*:empty]:mb-8' },
+//   ul({ class: 'inline-flex items-center flex-wrap gap-2 [&_.showmoretags.active~*:not(.clear-all)]:hidden md:[&_.showmoretags.active~*:not(.clear-all):not(.showlesstags)]:flex md:[&_.showmoretags~*:not(.showlesstags)]:flex' } ),
+//   span({ class: 'text-xs font-semibold text-[#07111299]' }, 'Filters:'),
+  
+//   // Add the Sort By Dropdown
+//   div({ class: 'inline-flex items-center justify-self-end flex-wrap gap-2 text-xs font-semibold text-[#07111299]' }, 
+//     'Sort By:', 
+//     div(
+//       { class: 'relative' },
+//       // Button for Sort By Dropdown
+//       button(
+//         {
+//           id: 'sortByButton', 
+//           class: 'px-4 py-2 bg-gray-700 text-gray-100 rounded-full flex items-center'
+//         },
+//         span({ id: 'sortByText' }, 'Relevance'),
+//         span({ class: 'icon icon-chevron-down size-5 rotate-180' }),
+//       ),
+//       // Dropdown menu
+//       div(
+//         { id: 'sortByMenu', class: 'absolute hidden bg-white border rounded-md shadow-lg mt-2 w-full' },
+//         button(
+//           { class: 'block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-200', 'data-sort': 'relevance' }, 
+//           'Relevance'
+//         ),
+//         button(
+//           { class: 'block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-200', 'data-sort': 'date-descending' },
+//           'Date Descending'
+//         ),
+//         button(
+//           { class: 'block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-200', 'data-sort': 'date-ascending' },
+//           'Date Ascending'
+//         )
+//       )
+//     )
+//   )
+// );
+
 const clearAllEl = span({
   class: 'shrink-0 text-xs font-semibold underline cursor-pointer',
   onclick: async () => {
@@ -32,18 +76,6 @@ const clearAllEl = span({
     handleResetFilters();
   },
 }, 'Clear All');
-const sortByContainer = div(
-  { class: 'sb-main-container flex items-center justify-self-end w-max relative py-6 !border-b border-b-[#D8D8D8] font-semibold' },
-  div({ class: 'sort-by text-[#65797c] text-xs font-semibold not-italic mr-2' }, 'Sort By:'),
-  div(
-    { class: 'sb-container w-36 flex flex-row items-center gap-x-4 !bg-[#F4F5F5] tracking-[0.2px] leading-4 text-xs border border-[#EAECEC] border-opacity-5 bg-[#273F3F] bg-opacity-5 rounded-full py-3 px-6 w-auto bg-white cursor-pointer relative' },
-    span({ class: 'sb-selected' }, ''),
-    span({ class: 'icon icon-chevron-down shrink-0 ml-auto' }),
-    div({ class: 'sb-options w-max h-auto drop-shadow-2xl absolute hidden top-full lg:left-0 right-0 bg-white rounded-2xl z-20 border pt-5 mt-1 max-h-screen overflow-y-auto' }),
-  ),
-);
-//decorateIcons(sortByContainer, 20, 20);
-
 const hubDesktopFilters = div(
   { class: 'md:col-span-2 w-full h-screen md:h-auto fixed md:relative flex flex-col-reverse justify-end top-0 left-0 z-50 md:z-auto transition-all duration-150 -translate-y-full md:translate-y-0 [&_*:has(input:checked)~*_.clear-all]:block' },
   p(
@@ -197,34 +229,7 @@ function handleRenderContent(newLists = lists) {
   const start = (page - 1) * itemsPerPage;
   const storiesToDisplay = newLists.slice(start, start + itemsPerPage);
   storiesToDisplay.forEach((article, index) => {
-    let footerLink = '';
-    const type = article.path.split('/')[3];
-    switch (type) {
-      case 'podcasts':
-        footerLink = 'Listen to podcast';
-        break;
-      case 'films':
-        footerLink = 'Watch film';
-        break;
-      default:
-        footerLink = 'Read article';
-        break;
-    }
-    let publishdate = new Date(getMetadata('published-time'));
-    console.log(publishdate);
-    const formattedDate = `${publishdate.toLocaleString('default', { month: 'long' })} ${publishdate.getDate()} ${publishdate.getFullYear()} | ${article.readingTime} Mins`;
-    console.log(formattedDate);
-    const imageUrl = new URL(article.image, window.location);
-
-    cardList.appendChild(createCard({
-      titleImage: imageHelper(imageUrl.pathname, article.title, (index === 0)),
-      title: article.title,
-      description: article.description,
-      footerLink,
-      path: article.path,
-      formattedDate,
-      isStoryCard: true,
-    }));
+    cardList.appendChild(createCard(article, index === 0));
   });
 
   const paginationElements = createPagination(newLists, page, itemsPerPage);
@@ -332,56 +337,8 @@ function toggleTabs(tabId, tabElement) {
   });
 }
 
-
-// Sort options
-const sortOptions = [
-  { label: 'Relevance', value: 'relevance' },
-  { label: 'Date - Descending', value: 'date-desc' },
-  { label: 'Date - Ascending', value: 'date-asc' },
-  { label: 'Most Viewed', value: 'most-viewed' },
-];
-
-const h2Eles = sortOptions;
-if (h2Eles.length > 0) {
-  const sbOptionsContainer = sortByContainer.querySelector('.sb-options');
-  const sbSelected = sortByContainer.querySelector('.sb-selected');
-
-  if (h2Eles.length > 0) {
-    sbSelected.textContent = h2Eles[0].label || 'Section 1';
-    h2Eles.forEach((h2Ele, index) => {
-      const optionEle = div(
-        { class: 'sb-option py-3 px-6 hover:bg-[#f2f2f2] hover:text-black cursor-pointer' },
-        h2Ele.label || `Section ${index + 1}`,
-      );
-      optionEle.dataset.value = index;
-      optionEle.addEventListener('click', function optionSelection(event) {
-
-        sbSelected.textContent = this.textContent;
-        Array.from(sbOptionsContainer.children).forEach((opt) => {
-          opt.classList.remove('bg-[#273F3F]', 'bg-opacity-10', 'text-[#273F3F]');
-        });
-        sbOptionsContainer.classList.add('hidden');
-        event.stopPropagation();
-      });
-      sbOptionsContainer.appendChild(optionEle);
-    });
-  }
-  sortByContainer.querySelector('.sb-container').addEventListener('click', () => {
-    sbOptionsContainer.classList.toggle('hidden');
-  });
-  window.addEventListener('click', (e) => {
-    if (!sortByContainer.contains(e.target)) {
-      sbOptionsContainer.classList.add('hidden');
-    }
-  });
-  sbOptionsContainer.addEventListener('click', (event) => {
-    event.stopPropagation();
-  });
-}
-
 async function initiateRequest() {
   let response = await ffetch('/en-us/stories/query-index.json')
-    .filter(({ path }) => !excludedPages.includes(path))
     .chunks(500)
     .all();
   response = [...response].sort((x, y) => new Date(x.publishDate) - new Date(y.publishDate));
@@ -413,7 +370,6 @@ export default async function decorate(block) {
     const hubContent = div(
       { class: 'col-span-9' },
       allSelectedTags,
-      sortByContainer,
       cardList,
     );
 
@@ -451,25 +407,6 @@ export default async function decorate(block) {
     decorateIcons(hub);
 
     const horizondalLine = div({ class: 'flex items-center justify-between border-t mb-8 md:py-0' });
-    // const tabElement = div({ class: 'font-semibold text-base text-black md:block flex' });
-    // const tabs = [
-    //   { name: 'All stories', tabId: 'stories-type/' },
-    //   { name: 'Community stories', tabId: 'stories-type/community' },
-    //   { name: 'Product stories', tabId: 'stories-type/products' },
-    // ];
-    // tabs.forEach((tab) => {
-    //   const btn = button({
-    //     class: 'tab md:py-1.5 pb-4 mr-8 active border-b-8 border-[#ff7223]',
-    //     id: tab.tabId,
-    //     onclick: async () => {
-    //       await initiateRequest();
-    //       toggleTabs(tab.tabId, tabElement);
-    //     },
-    //   }, tab.name);
-    //   tabElement.appendChild(btn);
-    // });
-    // filterContainer['stories-type'] = [''];
-    // toggleTabs(tabs[0=.tabId, tabElement);
     block.innerHTML = '';
     block.append(horizondalLine, hub);
   }
