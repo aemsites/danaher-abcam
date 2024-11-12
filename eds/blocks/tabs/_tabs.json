@@ -1,14 +1,14 @@
 {
   "definitions": [
     {
-      "title": "Product Tabs",
-      "id": "product-tabs",
+      "title": "Tabs",
+      "id": "tabs",
       "plugins": {
         "xwalk": {
           "page": {
             "resourceType": "core/franklin/components/block/v1/block",
             "template": {
-              "name": "Product Tabs"
+              "name": "Tabs"
             }
           }
         }
