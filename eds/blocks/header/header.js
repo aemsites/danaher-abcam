@@ -73,4 +73,19 @@ export default async function decorate(block) {
       }
     });
   });
+
+  decorateIcons(document.querySelector('.account-dropdown'), 16, 16);
+  block.querySelector('.account-dropdown')?.addEventListener('click', (event) => {
+    const accountDiv = document.querySelector('.account-dropdown-menu');
+    if(accountDiv.classList.contains('hidden')) {
+      block.querySelector('.account-dropdown-menu')?.classList.remove('hidden');
+      block.querySelector('.account-dropdown-menu')?.classList.add('block');
+    } else {
+      block.querySelector('.account-dropdown-menu')?.classList.add('hidden');
+      block.querySelector('.account-dropdown-menu')?.classList.remove('block');
+    }
+    // const accountEl = document.getElementById('my-account');
+    // accountEl.append(myAccount());
+    event.preventDefault();
+  });    
 }

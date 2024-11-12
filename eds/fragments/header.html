@@ -399,7 +399,7 @@
   </div>
 
 <div class="desktop-menu w-full flex flex-row my-0 gap-0 px-[30px] xl:px-[80px] max-w-[2464px]">
-  <div class="relative w-full lg:basis-1/6 flex flex-col-reverse items-start justify-start md:flex-row gap-4 md:items-center">
+  	<div class="relative w-full lg:basis-1/6 flex flex-col-reverse items-start justify-start md:flex-row gap-4 md:items-center">
 		<div class="flex flex-row space-x-4">
 			<div class="w-[25px] h-[25] abcam-logo lg:hidden">
 				<button type="button" aria-label="Open mobile menu">
@@ -416,7 +416,33 @@
 				<img data-icon-name="Search-bar" src="/eds/icons/Search-bar.svg" alt="Search-bar" width="25" height="25" loading="lazy">
 			</span>
 		</div>
-  </div>
+  	</div>
+	<!-- My Account from here -->
+	<div class="w-full sm:w-[50%] md:w-[40%] 2xl:w-[15%] order-3 pt-2.5 flex flex-row gap-4 relative">
+		<span class="account-dropdown">
+			<div class="relative text-sm">
+				<div id="headlessui-popover-button-:R2d2ra6:" aria-expanded="false" data-headlessui-state="">
+					<span class="">
+						<button class="border border-white rounded-2xl px-2 py-3 text-xs h-8 inline-flex justify-center items-center" type="button">
+							<span class="user-icon icon icon-user"></span>
+							<span class="text-white block px-1.5 font-semibold">My account</span>
+							<span class="user-icon-dd icon icon-chevron-down-white"></span>
+						</button>
+					</span>
+				</div>
+		
+				<div class="account-dropdown-menu hidden absolute top-10 sm:right-0 drop-shadow-2xl mt-2" style="z-index: 100;">
+					<div data-side="bottom" role="dialog" class="relative bg-white pb-4 rounded-2xl shadow-elevation-5 w-40" tabindex="-1">
+						<!-- <div id="my-account" class="w-full hidden"></div> -->
+						<div id="my-account" class="w-full h-full top-0 left-0 inset-0 z-30 bg-white bg-opacity-80 flex flex-col justify-center">
+							<p class="flex items-center justify-center rounded-full bg-[#378189] hover:bg-[#2A5F65] text-white w-full">Sign In</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</span>
+	</div>
+	<!-- My Account till here -->	
   <div class="lg:basis-4/6 hidden lg:!block">
 		
 	<div class="flex flex-col space-y-4">
