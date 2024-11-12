@@ -2,6 +2,7 @@ import { getProductResponse } from '../../scripts/search.js';
 import { div, button } from '../../scripts/dom-builder.js';
 import { toolTip } from '../../scripts/scripts.js';
 
+/* eslint-disable no-unused-expressions */
 function toggleTabs(tabId, mmgTabs, tabType) {
   const contentSections = document.querySelectorAll('[data-tabname]');
   contentSections.forEach((section) => {
@@ -14,13 +15,13 @@ function toggleTabs(tabId, mmgTabs, tabType) {
   const tabss = mmgTabs.querySelectorAll('.tab');
   tabss.forEach((tab) => {
     if (tab.id === tabId) {
-      tabType === 'product-tabs' ?
-      tab.classList.add('active', 'border-b-8', 'border-[#ff7223]') :
-      tab.classList.add('bg-black', 'text-white');
+      tabType === 'product-tabs'
+        ? tab.classList.add('active', 'border-b-8', 'border-[#ff7223]')
+        : tab.classList.add('bg-black', 'text-white');
     } else {
-      tabType === 'product-tabs' ?
-      tab.classList.remove('active', 'border-b-8', 'border-[#ff7223]') :
-      tab.classList.remove('bg-black', 'text-white');
+      tabType === 'product-tabs'
+        ? tab.classList.remove('active', 'border-b-8', 'border-[#ff7223]')
+        : tab.classList.remove('bg-black', 'text-white');
     }
   });
 }
@@ -67,9 +68,9 @@ function decorateButtonTabs(block) {
   const mmgTabs = div({ class: 'button-tabs flex gap-x-6' });
   const tabs = getTabName();
   tabs.forEach((tab) => {
-    const buttonTab = button({ 
-      class: 'tab px-6 py-2 border border-black border-solid bg-white text-black font-bold rounded-full capitalize', 
-      id: tab ,
+    const buttonTab = button({
+      class: 'tab px-6 py-2 border border-black border-solid bg-white text-black font-bold rounded-full capitalize',
+      id: tab,
     }, tab);
     mmgTabs.appendChild(buttonTab);
     buttonTab.addEventListener('click', () => {
@@ -83,6 +84,6 @@ function decorateButtonTabs(block) {
 
 export default async function decorate(block) {
   const section = block.closest('.section');
-  if(section.classList.contains('product-tabs')) decorateProductTabs(block);
-  if(section.classList.contains('button-tabs')) decorateButtonTabs(block);
+  if (section.classList.contains('product-tabs')) decorateProductTabs(block);
+  if (section.classList.contains('button-tabs')) decorateButtonTabs(block);
 }
