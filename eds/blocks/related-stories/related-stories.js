@@ -11,6 +11,7 @@ function createCard(article, firstCard = false) {
     : article.title;
 
   let footerLink = '';
+  let overlappText;
   const type = article.path.split('/')[3];
   switch (type) {
     case 'podcasts':
@@ -21,6 +22,7 @@ function createCard(article, firstCard = false) {
       break;
     case 'upcoming-webinar':
       footerLink = 'Register';
+      overlappText = 'On Demand';
       break;
     case 'on-demand-webinar':
       footerLink = 'Watch webinar';
@@ -47,10 +49,14 @@ function createCard(article, firstCard = false) {
       break;
   }
   const imageUrl = new URL(article.image, window.location);
-
+  let webinarOnDemandText = '';
+  if (overlappText) {
+    webinarOnDemandText = div({ class: 'absolute top-2 right-4 text-xs bg-[#EDF6F7] tracking-tight text-[#378189]' }, overlappText);
+  }
   const cardWrapper = a(
     { class: 'group h-full', href: article.path, title: article.title },
     imageHelper(imageUrl.pathname, article.title, firstCard),
+    webinarOnDemandText,
     div(
       { class: 'py-2' },
       span({ class: 'capitalize font-[rockwell] text-[#65697C] text-sm' }, `${getContentType(tags)}`),
@@ -105,7 +111,8 @@ export default async function decorate(block) {
       .filter((item) => item.tags.includes(storyType) && item.tags.includes(contentType))
       .all();
   } else {
-    articles = await ffetch(`/en-us/${templateName}/query-index.json`)
+    // articles = await ffetch(`/en-us/${templateName}/query-index.json`)
+    articles = await ffetch('/en-us/stories/query-index.json')
       .filter((item) => {
         const url = new URL(getMetadata('og:url'));
         return item.path !== url.pathname;
