@@ -1736,6 +1736,10 @@ main .section.guides-middle-container h2 {
   height: 100vh;
 }
 
+.max-h-\[200px\] {
+  max-height: 200px;
+}
+
 .min-h-full {
   min-height: 100%;
 }
@@ -2025,6 +2029,10 @@ main .section.guides-middle-container h2 {
 
 .overflow-x-auto {
   overflow-x: auto;
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
 }
 
 .overflow-y-scroll {
@@ -2986,6 +2994,10 @@ main .section.guides-middle-container h2 {
     margin-left: 1rem;
   }
 
+  .xl\:max-h-\[345px\] {
+    max-height: 345px;
+  }
+
   .xl\:w-\[1120px\] {
     width: 1120px;
   }
@@ -3000,6 +3012,10 @@ main .section.guides-middle-container h2 {
   .\32xl\:mx-0 {
     margin-left: 0px;
     margin-right: 0px;
+  }
+
+  .\32xl\:max-h-\[500px\] {
+    max-height: 500px;
   }
 
   .\32xl\:w-\[15\%\] {
