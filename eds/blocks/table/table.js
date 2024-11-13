@@ -20,7 +20,7 @@ function handleSearch(event, tableEl) {
         text = text.replace(/(<mark class="highlight">|<\/mark>)/gim, '');
         let newText = text;
         if (value !== '') {
-        newText = text.replace(regex, '<mark class="highlight">$&</mark>');
+          newText = text.replace(regex, '<mark class="highlight">$&</mark>');
         }
         cell.innerHTML = newText;
       });
