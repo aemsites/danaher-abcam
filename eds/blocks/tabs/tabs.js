@@ -83,7 +83,6 @@ function decorateButtonTabs(block) {
 }
 
 export default async function decorate(block) {
-  const section = block.closest('.section');
-  if (section.classList.contains('product-tabs')) decorateProductTabs(block);
-  if (section.classList.contains('button-tabs')) decorateButtonTabs(block);
+  if (block.classList.contains('product-tabs')) decorateProductTabs(block);
+  if (block.classList.contains('button-tabs')) decorateButtonTabs(block);
 }
