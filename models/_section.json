@@ -31,14 +31,6 @@
             {
               "name": "Highlight",
               "value": "highlight"
-            },
-            {
-              "name": "Tabs",
-              "value": "product-tabs"
-            },
-            {
-              "name": "Button Tabs",
-              "value": "button-tabs"
             }
           ]
         },

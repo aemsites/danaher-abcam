@@ -366,14 +366,6 @@
           {
             "name": "Highlight",
             "value": "highlight"
-          },
-          {
-            "name": "Tabs",
-            "value": "product-tabs"
-          },
-          {
-            "name": "Button Tabs",
-            "value": "button-tabs"
           }
         ]
       },
@@ -1989,6 +1981,26 @@
         "valueType": "string",
         "name": "column7text",
         "label": "Column7"
+      }
+    ]
+  },
+  {
+    "id": "tabs",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "style",
+        "label": "Style",
+        "options": [
+          {
+            "name": "Tabs",
+            "value": "product-tabs"
+          },
+          {
+            "name": "Button Tabs",
+            "value": "button-tabs"
+          }
+        ]
       }
     ]
   },
