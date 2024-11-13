@@ -52,7 +52,7 @@
             "valueType": "string"
           },
           {
-            "...": "../../../models/_common.json#/image-fields"
+            "...": "../../../models/_common.json#/button-fields"
           }
         ]
       }
