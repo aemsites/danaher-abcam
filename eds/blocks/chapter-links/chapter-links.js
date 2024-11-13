@@ -61,7 +61,7 @@ export default async function decorate(block) {
       return item.parent === parentPage;
     }).all();
   const chapters = chapterItems.map((element) => ({
-    title: element.title.indexOf('| abcam') > -1 ? element.title.split('| abcam')[0] : element.title,
+    title: (element.title.indexOf('| abcam') || element.title.indexOf('| Abcam')) > -1 ? (element.title.split('| abcam')[0] || element.title.split('| Abcam')[0]) : element.title,
     pageOrder: element.pageOrder,
     path: element.path,
   }));
