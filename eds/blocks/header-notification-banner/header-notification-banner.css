@@ -1,0 +1,3 @@
+.header-notification-banner-wrapper :is(.block) {
+  display: block
+}
