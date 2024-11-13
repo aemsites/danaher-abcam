@@ -3,14 +3,25 @@ const lengthMessage = 'Invalid length for field value';
 const emailMessage = 'A valid email address is required';
 
 function handleFormSubmit(ele) {
-  const submitButton = ele.querySelector('input[type=submit]');
-  const spinner = document.createElement('span');
-  spinner.setAttribute('class', 'loader');
-  submitButton.setAttribute('disabled', true);
-  submitButton.style.cursor = 'wait';
-  submitButton.parentNode.appendChild(spinner);
-  return true;
+  const formParent = ele.parentElement;
+  fetch('https://s1885709864.t.eloqua.com/e/f2', {
+    method: 'POST',
+    body: new FormData(ele),
+  })
+    .then((response) => {
+      if (response.status === 200) {
+        ele.remove();
+        formParent.innerHTML = '<p>Thank you for your submission</p>';
+      } else {
+        console.error('An error occurred while submitting the form');
+      }
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+  return false;
 }
+
 function resetSubmitButton(e) {
   let submitButtons = e.target.form.getElementsByClassName('submit-button');
   for (var i = 0; i < submitButtons.length; i += 1) {
