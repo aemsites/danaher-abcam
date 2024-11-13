@@ -1,7 +1,6 @@
-import { applyClasses, debounce, moveInstrumentation } from '../../scripts/scripts.js';
+import { applyClasses, moveInstrumentation } from '../../scripts/scripts.js';
 import {
-  table, tbody, td, th, thead, tr, input, div, form, label, button,
-  span,
+  table, tbody, td, th, thead, tr, input, div, label,
 } from '../../scripts/dom-builder.js';
 import { decorateIcons } from '../../scripts/aem.js';
 
