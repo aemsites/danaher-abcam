@@ -7,18 +7,27 @@ import { decorateIcons } from '../../scripts/aem.js';
 
 function handleSearch(event, tableEl) {
   event.preventDefault();
-  const data = new FormData(event.target);
-  let value = data.get('modification');
+  let { value } = event.target;
   value = value.trim();
   const bodyEl = tableEl.querySelector('tbody');
   const filter = value.toLowerCase();
+  const regex = new RegExp(filter, 'gi');
   [...bodyEl.children].forEach((row) => {
     if (!row.textContent.toLowerCase().includes(filter) && value !== '') row.classList.add('hidden');
-    else row.classList.remove('hidden');
+    else {
+      row.classList.remove('hidden');
+      [...row.children].forEach((cell) => {
+        let text = cell.innerHTML;
+        text = text.replace(/(<mark class="highlight">|<\/mark>)/gim, '');
+        let newText = text;
+        if (value !== '') {
+        newText = text.replace(regex, '<mark class="highlight">$&</mark>');
+        }
+        cell.innerHTML = newText;
+      });
+    }
   });
 }
-
-const handleClear = debounce((event) => event.target.parentElement.nextElementSibling.click(), 200);
 
 /**
  *
@@ -30,29 +39,16 @@ export default async function decorate(block) {
     id: 'search-filter',
     type: 'search',
     name: 'modification',
+    placeholder: 'Search here...',
     value: '',
-    onkeyup: handleClear,
-    onsearch: handleClear,
+    onkeyup: (event) => handleSearch(event, tableEl),
+    onsearch: (event) => handleSearch(event, tableEl),
     class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5',
   });
-  const formEl = form(
-    {
-      class: 'flex items-center gap-x-3 mb-2',
-      onsubmit: (event) => handleSearch(event, tableEl),
-    },
-    div(
-      { class: 'space-y-1' },
-      label({ for: 'modification', class: 'text-sm font-semibold leading-5 text-slate-400' }, 'Enter modification'),
-      filterEl,
-    ),
-    button(
-      {
-        type: 'submit',
-        class: 'inline-flex items-center gap-x-2 py-2 px-4 ms-2 mt-auto text-sm font-medium text-white tracking-wide bg-teal-700 rounded-full border border-teal-700 hover:bg-teal-800',
-      },
-      span({ class: 'icon icon-search invert' }),
-      'Search',
-    ),
+  const formEl = div(
+    { class: 'w-full md:w-1/4 space-y-1 mb-2' },
+    label({ for: 'modification', class: 'text-sm font-semibold leading-5 text-slate-400' }, 'Enter modification'),
+    filterEl,
   );
   const tblHead = thead();
   const tblBody = tbody();
