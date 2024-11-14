@@ -229,7 +229,7 @@ export default async function decorate(block) {
   const flagElement = block.querySelector('.country-flag-icon');
   const lastSelectedCountry = getCookie('NEXT_COUNTRY');
   if (lastSelectedCountry === null || lastSelectedCountry === undefined) {
-    flagElement.src = `/eds/icons/flags/us.svg`;
+    flagElement.src = '/eds/icons/flags/us.svg';
   }
   if (flagElement && lastSelectedCountry !== null) {
     // flagElement.title = lastSelectedCountry;
