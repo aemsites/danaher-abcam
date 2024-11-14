@@ -62,19 +62,16 @@ async function displayResults(query, resultsContainer) {
     );
     resultItem.querySelector('.result-flag-container').title = country;
     resultItem.addEventListener('click', (e) => {
-      switch (code) {
-        case 'CN':
-          window.location.href = 'https://www.abcam.cn/';
-          break;
-        case 'JP':
-          window.location.href = 'https://www.abcam.co.jp/';
-          break;
-
-        default:
-          break;
+      if (code === 'CN') {
+        window.location.href = 'https://www.abcam.cn/';
+        return;
+      }
+      if (code === 'JP') {
+        window.location.href = 'https://www.abcam.co.jp/';
+        return;
       }
       e.stopPropagation();
-      updateCountryButton(`/eds/icons/flags/${code}.svg`, code);
+      updateCountryButton(`/eds/icons/flags/${code.toLowerCase()}.svg`, code);
       resultsContainer.replaceChildren();
     });
     resultsContainer.appendChild(resultItem);
@@ -122,6 +119,14 @@ function countrySelector() {
       const items = resultsContainer.querySelectorAll('.result-item');
       if (currentIndex >= 0 && currentIndex < items.length) {
         const selectedItem = items[currentIndex];
+        if (selectedItem.querySelector('img').alt === 'CN') {
+          window.location.href = 'https://www.abcam.cn/';
+          return;
+        }
+        if (selectedItem.querySelector('img').alt === 'JP') {
+          window.location.href = 'https://www.abcam.co.jp/';
+          return;
+        }
         updateCountryButton(selectedItem.querySelector('img').src || '', (selectedItem.querySelector('img').alt) || '');
         resultsContainer.replaceChildren();
         currentIndex = -1;
