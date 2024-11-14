@@ -37,7 +37,7 @@ export default function createCard(article, firstCard = false, cardType = 'story
 
   const card = li(
     {
-      class: 'card relative overflow-hidden bg-transparent',
+      class: 'card relative overflow-hidden bg-transparent transform transition duration-500 hover:scale-105',
       title,
     },
     a(

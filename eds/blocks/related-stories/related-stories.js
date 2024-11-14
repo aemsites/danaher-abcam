@@ -4,87 +4,7 @@ import {
   ul, li, p, a, div, h3, span,
 } from '../../scripts/dom-builder.js';
 import { getMetadata } from '../../scripts/aem.js';
-
-function createCard(article, firstCard = false) {
-  const cardTitle = article.title.indexOf('| Danaher Life Sciences') > -1
-    ? article.title.split('| Danaher Life Sciences')[0]
-    : article.title;
-
-  let footerLink = '';
-  let onDemandText = '';
-  const type = article.path.split('/')[3];
-  switch (type) {
-    case 'podcasts':
-      footerLink = 'Listen to podcast';
-      break;
-    case 'films':
-      footerLink = 'Watch film';
-      break;
-    case 'upcoming-webinar':
-      footerLink = 'Register';
-      break;
-    case 'on-demand-webinar':
-      footerLink = 'Watch webinar';
-      onDemandText = 'On Demand';
-      break;
-    default:
-      footerLink = 'Read article';
-      break;
-  }
-
-  const tags = '';
-  let minRead;
-  switch (getContentType(tags)) {
-    case 'podcast':
-      minRead = ` | ${article.readingTime} mins listen`;
-      break;
-    case 'film':
-      minRead = ` | ${article.readingTime} mins watch`;
-      break;
-    case 'webinar':
-      minRead = ` | ${article.readingTime} Minutes`;
-      break;
-    default:
-      minRead = ` | ${article.readingTime} mins read`;
-      break;
-  }
-  const imageUrl = new URL(article.image, window.location);
-  const cardWrapper = a(
-    { class: 'group h-full', href: article.path, title: article.title },
-    imageHelper(imageUrl.pathname, article.title, firstCard),
-    onDemandText !== ''
-      ? div({ class: 'absolute top-2 right-4  py-1 px-2  rounded gap-2 h-6 text-xs bg-[#EDF6F7] tracking-tight text-[#378189]' }, onDemandText)
-      : '',
-    div(
-      { class: 'py-2' },
-      span({ class: 'capitalize font-[rockwell] text-[#65697C] text-sm' }, `${getContentType(tags)}`),
-      span({ class: 'font-[rockwell] text-[#65697C] text-sm' }, `${minRead}`),
-      h3(
-        {
-          class:
-            'text-black font-medium mt-4 line-clamp-3 break-words !h-16',
-        },
-        cardTitle,
-      ),
-      p({ class: 'text-sm font-normal line-clamp-3 break-words !h-[7.5rem]' }, article.description),
-      div(
-        {
-          class:
-            'mt-auto inline-flex w-full pb-5 text-base text-[#378189] font-semibold',
-        },
-        `${footerLink} →`,
-      ),
-    ),
-  );
-
-  return li(
-    {
-      class:
-        'w-full h-full article flex flex-col col-span-1 relative mx-auto justify-center overflow-hidden bg-white transform transition duration-500 hover:scale-105',
-    },
-    cardWrapper,
-  );
-}
+import createArticleCard from './../dynamic-cards/articleCard.js';
 
 export default async function decorate(block) {
   const pagetags = getMetadata('pagetags').split(',');
@@ -109,7 +29,8 @@ export default async function decorate(block) {
       .filter((item) => item.tags.includes(storyType) && item.tags.includes(contentType))
       .all();
   } else {
-    articles = await ffetch(`/en-us/${templateName}/query-index.json`)
+    //articles = await ffetch(`/en-us/${templateName}/query-index.json`)
+    articles = await ffetch('/en-us/stories/query-index.json')
       .filter((item) => {
         const url = new URL(getMetadata('og:url'));
         return item.path !== url.pathname;
@@ -125,7 +46,7 @@ export default async function decorate(block) {
           'container grid max-w-7xl w-full mx-auto gap-6 grid-cols-1 sm:grid-cols-1 sm:px-0 lg:grid-cols-3 lg:px-6 xl:px-0  justify-items-center mt-3 mb-3',
   });
   articles?.forEach((article, index) => {
-    cardList.appendChild(createCard(article, index === 0));
+    cardList.appendChild(createArticleCard(article, index === 0,'story'));
   });
   block.append(cardList);
 }
