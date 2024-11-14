@@ -321,8 +321,8 @@ const fileMappings = [
     wrapper: 'downloads-wrapper',
   },
   {
-    content: './eds/templates/topic/topic.js',
-    output: './eds/templates/topic/topic.css',
+    content: './eds/templates/scientific-articles/scientific-articles.js',
+    output: './eds/templates/scientific-articles/scientific-articles.css',
   },
   {
     content: './eds/blocks/video-transcript/video-transcript.js',

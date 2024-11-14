@@ -10,6 +10,8 @@ export default function decorate(block) {
   const newUrl = new URL(window.location);
   if (window.location.pathname.indexOf('technical-resources/guides') > -1) {
     newUrl.pathname = window.location.pathname.substring(0, window.location.pathname.indexOf('/technical-resources/'));
+  }else if (window.location.pathname.indexOf('scientific-articles') > -1) {
+    newUrl.pathname = 'en-us';
   }
   const { length } = path;
   if (length > 0) {
