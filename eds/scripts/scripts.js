@@ -385,6 +385,28 @@ function decorateGuidePage(main) {
   }
 }
 
+function decorateTopicPage(main) {
+  const sectionEl = main.querySelector(':scope > div.section.related-articles-container.sidelinks-container');
+  if (sectionEl) {
+    const toBeRemoved = ['related-articles-wrapper', 'sidelinks-wrapper'];
+    const rightSideElements = div({ class: 'w-full pr-0 lg:pr-8' });
+    const sticky = div({ class: 'sticky top-0 space-y-12 pt-6' });
+    const divEl = div({ class: 'ml-0 lg:ml-4 xl:ml-4 min-w-60 lg:max-w-72 flex flex-col gap-y-2 z-20' }, sticky);
+
+    toBeRemoved.forEach((ele) => {
+      const existingEl = sectionEl?.querySelector(`.${ele}`);
+      sticky.append(existingEl);
+    });
+    Array.from(sectionEl?.children).forEach((element) => {
+      if (!toBeRemoved.includes(element.classList[0])) {
+        rightSideElements.append(element);
+      }
+    });
+    sectionEl?.prepend(divEl);
+    sectionEl?.append(rightSideElements);
+  }
+}
+
 /**
  * Decorates the sticky right navigation block from main element.
  * @param {Element} main The main element
@@ -701,6 +723,8 @@ export function decorateMain(main) {
   decorateStickyRightNav(main);
   decorateStoryPage(main);
   decorateGuidePage(main);
+  decorateTopicPage(main) 
+  
 }
 
 export const applyClasses = (element, classes) => element?.classList.add(...classes.split(' '));
