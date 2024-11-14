@@ -57,7 +57,7 @@ async function displayResults(query, resultsContainer) {
   filteredCountries.forEach(({ code, country }) => {
     const resultItem = div(
       { class: 'result-item flex flex-row gap-x-2 p-4 text-black hover:bg-[#f2f2f2]' },
-      img({ class: 'result-flag-container h-5 w-5', alt: code, src: `https://www.abcam.com/flags/${code.toLowerCase()}.svg` }),
+      img({ class: 'result-flag-container h-5 w-5', alt: code, src: `/eds/icons/flags/${code.toLowerCase()}.svg` }),
       div({ class: 'result-country' }, country),
     );
     resultItem.querySelector('.result-flag-container').title = country;
@@ -74,7 +74,7 @@ async function displayResults(query, resultsContainer) {
           break;
       }
       e.stopPropagation();
-      updateCountryButton(`https://www.abcam.com/flags/${code}.svg`, code);
+      updateCountryButton(`/eds/icons/flags/${code}.svg`, code);
       resultsContainer.replaceChildren();
     });
     resultsContainer.appendChild(resultItem);
@@ -228,8 +228,11 @@ export default async function decorate(block) {
 
   const flagElement = block.querySelector('.country-flag-icon');
   const lastSelectedCountry = getCookie('NEXT_COUNTRY');
+  if (lastSelectedCountry === null || lastSelectedCountry === undefined) {
+    flagElement.src = `/eds/icons/flags/us.svg`;
+  }
   if (flagElement && lastSelectedCountry !== null) {
     // flagElement.title = lastSelectedCountry;
-    flagElement.src = `https://www.abcam.com/flags/${lastSelectedCountry.toLowerCase()}.svg`;
+    flagElement.src = `/eds/icons/flags/${lastSelectedCountry.toLowerCase()}.svg`;
   }
 }
