@@ -93,7 +93,7 @@ function updateActiveItem(items, currentIndex) {
 function countrySelector() {
   const input = document.getElementById('country-search-input');
   const resultsContainer = document.getElementById('country-results');
-
+  input.focus();
   input.addEventListener('focus', () => {
     resultsContainer.classList.remove('hidden');
   });
