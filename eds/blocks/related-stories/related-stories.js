@@ -26,8 +26,7 @@ export default async function decorate(block) {
       .filter((item) => item.tags.includes(storyType) && item.tags.includes(contentType))
       .all();
   } else {
-    // articles = await ffetch(`/en-us/${templateName}/query-index.json`)
-    articles = await ffetch('/en-us/stories/query-index.json')
+    articles = await ffetch(`/en-us/${templateName}/query-index.json`)
       .filter((item) => {
         const url = new URL(getMetadata('og:url'));
         return item.path !== url.pathname;
