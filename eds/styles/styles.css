@@ -1678,10 +1678,6 @@ main .section.guides-middle-container h2 {
   height: 1.5rem;
 }
 
-.h-64 {
-  height: 16rem;
-}
-
 .h-72 {
   height: 18rem;
 }
@@ -1720,10 +1716,6 @@ main .section.guides-middle-container h2 {
 
 .w-2\/5 {
   width: 40%;
-}
-
-.w-40 {
-  width: 10rem;
 }
 
 .w-44 {
@@ -1798,11 +1790,6 @@ main .section.guides-middle-container h2 {
 
 .-translate-x-1\/2 {
   --tw-translate-x: -50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.translate-y-full {
-  --tw-translate-y: 100%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -2565,12 +2552,6 @@ main .section.guides-middle-container h2 {
   transition-duration: 150ms;
 }
 
-.transition-all {
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-
 .duration-500 {
   transition-duration: 500ms;
 }
@@ -2642,6 +2623,10 @@ main .section.guides-middle-container h2 {
 
 .group:hover .group-hover\:underline {
   text-decoration-line: underline;
+}
+
+.peer:checked ~ .peer-checked\:block {
+  display: block;
 }
 
 @media (max-width: 768px) {

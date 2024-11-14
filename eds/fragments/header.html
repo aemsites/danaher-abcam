@@ -1,4 +1,4 @@
-<div class="main-mobile-menu fixed top-0 left-0 w-screen h-screen p-4 overflow-y-scroll z-[99] bg-black hidden">
+<div class="main-mobile-menu fixed top-0 left-0 w-screen h-screen p-4 overflow-y-scroll z-30 bg-black hidden">
 	<div class="flex flex-row items-center justify-between">
 	  <div class="flex flex-row items-center gap-4">
 		<div class="close-hamburger-menu cursor-pointer">
@@ -419,25 +419,15 @@
   	</div>
 	<!-- My Account from here -->
 	<div class="w-full sm:w-[50%] md:w-[40%] 2xl:w-[15%] order-3 pt-2.5 flex flex-row gap-4 relative">
-		<span class="account-dropdown">
-			<div class="relative text-sm">
-				<div id="headlessui-popover-button-:R2d2ra6:" aria-expanded="false" data-headlessui-state="">
-					<span class="">
-						<button class="border border-white rounded-2xl px-2 py-3 text-xs h-8 inline-flex justify-center items-center" type="button">
-							<span class="user-icon icon icon-user"></span>
-							<span class="text-white block px-1.5 font-semibold">My account</span>
-							<span class="user-icon-dd icon icon-chevron-down-white"></span>
-						</button>
-					</span>
-				</div>
-		
-				<div class="account-dropdown-menu hidden absolute top-10 sm:right-0 drop-shadow-2xl mt-2" style="z-index: 100;">
-					<div data-side="bottom" role="dialog" class="relative bg-white pb-4 rounded-2xl shadow-elevation-5 w-40" tabindex="-1">
-						<!-- <div id="my-account" class="w-full hidden"></div> -->
-						<div id="my-account" class="w-full h-full top-0 left-0 inset-0 z-30 bg-white bg-opacity-80 flex flex-col justify-center">
-							<p class="flex items-center justify-center rounded-full bg-[#378189] hover:bg-[#2A5F65] text-white w-full">Sign In</p>
-						</div>
-					</div>
+		<span class="account-dropdown-container relative text-sm">
+			<input type="checkbox" id="account-dropdown" class="peer hidden" />
+			<label for="account-dropdown" class="border border-white rounded-2xl px-2 py-3 text-xs h-8 inline-flex justify-center items-center cursor-pointer">					
+				<span class="user-icon icon icon-user"></span>
+				<span class="text-white block px-1.5 font-semibold">My account</span>
+				<span class="user-icon-dd icon icon-chevron-down-white"></span>				
+			</label>
+			<div class="account-dropdown-menu hidden peer-checked:block absolute top-10 sm:right-0 drop-shadow-2xl mt-2 z-40">
+				<div id="my-account" data-side="bottom" role="dialog" class="relative w-full bg-white pb-4 rounded-2xl shadow-elevation-5" tabindex="-1">					
 				</div>
 			</div>
 		</span>
@@ -875,4 +865,4 @@
 	</div>
 	</div>  
 </div>
-<div class="h-[0.1rem] mt-4 z-50" style="background: linear-gradient(90deg, #4ba6b3 0, #c9d3b7 35%, #ff8730 70%, #c54428)"></div>
+<div class="h-[0.1rem] mt-4 z-10" style="background: linear-gradient(90deg, #4ba6b3 0, #c9d3b7 35%, #ff8730 70%, #c54428)"></div>
