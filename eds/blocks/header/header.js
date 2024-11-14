@@ -1,5 +1,9 @@
-import { a, button, div, span } from '../../scripts/dom-builder.js';
-import { decorateIcons } from '../../scripts/aem.js';
+import {
+  a, div, span,
+} from '../../scripts/dom-builder.js';
+import {
+  decorateIcons,
+} from '../../scripts/aem.js';
 
 function megaMeunu() {
   return div({ class: 'w-[360px] z-40 hidden max-w-sm fixed h-full bg-black px-3 py-4 ease-out transition-all' });
@@ -21,19 +25,25 @@ function linkList(iconName, linkText, linkUrl) {
 function myAccount() {
   const myAccoundDiv = div({ class: 'mt-1 right-0 absolute z-drawer transform opacity-100 scale-100' });
   myAccoundDiv.append(
-    div({ class: 'w-full overflow-hidden bg-white md:h-full text-black md:w-full shadow-elevation-3 md:rounded-8px' },
-      div({ class: 'flex flex-col w-full min-w-80' },
-        div({ class: 'mb-3 md:mb-0 border-b border-b-[#D8D8D8] px-4 pt-4 pb-3' },
+    div(
+      { class: 'w-full overflow-hidden bg-white md:h-full text-black md:w-full shadow-elevation-3 md:rounded-8px' },
+      div(
+        { class: 'flex flex-col w-full min-w-80' },
+        div(
+          { class: 'mb-3 md:mb-0 border-b border-b-[#D8D8D8] px-4 pt-4 pb-3' },
           a({
             class: 'button size-full flex items-center gap-x-2 justify-center py-2 focus:outline-none bg-[#378189] rounded-full text-white text-sm font-semibold',
             href: 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fen-us',
           }, 'Sign In'),
-          div({ class: 'flex md:inline-flex text-align-center items-center justify-between w-full mt-2' },
-            span({ class: '' }, 'New to Abcam?',
+          div(
+            { class: 'flex md:inline-flex text-align-center items-center justify-between w-full mt-2' },
+            span(
+              { class: 'text-black' },
+              'New to Abcam?',
               a({
                 class: 'text-sm font-normal leading-5 text-[#378189] p-2 pl-2 hover:underline',
                 href: 'https://www.abcam.com/auth/register?redirect=https%3A%2F%2Fwww.abcam.com%2Fen-us',
-              }, 'Create an account')
+              }, 'Create an account'),
             ),
           ),
         ),
@@ -43,11 +53,12 @@ function myAccount() {
         linkList('reviews', 'My Reviews', 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fmy-account%2Forders'),
         linkList('rewards', 'My Rewards', 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fmy-account%2Forders'),
         linkList('profile', 'My Profile', 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fmy-account%2Forders'),
-        div({ class: 'mb-3 md:mb-0 px-4 pt-4 pb-3' },
+        div(
+          { class: 'mb-3 md:mb-0 px-4 pt-4 pb-3' },
           a({
             class: 'button size-full flex items-center gap-x-2 justify-center py-2 focus:outline-none border border-solid border-black rounded-full text-black text-sm font-semibold',
             href: 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fen-us',
-          }, 'Contact Us')       
+          }, 'Contact Us'),
         ),
       ),
     ),
@@ -132,5 +143,5 @@ export default async function decorate(block) {
     if (!dropdownLabel.contains(event.target) && dropdownLabel.previousElementSibling.checked) {
       dropdownLabel.click();
     }
-  }); 
+  });
 }
