@@ -1,4 +1,4 @@
-<div class="main-mobile-menu fixed top-0 left-0 w-screen h-screen p-4 overflow-y-scroll z-30 bg-black hidden">
+<div class="main-mobile-menu fixed top-0 left-0 w-screen h-screen p-4 overflow-y-scroll z-[99] bg-black hidden">
 	<div class="flex flex-row items-center justify-between">
 	  <div class="flex flex-row items-center gap-4">
 		<div class="close-hamburger-menu cursor-pointer">
@@ -398,15 +398,15 @@
 	</div>
   </div>
 
-<div class="desktop-menu w-full flex flex-row my-0 gap-0 px-[30px] xl:px-[80px] max-w-[2464px]">
-  	<div class="relative w-full lg:basis-1/6 flex flex-col-reverse items-start justify-start md:flex-row gap-4 md:items-center">
+<div class="desktop-menu w-full my-0 mx-auto flex flex-col sm:!flex-row gap-0 sm:gap-6 md:gap-6  px-[30px] xl:px-[80px] max-w-[2464px]">
+  <div class="relative md:w-[55%] lg:w-[15%] flex flex-row items-center justify-start gap-4 md:items-center">
 		<div class="flex flex-row space-x-4">
 			<div class="w-[25px] h-[25] abcam-logo lg:hidden">
 				<button type="button" aria-label="Open mobile menu">
 						<span class="hamburger-menu icon icon-Menu"></span>
 				</button>
 			</div>
-			<a class="hidden md:!block lg:-mt-[42px] w-[120px] h-[25] logo-home-link" href="https://www.abcam.com/en-us" aria-label="Homepage link">
+			<a class="hidden sm:hidden md:!block lg:-mt-[42px] w-[120px] h-[25] logo-home-link" href="https://www.abcam.com/en-us" aria-label="Homepage link">
 				<span class="icon icon-logo"></span>
 			</a>
 		</div>
@@ -416,24 +416,34 @@
 				<img data-icon-name="Search-bar" src="/eds/icons/Search-bar.svg" alt="Search-bar" width="25" height="25" loading="lazy">
 			</span>
 		</div>
-  	</div>
-	<!-- My Account from here -->
+  </div>
 	<div class="w-full sm:w-[50%] md:w-[40%] 2xl:w-[15%] order-3 pt-2.5 flex flex-row gap-4 relative">
-		<span class="account-dropdown-container relative text-sm">
+		<!-- My Account from here -->
+		<span class="account-dropdown-container relative">
 			<input type="checkbox" id="account-dropdown" class="peer hidden" />
 			<label for="account-dropdown" class="border border-white rounded-2xl px-2 py-3 text-xs h-8 inline-flex justify-center items-center cursor-pointer">					
 				<span class="user-icon icon icon-user"></span>
 				<span class="text-white block px-1.5 font-semibold">My account</span>
 				<span class="user-icon-dd icon icon-chevron-down-white"></span>				
 			</label>
-			<div class="account-dropdown-menu hidden peer-checked:block absolute top-10 sm:right-0 drop-shadow-2xl mt-2 z-40">
-				<div id="my-account" data-side="bottom" role="dialog" class="relative w-full bg-white pb-4 rounded-2xl shadow-elevation-5" tabindex="-1">					
+			<div class="account-dropdown-menu hidden peer-checked:block absolute top-10 sm:right-0 mt-1 z-40">
+				<div id="my-account" data-side="bottom" role="dialog" class="relative w-full bg-white pb-4" tabindex="-1">					
 				</div>
 			</div>
 		</span>
+		<!-- My Account till here -->
+		<div class="hidden cart-dropdown w-[54px] h-[32px] border border-white rounded-2xl relative inline-flex flex-col">
+			<div class="focus-visible:outline-none focus-visible:shadow-interactiveElement" role="button">
+				<span class="">
+					<button class="" type="button">
+						<span class="cart-icon"> </span>
+						<span class="cart-count"></span>
+					</button>
+				</span>
+			</div>
+		</div>
 	</div>
-	<!-- My Account till here -->	
-  <div class="lg:basis-4/6 hidden lg:!block">
+  <div class="hidden lg:!block w-[55%] md:w-[30%] lg:w-[90%] 2xl:w-[65%]">
 		
 	<div class="flex flex-col space-y-4">
 		<div class="w-full relative">

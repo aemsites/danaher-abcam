@@ -18,11 +18,6 @@
   z-index: 40
 }
 
-.header-wrapper :is(.mx-4) {
-  margin-left: 1rem;
-  margin-right: 1rem
-}
-
 .header-wrapper :is(.mb-3) {
   margin-bottom: 0.75rem
 }
@@ -35,8 +30,8 @@
   margin-top: 0.5rem
 }
 
-.header-wrapper :is(.mt-4) {
-  margin-top: 1rem
+.header-wrapper :is(.mt-0) {
+  margin-top: 0px
 }
 
 .header-wrapper :is(.block) {
@@ -70,6 +65,10 @@
 
 .header-wrapper :is(.min-w-80) {
   min-width: 20rem
+}
+
+.header-wrapper :is(.min-w-72) {
+  min-width: 18rem
 }
 
 .header-wrapper :is(.max-w-sm) {
@@ -110,21 +109,14 @@
   justify-content: space-between
 }
 
-.header-wrapper :is(.gap-2) {
-  gap: 0.5rem
-}
-
-.header-wrapper :is(.gap-3) {
-  gap: 0.75rem
-}
-
-.header-wrapper :is(.gap-4) {
-  gap: 1rem
-}
-
 .header-wrapper :is(.gap-x-2) {
   -moz-column-gap: 0.5rem;
        column-gap: 0.5rem
+}
+
+.header-wrapper :is(.gap-x-3) {
+  -moz-column-gap: 0.75rem;
+       column-gap: 0.75rem
 }
 
 .header-wrapper :is(.overflow-hidden) {
@@ -133,6 +125,26 @@
 
 .header-wrapper :is(.rounded-full) {
   border-radius: 9999px
+}
+
+.header-wrapper :is(.rounded-2xl) {
+  border-radius: 1rem
+}
+
+.header-wrapper :is(.rounded-xl) {
+  border-radius: 0.75rem
+}
+
+.header-wrapper :is(.rounded-\[28px\]) {
+  border-radius: 28px
+}
+
+.header-wrapper :is(.rounded-\[24px\]) {
+  border-radius: 24px
+}
+
+.header-wrapper :is(.rounded-\[4px\]) {
+  border-radius: 4px
 }
 
 .header-wrapper :is(.border) {
@@ -176,17 +188,14 @@
   padding: 0.5rem
 }
 
-.header-wrapper :is(.p-4) {
-  padding: 1rem
-}
-
-.header-wrapper :is(.p-0) {
-  padding: 0px
-}
-
 .header-wrapper :is(.px-3) {
   padding-left: 0.75rem;
   padding-right: 0.75rem
+}
+
+.header-wrapper :is(.px-4) {
+  padding-left: 1rem;
+  padding-right: 1rem
 }
 
 .header-wrapper :is(.py-2) {
@@ -197,11 +206,6 @@
 .header-wrapper :is(.py-4) {
   padding-top: 1rem;
   padding-bottom: 1rem
-}
-
-.header-wrapper :is(.px-4) {
-  padding-left: 1rem;
-  padding-right: 1rem
 }
 
 .header-wrapper :is(.pb-3) {
@@ -250,11 +254,6 @@
 
 .header-wrapper :is(.opacity-100) {
   opacity: 1
-}
-
-.header-wrapper :is(.blur) {
-  --tw-blur: blur(8px);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
 }
 
 .header-wrapper :is(.transition-all) {
