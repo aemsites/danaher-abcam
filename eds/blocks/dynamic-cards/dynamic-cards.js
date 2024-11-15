@@ -7,18 +7,26 @@ import { getMetadata, toClassName } from '../../scripts/aem.js';
 import createArticleCard from './articleCard.js';
 import { applyClasses } from '../../scripts/scripts.js';
 
-const getSelectionFromUrl = () => (window.location.pathname.indexOf('category') > -1 ? toClassName(window.location.pathname.replace('.html', '').split('/').pop()) : '');
+const title = getMetadata('og:title')
+  ?.toLowerCase()
+  .replace(' | abcam', '')
+  .trim()
+  .replace(/\s+/g, '-');
+
+const getSelectionFromUrl = () => (window.location.pathname.indexOf(`/${title}/`) > -1 ? toClassName(window.location.pathname.replace('.html', '').split('/').pop()) : '');
 export const getPageFromUrl = () => toClassName(new URLSearchParams(window.location.search).get('page')) || '';
 
 const createTopicUrl = (currentUrl, keyword = '') => {
-  if (currentUrl.indexOf('category') > -1) {
+  if (currentUrl.indexOf(`/${title}/`) > -1) {
     return currentUrl.substring(0, currentUrl.lastIndexOf('/') + 1) + toClassName(keyword).toLowerCase();
   }
-  return `${currentUrl.replace('.html', '')}/category/${toClassName(keyword).toLowerCase()}`;
+    return `${currentUrl.replace('.html', '')}/${toClassName(keyword).toLowerCase()}`;
 };
 
-const patchBannerHeading = () => {
-  document.querySelector('body .banner h1').textContent = getMetadata('heading');
+const patchBannerHeading = (heading) => {
+  const pageHeading = document.querySelector('main h1');
+  pageHeading.classList.add('capitalize');
+  if(heading !== 'View All') pageHeading.textContent = heading;
 };
 
 const createPaginationLink = (page, label, current = false) => {
@@ -91,9 +99,13 @@ export function createFilters(articles, viewAll = false) {
   // render tag cloud
   const newUrl = new URL(window.location);
   newUrl.searchParams.delete('page');
-  if (window.location.pathname.indexOf('category') > -1) {
-    newUrl.pathname = window.location.pathname.substring(0, window.location.pathname.indexOf('/category/'));
+
+  const keyword = title;
+  const index = window.location.pathname.indexOf(keyword);
+  if (index > -1) {
+    newUrl.pathname = window.location.pathname.substring(0, index + keyword.length);
   }
+
   const tags = viewAll ? div(
     { class: 'flex flex-wrap gap-2 gap-y-0 mb-4' },
     a(
@@ -129,17 +141,13 @@ export function createFilters(articles, viewAll = false) {
   [...tags.children].forEach((tag) => {
     const url = new URL(tag.href);
     if (url.pathname === window.location.pathname) {
+      patchBannerHeading(tag?.textContent);
       tag.classList.add('!bg-black', '!text-white');
       tag.setAttribute('aria-current', 'tag');
     } else {
       tag.classList.add('text-black', 'bg-white');
     }
   });
-
-  // patch banner heading with selected tag only on category pages
-  if (getMetadata('heading') && window.location.pathname.indexOf('category') > -1) {
-    patchBannerHeading();
-  }
 
   return tags;
 }
