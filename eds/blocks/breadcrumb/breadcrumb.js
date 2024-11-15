@@ -11,8 +11,8 @@ export default function decorate(block) {
   const newUrl = new URL(window.location);
   if (pageUrl.indexOf('technical-resources/guides') > -1) {
     newUrl.pathname = pageUrl.substring(0, pageUrl.indexOf('/technical-resources/'));
-  } else if (pageUrl.indexOf('/scientific-articles') > -1) {
-    newUrl.pathname = pageUrl.substring(0, pageUrl.indexOf('/scientific-articles/'));
+  } else if (pageUrl.indexOf('/knowledge-center') > -1) {
+    newUrl.pathname = pageUrl.substring(0, pageUrl.indexOf('/knowledge-center/'));
   }
   const { length } = path;
   if (length > 0) {
