@@ -20,13 +20,13 @@ const createTopicUrl = (currentUrl, keyword = '') => {
   if (currentUrl.indexOf(`/${title}/`) > -1) {
     return currentUrl.substring(0, currentUrl.lastIndexOf('/') + 1) + toClassName(keyword).toLowerCase();
   }
-    return `${currentUrl.replace('.html', '')}/${toClassName(keyword).toLowerCase()}`;
+  return `${currentUrl.replace('.html', '')}/${toClassName(keyword).toLowerCase()}`;
 };
 
 const patchBannerHeading = (heading) => {
   const pageHeading = document.querySelector('main h1');
   pageHeading.classList.add('capitalize');
-  if(heading !== 'View All') pageHeading.textContent = heading;
+  if (heading !== 'View All') pageHeading.textContent = heading;
 };
 
 const createPaginationLink = (page, label, current = false) => {
@@ -100,10 +100,9 @@ export function createFilters(articles, viewAll = false) {
   const newUrl = new URL(window.location);
   newUrl.searchParams.delete('page');
 
-  const keyword = title;
-  const index = window.location.pathname.indexOf(keyword);
+  const index = window.location.pathname.indexOf(title);
   if (index > -1) {
-    newUrl.pathname = window.location.pathname.substring(0, index + keyword.length);
+    newUrl.pathname = window.location.pathname.substring(0, index + title.length);
   }
 
   const tags = viewAll ? div(
