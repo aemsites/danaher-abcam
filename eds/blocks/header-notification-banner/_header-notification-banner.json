@@ -30,19 +30,9 @@
           {
             "component": "select",
             "name": "header-notification-bannerType",
-            "value": "h2",
+            "hidden": true,
             "label": "Title Type",
-            "valueType": "string",
-            "options": [
-              {
-                "name": "h2",
-                "value": "h2"
-              },
-              {
-                "name": "h3",
-                "value": "h3"
-              }
-            ]
+            "valueType": "string"
           },
           {
             "component": "richtext",
