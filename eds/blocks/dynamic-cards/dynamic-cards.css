@@ -78,11 +78,22 @@
   margin-top: auto
 }
 
+.dynamic-cards-wrapper :is(.mt-2) {
+  margin-top: 0.5rem
+}
+
 .dynamic-cards-wrapper :is(.line-clamp-3) {
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3
+}
+
+.dynamic-cards-wrapper :is(.line-clamp-4) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4
 }
 
 .dynamic-cards-wrapper :is(.block) {
@@ -107,6 +118,11 @@
 
 .dynamic-cards-wrapper :is(.hidden) {
   display: none
+}
+
+.dynamic-cards-wrapper :is(.size-full) {
+  width: 100%;
+  height: 100%
 }
 
 .dynamic-cards-wrapper :is(.\!h-16) {
@@ -228,6 +244,14 @@
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
 }
 
+.dynamic-cards-wrapper :is(.bg-transparent) {
+  background-color: transparent
+}
+
+.dynamic-cards-wrapper :is(.p-2) {
+  padding: 0.5rem
+}
+
 .dynamic-cards-wrapper :is(.px-4) {
   padding-left: 1rem;
   padding-right: 1rem
@@ -261,8 +285,20 @@
   padding-top: 1rem
 }
 
+.dynamic-cards-wrapper :is(.pl-0) {
+  padding-left: 0px
+}
+
+.dynamic-cards-wrapper :is(.pt-8) {
+  padding-top: 2rem
+}
+
 .dynamic-cards-wrapper :is(.text-center) {
   text-align: center
+}
+
+.dynamic-cards-wrapper :is(.font-\[\"rockwell\"\]) {
+  font-family: "rockwell"
 }
 
 .dynamic-cards-wrapper :is(.text-base) {
@@ -287,6 +323,14 @@
   font-weight: 600
 }
 
+.dynamic-cards-wrapper :is(.font-bold) {
+  font-weight: 700
+}
+
+.dynamic-cards-wrapper :is(.capitalize) {
+  text-transform: capitalize
+}
+
 .dynamic-cards-wrapper :is(.leading-5) {
   line-height: 1.25rem
 }
@@ -299,6 +343,16 @@
 .dynamic-cards-wrapper :is(.text-black) {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity))
+}
+
+.dynamic-cards-wrapper :is(.text-\[\#378189\]) {
+  --tw-text-opacity: 1;
+  color: rgb(55 129 137 / var(--tw-text-opacity))
+}
+
+.dynamic-cards-wrapper :is(.text-\[\#65697C\]) {
+  --tw-text-opacity: 1;
+  color: rgb(101 105 124 / var(--tw-text-opacity))
 }
 
 .dynamic-cards-wrapper :is(.filter) {
@@ -315,6 +369,10 @@
 
 .dynamic-cards-wrapper :is(.duration-500) {
   transition-duration: 500ms
+}
+
+.dynamic-cards-wrapper :is(.duration-700) {
+  transition-duration: 700ms
 }
 
 .dynamic-cards-wrapper :is(.hover\:scale-105:hover) {
@@ -345,6 +403,14 @@
 .dynamic-cards-wrapper :is(.hover\:text-white:hover) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+
+.dynamic-cards-wrapper :is(.group:hover .group-hover\:tracking-wide) {
+  letter-spacing: 0.025em
+}
+
+.dynamic-cards-wrapper :is(.group:hover .group-hover\:underline) {
+  text-decoration-line: underline
 }
 
 @media (min-width: 640px) {
