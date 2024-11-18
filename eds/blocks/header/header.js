@@ -28,7 +28,7 @@ function rotateDropdownIcon(event) {
 
   const countrydd = document.querySelector('.country-dd');
   const ddImg = countrydd?.querySelector('img');
-  if (countrydd?.classList.contains('rotate') && ddImg) {
+  if (event !== undefined && countrydd?.classList.contains('rotate') && ddImg) {
     ddImg.style.transform = 'rotate(180deg)';
     countrydd.classList.remove('rotate');
   } else if (event === undefined || event.target !== input) {
