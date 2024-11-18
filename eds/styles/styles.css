@@ -1426,6 +1426,10 @@ main .section.guides-middle-container h2 {
   top: 0px;
 }
 
+.top-10 {
+  top: 2.5rem;
+}
+
 .top-3 {
   top: 0.75rem;
 }
@@ -1458,6 +1462,10 @@ main .section.guides-middle-container h2 {
   z-index: 99;
 }
 
+.order-3 {
+  order: 3;
+}
+
 .order-last {
   order: 9999;
 }
@@ -1476,6 +1484,11 @@ main .section.guides-middle-container h2 {
 
 .m-auto {
   margin: auto;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .my-0 {
@@ -1674,6 +1687,10 @@ main .section.guides-middle-container h2 {
   height: 18rem;
 }
 
+.h-8 {
+  height: 2rem;
+}
+
 .h-\[0\.1rem\] {
   height: 0.1rem;
 }
@@ -1684,6 +1701,10 @@ main .section.guides-middle-container h2 {
 
 .h-\[25\] {
   height: 25;
+}
+
+.h-\[32px\] {
+  height: 32px;
 }
 
 .h-full {
@@ -1720,6 +1741,14 @@ main .section.guides-middle-container h2 {
 
 .w-\[35rem\] {
   width: 35rem;
+}
+
+.w-\[54px\] {
+  width: 54px;
+}
+
+.w-\[55\%\] {
+  width: 55%;
 }
 
 .w-auto {
@@ -1783,6 +1812,11 @@ main .section.guides-middle-container h2 {
 
 .rotate-180 {
   --tw-rotate: 180deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.rotate-0 {
+  --tw-rotate: 0deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -2237,6 +2271,11 @@ main .section.guides-middle-container h2 {
   padding-bottom: 0.625rem;
 }
 
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -2322,6 +2361,10 @@ main .section.guides-middle-container h2 {
 
 .pt-2 {
   padding-top: 0.5rem;
+}
+
+.pt-2\.5 {
+  padding-top: 0.625rem;
 }
 
 .pt-4 {
@@ -2587,12 +2630,21 @@ main .section.guides-middle-container h2 {
   text-decoration-line: underline;
 }
 
+.focus-visible\:outline-none:focus-visible {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
 .group:hover .group-hover\:tracking-wide {
   letter-spacing: 0.025em;
 }
 
 .group:hover .group-hover\:underline {
   text-decoration-line: underline;
+}
+
+.peer:checked ~ .peer-checked\:block {
+  display: block;
 }
 
 @media (max-width: 768px) {
@@ -2616,12 +2668,28 @@ main .section.guides-middle-container h2 {
 }
 
 @media (min-width: 640px) {
+  .sm\:right-0 {
+    right: 0px;
+  }
+
+  .sm\:hidden {
+    display: none;
+  }
+
+  .sm\:w-\[50\%\] {
+    width: 50%;
+  }
+
   .sm\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .sm\:\!flex-row {
     flex-direction: row !important;
+  }
+
+  .sm\:gap-6 {
+    gap: 1.5rem;
   }
 
   .sm\:border-t-\[0\.5px\] {
@@ -2662,6 +2730,18 @@ main .section.guides-middle-container h2 {
     width: 60%;
   }
 
+  .md\:w-\[30\%\] {
+    width: 30%;
+  }
+
+  .md\:w-\[40\%\] {
+    width: 40%;
+  }
+
+  .md\:w-\[55\%\] {
+    width: 55%;
+  }
+
   .md\:w-auto {
     width: auto;
   }
@@ -2684,6 +2764,10 @@ main .section.guides-middle-container h2 {
 
   .md\:justify-end {
     justify-content: flex-end;
+  }
+
+  .md\:gap-6 {
+    gap: 1.5rem;
   }
 
   .md\:gap-x-80 {
@@ -2763,6 +2847,14 @@ main .section.guides-middle-container h2 {
     width: 50%;
   }
 
+  .lg\:w-\[15\%\] {
+    width: 15%;
+  }
+
+  .lg\:w-\[90\%\] {
+    width: 90%;
+  }
+
   .lg\:w-\[900px\] {
     width: 900px;
   }
@@ -2773,14 +2865,6 @@ main .section.guides-middle-container h2 {
 
   .lg\:max-w-72 {
     max-width: 18rem;
-  }
-
-  .lg\:basis-1\/6 {
-    flex-basis: 16.666667%;
-  }
-
-  .lg\:basis-4\/6 {
-    flex-basis: 66.666667%;
   }
 
   .lg\:flex-col {
@@ -2820,6 +2904,14 @@ main .section.guides-middle-container h2 {
   .\32xl\:mx-0 {
     margin-left: 0px;
     margin-right: 0px;
+  }
+
+  .\32xl\:w-\[15\%\] {
+    width: 15%;
+  }
+
+  .\32xl\:w-\[65\%\] {
+    width: 65%;
   }
 }
 

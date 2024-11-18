@@ -43,24 +43,24 @@
   border-style: solid
 }
 
-.tabs-wrapper :is(.border-black) {
-  --tw-border-opacity: 1;
-  border-color: rgb(0 0 0 / var(--tw-border-opacity))
-}
-
 .tabs-wrapper :is(.border-\[\#ff7223\]) {
   --tw-border-opacity: 1;
   border-color: rgb(255 114 35 / var(--tw-border-opacity))
 }
 
-.tabs-wrapper :is(.bg-white) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+.tabs-wrapper :is(.border-black) {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity))
 }
 
 .tabs-wrapper :is(.bg-black) {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity))
+}
+
+.tabs-wrapper :is(.bg-white) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity))
 }
 
 .tabs-wrapper :is(.px-6) {
