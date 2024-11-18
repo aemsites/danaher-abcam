@@ -485,7 +485,9 @@ function decorateIcon(span, width, height, subFolder, prefix = '') {
     .substring(5);
   const img = document.createElement('img');
   img.dataset.iconName = iconName;
-  img.src = subFolder ? `${window.hlx.codeBasePath}${prefix}/icons/${subFolder}/${iconName}.svg` : `${window.hlx.codeBasePath}${prefix}/icons/${iconName}.svg`;
+  img.src = subFolder 
+            ? `${window.hlx.codeBasePath}${prefix}/icons/${subFolder}/${iconName}.svg` 
+            : `${window.hlx.codeBasePath}${prefix}/icons/${iconName}.svg`;
   img.alt = iconName;
   img.width = width;
   img.height = height;
