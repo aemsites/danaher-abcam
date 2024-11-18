@@ -24,7 +24,7 @@
       "title-card",
       "podcasts",
       "alert-banner",
-      "product-tabs",
+      "tabs",
       "product-overview",
       "product-buybox",
       "product-reactivity",
@@ -45,7 +45,8 @@
       "download",
       "table",
       "downloads",
-      "elouqa-form"
+      "elouqa-form",
+      "video-transcript"
     ]
   },
   {

@@ -174,9 +174,9 @@ const fileMappings = [
     wrapper: 'disclaimer-wrapper',
   },
   {
-    content: './eds/blocks/product-tabs/product-tabs.js',
-    output: './eds/blocks/product-tabs/product-tabs.css',
-    wrapper: 'product-tabs-wrapper',
+    content: './eds/blocks/tabs/tabs.js',
+    output: './eds/blocks/tabs/tabs.css',
+    wrapper: 'tabs-wrapper',
   },
   {
     content: './eds/blocks/product-overview/product-overview.js',
@@ -249,7 +249,7 @@ const fileMappings = [
     wrapper: 'story-info-wrapper',
   },
   {
-    content: './eds/blocks/story-hub/story-hub.js',
+    content: ['./eds/blocks/story-hub/story-hub.js', './eds/blocks/dynamic-cards/articleCard.js'],
     output: './eds/blocks/story-hub/story-hub.css',
     wrapper: 'story-hub-wrapper',
   },
@@ -298,6 +298,11 @@ const fileMappings = [
     wrapper: 'chapter-links-wrapper',
   },
   {
+    content: ['./eds/blocks/related-articles/related-articles.js', './eds/blocks/chapter-links/chapter-links.js'],
+    output: './eds/blocks/related-articles/related-articles.css',
+    wrapper: 'related-articles-wrapper',
+  },
+  {
     content: './eds/templates/guide/guide.js',
     output: './eds/templates/guide/guide.css',
   },
@@ -319,6 +324,15 @@ const fileMappings = [
     content: './eds/blocks/downloads/downloads.js',
     output: './eds/blocks/downloads/downloads.css',
     wrapper: 'downloads-wrapper',
+  },
+  {
+    content: './eds/templates/topic/topic.js',
+    output: './eds/templates/topic/topic.css',
+  },
+  {
+    content: './eds/blocks/video-transcript/video-transcript.js',
+    output: './eds/blocks/video-transcript/video-transcript.css',
+    wrapper: 'video-transcript-wrapper',
   },
 ];
 

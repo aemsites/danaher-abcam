@@ -43,8 +43,16 @@
   height: 100%
 }
 
+.header-wrapper :is(.h-5) {
+  height: 1.25rem
+}
+
 .header-wrapper :is(.h-full) {
   height: 100%
+}
+
+.header-wrapper :is(.w-5) {
+  width: 1.25rem
 }
 
 .header-wrapper :is(.w-\[360px\]) {
@@ -141,14 +149,19 @@
   border-bottom-color: rgb(216 216 216 / var(--tw-border-opacity))
 }
 
+.header-wrapper :is(.bg-\[\#378189\]) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(55 129 137 / var(--tw-bg-opacity))
+}
+
 .header-wrapper :is(.bg-black) {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity))
 }
 
-.header-wrapper :is(.bg-\[\#378189\]) {
+.header-wrapper :is(.bg-gray-200) {
   --tw-bg-opacity: 1;
-  background-color: rgb(55 129 137 / var(--tw-bg-opacity))
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity))
 }
 
 .header-wrapper :is(.bg-white) {
@@ -160,14 +173,13 @@
   padding: 0.5rem
 }
 
+.header-wrapper :is(.p-4) {
+  padding: 1rem
+}
+
 .header-wrapper :is(.px-3) {
   padding-left: 0.75rem;
   padding-right: 0.75rem
-}
-
-.header-wrapper :is(.py-4) {
-  padding-top: 1rem;
-  padding-bottom: 1rem
 }
 
 .header-wrapper :is(.px-4) {
@@ -180,8 +192,9 @@
   padding-bottom: 0.5rem
 }
 
-.header-wrapper :is(.pt-4) {
-  padding-top: 1rem
+.header-wrapper :is(.py-4) {
+  padding-top: 1rem;
+  padding-bottom: 1rem
 }
 
 .header-wrapper :is(.pb-3) {
@@ -190,6 +203,10 @@
 
 .header-wrapper :is(.pl-2) {
   padding-left: 0.5rem
+}
+
+.header-wrapper :is(.pt-4) {
+  padding-top: 1rem
 }
 
 .header-wrapper :is(.text-sm) {
@@ -228,6 +245,10 @@
   opacity: 1
 }
 
+.header-wrapper :is(.filter) {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
+}
+
 .header-wrapper :is(.transition-all) {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -240,6 +261,11 @@
 
 .header-wrapper :is(.hover\:bg-\[\#0711120d\]:hover) {
   background-color: #0711120d
+}
+
+.header-wrapper :is(.hover\:bg-\[\#f2f2f2\]:hover) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(242 242 242 / var(--tw-bg-opacity))
 }
 
 .header-wrapper :is(.hover\:underline:hover) {
