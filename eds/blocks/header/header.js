@@ -1,5 +1,5 @@
 import {
-  a, div, img, li, span, ul,
+  a, div, li, span, ul,
 } from '../../scripts/dom-builder.js';
 import { decorateIcons } from '../../scripts/aem.js';
 import countriesAndCodes from '../../scripts/country-list.js';
@@ -59,7 +59,7 @@ async function displayResults(query, resultsContainer) {
   filteredCountries.forEach(({ code, country }) => {
     const resultItem = div(
       { class: 'result-item flex flex-row gap-x-2 p-4 text-black hover:bg-[#f2f2f2]' },
-      span({ class: `result-flag-container icon icon-${code.toLowerCase()}`}),
+      span({ class: `result-flag-container icon icon-${code.toLowerCase()}` }),
       div({ class: 'result-country' }, country),
     );
     resultItem.querySelector('.result-flag-container').title = country;
