@@ -1,4 +1,6 @@
-import { a, div, img, li, span, ul} from '../../scripts/dom-builder.js';
+import {
+  a, div, img, li, span, ul,
+} from '../../scripts/dom-builder.js';
 import { decorateIcons } from '../../scripts/aem.js';
 import countriesAndCodes from './country-list.js';
 
@@ -140,7 +142,8 @@ function countrySelector() {
     }
     e.stopPropagation();
   });
-  
+}
+
 function accountMenuList(iconName, linkText, linkUrl) {
   const divEl = ul({ class: 'flex flex-row items-center gap-x-3 px-4 py-2 hover:bg-[#0711120d] cursor-pointer' });
   divEl.append(
