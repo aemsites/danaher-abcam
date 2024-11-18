@@ -1426,16 +1426,16 @@ main .section.guides-middle-container h2 {
   top: 0px;
 }
 
+.top-10 {
+  top: 2.5rem;
+}
+
 .top-3 {
   top: 0.75rem;
 }
 
 .top-\[70px\] {
   top: 70px;
-}
-
-.top-10 {
-  top: 2.5rem;
 }
 
 .z-10 {
@@ -1462,12 +1462,12 @@ main .section.guides-middle-container h2 {
   z-index: 99;
 }
 
-.order-last {
-  order: 9999;
-}
-
 .order-3 {
   order: 3;
+}
+
+.order-last {
+  order: 9999;
 }
 
 .col-span-2 {
@@ -1486,6 +1486,16 @@ main .section.guides-middle-container h2 {
   margin: auto;
 }
 
+.mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .my-0 {
   margin-top: 0px;
   margin-bottom: 0px;
@@ -1496,14 +1506,12 @@ main .section.guides-middle-container h2 {
   margin-bottom: 1rem;
 }
 
-.mx-4 {
-  margin-left: 1rem;
-  margin-right: 1rem;
+.mb-0 {
+  margin-bottom: 0px;
 }
 
-.mx-auto {
-  margin-left: auto;
-  margin-right: auto;
+.mb-0\.5 {
+  margin-bottom: 0.125rem;
 }
 
 .mb-1 {
@@ -1594,14 +1602,6 @@ main .section.guides-middle-container h2 {
   margin-top: 1rem;
 }
 
-.mb-0 {
-  margin-bottom: 0px;
-}
-
-.mb-0\.5 {
-  margin-bottom: 0.125rem;
-}
-
 .line-clamp-3 {
   overflow: hidden;
   display: -webkit-box;
@@ -1684,6 +1684,10 @@ main .section.guides-middle-container h2 {
   height: 9rem;
 }
 
+.h-4 {
+  height: 1rem;
+}
+
 .h-44 {
   height: 11rem;
 }
@@ -1700,6 +1704,10 @@ main .section.guides-middle-container h2 {
   height: 18rem;
 }
 
+.h-8 {
+  height: 2rem;
+}
+
 .h-\[0\.1rem\] {
   height: 0.1rem;
 }
@@ -1712,22 +1720,6 @@ main .section.guides-middle-container h2 {
   height: 25;
 }
 
-.h-full {
-  height: 100%;
-}
-
-.h-screen {
-  height: 100vh;
-}
-
-.h-4 {
-  height: 1rem;
-}
-
-.h-8 {
-  height: 2rem;
-}
-
 .h-\[32px\] {
   height: 32px;
 }
@@ -1736,12 +1728,16 @@ main .section.guides-middle-container h2 {
   height: 34px;
 }
 
-.max-h-\[200px\] {
-  max-height: 200px;
+.h-full {
+  height: 100%;
 }
 
-.min-h-full {
-  min-height: 100%;
+.h-screen {
+  height: 100vh;
+}
+
+.max-h-\[200px\] {
+  max-height: 200px;
 }
 
 .w-1\/2 {
@@ -1760,6 +1756,10 @@ main .section.guides-middle-container h2 {
   width: 11rem;
 }
 
+.w-6 {
+  width: 1.5rem;
+}
+
 .w-\[120px\] {
   width: 120px;
 }
@@ -1770,6 +1770,18 @@ main .section.guides-middle-container h2 {
 
 .w-\[35rem\] {
   width: 35rem;
+}
+
+.w-\[54px\] {
+  width: 54px;
+}
+
+.w-\[55\%\] {
+  width: 55%;
+}
+
+.w-\[82px\] {
+  width: 82px;
 }
 
 .w-auto {
@@ -1792,22 +1804,6 @@ main .section.guides-middle-container h2 {
 
 .w-screen {
   width: 100vw;
-}
-
-.w-6 {
-  width: 1.5rem;
-}
-
-.w-\[54px\] {
-  width: 54px;
-}
-
-.w-\[55\%\] {
-  width: 55%;
-}
-
-.w-\[82px\] {
-  width: 82px;
 }
 
 .min-w-56 {
@@ -1959,16 +1955,16 @@ main .section.guides-middle-container h2 {
   gap: 0px;
 }
 
+.gap-2 {
+  gap: 0.5rem;
+}
+
 .gap-3 {
   gap: 0.75rem;
 }
 
 .gap-4 {
   gap: 1rem;
-}
-
-.gap-2 {
-  gap: 0.5rem;
 }
 
 .gap-x-16 {
@@ -2168,6 +2164,11 @@ main .section.guides-middle-container h2 {
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
 
+.bg-\[\#273F3F\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(39 63 63 / var(--tw-bg-opacity));
+}
+
 .bg-\[\#378189\] {
   --tw-bg-opacity: 1;
   background-color: rgb(55 129 137 / var(--tw-bg-opacity));
@@ -2201,17 +2202,12 @@ main .section.guides-middle-container h2 {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-\[\#273F3F\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(39 63 63 / var(--tw-bg-opacity));
+.bg-opacity-10 {
+  --tw-bg-opacity: 0.1;
 }
 
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
-}
-
-.bg-opacity-10 {
-  --tw-bg-opacity: 0.1;
 }
 
 .object-contain {
@@ -2332,6 +2328,11 @@ main .section.guides-middle-container h2 {
   padding-bottom: 0.625rem;
 }
 
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -2345,11 +2346,6 @@ main .section.guides-middle-container h2 {
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
-}
-
-.py-3 {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
 }
 
 .pb-1 {
@@ -2392,6 +2388,10 @@ main .section.guides-middle-container h2 {
   padding-left: 2.5rem;
 }
 
+.pl-3 {
+  padding-left: 0.75rem;
+}
+
 .pl-4 {
   padding-left: 1rem;
 }
@@ -2424,6 +2424,10 @@ main .section.guides-middle-container h2 {
   padding-top: 0.5rem;
 }
 
+.pt-2\.5 {
+  padding-top: 0.625rem;
+}
+
 .pt-4 {
   padding-top: 1rem;
 }
@@ -2438,14 +2442,6 @@ main .section.guides-middle-container h2 {
 
 .pt-\[56\.25\%\] {
   padding-top: 56.25%;
-}
-
-.pl-3 {
-  padding-left: 0.75rem;
-}
-
-.pt-2\.5 {
-  padding-top: 0.625rem;
 }
 
 .text-left {
@@ -2530,12 +2526,12 @@ main .section.guides-middle-container h2 {
   line-height: 1;
 }
 
-.tracking-wider {
-  letter-spacing: 0.05em;
-}
-
 .tracking-normal {
   letter-spacing: 0em;
+}
+
+.tracking-wider {
+  letter-spacing: 0.05em;
 }
 
 .text-\[\#378189\] {
@@ -2701,14 +2697,14 @@ main .section.guides-middle-container h2 {
   background-color: rgb(42 95 101 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-white:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
 .hover\:bg-\[\#f2f2f2\]:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(242 242 242 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-white:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
 .hover\:text-black:hover {
@@ -2829,10 +2825,6 @@ main .section.guides-middle-container h2 {
     width: 60%;
   }
 
-  .md\:w-auto {
-    width: auto;
-  }
-
   .md\:w-\[30\%\] {
     width: 30%;
   }
@@ -2843,6 +2835,10 @@ main .section.guides-middle-container h2 {
 
   .md\:w-\[55\%\] {
     width: 55%;
+  }
+
+  .md\:w-auto {
+    width: auto;
   }
 
   .md\:\!flex-row {
@@ -2894,12 +2890,12 @@ main .section.guides-middle-container h2 {
     padding: 1.5rem;
   }
 
-  .md\:pt-4 {
-    padding-top: 1rem;
-  }
-
   .md\:pl-5 {
     padding-left: 1.25rem;
+  }
+
+  .md\:pt-4 {
+    padding-top: 1rem;
   }
 
   .md\:text-lg {
@@ -2955,14 +2951,6 @@ main .section.guides-middle-container h2 {
     width: 50%;
   }
 
-  .lg\:w-\[900px\] {
-    width: 900px;
-  }
-
-  .lg\:w-full {
-    width: 100%;
-  }
-
   .lg\:w-\[15\%\] {
     width: 15%;
   }
@@ -2971,16 +2959,16 @@ main .section.guides-middle-container h2 {
     width: 90%;
   }
 
+  .lg\:w-\[900px\] {
+    width: 900px;
+  }
+
+  .lg\:w-full {
+    width: 100%;
+  }
+
   .lg\:max-w-72 {
     max-width: 18rem;
-  }
-
-  .lg\:basis-1\/6 {
-    flex-basis: 16.666667%;
-  }
-
-  .lg\:basis-4\/6 {
-    flex-basis: 66.666667%;
   }
 
   .lg\:flex-col {

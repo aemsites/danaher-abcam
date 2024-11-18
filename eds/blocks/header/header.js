@@ -146,9 +146,10 @@ function countrySelector() {
 }
 
 function accountMenuList(iconName, linkText, linkUrl) {
-  const divEl = ul({ class: 'flex flex-row items-center gap-x-3 px-4 py-2 hover:bg-[#0711120d] cursor-pointer' });
+  const divEl = ul({ class: 'group flex flex-row items-center gap-x-3 px-4 py-2 hover:bg-[#0711120d] cursor-pointer' });
   divEl.append(
-    span({ class: `icon icon-${iconName}` }),
+    span({ class: `icon icon-${iconName} group-hover:hidden` }),
+    span({ class: `icon icon-${iconName}-solid hidden group-hover:block` }),
     li(a({
       class: 'text-sm font-semibold leading-5 text-black p-2 pl-2',
       href: linkUrl,
