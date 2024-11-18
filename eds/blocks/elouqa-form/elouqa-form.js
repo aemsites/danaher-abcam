@@ -1,11 +1,32 @@
-import { loadScript } from '../../scripts/aem.js';
-import { getFragmentFromFile } from '../../scripts/scripts.js';
+import { decorateIcons, loadScript } from '../../scripts/aem.js';
+import { div, img, span } from '../../scripts/dom-builder.js';
+import { getFragmentFromFile, postFormAction } from '../../scripts/scripts.js';
+
+function postAction(formEl, loaderEl) {
+  const formAction = formEl?.action;
+  fetch(formAction, {
+    method: 'POST',
+    body: new FormData(formEl),
+  }).then((response) => {
+    if (response.status === 200) {
+      postFormAction();
+    } else {
+      console.error('An error occurred while submitting the form');
+    }
+  }).catch((error) => {
+    console.error('Error:', error);
+  }).finally(() => {
+    formEl.classList.add('opacity-25');
+    loaderEl.remove();
+  });
+}
 
 /**
  * loads and decorates the footer
  * @param {Element} block The footer block element
  */
 export default async function decorate(block) {
+  block.classList.add('relative');
   try {
     const fragment = await getFragmentFromFile('/eds/fragments/elouqa-form.html');
     const fragmentCSS = await getFragmentFromFile('/eds/styles/elouqa-form.css');
@@ -29,6 +50,27 @@ export default async function decorate(block) {
       fragmentScript.append(fragmentCustomScript);
       document.body.append(fragmentScript);
     }
+    const formEl = block.querySelector('form');
+    const allFormInputFields = formEl?.querySelectorAll('input');
+    const allFormSelectFields = formEl?.querySelectorAll('select');
+    allFormInputFields.forEach((inputField) => {
+      inputField.classList.add(...'block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded bg-gray-50 focus:ring-blue-500 focus:border-blue-500'.split(' '));
+    });
+    allFormSelectFields.forEach((selectField) => {
+      selectField.classList.add(...'block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded bg-gray-50 focus:ring-blue-500 focus:border-blue-500'.split(' '));
+    });
+    formEl?.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const loaderEl = div(
+        { class: 'absolute inset-0 flex justify-center items-center z-10' },
+        img({ class: 'size-10', src: 'https://raw.githubusercontent.com/n3r4zzurr0/svg-spinners/main/preview/12-dots-scale-rotate-black-36.svg' }),
+        span({ class: 'icon icon-close' }),
+      );
+      formEl.classList.add('opacity-25');
+      formEl.parentElement.insertBefore(loaderEl, formEl);
+      postAction();
+      decorateIcons(block);
+    });
   } catch (e) {
     block.textContent = '';
     // eslint-disable-next-line no-console

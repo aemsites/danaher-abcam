@@ -704,15 +704,8 @@ export function decorateMain(main) {
 
 export const applyClasses = (element, classes) => element?.classList.add(...classes.split(' '));
 
-function capitalizeWords(str) {
-  const words = str.split(' ');
-  const capitalizedWords = words.map((word) => {
-    if (word.length > 0) {
-      return word.charAt(0).toUpperCase() + word.slice(1);
-    }
-    return word;
-  });
-  return capitalizedWords.join(' ');
+export function postFormAction() {
+  console.log('postFormAction');
 }
 
 /**
