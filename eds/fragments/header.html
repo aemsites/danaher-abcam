@@ -455,20 +455,20 @@
 				</div>
 			</div>
 		</button>
-		<span class="hidden account-dropdown">
-			<div class="relative text-sm">
-				<div id="headlessui-popover-button-:R2d2ra6:" aria-expanded="false" data-headlessui-state="">
-					<span class="">
-						<button class="border border-white rounded-2xl px-2 py-3 text-xs h-8 inline-flex justify-center items-center" type="button">
-							<span class="user-icon"> </span>
-							<span class="text-white block px-1.5 font-semibold">My account</span>
-							<span class="user-icon-dd icon icon-chevron-down-white"></span>
-						</button>
-					</span>
+		<!-- My Account starts from here -->
+		<span class="account-dropdown-container relative">
+			<input type="checkbox" id="account-dropdown" class="peer hidden" />
+			<label for="account-dropdown" class="border border-white rounded-2xl px-2 py-3 text-xs h-8 inline-flex justify-center items-center cursor-pointer">					
+				<span class="user-icon icon icon-user"></span>
+				<span class="text-white block px-1.5 font-semibold">My account</span>
+				<span class="user-icon-dd icon icon-chevron-down-white"></span>				
+			</label>
+			<div class="account-dropdown-menu hidden peer-checked:block absolute top-10 sm:right-0 mt-1 z-40">
+				<div id="my-account" data-side="bottom" role="dialog" class="relative w-full bg-white pb-4" tabindex="-1">					
 				</div>
 			</div>
 		</span>
-	
+		<!-- My Account till here -->
 		<div class="hidden cart-dropdown w-[54px] h-[32px] border border-white rounded-2xl relative inline-flex flex-col">
 			<div class="focus-visible:outline-none focus-visible:shadow-interactiveElement" role="button">
 				<span class="">
@@ -912,4 +912,4 @@
 	</div>
 	</div>  
 </div>
-<div class="h-[0.1rem] mt-4 z-50" style="background: linear-gradient(90deg, #4ba6b3 0, #c9d3b7 35%, #ff8730 70%, #c54428)"></div>
+<div class="h-[0.1rem] mt-4 z-10" style="background: linear-gradient(90deg, #4ba6b3 0, #c9d3b7 35%, #ff8730 70%, #c54428)"></div>
