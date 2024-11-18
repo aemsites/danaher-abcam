@@ -45,7 +45,7 @@ export default async function decorate(block) {
     class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5',
   });
   const formEl = div(
-    { class: 'w-full md:w-1/4 space-y-1 mb-2' },
+    { class: 'w-max md:2/5 lg:w-1/4 space-y-1 mb-2' },
     label({ for: 'modification', class: 'text-sm font-semibold leading-5 text-slate-400' }, 'Enter modification'),
     filterEl,
   );
@@ -53,7 +53,6 @@ export default async function decorate(block) {
   const tblBody = tbody();
   const header = !block.classList.contains('no-header');
   const searchFilter = block.classList.contains('search-filter');
-  block.parentElement.classList.add(...'relative overflow-x-auto'.split(' '));
 
   [...block.children].forEach((row, i) => {
     const tblRow = tr();
@@ -74,11 +73,9 @@ export default async function decorate(block) {
     else tblBody.append(tblRow);
   });
   tableEl.append(tblHead, tblBody);
-  if (searchFilter) {
-    block.replaceChildren(formEl, tableEl);
-  } else {
-    block.replaceChildren(tableEl);
-  }
-  block.classList.add('w-full');
+  if (searchFilter) block.parentElement.insertBefore(formEl, block);
+  block.replaceChildren(tableEl);
+  block.classList.remove('table');
+  block.classList.add(...'relative overflow-x-auto'.split(' '));
   decorateIcons(block, 20, 20);
 }
