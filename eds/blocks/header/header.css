@@ -22,16 +22,12 @@
   margin-bottom: 0.75rem
 }
 
-.header-wrapper :is(.mt-1) {
-  margin-top: 0.25rem
+.header-wrapper :is(.mt-0) {
+  margin-top: 0px
 }
 
 .header-wrapper :is(.mt-2) {
   margin-top: 0.5rem
-}
-
-.header-wrapper :is(.mt-0) {
-  margin-top: 0px
 }
 
 .header-wrapper :is(.block) {
@@ -63,8 +59,8 @@
   width: 100%
 }
 
-.header-wrapper :is(.min-w-80) {
-  min-width: 20rem
+.header-wrapper :is(.min-w-\[268px\]) {
+  min-width: 268px
 }
 
 .header-wrapper :is(.min-w-72) {
@@ -123,28 +119,12 @@
   overflow: hidden
 }
 
-.header-wrapper :is(.rounded-full) {
-  border-radius: 9999px
-}
-
-.header-wrapper :is(.rounded-2xl) {
-  border-radius: 1rem
-}
-
-.header-wrapper :is(.rounded-xl) {
-  border-radius: 0.75rem
-}
-
-.header-wrapper :is(.rounded-\[28px\]) {
-  border-radius: 28px
-}
-
-.header-wrapper :is(.rounded-\[24px\]) {
-  border-radius: 24px
-}
-
 .header-wrapper :is(.rounded-\[4px\]) {
   border-radius: 4px
+}
+
+.header-wrapper :is(.rounded-full) {
+  border-radius: 9999px
 }
 
 .header-wrapper :is(.border) {
@@ -184,8 +164,16 @@
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
 }
 
+.header-wrapper :is(.fill-cyan-500) {
+  fill: #06b6d4
+}
+
 .header-wrapper :is(.p-2) {
   padding: 0.5rem
+}
+
+.header-wrapper :is(.p-4) {
+  padding: 1rem
 }
 
 .header-wrapper :is(.px-3) {
@@ -225,12 +213,12 @@
   line-height: 1.25rem
 }
 
-.header-wrapper :is(.font-normal) {
-  font-weight: 400
-}
-
 .header-wrapper :is(.font-semibold) {
   font-weight: 600
+}
+
+.header-wrapper :is(.font-normal) {
+  font-weight: 400
 }
 
 .header-wrapper :is(.leading-5) {
@@ -270,6 +258,10 @@
   background-color: #0711120d
 }
 
+.header-wrapper :is(.hover\:fill-cyan-700:hover) {
+  fill: #0e7490
+}
+
 .header-wrapper :is(.hover\:underline:hover) {
   text-decoration-line: underline
 }
@@ -277,6 +269,11 @@
 .header-wrapper :is(.focus\:outline-none:focus) {
   outline: 2px solid transparent;
   outline-offset: 2px
+}
+
+.header-wrapper :is(.group:hover .group-hover\:text-amber-500) {
+  --tw-text-opacity: 1;
+  color: rgb(245 158 11 / var(--tw-text-opacity))
 }
 
 @media (min-width: 768px) {
@@ -294,5 +291,11 @@
 
   .header-wrapper :is(.md\:w-full) {
     width: 100%
+  }
+}
+
+@media (min-width: 1024px) {
+  .header-wrapper :is(.lg\:right-0) {
+    right: 0px
   }
 }

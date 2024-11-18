@@ -15,7 +15,7 @@ function accountMenuList(iconName, linkText, linkUrl) {
   divEl.append(
     span({ class: `icon icon-${iconName}` }),
     li(a({
-      class: 'text-sm font-normal leading-5 text-black p-2 pl-2',
+      class: 'text-sm font-semibold leading-5 text-black p-2 pl-2',
       href: linkUrl,
     }, linkText)),
   );
@@ -24,7 +24,7 @@ function accountMenuList(iconName, linkText, linkUrl) {
 }
 
 function myAccount() {
-  const myAccoundDiv = div({ class: 'mt-0 right-0 absolute z-drawer transform opacity-100 scale-100' });
+  const myAccoundDiv = div({ class: 'mt-0 lg:right-0 absolute z-drawer transform opacity-100 scale-100' });
   myAccoundDiv.append(
     div(
       { class: 'w-full overflow-hidden bg-white md:h-full text-black md:w-full md:rounded-8px rounded-[4px]' },
@@ -141,8 +141,14 @@ export default async function decorate(block) {
   accountEl.append(myAccount());
   document.addEventListener('click', (event) => {
     const dropdownLabel = document.querySelector('label[for="account-dropdown"]');
-    if (!dropdownLabel.contains(event.target) && dropdownLabel.previousElementSibling.checked) {
-      dropdownLabel.click();
+    const isChecked = document.getElementById('account-dropdown');
+    if (isChecked.checked) {
+      if (!dropdownLabel.contains(event.target) && dropdownLabel.previousElementSibling.checked) {
+        dropdownLabel.querySelector('.user-icon-dd').style.transform = 'rotate(180deg)';
+        dropdownLabel.click();
+      }
+    } else {
+      dropdownLabel.querySelector('.user-icon-dd').style.transform = 'rotate(0deg)';
     }
   });
 }
