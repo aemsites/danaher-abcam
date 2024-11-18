@@ -93,12 +93,12 @@
     "fields": [
       {
         "component": "text",
-        "name": "title",
+        "name": "jcr:title",
         "label": "Title"
       },
       {
         "component": "select",
-        "name": "titleType",
+        "name": "type",
         "label": "Title Type",
         "options": [
           {
@@ -370,24 +370,12 @@
         ]
       },
       {
-        "component": "select",
+        "component": "text",
         "name": "tabName",
         "value": "",
-        "label": "Select PDP Tabs",
-        "options": [
-          {
-            "name": "Overview",
-            "value": "Overview"
-          },
-          {
-            "name": "Datasheet",
-            "value": "Datasheet"
-          },
-          {
-            "name": "Support & Downloads",
-            "value": "Support & Downloads"
-          }
-        ]
+        "label": "Provide Tab Name",
+        "description": "Provide a name for the tab (Applicable only when Tabs block is added)",
+        "valueType": "string"
       }
     ]
   },
@@ -1997,6 +1985,26 @@
     ]
   },
   {
+    "id": "tabs",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Tabs Style",
+        "options": [
+          {
+            "name": "Tabs",
+            "value": "product-tabs"
+          },
+          {
+            "name": "Button Tabs",
+            "value": "button-tabs"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "teaser",
     "fields": [
       {
@@ -2076,6 +2084,32 @@
       {
         "component": "richtext",
         "name": "title-card_description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "video-transcript",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "video_transcript_title",
+        "value": "",
+        "label": "Title"
+      },
+      {
+        "component": "select",
+        "name": "video_transcript_titleType",
+        "hidden": true,
+        "label": "Title Type",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "video_transcript_description",
         "value": "",
         "label": "Description",
         "valueType": "string"

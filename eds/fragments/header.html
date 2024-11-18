@@ -398,15 +398,15 @@
 	</div>
   </div>
 
-<div class="desktop-menu w-full flex flex-row my-0 gap-0 px-[30px] xl:px-[80px] max-w-[2464px]">
-  <div class="relative w-full lg:basis-1/6 flex flex-col-reverse items-start justify-start md:flex-row gap-4 md:items-center">
+<div class="desktop-menu w-full my-0 mx-auto flex flex-col sm:!flex-row gap-0 sm:gap-6 md:gap-6  px-[30px] xl:px-[80px] max-w-[2464px]">
+  <div class="relative md:w-[55%] lg:w-[15%] flex flex-row items-center justify-start gap-4 md:items-center">
 		<div class="flex flex-row space-x-4">
 			<div class="w-[25px] h-[25] abcam-logo lg:hidden">
 				<button type="button" aria-label="Open mobile menu">
 						<span class="hamburger-menu icon icon-Menu"></span>
 				</button>
 			</div>
-			<a class="hidden md:!block lg:-mt-[42px] w-[120px] h-[25] logo-home-link" href="https://www.abcam.com/en-us" aria-label="Homepage link">
+			<a class="hidden sm:hidden md:!block lg:-mt-[42px] w-[120px] h-[25] logo-home-link" href="https://www.abcam.com/en-us" aria-label="Homepage link">
 				<span class="icon icon-logo"></span>
 			</a>
 		</div>
@@ -417,7 +417,70 @@
 			</span>
 		</div>
   </div>
-  <div class="lg:basis-4/6 hidden lg:!block">
+	<div class="sm:w-[50%] md:w-[40%] 2xl:w-[15%] order-3 pt-2.5 flex flex-row gap-4 relative">
+		<button
+			class="country-dropdown relative flex flex-row items-center gap-2 w-fit-content w-[82px] h-[34px] py-2 px-4 border border-solid border-white text-white rounded-full"
+			type="button"
+			aria-haspopup="dialog"
+			aria-expanded="false"
+			aria-controls="radix-:R1d2ra6:"
+			data-state="closed">
+			<span class="country-flag-container flex flex-row items-center w-6 h-4">
+				<img src="/eds/icons/flags/us.svg" class="country-flag-icon object-cover min-h-full border-[0.5px]" data-ot-ignore="" />
+			</span>
+			<span class="country-dd rotate icon icon-chevron-down-white"></span>
+			<div class="country-search hidden drop-shadow-2xl absolute top-10 sm:right-0  mt-2"
+				style="z-index: 100;">
+				<div data-side="bottom" role="dialog" class="relative bg-white pb-4 rounded-2xl shadow-elevation-5" tabindex="-1">
+					<div class="text-sm text-black pb-1 font-semibold flex flex-col items-start">
+						<label class="text-black p-4 pb-2 tracking-normal text-sm md:text-lg block">Country/Region selector</label>
+						<div>
+							<input
+								type="text"
+								aria-autocomplete="list"
+								autocomplete="off"
+								placeholder="Search for a country/region"
+								id="country-search-input"
+								aria-labelledby="react-aria5081252067-:r28:"
+								role="combobox"
+								aria-expanded="false"
+								autocorrect="off"
+								spellcheck="false"
+								class="text-black bg-[#273F3F] hover:bg-[#f2f2f2] text-sm md:text-normal bg-opacity-10 mx-4 h-12 w-auto sm:w-[20.9375rem] border-2 rounded-md ring-[3px] ring-[#6fafb8] focus:outline-none mb-0.5 pl-3 md:pl-5"
+								value=""
+							/>
+						</div>
+						<div id="country-results" class="hidden w-full max-h-[200px] xl:max-h-[345px] 2xl:max-h-[500px] overflow-y-auto"></div>
+					</div>
+				</div>
+			</div>
+		</button>
+		<!-- My Account starts from here -->
+		<span class="account-dropdown-container relative">
+			<input type="checkbox" id="account-dropdown" class="peer hidden" />
+			<label for="account-dropdown" class="border border-white rounded-2xl px-2 py-3 text-xs h-8 inline-flex justify-center items-center cursor-pointer">					
+				<span class="user-icon icon icon-user"></span>
+				<span class="text-white block px-1.5 font-semibold">My account</span>
+				<span class="user-icon-dd icon icon-chevron-down-white"></span>				
+			</label>
+			<div class="account-dropdown-menu hidden peer-checked:block absolute top-10 sm:right-0 mt-1 z-40">
+				<div id="my-account" data-side="bottom" role="dialog" class="relative w-full bg-white pb-4" tabindex="-1">					
+				</div>
+			</div>
+		</span>
+		<!-- My Account till here -->
+		<div class="hidden cart-dropdown w-[54px] h-[32px] border border-white rounded-2xl relative inline-flex flex-col">
+			<div class="focus-visible:outline-none focus-visible:shadow-interactiveElement" role="button">
+				<span class="">
+					<button class="" type="button">
+						<span class="cart-icon"> </span>
+						<span class="cart-count"></span>
+					</button>
+				</span>
+			</div>
+		</div>
+	</div>
+  <div class="hidden lg:!block w-[55%] md:w-[30%] lg:w-[90%] 2xl:w-[65%]">
 		
 	<div class="flex flex-col space-y-4">
 		<div class="w-full relative">
@@ -849,4 +912,4 @@
 	</div>
 	</div>  
 </div>
-<div class="h-[0.1rem] mt-4 z-50" style="background: linear-gradient(90deg, #4ba6b3 0, #c9d3b7 35%, #ff8730 70%, #c54428)"></div>
+<div class="h-[0.1rem] mt-4 z-10" style="background: linear-gradient(90deg, #4ba6b3 0, #c9d3b7 35%, #ff8730 70%, #c54428)"></div>

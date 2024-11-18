@@ -4,12 +4,15 @@ import {
 } from '../../scripts/dom-builder.js';
 
 export default function decorate(block) {
-  const path = window.location.pathname.split('/').slice(2);
+  const pageUrl = window.location.pathname;
+  const path = pageUrl.split('/').slice(2);
   const ogTitle = getMetadata('og:title');
-  const title = ogTitle.indexOf('| abcam') > -1 ? ogTitle.split('| abcam')[0] : ogTitle;
+  const title = (ogTitle.indexOf('| abcam') || ogTitle.indexOf('| Abcam')) > -1 ? (ogTitle.split('| abcam')[0] || ogTitle.split('| Abcam')[0]) : ogTitle;
   const newUrl = new URL(window.location);
-  if (window.location.pathname.indexOf('technical-resources/guides') > -1) {
-    newUrl.pathname = window.location.pathname.substring(0, window.location.pathname.indexOf('/technical-resources/'));
+  if (pageUrl.indexOf('technical-resources/guides') > -1) {
+    newUrl.pathname = pageUrl.substring(0, pageUrl.indexOf('/technical-resources/'));
+  } else if (pageUrl.indexOf('/knowledge-center') > -1) {
+    newUrl.pathname = pageUrl.substring(0, pageUrl.indexOf('/knowledge-center/'));
   }
   const { length } = path;
   if (length > 0) {
