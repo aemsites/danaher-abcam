@@ -97,7 +97,7 @@ function countrySelector() {
   resultsContainer.classList.remove('hidden');
   input.addEventListener('input', (e) => {
     const query = input.value.toLowerCase();
-    e.stopPropagation();
+    e.stopImmediatePropagation();
     displayResults(query, resultsContainer);
   });
 
