@@ -28,6 +28,7 @@ function postAction(formEl, loaderEl) {
 export default async function decorate(block) {
   block.classList.add('relative');
   try {
+    const videoLink = block.querySelector('a');
     const fragment = await getFragmentFromFile('/eds/fragments/elouqa-form.html');
     const fragmentCSS = await getFragmentFromFile('/eds/styles/elouqa-form.css');
     const fragmentCustomScript = await getFragmentFromFile('/eds/scripts/elouqa-script.js');
