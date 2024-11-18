@@ -271,7 +271,7 @@ export default async function decorate(block) {
     });
   });
 
-  decorateIcons(document.querySelector('.country-dropdown'), 16, 16);
+  decorateIcons(document.querySelector('.country-dd'), 16, 16);
   block.querySelector('.country-dropdown')?.addEventListener('click', (event) => {
     const countrySearch = document.querySelector('.country-search');
     if (event.target === event.currentTarget || event.target.alt === 'chevron-down-white' || event.target.classList.contains('country-flag-icon')) {
