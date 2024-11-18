@@ -153,11 +153,8 @@ export function createFilters(articles, viewAll = false) {
 
 export default async function decorate(block) {
   // fetch and sort all articles
-  const articles = await ffetch('/en-us/stories/query-index.json')
+  const articles = await ffetch('/en-us/knowledge-center/query-index.json')
     .chunks(500)
-    .filter((article) => article.path !== '/en-us/stories/podcasts')
-    .filter((article) => article.path !== '/en-us/stories/films')
-    .filter((article) => article.path !== '/en-us/stories/articles')
     .all();
   let filteredArticles = articles;
   const activeTagFilter = getSelectionFromUrl();
