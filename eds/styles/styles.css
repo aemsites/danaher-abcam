@@ -1736,6 +1736,18 @@ main .section.guides-middle-container h2 {
   height: 100vh;
 }
 
+.h-\[\] {
+  height: ;
+}
+
+.h-\[3\] {
+  height: 3;
+}
+
+.h-\[34\] {
+  height: 34;
+}
+
 .max-h-\[200px\] {
   max-height: 200px;
 }
