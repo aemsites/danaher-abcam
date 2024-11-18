@@ -269,10 +269,9 @@ export default async function decorate(block) {
       }
     });
   });
-  // right
-  decorateIcons(document.querySelector('.country-dropdown'), 16, 16);
-  decorateIcons(document.querySelector('.cart-dropdown'), 16, 16);
-  block.querySelector('.country-dropdown')?.addEventListener('click', (event) => {
+
+  decorateIcons(document.querySelector('.country-dropdown1'), 16, 16);
+  block.querySelector('.country-dropdown1')?.addEventListener('click', (event) => {
     const countrySearch = document.querySelector('.country-search');
     if (event.target === event.currentTarget || event.target.alt === 'chevron-down-white' || event.target.classList.contains('country-flag-icon')) {
       countrySearch?.classList.toggle('hidden');
