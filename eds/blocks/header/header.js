@@ -2,7 +2,7 @@ import {
   a, div, img, li, span, ul,
 } from '../../scripts/dom-builder.js';
 import { decorateIcons } from '../../scripts/aem.js';
-import countriesAndCodes from './country-list.js';
+import countriesAndCodes from '../../scripts/country-list.js';
 
 function megaMeunu() {
   return div({ class: 'w-[360px] z-40 hidden max-w-sm fixed h-full bg-black px-3 py-4 ease-out transition-all' });
