@@ -53,7 +53,7 @@ export default function decorate(block) {
       const pic = col.querySelector('picture');
 
       if (pic) {
-        if(getCookie('cq-authoring-mode') !== 'TOUCH'){
+        if (getCookie('cq-authoring-mode') !== 'TOUCH') {
           const clonedCol = col.cloneNode(true);
           applyClasses(col, 'hidden lg:block');
           applyClasses(clonedCol, 'block lg:hidden');

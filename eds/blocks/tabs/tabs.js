@@ -17,11 +17,11 @@ function toggleTabs(tabId, mmgTabs, tabType) {
     if (tab.id === tabId) {
       tabType === 'product-tabs'
         ? tab.classList.add('active', 'border-b-8', 'border-[#ff7223]')
-        : tab.classList.add('bg-black', 'text-white');
+        : tab.classList.add('bg-black', 'text-white'); tab.classList.remove('bg-white', 'text-black');
     } else {
       tabType === 'product-tabs'
         ? tab.classList.remove('active', 'border-b-8', 'border-[#ff7223]')
-        : tab.classList.remove('bg-black', 'text-white');
+        : tab.classList.remove('bg-black', 'text-white'); tab.classList.add('bg-white', 'text-black');
     }
   });
 }

@@ -154,6 +154,7 @@ export function createFilters(articles, viewAll = false) {
 export default async function decorate(block) {
   // fetch and sort all articles
   const articles = await ffetch('/en-us/knowledge-center/query-index.json')
+    .filter((item) => item.tags !== '')
     .chunks(500)
     .all();
   let filteredArticles = articles;
