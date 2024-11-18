@@ -524,15 +524,57 @@ async function getOgImage() {
   return articles;
 }
 
-// This function is to add the title to the audio if it not the link
+//This function is to add the title to the audio if it not the link
 function isValidUrl(string) {
   const urlPattern = /^(https?:\/\/)?([a-z0-9\-]+\.)+[a-z]{2,}(:\d+)?(\/[^\s]*)?$/i;
   return urlPattern.test(string);
 }
 
+function decorateGenricVideo(main) {
+  const divContainers = main.querySelectorAll("main .section");
+  divContainers.forEach((divContainer) => {
+    divContainer.querySelectorAll("p a").forEach((link) => {
+      if (link.title === "video") {
+        const linkContainer = link.parentElement;
+        linkContainer.classList.add("h-full");
+        let embedURL;
+        let showControls = 0;
+        embedURL = link.href + "?controls=" + showControls;
+        const embedHTML = `
+          <div class="video-container relative w-full px-[30px] sm:px-[40px] md:px-[48px] lg:px-[64px] xl:px-[80px] 2xl:px-[224px] py-10 lg:py-12 bg-gray-200">
+            <iframe src="${embedURL}"
+              class="w-full aspect-video multi-player" 
+              allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" 
+              scrolling="no" title="Content from Vimeo" loading="lazy"></iframe>
+              <button id="play-button-${embedURL}" class="video-overlay absolute inset-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-opacity-50 rounded-full p-4 flex items-center justify-center w-[126px] h-[126px]">
+                <span class="video-play-icon icon icon-video-play"></span>
+              </button>
+            </div>
+          </div>`;
+        linkContainer.innerHTML = embedHTML;
+        decorateIcons(linkContainer, 50, 50);
+
+        const playButton = document.getElementById(`play-button-${embedURL}`);
+        const iframe = document.querySelector(".multi-player");
+        const overlay = document.querySelector(".video-overlay");
+        playButton.addEventListener("click", function () {
+          let videoSrc = iframe.src;
+          if (!videoSrc.includes("autoplay=1")) {
+            videoSrc = videoSrc.replace("controls=0", "controls=1");
+            iframe.src = videoSrc.includes("?")
+              ? videoSrc + "&autoplay=1"
+              : videoSrc + "?autoplay=1";
+            overlay.classList.add("hidden");
+          }
+        });
+      }
+    });
+  });
+}
+
 async function decorateVideo(main) {
-  const template = getMetadata('template');
-  if (template == 'stories') {
+  const template = getMetadata("template");
+  if (template == "stories") {
     const divContainers = main.querySelectorAll('.stories main .section');
     const type = getMetadata('pagetags');
     const filmThumbnails = await getOgImage();
@@ -583,7 +625,7 @@ async function decorateVideo(main) {
             }
           } else if (link.title === 'audio') {
             const h3El = link.closest('div.grid')?.querySelector('h3');
-            const linkTitle = isValidUrl(link.textContent) ? '' : link.textContent;
+            let linkTitle = isValidUrl(link.textContent) ? '' : link.textContent;
             const audioContainer = div(
               { class: 'flex flex-col' },
               p({ class: 'audio-label text-black no-underline ' }, linkTitle || ''),
@@ -645,7 +687,8 @@ async function decorateVideo(main) {
               updateIconVisibility();
             });
             audioElement.addEventListener('pause', () => {
-              if (audioElement === previousPlayingAudio) previousPlayingAudio = null;
+              if (audioElement === previousPlayingAudio)
+                previousPlayingAudio = null;
               isPlaying = false;
               updateIconVisibility();
             });
@@ -655,6 +698,7 @@ async function decorateVideo(main) {
             playIcon.addEventListener('click', () => {
               h3El.after(audioPlayer);
             });
+
           }
         });
       } else if (type.includes('film')) {
@@ -697,47 +741,9 @@ async function decorateVideo(main) {
         });
       }
     });
-  } else {
-    const divMedia = main.querySelector('main .media-container');
-    const divContainers = main.querySelectorAll('main .section');
-    divContainers.forEach((divContainer) => {
-      divContainer.querySelectorAll('p a').forEach((link) => {
-        if (link.title === 'video') {
-          const linkContainer = link.parentElement;
-          linkContainer.classList.add('h-full');
-          let embedURL;
-          const showControls = 0;
-          embedURL = `${link.href}?controls=${showControls}`;
-          const embedHTML = `
-          <div class="video-container relative w-full px-[30px] sm:px-[40px] md:px-[48px] lg:px-[64px] xl:px-[80px] 2xl:px-[224px] py-10 lg:py-12 bg-gray-200">
-            <iframe src="${embedURL}"
-              class="w-full aspect-video multi-player" 
-              allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" 
-              scrolling="no" title="Content from Vimeo" loading="lazy"></iframe>
-              <button id="play-button-${embedURL}" class="video-overlay absolute inset-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-opacity-50 rounded-full p-4 flex items-center justify-center w-[126px] h-[126px]">
-                <span class="video-play-icon icon icon-video-play"></span>
-              </button>
-            </div>
-          </div>`;
-          linkContainer.innerHTML = embedHTML;
-          decorateIcons(linkContainer, 50, 50);
-
-          const playButton = document.getElementById(`play-button-${embedURL}`);
-          const iframe = document.querySelector('.multi-player');
-          const overlay = document.querySelector('.video-overlay');
-          playButton.addEventListener('click', () => {
-            let videoSrc = iframe.src;
-            if (!videoSrc.includes('autoplay=1')) {
-              videoSrc = videoSrc.replace('controls=0', 'controls=1');
-              iframe.src = videoSrc.includes('?')
-                ? `${videoSrc}&autoplay=1`
-                : `${videoSrc}?autoplay=1`;
-              overlay.classList.add('hidden');
-            }
-          });
-        }
-      });
-    });
+  }
+  else {
+    decorateGenricVideo(main);
   }
 }
 
@@ -765,7 +771,8 @@ export function decorateMain(main) {
   decorateStickyRightNav(main);
   decorateStoryPage(main);
   decorateGuidePage(main);
-  decorateTopicPage(main);
+  decorateTopicPage(main)
+
 }
 
 export const applyClasses = (element, classes) => element?.classList.add(...classes.split(' '));
@@ -901,9 +908,9 @@ export function formatDate(date) {
 
 // Check if OneTrust is accepted
 export function isOTEnabled() {
-  const otCookie = getCookie('OptanonConsent');
-  if (typeof otCookie === 'string') {
-    return otCookie.includes('C0002:1');
+  const otCookie = getCookie("OptanonConsent");
+  if (typeof otCookie === "string") {
+    return otCookie.includes("C0002:1")
   }
   return true;
 }
@@ -972,8 +979,8 @@ export function createFilters({
   lists = [],
   filterNames = [],
   element,
-  listActionHandler = () => {},
-  clearFilterHandler = () => {},
+  listActionHandler = () => { },
+  clearFilterHandler = () => { },
   limit = 6,
   sort = 'ASC',
 }) {
@@ -990,7 +997,7 @@ export function createFilters({
         if (name in tempArr && tempArr[name].length > 0) {
           sort.toUpperCase() === 'ASC'
             ? tempArr[name].sort()
-            : tempArr[name].sort().reverse();
+            : tempArr[name].sort().reverse()
         }
       });
     });
@@ -1162,25 +1169,25 @@ if (yetiToPWSurlsMap.hasOwnProperty(pathWithoutLocale)) {
 const hrefAlt = document.createElement('link');
 hrefAlt.rel = 'alternate';
 hrefAlt.hreflang = 'en-us';
-hrefAlt.href = `https://www.abcam.com${window.location.pathname}`;
+hrefAlt.href = 'https://www.abcam.com' + window.location.pathname;
 document.head.appendChild(hrefAlt);
 
 const hrefDefault = document.createElement('link');
 hrefDefault.rel = 'alternate';
 hrefDefault.hreflang = 'x-default';
-hrefDefault.href = `https://www.abcam.com${window.location.pathname}`;
+hrefDefault.href = 'https://www.abcam.com' + window.location.pathname;
 document.head.appendChild(hrefDefault);
 
 const hrefChina = document.createElement('link');
 hrefChina.rel = 'alternate';
 hrefChina.hreflang = 'zh-cn';
-hrefChina.href = `https://www.abcam.cn${pwsUrl}`;
+hrefChina.href = 'https://www.abcam.cn' + pwsUrl;
 document.head.appendChild(hrefChina);
 
 const hrefJapan = document.createElement('link');
 hrefJapan.rel = 'alternate';
 hrefJapan.hreflang = 'ja-jp';
-hrefJapan.href = `https://www.abcam.co.jp${pwsUrl}`;
+hrefJapan.href = 'https://www.abcam.co.jp' + pwsUrl;
 document.head.appendChild(hrefJapan);
 
 // Datalayer Start
