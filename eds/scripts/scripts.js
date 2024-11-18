@@ -343,7 +343,7 @@ function buildAutoBlocks(main) {
 
 function decorateStoryPage(main) {
   const sectionEl = main.querySelector(':scope > div.section.story-info-container.social-media-container.sidelinks-container');
-  
+
   if (sectionEl) {
     const toBeRemoved = ['story-info-wrapper', 'social-media-wrapper', 'sidelinks-wrapper'];
     const rightSideElements = div({ class: 'w-full' });
@@ -524,22 +524,22 @@ async function getOgImage() {
   return articles;
 }
 
-//This function is to add the title to the audio if it not the link
+// This function is to add the title to the audio if it not the link
 function isValidUrl(string) {
   const urlPattern = /^(https?:\/\/)?([a-z0-9\-]+\.)+[a-z]{2,}(:\d+)?(\/[^\s]*)?$/i;
   return urlPattern.test(string);
 }
 
 function decorateGenricVideo(main) {
-  const divContainers = main.querySelectorAll("main .section");
+  const divContainers = main.querySelectorAll('main .section');
   divContainers.forEach((divContainer) => {
-    divContainer.querySelectorAll("p a").forEach((link) => {
-      if (link.title === "video") {
+    divContainer.querySelectorAll('p a').forEach((link) => {
+      if (link.title === 'video') {
         const linkContainer = link.parentElement;
-        linkContainer.classList.add("h-full");
+        linkContainer.classList.add('h-full');
         let embedURL;
-        let showControls = 0;
-        embedURL = link.href + "?controls=" + showControls;
+        const showControls = 0;
+        embedURL = `${link.href}?controls=${showControls}`;
         const embedHTML = `
           <div class="video-container relative w-full px-[30px] sm:px-[40px] md:px-[48px] lg:px-[64px] xl:px-[80px] 2xl:px-[224px] py-10 lg:py-12 bg-gray-200">
             <iframe src="${embedURL}"
@@ -555,16 +555,16 @@ function decorateGenricVideo(main) {
         decorateIcons(linkContainer, 50, 50);
 
         const playButton = document.getElementById(`play-button-${embedURL}`);
-        const iframe = document.querySelector(".multi-player");
-        const overlay = document.querySelector(".video-overlay");
-        playButton.addEventListener("click", function () {
+        const iframe = document.querySelector('.multi-player');
+        const overlay = document.querySelector('.video-overlay');
+        playButton.addEventListener('click', () => {
           let videoSrc = iframe.src;
-          if (!videoSrc.includes("autoplay=1")) {
-            videoSrc = videoSrc.replace("controls=0", "controls=1");
-            iframe.src = videoSrc.includes("?")
-              ? videoSrc + "&autoplay=1"
-              : videoSrc + "?autoplay=1";
-            overlay.classList.add("hidden");
+          if (!videoSrc.includes('autoplay=1')) {
+            videoSrc = videoSrc.replace('controls=0', 'controls=1');
+            iframe.src = videoSrc.includes('?')
+              ? `${videoSrc}&autoplay=1`
+              : `${videoSrc}?autoplay=1`;
+            overlay.classList.add('hidden');
           }
         });
       }
@@ -574,11 +574,11 @@ function decorateGenricVideo(main) {
 
 async function decorateVideo(main) {
   const template = getMetadata('template');
-  if (template == "stories") {
+  if (template == 'stories') {
     const divContainers = main.querySelectorAll('.stories main .section');
     const type = getMetadata('pagetags');
     const filmThumbnails = await getOgImage();
-  
+
     let firstVideo = 0;
     divContainers.forEach((divContainer) => {
       if (type.includes('podcast')) {
@@ -625,25 +625,25 @@ async function decorateVideo(main) {
             }
           } else if (link.title === 'audio') {
             const h3El = link.closest('div.grid')?.querySelector('h3');
-            let linkTitle = isValidUrl(link.textContent) ? '' : link.textContent;
+            const linkTitle = isValidUrl(link.textContent) ? '' : link.textContent;
             const audioContainer = div(
               { class: 'flex flex-col' },
               p({ class: 'audio-label text-black no-underline ' }, linkTitle || ''),
               span({ class: 'checkStatus audio-play-icon cursor-pointer w-14 icon icon-Play' }),
               span({ class: 'checkStatus audio-play-pause-icon hidden cursor-pointer w-14 icon icon-play-pause' }),
             );
-  
+
             const parent = link.parentElement;
             parent.replaceChildren(audioContainer);
             const audioPlayer = div({ class: 'audio-player w-full md:mb-2' });
             audioPlayer.innerHTML = playAudio({ src: link.href || '#' });
             decorateIcons(audioContainer, 80, 80);
-  
+
             let isPlaying = false;
             const playIcon = audioContainer.querySelector('.audio-play-icon');
             const pauseIcon = audioContainer.querySelector('.audio-play-pause-icon');
             const audioElement = audioPlayer.querySelector('audio');
-  
+
             function updateIconVisibility() {
               if (isPlaying) {
                 playIcon.classList.add('hidden');
@@ -653,7 +653,7 @@ async function decorateVideo(main) {
                 pauseIcon.classList.add('hidden');
               }
             }
-  
+
             playIcon.addEventListener('click', () => {
               if (audioElement) {
                 pauseCurrentAudio(); // Pause any currently playing audio
@@ -668,7 +668,7 @@ async function decorateVideo(main) {
                 }
               }
             });
-  
+
             pauseIcon.addEventListener('click', () => {
               if (audioElement) {
                 audioElement.pause();
@@ -676,29 +676,27 @@ async function decorateVideo(main) {
                 updateIconVisibility();
               }
             });
-  
+
             audioElement.addEventListener('play', () => {
-              if (previousPlayingAudio){
+              if (previousPlayingAudio) {
                 previousPlayingAudio.pause();
               }
               previousPlayingAudio = audioElement;
-              checkVideoStatus();        
+              checkVideoStatus();
               isPlaying = true;
               updateIconVisibility();
             });
             audioElement.addEventListener('pause', () => {
-              if (audioElement === previousPlayingAudio)
-                previousPlayingAudio = null;
+              if (audioElement === previousPlayingAudio) previousPlayingAudio = null;
               isPlaying = false;
               updateIconVisibility();
             });
             updateIconVisibility();
             audioContainer.querySelector('.checkStatus')?.addEventListener('click', checkVideoStatus);
-  
+
             playIcon.addEventListener('click', () => {
               h3El.after(audioPlayer);
             });
-  
           }
         });
       } else if (type.includes('film')) {
@@ -710,7 +708,7 @@ async function decorateVideo(main) {
             const videoId = extractVideoId(link.href);
             const thumbnailObj = filmThumbnails.find((obj) => obj.path === episodeUrl);
             const posterImage = thumbnailObj?.image;
-  
+
             const playButtonHTML = `
               <div class="aspect-video relative w-full h-full">
                 <img src="${posterImage}" class="relative inset-0 w-full h-full object-cover" alt="More episodes in the Series" aria-label="More episodes in the Series" loading="lazy"/>
@@ -722,11 +720,11 @@ async function decorateVideo(main) {
             const linkContainer = link.parentElement;
             linkContainer.innerHTML = playButtonHTML;
             decorateIcons(linkContainer, 50, 50);
-  
+
             if (linkContainer.closest('.image-full-width')) {
               linkContainer.className = 'relative lg:absolute w-full lg:w-1/2 h-full object-cover lg:right-0 lg:bottom-6';
             }
-  
+
             linkContainer.querySelector(`button[id="play-button-${videoId}"]`).addEventListener('click', (e) => {
               e.preventDefault();
               toggleModalPopUp(link.href, linkContainer);
@@ -741,9 +739,8 @@ async function decorateVideo(main) {
         });
       }
     });
-  }
-  else {
-    decorateGenricVideo(main); 
+  } else {
+    decorateGenricVideo(main);
   }
 }
 
@@ -771,8 +768,7 @@ export function decorateMain(main) {
   decorateStickyRightNav(main);
   decorateStoryPage(main);
   decorateGuidePage(main);
-  decorateTopicPage(main) 
-  
+  decorateTopicPage(main);
 }
 
 export const applyClasses = (element, classes) => element?.classList.add(...classes.split(' '));
@@ -908,9 +904,9 @@ export function formatDate(date) {
 
 // Check if OneTrust is accepted
 export function isOTEnabled() {
-  const otCookie = getCookie("OptanonConsent");
-  if (typeof otCookie === "string") {
-      return otCookie.includes("C0002:1")
+  const otCookie = getCookie('OptanonConsent');
+  if (typeof otCookie === 'string') {
+    return otCookie.includes('C0002:1');
   }
   return true;
 }
@@ -997,7 +993,7 @@ export function createFilters({
         if (name in tempArr && tempArr[name].length > 0) {
           sort.toUpperCase() === 'ASC'
             ? tempArr[name].sort()
-            : tempArr[name].sort().reverse()
+            : tempArr[name].sort().reverse();
         }
       });
     });
@@ -1169,25 +1165,25 @@ if (yetiToPWSurlsMap.hasOwnProperty(pathWithoutLocale)) {
 const hrefAlt = document.createElement('link');
 hrefAlt.rel = 'alternate';
 hrefAlt.hreflang = 'en-us';
-hrefAlt.href = 'https://www.abcam.com' + window.location.pathname;
+hrefAlt.href = `https://www.abcam.com${window.location.pathname}`;
 document.head.appendChild(hrefAlt);
 
 const hrefDefault = document.createElement('link');
 hrefDefault.rel = 'alternate';
 hrefDefault.hreflang = 'x-default';
-hrefDefault.href = 'https://www.abcam.com' + window.location.pathname;
+hrefDefault.href = `https://www.abcam.com${window.location.pathname}`;
 document.head.appendChild(hrefDefault);
 
 const hrefChina = document.createElement('link');
 hrefChina.rel = 'alternate';
 hrefChina.hreflang = 'zh-cn';
-hrefChina.href = 'https://www.abcam.cn' + pwsUrl;
+hrefChina.href = `https://www.abcam.cn${pwsUrl}`;
 document.head.appendChild(hrefChina);
 
 const hrefJapan = document.createElement('link');
 hrefJapan.rel = 'alternate';
 hrefJapan.hreflang = 'ja-jp';
-hrefJapan.href = 'https://www.abcam.co.jp' + pwsUrl;
+hrefJapan.href = `https://www.abcam.co.jp${pwsUrl}`;
 document.head.appendChild(hrefJapan);
 
 // Datalayer Start
