@@ -131,6 +131,10 @@
   border-width: 1px
 }
 
+.header-wrapper :is(.border-\[0\.5px\]) {
+  border-width: 0.5px
+}
+
 .header-wrapper :is(.border-b) {
   border-bottom-width: 1px
 }
@@ -167,6 +171,11 @@
 .header-wrapper :is(.bg-white) {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+}
+
+.header-wrapper :is(.object-cover) {
+  -o-object-fit: cover;
+     object-fit: cover
 }
 
 .header-wrapper :is(.p-2) {

@@ -479,13 +479,13 @@ function decorateButtons(element) {
  * @param {string} [prefix] prefix to be added to icon src
  * @param {string} [alt] alt text to be added to icon
  */
-function decorateIcon(span, width, height, prefix = '') {
+function decorateIcon(span, width, height, subFolder, prefix = '') {
   const iconName = Array.from(span.classList)
     .find((c) => c.startsWith('icon-'))
     .substring(5);
   const img = document.createElement('img');
   img.dataset.iconName = iconName;
-  img.src = `${window.hlx.codeBasePath}${prefix}/icons/${iconName}.svg`;
+  img.src = subFolder ? `${window.hlx.codeBasePath}${prefix}/icons/${subFolder}/${iconName}.svg` : `${window.hlx.codeBasePath}${prefix}/icons/${iconName}.svg`;
   img.alt = iconName;
   img.width = width;
   img.height = height;
@@ -498,10 +498,10 @@ function decorateIcon(span, width, height, prefix = '') {
  * @param {Element} [element] Element containing icons
  * @param {string} [prefix] prefix to be added to icon the src
  */
-function decorateIcons(element, width = 25, height = 25, prefix = '') {
+function decorateIcons(element, width = 25, height = 25, subFolder = '', prefix = '') {
   const icons = [...element.querySelectorAll('span.icon')];
   icons.forEach((span) => {
-    decorateIcon(span, width, height, prefix);
+    decorateIcon(span, width, height, subFolder, prefix);
   });
 }
 

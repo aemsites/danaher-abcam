@@ -37,11 +37,11 @@ function rotateDropdownIcon(event) {
   }
 }
 
-function updateCountryButton(imageSrc, code) {
-  const flagElement = document.querySelector('.country-flag-icon');
-  if (flagElement) {
-    flagElement.src = imageSrc;
-  }
+function updateCountryButton(code) {
+  const flagElement = document.querySelector('.country-flag-container');
+  const spanElement = span({ class: `country-flag-icon object-cover border-[0.5px] icon icon-${code.toLowerCase()}` });
+  flagElement.replaceChildren(spanElement);
+  decorateIcons(flagElement, 24, 24, 'flags');
   rotateDropdownIcon();
   document.querySelector('.country-search')?.classList.add('hidden');
   document.getElementById('country-search-input').value = '';
@@ -59,7 +59,7 @@ async function displayResults(query, resultsContainer) {
   filteredCountries.forEach(({ code, country }) => {
     const resultItem = div(
       { class: 'result-item flex flex-row gap-x-2 p-4 text-black hover:bg-[#f2f2f2]' },
-      img({ class: 'result-flag-container h-5 w-5', alt: code, src: `/eds/icons/flags/${code.toLowerCase()}.svg` }),
+      span({ class: `result-flag-container icon icon-${code.toLowerCase()}`}),
       div({ class: 'result-country' }, country),
     );
     resultItem.querySelector('.result-flag-container').title = country;
@@ -73,9 +73,10 @@ async function displayResults(query, resultsContainer) {
         return;
       }
       e.stopPropagation();
-      updateCountryButton(`/eds/icons/flags/${code.toLowerCase()}.svg`, code);
+      updateCountryButton(code);
       resultsContainer.replaceChildren();
     });
+    decorateIcons(resultItem, 24, 24, 'flags');
     resultsContainer.appendChild(resultItem);
   });
 }
@@ -285,15 +286,13 @@ export default async function decorate(block) {
   });
   setOrUpdateCookie('NEXT_LOCALE', 'en-us', 365);
 
-  const flagElement = block.querySelector('.country-flag-icon');
+  const flagElement = block.querySelector('.country-flag-container');
   const lastSelectedCountry = getCookie('NEXT_COUNTRY');
-  if (lastSelectedCountry === null || lastSelectedCountry === undefined) {
-    flagElement.src = '/eds/icons/flags/us.svg';
-  }
   if (flagElement && lastSelectedCountry !== null) {
-    // flagElement.title = lastSelectedCountry;
-    flagElement.src = `/eds/icons/flags/${lastSelectedCountry.toLowerCase()}.svg`;
+    const spanElement = span({ class: `country-flag-icon object-cover border-[0.5px] icon icon-${lastSelectedCountry.toLowerCase()}` });
+    flagElement.replaceChildren(spanElement);
   }
+  decorateIcons(flagElement, 24, 24, 'flags');
   const dropdownContainer = document.querySelector('.account-dropdown-container');
   decorateIcons(dropdownContainer, 16, 16);
   const accountEl = document.getElementById('my-account');
