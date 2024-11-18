@@ -7,7 +7,7 @@ const fileMappings = [
     output: './eds/styles/styles.css',
   },
   {
-    content: './eds/blocks/header/header.js',
+    content: ['./eds/blocks/header/header.js', './eds/scripts/country-list.js'],
     output: './eds/blocks/header/header.css',
     wrapper: 'header-wrapper',
   },
