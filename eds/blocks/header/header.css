@@ -10,10 +10,6 @@
   position: relative
 }
 
-.header-wrapper :is(.right-0) {
-  right: 0px
-}
-
 .header-wrapper :is(.z-40) {
   z-index: 40
 }
@@ -47,8 +43,16 @@
   height: 100%
 }
 
+.header-wrapper :is(.h-5) {
+  height: 1.25rem
+}
+
 .header-wrapper :is(.h-full) {
   height: 100%
+}
+
+.header-wrapper :is(.w-5) {
+  width: 1.25rem
 }
 
 .header-wrapper :is(.w-\[360px\]) {
@@ -57,10 +61,6 @@
 
 .header-wrapper :is(.w-full) {
   width: 100%
-}
-
-.header-wrapper :is(.min-w-\[268px\]) {
-  min-width: 268px
 }
 
 .header-wrapper :is(.min-w-72) {
@@ -159,13 +159,14 @@
   background-color: rgb(0 0 0 / var(--tw-bg-opacity))
 }
 
+.header-wrapper :is(.bg-gray-200) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity))
+}
+
 .header-wrapper :is(.bg-white) {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
-}
-
-.header-wrapper :is(.fill-cyan-500) {
-  fill: #06b6d4
 }
 
 .header-wrapper :is(.p-2) {
@@ -213,12 +214,12 @@
   line-height: 1.25rem
 }
 
-.header-wrapper :is(.font-semibold) {
-  font-weight: 600
-}
-
 .header-wrapper :is(.font-normal) {
   font-weight: 400
+}
+
+.header-wrapper :is(.font-semibold) {
+  font-weight: 600
 }
 
 .header-wrapper :is(.leading-5) {
@@ -244,6 +245,10 @@
   opacity: 1
 }
 
+.header-wrapper :is(.filter) {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
+}
+
 .header-wrapper :is(.transition-all) {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -258,8 +263,9 @@
   background-color: #0711120d
 }
 
-.header-wrapper :is(.hover\:fill-cyan-700:hover) {
-  fill: #0e7490
+.header-wrapper :is(.hover\:bg-\[\#f2f2f2\]:hover) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(242 242 242 / var(--tw-bg-opacity))
 }
 
 .header-wrapper :is(.hover\:underline:hover) {
@@ -269,11 +275,6 @@
 .header-wrapper :is(.focus\:outline-none:focus) {
   outline: 2px solid transparent;
   outline-offset: 2px
-}
-
-.header-wrapper :is(.group:hover .group-hover\:text-amber-500) {
-  --tw-text-opacity: 1;
-  color: rgb(245 158 11 / var(--tw-text-opacity))
 }
 
 @media (min-width: 768px) {
