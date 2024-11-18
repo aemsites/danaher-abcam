@@ -65,7 +65,7 @@ async function decorateProductTabs(block) {
 }
 
 function decorateButtonTabs(block) {
-  const mmgTabs = div({ class: 'button-tabs flex gap-x-6' });
+  const mmgTabs = div({ class: 'button-tabs flex flex-col lg:flex-row gap-6' });
   const tabs = getTabName();
   tabs.forEach((tab) => {
     const buttonTab = button({
