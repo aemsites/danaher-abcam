@@ -1438,6 +1438,10 @@ main .section.guides-middle-container h2 {
   top: 70px;
 }
 
+.top-1\/2 {
+  top: 50%;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -1736,6 +1740,10 @@ main .section.guides-middle-container h2 {
   height: 100vh;
 }
 
+.h-\[126px\] {
+  height: 126px;
+}
+
 .max-h-\[200px\] {
   max-height: 200px;
 }
@@ -1810,6 +1818,10 @@ main .section.guides-middle-container h2 {
   width: 100vw;
 }
 
+.w-\[126px\] {
+  width: 126px;
+}
+
 .min-w-56 {
   min-width: 14rem;
 }
@@ -1844,6 +1856,11 @@ main .section.guides-middle-container h2 {
 
 .-translate-x-1\/2 {
   --tw-translate-x: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.-translate-y-1\/2 {
+  --tw-translate-y: -50%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -2352,6 +2369,11 @@ main .section.guides-middle-container h2 {
   padding-bottom: 1.5rem;
 }
 
+.py-10 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
 .pb-1 {
   padding-bottom: 0.25rem;
 }
@@ -2802,6 +2824,11 @@ main .section.guides-middle-container h2 {
   .sm\:border-t-\[1px\] {
     border-top-width: 1px;
   }
+
+  .sm\:px-\[40px\] {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -2894,6 +2921,11 @@ main .section.guides-middle-container h2 {
     padding: 1.5rem;
   }
 
+  .md\:px-\[48px\] {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+
   .md\:pl-5 {
     padding-left: 1.25rem;
   }
@@ -2979,6 +3011,16 @@ main .section.guides-middle-container h2 {
     flex-direction: column;
   }
 
+  .lg\:px-\[64px\] {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+
+  .lg\:py-12 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
   .lg\:pr-8 {
     padding-right: 2rem;
   }
@@ -3028,6 +3070,11 @@ main .section.guides-middle-container h2 {
 
   .\32xl\:w-\[65\%\] {
     width: 65%;
+  }
+
+  .\32xl\:px-\[224px\] {
+    padding-left: 224px;
+    padding-right: 224px;
   }
 }
 

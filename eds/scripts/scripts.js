@@ -776,11 +776,11 @@ export function decorateMain(main) {
 export const applyClasses = (element, classes) => element?.classList.add(...classes.split(' '));
 
 export function postFormAction(link) {
-  console.log('postFormAction');
+  console.log('postFormAction', link);
   document.querySelectorAll('.downloads-wrapper .downloads a')?.forEach((downloadLink) => {
     downloadLink.classList.remove('hidden');
   });
-  decorateVideo(div(link));
+  if (link) decorateVideo(div(link));
 }
 
 /**

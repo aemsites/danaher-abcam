@@ -2,7 +2,7 @@ import { decorateIcons, loadScript } from '../../scripts/aem.js';
 import { div, img, span } from '../../scripts/dom-builder.js';
 import { getFragmentFromFile, postFormAction } from '../../scripts/scripts.js';
 
-function postAction(formEl, videoLink) {
+function postAction(formEl, videoLink = '') {
   console.log(formEl);
   const formAction = formEl?.action;
   const loaderEl = div(
@@ -74,7 +74,7 @@ export default async function decorate(block) {
       fragmentScript.append(fragmentCustomScript);
       document.body.append(fragmentScript);
     }
-    block.append(div(videoLink));
+    if (videoLink) block.append(div(videoLink));
     const formEl = block.querySelector('form');
     formStyle(formEl);
     formEl?.addEventListener('submit', (event) => {
@@ -85,7 +85,7 @@ export default async function decorate(block) {
       }
     });
   } catch (e) {
-    block.textContent = '';
+    // block.textContent = '';
     // eslint-disable-next-line no-console
     console.warn(`cannot load snippet at ${e}`);
   }
