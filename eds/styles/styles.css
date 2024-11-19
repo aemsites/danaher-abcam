@@ -1430,24 +1430,16 @@ main .section.guides-middle-container h2 {
   top: 2.5rem;
 }
 
+.top-12 {
+  top: 3rem;
+}
+
 .top-3 {
   top: 0.75rem;
 }
 
 .top-\[70px\] {
   top: 70px;
-}
-
-.right-10 {
-  right: 2.5rem;
-}
-
-.top-8 {
-  top: 2rem;
-}
-
-.top-9 {
-  top: 2.25rem;
 }
 
 .z-10 {
@@ -1750,10 +1742,6 @@ main .section.guides-middle-container h2 {
 
 .max-h-\[200px\] {
   max-height: 200px;
-}
-
-.min-h-full {
-  min-height: 100%;
 }
 
 .w-1\/2 {
@@ -2613,12 +2601,6 @@ main .section.guides-middle-container h2 {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-.shadow-md {
-  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
 .outline-none {
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -2738,12 +2720,6 @@ main .section.guides-middle-container h2 {
   text-decoration-line: underline;
 }
 
-.hover\:shadow-lg:hover {
-  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -2787,12 +2763,12 @@ main .section.guides-middle-container h2 {
 }
 
 @media (min-width: 640px) {
-  .sm\:right-0 {
-    right: 0px;
+  .sm\:left-auto {
+    left: auto;
   }
 
-  .sm\:right-10 {
-    right: 2.5rem;
+  .sm\:right-0 {
+    right: 0px;
   }
 
   .sm\:hidden {
@@ -2805,6 +2781,10 @@ main .section.guides-middle-container h2 {
 
   .sm\:w-\[50\%\] {
     width: 50%;
+  }
+
+  .sm\:w-auto {
+    width: auto;
   }
 
   .sm\:grid-cols-3 {
@@ -2833,20 +2813,16 @@ main .section.guides-middle-container h2 {
 }
 
 @media (min-width: 768px) {
-  .md\:right-0 {
-    right: 0px;
+  .md\:relative {
+    position: relative;
   }
 
-  .md\:right-1 {
-    right: 0.25rem;
+  .md\:top-9 {
+    top: 2.25rem;
   }
 
-  .md\:right-2 {
-    right: 0.5rem;
-  }
-
-  .md\:right-10 {
-    right: 2.5rem;
+  .md\:\!left-auto {
+    left: auto !important;
   }
 
   .md\:mb-2 {
@@ -2863,10 +2839,6 @@ main .section.guides-middle-container h2 {
 
   .md\:block {
     display: block;
-  }
-
-  .md\:hidden {
-    display: none;
   }
 
   .md\:h-64 {
@@ -2895,6 +2867,10 @@ main .section.guides-middle-container h2 {
 
   .md\:w-auto {
     width: auto;
+  }
+
+  .md\:\!w-auto {
+    width: auto !important;
   }
 
   .md\:\!flex-row {
@@ -2999,10 +2975,6 @@ main .section.guides-middle-container h2 {
     display: block !important;
   }
 
-  .lg\:block {
-    display: block;
-  }
-
   .lg\:hidden {
     display: none;
   }
@@ -3041,10 +3013,6 @@ main .section.guides-middle-container h2 {
 }
 
 @media (min-width: 1280px) {
-  .xl\:right-0 {
-    right: 0px;
-  }
-
   .xl\:mx-auto {
     margin-left: auto;
     margin-right: auto;

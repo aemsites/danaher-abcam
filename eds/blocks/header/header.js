@@ -174,7 +174,7 @@ function myAccount() {
           { class: 'w-full flex items-center text-black text-xs font-normal tracking-wide' },
           'New to Abcam?',
           a({
-            class: 'hover:underline leading-5 text-[#378189] ml-auto',
+            class: 'hover:underline leading-5 text-[#378189] ml-2 md:ml-auto',
             href: 'https://www.abcam.com/auth/register?redirect=https%3A%2F%2Fwww.abcam.com%2Fen-us',
           }, 'Create an account'),
         ),
