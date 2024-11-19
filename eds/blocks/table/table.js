@@ -35,5 +35,7 @@ export default async function decorate(block) {
     else tblBody.append(tblRow);
   });
   t.append(tblHead, tblBody);
+  block.innerHTML = '';
+  block.append(t);
   // block.replaceChildren(t);
 }
