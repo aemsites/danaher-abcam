@@ -50,6 +50,14 @@
   margin-top: 0.5rem
 }
 
+.header-wrapper :is(.ml-2) {
+  margin-left: 0.5rem
+}
+
+.header-wrapper :is(.ml-auto) {
+  margin-left: auto
+}
+
 .header-wrapper :is(.block) {
   display: block
 }
@@ -184,6 +192,12 @@
        column-gap: 1rem
 }
 
+.header-wrapper :is(.space-y-2 > :not([hidden]) ~ :not([hidden])) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.5rem * var(--tw-space-y-reverse))
+}
+
 .header-wrapper :is(.overflow-hidden) {
   overflow: hidden
 }
@@ -301,6 +315,11 @@
   line-height: 1.25rem
 }
 
+.header-wrapper :is(.text-xs) {
+  font-size: 0.75rem;
+  line-height: 1rem
+}
+
 .header-wrapper :is(.font-normal) {
   font-weight: 400
 }
@@ -311,6 +330,10 @@
 
 .header-wrapper :is(.leading-5) {
   line-height: 1.25rem
+}
+
+.header-wrapper :is(.tracking-wide) {
+  letter-spacing: 0.025em
 }
 
 .header-wrapper :is(.text-\[\#378189\]) {
@@ -359,6 +382,11 @@
 .header-wrapper :is(.hover\:bg-\[\#f2f2f2\]:hover) {
   --tw-bg-opacity: 1;
   background-color: rgb(242 242 242 / var(--tw-bg-opacity))
+}
+
+.header-wrapper :is(.hover\:bg-\[\#2a5f65\]:hover) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(42 95 101 / var(--tw-bg-opacity))
 }
 
 .header-wrapper :is(.hover\:underline:hover) {

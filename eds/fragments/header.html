@@ -462,12 +462,15 @@
 			<input type="checkbox" id="account-dropdown" class="peer hidden" />
 			<label for="account-dropdown" class="border border-white rounded-2xl px-2 py-3 text-xs h-8 inline-flex justify-center items-center cursor-pointer">					
 				<span class="user-icon icon icon-user"></span>
-				<span class="text-white block px-1.5 font-semibold">My account</span>
-				<span class="user-icon-dd icon icon-chevron-down-white"></span>				
+				<span class="text-white block px-1.5 font-semibold select-none">My account</span>
+				<span class="user-icon-dd icon icon-chevron-down-white"></span>			
 			</label>
-			<div class="account-dropdown-menu hidden peer-checked:block absolute top-10 sm:right-0 mt-1 z-40">
-				<div id="my-account" data-side="bottom" role="dialog" class="relative w-full bg-white pb-4" tabindex="-1">					
-				</div>
+			<div 
+				id="my-account" 
+				data-side="bottom" 
+				role="dialog" 
+				class="account-dropdown-menu hidden peer-checked:block absolute top-9 sm:right-0 mt-1 z-40 pb-4 shadow" 
+				tabindex="-1">
 			</div>
 		</span>
 		<!-- My Account ends here -->

@@ -1,5 +1,5 @@
 import {
-  a, div, li, span, ul,
+  a, div, li, p, span, ul,
 } from '../../scripts/dom-builder.js';
 import { decorateIcons } from '../../scripts/aem.js';
 import countriesAndCodes from '../../scripts/country-list.js';
@@ -146,57 +146,51 @@ function countrySelector() {
 }
 
 function accountMenuList(iconName, linkText, linkUrl) {
-  const divEl = ul({ class: 'group flex flex-row items-center gap-x-3 px-4 py-2 hover:bg-[#0711120d] cursor-pointer' });
+  const divEl = li({ class: 'group flex flex-row items-center gap-x-3 px-4 py-2 hover:bg-[#0711120d] cursor-pointer text-sm font-semibold leading-5 text-black' });
   divEl.append(
     span({ class: `icon icon-${iconName} group-hover:hidden` }),
     span({ class: `icon icon-${iconName}-solid hidden group-hover:block` }),
-    li(a({
+    a({
       class: 'text-sm font-semibold leading-5 text-black p-2 pl-2',
       href: linkUrl,
-    }, linkText)),
+    }, linkText),
   );
   decorateIcons(divEl, 24, 24);
   return divEl;
 }
 
 function myAccount() {
-  const myAccoundDiv = div({ class: 'mt-0 lg:right-0 absolute z-drawer transform opacity-100 scale-100' });
+  const myAccoundDiv = div({ class: 'w-full overflow-hidden bg-white md:h-full text-black md:rounded-lg rounded' });
   myAccoundDiv.append(
-    div(
-      { class: 'w-full overflow-hidden bg-white md:h-full text-black md:w-full md:rounded-8px rounded-[4px]' },
-      div(
-        { class: 'flex flex-col w-full min-w-72' },
-        div(
-          { class: 'mb-3 md:mb-0 border-b border-b-[#D8D8D8] px-4 pt-4 pb-3' },
+    ul(
+      { class: 'flex flex-col w-full min-w-60' },
+      li(
+        { class: 'mb-3 md:mb-0 border-b border-b-[#D8D8D8] px-4 pt-4 pb-3 space-y-2' },
+        a({
+          class: 'flex justify-center py-2 focus:outline-none bg-[#378189] hover:bg-[#2a5f65] rounded-full text-white text-sm font-semibold',
+          href: 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fen-us',
+        }, 'Sign In'),
+        p(
+          { class: 'w-full flex items-center text-black text-xs font-normal tracking-wide' },
+          'New to Abcam?',
           a({
-            class: 'button size-full flex items-center gap-x-2 justify-center py-2 focus:outline-none bg-[#378189] rounded-full text-white text-sm font-semibold',
-            href: 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fen-us',
-          }, 'Sign In'),
-          div(
-            { class: 'flex md:inline-flex text-align-center items-center justify-between w-full mt-2' },
-            span(
-              { class: 'text-black' },
-              'New to Abcam?',
-              a({
-                class: 'text-sm font-normal leading-5 text-[#378189] p-2 pl-2 hover:underline',
-                href: 'https://www.abcam.com/auth/register?redirect=https%3A%2F%2Fwww.abcam.com%2Fen-us',
-              }, 'Create an account'),
-            ),
-          ),
+            class: 'hover:underline leading-5 text-[#378189] ml-auto',
+            href: 'https://www.abcam.com/auth/register?redirect=https%3A%2F%2Fwww.abcam.com%2Fen-us',
+          }, 'Create an account'),
         ),
-        accountMenuList('orders', 'My Orders', 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fmy-account%2Forders'),
-        accountMenuList('addresses', 'My Addresses', 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fmy-account%2Faddress-book'),
-        accountMenuList('inquiries', 'My Inquiries', 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fmy-account%2Finquiries'),
-        accountMenuList('reviews', 'My Reviews', 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fmy-account%2Freviews'),
-        accountMenuList('rewards', 'My Rewards', 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fmy-account%2Freward-points'),
-        accountMenuList('profile', 'My Profile', 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fmy-account%2Fprofile'),
-        div(
-          { class: 'mb-3 md:mb-0 px-4 pt-4 pb-3' },
-          a({
-            class: 'button size-full flex items-center gap-x-2 justify-center py-2 focus:outline-none border border-solid border-black rounded-full text-black text-sm font-semibold',
-            href: 'https://www.abcam.com/en-us/contact-us',
-          }, 'Contact Us'),
-        ),
+      ),
+      accountMenuList('orders', 'My Orders', 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fmy-account%2Forders'),
+      accountMenuList('addresses', 'My Addresses', 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fmy-account%2Faddress-book'),
+      accountMenuList('inquiries', 'My Inquiries', 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fmy-account%2Finquiries'),
+      accountMenuList('reviews', 'My Reviews', 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fmy-account%2Freviews'),
+      accountMenuList('rewards', 'My Rewards', 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fmy-account%2Freward-points'),
+      accountMenuList('profile', 'My Profile', 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fmy-account%2Fprofile'),
+      li(
+        { class: 'mb-3 md:mb-0 px-4 pt-4 pb-3' },
+        a({
+          class: 'flex justify-center py-2 focus:outline-none hover:bg-[#0711120d] border border-black rounded-full text-black text-sm font-semibold',
+          href: 'https://www.abcam.com/en-us/contact-us',
+        }, 'Contact Us'),
       ),
     ),
   );
