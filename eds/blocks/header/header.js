@@ -275,7 +275,7 @@ export default async function decorate(block) {
   decorateIcons(document.querySelector('.country-dd'), 16, 16);
   block.querySelector('.country-dropdown')?.addEventListener('click', (event) => {
     const countrySearch = document.querySelector('.country-search');
-    if (event.target === event.currentTarget || event.target.alt === 'chevron-down-white' || event.target.classList.contains('country-flag-icon')) {
+    if (event.target === event.currentTarget || event.target.alt === 'chevron-down-white' || event.target.parentElement.classList.contains('country-flag-icon')) {
       countrySearch?.classList.toggle('hidden');
       const searchValue = block.querySelector('#country-search-input');
       if (searchValue) searchValue.value = '';
