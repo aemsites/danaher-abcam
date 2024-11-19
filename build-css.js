@@ -279,8 +279,8 @@ const fileMappings = [
     wrapper: 'dynamic-cards-wrapper',
   },
   {
-    content: './blocks/elouqa-form/elouqa-form.js',
-    output: './blocks/elouqa-form/elouqa-form.css',
+    content: './eds/blocks/elouqa-form/elouqa-form.js',
+    output: './eds/blocks/elouqa-form/elouqa-form.css',
     wrapper: 'elouqa-form-wrapper',
   },
   {
