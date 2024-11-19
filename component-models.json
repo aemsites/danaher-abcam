@@ -1194,6 +1194,13 @@
             "value": "icon-only"
           }
         ]
+      },
+      {
+        "component": "richtext",
+        "name": "header-notification-banner_description_hidden",
+        "value": "",
+        "label": "Description_Hidden",
+        "valueType": "string"
       }
     ]
   },
