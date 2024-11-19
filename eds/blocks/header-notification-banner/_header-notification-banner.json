@@ -43,6 +43,13 @@
           },
           {
             "...": "../../../models/_common.json#/button-fields"
+          },
+          {
+            "component": "richtext",
+            "name": "header-notification-banner_description_hidden",
+            "value": "",
+            "label": "Description_Hidden",
+            "valueType": "string"
           }
         ]
       }
