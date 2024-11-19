@@ -1430,6 +1430,10 @@ main .section.guides-middle-container h2 {
   top: 2.5rem;
 }
 
+.top-12 {
+  top: 3rem;
+}
+
 .top-3 {
   top: 0.75rem;
 }
@@ -1738,10 +1742,6 @@ main .section.guides-middle-container h2 {
 
 .max-h-\[200px\] {
   max-height: 200px;
-}
-
-.min-h-full {
-  min-height: 100%;
 }
 
 .w-1\/2 {
@@ -2763,6 +2763,10 @@ main .section.guides-middle-container h2 {
 }
 
 @media (min-width: 640px) {
+  .sm\:left-auto {
+    left: auto;
+  }
+
   .sm\:right-0 {
     right: 0px;
   }
@@ -2777,6 +2781,10 @@ main .section.guides-middle-container h2 {
 
   .sm\:w-\[50\%\] {
     width: 50%;
+  }
+
+  .sm\:w-auto {
+    width: auto;
   }
 
   .sm\:grid-cols-3 {
@@ -2805,6 +2813,18 @@ main .section.guides-middle-container h2 {
 }
 
 @media (min-width: 768px) {
+  .md\:relative {
+    position: relative;
+  }
+
+  .md\:top-9 {
+    top: 2.25rem;
+  }
+
+  .md\:\!left-auto {
+    left: auto !important;
+  }
+
   .md\:mb-2 {
     margin-bottom: 0.5rem;
   }
@@ -2815,6 +2835,10 @@ main .section.guides-middle-container h2 {
 
   .md\:\!block {
     display: block !important;
+  }
+
+  .md\:block {
+    display: block;
   }
 
   .md\:h-64 {
@@ -2843,6 +2867,10 @@ main .section.guides-middle-container h2 {
 
   .md\:w-auto {
     width: auto;
+  }
+
+  .md\:\!w-auto {
+    width: auto !important;
   }
 
   .md\:\!flex-row {
