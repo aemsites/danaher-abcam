@@ -529,43 +529,40 @@ function isValidUrl(string) {
   const urlPattern = /^(https?:\/\/)?([a-z0-9\-]+\.)+[a-z]{2,}(:\d+)?(\/[^\s]*)?$/i;
   return urlPattern.test(string);
 }
-function decorateGenricVideo(main) {
-  const divContainers = main.querySelectorAll("main .section");
-  divContainers.forEach((divContainer) => {
-    divContainer.querySelectorAll("p a").forEach((link) => {
-      if (link.title === "video") {
-        const linkContainer = link.parentElement;
-        linkContainer.classList.add("h-full");
-        let embedURL;
-        let showControls = 0;
-        embedURL = link.href + "?controls=" + showControls;
-        const embedHTML = `
-          <div class="video-container relative w-full px-[30px] sm:px-[40px] md:px-[48px] lg:px-[64px] xl:px-[80px] 2xl:px-[224px] py-10 lg:py-12 bg-gray-200">
-            <iframe src="${embedURL}"
-              class="w-full aspect-video multi-player" 
-              allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" 
-              scrolling="no" title="Content from Vimeo" loading="lazy"></iframe>
-              <button id="play-button-${embedURL}" class="video-overlay absolute inset-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-opacity-50 rounded-full p-4 flex items-center justify-center w-[126px] h-[126px]">
-                <span class="video-play-icon icon icon-video-play"></span>
-              </button>
-            </div>
-          </div>`;
-        linkContainer.innerHTML = embedHTML;
-        decorateIcons(linkContainer, 50, 50);
 
-        const playButton = document.getElementById(`play-button-${embedURL}`);
-        const iframe = document.querySelector(".multi-player");
-        const overlay = document.querySelector(".video-overlay");
-        playButton.addEventListener("click", function () {
-          let videoSrc = iframe.src;
-          if (!videoSrc.includes("autoplay=1")) {
-            videoSrc = videoSrc.replace("controls=0", "controls=1");
-            iframe.src = videoSrc.includes("?")
-              ? videoSrc + "&autoplay=1"
-              : videoSrc + "?autoplay=1";
-            overlay.classList.add("hidden");
-          }
-        });
+function decorateGenricVideo(main) {
+  main.querySelectorAll(".section a[title='video']").forEach((link) => {
+    const linkContainer = link.parentElement;
+    linkContainer.classList.add("h-full");
+    const formEl = document.querySelector('form');
+    let embedURL;
+    let showControls = 0;
+    embedURL = link.href + "?controls=" + showControls;
+    const embedHTML = `
+      <div class="video-container relative w-full px-[30px] sm:px-[40px] md:px-[48px] lg:px-[64px] xl:px-[80px] 2xl:px-[224px] py-10 lg:py-12 bg-gray-200" style="${formEl ? 'display: none;' : ''}">
+        <iframe src="${embedURL}"
+          class="w-full aspect-video multi-player" 
+          allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" 
+          scrolling="no" title="Content from Vimeo" loading="lazy"></iframe>
+          <button id="play-button-${embedURL}" class="video-overlay absolute inset-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-opacity-50 rounded-full p-4 flex items-center justify-center w-[126px] h-[126px]">
+            <span class="video-play-icon icon icon-video-play"></span>
+          </button>
+        </div>
+      </div>`;
+    linkContainer.innerHTML = embedHTML;
+    decorateIcons(linkContainer, 50, 50);
+
+    const playButton = document.getElementById(`play-button-${embedURL}`);
+    const iframe = document.querySelector(".multi-player");
+    const overlay = document.querySelector(".video-overlay");
+    playButton.addEventListener("click", function () {
+      let videoSrc = iframe.src;
+      if (!videoSrc.includes("autoplay=1")) {
+        videoSrc = videoSrc.replace("controls=0", "controls=1");
+        iframe.src = videoSrc.includes("?")
+          ? videoSrc + "&autoplay=1"
+          : videoSrc + "?autoplay=1";
+        overlay.classList.add("hidden");
       }
     });
   });
@@ -776,11 +773,25 @@ export function decorateMain(main) {
 export const applyClasses = (element, classes) => element?.classList.add(...classes.split(' '));
 
 export function postFormAction(link) {
-  console.log('postFormAction', link);
+  // Show the download links (if any)
   document.querySelectorAll('.downloads-wrapper .downloads a')?.forEach((downloadLink) => {
     downloadLink.classList.remove('hidden');
   });
-  if (link) decorateVideo(div(link));
+  const formEl = document.querySelector('form');
+  console.log(formEl);
+  if (formEl) {
+    formEl.style.display = 'none';  // Hide the form
+  }
+  // Get the video container (hidden initially)
+  const videoContainer = document.querySelector('.video-container');  // Target using the class
+  if (videoContainer) {
+    videoContainer.style.display = 'block';  // Show the video container after form submission
+  }
+  // Get the container where the video should be rendered (e.g., a section or main element)
+  const mainContainer = document.querySelector('main');  // Modify this to the correct parent if needed
+  if (mainContainer && link) {
+    decorateGenricVideo(mainContainer);  // Pass the main container where the video should be embedded
+  }
 }
 
 /**

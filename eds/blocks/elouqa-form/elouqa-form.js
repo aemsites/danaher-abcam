@@ -6,7 +6,7 @@ function postAction(formEl, videoLink = '') {
   console.log(formEl);
   const formAction = formEl?.action;
   const loaderEl = div(
-    { class: 'absolute inset-0 flex justify-center items-center z-10' },
+    { class: 'absolute inset-0 flex justify-center items-center z-10' }, 
     img({ class: 'size-10', src: 'https://raw.githubusercontent.com/n3r4zzurr0/svg-spinners/main/preview/12-dots-scale-rotate-black-36.svg' }),
     span({ class: 'icon icon-close' }),
   );
@@ -17,7 +17,7 @@ function postAction(formEl, videoLink = '') {
     body: new FormData(formEl),
   }).then((response) => {
     if (response.status === 200) {
-      postFormAction(videoLink);
+      postFormAction(videoLink);  // Once form is submitted, call postFormAction with videoLink
     } else {
       console.error('An error occurred while submitting the form');
     }
@@ -80,7 +80,7 @@ export default async function decorate(block) {
     formEl?.addEventListener('submit', (event) => {
       event.preventDefault();
       if (!formEl.querySelector('.LV_invalid_field')) {
-        postAction(formEl, videoLink);
+        postAction(formEl, videoLink ? videoLink.href : '');  // Pass the video link here
         decorateIcons(block);
       }
     });
@@ -90,3 +90,4 @@ export default async function decorate(block) {
     console.warn(`cannot load snippet at ${e}`);
   }
 }
+
