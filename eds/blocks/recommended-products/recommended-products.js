@@ -43,23 +43,35 @@ function createRecommendations(allRecommendations) {
   return recommendations;
 }
 
-function createFeatureProducts(products) {
+function updateFeatureProducts(products) {
   products.forEach((product) => {
-    console.log(product);
+    const leftEls = div({ class: 'w-2/3' });
+    const rightEls = div({ class: 'top-20 relative w-1/3' });
     getTag(product);
-    applyClasses(product, 'capitalize h-auto size-full flex flex-col align-center text-left p-4 bg-white border border-[#0711121a] rounded hover:bg-[#0000000d] cursor-pointer');
+    applyClasses(product, 'capitalize h-auto size-full flex flex-row align-center text-left p-4 bg-white border border-[#0711121a] rounded hover:bg-[#0000000d] cursor-pointer');
     applyClasses(product.querySelector('div:nth-child(1)'), 'w-fit px-2 py-1 rounded text-xs text-emerald-800 border border-emerald-900 bg-[#edf6f7]');
     applyClasses(product.querySelector('div:nth-child(2)'), 'mt-4 text-xs text-[#65797c] font-medium font-sans lowercase');
-    applyClasses(product.querySelector('div:nth-child(3)'), 'mb-4 mt-2 text-sm text-black font-medium line-clamp-2');
+    applyClasses(product.querySelector('div:nth-child(3)'), 'mb-4 mt-2 text-sm text-black font-medium');
+    applyClasses(product.querySelector('div:nth-child(3) > h3'), 'line-clamp-2');
+    applyClasses(product.querySelector('p > a'), 'w-fit inline-flex items-center underline text-[#378189]');
+    leftEls.append(
+      product.querySelector('div:nth-child(1)'),
+      product.querySelector('div:nth-child(2)'),
+      product.querySelector('div:nth-child(3)'),
+      product.querySelector('div:nth-child(4)'),
+    );
+    rightEls.append(product.querySelector('div:last-child'));
+    product.innerHTML = '';
+    product.append(leftEls, rightEls);
   });
 }
 
 export default async function decorate(block) {
-  block.classList.add(...'container mx-auto px-6 md:px-0'.split(' '));
   if (block.className.includes('featured-products')) {
-    applyClasses(block, 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-5');
-    block.append(createFeatureProducts(Array.from(block.children)));
+    applyClasses(block, 'my-8 flex flex-col lg:flex-row gap-4');
+    updateFeatureProducts(Array.from(block.children));
   } else {
+    block.classList.add(...'container mx-auto px-6 md:px-0'.split(' '));
     const response = await getProductResponse();
     const allRecommendations = response?.at(0)?.raw?.crosssellrecommendationsjson;
     if (!allRecommendations) block.closest('.section').remove();
