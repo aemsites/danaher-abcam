@@ -716,7 +716,7 @@ async function decorateVideo(main) {
         });
       }
     });
-  } else decorateGenricVideo(main);
+  } else decorateGenericVideo(main);
 }
 
 /**
@@ -756,11 +756,8 @@ export function postFormAction(link = '') {
   });
   const token = Math.random().toString(36).substr(2) + Math.random().toString(36).substr(2);;
   localStorage.setItem('ELOUQA', token);
-  // Get the container where the video should be rendered (e.g., a section or main element)
-  const mainContainer = document.querySelector('main');  // Modify this to the correct parent if needed
-  if (mainContainer && link) {
-    decorateGenericVideo(mainContainer);  // Pass the main container where the video should be embedded
-  }
+  const mainEl = document.querySelector('main');
+  if (mainEl && link) decorateGenericVideo(mainEl);
 }
 
 /**
