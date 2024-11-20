@@ -1052,6 +1052,28 @@
     ]
   },
   {
+    "id": "dynamic-cards",
+    "fields": [
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "indexUrl",
+        "value": "",
+        "label": "Select the index URL",
+        "options": [
+          {
+            "name": "Knowledge Center",
+            "value": "/en-us/knowledge-center/query-index.json"
+          },
+          {
+            "name": "None",
+            "value": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "form",
     "fields": [
       {
