@@ -29,7 +29,7 @@
           "options": [
             {
               "name": "Knowledge Center",
-              "value": "/en-us/knowledge-center/query-index.json"
+              "value": "knowledge-center"
             },
             {
               "name": "None",

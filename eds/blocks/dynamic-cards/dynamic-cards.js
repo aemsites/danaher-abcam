@@ -7,7 +7,7 @@ import { getMetadata, toClassName } from '../../scripts/aem.js';
 import createArticleCard from './articleCard.js';
 import { applyClasses } from '../../scripts/scripts.js';
 
-const title = getMetadata('og:title')
+let title = getMetadata('og:title')
   ?.toLowerCase()
   .replace(' | abcam', '')
   .trim()
