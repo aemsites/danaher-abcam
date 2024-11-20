@@ -49,13 +49,6 @@
                     "name": "video_link",
                     "value": "",
                     "label": "Video Link"
-                },
-                {
-                    "component": "text",
-                    "label": "Video Title",
-                    "name": "video_linkTitle",
-                    "valueType": "string",
-                    "value": ""
                 }
             ]
         }
