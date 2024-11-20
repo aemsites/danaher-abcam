@@ -25,7 +25,8 @@
             "resourceType": "core/franklin/components/block/v1/block/item",
             "template": {
               "name": "Product",
-              "model": "product"
+              "model": "product",
+              "card_titleType": "h3"
             }
           }
         }

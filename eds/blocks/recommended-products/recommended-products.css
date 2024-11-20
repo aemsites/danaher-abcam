@@ -209,6 +209,10 @@
   text-transform: lowercase
 }
 
+.recommended-products-wrapper :is(.capitalize) {
+  text-transform: capitalize
+}
+
 .recommended-products-wrapper :is(.tracking-wide) {
   letter-spacing: 0.025em
 }
