@@ -1173,7 +1173,7 @@ dialog .modal-content .section > .default-content-wrapper p {
   }
 }
 
-.stories main .section.no-section-padding .columns-wrapper, .webinar main .section.no-section-padding .columns-wrapper {
+main .section.no-section-padding .columns-wrapper {
   position: relative;
   margin-left: auto;
   margin-right: auto;
@@ -1181,12 +1181,12 @@ dialog .modal-content .section > .default-content-wrapper p {
 }
 
 @media (min-width: 1024px) {
-  .stories main .section.no-section-padding .columns-wrapper, .webinar main .section.no-section-padding .columns-wrapper {
+  main .section.no-section-padding .columns-wrapper {
     height: 31rem;
   }
 }
 
-.stories main .section.no-section-padding.columns-container, .webinar main .section.no-section-padding.columns-container {
+main .section.no-section-padding.columns-container {
   padding-top: 2rem;
 }
 
