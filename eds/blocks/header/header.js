@@ -1,8 +1,8 @@
 import {
-  a, div, img, li, span, ul,
+  a, div, li, p, span, ul,
 } from '../../scripts/dom-builder.js';
 import { decorateIcons } from '../../scripts/aem.js';
-import countriesAndCodes from './country-list.js';
+import countriesAndCodes from '../../scripts/country-list.js';
 
 function megaMeunu() {
   return div({ class: 'w-[360px] z-40 hidden max-w-sm fixed h-full bg-black px-3 py-4 ease-out transition-all' });
@@ -28,7 +28,7 @@ function rotateDropdownIcon(event) {
 
   const countrydd = document.querySelector('.country-dd');
   const ddImg = countrydd?.querySelector('img');
-  if (countrydd?.classList.contains('rotate') && ddImg) {
+  if (event !== undefined && countrydd?.classList.contains('rotate') && ddImg) {
     ddImg.style.transform = 'rotate(180deg)';
     countrydd.classList.remove('rotate');
   } else if (event === undefined || event.target !== input) {
@@ -37,11 +37,11 @@ function rotateDropdownIcon(event) {
   }
 }
 
-function updateCountryButton(imageSrc, code) {
-  const flagElement = document.querySelector('.country-flag-icon');
-  if (flagElement) {
-    flagElement.src = imageSrc;
-  }
+function updateCountryButton(code) {
+  const flagElement = document.querySelector('.country-flag-container');
+  const spanElement = span({ class: `country-flag-icon object-cover border-[0.5px] icon icon-${code.toLowerCase()}` });
+  flagElement.replaceChildren(spanElement);
+  decorateIcons(flagElement, 24, 24, 'flags');
   rotateDropdownIcon();
   document.querySelector('.country-search')?.classList.add('hidden');
   document.getElementById('country-search-input').value = '';
@@ -59,7 +59,7 @@ async function displayResults(query, resultsContainer) {
   filteredCountries.forEach(({ code, country }) => {
     const resultItem = div(
       { class: 'result-item flex flex-row gap-x-2 p-4 text-black hover:bg-[#f2f2f2]' },
-      img({ class: 'result-flag-container h-5 w-5', alt: code, src: `/eds/icons/flags/${code.toLowerCase()}.svg` }),
+      span({ class: `result-flag-container icon icon-${code.toLowerCase()}` }),
       div({ class: 'result-country' }, country),
     );
     resultItem.querySelector('.result-flag-container').title = country;
@@ -73,9 +73,10 @@ async function displayResults(query, resultsContainer) {
         return;
       }
       e.stopPropagation();
-      updateCountryButton(`/eds/icons/flags/${code.toLowerCase()}.svg`, code);
+      updateCountryButton(code);
       resultsContainer.replaceChildren();
     });
+    decorateIcons(resultItem, 24, 24, 'flags');
     resultsContainer.appendChild(resultItem);
   });
 }
@@ -145,56 +146,51 @@ function countrySelector() {
 }
 
 function accountMenuList(iconName, linkText, linkUrl) {
-  const divEl = ul({ class: 'flex flex-row items-center gap-x-3 px-4 py-2 hover:bg-[#0711120d] cursor-pointer' });
+  const divEl = li({ class: 'group flex flex-row items-center gap-x-3 px-4 py-2 hover:bg-[#0711120d] cursor-pointer text-sm font-semibold leading-5 text-black' });
   divEl.append(
-    span({ class: `icon icon-${iconName}` }),
-    li(a({
+    span({ class: `icon icon-${iconName} group-hover:hidden` }),
+    span({ class: `icon icon-${iconName}-solid hidden group-hover:block` }),
+    a({
       class: 'text-sm font-semibold leading-5 text-black p-2 pl-2',
       href: linkUrl,
-    }, linkText)),
+    }, linkText),
   );
   decorateIcons(divEl, 24, 24);
   return divEl;
 }
 
 function myAccount() {
-  const myAccoundDiv = div({ class: 'mt-0 lg:right-0 absolute z-drawer transform opacity-100 scale-100' });
+  const myAccoundDiv = div({ class: 'w-full overflow-hidden bg-white md:h-full text-black md:rounded-lg rounded' });
   myAccoundDiv.append(
-    div(
-      { class: 'w-full overflow-hidden bg-white md:h-full text-black md:w-full md:rounded-8px rounded-[4px]' },
-      div(
-        { class: 'flex flex-col w-full min-w-72' },
-        div(
-          { class: 'mb-3 md:mb-0 border-b border-b-[#D8D8D8] px-4 pt-4 pb-3' },
+    ul(
+      { class: 'flex flex-col w-full min-w-60' },
+      li(
+        { class: 'mb-3 md:mb-0 border-b border-b-[#D8D8D8] px-4 pt-4 pb-3 space-y-2' },
+        a({
+          class: 'flex justify-center py-2 focus:outline-none bg-[#378189] hover:bg-[#2a5f65] rounded-full text-white text-sm font-semibold',
+          href: 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fen-us',
+        }, 'Sign In'),
+        p(
+          { class: 'w-full flex items-center text-black text-xs font-normal tracking-wide' },
+          'New to Abcam?',
           a({
-            class: 'button size-full flex items-center gap-x-2 justify-center py-2 focus:outline-none bg-[#378189] rounded-full text-white text-sm font-semibold',
-            href: 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fen-us',
-          }, 'Sign In'),
-          div(
-            { class: 'flex md:inline-flex text-align-center items-center justify-between w-full mt-2' },
-            span(
-              { class: 'text-black' },
-              'New to Abcam?',
-              a({
-                class: 'text-sm font-normal leading-5 text-[#378189] p-2 pl-2 hover:underline',
-                href: 'https://www.abcam.com/auth/register?redirect=https%3A%2F%2Fwww.abcam.com%2Fen-us',
-              }, 'Create an account'),
-            ),
-          ),
+            class: 'hover:underline leading-5 text-[#378189] ml-2 md:ml-auto',
+            href: 'https://www.abcam.com/auth/register?redirect=https%3A%2F%2Fwww.abcam.com%2Fen-us',
+          }, 'Create an account'),
         ),
-        accountMenuList('orders', 'My Orders', 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fmy-account%2Forders'),
-        accountMenuList('addresses', 'My Addresses', 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fmy-account%2Faddress-book'),
-        accountMenuList('inquiries', 'My Inquiries', 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fmy-account%2Finquiries'),
-        accountMenuList('reviews', 'My Reviews', 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fmy-account%2Freviews'),
-        accountMenuList('rewards', 'My Rewards', 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fmy-account%2Freward-points'),
-        accountMenuList('profile', 'My Profile', 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fmy-account%2Fprofile'),
-        div(
-          { class: 'mb-3 md:mb-0 px-4 pt-4 pb-3' },
-          a({
-            class: 'button size-full flex items-center gap-x-2 justify-center py-2 focus:outline-none border border-solid border-black rounded-full text-black text-sm font-semibold',
-            href: 'https://www.abcam.com/en-us/contact-us',
-          }, 'Contact Us'),
-        ),
+      ),
+      accountMenuList('orders', 'My Orders', 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fmy-account%2Forders'),
+      accountMenuList('addresses', 'My Addresses', 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fmy-account%2Faddress-book'),
+      accountMenuList('inquiries', 'My Inquiries', 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fmy-account%2Finquiries'),
+      accountMenuList('reviews', 'My Reviews', 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fmy-account%2Freviews'),
+      accountMenuList('rewards', 'My Rewards', 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fmy-account%2Freward-points'),
+      accountMenuList('profile', 'My Profile', 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fmy-account%2Fprofile'),
+      li(
+        { class: 'mb-3 md:mb-0 px-4 pt-4 pb-3' },
+        a({
+          class: 'flex justify-center py-2 focus:outline-none hover:bg-[#0711120d] border border-black rounded-full text-black text-sm font-semibold',
+          href: 'https://www.abcam.com/en-us/contact-us',
+        }, 'Contact Us'),
       ),
     ),
   );
@@ -269,12 +265,11 @@ export default async function decorate(block) {
       }
     });
   });
-  // right
-  decorateIcons(document.querySelector('.country-dropdown'), 16, 16);
-  decorateIcons(document.querySelector('.cart-dropdown'), 16, 16);
+
+  decorateIcons(document.querySelector('.country-dd'), 16, 16);
   block.querySelector('.country-dropdown')?.addEventListener('click', (event) => {
     const countrySearch = document.querySelector('.country-search');
-    if (event.target === event.currentTarget || event.target.alt === 'chevron-down-white' || event.target.classList.contains('country-flag-icon')) {
+    if (event.target === event.currentTarget || event.target.alt === 'chevron-down-white' || event.target.parentElement.classList.contains('country-flag-icon')) {
       countrySearch?.classList.toggle('hidden');
       const searchValue = block.querySelector('#country-search-input');
       if (searchValue) searchValue.value = '';
@@ -286,15 +281,13 @@ export default async function decorate(block) {
   });
   setOrUpdateCookie('NEXT_LOCALE', 'en-us', 365);
 
-  const flagElement = block.querySelector('.country-flag-icon');
+  const flagElement = block.querySelector('.country-flag-container');
   const lastSelectedCountry = getCookie('NEXT_COUNTRY');
-  if (lastSelectedCountry === null || lastSelectedCountry === undefined) {
-    flagElement.src = '/eds/icons/flags/us.svg';
-  }
   if (flagElement && lastSelectedCountry !== null) {
-    // flagElement.title = lastSelectedCountry;
-    flagElement.src = `/eds/icons/flags/${lastSelectedCountry.toLowerCase()}.svg`;
+    const spanElement = span({ class: `country-flag-icon object-cover border-[0.5px] icon icon-${lastSelectedCountry.toLowerCase()}` });
+    flagElement.replaceChildren(spanElement);
   }
+  decorateIcons(flagElement, 24, 24, 'flags');
   const dropdownContainer = document.querySelector('.account-dropdown-container');
   decorateIcons(dropdownContainer, 16, 16);
   const accountEl = document.getElementById('my-account');

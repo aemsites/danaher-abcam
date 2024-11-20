@@ -1,6 +1,6 @@
 import { createOptimizedPicture, getMetadata } from '../../scripts/aem.js';
 import { div } from '../../scripts/dom-builder.js';
-import { applyClasses, getContentType } from '../../scripts/scripts.js';
+import { applyClasses, getContentType, getCookie } from '../../scripts/scripts.js';
 
 const widthRatios = [
   { value: '2-col-width-1-2', first: 'lg:w-1/2', second: 'lg:w-1/2' },
@@ -53,10 +53,13 @@ export default function decorate(block) {
       const pic = col.querySelector('picture');
 
       if (pic) {
-        const clonedCol = col.cloneNode(true);
-        applyClasses(col, 'hidden lg:block');
-        applyClasses(clonedCol, 'block lg:hidden');
-        row.querySelector('h1')?.after(clonedCol);
+        if (getCookie('cq-authoring-mode') !== 'TOUCH') {
+          const clonedCol = col.cloneNode(true);
+          applyClasses(col, 'hidden lg:block');
+          applyClasses(clonedCol, 'block lg:hidden');
+          row.querySelector('h1')?.after(clonedCol);
+        }
+
         const img = pic.querySelector('img');
         createOptimizedPicture(img.src, 'img-alt', false, [{ width: '750' }]);
         if (img && block.classList.contains('image-full-width')) {
