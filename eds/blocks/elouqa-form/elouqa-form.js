@@ -2,7 +2,7 @@ import { decorateIcons, loadScript } from '../../scripts/aem.js';
 import { div, img, span } from '../../scripts/dom-builder.js';
 import { getFragmentFromFile, postFormAction } from '../../scripts/scripts.js';
 
-function postAction(formEl, videoHref = '') {
+function postAction(formEl, videoEl) {
   const formAction = formEl?.action;
   const loaderEl = div(
     { class: 'absolute inset-0 flex justify-center items-center z-10' },
@@ -16,7 +16,8 @@ function postAction(formEl, videoHref = '') {
     body: new FormData(formEl),
   }).then((response) => {
     if (response.status === 200) {
-      postFormAction(videoHref);
+      videoEl.title = 'video';
+      postFormAction(videoEl ? videoEl.href : '');
       formEl.nextElementSibling.classList.remove('hidden');
       formEl.classList.add('hidden');
     } else throw new Error({ name: 'Error', message: 'An error occurred while submitting the form' });
@@ -48,9 +49,9 @@ export default async function decorate(block) {
   block.classList.add('relative');
   try {
     const videoLink = block.querySelector('a');
-    videoLink.title = 'video';
     if (localStorage.getItem('ELOUQA')) {
-      postFormAction(videoLink.href);
+      videoLink.title = 'video';
+      postFormAction(videoLink);
     } else {
       const fragment = await getFragmentFromFile('/eds/fragments/elouqa-form.html');
       const fragmentCSS = await getFragmentFromFile('/eds/styles/elouqa-form.css');
@@ -79,7 +80,7 @@ export default async function decorate(block) {
       formEl?.addEventListener('submit', (event) => {
         event.preventDefault();
         if (!formEl.querySelector('.LV_invalid_field')) {
-          postAction(formEl, videoLink.href);
+          postAction(formEl, videoLink);
           decorateIcons(block);
         }
       });

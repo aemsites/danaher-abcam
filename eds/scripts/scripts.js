@@ -769,16 +769,11 @@ export function decorateMain(main) {
 
 export const applyClasses = (element, classes) => element?.classList.add(...classes.split(' '));
 
-export function postFormAction(link) {
+export function postFormAction(link = '') {
   // Show the download links (if any)
   document.querySelectorAll('.downloads-wrapper .downloads a')?.forEach((downloadLink) => {
     downloadLink.classList.remove('hidden');
   });
-  // Get the video container (hidden initially)
-  const videoContainer = document.querySelector('.video-container');  // Target using the class
-  if (videoContainer) {
-    videoContainer.style.display = 'block';  // Show the video container after form submission
-  }
   const token = Math.random().toString(36).substr(2) + Math.random().toString(36).substr(2);;
   localStorage.setItem('ELOUQA', token);
   // Get the container where the video should be rendered (e.g., a section or main element)
