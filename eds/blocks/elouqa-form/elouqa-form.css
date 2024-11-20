@@ -108,6 +108,11 @@
   background-color: rgb(242 242 242 / var(--tw-bg-opacity))
 }
 
+.elouqa-form-wrapper :is(.bg-\[\#EDF6F7\]) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(237 246 247 / var(--tw-bg-opacity))
+}
+
 .elouqa-form-wrapper :is(.p-2) {
   padding: 0.5rem
 }

@@ -18,8 +18,10 @@ function postAction(formEl, videoEl) {
     if (response.status === 200) {
       videoEl.title = 'video';
       postFormAction(videoEl ? videoEl.href : '');
-      formEl.nextElementSibling.classList.remove('hidden');
-      formEl.classList.add('hidden');
+      formEl.parentElement.nextElementSibling.classList.remove('hidden');
+      formEl.parentElement.parentElement.classList.remove('grid', 'grid-cols-2', 'p-5');
+      formEl.parentElement.previousElementSibling.remove();
+      formEl.parentElement.remove();    
     } else throw new Error({ name: 'Error', message: 'An error occurred while submitting the form' });
   }).catch((error) => {
     // eslint-disable-next-line no-console
@@ -46,6 +48,7 @@ function formStyle(formEl) {
  * @param {Element} block The footer block element
  */
 export default async function decorate(block) {
+  console.log(block);
   block.classList.add('relative', 'bg-[#F2F2F2]');
   if (block.classList.contains('cols-2')) {
     block.classList.add('grid', 'grid-cols-2', 'p-5');
@@ -53,6 +56,7 @@ export default async function decorate(block) {
   try {
     const videoLink = block.querySelector('a');
     if (localStorage.getItem('ELOUQA')) {
+      console.log(block.querySelector('div p'));
       videoLink.title = 'video';
       postFormAction(videoLink);
     } else {
@@ -63,7 +67,10 @@ export default async function decorate(block) {
         await loadScript('https://img06.en25.com/i/livevalidation_standalone.compressed.js');
         const parser = new DOMParser();
         const fragmentHtml = parser.parseFromString(fragment, 'text/html');
-        block.innerHTML = fragmentHtml.body.innerHTML;
+        const formEl = div({ class: 'bg-[#EDF6F7]' });
+        formEl.innerHTML = fragmentHtml.body.innerHTML;
+        block.append(formEl);
+        block.querySelector('div p').parentElement.parentElement.nextElementSibling.remove();
       }
       if (fragmentCSS) {
         const fragmentStyle = document.createElement('style');

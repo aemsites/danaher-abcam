@@ -757,7 +757,8 @@ export function postFormAction(link = '') {
   const token = Math.random().toString(36).substr(2) + Math.random().toString(36).substr(2);;
   localStorage.setItem('ELOUQA', token);
   const mainEl = document.querySelector('main');
-  if (mainEl && link) decorateGenericVideo(mainEl);
+  if (mainEl && link) 
+    decorateGenericVideo(mainEl);
 }
 
 /**
