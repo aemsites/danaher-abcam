@@ -10,21 +10,10 @@ function handleSearch(event, tableEl) {
   value = value.trim();
   const bodyEl = tableEl.querySelector('tbody');
   const filter = value.toLowerCase();
-  const regex = new RegExp(filter, 'gi');
   [...bodyEl.children].forEach((row) => {
     if (!row.textContent.toLowerCase().includes(filter) && value !== '') row.classList.add('hidden');
     else {
       row.classList.remove('hidden');
-      [...row.children].forEach((cell) => {
-        let text = cell.innerHTML;
-        text = text.replace(/(<mark class="highlight">|<\/mark>)/gim, '');
-        text = text.replaceAll('&nbsp;', ' ');
-        let newText = text;
-        if (value !== '') {
-          newText = text.replace(regex, '<mark class="highlight">$&</mark>');
-        }
-        cell.innerHTML = newText;
-      });
     }
   });
 }
