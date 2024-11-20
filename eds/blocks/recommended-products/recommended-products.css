@@ -133,6 +133,10 @@
   height: 1px
 }
 
+.recommended-products-wrapper :is(.h-24) {
+  height: 6rem
+}
+
 .recommended-products-wrapper :is(.w-fit) {
   width: -moz-fit-content;
   width: fit-content
@@ -181,6 +185,10 @@
 .recommended-products-wrapper :is(.gap-x-1) {
   -moz-column-gap: 0.25rem;
        column-gap: 0.25rem
+}
+
+.recommended-products-wrapper :is(.overflow-hidden) {
+  overflow: hidden
 }
 
 .recommended-products-wrapper :is(.rounded) {
@@ -233,6 +241,10 @@
   padding-bottom: 0.25rem
 }
 
+.recommended-products-wrapper :is(.pt-20) {
+  padding-top: 5rem
+}
+
 .recommended-products-wrapper :is(.text-left) {
   text-align: left
 }
@@ -266,6 +278,10 @@
 
 .recommended-products-wrapper :is(.font-medium) {
   font-weight: 500
+}
+
+.recommended-products-wrapper :is(.font-semibold) {
+  font-weight: 600
 }
 
 .recommended-products-wrapper :is(.lowercase) {
