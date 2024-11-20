@@ -524,7 +524,7 @@ async function getOgImage() {
   return articles;
 }
 
-//This function is to add the title to the audio if it not the link
+// This function is to add the title to the audio if it not the link
 function isValidUrl(string) {
   const urlPattern = /^(https?:\/\/)?([a-z0-9\-]+\.)+[a-z]{2,}(:\d+)?(\/[^\s]*)?$/i;
   return urlPattern.test(string);
@@ -533,10 +533,10 @@ function isValidUrl(string) {
 function decorateGenericVideo(main) {
   main.querySelectorAll(".section a[title='video']").forEach((link) => {
     const linkContainer = link.parentElement;
-    linkContainer.classList.add("h-full");
+    linkContainer.classList.add('h-full');
     let embedURL;
     let showControls = 0;
-    embedURL = link.href + "?controls=" + showControls;
+    embedURL = link.href + '?controls=' + showControls;
     const embedHTML = `
       <div class="video-container relative w-full px-[30px] sm:px-[40px] md:px-[48px] lg:px-[64px] xl:px-[80px] 2xl:px-[224px] py-10 lg:py-12 bg-gray-200">
         <iframe src="${embedURL}"
@@ -561,7 +561,7 @@ function decorateGenericVideo(main) {
         iframe.src = videoSrc.includes('?')
           ? videoSrc + '&autoplay=1'
           : videoSrc + '?autoplay=1';
-        overlay.classList.add("hidden");
+        overlay.classList.add('hidden');
       }
     });
   });
@@ -673,27 +673,23 @@ async function decorateVideo(main) {
             });
 
             audioElement.addEventListener('play', () => {
-              if (previousPlayingAudio){
-                previousPlayingAudio.pause();
-              }
+              if (previousPlayingAudio) previousPlayingAudio.pause();
               previousPlayingAudio = audioElement;
               checkVideoStatus();        
               isPlaying = true;
               updateIconVisibility();
             });
+
             audioElement.addEventListener('pause', () => {
-              if (audioElement === previousPlayingAudio)
-                previousPlayingAudio = null;
+              if (audioElement === previousPlayingAudio) previousPlayingAudio = null;
               isPlaying = false;
               updateIconVisibility();
             });
+
             updateIconVisibility();
             audioContainer.querySelector('.checkStatus')?.addEventListener('click', checkVideoStatus);
 
-            playIcon.addEventListener('click', () => {
-              h3El.after(audioPlayer);
-            });
-
+            playIcon.addEventListener('click', () => h3El.after(audioPlayer));
           }
         });
       } else if (type.includes('film')) {
@@ -705,22 +701,6 @@ async function decorateVideo(main) {
             const videoId = extractVideoId(link.href);
             const thumbnailObj = filmThumbnails.find((obj) => obj.path === episodeUrl);
             const posterImage = thumbnailObj?.image;
-
-            const playButtonHTML = `
-              <div class="aspect-video relative w-full h-full">
-                <img src="${posterImage}" class="relative inset-0 w-full h-full object-cover" alt="More episodes in the Series" aria-label="More episodes in the Series" loading="lazy"/>
-                <button id="play-button-${videoId}" class="absolute inset-0 flex items-center justify-center bg-opacity-50 rounded-full p-4">
-                  <span class = "video-play-icon icon icon-video-play"/>
-                </button>
-              </div>
-            `;
-            const linkContainer = link.parentElement;
-            linkContainer.innerHTML = playButtonHTML;
-            decorateIcons(linkContainer, 50, 50);
-
-            if (linkContainer.closest('.image-full-width')) {
-              linkContainer.className = 'relative lg:absolute w-full lg:w-1/2 h-full object-cover lg:right-0 lg:bottom-6';
-            }
 
             linkContainer.querySelector(`button[id="play-button-${videoId}"]`).addEventListener('click', (e) => {
               e.preventDefault();
@@ -736,7 +716,7 @@ async function decorateVideo(main) {
         });
       }
     });
-  } else decorateGenericVideo(main);
+  } else decorateGenricVideo(main);
 }
 
 /**
