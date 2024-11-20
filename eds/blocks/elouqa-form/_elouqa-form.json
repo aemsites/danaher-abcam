@@ -22,11 +22,40 @@
             "id": "elouqa-form",
             "fields": [
                 {
+                    "component": "select",
+                    "name": "form_column",
+                    "label": "Column Layout",
+                    "options": [
+                        {
+                            "name": "One Column",
+                            "value": "cols-1"
+                        },
+                        {
+                            "name": "Two Column",
+                            "value": "cols-2"
+                        }
+                    ]
+                },
+                {
+                    "component": "richtext",
+                    "name": "form_description",
+                    "value": "",
+                    "label": "Description",
+                    "valueType": "string"
+                },
+                {
                     "component": "text",
                     "valueType": "string",
                     "name": "video_link",
                     "value": "",
                     "label": "Video Link"
+                },
+                {
+                    "component": "text",
+                    "label": "Video Title",
+                    "name": "video_hrefTitle",
+                    "valueType": "string",
+                    "value": ""
                 }
             ]
         }
