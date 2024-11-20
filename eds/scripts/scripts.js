@@ -538,7 +538,7 @@ function decorateGenericVideo(main) {
     let showControls = 0;
     embedURL = link.href + '?controls=' + showControls;
     const embedHTML = `
-      <div class="video-container relative w-full px-[30px] sm:px-[40px] md:px-[48px] lg:px-[64px] xl:px-[80px] 2xl:px-[224px] py-10 lg:py-12 bg-gray-200">
+      <div class="video-container relative w-full">
         <iframe src="${embedURL}"
           class="w-full aspect-video multi-player" 
           allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" 
