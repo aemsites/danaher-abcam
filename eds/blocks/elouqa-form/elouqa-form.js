@@ -47,9 +47,9 @@ function formStyle(formEl) {
  */
 export default async function decorate(block) {
   block.classList.add('relative', 'bg-[#F2F2F2]');
-   if (block.classList.contains('cols-2')) {
-        block.classList.add('grid', 'grid-cols-2', 'p-5');
-    }
+  if (block.classList.contains('cols-2')) {
+    block.classList.add('grid', 'grid-cols-2', 'p-5');
+  }
   try {
     const videoLink = block.querySelector('a');
     if (localStorage.getItem('ELOUQA')) {
