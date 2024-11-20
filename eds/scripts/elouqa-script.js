@@ -428,9 +428,9 @@ var checkboxHasValue = function (input, field, onlyPrev) {
   }
   if (!hasValue) {
     prev = getPreviousValue(input);
-    prevVals = prev.split(',');
+    prevVals = prev?.split(',');
     for (i = 0, len = nodes.length; i < len; i += 1) {
-      if (nodes[i].value && prevVals.indexOf(nodes[i].value) >= 0) {
+      if (nodes[i].value && prevVals?.indexOf(nodes[i].value) >= 0) {
         nodes[i].checked = true;
         hasValue = true;
       }
@@ -449,9 +449,9 @@ var selectHasValue = function (input, field, onlyPrev) {
   }
   if (!hasValue) {
     prev = getPreviousValue(input);
-    prevVals = prev.split(',');
+    prevVals = prev?.split(',');
     for (var i = 0, len = nodes.length; i < len; i += 1) {
-      if (nodes[i].value && prevVals.indexOf(nodes[i].value) >= 0) {
+      if (nodes[i].value && prevVals?.indexOf(nodes[i].value) >= 0) {
         nodes[i].selected = 'selected';
         hasValue = true;
       }
@@ -469,11 +469,11 @@ var fieldHasValue = function (field, onlyPrev) {
   textarea = field.querySelector('textarea');
   select = field.querySelector('select');
   if (input) {
-    if (input.type.indexOf('text') >= 0) {
+    if (input.type?.indexOf('text') >= 0) {
       hasValue = textHasValue(input, field, onlyPrev);
-    } else if (input.type.indexOf('radio') >= 0) {
+    } else if (input.type?.indexOf('radio') >= 0) {
       hasValue = radioHasValue(input, field, onlyPrev);
-    } else if (input.type.indexOf('checkbox') >= 0) {
+    } else if (input.type?.indexOf('checkbox') >= 0) {
       hasValue = checkboxHasValue(input, field, onlyPrev);
     }
   } else if (textarea) {
@@ -517,7 +517,7 @@ if (config.mode === 'list') {
   for (i = 0; i < config.numFields; i += 1) {
     li = lookup[i];
     if (revealed.length === config.numToReveal) break;
-    if (revealed.indexOf(li) >= 0) continue;
+    if (revealed?.indexOf(li) >= 0) continue;
     pField = document.querySelector(`#form${config.formId} #epp${li}`);
     if (!fieldHasValue(pField)) showField(pField, li);
   }
@@ -525,7 +525,7 @@ if (config.mode === 'list') {
     for (i = 0; i < config.numFields; i += 1) {
       li = lookup[i];
       if (revealed.length === config.numToReveal) break;
-      if (revealed.indexOf(li) >= 0) continue;
+      if (revealed?.indexOf(li) >= 0) continue;
       pField = document.querySelector(`#form${config.formId} #epp${li}`);
       if (!fieldHasValue(pField)) showField(pField, li);
     }
@@ -534,7 +534,7 @@ if (config.mode === 'list') {
     for (i = 0; i < config.numFields; i += 1) {
       li = lookup[i];
       if (revealed.length === config.numToReveal) break;
-      if (revealed.indexOf(li) >= 0) continue;
+      if (revealed?.indexOf(li) >= 0) continue;
       pField = document.querySelector(`#form${config.formId} #epp${li}`);
       if (!config.onlyIncomplete) showField(pField, li);
     }

@@ -1434,16 +1434,16 @@ main .section.guides-middle-container h2 {
   top: 2.5rem;
 }
 
+.top-12 {
+  top: 3rem;
+}
+
 .top-3 {
   top: 0.75rem;
 }
 
 .top-\[70px\] {
   top: 70px;
-}
-
-.top-12 {
-  top: 3rem;
 }
 
 .z-10 {
@@ -1750,10 +1750,6 @@ main .section.guides-middle-container h2 {
 
 .max-h-\[200px\] {
   max-height: 200px;
-}
-
-.min-h-full {
-  min-height: 100%;
 }
 
 .w-1\/2 {
@@ -2864,6 +2860,10 @@ main .section.guides-middle-container h2 {
     height: 16rem;
   }
 
+  .md\:\!w-auto {
+    width: auto !important;
+  }
+
   .md\:w-2\/5 {
     width: 40%;
   }
@@ -2886,10 +2886,6 @@ main .section.guides-middle-container h2 {
 
   .md\:w-auto {
     width: auto;
-  }
-
-  .md\:\!w-auto {
-    width: auto !important;
   }
 
   .md\:\!flex-row {
@@ -2966,18 +2962,6 @@ main .section.guides-middle-container h2 {
 }
 
 @media (min-width: 1024px) {
-  .lg\:absolute {
-    position: absolute;
-  }
-
-  .lg\:bottom-6 {
-    bottom: 1.5rem;
-  }
-
-  .lg\:right-0 {
-    right: 0px;
-  }
-
   .lg\:mx-auto {
     margin-left: auto;
     margin-right: auto;
