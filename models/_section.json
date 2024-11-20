@@ -86,7 +86,8 @@
         "download",
         "table",        
         "downloads",
-        "video-transcript"
+        "video-transcript",
+        "timeline-steps"
       ]
     }
   ]

@@ -45,7 +45,8 @@
       "download",
       "table",
       "downloads",
-      "video-transcript"
+      "video-transcript",
+      "timeline-steps"
     ]
   },
   {
@@ -147,6 +148,12 @@
     "id": "teasers",
     "components": [
       "teaser"
+    ]
+  },
+  {
+    "id": "timeline-steps",
+    "components": [
+      "steps"
     ]
   }
 ]
