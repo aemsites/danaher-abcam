@@ -89,10 +89,11 @@ export const createPagination = (entries, page, limit) => {
 export function createFilters(articles, viewAll = false) {
   // collect tag filters
   const allKeywords = articles.map((item) => {
-    let allTags = item?.tags?.split('/').pop();
-    allTags = allTags?.replace(/-/g, ' ');
+    const category = item?.tags?.split(',');
+    const allTags = category.map((cat) => cat?.split('/')?.pop()?.replace(/-/g, ' '));
     return allTags;
   });
+
   const keywords = new Set([].concat(...allKeywords));
   keywords.delete('');
 
@@ -153,7 +154,7 @@ export function createFilters(articles, viewAll = false) {
 
 export default async function decorate(block) {
   // fetch and sort all articles
-  const articles = await ffetch('/en-us/knowledge-center/query-index.json')
+  const articles = await ffetch(`/en-us/${title}/query-index.json`)
     .filter((item) => item.tags !== '')
     .chunks(500)
     .all();

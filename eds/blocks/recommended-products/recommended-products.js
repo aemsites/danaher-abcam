@@ -8,8 +8,9 @@ import { getStarRating } from '../product-overview/product-overview.js';
 
 export default async function decorate(block) {
   block.classList.add(...'container mx-auto px-6 md:px-0'.split(' '));
-  const response = await getProductResponse();
-  const allRecommendations = response?.at(0)?.raw?.crosssellrecommendationsjson;
+  let allRecommendations = [];
+  // const response = await getProductResponse();
+  // const allRecommendations = response?.at(0)?.raw?.crosssellrecommendationsjson;
   if (!allRecommendations) block.closest('.section').remove();
   else {
     try {
@@ -41,6 +42,7 @@ export default async function decorate(block) {
         decorateIcons(list);
         recommendations.append(list);
       });
+      console.log(recommendations);
       block.append(
         h2({ class: 'text-xl mb-3  text-black-0' }, 'Recommended Products'),
         recommendations,
