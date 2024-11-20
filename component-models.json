@@ -1056,7 +1056,7 @@
     "fields": [
       {
         "component": "select",
-        "name": "form_column",
+        "name": "classes",
         "label": "Column Layout",
         "options": [
           {
