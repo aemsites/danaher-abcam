@@ -552,6 +552,21 @@
           }
         },
         {
+          "title": "Product",
+          "id": "product",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Product",
+                  "model": "product"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Related Stories",
           "id": "related-stories",
           "plugins": {

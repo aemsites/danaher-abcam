@@ -134,6 +134,10 @@
   flex-direction: column
 }
 
+.alert-banner-wrapper :is(.flex-wrap) {
+  flex-wrap: wrap
+}
+
 .alert-banner-wrapper :is(.items-end) {
   align-items: flex-end
 }
@@ -154,6 +158,10 @@
   gap: 0.5rem
 }
 
+.alert-banner-wrapper :is(.gap-16) {
+  gap: 4rem
+}
+
 .alert-banner-wrapper :is(.gap-x-10) {
   -moz-column-gap: 2.5rem;
        column-gap: 2.5rem
@@ -162,6 +170,16 @@
 .alert-banner-wrapper :is(.gap-x-20) {
   -moz-column-gap: 5rem;
        column-gap: 5rem
+}
+
+.alert-banner-wrapper :is(.gap-x-16) {
+  -moz-column-gap: 4rem;
+       column-gap: 4rem
+}
+
+.alert-banner-wrapper :is(.gap-x-32) {
+  -moz-column-gap: 8rem;
+       column-gap: 8rem
 }
 
 .alert-banner-wrapper :is(.justify-self-end) {

@@ -59,13 +59,13 @@ async function decorateProductTabs(block) {
   const skuItem = toolTip('skuitem', 'skutooltip', response?.at(0).raw.productslug.split('-').slice(-1), true);
   block.innerHTML = '';
   block.appendChild(skuItem);
-  block.appendChild(mmgTabs);
+block.appendChild(mmgTabs);
 
   toggleTabs(tabs[0], mmgTabs, 'product-tabs');
 }
 
 function decorateButtonTabs(block) {
-  const mmgTabs = div({ class: 'button-tabs flex flex-col lg:flex-row gap-6' });
+  const mmgTabs = div({ class: 'button-tabs flex flex-wrap gap-6' });
   const tabs = getTabName();
   tabs.forEach((tab) => {
     const buttonTab = button({

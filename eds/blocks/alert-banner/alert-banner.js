@@ -8,7 +8,7 @@ import { getProductsListResponse } from '../../scripts/search.js';
 export default async function decorate(block) {
   const productFullResponse = await getProductsListResponse(1);
   const parsedJson = JSON.parse(productFullResponse || '{}');
-  block.classList.add(...'alert-container grid grid-cols-5 p-6 mb-6 rounded-xl bg-[#edf6f7]'.split(' '));
+  block.classList.add(...'alert-container flex flex-wrap gap-x-32 p-6 mb-6 rounded-xl bg-[#edf6f7]'.split(' '));
   const container = block.querySelector('div');
   container.firstElementChild.classList.add(...'flex flex-col md:flex-row gap-4 justify-between'.split(' '));
   const title = block.querySelector('h3');
@@ -26,5 +26,4 @@ export default async function decorate(block) {
     alertBanner.querySelector('img').style.cssText = 'transform: rotate(270deg)';
     alertBanner.querySelector('img')?.classList.add('w-4');
   }
-  block.querySelector('div:nth-child(1)').classList.add('col-span-4');
 }

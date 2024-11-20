@@ -22,6 +22,10 @@
   flex-direction: column
 }
 
+.tabs-wrapper :is(.flex-wrap) {
+  flex-wrap: wrap
+}
+
 .tabs-wrapper :is(.gap-6) {
   gap: 1.5rem
 }
