@@ -1086,7 +1086,7 @@
       {
         "component": "text",
         "label": "Video Title",
-        "name": "video_hrefTitle",
+        "name": "video_linkTitle",
         "valueType": "string",
         "value": ""
       }
