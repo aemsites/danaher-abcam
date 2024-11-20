@@ -21,7 +21,7 @@ function postAction(formEl, videoEl) {
       videoEl.title = 'video';
       postFormAction(videoEl ? videoEl.href : '');
       formEl.parentElement.nextElementSibling.classList.remove('hidden');
-      formEl.parentElement.parentElement.classList.remove(...'flex justify-between gap-x-6'.split(' '));
+      formEl.parentElement.parentElement.classList.remove(...'flex flex-col lg:flex-row justify-between gap-x-6'.split(' '));
       formEl.parentElement.previousElementSibling.remove();
       formEl.parentElement.remove();
     } else throw new Error({ name: 'Error', message: 'An error occurred while submitting the form' });
@@ -62,7 +62,7 @@ export default async function decorate(block) {
       postFormAction(videoLink);
     } else {
       if (block.classList.contains('cols-2')) {
-        block.classList.add(...'flex justify-between gap-x-6'.split(' '));
+        block.classList.add(...'flex flex-col lg:flex-row justify-between gap-x-6'.split(' '));
       }
       const fragment = await getFragmentFromFile('/eds/fragments/elouqa-form.html');
       const fragmentCSS = await getFragmentFromFile('/eds/styles/elouqa-form.css');
