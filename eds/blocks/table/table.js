@@ -10,7 +10,6 @@ function handleSearch(event, tableEl) {
   value = value.trim();
   const bodyEl = tableEl.querySelector('tbody');
   const filter = value.toLowerCase();
-  const regex = new RegExp(filter, 'gi');
   [...bodyEl.children].forEach((row) => {
     if (!row.textContent.toLowerCase().includes(filter) && value !== '') row.classList.add('hidden');
     else {
