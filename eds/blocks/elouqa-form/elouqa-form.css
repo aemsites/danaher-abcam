@@ -1,3 +1,37 @@
+.container {
+  width: 100%
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px
+  }
+}
+
 .elouqa-form-wrapper :is(.absolute) {
   position: absolute
 }
@@ -22,6 +56,10 @@
   display: flex
 }
 
+.elouqa-form-wrapper :is(.grid) {
+  display: grid
+}
+
 .elouqa-form-wrapper :is(.hidden) {
   display: none
 }
@@ -33,6 +71,10 @@
 
 .elouqa-form-wrapper :is(.w-full) {
   width: 100%
+}
+
+.elouqa-form-wrapper :is(.grid-cols-2) {
+  grid-template-columns: repeat(2, minmax(0, 1fr))
 }
 
 .elouqa-form-wrapper :is(.items-center) {
@@ -61,8 +103,17 @@
   background-color: rgb(249 250 251 / var(--tw-bg-opacity))
 }
 
+.elouqa-form-wrapper :is(.bg-\[\#F2F2F2\]) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(242 242 242 / var(--tw-bg-opacity))
+}
+
 .elouqa-form-wrapper :is(.p-2) {
   padding: 0.5rem
+}
+
+.elouqa-form-wrapper :is(.p-5) {
+  padding: 1.25rem
 }
 
 .elouqa-form-wrapper :is(.text-sm) {
@@ -73,6 +124,11 @@
 .elouqa-form-wrapper :is(.text-gray-900) {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity))
+}
+
+.elouqa-form-wrapper :is(.text-black) {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity))
 }
 
 .elouqa-form-wrapper :is(.opacity-25) {

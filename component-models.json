@@ -1071,7 +1071,7 @@
       },
       {
         "component": "richtext",
-        "name": "form_description",
+        "name": "description",
         "value": "",
         "label": "Description",
         "valueType": "string"
