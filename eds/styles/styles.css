@@ -2785,10 +2785,6 @@ main .section.guides-middle-container h2 {
 }
 
 @media (min-width: 640px) {
-  .sm\:left-auto {
-    left: auto;
-  }
-
   .sm\:right-0 {
     right: 0px;
   }
@@ -2803,10 +2799,6 @@ main .section.guides-middle-container h2 {
 
   .sm\:w-\[50\%\] {
     width: 50%;
-  }
-
-  .sm\:w-auto {
-    width: auto;
   }
 
   .sm\:grid-cols-3 {
@@ -2844,12 +2836,12 @@ main .section.guides-middle-container h2 {
     position: relative;
   }
 
-  .md\:top-9 {
-    top: 2.25rem;
-  }
-
   .md\:\!left-auto {
     left: auto !important;
+  }
+
+  .md\:top-9 {
+    top: 2.25rem;
   }
 
   .md\:mb-2 {
@@ -2864,12 +2856,12 @@ main .section.guides-middle-container h2 {
     display: block !important;
   }
 
-  .md\:block {
-    display: block;
-  }
-
   .md\:h-64 {
     height: 16rem;
+  }
+
+  .md\:\!w-auto {
+    width: auto !important;
   }
 
   .md\:w-2\/5 {
@@ -2894,10 +2886,6 @@ main .section.guides-middle-container h2 {
 
   .md\:w-auto {
     width: auto;
-  }
-
-  .md\:\!w-auto {
-    width: auto !important;
   }
 
   .md\:\!flex-row {
