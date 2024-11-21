@@ -76,16 +76,21 @@
   background-color: rgb(249 250 251 / var(--tw-bg-opacity))
 }
 
+.table-wrapper :is(.bg-yellow-200) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 240 138 / var(--tw-bg-opacity))
+}
+
+.table-wrapper :is(.p-4) {
+  padding: 1rem
+}
+
 .table-wrapper :is(.p-2) {
   padding: 0.5rem
 }
 
 .table-wrapper :is(.p-2\.5) {
   padding: 0.625rem
-}
-
-.table-wrapper :is(.p-4) {
-  padding: 1rem
 }
 
 .table-wrapper :is(.text-left) {

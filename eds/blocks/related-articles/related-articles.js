@@ -37,7 +37,7 @@ export default async function decorate(block) {
   const parentPage = parentURL.split('/').pop();
   const chapterItems = await ffetch('/en-us/knowledge-center/query-index.json')
     .filter((item) => item.title && item.title !== title)
-    .filter((item) => item.tags && extractedTags.every((tag) => item.tags.includes(tag)))
+    .filter((item) => item.tags && extractedTags.some((tag) => item.tags.includes(tag)))
     .all();
   const chapters = chapterItems.map((element) => ({
     title: element.title.indexOf('| abcam') > -1 ? element.title.split('| abcam')[0] : element.title,

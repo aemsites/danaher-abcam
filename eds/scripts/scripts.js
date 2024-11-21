@@ -1133,6 +1133,16 @@ export async function getFragmentFromFile(url) {
 /**
  * Datalayer Function to get the 'page' object
  */
+function getPathType() {
+  const pathSegments = window.location.pathname.split('/');
+  return pathSegments.length > 2 ? pathSegments[2] : '';
+}
+
+function getPathSubType() {
+  const pathSegments = window.location.pathname.split('/');
+  return pathSegments.length > 3 ? pathSegments[3] : '';
+}
+
 function getDLPage() {
   const page = {
     type: 'Content',
@@ -1187,6 +1197,11 @@ document.head.appendChild(hrefJapan);
 // Datalayer Start
 window.dataLayer = [];
 window.dataLayer.push({
+  event: 'Virtual Page View',
+  pageUrl: window.location.href,
+  pageTitle: document.title,
+  page_path: window.location.pathname,
+  page_type: getPathType(),
   page: getDLPage(),
 });
 // Datalayer End

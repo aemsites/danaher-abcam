@@ -1052,6 +1052,28 @@
     ]
   },
   {
+    "id": "dynamic-cards",
+    "fields": [
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "indexUrl",
+        "value": "",
+        "label": "Select the index URL",
+        "options": [
+          {
+            "name": "Knowledge Center",
+            "value": "knowledge-center"
+          },
+          {
+            "name": "None",
+            "value": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "elouqa-form",
     "fields": [
       {
