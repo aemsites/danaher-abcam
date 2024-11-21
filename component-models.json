@@ -390,10 +390,17 @@
         "label": "Title"
       },
       {
-        "component": "text",
-        "name": "alert-banner_titleType",
+        "component": "select",
+        "name": "alert-bannerType",
         "hidden": true,
         "label": "Title Type",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "alert-banner_description",
+        "value": "",
+        "label": "Description",
         "valueType": "string"
       },
       {
@@ -474,6 +481,13 @@
             "value": "icon-only"
           }
         ]
+      },
+      {
+        "component": "richtext",
+        "name": "alert-banner_description_hidden",
+        "value": "",
+        "label": "Description_Hidden",
+        "valueType": "string"
       }
     ]
   },
@@ -1077,118 +1091,6 @@
         "component": "aem-content",
         "name": "reference",
         "label": "Reference"
-      }
-    ]
-  },
-  {
-    "id": "header-notification-banner",
-    "fields": [
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "header-notification-banner_title",
-        "value": "",
-        "label": "Title"
-      },
-      {
-        "component": "select",
-        "name": "header-notification-bannerType",
-        "hidden": true,
-        "label": "Title Type",
-        "valueType": "string"
-      },
-      {
-        "component": "richtext",
-        "name": "header-notification-banner_description",
-        "value": "",
-        "label": "Description",
-        "valueType": "string"
-      },
-      {
-        "component": "aem-content",
-        "name": "link",
-        "label": "Link"
-      },
-      {
-        "component": "text",
-        "name": "linkText",
-        "label": "Text"
-      },
-      {
-        "component": "select",
-        "name": "linkTitle",
-        "label": "Button or Link",
-        "options": [
-          {
-            "name": "Button",
-            "value": "button"
-          },
-          {
-            "name": "Link",
-            "value": "link"
-          }
-        ]
-      },
-      {
-        "component": "select",
-        "name": "linkVariant",
-        "label": "Link Variant",
-        "options": [
-          {
-            "name": "Primary",
-            "value": "button-primary"
-          },
-          {
-            "name": "Secondary",
-            "value": "button-secondary"
-          },
-          {
-            "name": "Tertiary Outline",
-            "value": "button-tertiary-outline"
-          },
-          {
-            "name": "Tertiary Filled",
-            "value": "button-tertiary-filled"
-          },
-          {
-            "name": "Text Only",
-            "value": "button-text-only"
-          }
-        ]
-      },
-      {
-        "component": "select",
-        "name": "linkIconType",
-        "label": "Icon Type",
-        "options": [
-          {
-            "name": "None",
-            "value": "icon-none"
-          },
-          {
-            "name": "Both",
-            "value": "icon-both"
-          },
-          {
-            "name": "Right",
-            "value": "icon-right"
-          },
-          {
-            "name": "Left",
-            "value": "icon-left"
-          },
-          {
-            "name": "Icon Only",
-            "value": "icon-only"
-          }
-        ]
-      },
-      {
-        "component": "richtext",
-        "name": "header-notification-banner_description_hidden",
-        "value": "",
-        "label": "Description_Hidden",
-        "valueType": "string"
       }
     ]
   },

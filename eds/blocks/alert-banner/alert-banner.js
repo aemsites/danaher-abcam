@@ -1,29 +1,52 @@
-import {
-  span,
-} from '../../scripts/dom-builder.js';
-
-import { decorateIcons } from '../../scripts/aem.js';
-import { getProductsListResponse } from '../../scripts/search.js';
-
-export default async function decorate(block) {
-  const productFullResponse = await getProductsListResponse(1);
-  const parsedJson = JSON.parse(productFullResponse || '{}');
-  block.classList.add(...'alert-container flex flex-wrap gap-x-32 p-6 mb-6 rounded-xl bg-[#edf6f7]'.split(' '));
-  const container = block.querySelector('div');
-  container.firstElementChild.classList.add(...'flex flex-col md:flex-row gap-4 justify-between'.split(' '));
-  const title = block.querySelector('h3');
-  const totalCountEl = span({ class: 'font-bold text-xl text-[#378189]' }, ` ${parsedJson.totalCount ? `(${parsedJson.totalCount})` : ''}`);
-  title.append(totalCountEl);
-  title.classList.add(...'title mt-1 font-bold text-xl text-[#378189]'.split(' '));
-  const alertBanner = block.querySelector('p');
-  const icon = span(
-    { class: 'arrow-icon icon icon-chevron-down-white rotate-0' },
-  );
-  if (parsedJson.totalCount) {
-    alertBanner.classList.add('flex', 'items-center', 'gap-2');
-    alertBanner.append(icon);
-    decorateIcons(alertBanner.parentElement);
-    alertBanner.querySelector('img').style.cssText = 'transform: rotate(270deg)';
-    alertBanner.querySelector('img')?.classList.add('w-4');
+export default function decorate(block) {
+  block.classList.add(...'bg-black text-white p-8 flex'.split(' '));
+  const childDivs = block.querySelectorAll('div > div');
+  childDivs.forEach((childDiv, index) => {
+    if (!childDiv.innerHTML.trim()) {
+      childDiv.remove();
+    } else {
+      childDiv.classList.add(`child-${index + 1}`);
+      if (childDiv.classList.contains('child-2')) {
+        const paragraphs = childDiv.querySelectorAll('p');
+        paragraphs.forEach((p, i) => {
+          p.classList.add(`paragraph-${i + 1}`);
+        });
+        const listItems = childDiv.querySelectorAll('li');
+        listItems.forEach((li, i) => {
+          li.classList.add(`list-item-${i + 1}`);
+        });
+        const listOfNewFeatures = childDiv.querySelector('ul'); 
+        if (listOfNewFeatures) {
+          listOfNewFeatures.classList.add('unordered-list');
+        }
+        const paragraph3 = childDiv.querySelector('.paragraph-3');
+        const paragraph4 = childDiv.querySelector('.paragraph-4');
+        if (paragraph3 && listOfNewFeatures && paragraph4) {
+          const wrapperDiv = document.createElement('div');
+          wrapperDiv.classList.add('wrapper-class'); 
+          wrapperDiv.classList.add('hidden');
+          wrapperDiv.appendChild(paragraph3);
+          wrapperDiv.appendChild(listOfNewFeatures);
+          wrapperDiv.appendChild(paragraph4);
+          childDiv.appendChild(wrapperDiv);
+        }
+      }
+    }
+  });
+  const showMoreButton = block.querySelector('.button-container .button');
+  if (showMoreButton) {
+    showMoreButton.addEventListener('click', (event) => {
+      event.preventDefault();
+      const wrapperDiv = block.querySelector('.child-2 .wrapper-class');
+      if (wrapperDiv) {
+        wrapperDiv.classList.toggle('hidden'); 
+      }
+      if (wrapperDiv && wrapperDiv.classList.contains('hidden')) {
+        showMoreButton.textContent = 'Show more'; 
+      } else {
+        showMoreButton.textContent = 'Show less';
+      }
+    });
   }
+  console.log(block);
 }
