@@ -45,6 +45,7 @@
       "download",
       "table",
       "downloads",
+      "elouqa-form",
       "video-transcript"
     ]
   },
@@ -82,6 +83,10 @@
     "components": [
       "download"
     ]
+  },
+  {
+    "id": "elouqa-form",
+    "components": []
   },
   {
     "id": "mini-teasers",
