@@ -1,0 +1,8 @@
+sitemaps:
+  abcam:
+    languages:
+      en:
+        source: /en-us/query-index.json
+        destination: /eds/sitemap-us.xml
+        hreflang: en
+        lastmod: YYYY-MM-DD

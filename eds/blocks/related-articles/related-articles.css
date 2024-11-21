@@ -1,0 +1,288 @@
+.related-articles-wrapper :is(.fixed) {
+  position: fixed
+}
+
+.related-articles-wrapper :is(.relative) {
+  position: relative
+}
+
+.related-articles-wrapper :is(.inset-0) {
+  inset: 0px
+}
+
+.related-articles-wrapper :is(.bottom-0) {
+  bottom: 0px
+}
+
+.related-articles-wrapper :is(.left-0) {
+  left: 0px
+}
+
+.related-articles-wrapper :is(.top-0) {
+  top: 0px
+}
+
+.related-articles-wrapper :is(.z-30) {
+  z-index: 30
+}
+
+.related-articles-wrapper :is(.my-0) {
+  margin-top: 0px;
+  margin-bottom: 0px
+}
+
+.related-articles-wrapper :is(.mb-4) {
+  margin-bottom: 1rem
+}
+
+.related-articles-wrapper :is(.block) {
+  display: block
+}
+
+.related-articles-wrapper :is(.flex) {
+  display: flex
+}
+
+.related-articles-wrapper :is(.hidden) {
+  display: none
+}
+
+.related-articles-wrapper :is(.size-7) {
+  width: 1.75rem;
+  height: 1.75rem
+}
+
+.related-articles-wrapper :is(.size-full) {
+  width: 100%;
+  height: 100%
+}
+
+.related-articles-wrapper :is(.h-full) {
+  height: 100%
+}
+
+.related-articles-wrapper :is(.max-h-\[70\%\]) {
+  max-height: 70%
+}
+
+.related-articles-wrapper :is(.w-11\/12) {
+  width: 91.666667%
+}
+
+.related-articles-wrapper :is(.w-full) {
+  width: 100%
+}
+
+.related-articles-wrapper :is(.w-screen) {
+  width: 100vw
+}
+
+.related-articles-wrapper :is(.translate-y-full) {
+  --tw-translate-y: 100%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+
+.related-articles-wrapper :is(.flex-col) {
+  flex-direction: column
+}
+
+.related-articles-wrapper :is(.items-start) {
+  align-items: flex-start
+}
+
+.related-articles-wrapper :is(.items-end) {
+  align-items: flex-end
+}
+
+.related-articles-wrapper :is(.items-center) {
+  align-items: center
+}
+
+.related-articles-wrapper :is(.justify-center) {
+  justify-content: center
+}
+
+.related-articles-wrapper :is(.gap-x-2) {
+  -moz-column-gap: 0.5rem;
+       column-gap: 0.5rem
+}
+
+.related-articles-wrapper :is(.gap-x-3) {
+  -moz-column-gap: 0.75rem;
+       column-gap: 0.75rem
+}
+
+.related-articles-wrapper :is(.overflow-scroll) {
+  overflow: scroll
+}
+
+.related-articles-wrapper :is(.rounded) {
+  border-radius: 0.25rem
+}
+
+.related-articles-wrapper :is(.rounded-full) {
+  border-radius: 9999px
+}
+
+.related-articles-wrapper :is(.border) {
+  border-width: 1px
+}
+
+.related-articles-wrapper :is(.border-b) {
+  border-bottom-width: 1px
+}
+
+.related-articles-wrapper :is(.border-solid) {
+  border-style: solid
+}
+
+.related-articles-wrapper :is(.border-black) {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity))
+}
+
+.related-articles-wrapper :is(.border-b-\[\#D8D8D8\]) {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(216 216 216 / var(--tw-border-opacity))
+}
+
+.related-articles-wrapper :is(.bg-\[\#EDF6F7\]) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(237 246 247 / var(--tw-bg-opacity))
+}
+
+.related-articles-wrapper :is(.bg-black) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity))
+}
+
+.related-articles-wrapper :is(.bg-white) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+}
+
+.related-articles-wrapper :is(.bg-opacity-80) {
+  --tw-bg-opacity: 0.8
+}
+
+.related-articles-wrapper :is(.px-12) {
+  padding-left: 3rem;
+  padding-right: 3rem
+}
+
+.related-articles-wrapper :is(.px-3) {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem
+}
+
+.related-articles-wrapper :is(.px-4) {
+  padding-left: 1rem;
+  padding-right: 1rem
+}
+
+.related-articles-wrapper :is(.py-2) {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem
+}
+
+.related-articles-wrapper :is(.py-3) {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem
+}
+
+.related-articles-wrapper :is(.py-4) {
+  padding-top: 1rem;
+  padding-bottom: 1rem
+}
+
+.related-articles-wrapper :is(.pb-1) {
+  padding-bottom: 0.25rem
+}
+
+.related-articles-wrapper :is(.pt-2) {
+  padding-top: 0.5rem
+}
+
+.related-articles-wrapper :is(.text-base) {
+  font-size: 1rem;
+  line-height: 1.5rem
+}
+
+.related-articles-wrapper :is(.text-sm) {
+  font-size: 0.875rem;
+  line-height: 1.25rem
+}
+
+.related-articles-wrapper :is(.font-semibold) {
+  font-weight: 600
+}
+
+.related-articles-wrapper :is(.uppercase) {
+  text-transform: uppercase
+}
+
+.related-articles-wrapper :is(.leading-6) {
+  line-height: 1.5rem
+}
+
+.related-articles-wrapper :is(.leading-7) {
+  line-height: 1.75rem
+}
+
+.related-articles-wrapper :is(.text-\[\#378189\]) {
+  --tw-text-opacity: 1;
+  color: rgb(55 129 137 / var(--tw-text-opacity))
+}
+
+.related-articles-wrapper :is(.text-\[\#65797C\]) {
+  --tw-text-opacity: 1;
+  color: rgb(101 121 124 / var(--tw-text-opacity))
+}
+
+.related-articles-wrapper :is(.text-black) {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity))
+}
+
+.related-articles-wrapper :is(.text-white) {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+
+.related-articles-wrapper :is(.invert) {
+  --tw-invert: invert(100%);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
+}
+
+.related-articles-wrapper :is(.filter) {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
+}
+
+.related-articles-wrapper :is(.transition-all) {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms
+}
+
+.related-articles-wrapper :is(.hover\:underline:hover) {
+  text-decoration-line: underline
+}
+
+.related-articles-wrapper :is(.focus\:outline-none:focus) {
+  outline: 2px solid transparent;
+  outline-offset: 2px
+}
+
+@media (min-width: 1024px) {
+  .related-articles-wrapper :is(.lg\:flex) {
+    display: flex
+  }
+
+  .related-articles-wrapper :is(.lg\:hidden) {
+    display: none
+  }
+}
+
+.related-articles-wrapper :is(.\[\&_span\]\:pl-2 span) {
+  padding-left: 0.5rem
+}

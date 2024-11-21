@@ -25,11 +25,11 @@
     }
 
     h1 {
-        @apply md:!leading-[3rem] !font-bold !text-5xl md:!text-4xl;
+        @apply md:!leading-[3rem] !font-bold !text-[32px] lg:!text-6xl !text-4xl;
     }
 
     h2 { 
-        @apply !leading-9 !font-bold !text-4xl md:!text-3xl;
+        @apply !text-4xl !leading-9 !font-bold md:!text-3xl;
     }
 
     h3 { 
@@ -49,11 +49,11 @@
     }
 
     .button-primary {
-        @apply bg-[#378189] hover:bg-[#2A5F65] whitespace-nowrap rounded-full items-center py-px px-3 text-white text-sm capitalize justify-self-end w-fit;
+        @apply bg-[#378189] hover:bg-[#2A5F65] whitespace-nowrap rounded-full items-center py-px px-3 text-white text-sm capitalize w-fit;
     }
 
     main .section .button-secondary {
-        @apply bg-black hover:bg-[#3B3B3B] whitespace-nowrap rounded-full items-center py-3 px-6 font-semibold text-white text-sm capitalize justify-self-end w-fit;
+        @apply bg-black hover:bg-[#3B3B3B] whitespace-nowrap rounded-full items-center py-3 px-6 font-semibold text-white text-sm capitalize w-fit;
     }
 
     main .section .button-tertiary-outline {
@@ -67,12 +67,19 @@
     main .section .button-text-only {
         @apply hover:underline decoration-2 whitespace-nowrap rounded-full py-2 px-3 text-black text-lg font-semibold capitalize w-fit;
     }
- 
+
+    main .story-middle-container .default-content-wrapper p:not(a) {
+        @apply text-lg leading-6 font-sans font-normal;
+    }
+
+    main .story-middle-container .default-content-wrapper p:not(:first-child, a) {
+        @apply mt-6;
+    }
 }
 
 @layer components {
     header {
-        @apply h-28 md:h-16 lg:h-32;
+        @apply h-36 md:h-28 lg:h-36;
     }
 
     .default-content-wrapper h1:first-of-type {
@@ -89,6 +96,10 @@
 
     .default-content-wrapper > ol {
         @apply pl-6 list-decimal;
+    }
+
+    .default-content-wrapper > ul {
+        @apply pl-6 list-disc;
     }
 
     body.stories main .story-middle-container,
@@ -212,19 +223,68 @@
         @apply font-normal text-gray-900 mb-2;
     }
 
-    .stories main .story-middle-container {
+    .stories main .story-middle-container, .guide main .chapter-links-container, .topic main .related-articles-container {
         @apply flex flex-col gap-x-0 lg:flex-row lg:gap-x-16;
     }
 
-    .stories main .section.no-section-padding .columns-wrapper {
+    main .section.no-section-padding .columns-wrapper {
         @apply w-full mx-auto lg:h-[31rem] relative;
     }
 
-    .stories main .section.no-section-padding.columns-container {
+    main .section.no-section-padding.columns-container {
         @apply pt-8;
+    }
+
+    .guide main .chapter-links-container, .topic main .related-articles-container {
+        @apply lg:flex-row flex-col-reverse;
     }
 
     audio::-webkit-media-controls-panel {
         background-color: white;
     }
+
+    main .section.related-stories-container .default-content-wrapper h2{
+        @apply lg:px-6 xl:px-0 !pt-0;
+    }
+
+    .guide .sticky-bottom, .topic .sticky-bottom {
+        @apply sticky bottom-0 lg:hidden bg-transparent py-4 px-6 z-20;
+    }
+
+    .guides-hub main .section .title-card {
+        @apply mx-auto xl:!max-w-[1120px] xl:px-0 px-[30px];
+    }
+
+    .guides-hub main .section .title-card p{
+        @apply !font-normal !text-lg !leading-7 !tracking-[0.3px];
+    }
+    
+    main .guides-hub-links-container .default-content-wrapper {
+        @apply mx-auto xl:!max-w-[1120px] sm:!px-0 lg:!px-[30px] xl:!px-0;
+    }
+
+    .guides-hub main .guides-hub-links-container .guides-hub-links-wrapper {
+        @apply mx-auto xl:!max-w-[1120px] sm:!px-0 lg:!px-[30px] xl:!px-0;
+    }
+
+    .guides-hub main .breadcrumb-container {
+        @apply mx-auto xl:!max-w-[1120px] xl:px-0 px-[30px];
+    }
+    
+    .guides-hub main .breadcrumb {
+        @apply lg:!px-0;
+    }
+    
+    main .section.guides-middle-container p ~ p {
+        @apply !font-normal !text-lg !leading-7 !tracking-[0.3px] !mt-0 !mb-6;
+    }
+ 
+    main .section.guides-middle-container h2{
+        @apply !font-normal !text-2xl !leading-7 !tracking-[0.3px] !mb-2;
+    }
+
+    main .section.elouqa-form-container {
+        @apply bg-[#F2F2F2];
+    }
+    
 }   

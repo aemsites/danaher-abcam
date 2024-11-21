@@ -32,6 +32,46 @@
   }
 }
 
+.alert-banner-wrapper :is(.relative) {
+  position: relative
+}
+
+.alert-banner-wrapper :is(.right-0) {
+  right: 0px
+}
+
+.alert-banner-wrapper :is(.left-48) {
+  left: 12rem
+}
+
+.alert-banner-wrapper :is(.left-52) {
+  left: 13rem
+}
+
+.alert-banner-wrapper :is(.left-56) {
+  left: 14rem
+}
+
+.alert-banner-wrapper :is(.left-60) {
+  left: 15rem
+}
+
+.alert-banner-wrapper :is(.col-span-3) {
+  grid-column: span 3 / span 3
+}
+
+.alert-banner-wrapper :is(.col-span-4) {
+  grid-column: span 4 / span 4
+}
+
+.alert-banner-wrapper :is(.row-span-1) {
+  grid-row: span 1 / span 1
+}
+
+.alert-banner-wrapper :is(.row-span-3) {
+  grid-row: span 3 / span 3
+}
+
 .alert-banner-wrapper :is(.mb-6) {
   margin-bottom: 1.5rem
 }
@@ -46,6 +86,10 @@
 
 .alert-banner-wrapper :is(.flex) {
   display: flex
+}
+
+.alert-banner-wrapper :is(.grid) {
+  display: grid
 }
 
 .alert-banner-wrapper :is(.h-8) {
@@ -70,8 +114,32 @@
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 
+.alert-banner-wrapper :is(.grid-cols-2) {
+  grid-template-columns: repeat(2, minmax(0, 1fr))
+}
+
+.alert-banner-wrapper :is(.grid-cols-4) {
+  grid-template-columns: repeat(4, minmax(0, 1fr))
+}
+
+.alert-banner-wrapper :is(.grid-cols-5) {
+  grid-template-columns: repeat(5, minmax(0, 1fr))
+}
+
+.alert-banner-wrapper :is(.flex-row) {
+  flex-direction: row
+}
+
 .alert-banner-wrapper :is(.flex-col) {
   flex-direction: column
+}
+
+.alert-banner-wrapper :is(.flex-wrap) {
+  flex-wrap: wrap
+}
+
+.alert-banner-wrapper :is(.items-end) {
+  align-items: flex-end
 }
 
 .alert-banner-wrapper :is(.items-center) {
@@ -84,6 +152,34 @@
 
 .alert-banner-wrapper :is(.gap-4) {
   gap: 1rem
+}
+
+.alert-banner-wrapper :is(.gap-2) {
+  gap: 0.5rem
+}
+
+.alert-banner-wrapper :is(.gap-16) {
+  gap: 4rem
+}
+
+.alert-banner-wrapper :is(.gap-x-10) {
+  -moz-column-gap: 2.5rem;
+       column-gap: 2.5rem
+}
+
+.alert-banner-wrapper :is(.gap-x-20) {
+  -moz-column-gap: 5rem;
+       column-gap: 5rem
+}
+
+.alert-banner-wrapper :is(.gap-x-16) {
+  -moz-column-gap: 4rem;
+       column-gap: 4rem
+}
+
+.alert-banner-wrapper :is(.gap-x-32) {
+  -moz-column-gap: 8rem;
+       column-gap: 8rem
 }
 
 .alert-banner-wrapper :is(.justify-self-end) {
@@ -161,6 +257,20 @@
 
 @media (min-width: 768px) {
   .alert-banner-wrapper :is(.md\:flex-row) {
+    flex-direction: row
+  }
+}
+
+@media (min-width: 1024px) {
+  .alert-banner-wrapper :is(.lg\:left-60) {
+    left: 15rem
+  }
+
+  .alert-banner-wrapper :is(.lg\:left-96) {
+    left: 24rem
+  }
+
+  .alert-banner-wrapper :is(.lg\:flex-row) {
     flex-direction: row
   }
 }
