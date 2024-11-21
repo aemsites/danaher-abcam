@@ -338,12 +338,12 @@
   transition-duration: 150ms
 }
 
-.dynamic-cards-wrapper :is(.duration-700) {
-  transition-duration: 700ms
-}
-
 .dynamic-cards-wrapper :is(.duration-500) {
   transition-duration: 500ms
+}
+
+.dynamic-cards-wrapper :is(.duration-700) {
+  transition-duration: 700ms
 }
 
 .dynamic-cards-wrapper :is(.hover\:scale-105:hover) {
