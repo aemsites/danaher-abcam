@@ -211,9 +211,6 @@ export default async function decorate(block) {
   const response = await fetch('/eds/blocks/header/headerMock.json')
     .then(response => response.json())
     .then(data => {
-    // data.basket.items.forEach(item => {
-    //   totalProducts += item.quantity;
-    // });
     totalProducts = data.basket.items.length;
   });
   block.querySelector('.cart-count').textContent = totalProducts;
