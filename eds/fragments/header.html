@@ -474,14 +474,17 @@
 			</div>
 		</span>
 		<!-- My Account ends here -->
-		<div class="hidden cart-dropdown w-[54px] h-[32px] border border-white rounded-2xl relative inline-flex flex-col">
-			<div class="focus-visible:outline-none focus-visible:shadow-interactiveElement" role="button">
-				<span class="">
-					<button class="" type="button">
-						<span class="cart-icon"> </span>
-						<span class="cart-count"></span>
-					</button>
-				</span>
+		<div
+			class="cart-dropdown w-[58.631px] sm:w-[74] h-[32px] flex items-center justify-center border border-white rounded-2xl relative">
+			<div class="focus-visible:outline-none focus-visible:shadow-interactiveElement absolute" role="button">
+				<button class="flex items-center gap-1 text-sm h-8" type="button">
+					<span class="cart-icon">
+						<img data-icon-name="Search-bar" src="/eds/icons/cart_white.svg" height="19px" width="19px" fill="white"
+							stroke="white" alt="Search-bar" loading="lazy">
+					</span>
+					<span
+						class="cart-count bg-red-500 w-[17.6px] h-[17.6px] w-[22px] h-[22px] sm:w rounded-2xl flex items-center justify-center text-white px-1.5"></span>
+				</button>
 			</div>
 		</div>
 	</div>

@@ -1,0 +1,79 @@
+{
+    "basket": {
+        "id": "5ce2cd5c-0950-4bdf-a8fc-47eb602e37eb",
+        "items": [
+            {
+                "lineNumber": 1,
+                "assetDefinitionNumber": "AB290",
+                "lineDescription": "Anti-GFP antibody",
+                "quantity": 5,
+                "prices": {
+                    "base": {
+                        "value": 370,
+                        "currency": "GBP"
+                    }
+                }
+            },
+            {
+                "lineNumber": 2,
+                "assetDefinitionNumber": "AB300",
+                "lineDescription": "Secondary Antibody",
+                "quantity": 5,
+                "prices": {
+                    "base": {
+                        "value": 250,
+                        "currency": "GBP"
+                    }
+                }
+            },
+            {
+                "lineNumber": 3,
+                "assetDefinitionNumber": "AB301",
+                "lineDescription": "Protein Assay Kit",
+                "quantity": 9,
+                "prices": {
+                    "base": {
+                        "value": 500,
+                        "currency": "GBP"
+                    }
+                }
+            },
+            {
+                "lineNumber": 4,
+                "assetDefinitionNumber": "AB302",
+                "lineDescription": "Primary Protein Assay Kit",
+                "quantity": 2,
+                "prices": {
+                    "base": {
+                        "value": 460,
+                        "currency": "GBP"
+                    }
+                }
+            },
+            {
+                "lineNumber": 5,
+                "assetDefinitionNumber": "AB302",
+                "lineDescription": "Primary Protein Assay Kit",
+                "quantity": 2,
+                "prices": {
+                    "base": {
+                        "value": 460,
+                        "currency": "GBP"
+                    }
+                }
+            },
+            {
+                "lineNumber": 6,
+                "assetDefinitionNumber": "AB302",
+                "lineDescription": "Primary Protein Assay Kit",
+                "quantity": 2,
+                "prices": {
+                    "base": {
+                        "value": 460,
+                        "currency": "GBP"
+                    }
+                }
+            }
+        ]
+    }
+}

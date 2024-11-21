@@ -204,8 +204,21 @@ export default async function decorate(block) {
     const html = await resp.text();
     block.innerHTML = html;
   }
-
   block.append(megaMeunu());
+
+  //Mock Json Integrated to the Header Cart - Starts
+  let totalProducts = 0;
+  const response = await fetch('/eds/blocks/header/headerMock.json')
+    .then(response => response.json())
+    .then(data => {
+    // data.basket.items.forEach(item => {
+    //   totalProducts += item.quantity;
+    // });
+    totalProducts = data.basket.items.length;
+  });
+  block.querySelector('.cart-count').textContent = totalProducts;
+  //Mock Json Integrated to the Header Cart - Ends 
+
   decorateIcons(block.querySelector('.abcam-logo'));
   decorateIcons(block.querySelector('.logo-home-link'), 120, 25);
   decorateIcons(block.querySelector('.close-hamburger-menu'));
