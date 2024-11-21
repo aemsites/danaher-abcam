@@ -2201,25 +2201,6 @@
     ]
   },
   {
-    "id": "timeline-steps",
-    "fields": [
-      {
-        "component": "text",
-        "name": "timeline-steps_title",
-        "value": "",
-        "label": "Title",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": "timeline-steps_titleType",
-        "label": "",
-        "valueType": "string",
-        "hidden": true
-      }
-    ]
-  },
-  {
     "id": "steps",
     "fields": [
       {
@@ -2228,6 +2209,27 @@
         "value": "",
         "label": "Steps Data",
         "valueType": "string"
+      },
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "value": "",
+        "label": "BG Color",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Gray",
+            "value": "bg-slate-200"
+          },
+          {
+            "name": "Light Pink",
+            "value": "bg-rose-100"
+          },
+          {
+            "name": "Light Green",
+            "value": "bg-green-100"
+          }
+        ]
       }
     ]
   },
