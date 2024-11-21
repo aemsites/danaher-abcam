@@ -56,7 +56,7 @@ export default async function decorate(block) {
   block.classList.add(...'relative px-6 lg:px-8 py-8 lg:py-12'.split(' '));
   try {
     const videoLink = block.querySelector('a');
-    if (localStorage.getItem('ELOUQA')) {
+    if (sessionStorage.getItem('ELOUQA')) {
       block.querySelector('div:not(a)')?.remove();
       videoLink.title = 'video';
       postFormAction(videoLink);
