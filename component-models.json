@@ -1052,6 +1052,40 @@
     ]
   },
   {
+    "id": "elouqa-form",
+    "fields": [
+      {
+        "component": "select",
+        "name": "classes",
+        "label": "Column Layout",
+        "options": [
+          {
+            "name": "One Column",
+            "value": "cols-1"
+          },
+          {
+            "name": "Two Column",
+            "value": "cols-2"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "video_link",
+        "value": "",
+        "label": "Video Link"
+      }
+    ]
+  },
+  {
     "id": "form",
     "fields": [
       {
