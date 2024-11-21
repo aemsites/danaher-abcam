@@ -329,6 +329,11 @@ const fileMappings = [
     output: './eds/blocks/video-transcript/video-transcript.css',
     wrapper: 'video-transcript-wrapper',
   },
+  {
+    content: './eds/blocks/cta-banner/cta-banner.js',
+    output: './eds/blocks/cta-banner/cta-banner.css',
+    wrapper: 'cta-banner-wrapper',
+  },
 ];
 
 const watch = process.argv[2];
