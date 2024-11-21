@@ -755,7 +755,7 @@ export function postFormAction(link = '') {
     downloadLink.classList.remove('hidden');
   });
   const token = Math.random().toString(36).substr(2) + Math.random().toString(36).substr(2);;
-  localStorage.setItem('ELOUQA', token);
+  sessionStorage.setItem('ELOUQA', token);
   const mainEl = document.querySelector('main');
   if (mainEl && link) 
     decorateGenericVideo(mainEl);
