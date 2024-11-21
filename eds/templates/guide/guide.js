@@ -7,8 +7,8 @@ async function buildRelatedLinks(main) {
   const fragmentBlock = main.querySelector('div.fragment');
   const fragmentPath = fragmentBlock?.querySelector('a')?.getAttribute('href');
   if (getCookie('cq-authoring-mode') !== 'TOUCH') fragmentBlock?.remove();
-  const resp = await fetch(`${fragmentPath}.plain.html`);
-  if (resp.ok) {
+  const resp = fragmentPath ? await fetch(`${fragmentPath}.plain.html`) : null;
+  if (resp && resp.ok) {
     const fragment = div();
     fragment.innerHTML = await resp.text();
     const links = fragment.querySelectorAll('a[title="link"]');

@@ -129,7 +129,7 @@ function countrySelector() {
           window.location.href = 'https://www.abcam.co.jp/';
           return;
         }
-        updateCountryButton(selectedItem.querySelector('img').src || '', (selectedItem.querySelector('img').alt) || '');
+        updateCountryButton(selectedItem.querySelector('img').alt);
         resultsContainer.replaceChildren();
         currentIndex = -1;
       }

@@ -96,6 +96,12 @@
     ]
   },
   {
+    "id": "recommended-products",
+    "components": [
+      "product"
+    ]
+  },
+  {
     "id": "table",
     "components": [
       "table-row"
