@@ -370,24 +370,12 @@
         ]
       },
       {
-        "component": "select",
+        "component": "text",
         "name": "tabName",
         "value": "",
-        "label": "Select PDP Tabs",
-        "options": [
-          {
-            "name": "Overview",
-            "value": "Overview"
-          },
-          {
-            "name": "Datasheet",
-            "value": "Datasheet"
-          },
-          {
-            "name": "Support & Downloads",
-            "value": "Support & Downloads"
-          }
-        ]
+        "label": "Provide Tab Name",
+        "description": "Provide a name for the tab (Applicable only when Tabs block is added)",
+        "valueType": "string"
       }
     ]
   },
@@ -1748,6 +1736,160 @@
     ]
   },
   {
+    "id": "recommended-products",
+    "fields": [
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "value": "",
+        "label": "Block Options",
+        "options": [
+          {
+            "name": "Recommended Products",
+            "value": "recommended-products"
+          },
+          {
+            "name": "Featured Products",
+            "value": "featured-products"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "product",
+    "fields": [
+      {
+        "component": "aem-tag",
+        "valueType": "string",
+        "name": "tags",
+        "label": "Product Tag"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "productId",
+        "value": "",
+        "label": "Product ID"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "card_title",
+        "value": "",
+        "label": "Title"
+      },
+      {
+        "component": "text",
+        "name": "card_titleType",
+        "label": "",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "richtext",
+        "name": "card_description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "link",
+        "label": "Link"
+      },
+      {
+        "component": "text",
+        "name": "linkText",
+        "label": "Text"
+      },
+      {
+        "component": "select",
+        "name": "linkTitle",
+        "label": "Button or Link",
+        "options": [
+          {
+            "name": "Button",
+            "value": "button"
+          },
+          {
+            "name": "Link",
+            "value": "link"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "linkVariant",
+        "label": "Link Variant",
+        "options": [
+          {
+            "name": "Primary",
+            "value": "button-primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "button-secondary"
+          },
+          {
+            "name": "Tertiary Outline",
+            "value": "button-tertiary-outline"
+          },
+          {
+            "name": "Tertiary Filled",
+            "value": "button-tertiary-filled"
+          },
+          {
+            "name": "Text Only",
+            "value": "button-text-only"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "linkIconType",
+        "label": "Icon Type",
+        "options": [
+          {
+            "name": "None",
+            "value": "icon-none"
+          },
+          {
+            "name": "Both",
+            "value": "icon-both"
+          },
+          {
+            "name": "Right",
+            "value": "icon-right"
+          },
+          {
+            "name": "Left",
+            "value": "icon-left"
+          },
+          {
+            "name": "Icon Only",
+            "value": "icon-only"
+          }
+        ]
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Alt",
+        "value": ""
+      }
+    ]
+  },
+  {
     "id": "speakers-info",
     "fields": [
       {
@@ -1861,6 +2003,15 @@
               {
                 "name": "No Header",
                 "value": "no-header"
+              }
+            ]
+          },
+          {
+            "name": "Search",
+            "children": [
+              {
+                "name": "Include Search Filter",
+                "value": "search-filter"
               }
             ]
           }
@@ -2105,6 +2256,26 @@
         "valueType": "string",
         "name": "column7text",
         "label": "Column7"
+      }
+    ]
+  },
+  {
+    "id": "tabs",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Tabs Style",
+        "options": [
+          {
+            "name": "Tabs",
+            "value": "product-tabs"
+          },
+          {
+            "name": "Button Tabs",
+            "value": "button-tabs"
+          }
+        ]
       }
     ]
   },

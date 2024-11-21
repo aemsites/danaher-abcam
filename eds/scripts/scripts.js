@@ -385,6 +385,28 @@ function decorateGuidePage(main) {
   }
 }
 
+function decorateTopicPage(main) {
+  const sectionEl = main.querySelector(':scope > div.section.related-articles-container.sidelinks-container');
+  if (sectionEl) {
+    const toBeRemoved = ['related-articles-wrapper', 'sidelinks-wrapper'];
+    const rightSideElements = div({ class: 'w-full pr-0 lg:pr-8' });
+    const sticky = div({ class: 'sticky top-0 space-y-12 pt-6' });
+    const divEl = div({ class: 'ml-0 lg:ml-4 xl:ml-4 min-w-60 lg:max-w-72 flex flex-col gap-y-2 z-20' }, sticky);
+
+    toBeRemoved.forEach((ele) => {
+      const existingEl = sectionEl?.querySelector(`.${ele}`);
+      sticky.append(existingEl);
+    });
+    Array.from(sectionEl?.children).forEach((element) => {
+      if (!toBeRemoved.includes(element.classList[0])) {
+        rightSideElements.append(element);
+      }
+    });
+    sectionEl?.prepend(divEl);
+    sectionEl?.append(rightSideElements);
+  }
+}
+
 /**
  * Decorates the sticky right navigation block from main element.
  * @param {Element} main The main element
@@ -507,9 +529,52 @@ function isValidUrl(string) {
   const urlPattern = /^(https?:\/\/)?([a-z0-9\-]+\.)+[a-z]{2,}(:\d+)?(\/[^\s]*)?$/i;
   return urlPattern.test(string);
 }
+function decorateGenricVideo(main) {
+  const divContainers = main.querySelectorAll("main .section");
+  divContainers.forEach((divContainer) => {
+    divContainer.querySelectorAll("p a").forEach((link) => {
+      if (link.title === "video") {
+        const linkContainer = link.parentElement;
+        linkContainer.classList.add("h-full");
+        let embedURL;
+        let showControls = 0;
+        embedURL = link.href + "?controls=" + showControls;
+        const embedHTML = `
+          <div class="video-container relative w-full px-[30px] sm:px-[40px] md:px-[48px] lg:px-[64px] xl:px-[80px] 2xl:px-[224px] py-10 lg:py-12 bg-gray-200">
+            <iframe src="${embedURL}"
+              class="w-full aspect-video multi-player" 
+              allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" 
+              scrolling="no" title="Content from Vimeo" loading="lazy"></iframe>
+              <button id="play-button-${embedURL}" class="video-overlay absolute inset-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-opacity-50 rounded-full p-4 flex items-center justify-center w-[126px] h-[126px]">
+                <span class="video-play-icon icon icon-video-play"></span>
+              </button>
+            </div>
+          </div>`;
+        linkContainer.innerHTML = embedHTML;
+        decorateIcons(linkContainer, 50, 50);
+
+        const playButton = document.getElementById(`play-button-${embedURL}`);
+        const iframe = document.querySelector(".multi-player");
+        const overlay = document.querySelector(".video-overlay");
+        playButton.addEventListener("click", function () {
+          let videoSrc = iframe.src;
+          if (!videoSrc.includes("autoplay=1")) {
+            videoSrc = videoSrc.replace("controls=0", "controls=1");
+            iframe.src = videoSrc.includes("?")
+              ? videoSrc + "&autoplay=1"
+              : videoSrc + "?autoplay=1";
+            overlay.classList.add("hidden");
+          }
+        });
+      }
+    });
+  });
+}
 
 async function decorateVideo(main) {
-  const divContainers = main.querySelectorAll('.stories main .section');
+  const template = getMetadata('template');
+  if (template == "stories") {
+    const divContainers = main.querySelectorAll('.stories main .section');
   const type = getMetadata('pagetags');
   const filmThumbnails = await getOgImage();
 
@@ -675,6 +740,10 @@ async function decorateVideo(main) {
       });
     }
   });
+  } else {
+    decorateGenricVideo(main);
+  }
+  
 }
 
 /**
@@ -701,6 +770,8 @@ export function decorateMain(main) {
   decorateStickyRightNav(main);
   decorateStoryPage(main);
   decorateGuidePage(main);
+  decorateTopicPage(main) 
+  
 }
 
 export const applyClasses = (element, classes) => element?.classList.add(...classes.split(' '));

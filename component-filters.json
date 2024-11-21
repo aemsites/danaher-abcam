@@ -24,7 +24,7 @@
       "title-card",
       "podcasts",
       "alert-banner",
-      "product-tabs",
+      "tabs",
       "product-overview",
       "product-buybox",
       "product-reactivity",
@@ -94,6 +94,12 @@
     "id": "podcasts",
     "components": [
       "podcast"
+    ]
+  },
+  {
+    "id": "recommended-products",
+    "components": [
+      "product"
     ]
   },
   {

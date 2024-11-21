@@ -174,9 +174,9 @@ const fileMappings = [
     wrapper: 'disclaimer-wrapper',
   },
   {
-    content: './eds/blocks/product-tabs/product-tabs.js',
-    output: './eds/blocks/product-tabs/product-tabs.css',
-    wrapper: 'product-tabs-wrapper',
+    content: './eds/blocks/tabs/tabs.js',
+    output: './eds/blocks/tabs/tabs.css',
+    wrapper: 'tabs-wrapper',
   },
   {
     content: './eds/blocks/product-overview/product-overview.js',
@@ -291,6 +291,11 @@ const fileMappings = [
     content: './eds/blocks/chapter-links/chapter-links.js',
     output: './eds/blocks/chapter-links/chapter-links.css',
     wrapper: 'chapter-links-wrapper',
+  },
+  {
+    content: ['./eds/blocks/related-articles/related-articles.js', './eds/blocks/chapter-links/chapter-links.js'],
+    output: './eds/blocks/related-articles/related-articles.css',
+    wrapper: 'related-articles-wrapper',
   },
   {
     content: './eds/templates/guide/guide.js',

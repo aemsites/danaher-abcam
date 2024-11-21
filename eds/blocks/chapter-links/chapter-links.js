@@ -27,12 +27,12 @@ function renderModal(el) {
   decorateIcons(modal);
 }
 
-function renderChapters(chapterItems) {
+export function renderChapters(chapterItems, navHeading, withDescription = false) {
   const chaptersDesktopEl = div({ class: 'hidden lg:flex flex-col items-start' });
   const chaptersMobileEl = div({ class: 'lg:hidden [&_span]:pl-2 overflow-scroll px-4' });
   const url = new URL(window.location.href);
   const currentPage = url.pathname;
-  const navHeadingEl = p({ class: 'text-sm leading-6 font-semibold uppercase text-[#65797C] px-3 pt-2 pb-1 my-0' }, 'CHAPTERS');
+  const navHeadingEl = p({ class: 'text-sm leading-6 font-semibold uppercase text-[#65797C] px-3 pt-2 pb-1 my-0' }, navHeading);
   chapterItems.forEach((item) => {
     const chaptersEl = div(
       { class: 'w-full border-b border-b-[#D8D8D8]' },
@@ -44,6 +44,15 @@ function renderChapters(chapterItems) {
         item.title,
       ),
     );
+
+    if (withDescription && item.description) {
+      const descriptionEl = p(
+        { class: 'text-sm text-[#65797C] px-3 py-2' },
+        item.description,
+      );
+      chaptersEl.append(descriptionEl);
+    }
+
     chaptersMobileEl.append(chaptersEl);
   });
   chaptersMobileEl.prepend(navHeadingEl);
@@ -61,7 +70,7 @@ export default async function decorate(block) {
       return item.parent === parentPage;
     }).all();
   const chapters = chapterItems.map((element) => ({
-    title: element.title.toLowerCase().indexOf('| abcam') > -1 ? element.title.toLowerCase().split('| abcam')[0] : element.title,
+    title: (element.title.indexOf('| abcam') || element.title.indexOf('| Abcam')) > -1 ? (element.title.split('| abcam')[0] || element.title.split('| Abcam')[0]) : element.title,
     pageOrder: element.pageOrder,
     path: element.path,
   }));
@@ -74,7 +83,7 @@ export default async function decorate(block) {
   }
 
   // Append button and chapters to block
-  const { chaptersDesktopEl, chaptersMobileEl } = renderChapters(filteredChapters);
+  const { chaptersDesktopEl, chaptersMobileEl } = renderChapters(filteredChapters, 'chapters');
   renderModal(chaptersMobileEl);
   block.innerHTML = '';
   block.append(chaptersDesktopEl, modal);
