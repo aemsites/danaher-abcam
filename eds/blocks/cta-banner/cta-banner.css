@@ -1,38 +1,5 @@
-.container {
-  width: 100%
-}
-
-@media (min-width: 640px) {
-  .container {
-    max-width: 640px
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    max-width: 768px
-  }
-}
-
-@media (min-width: 1024px) {
-  .container {
-    max-width: 1024px
-  }
-}
-
-@media (min-width: 1280px) {
-  .container {
-    max-width: 1280px
-  }
-}
-
-@media (min-width: 1536px) {
-  .container {
-    max-width: 1536px
-  }
-}
-
-.cta-banner-wrapper :is(.mb-6) {
+.cta-banner-wrapper :is(.my-6) {
+  margin-top: 1.5rem;
   margin-bottom: 1.5rem
 }
 
@@ -52,6 +19,10 @@
   width: 1rem
 }
 
+.cta-banner-wrapper :is(.w-full) {
+  width: 100%
+}
+
 .cta-banner-wrapper :is(.rotate-0) {
   --tw-rotate: 0deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
@@ -63,10 +34,6 @@
 
 .cta-banner-wrapper :is(.flex-col) {
   flex-direction: column
-}
-
-.cta-banner-wrapper :is(.flex-wrap) {
-  flex-wrap: wrap
 }
 
 .cta-banner-wrapper :is(.items-center) {
@@ -85,9 +52,8 @@
   gap: 1rem
 }
 
-.cta-banner-wrapper :is(.gap-x-32) {
-  -moz-column-gap: 8rem;
-       column-gap: 8rem
+.cta-banner-wrapper :is(.break-words) {
+  overflow-wrap: break-word
 }
 
 .cta-banner-wrapper :is(.rounded-xl) {
@@ -118,6 +84,10 @@
 }
 
 @media (min-width: 768px) {
+  .cta-banner-wrapper :is(.md\:ml-auto) {
+    margin-left: auto
+  }
+
   .cta-banner-wrapper :is(.md\:flex-row) {
     flex-direction: row
   }
