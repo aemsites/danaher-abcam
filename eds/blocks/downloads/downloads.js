@@ -27,7 +27,7 @@ export default function decorate(block) {
     const linkEl = element.querySelector('p > a');
     if (linkEl) {
       applyClasses(linkEl.parentElement?.parentElement, 'ml-auto mr-6 shrink-0');
-      if(sessionStorage.getItem('ELOUQA')) {
+      if (sessionStorage.getItem('ELOUQA')) {
         applyClasses(linkEl.parentElement, 'block');
       } else {
         applyClasses(linkEl.parentElement, 'hidden');
