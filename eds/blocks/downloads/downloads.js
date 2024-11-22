@@ -26,9 +26,13 @@ export default function decorate(block) {
     const icon = span({ class: 'icon icon-arrow-down-circle' });
     const linkEl = element.querySelector('p > a');
     if (linkEl) {
-      linkEl.parentElement?.parentElement?.classList.add(...'ml-auto mr-6 shrink-0'.split(' '));
-      linkEl.textContent = '';
-      linkEl.append(icon);
+      applyClasses(linkEl.parentElement?.parentElement, 'ml-auto mr-6 shrink-0');
+      if (sessionStorage.getItem('ELOUQA')) {
+        linkEl.textContent = '';
+        linkEl.append(icon);
+      } else {
+        linkEl.textContent = '';
+      }
     }
   });
   decorateIcons(block, 32, 32);
