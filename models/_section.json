@@ -86,7 +86,9 @@
         "download",
         "table",        
         "downloads",
-        "video-transcript"
+        "elouqa-form",
+        "video-transcript",
+        "cta-banner"
       ]
     }
   ]

@@ -1354,6 +1354,11 @@ main .section.guides-middle-container h2 {
   letter-spacing: 0.3px !important;
 }
 
+main .section.elouqa-form-container {
+  --tw-bg-opacity: 1;
+  background-color: rgb(242 242 242 / var(--tw-bg-opacity));
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -2339,11 +2344,6 @@ main .section.guides-middle-container h2 {
   padding-bottom: 0.375rem;
 }
 
-.py-10 {
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
-}
-
 .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -2824,11 +2824,6 @@ main .section.guides-middle-container h2 {
   .sm\:border-t-\[1px\] {
     border-top-width: 1px;
   }
-
-  .sm\:px-\[40px\] {
-    padding-left: 40px;
-    padding-right: 40px;
-  }
 }
 
 @media (min-width: 768px) {
@@ -2937,11 +2932,6 @@ main .section.guides-middle-container h2 {
     padding: 1.5rem;
   }
 
-  .md\:px-\[48px\] {
-    padding-left: 48px;
-    padding-right: 48px;
-  }
-
   .md\:pl-5 {
     padding-left: 1.25rem;
   }
@@ -2962,18 +2952,6 @@ main .section.guides-middle-container h2 {
 }
 
 @media (min-width: 1024px) {
-  .lg\:absolute {
-    position: absolute;
-  }
-
-  .lg\:bottom-6 {
-    bottom: 1.5rem;
-  }
-
-  .lg\:right-0 {
-    right: 0px;
-  }
-
   .lg\:mx-auto {
     margin-left: auto;
     margin-right: auto;
@@ -3027,16 +3005,6 @@ main .section.guides-middle-container h2 {
     flex-direction: column;
   }
 
-  .lg\:px-\[64px\] {
-    padding-left: 64px;
-    padding-right: 64px;
-  }
-
-  .lg\:py-12 {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-  }
-
   .lg\:pr-8 {
     padding-right: 2rem;
   }
@@ -3086,11 +3054,6 @@ main .section.guides-middle-container h2 {
 
   .\32xl\:w-\[65\%\] {
     width: 65%;
-  }
-
-  .\32xl\:px-\[224px\] {
-    padding-left: 224px;
-    padding-right: 224px;
   }
 }
 
