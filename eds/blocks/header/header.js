@@ -174,6 +174,7 @@ function parsePayload(token) {
   try {
     return JSON.parse(atob(token.split('.')[1]));
   } catch (e) {
+    console.error('Error parsing token :', e);
     return null;
   }
 }
