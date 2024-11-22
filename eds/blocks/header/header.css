@@ -109,6 +109,10 @@
   row-gap: 0.25rem
 }
 
+.header-wrapper :is(.gap-y-1\.5) {
+  row-gap: 0.375rem
+}
+
 .header-wrapper :is(.space-y-2 > :not([hidden]) ~ :not([hidden])) {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
@@ -230,6 +234,10 @@
   line-height: 1rem
 }
 
+.header-wrapper :is(.text-\[10px\]) {
+  font-size: 10px
+}
+
 .header-wrapper :is(.font-normal) {
   font-weight: 400
 }
@@ -259,6 +267,11 @@
 .header-wrapper :is(.text-white) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+
+.header-wrapper :is(.text-gray-400) {
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity))
 }
 
 .header-wrapper :is(.underline-offset-2) {

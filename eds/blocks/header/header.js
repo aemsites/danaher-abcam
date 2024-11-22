@@ -171,15 +171,11 @@ function getLocalStorageToken() {
 }
 
 function parsePayload(token) {
-  if (token !== null) {
-    const base64Url = token.split('.')[1];
-    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    const jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
-    return JSON.parse(jsonPayload);
+  try {
+    return JSON.parse(atob(token.split('.')[1]));
+  } catch (e) {
+    return null;
   }
-  return null;
 }
 
 function accountMenuList(iconName, linkText, linkUrl) {
@@ -220,12 +216,16 @@ function buttonsDiv(linkText, linkUrl, session) {
   }, linkText);
   liEl.append(anchEl);
   if (session) {
-    liEl.append(p(
-      { class: 'flex flex-col gap-y-1 text-black text-xs font-normal tracking-wide truncate' },
+    liEl.append(a(
+      { 
+        class: 'flex flex-col gap-y-1.5 text-black text-xs font-normal tracking-wide truncate',
+        title: `${session.given_name} ${session.family_name}`,
+        href: 'https://www.abcam.com/my-account',
+       },
       span({ class: 'font-semibold' }, `${session.given_name} ${session.family_name}`),
-      a({
-        class: 'hover:underline underline-offset-2 leading-5 text-[#378189] truncate',
-        href: 'https://www.abcam.com/auth/register?redirect=https%3A%2F%2Fwww.abcam.com%2Fen-us',
+      p({
+        class: 'underline-offset-2 text-gray-400 text-[10px] font-semibold truncate',        
+        title: `${session.email}`,
       }, `${session.email}`),
     ));
   } else if (linkText === 'Sign In') {
