@@ -108,6 +108,11 @@
   border-color: rgb(209 213 219 / var(--tw-border-opacity))
 }
 
+.downloads-wrapper :is(.text-blue-500) {
+  --tw-text-opacity: 1;
+  color: rgb(59 130 246 / var(--tw-text-opacity))
+}
+
 @media (min-width: 640px) {
   .downloads-wrapper :is(.sm\:px-0) {
     padding-left: 0px;

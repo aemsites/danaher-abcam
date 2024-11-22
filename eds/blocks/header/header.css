@@ -14,14 +14,6 @@
   margin-bottom: 0.75rem
 }
 
-.header-wrapper :is(.ml-auto) {
-  margin-left: auto
-}
-
-.header-wrapper :is(.ml-1) {
-  margin-left: 0.25rem
-}
-
 .header-wrapper :is(.ml-2) {
   margin-left: 0.5rem
 }
@@ -50,12 +42,29 @@
   width: 100%
 }
 
+.header-wrapper :is(.w-36) {
+  width: 9rem
+}
+
 .header-wrapper :is(.min-w-60) {
   min-width: 15rem
 }
 
 .header-wrapper :is(.max-w-sm) {
   max-width: 24rem
+}
+
+.header-wrapper :is(.shrink-0) {
+  flex-shrink: 0
+}
+
+.header-wrapper :is(.basis-2\/5) {
+  flex-basis: 40%
+}
+
+.header-wrapper :is(.-rotate-90) {
+  --tw-rotate: -90deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 
 .header-wrapper :is(.transform) {
@@ -70,6 +79,10 @@
   flex-direction: row
 }
 
+.header-wrapper :is(.flex-row-reverse) {
+  flex-direction: row-reverse
+}
+
 .header-wrapper :is(.flex-col) {
   flex-direction: column
 }
@@ -82,6 +95,10 @@
   justify-content: center
 }
 
+.header-wrapper :is(.justify-between) {
+  justify-content: space-between
+}
+
 .header-wrapper :is(.gap-x-2) {
   -moz-column-gap: 0.5rem;
        column-gap: 0.5rem
@@ -92,6 +109,14 @@
        column-gap: 0.75rem
 }
 
+.header-wrapper :is(.gap-y-1) {
+  row-gap: 0.25rem
+}
+
+.header-wrapper :is(.gap-y-1\.5) {
+  row-gap: 0.375rem
+}
+
 .header-wrapper :is(.space-y-2 > :not([hidden]) ~ :not([hidden])) {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
@@ -100,6 +125,20 @@
 
 .header-wrapper :is(.overflow-hidden) {
   overflow: hidden
+}
+
+.header-wrapper :is(.truncate) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+
+.header-wrapper :is(.text-ellipsis) {
+  text-overflow: ellipsis
+}
+
+.header-wrapper :is(.whitespace-nowrap) {
+  white-space: nowrap
 }
 
 .header-wrapper :is(.rounded) {
@@ -150,6 +189,11 @@
 .header-wrapper :is(.bg-white) {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+}
+
+.header-wrapper :is(.bg-\[\#f2f2f2\]) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(242 242 242 / var(--tw-bg-opacity))
 }
 
 .header-wrapper :is(.object-cover) {
@@ -207,6 +251,10 @@
   line-height: 1rem
 }
 
+.header-wrapper :is(.text-\[10px\]) {
+  font-size: 10px
+}
+
 .header-wrapper :is(.font-normal) {
   font-weight: 400
 }
@@ -236,6 +284,15 @@
 .header-wrapper :is(.text-white) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+
+.header-wrapper :is(.text-gray-400) {
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity))
+}
+
+.header-wrapper :is(.underline-offset-2) {
+  text-underline-offset: 2px
 }
 
 .header-wrapper :is(.filter) {
