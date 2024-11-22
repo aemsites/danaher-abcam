@@ -25,14 +25,11 @@ export default function decorate(block) {
     }
     const icon = span({ class: 'icon icon-arrow-down-circle' });
     const linkEl = element.querySelector('p > a');
-    if (linkEl) {
+    if (linkEl) { 
       applyClasses(linkEl.parentElement?.parentElement, 'ml-auto mr-6 shrink-0');
-      if (sessionStorage.getItem('ELOUQA')) {
-        linkEl.textContent = '';
-        linkEl.append(icon);
-      } else {
-        linkEl.textContent = '';
-      }
+      sessionStorage.getItem('ELOUQA') ? applyClasses(linkEl.parentElement, '') : applyClasses(linkEl.parentElement, 'hidden');
+      linkEl.textContent = '';
+      linkEl.append(icon);      
     }
   });
   decorateIcons(block, 32, 32);
