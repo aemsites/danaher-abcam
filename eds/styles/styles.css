@@ -2126,12 +2126,12 @@ main .section.elouqa-form-container {
   border-width: 2px;
 }
 
-.border-\[1px\] {
-  border-width: 1px;
-}
-
 .border-\[0\.5px\] {
   border-width: 0.5px;
+}
+
+.border-\[1px\] {
+  border-width: 1px;
 }
 
 .border-b {

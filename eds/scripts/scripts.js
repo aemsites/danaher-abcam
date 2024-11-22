@@ -859,19 +859,20 @@ async function loadEager(doc) {
 }
 
 // Changes date format from excel general format to date
-export function formatDateRange(date) {
-  const options = {
-    month: 'short', day: '2-digit', year: 'numeric', timeZone: 'UTC',
+export function formatTime(date) {
+  const timeOptions = {
+    hour: '2-digit', minute: '2-digit', hour12: true, timeZone: 'America/New_York', // ET format
   };
-  const startDate = new Date(Number(date - 25569) * 24 * 60 * 60 * 1000).toUTCString();
-  const formattedStartDate = new Date(startDate).toLocaleDateString('en-us', options);
-  return formattedStartDate;
+  const lastModifiedDate = new Date(Number(date) * 1000);
+  const timeFormatted = new Intl.DateTimeFormat('en-us', timeOptions).format(lastModifiedDate);
+  const timeWithET = timeFormatted ? `${timeFormatted} ET` : '';
+  return timeWithET;
 }
 
 // Changes date format from Unix Epoch to date
 export function formatDate(date) {
   const options = {
-    weekday: 'short', day: '2-digit', month: 'short', year: 'numeric', timeZone: 'UTC',
+    month: 'long', day: '2-digit', year: 'numeric', timeZone: 'UTC',
   };
   const lastModifiedDate = new Date(Number(date) * 1000);
   const formattedDate = new Intl.DateTimeFormat('en-us', options).format(lastModifiedDate);

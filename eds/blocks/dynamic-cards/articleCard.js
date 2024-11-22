@@ -1,15 +1,18 @@
-import { getContentType, imageHelper } from '../../scripts/scripts.js';
+import { formatDate, formatTime, getContentType, imageHelper } from '../../scripts/scripts.js';
 import {
   li, a, p, div, h3, span,
 } from '../../scripts/dom-builder.js';
 
 export default function createCard(article, firstCard = false, cardType = 'story') {
-  const titleImage = imageHelper(article.image, article.title, firstCard);
+  const titleImage = imageHelper(article.image, article.title, article.publishDate, firstCard);
   const { title } = article;
   const { description } = article;
   const { path } = article;
   const { tags } = article;
   const time = article.readingTime;
+  const { publishDate } = article;
+  const formattedPublishDate = formatDate(publishDate);
+  const formattedTime = formatTime(publishDate);
 
   let footerLink;
   let minRead;
@@ -24,6 +27,7 @@ export default function createCard(article, firstCard = false, cardType = 'story
       break;
     case 'upcoming-webinar':
       footerLink = 'Register';
+      minRead = ` | ${formattedTime}`;
       break;
     case 'on-demand-webinar':
       footerLink = 'Watch webinar';
@@ -61,6 +65,14 @@ export default function createCard(article, firstCard = false, cardType = 'story
       span({ class: 'capitalize font-normal text-sm text-[#65697C] font-["rockwell"]' }, `${getContentType(tags)}`),
       span({ class: 'font-normal text-sm text-[#65697C] font-["rockwell"]' }, `${minRead}`),
     );
+  } else if (cardType === 'webinar') {
+    card.querySelector('.flex-1').prepend(
+      span({ class: 'capitalize font-normal text-sm text-[#65697C] font-["rockwell"]' }, 
+        `${formattedPublishDate}`
+      ),
+      span({ class: 'font-normal text-sm text-[#65697C] font-["rockwell"]' }, `${minRead}`),
+    );
   }
+
   return card;
 }
