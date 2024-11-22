@@ -32,44 +32,14 @@
   }
 }
 
-.recommended-products-wrapper :is(.relative) {
-  position: relative
-}
-
-.recommended-products-wrapper :is(.top-10) {
-  top: 2.5rem
-}
-
-.recommended-products-wrapper :is(.top-16) {
-  top: 4rem
-}
-
-.recommended-products-wrapper :is(.top-20) {
-  top: 5rem
-}
-
 .recommended-products-wrapper :is(.mx-auto) {
   margin-left: auto;
   margin-right: auto
 }
 
-.recommended-products-wrapper :is(.my-auto) {
-  margin-top: auto;
-  margin-bottom: auto
-}
-
-.recommended-products-wrapper :is(.my-6) {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem
-}
-
 .recommended-products-wrapper :is(.my-8) {
   margin-top: 2rem;
   margin-bottom: 2rem
-}
-
-.recommended-products-wrapper :is(.mb-3) {
-  margin-bottom: 0.75rem
 }
 
 .recommended-products-wrapper :is(.mb-4) {
@@ -125,6 +95,10 @@
   height: 100%
 }
 
+.recommended-products-wrapper :is(.h-24) {
+  height: 6rem
+}
+
 .recommended-products-wrapper :is(.h-auto) {
   height: auto
 }
@@ -133,25 +107,17 @@
   height: 1px
 }
 
-.recommended-products-wrapper :is(.h-24) {
-  height: 6rem
-}
-
-.recommended-products-wrapper :is(.w-fit) {
-  width: -moz-fit-content;
-  width: fit-content
-}
-
-.recommended-products-wrapper :is(.w-1\/2) {
-  width: 50%
+.recommended-products-wrapper :is(.w-1\/3) {
+  width: 33.333333%
 }
 
 .recommended-products-wrapper :is(.w-2\/3) {
   width: 66.666667%
 }
 
-.recommended-products-wrapper :is(.w-1\/3) {
-  width: 33.333333%
+.recommended-products-wrapper :is(.w-fit) {
+  width: -moz-fit-content;
+  width: fit-content
 }
 
 .recommended-products-wrapper :is(.cursor-pointer) {
@@ -160,10 +126,6 @@
 
 .recommended-products-wrapper :is(.grid-cols-1) {
   grid-template-columns: repeat(1, minmax(0, 1fr))
-}
-
-.recommended-products-wrapper :is(.grid-cols-2) {
-  grid-template-columns: repeat(2, minmax(0, 1fr))
 }
 
 .recommended-products-wrapper :is(.flex-row) {
@@ -249,14 +211,6 @@
   text-align: left
 }
 
-.recommended-products-wrapper :is(.align-middle) {
-  vertical-align: middle
-}
-
-.recommended-products-wrapper :is(.\!align-middle) {
-  vertical-align: middle !important
-}
-
 .recommended-products-wrapper :is(.font-sans) {
   font-family: Noto Sans
 }
@@ -264,11 +218,6 @@
 .recommended-products-wrapper :is(.text-sm) {
   font-size: 0.875rem;
   line-height: 1.25rem
-}
-
-.recommended-products-wrapper :is(.text-xl) {
-  font-size: 1.25rem;
-  line-height: 1.75rem
 }
 
 .recommended-products-wrapper :is(.text-xs) {
@@ -296,6 +245,11 @@
   letter-spacing: 0.025em
 }
 
+.recommended-products-wrapper :is(.text-\[\#378189\]) {
+  --tw-text-opacity: 1;
+  color: rgb(55 129 137 / var(--tw-text-opacity))
+}
+
 .recommended-products-wrapper :is(.text-\[\#65797c\]) {
   --tw-text-opacity: 1;
   color: rgb(101 121 124 / var(--tw-text-opacity))
@@ -309,15 +263,6 @@
 .recommended-products-wrapper :is(.text-emerald-800) {
   --tw-text-opacity: 1;
   color: rgb(6 95 70 / var(--tw-text-opacity))
-}
-
-.recommended-products-wrapper :is(.text-\[\#378189\]) {
-  --tw-text-opacity: 1;
-  color: rgb(55 129 137 / var(--tw-text-opacity))
-}
-
-.recommended-products-wrapper :is(.underline) {
-  text-decoration-line: underline
 }
 
 .recommended-products-wrapper :is(.hover\:bg-\[\#0000000d\]:hover) {
