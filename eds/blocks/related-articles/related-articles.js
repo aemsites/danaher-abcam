@@ -2,7 +2,7 @@ import ffetch from '../../scripts/ffetch.js';
 import {
   button, div, span,
 } from '../../scripts/dom-builder.js';
-import { decorateIcons } from '../../scripts/aem.js';
+import { decorateIcons, getMetadata } from '../../scripts/aem.js';
 import { buildArticleSchema, buildGuidesCollectionSchema } from '../../scripts/schema.js';
 import { renderChapters } from '../chapter-links/chapter-links.js';
 
@@ -29,10 +29,16 @@ function renderModal(el) {
 }
 
 export default async function decorate(block) {
+  const kcTags = getMetadata('pagetags')?.split(',');
+  const extractedTags = kcTags.map((tag) => tag.split('/').pop());
+  const title = getMetadata('og:title');
+
   const parentURL = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/'));
   const parentPage = parentURL.split('/').pop();
-  const chapterItems = await ffetch('/en-us/technical-resources/guides/query-index.json')
-    .filter((item) => item.tags && item.tags.includes('abcam:applications')).all();
+  const chapterItems = await ffetch('/en-us/knowledge-center/query-index.json')
+    .filter((item) => item.title && item.title !== title)
+    .filter((item) => item.tags && extractedTags.some((tag) => item.tags.includes(tag)))
+    .all();
   const chapters = chapterItems.map((element) => ({
     title: element.title.indexOf('| abcam') > -1 ? element.title.split('| abcam')[0] : element.title,
     description: element.description,

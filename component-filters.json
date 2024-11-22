@@ -45,7 +45,9 @@
       "download",
       "table",
       "downloads",
+      "elouqa-form",
       "video-transcript",
+      "cta-banner",
       "webinar-hub"
     ]
   },
@@ -85,6 +87,10 @@
     ]
   },
   {
+    "id": "elouqa-form",
+    "components": []
+  },
+  {
     "id": "mini-teasers",
     "components": [
       "mini-teaser"
@@ -94,6 +100,12 @@
     "id": "podcasts",
     "components": [
       "podcast"
+    ]
+  },
+  {
+    "id": "recommended-products",
+    "components": [
+      "product"
     ]
   },
   {

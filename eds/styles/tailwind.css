@@ -227,11 +227,11 @@
         @apply flex flex-col gap-x-0 lg:flex-row lg:gap-x-16;
     }
 
-    .stories main .section.no-section-padding .columns-wrapper, .webinar main .section.no-section-padding .columns-wrapper {
+    main .section.no-section-padding .columns-wrapper {
         @apply w-full mx-auto lg:h-[31rem] relative;
     }
 
-    .stories main .section.no-section-padding.columns-container, .webinar main .section.no-section-padding.columns-container {
+    main .section.no-section-padding.columns-container {
         @apply pt-8;
     }
 
@@ -282,5 +282,9 @@
     main .section.guides-middle-container h2{
         @apply !font-normal !text-2xl !leading-7 !tracking-[0.3px] !mb-2;
     }
-   
+
+    main .section.elouqa-form-container {
+        @apply bg-[#F2F2F2];
+    }
+    
 }   
