@@ -133,14 +133,6 @@
   white-space: nowrap
 }
 
-.header-wrapper :is(.text-ellipsis) {
-  text-overflow: ellipsis
-}
-
-.header-wrapper :is(.whitespace-nowrap) {
-  white-space: nowrap
-}
-
 .header-wrapper :is(.rounded) {
   border-radius: 0.25rem
 }
