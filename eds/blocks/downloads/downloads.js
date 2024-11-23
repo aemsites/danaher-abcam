@@ -35,14 +35,11 @@ export default function decorate(block) {
       linkEl.textContent = '';
       linkEl.append(icon);
       linkEl.addEventListener('click', (event) => {
-        if (sessionStorage.getItem('ELOUQA')) {
-          return;
-        } else {
+        if (!sessionStorage.getItem('ELOUQA')) {
           event.preventDefault();
         }
       });
     }
-
   });
   decorateIcons(block, 32, 32);
 }
