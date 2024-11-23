@@ -34,7 +34,15 @@ export default function decorate(block) {
       }
       linkEl.textContent = '';
       linkEl.append(icon);
+      linkEl.addEventListener('click', (event) => {
+        if (sessionStorage.getItem('ELOUQA')) {
+          return;
+        } else {
+          event.preventDefault();
+        }
+      });
     }
+
   });
   decorateIcons(block, 32, 32);
 }
