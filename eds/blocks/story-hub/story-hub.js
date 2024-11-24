@@ -21,7 +21,10 @@ function updateUrlWithParams(key, value, url) {
       newUrl.searchParams.set(key, [...values, value].filter(Boolean).join('|'));
     }
     if (key !== 'stories-type' && !newUrl.searchParams.get(key)) newUrl.searchParams.delete(key);
-  } else newUrl.searchParams.set(key, value);
+  } else {
+    newUrl.searchParams.set(key, value);
+    newUrl.searchParams.set('page', '1');
+  }
   window.history.pushState(null, '', newUrl);
 }
 
