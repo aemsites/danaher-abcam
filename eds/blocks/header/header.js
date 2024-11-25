@@ -208,7 +208,7 @@ function buttonsEl(linkText, linkUrl, session) {
   if (session) {
     applyClasses(liEl, 'border-b border-b-[#D8D8D8] space-y-2');
     applyClasses(liEl, 'flex flex-row-reverse justify-between items-center');
-    btnColor = 'text-white bg-[#378189] hover:bg-[#2a5f65] sm:basis-2/5 px-4 shrink-0';
+    btnColor = 'text-white bg-[#378189] hover:bg-[#2a5f65] basis-2/5 shrink-0';
   } else if (linkText === 'Sign In') {
     applyClasses(liEl, 'border-b border-b-[#D8D8D8] space-y-2');
     btnColor = 'text-white bg-[#378189] hover:bg-[#2a5f65]';
@@ -254,7 +254,7 @@ function buttonsEl(linkText, linkUrl, session) {
 }
 
 function ulEls(hostName, sessionVal) {
-  const ulEl = ul({ class: 'flex flex-col w-full min-w-60 max-w-80' });
+  const ulEl = ul({ class: 'flex flex-col w-full lg:w-[17rem]' });
   const pathName = window.location.pathname;
   if (sessionVal) {
     ulEl.append(

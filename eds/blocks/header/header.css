@@ -50,6 +50,14 @@
   width: 83.333333%
 }
 
+.header-wrapper :is(.w-72) {
+  width: 18rem
+}
+
+.header-wrapper :is(.w-\[17rem\]) {
+  width: 17rem
+}
+
 .header-wrapper :is(.min-w-60) {
   min-width: 15rem
 }
@@ -68,6 +76,10 @@
 
 .header-wrapper :is(.basis-2\/5) {
   flex-basis: 40%
+}
+
+.header-wrapper :is(.basis-1\/2) {
+  flex-basis: 50%
 }
 
 .header-wrapper :is(.-rotate-90) {
@@ -389,5 +401,19 @@
 
   .header-wrapper :is(.md\:rounded-lg) {
     border-radius: 0.5rem
+  }
+}
+
+@media (min-width: 1024px) {
+  .header-wrapper :is(.lg\:w-\[17rem\]) {
+    width: 17rem
+  }
+
+  .header-wrapper :is(.lg\:basis-1\/2) {
+    flex-basis: 50%
+  }
+
+  .header-wrapper :is(.lg\:basis-1\/3) {
+    flex-basis: 33.333333%
   }
 }
