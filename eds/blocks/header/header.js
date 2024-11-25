@@ -208,7 +208,7 @@ function buttonsEl(linkText, linkUrl, session) {
   if (session) {
     applyClasses(liEl, 'border-b border-b-[#D8D8D8] space-y-2');
     applyClasses(liEl, 'flex flex-row-reverse justify-between items-center');
-    btnColor = 'text-white bg-[#378189] hover:bg-[#2a5f65] basis-2/5 px-4 shrink-0';
+    btnColor = 'text-white bg-[#378189] hover:bg-[#2a5f65] sm:basis-2/5 px-4 shrink-0';
   } else if (linkText === 'Sign In') {
     applyClasses(liEl, 'border-b border-b-[#D8D8D8] space-y-2');
     btnColor = 'text-white bg-[#378189] hover:bg-[#2a5f65]';
@@ -236,7 +236,7 @@ function buttonsEl(linkText, linkUrl, session) {
       },
       span({ class: 'font-semibold' }, `${session.given_name} ${session.family_name}`),
       p({
-        class: 'w-5/6 underline-offset-2 text-gray-400 text-[10px] font-semibold truncate',
+        class: 'w-5/6 underline-offset-2 text-gray-400 text-[10px] font-semibold text-clip sm:truncate',
         title: `${session.email}`,
       }, `${session.email}`),
     ));
@@ -255,59 +255,38 @@ function buttonsEl(linkText, linkUrl, session) {
 
 function ulEls(hostName, sessionVal) {
   const ulEl = ul({ class: 'flex flex-col w-full min-w-60 max-w-80' });
-  if (!hostName.includes('localhost') && !hostName.includes('.hlx')) {
-    if (sessionVal) {
-      ulEl.append(
-        buttonsEl('Contact Us', `https://${hostName}/en-us/contact-us`, sessionVal),
-        accountMenuList('orders', 'My Orders', `https://${hostName}/my-account/orders`),
-        accountMenuList('addresses', 'My Addresses', `https://${hostName}/my-account/address-book`),
-        accountMenuList('inquiries', 'My Inquiries', `https://${hostName}/my-account/inquiries`),
-        accountMenuList('reviews', 'My Reviews', `https://${hostName}/my-account/reviews`),
-        accountMenuList('rewards', 'My Rewards', `https://${hostName}/my-account/reward-points`),
-        accountMenuList('profile', 'My Profile', `https://${hostName}/my-account/profile`),
-        accountMenuList('sign-out', 'Sign Out', `https://${hostName}`),
-      );
-    } else {
-      ulEl.append(
-        buttonsEl('Sign In', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}`),
-        accountMenuList('orders', 'My Orders', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Forders`),
-        accountMenuList('addresses', 'My Addresses', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Faddress-book`),
-        accountMenuList('inquiries', 'My Inquiries', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Finquiries`),
-        accountMenuList('reviews', 'My Reviews', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Freviews`),
-        accountMenuList('rewards', 'My Rewards', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Freward-points`),
-        accountMenuList('profile', 'My Profile', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Fprofile`),
-        buttonsEl('Contact Us', `https://${hostName}/en-us/contact-us`),
-      );
-    }
-  } else if (sessionVal) {
+  const pathName = window.location.pathname;
+  if (sessionVal) {
     ulEl.append(
-      buttonsEl('Contact Us', 'https://pp.abcam.com/en-us/contact-us', sessionVal),
-      accountMenuList('orders', 'My Orders', 'https://pp.abcam.com/my-account/orders'),
-      accountMenuList('addresses', 'My Addresses', 'https://pp.abcam.com/my-account/address-book'),
-      accountMenuList('inquiries', 'My Inquiries', 'https://pp.abcam.com/my-account/inquiries'),
-      accountMenuList('reviews', 'My Reviews', 'https://pp.abcam.com/my-account/reviews'),
-      accountMenuList('rewards', 'My Rewards', 'https://pp.abcam.com/my-account/reward-points'),
-      accountMenuList('profile', 'My Profile', 'https://pp.abcam.com/my-account/profile'),
-      accountMenuList('sign-out', 'Sign Out', 'https://pp.abcam.com'),
+      buttonsEl('Contact Us', `https://${hostName}/en-us/contact-us`, sessionVal),
+      accountMenuList('orders', 'My Orders', `https://${hostName}/my-account/orders`),
+      accountMenuList('addresses', 'My Addresses', `https://${hostName}/my-account/address-book`),
+      accountMenuList('inquiries', 'My Inquiries', `https://${hostName}/my-account/inquiries`),
+      accountMenuList('reviews', 'My Reviews', `https://${hostName}/my-account/reviews`),
+      accountMenuList('rewards', 'My Rewards', `https://${hostName}/my-account/reward-points`),
+      accountMenuList('profile', 'My Profile', `https://${hostName}/my-account/profile`),
+      accountMenuList('sign-out', 'Sign Out', `https://${hostName}`),
     );
   } else {
     ulEl.append(
-      buttonsEl('Sign In', 'https://pp.abcam.com/auth/login?redirect=https%3A%2F%2Fpp.abcam.com'),
-      accountMenuList('orders', 'My Orders', 'https://pp.abcam.com/auth/login?redirect=https%3A%2F%2Fpp.abcam.com%2Fmy-account%2Forders'),
-      accountMenuList('addresses', 'My Addresses', 'https://pp.abcam.com/auth/login?redirect=https%3A%2F%2Fpp.abcam.com%2Fmy-account%2Faddress-book'),
-      accountMenuList('inquiries', 'My Inquiries', 'https://pp.abcam.com/auth/login?redirect=https%3A%2F%2Fpp.abcam.com%2Fmy-account%2Finquiries'),
-      accountMenuList('reviews', 'My Reviews', 'https://pp.abcam.com/auth/login?redirect=https%3A%2F%2Fpp.abcam.com%2Fmy-account%2Freviews'),
-      accountMenuList('rewards', 'My Rewards', 'https://pp.abcam.com/auth/login?redirect=https%3A%2F%2Fpp.abcam.com%2Fmy-account%2Freward-points'),
-      accountMenuList('profile', 'My Profile', 'https://pp.abcam.com/auth/login?redirect=https%3A%2F%2Fpp.abcam.com%2Fmy-account%2Fprofile'),
-      buttonsEl('Contact Us', 'https://pp.abcam.com/en-us/contact-us'),
+      buttonsEl('Sign In', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}${pathName}`),
+      accountMenuList('orders', 'My Orders', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Forders`),
+      accountMenuList('addresses', 'My Addresses', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Faddress-book`),
+      accountMenuList('inquiries', 'My Inquiries', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Finquiries`),
+      accountMenuList('reviews', 'My Reviews', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Freviews`),
+      accountMenuList('rewards', 'My Rewards', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Freward-points`),
+      accountMenuList('profile', 'My Profile', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Fprofile`),
+      buttonsEl('Contact Us', `https://${hostName}/en-us/contact-us`),
     );
   }
   return ulEl;
 }
 
 function myAccount(session) {
-  const hostName = window.location.host;
-  const myAccoundDiv = div({ class: 'my-account-items w-full overflow-hidden bg-white md:h-full text-black md:rounded-lg rounded' });
+  const hostName = (!window.location.host.includes('localhost') && !window.location.host.includes('.hlx'))
+    ? window.location.host
+    : 'pp.abcam.com';
+  const myAccoundDiv = div({ class: 'my-account-items w-full fixed sm:relative left-0 overflow-hidden bg-white md:h-full text-black rounded sm:rounded-lg shadow-lg' });
   if (session) {
     const sessionVal = parsePayload(session);
     if (sessionVal) {
@@ -415,7 +394,6 @@ export default async function decorate(block) {
     countrySelector(block);
   });
   setOrUpdateCookie('NEXT_LOCALE', 'en-us', 365);
-
   const flagElement = block.querySelector('.country-flag-container');
   const lastSelectedCountry = getCookie('NEXT_COUNTRY');
   if (flagElement && lastSelectedCountry !== null) {
