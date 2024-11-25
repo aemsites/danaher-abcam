@@ -256,58 +256,36 @@ function buttonsEl(linkText, linkUrl, session) {
 function ulEls(hostName, sessionVal) {
   const ulEl = ul({ class: 'flex flex-col w-full min-w-60 max-w-80' });
   const pathName = window.location.pathname;
-  if (!hostName.includes('localhost') && !hostName.includes('.hlx')) {
-    if (sessionVal) {
-      ulEl.append(
-        buttonsEl('Contact Us', `https://${hostName}/en-us/contact-us`, sessionVal),
-        accountMenuList('orders', 'My Orders', `https://${hostName}/my-account/orders`),
-        accountMenuList('addresses', 'My Addresses', `https://${hostName}/my-account/address-book`),
-        accountMenuList('inquiries', 'My Inquiries', `https://${hostName}/my-account/inquiries`),
-        accountMenuList('reviews', 'My Reviews', `https://${hostName}/my-account/reviews`),
-        accountMenuList('rewards', 'My Rewards', `https://${hostName}/my-account/reward-points`),
-        accountMenuList('profile', 'My Profile', `https://${hostName}/my-account/profile`),
-        accountMenuList('sign-out', 'Sign Out', `https://${hostName}`),
-      );
-    } else {
-      ulEl.append(
-        buttonsEl('Sign In', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}${pathName}`),
-        accountMenuList('orders', 'My Orders', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Forders`),
-        accountMenuList('addresses', 'My Addresses', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Faddress-book`),
-        accountMenuList('inquiries', 'My Inquiries', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Finquiries`),
-        accountMenuList('reviews', 'My Reviews', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Freviews`),
-        accountMenuList('rewards', 'My Rewards', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Freward-points`),
-        accountMenuList('profile', 'My Profile', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Fprofile`),
-        buttonsEl('Contact Us', `https://${hostName}/en-us/contact-us`),
-      );
-    }
-  } else if (sessionVal) {
+  if (sessionVal) {
     ulEl.append(
-      buttonsEl('Contact Us', 'https://pp.abcam.com/en-us/contact-us', sessionVal),
-      accountMenuList('orders', 'My Orders', 'https://pp.abcam.com/my-account/orders'),
-      accountMenuList('addresses', 'My Addresses', 'https://pp.abcam.com/my-account/address-book'),
-      accountMenuList('inquiries', 'My Inquiries', 'https://pp.abcam.com/my-account/inquiries'),
-      accountMenuList('reviews', 'My Reviews', 'https://pp.abcam.com/my-account/reviews'),
-      accountMenuList('rewards', 'My Rewards', 'https://pp.abcam.com/my-account/reward-points'),
-      accountMenuList('profile', 'My Profile', 'https://pp.abcam.com/my-account/profile'),
-      accountMenuList('sign-out', 'Sign Out', 'https://pp.abcam.com'),
+      buttonsEl('Contact Us', `https://${hostName}/en-us/contact-us`, sessionVal),
+      accountMenuList('orders', 'My Orders', `https://${hostName}/my-account/orders`),
+      accountMenuList('addresses', 'My Addresses', `https://${hostName}/my-account/address-book`),
+      accountMenuList('inquiries', 'My Inquiries', `https://${hostName}/my-account/inquiries`),
+      accountMenuList('reviews', 'My Reviews', `https://${hostName}/my-account/reviews`),
+      accountMenuList('rewards', 'My Rewards', `https://${hostName}/my-account/reward-points`),
+      accountMenuList('profile', 'My Profile', `https://${hostName}/my-account/profile`),
+      accountMenuList('sign-out', 'Sign Out', `https://${hostName}`),
     );
   } else {
     ulEl.append(
-      buttonsEl('Sign In', `https://pp.abcam.com/auth/login?redirect=https%3A%2F%2Fpp.abcam.com${pathName}`),
-      accountMenuList('orders', 'My Orders', 'https://pp.abcam.com/auth/login?redirect=https%3A%2F%2Fpp.abcam.com%2Fmy-account%2Forders'),
-      accountMenuList('addresses', 'My Addresses', 'https://pp.abcam.com/auth/login?redirect=https%3A%2F%2Fpp.abcam.com%2Fmy-account%2Faddress-book'),
-      accountMenuList('inquiries', 'My Inquiries', 'https://pp.abcam.com/auth/login?redirect=https%3A%2F%2Fpp.abcam.com%2Fmy-account%2Finquiries'),
-      accountMenuList('reviews', 'My Reviews', 'https://pp.abcam.com/auth/login?redirect=https%3A%2F%2Fpp.abcam.com%2Fmy-account%2Freviews'),
-      accountMenuList('rewards', 'My Rewards', 'https://pp.abcam.com/auth/login?redirect=https%3A%2F%2Fpp.abcam.com%2Fmy-account%2Freward-points'),
-      accountMenuList('profile', 'My Profile', 'https://pp.abcam.com/auth/login?redirect=https%3A%2F%2Fpp.abcam.com%2Fmy-account%2Fprofile'),
-      buttonsEl('Contact Us', 'https://pp.abcam.com/en-us/contact-us'),
+      buttonsEl('Sign In', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}${pathName}`),
+      accountMenuList('orders', 'My Orders', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Forders`),
+      accountMenuList('addresses', 'My Addresses', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Faddress-book`),
+      accountMenuList('inquiries', 'My Inquiries', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Finquiries`),
+      accountMenuList('reviews', 'My Reviews', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Freviews`),
+      accountMenuList('rewards', 'My Rewards', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Freward-points`),
+      accountMenuList('profile', 'My Profile', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Fprofile`),
+      buttonsEl('Contact Us', `https://${hostName}/en-us/contact-us`),
     );
   }
   return ulEl;
 }
 
 function myAccount(session) {
-  const hostName = window.location.host;
+  const hostName = (!window.location.host.includes('localhost') && !window.location.host.includes('.hlx'))
+    ? window.location.host
+    : 'pp.abcam.com';
   const myAccoundDiv = div({ class: 'my-account-items w-full fixed sm:relative left-0 overflow-hidden bg-white md:h-full text-black rounded sm:rounded-lg shadow-lg' });
   if (session) {
     const sessionVal = parsePayload(session);
