@@ -1,3 +1,141 @@
+.container {
+  width: 100%
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px
+  }
+}
+
+.alert-banner-wrapper :is(.fixed) {
+  position: fixed
+}
+
+.alert-banner-wrapper :is(.absolute) {
+  position: absolute
+}
+
+.alert-banner-wrapper :is(.relative) {
+  position: relative
+}
+
+.alert-banner-wrapper :is(.right-0) {
+  right: 0px
+}
+
+.alert-banner-wrapper :is(.top-0) {
+  top: 0px
+}
+
+.alert-banner-wrapper :is(.right-2) {
+  right: 0.5rem
+}
+
+.alert-banner-wrapper :is(.top-1) {
+  top: 0.25rem
+}
+
+.alert-banner-wrapper :is(.right-5) {
+  right: 1.25rem
+}
+
+.alert-banner-wrapper :is(.top-5) {
+  top: 1.25rem
+}
+
+.alert-banner-wrapper :is(.right-10) {
+  right: 2.5rem
+}
+
+.alert-banner-wrapper :is(.ml-1) {
+  margin-left: 0.25rem
+}
+
+.alert-banner-wrapper :is(.mr-2) {
+  margin-right: 0.5rem
+}
+
+.alert-banner-wrapper :is(.mr-10) {
+  margin-right: 2.5rem
+}
+
+.alert-banner-wrapper :is(.mt-4) {
+  margin-top: 1rem
+}
+
+.alert-banner-wrapper :is(.mb-4) {
+  margin-bottom: 1rem
+}
+
+.alert-banner-wrapper :is(.mt-10) {
+  margin-top: 2.5rem
+}
+
+.alert-banner-wrapper :is(.ml-5) {
+  margin-left: 1.25rem
+}
+
+.alert-banner-wrapper :is(.mt-8) {
+  margin-top: 2rem
+}
+
+.alert-banner-wrapper :is(.mt-9) {
+  margin-top: 2.25rem
+}
+
+.alert-banner-wrapper :is(.ml-8) {
+  margin-left: 2rem
+}
+
+.alert-banner-wrapper :is(.ml-12) {
+  margin-left: 3rem
+}
+
+.alert-banner-wrapper :is(.mt-5) {
+  margin-top: 1.25rem
+}
+
+.alert-banner-wrapper :is(.mt-6) {
+  margin-top: 1.5rem
+}
+
+.alert-banner-wrapper :is(.mb-6) {
+  margin-bottom: 1.5rem
+}
+
+.alert-banner-wrapper :is(.ml-9) {
+  margin-left: 2.25rem
+}
+
+.alert-banner-wrapper :is(.mt-12) {
+  margin-top: 3rem
+}
+
 .alert-banner-wrapper :is(.block) {
   display: block
 }
@@ -6,8 +144,90 @@
   display: flex
 }
 
+.alert-banner-wrapper :is(.list-item) {
+  display: list-item
+}
+
 .alert-banner-wrapper :is(.hidden) {
   display: none
+}
+
+.alert-banner-wrapper :is(.size-5) {
+  width: 1.25rem;
+  height: 1.25rem
+}
+
+.alert-banner-wrapper :is(.h-5) {
+  height: 1.25rem
+}
+
+.alert-banner-wrapper :is(.h-auto) {
+  height: auto
+}
+
+.alert-banner-wrapper :is(.w-5) {
+  width: 1.25rem
+}
+
+.alert-banner-wrapper :is(.rotate-180) {
+  --tw-rotate: 180deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+
+.alert-banner-wrapper :is(.cursor-pointer) {
+  cursor: pointer
+}
+
+.alert-banner-wrapper :is(.items-center) {
+  align-items: center
+}
+
+.alert-banner-wrapper :is(.justify-center) {
+  justify-content: center
+}
+
+.alert-banner-wrapper :is(.justify-between) {
+  justify-content: space-between
+}
+
+.alert-banner-wrapper :is(.space-x-4 > :not([hidden]) ~ :not([hidden])) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1rem * var(--tw-space-x-reverse));
+  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)))
+}
+
+.alert-banner-wrapper :is(.rounded-full) {
+  border-radius: 9999px
+}
+
+.alert-banner-wrapper :is(.rounded) {
+  border-radius: 0.25rem
+}
+
+.alert-banner-wrapper :is(.border-2) {
+  border-width: 2px
+}
+
+.alert-banner-wrapper :is(.border) {
+  border-width: 1px
+}
+
+.alert-banner-wrapper :is(.border-b-2) {
+  border-bottom-width: 2px
+}
+
+.alert-banner-wrapper :is(.border-b) {
+  border-bottom-width: 1px
+}
+
+.alert-banner-wrapper :is(.border-black) {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity))
+}
+
+.alert-banner-wrapper :is(.border-white) {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity))
 }
 
 .alert-banner-wrapper :is(.bg-black) {
@@ -15,11 +235,61 @@
   background-color: rgb(0 0 0 / var(--tw-bg-opacity))
 }
 
+.alert-banner-wrapper :is(.bg-slate-900) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(15 23 42 / var(--tw-bg-opacity))
+}
+
+.alert-banner-wrapper :is(.bg-slate-700) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(51 65 85 / var(--tw-bg-opacity))
+}
+
+.alert-banner-wrapper :is(.bg-slate-950) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(2 6 23 / var(--tw-bg-opacity))
+}
+
 .alert-banner-wrapper :is(.p-8) {
   padding: 2rem
+}
+
+.alert-banner-wrapper :is(.p-2) {
+  padding: 0.5rem
+}
+
+.alert-banner-wrapper :is(.pb-5) {
+  padding-bottom: 1.25rem
+}
+
+.alert-banner-wrapper :is(.pb-4) {
+  padding-bottom: 1rem
+}
+
+.alert-banner-wrapper :is(.pb-3) {
+  padding-bottom: 0.75rem
+}
+
+.alert-banner-wrapper :is(.text-2xl) {
+  font-size: 1.5rem;
+  line-height: 2rem
+}
+
+.alert-banner-wrapper :is(.font-bold) {
+  font-weight: 700
 }
 
 .alert-banner-wrapper :is(.text-white) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+
+@media (min-width: 640px) {
+  .alert-banner-wrapper :is(.sm\:block) {
+    display: block
+  }
+
+  .alert-banner-wrapper :is(.sm\:hidden) {
+    display: none
+  }
 }
