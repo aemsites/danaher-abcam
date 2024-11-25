@@ -1843,6 +1843,10 @@ main .section.elouqa-form-container {
   max-width: 100%;
 }
 
+.max-w-24 {
+  max-width: 6rem;
+}
+
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -2067,6 +2071,12 @@ main .section.elouqa-form-container {
 
 .scroll-smooth {
   scroll-behavior: smooth;
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .whitespace-nowrap {
@@ -2628,7 +2638,17 @@ main .section.elouqa-form-container {
   outline-offset: 2px;
 }
 
+.outline {
+  outline-style: solid;
+}
+
 .ring-\[3px\] {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+.ring {
   --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
   --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color);
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
@@ -2637,6 +2657,15 @@ main .section.elouqa-form-container {
 .ring-\[\#6fafb8\] {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(111 175 184 / var(--tw-ring-opacity));
+}
+
+.ring-\[\#6db9c1\] {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(109 185 193 / var(--tw-ring-opacity));
+}
+
+.ring-offset-2 {
+  --tw-ring-offset-width: 2px;
 }
 
 .blur {
@@ -2704,6 +2733,18 @@ main .section.elouqa-form-container {
   margin-left: 0px;
 }
 
+.focus-within\:outline:focus-within {
+  outline-style: solid;
+}
+
+.focus-within\:outline-offset-2:focus-within {
+  outline-offset: 2px;
+}
+
+.focus-within\:outline-\[\#6db9c1\]:focus-within {
+  outline-color: #6db9c1;
+}
+
 .hover\:border-b-4:hover {
   border-bottom-width: 4px;
 }
@@ -2742,14 +2783,59 @@ main .section.elouqa-form-container {
   text-decoration-line: underline;
 }
 
+.hover\:ring:hover {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
 
+.focus\:outline:focus {
+  outline-style: solid;
+}
+
+.focus\:outline-offset-2:focus {
+  outline-offset: 2px;
+}
+
+.focus\:outline-\[\#6db9c1\]:focus {
+  outline-color: #6db9c1;
+}
+
+.focus\:ring:focus {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+.focus\:ring-\[\#6db9c1\]:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(109 185 193 / var(--tw-ring-opacity));
+}
+
+.focus\:ring-offset-2:focus {
+  --tw-ring-offset-width: 2px;
+}
+
 .focus-visible\:outline-none:focus-visible {
   outline: 2px solid transparent;
   outline-offset: 2px;
+}
+
+.focus-visible\:outline:focus-visible {
+  outline-style: solid;
+}
+
+.focus-visible\:outline-offset-2:focus-visible {
+  outline-offset: 2px;
+}
+
+.focus-visible\:outline-\[\#6db9c1\]:focus-visible {
+  outline-color: #6db9c1;
 }
 
 .group:hover .group-hover\:tracking-wide {
