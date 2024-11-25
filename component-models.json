@@ -2365,7 +2365,7 @@
         "label": "Search Options",
         "options": [
           {
-            "name": "Podcast",
+            "name": "Title with Image",
             "value": "title-image"
           }
         ]
