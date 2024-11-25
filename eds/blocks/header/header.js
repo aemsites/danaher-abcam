@@ -204,7 +204,6 @@ function buttonsEl(linkText, linkUrl, session) {
   let btnColor;
   let myAccLink;
   let createAccLink;
-  let host;
   const liEl = li({ class: 'mb-3 md:mb-0 px-4 pt-3 pb-3' });
   if (session) {
     applyClasses(liEl, 'border-b border-b-[#D8D8D8] space-y-2');
@@ -222,15 +221,8 @@ function buttonsEl(linkText, linkUrl, session) {
   }, linkText);
   liEl.append(anchEl);
   if (!hostName.includes('localhost') && !hostName.includes('.hlx')) {
-    if (hostName.includes('www.abcam.cn')) {
-      host = 'https://www.abcam.cn';
-    } else if (hostName.includes('www.abcam.co.jp')) {
-      host = 'https://www.abcam.co.jp';
-    } else {
-      host = 'https://www.abcam.com';
-    }
-    myAccLink = `${host}/my-account`;
-    createAccLink = `${host}/auth/register?redirect=https%3A%2F%2F${hostName}%2Fen-us`;
+    myAccLink = `https://${hostName}/my-account`;
+    createAccLink = `https://${hostName}/auth/register?redirect=https%3A%2F%2F${hostName}%2Fen-us`;
   } else {
     myAccLink = 'https://pp.abcam.com/my-account';
     createAccLink = 'https://pp.abcam.com/auth/register?redirect=https%3A%2F%2Fpp.abcam.com';
@@ -263,36 +255,28 @@ function buttonsEl(linkText, linkUrl, session) {
 
 function ulEls(hostName, sessionVal) {
   const ulEl = ul({ class: 'flex flex-col w-full min-w-60 max-w-80' });
-  let host;
   if (!hostName.includes('localhost') && !hostName.includes('.hlx')) {
-    if (hostName.includes('www.abcam.cn')) {
-      host = 'https://www.abcam.cn';
-    } else if (hostName.includes('www.abcam.co.jp')) {
-      host = 'https://www.abcam.co.jp';
-    } else {
-      host = 'https://www.abcam.com';
-    }
     if (sessionVal) {
       ulEl.append(
-        buttonsEl('Contact Us', `${host}/en-us/contact-us`, sessionVal),
-        accountMenuList('orders', 'My Orders', `${host}/my-account/orders`),
-        accountMenuList('addresses', 'My Addresses', `${host}/my-account/address-book`),
-        accountMenuList('inquiries', 'My Inquiries', `${host}/my-account/inquiries`),
-        accountMenuList('reviews', 'My Reviews', `${host}/my-account/reviews`),
-        accountMenuList('rewards', 'My Rewards', `${host}/my-account/reward-points`),
-        accountMenuList('profile', 'My Profile', `${host}/my-account/profile`),
-        accountMenuList('sign-out', 'Sign Out', `${host}`),
+        buttonsEl('Contact Us', `https://${hostName}/en-us/contact-us`, sessionVal),
+        accountMenuList('orders', 'My Orders', `https://${hostName}/my-account/orders`),
+        accountMenuList('addresses', 'My Addresses', `https://${hostName}/my-account/address-book`),
+        accountMenuList('inquiries', 'My Inquiries', `https://${hostName}/my-account/inquiries`),
+        accountMenuList('reviews', 'My Reviews', `https://${hostName}/my-account/reviews`),
+        accountMenuList('rewards', 'My Rewards', `https://${hostName}/my-account/reward-points`),
+        accountMenuList('profile', 'My Profile', `https://${hostName}/my-account/profile`),
+        accountMenuList('sign-out', 'Sign Out', `https://${hostName}`),
       );
     } else {
       ulEl.append(
-        buttonsEl('Sign In', `${host}/auth/login?redirect=https%3A%2F%2F${hostName}`),
-        accountMenuList('orders', 'My Orders', `${host}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Forders`),
-        accountMenuList('addresses', 'My Addresses', `${host}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Faddress-book`),
-        accountMenuList('inquiries', 'My Inquiries', `${host}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Finquiries`),
-        accountMenuList('reviews', 'My Reviews', `${host}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Freviews`),
-        accountMenuList('rewards', 'My Rewards', `${host}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Freward-points`),
-        accountMenuList('profile', 'My Profile', `${host}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Fprofile`),
-        buttonsEl('Contact Us', `${host}/en-us/contact-us`),
+        buttonsEl('Sign In', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}`),
+        accountMenuList('orders', 'My Orders', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Forders`),
+        accountMenuList('addresses', 'My Addresses', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Faddress-book`),
+        accountMenuList('inquiries', 'My Inquiries', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Finquiries`),
+        accountMenuList('reviews', 'My Reviews', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Freviews`),
+        accountMenuList('rewards', 'My Rewards', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Freward-points`),
+        accountMenuList('profile', 'My Profile', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Fprofile`),
+        buttonsEl('Contact Us', `https://${hostName}/en-us/contact-us`),
       );
     }
   } else if (sessionVal) {
