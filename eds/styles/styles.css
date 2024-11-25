@@ -2668,6 +2668,10 @@ main .section.elouqa-form-container {
   --tw-ring-offset-width: 2px;
 }
 
+.ring-offset-1 {
+  --tw-ring-offset-width: 1px;
+}
+
 .blur {
   --tw-blur: blur(8px);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
@@ -2909,6 +2913,10 @@ main .section.elouqa-form-container {
 
   .sm\:border-t-\[1px\] {
     border-top-width: 1px;
+  }
+
+  .sm\:pl-1 {
+    padding-left: 0.25rem;
   }
 }
 
