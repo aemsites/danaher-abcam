@@ -293,7 +293,7 @@ function ulEls(hostName, sessionVal) {
     );
   } else {
     ulEl.append(
-      buttonsEl('Sign In', 'https://pp.abcam.com/auth/login?redirect=https%3A%2F%2Fpp.abcam.com' + pathName),
+      buttonsEl('Sign In', `https://pp.abcam.com/auth/login?redirect=https%3A%2F%2Fpp.abcam.com${pathName}`),
       accountMenuList('orders', 'My Orders', 'https://pp.abcam.com/auth/login?redirect=https%3A%2F%2Fpp.abcam.com%2Fmy-account%2Forders'),
       accountMenuList('addresses', 'My Addresses', 'https://pp.abcam.com/auth/login?redirect=https%3A%2F%2Fpp.abcam.com%2Fmy-account%2Faddress-book'),
       accountMenuList('inquiries', 'My Inquiries', 'https://pp.abcam.com/auth/login?redirect=https%3A%2F%2Fpp.abcam.com%2Fmy-account%2Finquiries'),
@@ -340,7 +340,6 @@ export default async function decorate(block) {
     const html = await resp.text();
     block.innerHTML = html;
   }
-  // localStorage.setItem('CognitoIdentityServiceProvider.1sfrqi9v6h1tc9nfnleli0dmkb.sharan.patil@dhlscontractors.com.idToken', 'eyJraWQiOiJIR2U2RkdxXC95cGlQRGI3dmU1RldCM1wvUnNHXC9CVFRXamdEclk3dCsxYXdvPSIsImFsZyI6IlJTMjU2In0.eyJjdXN0b206Y29uc3VtZXJTZWdtZW50IjoiTk9WRUxfRVhQTE9SRVIiLCJzdWIiOiJjN2Y2Njg4OS1jNzcyLTRjNmMtYmVjZi05OWZhOWYxNDliYzAiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLmV1LXdlc3QtMS5hbWF6b25hd3MuY29tXC9ldS13ZXN0LTFfS0JHbjczWVU5IiwiY29nbml0bzp1c2VybmFtZSI6ImM3ZjY2ODg5LWM3NzItNGM2Yy1iZWNmLTk5ZmE5ZjE0OWJjMCIsImN1c3RvbTptYXJrZXRpbmdPcHRJbiI6ImZhbHNlIiwiZ2l2ZW5fbmFtZSI6IlNoYXJhbmFnb3VkYSIsIm9yaWdpbl9qdGkiOiJjZWMyOTJmMy00ZGYyLTRmM2UtYmQ4Mi0zZmM0MTY5ZWJhNjUiLCJhdWQiOiIxc2ZycWk5djZoMXRjOW5mbmxlbGkwZG1rYiIsImV2ZW50X2lkIjoiMmMzZTM2YWItYjgxNC00MjE2LWFhMDctMmI3NDYzYTNiYmUxIiwidG9rZW5fdXNlIjoiaWQiLCJhdXRoX3RpbWUiOjE3MzIwNzk1ODQsImV4cCI6MTczMjA4MzE4NCwiaWF0IjoxNzMyMDc5NTg0LCJmYW1pbHlfbmFtZSI6IlBhdGlsIiwianRpIjoiODE4NDU0YWMtYTY2Yi00MmQ0LWI4YTItZmE3NjFiYzIzZDAxIiwiZW1haWwiOiJzaGFyYW4ucGF0aWxAZGhsc2NvbnRyYWN0b3JzLmNvbSJ9.GWJsgvzUGuo-kGe10Nf6R46w5PKamOOilRhrQ_5lUzmWoJOqlRfXY4XcM1VuyqrDgLgsTBa1HCD2XCHHt3AVxuTIRz0KsXwEWi1rGL1pAonNxDcZhEnfwKJsN7VilrKIdV34Wp-YwoPP6MBaGJiLB80RuLOOo0WcbxM6E_rvgagAfvGnqxdYO5x5ydGG765gRd0MuNC9Ufbic1liSbethAsx5IbqcnHgW4_stH1Zbwwnr9MuS0zZ9yEXH3y2v2JfQfXorJiFRyXc9rK3pEEiwrffntGuGq25a_LQ_hOwNDLkV8xB8oeEDGoSOqqzxodnApBNzxv8uJUdmu61q6BOeg');
   block.append(megaMeunu());
   decorateIcons(block.querySelector('.abcam-logo'));
   decorateIcons(block.querySelector('.logo-home-link'), 120, 25);
