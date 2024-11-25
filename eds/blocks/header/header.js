@@ -174,6 +174,7 @@ function parsePayload(token) {
   try {
     return JSON.parse(atob(token.split('.')[1]));
   } catch (e) {
+    // eslint-disable-next-line no-console
     console.error('Error parsing token :', e);
     return null;
   }
@@ -247,8 +248,17 @@ function myAccount(session) {
   if (session) {
     const sessionVal = parsePayload(session);
     if (sessionVal) {
+      document.querySelectorAll('.account-dropdown').forEach((item) => {
+        if (item.querySelector('.user-icon')?.classList.contains('icon-user')) {
+          item.querySelector('.user-icon')?.classList.replace('icon-user', 'icon-user-solid');
+          item.querySelector('.user-icon')?.firstElementChild?.remove();
+          item.querySelector('.user-icon-dd')?.firstElementChild?.remove();
+          decorateIcons(item, 16, 16);
+        }
+      });
       document.querySelectorAll('.account-dropdown > span').forEach((item) => {
         if (item?.textContent === 'My account') {
+          item.classList.add('truncate');
           item.textContent = sessionVal.given_name;
         }
       });
@@ -291,7 +301,7 @@ export default async function decorate(block) {
     const html = await resp.text();
     block.innerHTML = html;
   }
-
+  // localStorage.setItem('CognitoIdentityServiceProvider.1sfrqi9v6h1tc9nfnleli0dmkb.sharan.patil@dhlscontractors.com.idToken', 'eyJraWQiOiJIR2U2RkdxXC95cGlQRGI3dmU1RldCM1wvUnNHXC9CVFRXamdEclk3dCsxYXdvPSIsImFsZyI6IlJTMjU2In0.eyJjdXN0b206Y29uc3VtZXJTZWdtZW50IjoiTk9WRUxfRVhQTE9SRVIiLCJzdWIiOiJjN2Y2Njg4OS1jNzcyLTRjNmMtYmVjZi05OWZhOWYxNDliYzAiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLmV1LXdlc3QtMS5hbWF6b25hd3MuY29tXC9ldS13ZXN0LTFfS0JHbjczWVU5IiwiY29nbml0bzp1c2VybmFtZSI6ImM3ZjY2ODg5LWM3NzItNGM2Yy1iZWNmLTk5ZmE5ZjE0OWJjMCIsImN1c3RvbTptYXJrZXRpbmdPcHRJbiI6ImZhbHNlIiwiZ2l2ZW5fbmFtZSI6IlNoYXJhbmFnb3VkYSIsIm9yaWdpbl9qdGkiOiJjZWMyOTJmMy00ZGYyLTRmM2UtYmQ4Mi0zZmM0MTY5ZWJhNjUiLCJhdWQiOiIxc2ZycWk5djZoMXRjOW5mbmxlbGkwZG1rYiIsImV2ZW50X2lkIjoiMmMzZTM2YWItYjgxNC00MjE2LWFhMDctMmI3NDYzYTNiYmUxIiwidG9rZW5fdXNlIjoiaWQiLCJhdXRoX3RpbWUiOjE3MzIwNzk1ODQsImV4cCI6MTczMjA4MzE4NCwiaWF0IjoxNzMyMDc5NTg0LCJmYW1pbHlfbmFtZSI6IlBhdGlsIiwianRpIjoiODE4NDU0YWMtYTY2Yi00MmQ0LWI4YTItZmE3NjFiYzIzZDAxIiwiZW1haWwiOiJzaGFyYW4ucGF0aWxAZGhsc2NvbnRyYWN0b3JzLmNvbSJ9.GWJsgvzUGuo-kGe10Nf6R46w5PKamOOilRhrQ_5lUzmWoJOqlRfXY4XcM1VuyqrDgLgsTBa1HCD2XCHHt3AVxuTIRz0KsXwEWi1rGL1pAonNxDcZhEnfwKJsN7VilrKIdV34Wp-YwoPP6MBaGJiLB80RuLOOo0WcbxM6E_rvgagAfvGnqxdYO5x5ydGG765gRd0MuNC9Ufbic1liSbethAsx5IbqcnHgW4_stH1Zbwwnr9MuS0zZ9yEXH3y2v2JfQfXorJiFRyXc9rK3pEEiwrffntGuGq25a_LQ_hOwNDLkV8xB8oeEDGoSOqqzxodnApBNzxv8uJUdmu61q6BOeg');
   block.append(megaMeunu());
   decorateIcons(block.querySelector('.abcam-logo'));
   decorateIcons(block.querySelector('.logo-home-link'), 120, 25);
@@ -354,6 +364,7 @@ export default async function decorate(block) {
   });
 
   decorateIcons(document.querySelector('.country-dd'), 16, 16);
+  block.querySelector('.country-dropdown')?.classList.add('hover:bg-[#3B3B3B]');
   block.querySelector('.country-dropdown')?.addEventListener('click', (event) => {
     const countrySearch = document.querySelector('.country-search');
     if (event.target === event.currentTarget || event.target.alt === 'chevron-down-white' || event.target.parentElement.classList.contains('country-flag-icon')) {
@@ -377,6 +388,7 @@ export default async function decorate(block) {
   decorateIcons(flagElement, 24, 24, 'flags');
   const dropdownContainer = document.querySelector('.account-dropdown-container');
   decorateIcons(dropdownContainer, 16, 16);
+  document.querySelector('.account-dropdown').classList.add('hover:bg-[#3B3B3B]');
   const accountEl = document.getElementById('my-account');
   const session = getLocalStorageToken();
   accountEl.append(myAccount(session));
