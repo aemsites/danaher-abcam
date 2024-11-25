@@ -347,7 +347,7 @@ function createOptimizedPicture(
       picture.appendChild(source);
     } else {
       const img = document.createElement('img');
-      img.setAttribute('loading', eager ? 'lazy' : 'eager');
+      img.setAttribute('loading', eager ? 'eager' : 'lazy');
       img.setAttribute('alt', alt);
       picture.appendChild(img);
       img.setAttribute('src', `${pathname}?width=${br.width}&format=${ext}&optimize=medium`);
