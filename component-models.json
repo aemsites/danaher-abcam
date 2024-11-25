@@ -2443,7 +2443,7 @@
         "options": [
           {
             "name": "Type",
-            "value": "type"
+            "value": "content-type"
           },
           {
             "name": "Research Areas",
