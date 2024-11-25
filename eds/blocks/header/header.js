@@ -416,7 +416,6 @@ export default async function decorate(block) {
     countrySelector(block);
   });
   setOrUpdateCookie('NEXT_LOCALE', 'en-us', 365);
-
   const flagElement = block.querySelector('.country-flag-container');
   const lastSelectedCountry = getCookie('NEXT_COUNTRY');
   if (flagElement && lastSelectedCountry !== null) {
