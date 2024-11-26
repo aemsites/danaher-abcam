@@ -32,8 +32,6 @@ export default async function decorate(block) {
   const extractedTags = kcTags.map((tag) => tag.split('/').pop());
   const title = getMetadata('og:title');
 
-  const parentURL = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/'));
-  const parentPage = parentURL.split('/').pop();
   const chapterItems = await ffetch('/en-us/knowledge-center/query-index.json')
     .filter((item) => item.title && item.title !== title)
     .filter((item) => item.tags && extractedTags.some((tag) => item.tags.includes(tag)))
