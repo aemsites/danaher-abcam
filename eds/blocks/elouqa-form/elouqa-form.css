@@ -48,14 +48,14 @@
   z-index: 10
 }
 
-.elouqa-form-wrapper :is(.mx-auto) {
-  margin-left: auto;
-  margin-right: auto
-}
-
 .elouqa-form-wrapper :is(.my-2) {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem
+}
+
+.elouqa-form-wrapper :is(.mx-auto) {
+  margin-left: auto;
+  margin-right: auto
 }
 
 .elouqa-form-wrapper :is(.block) {
@@ -77,6 +77,10 @@
 
 .elouqa-form-wrapper :is(.w-full) {
   width: 100%
+}
+
+.elouqa-form-wrapper :is(.max-w-7xl) {
+  max-width: 80rem
 }
 
 .elouqa-form-wrapper :is(.basis-2\/5) {
@@ -228,5 +232,12 @@
   .elouqa-form-wrapper :is(.lg\:py-12) {
     padding-top: 3rem;
     padding-bottom: 3rem
+  }
+}
+
+@media (min-width: 1280px) {
+  .elouqa-form-wrapper :is(.xl\:px-0) {
+    padding-left: 0px;
+    padding-right: 0px
   }
 }
