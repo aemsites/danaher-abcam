@@ -23,9 +23,11 @@ export default async function buildAutoBlocks() {
   const breadcrumbBlock = buildBlock('breadcrumb', { elems: [] });
   headerSection.append(breadcrumbBlock);
   main.prepend(headerSection);
+  const paginationBlock = buildBlock('pagination', { elems: [] });
   const sectionMiddle = main.querySelector(':scope > div:nth-child(3)');
   sectionMiddle.classList.add(...'border-t'.split(' '));
   sectionMiddle.append(
     buildBlock('guides-hub-links', { elems: [] }),
   );
+  sectionMiddle.append(paginationBlock);
 }
