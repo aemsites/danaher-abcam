@@ -35,7 +35,7 @@
                   {
                     "component": "date-time",
                     "valueType": "date-time",
-                    "name": "publishdate",
+                    "name": "publishDate",
                     "label": "Publish Date",
                     "placeholder": "YYYY-MM-DD",
                     "displayFormat": null,
