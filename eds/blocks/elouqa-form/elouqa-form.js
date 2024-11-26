@@ -52,7 +52,6 @@ function formStyle(formEl) {
  * @param {Element} block The footer block element
  */
 export default async function decorate(block) {
-  // block.parentElement.classList.add(...''.split(' '));
   block.classList.add(...'relative px-6 lg:px-8 py-8 lg:py-12 mx-auto max-w-7xl xl:px-0'.split(' '));
   try {
     const videoLink = block.querySelector('a');
