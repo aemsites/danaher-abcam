@@ -1835,16 +1835,16 @@ main .section.elouqa-form-container {
   min-width: 15rem;
 }
 
+.max-w-24 {
+  max-width: 6rem;
+}
+
 .max-w-\[2464px\] {
   max-width: 2464px;
 }
 
 .max-w-full {
   max-width: 100%;
-}
-
-.max-w-24 {
-  max-width: 6rem;
 }
 
 .flex-1 {
@@ -2648,18 +2648,14 @@ main .section.elouqa-form-container {
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
 
-.ring-\[\#6fafb8\] {
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(111 175 184 / var(--tw-ring-opacity));
-}
-
 .ring-\[\#6db9c1\] {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(109 185 193 / var(--tw-ring-opacity));
 }
 
-.ring-offset-2 {
-  --tw-ring-offset-width: 2px;
+.ring-\[\#6fafb8\] {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(111 175 184 / var(--tw-ring-opacity));
 }
 
 .ring-offset-1 {
