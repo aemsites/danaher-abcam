@@ -9,7 +9,8 @@ export default async function buildAutoBlocks() {
   const titleBlock = buildBlock('title-card', { elems: [] });
   const paginationBlock = buildBlock('pagination', { elems: [] });
   const breadcrumbBlock = buildBlock('breadcrumb', { elems: [] });
-  section.append(paginationBlock);
+  const guidesHubLinksBlock = buildBlock('guides-hub-links', { elems: [] });
+  section.append(guidesHubLinksBlock, paginationBlock);
   headerSection.append(breadcrumbBlock, titleBlock);
   mainEl.insertBefore(headerSection, section);
 }
