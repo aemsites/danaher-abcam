@@ -25,6 +25,8 @@ export default async function buildAutoBlocks() {
   main.prepend(headerSection);
   const paginationBlock = buildBlock('pagination', { elems: [] });
   const sectionMiddle = main.querySelector(':scope > div:nth-child(3)');
+  console.log("sectionMiddle:", sectionMiddle);
+  
   sectionMiddle.classList.add(...'border-t'.split(' '));
   sectionMiddle.append(
     buildBlock('guides-hub-links', { elems: [] }),
