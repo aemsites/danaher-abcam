@@ -2385,6 +2385,20 @@
         "valueType": "string"
       },
       {
+        "component": "text",
+        "valueType": "string",
+        "name": "subTitle_title",
+        "value": "",
+        "label": "SubTitle"
+      },
+      {
+        "component": "select",
+        "name": "subTitle_titleType",
+        "hidden": true,
+        "label": "SubTitle Type",
+        "valueType": "string"
+      },
+      {
         "component": "richtext",
         "name": "title-card_description",
         "value": "",
