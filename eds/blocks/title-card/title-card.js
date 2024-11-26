@@ -1,5 +1,6 @@
 import { getMetadata } from '../../scripts/aem.js';
 import { div } from '../../scripts/dom-builder.js';
+import { applyClasses } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
   const template = getMetadata('template');
@@ -14,6 +15,14 @@ export default function decorate(block) {
     const titleImage = block.querySelector('img');
     titleImage.classList.add(...'w-full h-48 md:h-[400px] object-cover relative 2xl:w-1/2 2xl:absolute 2xl:right-0 2xl:top-36'.split(' '));
     if (template === 'webinar') {
+      const subTitleEl = block.querySelector('h4');
+      console.log(subTitleEl);
+      if (subTitleEl) {
+        applyClasses(subTitleEl, 'text-xs text-[#378189] bg-[#EDF6F7] font-semibold rounded capitalize py-1 px-2');
+        const divEl = div({ class: 'flex md:inline-flex text-align-center items-center justify-between w-full' });
+        divEl.append(subTitleEl);
+        block.querySelector('h1').parentElement.parentElement.prepend(divEl);
+      }
       const readingTime = getMetadata('readingtime');
       const expectedPublishFormat = new Date(getMetadata('published-time'));
       if (expectedPublishFormat && readingTime) {

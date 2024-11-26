@@ -65,8 +65,16 @@
   justify-content: center
 }
 
+.title-card-wrapper :is(.justify-between) {
+  justify-content: space-between
+}
+
 .title-card-wrapper :is(.gap-y-6) {
   row-gap: 1.5rem
+}
+
+.title-card-wrapper :is(.rounded) {
+  border-radius: 0.25rem
 }
 
 .title-card-wrapper :is(.border-t-4) {
@@ -78,9 +86,19 @@
   border-color: rgb(255 114 35 / var(--tw-border-opacity))
 }
 
+.title-card-wrapper :is(.bg-\[\#EDF6F7\]) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(237 246 247 / var(--tw-bg-opacity))
+}
+
 .title-card-wrapper :is(.object-cover) {
   -o-object-fit: cover;
      object-fit: cover
+}
+
+.title-card-wrapper :is(.px-2) {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem
 }
 
 .title-card-wrapper :is(.px-4) {
@@ -91,6 +109,11 @@
 .title-card-wrapper :is(.px-6) {
   padding-left: 1.5rem;
   padding-right: 1.5rem
+}
+
+.title-card-wrapper :is(.py-1) {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem
 }
 
 .title-card-wrapper :is(.pb-4) {
@@ -125,6 +148,11 @@
   line-height: 1.25rem
 }
 
+.title-card-wrapper :is(.text-xs) {
+  font-size: 0.75rem;
+  line-height: 1rem
+}
+
 .title-card-wrapper :is(.font-normal) {
   font-weight: 400
 }
@@ -151,6 +179,11 @@
 
 .title-card-wrapper :is(.tracking-\[0\.3px\]) {
   letter-spacing: 0.3px
+}
+
+.title-card-wrapper :is(.text-\[\#378189\]) {
+  --tw-text-opacity: 1;
+  color: rgb(55 129 137 / var(--tw-text-opacity))
 }
 
 .title-card-wrapper :is(.text-\[\#8B8B8B\]) {
@@ -201,6 +234,10 @@
 
   .title-card-wrapper :is(.md\:flex) {
     display: flex
+  }
+
+  .title-card-wrapper :is(.md\:inline-flex) {
+    display: inline-flex
   }
 
   .title-card-wrapper :is(.md\:h-\[400px\]) {
