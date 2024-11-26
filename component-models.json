@@ -2365,24 +2365,10 @@
         "label": "Search Options",
         "options": [
           {
-            "name": "Podcast",
+            "name": "Title with Image",
             "value": "title-image"
           }
         ]
-      },
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image",
-        "label": "Image",
-        "multi": false
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "imageAlt",
-        "label": "Alt",
-        "value": ""
       },
       {
         "component": "text",
@@ -2404,6 +2390,99 @@
         "value": "",
         "label": "Description",
         "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "link",
+        "label": "Link"
+      },
+      {
+        "component": "text",
+        "name": "linkText",
+        "label": "Text"
+      },
+      {
+        "component": "select",
+        "name": "linkTitle",
+        "label": "Button or Link",
+        "options": [
+          {
+            "name": "Button",
+            "value": "button"
+          },
+          {
+            "name": "Link",
+            "value": "link"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "linkVariant",
+        "label": "Link Variant",
+        "options": [
+          {
+            "name": "Primary",
+            "value": "button-primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "button-secondary"
+          },
+          {
+            "name": "Tertiary Outline",
+            "value": "button-tertiary-outline"
+          },
+          {
+            "name": "Tertiary Filled",
+            "value": "button-tertiary-filled"
+          },
+          {
+            "name": "Text Only",
+            "value": "button-text-only"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "linkIconType",
+        "label": "Icon Type",
+        "options": [
+          {
+            "name": "None",
+            "value": "icon-none"
+          },
+          {
+            "name": "Both",
+            "value": "icon-both"
+          },
+          {
+            "name": "Right",
+            "value": "icon-right"
+          },
+          {
+            "name": "Left",
+            "value": "icon-left"
+          },
+          {
+            "name": "Icon Only",
+            "value": "icon-only"
+          }
+        ]
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Alt",
+        "value": ""
       }
     ]
   },

@@ -29,13 +29,10 @@
           "label": "Search Options",
           "options": [
             {
-              "name": "Podcast",
+              "name": "Title with Image",
               "value": "title-image"
             }
           ]
-        },
-        {
-          "...": "../../../models/_common.json#/image-fields"
         },
         {
           "component": "text",
@@ -57,6 +54,12 @@
           "value": "",
           "label": "Description",
           "valueType": "string"
+        },
+        {
+          "...": "../../../models/_common.json#/button-fields"
+        },
+        {
+          "...": "../../../models/_common.json#/image-fields"
         }
       ]
     }
