@@ -449,7 +449,7 @@ export default async function decorate(block) {
 
   const cartButton = document.querySelector('.cart-dropdown');
   const cartCountElement = document.querySelector('.cart-count');
-  const productCount = parseInt(cartCountElement.textContent, 0 || 0);
+  const productCount = parseInt(cartCountElement.textContent, 10) || 0;
   if (productCount > 0) {
     cartCountElement.classList.remove('hidden');
   }
