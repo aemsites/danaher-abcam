@@ -2,71 +2,44 @@ import ffetch from '../../scripts/ffetch.js';
 import { decorateIcons, toClassName } from '../../scripts/aem.js';
 import { buildStoryHubSchema } from '../../scripts/schema.js';
 import {
-  button, div, p, span, ul, li, a,
+  button, div, p, span, ul, li, select, option
 } from '../../scripts/dom-builder.js';
-import { createFilters } from '../../scripts/scripts.js';
+import { createFilters, formatDate } from '../../scripts/scripts.js';
 import createCard from '../dynamic-cards/articleCard.js';
+import { handleRenderContent } from '../story-hub/story-hub.js';
 
 const getPageFromUrl = () => toClassName(new URLSearchParams(window.location.search).get('page')) || '';
 
-let lists = [];
-let filterContainer = {};
+function updateUrlWithParams(key, value, url) {
+  const newUrl = new URL(url);
+  if (key !== 'page') {  // Only handle filters excluding 'page'
+    const values = newUrl.searchParams.get(key)?.split('|') || [];
+    if (newUrl.searchParams.has('page')) newUrl.searchParams.set('page', '1');
 
+    if (values.includes(value)) {
+      newUrl.searchParams.set(key, values.filter((v) => v !== value).join('|') || '');
+    } else {
+      newUrl.searchParams.set(key, [...values, value].filter(Boolean).join('|'));
+    }
+    if (!newUrl.searchParams.get(key)) newUrl.searchParams.delete(key);
+  } else {
+    newUrl.searchParams.set(key, value);
+    newUrl.searchParams.set('page', '1');
+  }
+  window.history.pushState(null, '', newUrl);
+}
+
+let lists = [];
+let tempList = [];
 let itemsPerPage;
+//let sortBy = 'Relevance';  // Default sorting option
 
 const hub = div();
 const allSelectedTags = div(
   { class: 'w-fit flex flex-row-reverse items-start gap-2 mb-4 [&_*:empty+span]:hidden [&_*:empty]:mb-8' },
   ul({ class: 'inline-flex items-center flex-wrap gap-2 [&_.showmoretags.active~*:not(.clear-all)]:hidden md:[&_.showmoretags.active~*:not(.clear-all):not(.showlesstags)]:flex md:[&_.showmoretags~*:not(.showlesstags)]:flex' }),
   span({ class: 'text-xs font-semibold text-[#07111299]' }, 'Filters:'),
-  div({ class: 'sort-by text-[#65797c] text-xs font-semibold not-italic mr-2' }, 'Sort By:'),
-  div(
-    { class: 'sb-container w-36 flex flex-row items-center gap-x-4 !bg-[#F4F5F5] tracking-[0.2px] leading-4 text-xs border border-[#EAECEC] border-opacity-5 bg-[#273F3F] bg-opacity-5 rounded-full py-3 px-6 w-auto bg-white cursor-pointer relative' },
-    span({ class: 'sb-selected' }, ''),
-    span({ class: 'icon icon-chevron-down shrink-0 ml-auto' }),
-    div({ class: 'sb-options w-max h-auto drop-shadow-2xl absolute hidden top-full lg:left-0 right-0 bg-white rounded-2xl z-20 border pt-5 mt-1 max-h-screen overflow-y-auto' }),
-  ),
 );
-
-// const allSelectedTags = div(
-//   { class: 'w-fit flex flex-row-reverse items-start gap-2 mb-4 [&_*:empty+span]:hidden [&_*:empty]:mb-8' },
-//   ul({ class: 'inline-flex items-center flex-wrap gap-2 [&_.showmoretags.active~*:not(.clear-all)]:hidden md:[&_.showmoretags.active~*:not(.clear-all):not(.showlesstags)]:flex md:[&_.showmoretags~*:not(.showlesstags)]:flex' } ),
-//   span({ class: 'text-xs font-semibold text-[#07111299]' }, 'Filters:'),
-  
-//   // Add the Sort By Dropdown
-//   div({ class: 'inline-flex items-center justify-self-end flex-wrap gap-2 text-xs font-semibold text-[#07111299]' }, 
-//     'Sort By:', 
-//     div(
-//       { class: 'relative' },
-//       // Button for Sort By Dropdown
-//       button(
-//         {
-//           id: 'sortByButton', 
-//           class: 'px-4 py-2 bg-gray-700 text-gray-100 rounded-full flex items-center'
-//         },
-//         span({ id: 'sortByText' }, 'Relevance'),
-//         span({ class: 'icon icon-chevron-down size-5 rotate-180' }),
-//       ),
-//       // Dropdown menu
-//       div(
-//         { id: 'sortByMenu', class: 'absolute hidden bg-white border rounded-md shadow-lg mt-2 w-full' },
-//         button(
-//           { class: 'block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-200', 'data-sort': 'relevance' }, 
-//           'Relevance'
-//         ),
-//         button(
-//           { class: 'block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-200', 'data-sort': 'date-descending' },
-//           'Date Descending'
-//         ),
-//         button(
-//           { class: 'block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-200', 'data-sort': 'date-ascending' },
-//           'Date Ascending'
-//         )
-//       )
-//     )
-//   )
-// );
-
 const clearAllEl = span({
   class: 'shrink-0 text-xs font-semibold underline cursor-pointer',
   onclick: async () => {
@@ -76,6 +49,18 @@ const clearAllEl = span({
     handleResetFilters();
   },
 }, 'Clear All');
+const sortByDropdown = div({
+  class: 'conatiner ml-auto' },
+  select({ class: 'text-xs font-semibold text-[#07111299] bg-transparent border-none cursor-pointer',
+    onchange: (e) => {
+      handleSortChange(e.target.value);
+    }
+  },
+  option({ value: 'relevance' }, 'Relevance'),
+  option({ value: 'date-desc' }, 'Date Descending'),
+  option({ value: 'date-asc' }, 'Date Ascending')
+  ),
+);
 const hubDesktopFilters = div(
   { class: 'md:col-span-2 w-full h-screen md:h-auto fixed md:relative flex flex-col-reverse justify-end top-0 left-0 z-50 md:z-auto transition-all duration-150 -translate-y-full md:translate-y-0 [&_*:has(input:checked)~*_.clear-all]:block' },
   p(
@@ -99,6 +84,43 @@ const hubDesktopFilters = div(
 const cardList = ul({ class: 'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-y-10 gap-x-6 md:gap-y-16 justify-items-stretch' });
 const filterBackdrop = div({ class: 'h-screen fixed top-0 left-0 bg-white z-40 transition-all -translate-y-full' });
 
+// function createSortByDropdown() {
+//   const sortByLabel = span({ class: 'text-xs font-semibold text-[#07111299] ml-4' }, 'Sort By:');
+//   const dropdown = select({
+//     class: 'ml-2 bg-white text-gray-700 border border-gray-300 rounded-md text-xs',
+//     onchange: (e) => {
+//       sortBy = e.target.value;
+//       console.log("Dropdown Changed, New Sort By:", sortBy);
+//       handleSortContent();  // Trigger sorting and content update
+//     }
+//   });
+
+//   const options = ['Relevance', 'Date Ascending', 'Date Descending'].map((optionText) =>
+//     option(
+//       { value: optionText, selected: optionText === sortBy },
+//       optionText
+//     )
+//   );
+
+//   dropdown.append(...options);
+//   return div({ class: 'flex items-center' }, sortByLabel, dropdown);
+// }
+
+// function handleSortContent() {
+//   console.log("Sort By:", sortBy);  // Debugging
+
+//   if (sortBy === 'Relevance') {
+//     tempList = [...lists];  // Keep the original order
+//   } else if (sortBy === 'Date Ascending') {
+//     tempList = [...lists].sort((listA, listB) => listA.publishDate - listB.publishDate);
+//     console.log(tempList);
+//   } else if (sortBy === 'Date Descending') {
+//     tempList = [...lists].sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
+//   }
+
+//   handleRenderContent(tempList);  // Ensure content gets updated
+// }
+
 function showMoreOrLessTags(mode) {
   const showmoretags = allSelectedTags.querySelector('.showmoretags');
   const showlesstags = allSelectedTags.querySelector('.showlesstags');
@@ -118,11 +140,17 @@ function showMoreOrLessTags(mode) {
 const createPaginationLink = (page, label, current = false) => {
   const newUrl = new URL(window.location);
   newUrl.searchParams.set('page', page);
-  const link = a(
+  const link = span(
     {
-      href: newUrl.toString(),
+      onclick: () => {
+        const url = new URL(window.location.href);
+        url.searchParams.set('page', page || label);
+        window.history.pushState(null, '', url.toString());
+        // eslint-disable-next-line no-use-before-define
+        handleRenderContent(tempList);
+      },
       class:
-        'font-medium text-sm leading-5 pt-4 px-4 items-center inline-flex hover:border-t-2 hover:border-gray-300 hover:text-gray-700',
+        'cursor-pointer font-medium text-sm leading-5 pt-4 px-4 items-center inline-flex hover:border-t-2 hover:border-gray-300 hover:text-gray-700',
     },
     label || page,
   );
@@ -175,11 +203,14 @@ const createPagination = (entries, page, limit) => {
 function handleRenderTags() {
   const tagsList = allSelectedTags.querySelector('ul');
   tagsList.innerHTML = '';
-  if (Object.keys(filterContainer).length > 0) {
+  const params = new URLSearchParams(window.location.search);
+
+  if (params.toString()) {
     let filterCount = 0;
-    Object.keys(filterContainer).forEach((filterArr) => {
-      if (filterArr !== 'stories-type') {
-        filterContainer[filterArr].forEach((filt) => {
+    [...params.keys()].forEach((filterArr) => {
+      if (filterArr !== 'page') { 
+        const filterValues = params.get(filterArr)?.split('|') || [];
+        filterValues.forEach((filt) => {
           filterCount += 1;
           tagsList.append(li(
             {
@@ -188,9 +219,17 @@ function handleRenderTags() {
               onclick: () => {
                 const selectedTag = allSelectedTags.querySelector(`ul li[title=${filt}]`);
                 selectedTag.outerHTML = '';
+
+                const updatedValues = filterValues.filter((value) => value !== filt).join('|');
+
+                if (updatedValues) {
+                  params.set(filterArr, updatedValues);
+                } else {
+                  params.delete(filterArr);
+                }
                 hub.querySelector(`#${filterArr}-${filt}`).checked = false;
-                // eslint-disable-next-line no-use-before-define
                 handleChangeFilter(filterArr, filt);
+                window.history.pushState(null, '', `?${params.toString()}`);
               },
             },
             filt,
@@ -199,6 +238,7 @@ function handleRenderTags() {
         });
       }
     });
+
     if (filterCount > 2) {
       tagsList.insertBefore(
         li({
@@ -212,100 +252,129 @@ function handleRenderTags() {
           class: 'showlesstags md:hidden flex items-center gap-x-1 text-xs text-[#378189] font-semibold bg-[#EDF6F7] px-2 py-1 rounded cursor-pointer capitalize',
           onclick: () => showMoreOrLessTags('show-less-tags'),
         }, 'Show Less'),
-        tagsList.childNodes[tagsList.children - 2],
+        tagsList.childNodes[tagsList.children.length - 2],
       );
     }
+
     if (filterCount >= 1) tagsList.append(li({ class: 'clear-all' }, clearAllEl));
     decorateIcons(tagsList);
   }
 }
 
+
 // eslint-disable-next-line default-param-last
-function handleRenderContent(newLists = lists) {
-  newLists.sort((card1, card2) => card2.publishDate - card1.publishDate);
-  cardList.innerHTML = '';
-  let page = parseInt(getPageFromUrl(), 10);
-  page = Number.isNaN(page) ? 1 : page;
-  const start = (page - 1) * itemsPerPage;
-  const storiesToDisplay = newLists.slice(start, start + itemsPerPage);
-  storiesToDisplay.forEach((article, index) => {
-    cardList.appendChild(createCard(article, index === 0, 'webinar'));
-  });
+// function handleRenderContent(newLists = lists) {
+//   newLists.sort((card1, card2) => card2.publishDate - card1.publishDate);
+//   cardList.innerHTML = '';
+//   let page = parseInt(getPageFromUrl(), 10);
+//   page = Number.isNaN(page) ? 1 : page;
+//   const start = (page - 1) * itemsPerPage;
+//   const storiesToDisplay = newLists.slice(start, start + itemsPerPage);
+//   storiesToDisplay.forEach((article, index) => {
+//     cardList.appendChild(createCard(article, index === 0, 'webinar'));
+//   });
 
-  const paginationElements = createPagination(newLists, page, itemsPerPage);
-  const paginateEl = hub.querySelector('.paginate');
-  if (paginateEl) {
-    paginateEl.innerHTML = '';
-    paginateEl.append(paginationElements);
-  }
-}
+//   const paginationElements = createPagination(newLists, page, itemsPerPage);
+//   const paginateEl = hub.querySelector('.paginate');
+//   if (paginateEl) {
+//     paginateEl.innerHTML = '';
+//     paginateEl.append(paginationElements);
+//   }
+// }
 
-function handleChangeFilter(key, value, mode) {
+// function handleRenderContent(newLists = lists) {
+//   console.log(newLists);
+//  // console.log("Rendering Content: ", newLists);  // Debug the new sorted list
+//   newLists.sort((card1, card2) => card2.publishDate - card1.publishDate);  // Sorting logic (can be omitted if already sorted in handleSortContent)
+//   cardList.innerHTML = '';  // Clear the existing content
+
+//   let page = parseInt(getPageFromUrl(), 10);
+//   page = Number.isNaN(page) ? 1 : page;
+//   const start = (page - 1) * itemsPerPage;
+//   const storiesToDisplay = newLists.slice(start, start + itemsPerPage);
+  
+//   storiesToDisplay.forEach((article, index) => {
+//     cardList.appendChild(createCard(article, index === 0, 'webinar'));
+//   });
+
+//   const paginationElements = createPagination(newLists, page, itemsPerPage);
+//   const paginateEl = hub.querySelector('.paginate');
+//   if (paginateEl) {
+//     paginateEl.innerHTML = '';
+//     paginateEl.append(paginationElements);
+//   }
+// }
+
+
+function handleChangeFilter(key, value) {
+  if ((key !== undefined && value !== 'undefined') && (value !== null || value === '') && typeof value === 'string') updateUrlWithParams(key, value, window.location.href);
+
   let newLists = lists;
-  if (!(key in filterContainer) && key === 'stories-type') {
-    newLists = lists.filter((list) => (value
-      ? list.tags.includes(value)
-      : true));
-  } else {
-    if (mode !== 'skip-filter') {
-      if (key !== 'undefined' && (value === 'undefined' || value === null)) {
-        delete filterContainer[key];
-      } else if (key in filterContainer) {
-        if (filterContainer[key].includes(value)) {
-          if (key !== 'stories-type') filterContainer[key] = filterContainer[key].filter((val) => val !== value);
-          if (key !== 'stories-type' && filterContainer[key].length === 0) delete filterContainer[key];
-        } else filterContainer[key].push(value);
-      } else filterContainer[key] = [value];
-      const totalFilterKeys = Object.keys(filterContainer);
-      newLists = lists.map((list) => {
-        const totalChecks = totalFilterKeys.filter((filt) => {
-          if (filterContainer[filt].length > 0) {
-            const arrNameRes = filterContainer[filt].filter((arrName) => {
-              if (filt === 'stories-type' && arrName === '') return true;
-              return list.tags.includes(arrName);
-            });
-            if (arrNameRes.length > 0) return true;
-          }
-          return false;
-        });
-        return totalChecks.length === totalFilterKeys.length && list;
-      }).filter(Boolean);
-    }
-    handleRenderTags();
+  let storiesList = [];
+  if (typeof value === 'string') {
+    storiesList = lists;
+    newLists = storiesList.filter((list) => {
+      const params = new URLSearchParams(window.location.search);
+      return [...params.keys()].every((filterKey) => {
+        if (filterKey !== 'page') {
+          const filterValues = params.get(filterKey)?.split('|') || [];
+          return filterValues.some((val) => list.tags.includes(val));
+        }
+        return true;
+      });
+    });
+  } else if (typeof value === 'object' && 'from' in value && 'to' in value) {
+    newLists = lists.filter((list) => {
+      const publishDate = list.publishDate * 1000;
+      if (publishDate >= value.from && publishDate <= value.to) {
+        return true;
+      }
+    });
+    console.log(newLists);
   }
-  if (mode === 'reset-page') {
-    const url = new URL(window.location.href);
-    const params = new URLSearchParams(url.search);
-    params.delete('page');
-    let newUrl = url.pathname;
-    if (params.toString()) {
-      newUrl += `?${params.toString()}`;
-    }
-    window.history.replaceState({}, '', newUrl);
-  }
-
+  
+  handleRenderTags();
+  tempList = newLists;
   handleRenderContent(newLists);
 }
 
-function handleResetFilters(value = '') {
-  Object.keys(filterContainer).forEach((filt) => {
-    for (let eachFilt = 0; eachFilt < filterContainer[filt].length; eachFilt += 1) {
-      const filterInp = hub.querySelector(`#${filt}-${filterContainer[filt][eachFilt]}`);
-      if (filterInp) filterInp.checked = false;
-    }
+function handleResetFilters() {
+  const url = new URL(window.location.href);
+  const params = url.searchParams;
+
+  // Reset all checkboxes or filter inputs based on the current query parameters
+  [...params.entries()].forEach(([key, values]) => {
+    values.split('|').forEach((value) => {
+      const filterInp = hub.querySelector(`#${key}-${value}`);
+      if (filterInp) {
+        filterInp.checked = false; // Uncheck the checkboxes or reset inputs
+      }
+    });
   });
-  filterContainer = {};
-  filterContainer['stories-type'] = [value];
-  // eslint-disable-next-line no-use-before-define
-  handleChangeFilter(null, null, 'skip-filter');
+
+  // Remove all query parameters from the URL (this will reset all filters)
+  [...params.keys()].forEach((key) => {
+    params.delete(key); // Remove each query parameter
+  });
+  window.history.replaceState(null, '', url.toString());
+  handleChangeFilter('', ''); // Passing empty strings to reset all filters
 }
 
+
+
 function handleClearCategoryFilter(key) {
-  filterContainer[key].forEach((filt) => {
-    const selectedTag = allSelectedTags.querySelector(`ul li[title=${filt}]`);
-    selectedTag.outerHTML = '';
-    hub.querySelector(`#${key}-${filt}`).checked = false;
+  const params = new URLSearchParams(window.location.search);
+
+  (params.get(key)?.split('|') || []).forEach((filt) => {
+    allSelectedTags.querySelector(`ul li[title="${filt}"]`)?.remove();
+    const checkbox = hub.querySelector(`#${key}-${filt}`);
+    if (checkbox instanceof HTMLInputElement && checkbox.type === 'checkbox') {
+      checkbox.checked = false;
+    }
   });
+
+  params.delete(key);
+  window.history.pushState(null, '', `?${params.toString()}`);
   handleChangeFilter(key, null);
 }
 
@@ -323,26 +392,36 @@ function toggleMobileFilters(mode) {
   }
 }
 
-function toggleTabs(tabId, tabElement) {
-  const tabs = tabElement.querySelectorAll('.tab');
-  const [key, value] = tabId.split('/');
-  if (!filterContainer[key].includes(value)) handleResetFilters(value);
-  tabs.forEach((tab) => {
-    if (tab.id === tabId) {
-      tab.classList.add('active', 'border-b-8', 'border-[#ff7223]');
-      handleChangeFilter(key, value);
-    } else {
-      tab.classList.remove('active', 'border-b-8', 'border-[#ff7223]');
-    }
-  });
+function handleSortChange(sortOption) {
+  let sortedList = [...lists];
+  // Sort by publish date
+  if (sortOption === 'date-desc') {
+    // Sort in descending order (most recent first)
+    sortedList = sortedList.sort((a, b) => {
+      const dateA = a.publishDate; // Convert timestamp (seconds) to milliseconds
+      const dateB = b.publishDate; // Convert timestamp (seconds) to milliseconds
+      return dateB - dateA; // For descending order
+    });
+  } else if (sortOption === 'date-asc') {
+    // Sort in ascending order (oldest first)
+    sortedList = sortedList.sort((a, b) => {
+      const dateA = a.publishDate; // Convert timestamp (seconds) to milliseconds
+      const dateB = b.publishDate; // Convert timestamp (seconds) to milliseconds
+      console.log(dateA, dateB);
+      return dateA - dateB; // For ascending order
+    });
+    console.log(sortedList);
+  }
+  tempList = sortedList;
+  handleRenderContent(tempList);
 }
 
 async function initiateRequest() {
-  let response = await ffetch('/en-us/stories/query-index.json')
-    .chunks(500)
-    .all();
-  response = [...response].sort((x, y) => new Date(x.publishDate) - new Date(y.publishDate));
-  lists = [...response];
+  let response = await ffetch('/en-us/webinars/query-index.json')
+  .chunks(500)
+  .all();
+response = [...response].sort((x, y) => new Date(x.publishDate) - new Date(y.publishDate));
+lists = [...response];
 }
 
 export default async function decorate(block) {
@@ -356,20 +435,24 @@ export default async function decorate(block) {
     createFilters({
       lists,
       filterNames,
+      dateRange: 'listed-within',
       element: allFilters,
       listActionHandler: async (categoryKey, categoryValue) => {
+        console.log(categoryKey, categoryValue);
         await initiateRequest();
-        handleChangeFilter(categoryKey, categoryValue, 'reset-page');
+        handleChangeFilter(categoryKey, categoryValue);
       },
       clearFilterHandler: async (categoryKey) => {
         await initiateRequest();
         handleClearCategoryFilter(categoryKey);
       },
     });
+    allSelectedTags.append(sortByDropdown);
 
     const hubContent = div(
       { class: 'col-span-9' },
       allSelectedTags,
+      //createSortByDropdown(), // Add Sort By dropdown here
       cardList,
     );
 

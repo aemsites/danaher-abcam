@@ -957,61 +957,108 @@ export function createFilters({
   clearFilterHandler = () => {},
   limit = 6,
   sort = 'ASC',
+  dateRange = '',
 }) {
   const tempArr = {};
-
-  // Iterate over the lists to create the filters
+  let startDate = new Date();
+  let endDate = new Date();
+  if (dateRange !== '' && filterNames.includes(dateRange)) {
+    lists.sort((listA, listB) => listB.publishDate - listA.publishDate);
+    startDate = lists[0].publishDate;
+    endDate = lists[lists.length - 1].publishDate;
+  }
   lists.forEach((list) => {
     const parts = list?.tags?.split(', ');
     parts.forEach((part) => {
       const [key, value] = part.split('/');
+      //console.log(filterNames);
       filterNames.forEach((name) => {
+        //console.log(key, name, tempArr, parts);
         if (key.includes(name)) {
           if (!(name in tempArr)) tempArr[name] = [];
           if (!tempArr[name].includes(value)) tempArr[name].push(value);
-        }
-        if (name in tempArr && tempArr[name].length > 0) {
-          sort.toUpperCase() === 'ASC'
-            ? tempArr[name].sort()
-            : tempArr[name].sort().reverse();
+          if (name in tempArr && tempArr[name].length > 0) {
+            sort.toUpperCase() === 'ASC'
+              ? tempArr[name].sort()
+              : tempArr[name].sort().reverse()
+          }
+        } else if (dateRange !== '' && filterNames.includes(dateRange)) {
+          tempArr[dateRange] = dateRange;
         }
       });
     });
   });
+  console.log(tempArr);
 
-  // Create filters for each category
   Object.keys(tempArr).forEach((categoryKey, categoryIndex) => {
+    console.log(categoryIndex, categoryKey);
     const listsEl = ul({ class: 'space-y-2 mt-2' });
-
-    // Handle other filters (checkbox based)
-    if (categoryKey !== 'listed-within') {
-      [...tempArr[categoryKey]].map((categoryValue, categoryIndex) => {
-        listsEl.append(
-          li(
-            categoryIndex >= limit ? { class: 'hidden' } : '',
-            label(
-              {
-                class: 'w-full flex items-center gap-3 py-1 md:hover:bg-gray-50 text-sm font-medium cursor-pointer',
-                for: `${categoryKey}-${categoryValue}`,
+    if (typeof tempArr[categoryKey] === 'object') {
+      [...tempArr[categoryKey]].map((categoryValue, categoryIndex) => {  
+        listsEl.append(li(
+          categoryIndex >= limit ? { class: 'hidden' } : '',
+          label(
+            {
+              class: 'w-full flex items-center gap-3 py-1 md:hover:bg-gray-50 text-sm font-medium cursor-pointer',
+              for: `${[categoryKey]}-${categoryValue}`,
+            },
+            input({
+              class: 'accent-[#378189]',
+              type: 'checkbox',
+              name: [categoryKey],
+              id: `${[categoryKey]}-${categoryValue}`,
+              onchange: () => {
+                listActionHandler(categoryKey, categoryValue);
               },
-              input({
-                class: 'accent-[#378189]',
-                type: 'checkbox',
-                name: categoryKey,
-                id: `${categoryKey}-${categoryValue}`,
-                onchange: () => {
-                  listActionHandler(categoryKey, categoryValue);
-                },
-              }),
-              categoryValue.replace(/-/g, ' ').replace(/^\w/, (char) => char.toUpperCase())
-            )
-          )
-        );
+            }),
+            categoryValue.replace(/-/g, ' ').replace(/^\w/, (char) => char.toUpperCase()),
+          ),
+        ));
       });
+    } else if (typeof tempArr[categoryKey] === 'string') {
+      const fromDate = input({
+        class: 'bg-gray-100 border rounded-md p-2',
+        type: 'date',
+        id: 'date-from',
+        value: new Date(startDate),
+        'data-start-value': new Date(startDate), 
+      });
+      const toDate = input({
+        class: 'bg-gray-100 border rounded-md p-2',
+        type: 'date',
+        id: 'date-to',
+        value: new Date(endDate).toLocaleDateString(),
+      });
+      const dateFilterSection = li({ class: 'mt-2 flex flex-col gap-2' },
+        label(
+          { class: 'flex flex-col text-sm font-medium text-gray-700' },
+          'From',
+          fromDate,
+        ),
+        label(
+          { class: 'flex flex-col text-sm font-medium text-gray-700' },
+          'To',
+          toDate,
+        ),
+        button({
+          class: 'mt-3 text-sm font-medium text-black bg-white border-[1px] border-black px-4 py-2 rounded-full cursor-pointer hover:bg-[#1e5b5b]',
+          onclick: () => {
+            const formatFromDate = new Date(fromDate.value).getTime();
+            const formatToDate = new Date(toDate.value).getTime();
+
+            // Ensure both from and to dates are selected before applying the filter
+            if (formatFromDate && formatToDate) {
+              listActionHandler('listed-within', { from: formatFromDate, to: formatToDate });
+            }
+          }
+        }, 'Apply'),
+      );
+      listsEl.append(dateFilterSection);
     }
+    
 
     // Add "Show More" button if needed
-    if (limit !== 0 && tempArr[categoryKey].length > limit) {
+    if (limit !== 0 && tempArr[categoryKey].length > limit && typeof tempArr[categoryKey] === 'object') {
       listsEl.append(
         li(
           span(
@@ -1030,17 +1077,14 @@ export function createFilters({
                 event.target.innerText = `Show ${toggle ? 'Less' : 'More'}`;
               },
             },
-            'Show More'
-          )
-        )
+            'Show More',
+          ),
+        ),
       );
     }
 
-    // Accordion section for other filters
     const accordionSection = div(
-      {
-        class: `flex flex-col px-6 py-4 border-b md:border border-gray-300 ${categoryIndex > 0 ? 'md:mt-4' : ''} md:rounded-xl [&_div:not(.hidden)~p]:mb-3 [&_div:not(.hidden)~p_.icon]:rotate-180`,
-      },
+      { class: `flex flex-col px-6 py-4 border-b md:border border-gray-300 ${categoryIndex > 0 ? 'md:mt-4' : ''} md:rounded-xl [&_div:not(.hidden)~p]:mb-3 [&_div:not(.hidden)~p_.icon]:rotate-180` },
       p(
         {
           class: 'flex items-center justify-between my-0 cursor-pointer',
@@ -1050,74 +1094,20 @@ export function createFilters({
           },
         },
         span({ class: 'text-base font-bold capitalize' }, categoryKey.replace('-', ' ')),
-        span({ class: 'icon icon-chevron-down size-5 rotate-180' })
+        span({ class: 'icon icon-chevron-down size-5 rotate-180' }),
       ),
       div(
-        { class: 'flex flex-col-reverse [&_ul:has(:checked)+*]:block' },
+        { class: 'flex flex-col-reverse [&_ul:has(:checked)+*]:block' },//conditional-wise css implementation
         listsEl,
         span({
           class: 'hidden text-xs leading-5 font-medium text-[#378189] mt-1 cursor-pointer hover:underline underline-offset-1',
           onclick: () => clearFilterHandler(categoryKey),
         }, 'Clear filters'),
-      )
+      ),
     );
 
     if (listsEl.children.length > 0) element.append(accordionSection);
   });
-
-  // Handle the 'Listed within' filter if it's present in filterNames
-  if (filterNames.includes('listed-within')) {
-    const dateFilterSection = div(
-      { class: 'flex flex-col px-6 py-4 border-b md:border md:mt-4 border-gray-300 md:rounded-xl' },
-      p(
-        {
-          class: 'flex items-center justify-between my-0 cursor-pointer',
-          onclick: () => {
-            dateFilterSection.classList.toggle('hidden');
-          },
-        },
-        span({ class: 'text-base font-bold capitalize' }, 'Listed within'),
-        span({ class: 'icon icon-chevron-down size-5 rotate-180' })
-      ),
-      div(
-        { class: 'flex flex-col-reverse' },
-        div({ class: 'mt-2 flex flex-col gap-2' },
-          label(
-            { class: 'flex flex-col text-sm font-medium text-gray-700' },
-            'From',
-            input({
-              class: 'bg-gray-100 border rounded-md p-2',
-              type: 'date',
-              id: 'date-from',
-            })
-          ),
-          label(
-            { class: 'flex flex-col text-sm font-medium text-gray-700' },
-            'To',
-            input({
-              class: 'bg-gray-100 border rounded-md p-2',
-              type: 'date',
-              id: 'date-to',
-            })
-          ),
-          button({
-            class: 'mt-3 text-sm font-medium text-black bg-white border-[1px] border-black px-4 py-2 rounded-full cursor-pointer hover:bg-[#1e5b5b]',
-            onclick: () => {
-              const fromDate = document.getElementById('date-from').value;
-              const toDate = document.getElementById('date-to').value;
-
-              // Ensure both from and to dates are selected before applying the filter
-              if (fromDate && toDate) {
-                listActionHandler('listed-within', { from: fromDate, to: toDate });
-              }
-            }
-          }, 'Apply'),
-        ),
-      ),
-    );
-
-    element.append(dateFilterSection);
-  }
 }
 
 export function createCard({

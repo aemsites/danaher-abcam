@@ -3,16 +3,18 @@ import {
   li, a, p, div, h3, span,
 } from '../../scripts/dom-builder.js';
 
+
 export default function createCard(article, firstCard = false, cardType = 'story') {
-  const titleImage = imageHelper(article.image, article.title, article.publishDate, firstCard);
+  const titleImage = imageHelper(article.image, article.title, firstCard);
   const { title } = article;
   const { description } = article;
   const { path } = article;
   const { tags } = article;
   const time = article.readingTime;
-  const { publishDate } = article;
+  const publishDate  = article.publishDate;
   const formattedPublishDate = formatDate(publishDate);
   const formattedTime = formatTime(publishDate);
+  console.log(formattedPublishDate);
 
   let footerLink;
   let minRead;
