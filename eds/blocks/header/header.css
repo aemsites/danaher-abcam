@@ -58,6 +58,10 @@
   width: 1.25rem
 }
 
+.header-wrapper :is(.min-w-60) {
+  min-width: 15rem
+}
+
 .header-wrapper :is(.max-w-sm) {
   max-width: 24rem
 }
@@ -381,6 +385,10 @@
 
   .header-wrapper :is(.md\:h-full) {
     height: 100%
+  }
+
+  .header-wrapper :is(.md\:rounded-lg) {
+    border-radius: 0.5rem
   }
 }
 

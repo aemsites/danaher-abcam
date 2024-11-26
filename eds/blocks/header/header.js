@@ -420,31 +420,44 @@ export default async function decorate(block) {
     }
   });
 
-  //Cart icon
-  if (localStorage.getItem('shoppingBasketId') !== null) {
-    const shoppingBaskedId = localStorage.getItem('shoppingBasketId')
-    const selectedCountry = (lastSelectedCountry !== null) ? lastSelectedCountry : 'US';
-    const url = `https://proxy-gateway.abcam.com/ecommerce/rest/v1/basket/${shoppingBaskedId}?country=${selectedCountry}`;
+  // Cart icon
+  const hostName = (!window.location.host.includes('localhost') && !window.location.host.includes('.hlx'))
+    ? window.location.host
+    : 'pp.abcam.com';
+  const shoppingBaskedId = localStorage.getItem('shoppingBasketId');
+  const selectedCountry = (lastSelectedCountry !== null) ? lastSelectedCountry : 'US';
 
+  if (shoppingBaskedId !== null) {
+    const url = `https://proxy-gateway.abcam.com/ecommerce/rest/v1/basket/${shoppingBaskedId}?country=${selectedCountry}`;
     fetch(url, {
-      method: "GET",
+      method: 'GET',
       headers: {
-        "Content-Type": "application/json",
-      }
+        'Content-Type': 'application/json',
+      },
     })
-      .then(response => {
+      .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
         return response.json();
       })
-      .then(data => {
-        console.log("API Response:", data);
-        totalProducts = data.basket.items.length;
+      .then((data) => {
+        const totalProducts = data.basket.items.length;
         block.querySelector('.cart-count').textContent = totalProducts;
-      })
-      .catch(error => {
-        console.error("There was an error making the API call:", error);
       });
   }
+
+  const cartButton = document.querySelector('.cart-dropdown');
+  const cartCountElement = document.querySelector('.cart-count');
+  const productCount = parseInt(cartCountElement.textContent, 0 || 0);
+  if (productCount > 0) {
+    cartCountElement.classList.remove('hidden');
+  }
+  cartButton.addEventListener('click', () => {
+    if (productCount > 0) {
+      window.location.href = `https://${hostName}/en-us/shopping-basket/${shoppingBaskedId}?country=${selectedCountry}`;
+    } else {
+      alert(`You have ${productCount} products in your cart!`);
+    }
+  });
 }
