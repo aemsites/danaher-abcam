@@ -2355,6 +2355,39 @@
     ]
   },
   {
+    "id": "steps",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "steps_stepdata",
+        "value": "",
+        "label": "Steps Data",
+        "valueType": "string"
+      },
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "value": "",
+        "label": "BG Color",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Gray",
+            "value": "bg-slate-200"
+          },
+          {
+            "name": "Light Pink",
+            "value": "bg-rose-100"
+          },
+          {
+            "name": "Light Green",
+            "value": "bg-green-100"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "title-card",
     "fields": [
       {
