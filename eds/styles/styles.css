@@ -1753,6 +1753,14 @@ main .section.elouqa-form-container {
   height: 100vh;
 }
 
+.h-\[17\.6px\] {
+  height: 17.6px;
+}
+
+.h-\[22px\] {
+  height: 22px;
+}
+
 .max-h-\[200px\] {
   max-height: 200px;
 }
@@ -1827,6 +1835,18 @@ main .section.elouqa-form-container {
   width: 100vw;
 }
 
+.w-\[17\.6px\] {
+  width: 17.6px;
+}
+
+.w-\[22px\] {
+  width: 22px;
+}
+
+.w-\[58\.631px\] {
+  width: 58.631px;
+}
+
 .min-w-56 {
   min-width: 14rem;
 }
@@ -1835,16 +1855,16 @@ main .section.elouqa-form-container {
   min-width: 15rem;
 }
 
+.max-w-24 {
+  max-width: 6rem;
+}
+
 .max-w-\[2464px\] {
   max-width: 2464px;
 }
 
 .max-w-full {
   max-width: 100%;
-}
-
-.max-w-24 {
-  max-width: 6rem;
 }
 
 .flex-1 {
@@ -1995,6 +2015,10 @@ main .section.elouqa-form-container {
 
 .gap-4 {
   gap: 1rem;
+}
+
+.gap-1 {
+  gap: 0.25rem;
 }
 
 .gap-x-16 {
@@ -2236,6 +2260,11 @@ main .section.elouqa-form-container {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-red-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-10 {
@@ -2648,18 +2677,14 @@ main .section.elouqa-form-container {
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
 
-.ring-\[\#6fafb8\] {
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(111 175 184 / var(--tw-ring-opacity));
-}
-
 .ring-\[\#6db9c1\] {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(109 185 193 / var(--tw-ring-opacity));
 }
 
-.ring-offset-2 {
-  --tw-ring-offset-width: 2px;
+.ring-\[\#6fafb8\] {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(111 175 184 / var(--tw-ring-opacity));
 }
 
 .ring-offset-1 {
@@ -2832,6 +2857,10 @@ main .section.elouqa-form-container {
 
   .sm\:w-\[50\%\] {
     width: 50%;
+  }
+
+  .sm\:w-\[74\] {
+    width: 74;
   }
 
   .sm\:grid-cols-3 {

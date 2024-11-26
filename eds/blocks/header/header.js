@@ -419,4 +419,32 @@ export default async function decorate(block) {
       dropdownLabel.querySelector('.user-icon-dd').style.transform = 'rotate(0deg)';
     }
   });
+
+  //Cart icon
+  if (localStorage.getItem('shoppingBasketId') !== null) {
+    const shoppingBaskedId = localStorage.getItem('shoppingBasketId')
+    const selectedCountry = (lastSelectedCountry !== null) ? lastSelectedCountry : 'US';
+    const url = `https://proxy-gateway.abcam.com/ecommerce/rest/v1/basket/${shoppingBaskedId}?country=${selectedCountry}`;
+
+    fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      }
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log("API Response:", data);
+        totalProducts = data.basket.items.length;
+        block.querySelector('.cart-count').textContent = totalProducts;
+      })
+      .catch(error => {
+        console.error("There was an error making the API call:", error);
+      });
+  }
 }
