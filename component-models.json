@@ -2436,36 +2436,5 @@
         "valueType": "string"
       }
     ]
-  },
-  {
-    "id": "webinar-hub",
-    "fields": [
-      {
-        "component": "multiselect",
-        "name": "filterName",
-        "label": "Filter Name",
-        "options": [
-          {
-            "name": "Type",
-            "value": "content-type"
-          },
-          {
-            "name": "Research Areas",
-            "value": "research-areas"
-          },
-          {
-            "name": "Listen Within",
-            "value": "listed-within"
-          }
-        ]
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "itemsPerPage",
-        "value": "",
-        "label": "Items per page"
-      }
-    ]
   }
 ]

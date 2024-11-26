@@ -1,18 +1,16 @@
 import ffetch from '../../scripts/ffetch.js';
-import { decorateIcons, toClassName } from '../../scripts/aem.js';
+import { decorateIcons } from '../../scripts/aem.js';
 import { buildStoryHubSchema } from '../../scripts/schema.js';
 import {
-  button, div, p, span, ul, li, select, option
+  button, div, p, span, ul, li, select, option,
 } from '../../scripts/dom-builder.js';
-import { createFilters, formatDate } from '../../scripts/scripts.js';
-import createCard from '../dynamic-cards/articleCard.js';
-import { handleRenderContent } from '../story-hub/story-hub.js';
+import { createFilters, createCard } from '../../scripts/scripts.js';
 
 const getPageFromUrl = () => toClassName(new URLSearchParams(window.location.search).get('page')) || '';
 
 function updateUrlWithParams(key, value, url) {
   const newUrl = new URL(url);
-  if (key !== 'page') {  // Only handle filters excluding 'page'
+  if (key !== 'page') { // Only handle filters excluding 'page'
     const values = newUrl.searchParams.get(key)?.split('|') || [];
     if (newUrl.searchParams.has('page')) newUrl.searchParams.set('page', '1');
 
@@ -32,7 +30,29 @@ function updateUrlWithParams(key, value, url) {
 let lists = [];
 let tempList = [];
 let itemsPerPage;
-//let sortBy = 'Relevance';  // Default sorting option
+// let sortBy = 'Relevance';  // Default sorting option
+
+function handleSortChange(sortOption) {
+  let sortedList = [...lists];
+  // Sort by publish date
+  if (sortOption === 'date-desc') {
+    // Sort in descending order (most recent first)
+    sortedList = sortedList.sort((a, b) => {
+      const dateA = a.publishDate; // Convert timestamp (seconds) to milliseconds
+      const dateB = b.publishDate; // Convert timestamp (seconds) to milliseconds
+      return dateB - dateA; // For descending order
+    });
+  } else if (sortOption === 'date-asc') {
+    // Sort in ascending order (oldest first)
+    sortedList = sortedList.sort((a, b) => {
+      const dateA = a.publishDate; // Convert timestamp (seconds) to milliseconds
+      const dateB = b.publishDate; // Convert timestamp (seconds) to milliseconds
+      return dateA - dateB; // For ascending order
+    });
+  }
+  tempList = sortedList;
+  handleRenderContent(tempList);
+}
 
 const hub = div();
 const allSelectedTags = div(
@@ -49,16 +69,18 @@ const clearAllEl = span({
     handleResetFilters();
   },
 }, 'Clear All');
-const sortByDropdown = div({
-  class: 'conatiner ml-auto' },
-  select({ class: 'text-xs font-semibold text-[#07111299] bg-transparent border-none cursor-pointer',
-    onchange: (e) => {
-      handleSortChange(e.target.value);
-    }
-  },
-  option({ value: 'relevance' }, 'Relevance'),
-  option({ value: 'date-desc' }, 'Date Descending'),
-  option({ value: 'date-asc' }, 'Date Ascending')
+const sortByDropdown = div(
+  { class: 'conatiner ml-auto' },
+  select(
+    {
+      class: 'text-xs font-semibold text-[#07111299] bg-transparent border-none cursor-pointer',
+      onchange: (e) => {
+        handleSortChange(e.target.value);
+      },
+    },
+    option({ value: 'relevance' }, 'Relevance'),
+    option({ value: 'date-desc' }, 'Date Descending'),
+    option({ value: 'date-asc' }, 'Date Ascending'),
   ),
 );
 const hubDesktopFilters = div(
@@ -208,7 +230,7 @@ function handleRenderTags() {
   if (params.toString()) {
     let filterCount = 0;
     [...params.keys()].forEach((filterArr) => {
-      if (filterArr !== 'page') { 
+      if (filterArr !== 'page') {
         const filterValues = params.get(filterArr)?.split('|') || [];
         filterValues.forEach((filt) => {
           filterCount += 1;
@@ -261,7 +283,6 @@ function handleRenderTags() {
   }
 }
 
-
 // eslint-disable-next-line default-param-last
 // function handleRenderContent(newLists = lists) {
 //   newLists.sort((card1, card2) => card2.publishDate - card1.publishDate);
@@ -292,7 +313,7 @@ function handleRenderTags() {
 //   page = Number.isNaN(page) ? 1 : page;
 //   const start = (page - 1) * itemsPerPage;
 //   const storiesToDisplay = newLists.slice(start, start + itemsPerPage);
-  
+
 //   storiesToDisplay.forEach((article, index) => {
 //     cardList.appendChild(createCard(article, index === 0, 'webinar'));
 //   });
@@ -305,6 +326,24 @@ function handleRenderTags() {
 //   }
 // }
 
+function handleRenderContent(newLists = lists) {
+  newLists.sort((card1, card2) => card2.publishDate - card1.publishDate);
+  cardList.innerHTML = '';
+  let page = parseInt(getPageFromUrl(), 10);
+  page = Number.isNaN(page) ? 1 : page;
+  const start = (page - 1) * itemsPerPage;
+  const storiesToDisplay = newLists.slice(start, start + itemsPerPage);
+  storiesToDisplay.forEach((article, index) => {
+    cardList.appendChild(createCard(article, index === 0));
+  });
+
+  const paginationElements = createPagination(newLists, page, itemsPerPage);
+  const paginateEl = hub.querySelector('.paginate');
+  if (paginateEl) {
+    paginateEl.innerHTML = '';
+    paginateEl.append(paginationElements);
+  }
+}
 
 function handleChangeFilter(key, value) {
   if ((key !== undefined && value !== 'undefined') && (value !== null || value === '') && typeof value === 'string') updateUrlWithParams(key, value, window.location.href);
@@ -330,9 +369,8 @@ function handleChangeFilter(key, value) {
         return true;
       }
     });
-    console.log(newLists);
   }
-  
+
   handleRenderTags();
   tempList = newLists;
   handleRenderContent(newLists);
@@ -359,8 +397,6 @@ function handleResetFilters() {
   window.history.replaceState(null, '', url.toString());
   handleChangeFilter('', ''); // Passing empty strings to reset all filters
 }
-
-
 
 function handleClearCategoryFilter(key) {
   const params = new URLSearchParams(window.location.search);
@@ -392,36 +428,12 @@ function toggleMobileFilters(mode) {
   }
 }
 
-function handleSortChange(sortOption) {
-  let sortedList = [...lists];
-  // Sort by publish date
-  if (sortOption === 'date-desc') {
-    // Sort in descending order (most recent first)
-    sortedList = sortedList.sort((a, b) => {
-      const dateA = a.publishDate; // Convert timestamp (seconds) to milliseconds
-      const dateB = b.publishDate; // Convert timestamp (seconds) to milliseconds
-      return dateB - dateA; // For descending order
-    });
-  } else if (sortOption === 'date-asc') {
-    // Sort in ascending order (oldest first)
-    sortedList = sortedList.sort((a, b) => {
-      const dateA = a.publishDate; // Convert timestamp (seconds) to milliseconds
-      const dateB = b.publishDate; // Convert timestamp (seconds) to milliseconds
-      console.log(dateA, dateB);
-      return dateA - dateB; // For ascending order
-    });
-    console.log(sortedList);
-  }
-  tempList = sortedList;
-  handleRenderContent(tempList);
-}
-
 async function initiateRequest() {
   let response = await ffetch('/en-us/webinars/query-index.json')
-  .chunks(500)
-  .all();
-response = [...response].sort((x, y) => new Date(x.publishDate) - new Date(y.publishDate));
-lists = [...response];
+    .chunks(500)
+    .all();
+  response = [...response].sort((x, y) => new Date(x.publishDate) - new Date(y.publishDate));
+  lists = [...response];
 }
 
 export default async function decorate(block) {
@@ -438,7 +450,6 @@ export default async function decorate(block) {
       dateRange: 'listed-within',
       element: allFilters,
       listActionHandler: async (categoryKey, categoryValue) => {
-        console.log(categoryKey, categoryValue);
         await initiateRequest();
         handleChangeFilter(categoryKey, categoryValue);
       },
@@ -452,7 +463,7 @@ export default async function decorate(block) {
     const hubContent = div(
       { class: 'col-span-9' },
       allSelectedTags,
-      //createSortByDropdown(), // Add Sort By dropdown here
+      // createSortByDropdown(), // Add Sort By dropdown here
       cardList,
     );
 

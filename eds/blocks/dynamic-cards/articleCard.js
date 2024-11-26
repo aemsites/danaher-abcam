@@ -1,8 +1,9 @@
-import { formatDate, formatTime, getContentType, imageHelper } from '../../scripts/scripts.js';
+import {
+  formatDate, formatTime, getContentType, imageHelper,
+} from '../../scripts/scripts.js';
 import {
   li, a, p, div, h3, span,
 } from '../../scripts/dom-builder.js';
-
 
 export default function createCard(article, firstCard = false, cardType = 'story') {
   const titleImage = imageHelper(article.image, article.title, firstCard);
@@ -11,10 +12,9 @@ export default function createCard(article, firstCard = false, cardType = 'story
   const { path } = article;
   const { tags } = article;
   const time = article.readingTime;
-  const publishDate  = article.publishDate;
+  const { publishDate } = article;
   const formattedPublishDate = formatDate(publishDate);
   const formattedTime = formatTime(publishDate);
-  console.log(formattedPublishDate);
 
   let footerLink;
   let minRead;
@@ -69,8 +69,9 @@ export default function createCard(article, firstCard = false, cardType = 'story
     );
   } else if (cardType === 'webinar') {
     card.querySelector('.flex-1').prepend(
-      span({ class: 'capitalize font-normal text-sm text-[#65697C] font-["rockwell"]' }, 
-        `${formattedPublishDate}`
+      span(
+        { class: 'capitalize font-normal text-sm text-[#65697C] font-["rockwell"]' },
+        `${formattedPublishDate}`,
       ),
       span({ class: 'font-normal text-sm text-[#65697C] font-["rockwell"]' }, `${minRead}`),
     );
