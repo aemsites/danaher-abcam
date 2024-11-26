@@ -971,9 +971,7 @@ export function createFilters({
     const parts = list?.tags?.split(', ');
     parts.forEach((part) => {
       const [key, value] = part.split('/');
-      //console.log(filterNames);
       filterNames.forEach((name) => {
-        //console.log(key, name, tempArr, parts);
         if (key.includes(name)) {
           if (!(name in tempArr)) tempArr[name] = [];
           if (!tempArr[name].includes(value)) tempArr[name].push(value);
@@ -988,10 +986,8 @@ export function createFilters({
       });
     });
   });
-  console.log(tempArr);
 
   Object.keys(tempArr).forEach((categoryKey, categoryIndex) => {
-    console.log(categoryIndex, categoryKey);
     const listsEl = ul({ class: 'space-y-2 mt-2' });
     if (typeof tempArr[categoryKey] === 'object') {
       [...tempArr[categoryKey]].map((categoryValue, categoryIndex) => {  
@@ -999,17 +995,15 @@ export function createFilters({
           categoryIndex >= limit ? { class: 'hidden' } : '',
           label(
             {
-              class: 'w-full flex items-center gap-3 py-1 md:hover:bg-gray-50 text-sm font-medium cursor-pointer',
+              class: 'w-full flex items-center gap-3 py-1 md:hover:bg-gray-50 text-sm font-medium cursor-pointer z-[5] relative',
               for: `${[categoryKey]}-${categoryValue}`,
             },
             input({
-              class: 'accent-[#378189]',
+              class: 'accent-[#378189] z-[1] cursor-pointer',
               type: 'checkbox',
               name: [categoryKey],
               id: `${[categoryKey]}-${categoryValue}`,
-              onchange: () => {
-                listActionHandler(categoryKey, categoryValue);
-              },
+              onchange: () => listActionHandler(categoryKey, categoryValue),
             }),
             categoryValue.replace(/-/g, ' ').replace(/^\w/, (char) => char.toUpperCase()),
           ),
@@ -1017,17 +1011,14 @@ export function createFilters({
       });
     } else if (typeof tempArr[categoryKey] === 'string') {
       const fromDate = input({
-        class: 'bg-gray-100 border rounded-md p-2',
+        class: 'bg-gray-50 border rounded-md p-2',
         type: 'date',
         id: 'date-from',
-        value: new Date(startDate),
-        'data-start-value': new Date(startDate), 
       });
       const toDate = input({
-        class: 'bg-gray-100 border rounded-md p-2',
+        class: 'bg-gray-50 border rounded-md p-2',
         type: 'date',
         id: 'date-to',
-        value: new Date(endDate).toLocaleDateString(),
       });
       const dateFilterSection = li({ class: 'mt-2 flex flex-col gap-2' },
         label(
@@ -1041,7 +1032,7 @@ export function createFilters({
           toDate,
         ),
         button({
-          class: 'mt-3 text-sm font-medium text-black bg-white border-[1px] border-black px-4 py-2 rounded-full cursor-pointer hover:bg-[#1e5b5b]',
+          class: 'mt-3 text-sm font-medium text-black bg-white hover:!bg-gray-50 border border-px border-black px-4 py-2 rounded-full cursor-pointer',
           onclick: () => {
             const formatFromDate = new Date(fromDate.value).getTime();
             const formatToDate = new Date(toDate.value).getTime();

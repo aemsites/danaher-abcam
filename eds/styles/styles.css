@@ -1471,6 +1471,14 @@ main .section.elouqa-form-container {
   z-index: 50;
 }
 
+.z-\[1\] {
+  z-index: 1;
+}
+
+.z-\[5\] {
+  z-index: 5;
+}
+
 .z-\[99\] {
   z-index: 99;
 }
@@ -1835,16 +1843,16 @@ main .section.elouqa-form-container {
   min-width: 15rem;
 }
 
+.max-w-24 {
+  max-width: 6rem;
+}
+
 .max-w-\[2464px\] {
   max-width: 2464px;
 }
 
 .max-w-full {
   max-width: 100%;
-}
-
-.max-w-24 {
-  max-width: 6rem;
 }
 
 .flex-1 {
@@ -2140,10 +2148,6 @@ main .section.elouqa-form-container {
   border-width: 0.5px;
 }
 
-.border-\[1px\] {
-  border-width: 1px;
-}
-
 .border-b {
   border-bottom-width: 1px;
 }
@@ -2227,6 +2231,11 @@ main .section.elouqa-form-container {
 .bg-gray-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+
+.bg-gray-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
 }
 
 .bg-gray-900\/50 {
@@ -2657,18 +2666,14 @@ main .section.elouqa-form-container {
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
 
-.ring-\[\#6fafb8\] {
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(111 175 184 / var(--tw-ring-opacity));
-}
-
 .ring-\[\#6db9c1\] {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(109 185 193 / var(--tw-ring-opacity));
 }
 
-.ring-offset-2 {
-  --tw-ring-offset-width: 2px;
+.ring-\[\#6fafb8\] {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(111 175 184 / var(--tw-ring-opacity));
 }
 
 .ring-offset-1 {
@@ -2754,9 +2759,9 @@ main .section.elouqa-form-container {
   border-color: rgb(255 114 35 / var(--tw-border-opacity));
 }
 
-.hover\:bg-\[\#1e5b5b\]:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(30 91 91 / var(--tw-bg-opacity));
+.hover\:\!bg-gray-50:hover {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity)) !important;
 }
 
 .hover\:bg-\[\#2A5F65\]:hover {
