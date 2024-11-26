@@ -309,6 +309,7 @@ const TEMPLATE_LIST = [
   'guide',
   'guides-hub',
   'topic',
+  'pathways',
 ];
 
 async function decorateTemplates(main) {
