@@ -3,7 +3,6 @@ import {
   button, div, span,
 } from '../../scripts/dom-builder.js';
 import { decorateIcons, getMetadata } from '../../scripts/aem.js';
-import { buildArticleSchema, buildGuidesCollectionSchema } from '../../scripts/schema.js';
 import { renderChapters } from '../chapter-links/chapter-links.js';
 
 const modal = div({ class: 'w-screen h-full top-0 left-0 fixed block lg:hidden inset-0 z-30 bg-black bg-opacity-80 flex justify-center items-end transition-all translate-y-full' });
@@ -47,11 +46,6 @@ export default async function decorate(block) {
   }));
   const filteredChapters = chapters.filter((item) => item.title !== undefined);
   filteredChapters.sort((chapter1, chapter2) => chapter1.pageOrder - chapter2.pageOrder);
-  if (parentPage === 'topics') {
-    buildGuidesCollectionSchema(filteredChapters);
-  } else {
-    buildArticleSchema();
-  }
 
   // Append button and chapters to block
   const { chaptersDesktopEl, chaptersMobileEl } = renderChapters(filteredChapters, 'Related Articles', true);

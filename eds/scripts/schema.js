@@ -172,7 +172,7 @@ export function buildStoryHubSchema(srcObj) {
   setJsonLd(data, 'storyhub');
 }
 
-function generateGuideElement(type, url, name) {
+function generateCollectionElement(type, url, name) {
   return {
     '@type': type,
     url,
@@ -180,7 +180,7 @@ function generateGuideElement(type, url, name) {
   };
 }
 
-export function buildGuidesCollectionSchema(srcObj) {
+export function buildCollectionSchema(srcObj) {
   const data = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
@@ -191,12 +191,12 @@ export function buildGuidesCollectionSchema(srcObj) {
   };
 
   srcObj.forEach((obj) => {
-    data.hasPart.push(generateGuideElement(
+    data.hasPart.push(generateCollectionElement(
       'WebPage',
       obj.path,
       obj.title.replace(/\s*\|\s*abcam$/i, ''),
     ));
   });
 
-  setJsonLd(data, 'GuideCollection');
+  setJsonLd(data, 'Collection');
 }

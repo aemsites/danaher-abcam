@@ -2,7 +2,7 @@ import {
   div, h3, ul, li, a,
 } from '../../scripts/dom-builder.js';
 import ffetch from '../../scripts/ffetch.js';
-import { buildGuidesCollectionSchema } from '../../scripts/schema.js';
+import { buildCollectionSchema } from '../../scripts/schema.js';
 
 export default async function decorate(block) {
   const currentPage = window.location.pathname.split('/').pop();
@@ -39,5 +39,5 @@ export default async function decorate(block) {
     .filter((item) => item.parent === currentPage)
     .all();
   allGuides = allGuides.sort((item1, item2) => item1.title.localeCompare(item2.title));
-  buildGuidesCollectionSchema(allGuides);
+  buildCollectionSchema(allGuides);
 }
