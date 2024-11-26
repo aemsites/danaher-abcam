@@ -962,10 +962,13 @@ export function createFilters({
   const tempArr = {};
   let startDate = new Date();
   let endDate = new Date();
+  let appliedFilters = {}; // Keep track of applied filters
+
   if (dateRange !== '' && filterNames.includes(dateRange)) {
     lists.sort((listA, listB) => listB.publishDate - listA.publishDate);
     startDate = lists[0].publishDate;
     endDate = lists[lists.length - 1].publishDate;
+    appliedFilters[dateRange] = { from: startDate, to: endDate }; // Track the date filter
   }
   lists.forEach((list) => {
     const parts = list?.tags?.split(', ');
@@ -1014,11 +1017,14 @@ export function createFilters({
         class: 'bg-gray-50 border rounded-md p-2',
         type: 'date',
         id: 'date-from',
+        value: new Date(startDate).toLocaleDateString(), // Ensure it's a valid date format for the input
+        'data-start-value': new Date(startDate).toLocaleDateString(),
       });
       const toDate = input({
         class: 'bg-gray-50 border rounded-md p-2',
         type: 'date',
         id: 'date-to',
+        value: new Date(endDate).toLocaleDateString(),
       });
       const dateFilterSection = li({ class: 'mt-2 flex flex-col gap-2' },
         label(
@@ -1040,13 +1046,33 @@ export function createFilters({
             // Ensure both from and to dates are selected before applying the filter
             if (formatFromDate && formatToDate) {
               listActionHandler('listed-within', { from: formatFromDate, to: formatToDate });
+              appliedFilters[dateRange] = { from: formatFromDate, to: formatToDate }; // Track date filter
             }
           }
         }, 'Apply'),
       );
       listsEl.append(dateFilterSection);
+
+      // Add "Clear filter" logic for the date filter (listed-within)
+      if (appliedFilters[dateRange]) {
+        listsEl.append(
+          li(
+            span({
+              class: 'text-xs leading-5 font-medium text-[#378189] mt-1 cursor-pointer hover:underline underline-offset-1',
+              onclick: () => {
+                // Reset date range filters
+                appliedFilters[dateRange] = null;
+                listActionHandler('listed-within', {}); // Reset the date range filter action
+                
+                // Reset the from and to date inputs
+                fromDate.value = new Date(startDate).toLocaleDateString(); // Reset to default
+                toDate.value = new Date(endDate).toLocaleDateString(); // Reset to default
+              },
+            }, 'Clear filter'),
+          ),
+        );
+      }
     }
-    
 
     // Add "Show More" button if needed
     if (limit !== 0 && tempArr[categoryKey].length > limit && typeof tempArr[categoryKey] === 'object') {
@@ -1100,6 +1126,7 @@ export function createFilters({
     if (listsEl.children.length > 0) element.append(accordionSection);
   });
 }
+
 
 export function createCard({
   titleImage = '',
