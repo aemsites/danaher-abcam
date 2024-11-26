@@ -74,6 +74,13 @@
       "components": [
         "steps"
       ]
+    },
+    {
+      "id": "steps",
+      "components": [
+        "table",
+        "image"
+      ]
     }
   ]
 }
