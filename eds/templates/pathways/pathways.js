@@ -22,6 +22,8 @@ export default async function buildAutoBlocks() {
   const headerSection = div();
   const breadcrumbBlock = buildBlock('breadcrumb', { elems: [] });
   headerSection.append(breadcrumbBlock);
+  console.log("Header: ", headerSection);
+  
   main.prepend(headerSection);
   const paginationBlock = buildBlock('pagination', { elems: [] });
   const guidesHubLinksBlock = buildBlock('guides-hub-links', { elems: [] });
