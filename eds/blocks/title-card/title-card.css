@@ -1,37 +1,3 @@
-.container {
-  width: 100%
-}
-
-@media (min-width: 640px) {
-  .container {
-    max-width: 640px
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    max-width: 768px
-  }
-}
-
-@media (min-width: 1024px) {
-  .container {
-    max-width: 1024px
-  }
-}
-
-@media (min-width: 1280px) {
-  .container {
-    max-width: 1280px
-  }
-}
-
-@media (min-width: 1536px) {
-  .container {
-    max-width: 1536px
-  }
-}
-
 .title-card-wrapper :is(.relative) {
   position: relative
 }
@@ -63,56 +29,20 @@
   display: flex
 }
 
-.title-card-wrapper :is(.hidden) {
-  display: none
-}
-
-.title-card-wrapper :is(.h-\[192px\]) {
-  height: 192px
-}
-
-.title-card-wrapper :is(.h-full) {
-  height: 100%
-}
-
 .title-card-wrapper :is(.h-48) {
   height: 12rem
-}
-
-.title-card-wrapper :is(.h-\[400px\]) {
-  height: 400px
 }
 
 .title-card-wrapper :is(.w-1\/6) {
   width: 16.666667%
 }
 
-.title-card-wrapper :is(.w-4\/12) {
-  width: 33.333333%
-}
-
-.title-card-wrapper :is(.w-8\/12) {
-  width: 66.666667%
-}
-
 .title-card-wrapper :is(.w-full) {
   width: 100%
 }
 
-.title-card-wrapper :is(.w-1\/2) {
-  width: 50%
-}
-
 .title-card-wrapper :is(.max-w-7xl) {
   max-width: 80rem
-}
-
-.title-card-wrapper :is(.flex-row) {
-  flex-direction: row
-}
-
-.title-card-wrapper :is(.flex-row-reverse) {
-  flex-direction: row-reverse
 }
 
 .title-card-wrapper :is(.flex-col) {
@@ -150,11 +80,6 @@
   padding-right: 1rem
 }
 
-.title-card-wrapper :is(.px-\[30px\]) {
-  padding-left: 30px;
-  padding-right: 30px
-}
-
 .title-card-wrapper :is(.px-6) {
   padding-left: 1.5rem;
   padding-right: 1.5rem
@@ -164,49 +89,8 @@
   padding-bottom: 1rem
 }
 
-.title-card-wrapper :is(.pl-6) {
-  padding-left: 1.5rem
-}
-
-.title-card-wrapper :is(.text-center) {
-  text-align: center
-}
-
 .title-card-wrapper :is(.font-sans) {
   font-family: Noto Sans
-}
-
-.title-card-wrapper :is(.text-base) {
-  font-size: 1rem;
-  line-height: 1.5rem
-}
-
-.title-card-wrapper :is(.text-xl) {
-  font-size: 1.25rem;
-  line-height: 1.75rem
-}
-
-.title-card-wrapper :is(.text-2xl) {
-  font-size: 1.5rem;
-  line-height: 2rem
-}
-
-.title-card-wrapper :is(.text-5xl) {
-  font-size: 3rem;
-  line-height: 1
-}
-
-.title-card-wrapper :is(.text-\[32px\]) {
-  font-size: 32px
-}
-
-.title-card-wrapper :is(.\!text-\[32px\]) {
-  font-size: 32px !important
-}
-
-.title-card-wrapper :is(.text-lg) {
-  font-size: 1.125rem;
-  line-height: 1.75rem
 }
 
 .title-card-wrapper :is(.\!text-3xl) {
@@ -214,93 +98,30 @@
   line-height: 2.25rem !important
 }
 
+.title-card-wrapper :is(.text-base) {
+  font-size: 1rem;
+  line-height: 1.5rem
+}
+
+.title-card-wrapper :is(.text-lg) {
+  font-size: 1.125rem;
+  line-height: 1.75rem
+}
+
 .title-card-wrapper :is(.font-semibold) {
   font-weight: 600
-}
-
-.title-card-wrapper :is(.font-light) {
-  font-weight: 300
-}
-
-.title-card-wrapper :is(.leading-9) {
-  line-height: 2.25rem
 }
 
 .title-card-wrapper :is(.leading-7) {
   line-height: 1.75rem
 }
 
-.title-card-wrapper :is(.\!leading-9) {
-  line-height: 2.25rem !important
-}
-
-.title-card-wrapper :is(.\!leading-10) {
-  line-height: 2.5rem !important
-}
-
-.title-card-wrapper :is(.\!leading-\[3rem\]) {
-  line-height: 3rem !important
-}
-
-.title-card-wrapper :is(.tracking-normal) {
-  letter-spacing: 0em
-}
-
-.title-card-wrapper :is(.tracking-\[1px\]) {
-  letter-spacing: 1px
-}
-
-.title-card-wrapper :is(.tracking-\[0\.3px\]) {
-  letter-spacing: 0.3px
-}
-
-.title-card-wrapper :is(.\!tracking-\[1px\]) {
-  letter-spacing: 1px !important
-}
-
 .title-card-wrapper :is(.\!tracking-wider) {
   letter-spacing: 0.05em !important
 }
 
-.title-card-wrapper :is(.text-black) {
-  --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity))
-}
-
-@media (min-width: 1280px) {
-  .xl\:container {
-    width: 100%
-  }
-
-  @media (min-width: 640px) {
-    .xl\:container {
-      max-width: 640px
-    }
-  }
-
-  @media (min-width: 768px) {
-    .xl\:container {
-      max-width: 768px
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .xl\:container {
-      max-width: 1024px
-    }
-  }
-
-  @media (min-width: 1280px) {
-    .xl\:container {
-      max-width: 1280px
-    }
-  }
-
-  @media (min-width: 1536px) {
-    .xl\:container {
-      max-width: 1536px
-    }
-  }
+.title-card-wrapper :is(.tracking-\[0\.3px\]) {
+  letter-spacing: 0.3px
 }
 
 @media (min-width: 1536px) {
@@ -339,16 +160,6 @@
   }
 }
 
-@media (min-width: 640px) {
-  .title-card-wrapper :is(.sm\:\!text-\[24px\]) {
-    font-size: 24px !important
-  }
-
-  .title-card-wrapper :is(.sm\:\!text-\[32px\]) {
-    font-size: 32px !important
-  }
-}
-
 @media (min-width: 768px) {
   .title-card-wrapper :is(.md\:flex) {
     display: flex
@@ -358,31 +169,6 @@
     height: 400px
   }
 
-  .title-card-wrapper :is(.md\:h-96) {
-    height: 24rem
-  }
-
-  .title-card-wrapper :is(.md\:h-full) {
-    height: 100%
-  }
-
-  .title-card-wrapper :is(.md\:flex-row-reverse) {
-    flex-direction: row-reverse
-  }
-
-  .title-card-wrapper :is(.md\:\!text-\[42px\]) {
-    font-size: 42px !important
-  }
-
-  .title-card-wrapper :is(.md\:text-6xl) {
-    font-size: 3.75rem;
-    line-height: 1
-  }
-
-  .title-card-wrapper :is(.md\:\!text-\[40px\]) {
-    font-size: 40px !important
-  }
-
   .title-card-wrapper :is(.md\:\!text-4xl) {
     font-size: 2.25rem !important;
     line-height: 2.5rem !important
@@ -390,26 +176,6 @@
 }
 
 @media (min-width: 1024px) {
-  .title-card-wrapper :is(.lg\:absolute) {
-    position: absolute
-  }
-
-  .title-card-wrapper :is(.lg\:relative) {
-    position: relative
-  }
-
-  .title-card-wrapper :is(.lg\:bottom-6) {
-    bottom: 1.5rem
-  }
-
-  .title-card-wrapper :is(.lg\:right-0) {
-    right: 0px
-  }
-
-  .title-card-wrapper :is(.lg\:block) {
-    display: block
-  }
-
   .title-card-wrapper :is(.lg\:w-1\/2) {
     width: 50%
   }
@@ -423,10 +189,6 @@
     padding-bottom: 1.5rem
   }
 
-  .title-card-wrapper :is(.lg\:pl-16) {
-    padding-left: 4rem
-  }
-
   .title-card-wrapper :is(.lg\:pr-0) {
     padding-right: 0px
   }
@@ -435,47 +197,15 @@
     padding-right: 1.5rem
   }
 
-  .title-card-wrapper :is(.lg\:\!text-\[56px\]) {
-    font-size: 56px !important
-  }
-
-  .title-card-wrapper :is(.lg\:text-3xl) {
-    font-size: 1.875rem;
-    line-height: 2.25rem
-  }
-
   .title-card-wrapper :is(.lg\:\!text-6xl) {
     font-size: 3.75rem !important;
     line-height: 1 !important
   }
 }
 
-@media (min-width: 1280px) {
-  .title-card-wrapper :is(.xl\:max-w-\[1120px\]) {
-    max-width: 1120px
-  }
-
-  .title-card-wrapper :is(.xl\:max-w-7xl) {
-    max-width: 80rem
-  }
-
-  .title-card-wrapper :is(.xl\:px-0) {
-    padding-left: 0px;
-    padding-right: 0px
-  }
-}
-
 @media (min-width: 1536px) {
   .title-card-wrapper :is(.\32xl\:absolute) {
     position: absolute
-  }
-
-  .title-card-wrapper :is(.\32xl\:relative) {
-    position: relative
-  }
-
-  .title-card-wrapper :is(.\32xl\:bottom-6) {
-    bottom: 1.5rem
   }
 
   .title-card-wrapper :is(.\32xl\:right-0) {
@@ -486,25 +216,12 @@
     top: 9rem
   }
 
-  .title-card-wrapper :is(.\32xl\:my-auto) {
-    margin-top: auto;
-    margin-bottom: auto
-  }
-
-  .title-card-wrapper :is(.\32xl\:h-auto) {
-    height: auto
-  }
-
   .title-card-wrapper :is(.\32xl\:h-\[400px\]) {
     height: 400px
   }
 
   .title-card-wrapper :is(.\32xl\:w-1\/2) {
     width: 50%
-  }
-
-  .title-card-wrapper :is(.\32xl\:w-full) {
-    width: 100%
   }
 
   .title-card-wrapper :is(.\32xl\:max-w-7xl) {
