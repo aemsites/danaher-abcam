@@ -72,7 +72,9 @@
     {
       "id": "timeline-steps",
       "components": [
-        "steps"
+        "steps",
+        "table",
+        "image"
       ]
     },
     {
