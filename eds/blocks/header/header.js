@@ -429,7 +429,7 @@ export default async function decorate(block) {
   const host = window.location.host === 'www.abcam.com' ? 'proxy-gateway.abcam.com' : 'proxy-gateway-preprod.abcam.com';
   const cartButton = document.querySelector('.cart-dropdown');
 
-  if (shoppingBaskedId !== null) {
+  if (shoppingBaskedId !== null && shoppingBaskedId) {
     const headers = {
       'x-abcam-app-id': 'b2c-public-website',
       'Content-Type': 'application/json',
@@ -446,7 +446,8 @@ export default async function decorate(block) {
         }
         return response.json();
       })
-      .then(() => {
+      .then((data) => {
+        document.querySelector('.cart-count').textContent = data.items.length;
         cartButton.addEventListener('click', () => {
           window.location.href = `https://${hostName}/en-us/shopping-basket/${shoppingBaskedId}?country=${selectedCountry}`;
         });

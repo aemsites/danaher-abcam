@@ -1471,16 +1471,16 @@ main .section.elouqa-form-container {
   z-index: 50;
 }
 
-.z-\[99\] {
-  z-index: 99;
-}
-
 .z-\[1\] {
   z-index: 1;
 }
 
 .z-\[5\] {
   z-index: 5;
+}
+
+.z-\[99\] {
+  z-index: 99;
 }
 
 .order-3 {
@@ -1737,8 +1737,16 @@ main .section.elouqa-form-container {
   height: 126px;
 }
 
+.h-\[17\.6px\] {
+  height: 17.6px;
+}
+
 .h-\[1px\] {
   height: 1px;
+}
+
+.h-\[22px\] {
+  height: 22px;
 }
 
 .h-\[25\] {
@@ -1759,14 +1767,6 @@ main .section.elouqa-form-container {
 
 .h-screen {
   height: 100vh;
-}
-
-.h-\[17\.6px\] {
-  height: 17.6px;
-}
-
-.h-\[22px\] {
-  height: 22px;
 }
 
 .max-h-\[200px\] {
@@ -1801,6 +1801,14 @@ main .section.elouqa-form-container {
   width: 126px;
 }
 
+.w-\[17\.6px\] {
+  width: 17.6px;
+}
+
+.w-\[22px\] {
+  width: 22px;
+}
+
 .w-\[25px\] {
   width: 25px;
 }
@@ -1809,12 +1817,12 @@ main .section.elouqa-form-container {
   width: 35rem;
 }
 
-.w-\[54px\] {
-  width: 54px;
-}
-
 .w-\[55\%\] {
   width: 55%;
+}
+
+.w-\[58\.631px\] {
+  width: 58.631px;
 }
 
 .w-\[82px\] {
@@ -1841,18 +1849,6 @@ main .section.elouqa-form-container {
 
 .w-screen {
   width: 100vw;
-}
-
-.w-\[17\.6px\] {
-  width: 17.6px;
-}
-
-.w-\[22px\] {
-  width: 22px;
-}
-
-.w-\[58\.631px\] {
-  width: 58.631px;
 }
 
 .min-w-56 {
@@ -2025,6 +2021,10 @@ main .section.elouqa-form-container {
   gap: 0px;
 }
 
+.gap-1 {
+  gap: 0.25rem;
+}
+
 .gap-2 {
   gap: 0.5rem;
 }
@@ -2035,10 +2035,6 @@ main .section.elouqa-form-container {
 
 .gap-4 {
   gap: 1rem;
-}
-
-.gap-1 {
-  gap: 0.25rem;
 }
 
 .gap-x-16 {
@@ -2269,8 +2265,18 @@ main .section.elouqa-form-container {
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
 
+.bg-gray-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+}
+
 .bg-gray-900\/50 {
   background-color: rgb(17 24 39 / 0.5);
+}
+
+.bg-red-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
 }
 
 .bg-transparent {
@@ -2280,16 +2286,6 @@ main .section.elouqa-form-container {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-red-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
-}
-
-.bg-gray-50 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-10 {
@@ -2654,14 +2650,14 @@ main .section.elouqa-form-container {
   color: rgb(107 114 128 / var(--tw-text-opacity));
 }
 
-.text-white {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
 .text-gray-700 {
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity));
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .underline {
@@ -2800,6 +2796,11 @@ main .section.elouqa-form-container {
   border-color: rgb(255 114 35 / var(--tw-border-opacity));
 }
 
+.hover\:\!bg-gray-50:hover {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity)) !important;
+}
+
 .hover\:bg-\[\#2A5F65\]:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(42 95 101 / var(--tw-bg-opacity));
@@ -2813,11 +2814,6 @@ main .section.elouqa-form-container {
 .hover\:bg-white:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.hover\:\!bg-gray-50:hover {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity)) !important;
 }
 
 .hover\:text-black:hover {
@@ -3086,8 +3082,8 @@ main .section.elouqa-form-container {
     width: 15%;
   }
 
-  .lg\:w-\[90\%\] {
-    width: 90%;
+  .lg\:w-\[48\%\] {
+    width: 48%;
   }
 
   .lg\:w-\[900px\] {
@@ -3096,10 +3092,6 @@ main .section.elouqa-form-container {
 
   .lg\:w-full {
     width: 100%;
-  }
-
-  .lg\:w-\[48\%\] {
-    width: 48%;
   }
 
   .lg\:\!w-auto {
