@@ -427,6 +427,8 @@ export default async function decorate(block) {
   const shoppingBaskedId = localStorage.getItem('shoppingBasketId')?.replace(/"/g, '');
   const selectedCountry = (lastSelectedCountry !== null) ? lastSelectedCountry : 'US';
   const host = window.location.host === 'www.abcam.com' ? 'proxy-gateway.abcam.com' : 'proxy-gateway-preprod.abcam.com';
+  const cartButton = document.querySelector('.cart-dropdown');
+
   if (shoppingBaskedId !== null) {
     const headers = {
       'x-abcam-app-id': 'b2c-public-website',
@@ -445,26 +447,13 @@ export default async function decorate(block) {
         return response.json();
       })
       .then((data) => {
-        const totalProducts = data.items.length;
-        block.querySelector('.cart-count').textContent = totalProducts;
+        cartButton.addEventListener('click', () => {
+          window.location.href = `https://${hostName}/en-us/shopping-basket/${shoppingBaskedId}?country=${selectedCountry}`;
+        });
       })
       .catch((error) => {
         //  eslint-disable-next-line no-console
         console.error('There was an error making the API call:', error);
       });
   }
-
-  const cartButton = document.querySelector('.cart-dropdown');
-  const cartCountElement = document.querySelector('.cart-count');
-  const productCount = parseInt(cartCountElement.textContent, 10) || 0;
-  if (productCount > 0) {
-    cartCountElement.classList.remove('hidden');
-  }
-  cartButton.addEventListener('click', () => {
-    if (productCount > 0) {
-      window.location.href = `https://${hostName}/en-us/shopping-basket/${shoppingBaskedId}?country=${selectedCountry}`;
-    } else {
-      window.location.href = `https://${hostName}/en-us/shopping-basket?country=${selectedCountry}`;
-    }
-  });
 }
