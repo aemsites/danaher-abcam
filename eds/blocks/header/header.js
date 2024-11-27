@@ -426,16 +426,16 @@ export default async function decorate(block) {
   const hostName = window.location.host;
   const shoppingBaskedId = localStorage.getItem('shoppingBasketId');
   const selectedCountry = (lastSelectedCountry !== null) ? lastSelectedCountry : 'US';
-
+  const host = window.location.host === 'www.abcam.com' ? 'proxy-gateway.abcam.com' : 'proxy-gateway-preprod.abcam.com';
   if (shoppingBaskedId !== null) {
     const headers = {
       'x-abcam-app-id': 'b2c-public-website',
       'x-correlation-id': 'abcam-eds',
       'Content-Type': 'application/json',
-      'origin': window.location.host,
-      'host': window.location.host,
+      origin: window.location.host,
+      host,
     };
-    const host = window.location.host === 'www.abcam.com' ? 'proxy-gateway.abcam.com' : 'proxy-gateway-preprod.abcam.com';
+
     const url = `https://${host}/ecommerce/rest/v1/basket/${shoppingBaskedId}?country=${selectedCountry}`;
     fetch(url, {
       method: 'GET',
