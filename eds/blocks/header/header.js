@@ -447,7 +447,10 @@ export default async function decorate(block) {
         return response.json();
       })
       .then((data) => {
-        document.querySelector('.cart-count').textContent = data.items.length;
+        if (data.items.length > 0) {
+          document.querySelector('.cart-count').toggle('hidden');
+          document.querySelector('.cart-count').textContent = data.items.length;
+        }
         cartButton.addEventListener('click', () => {
           window.location.href = `https://${hostName}/en-us/shopping-basket/${shoppingBaskedId}?country=${selectedCountry}`;
         });
