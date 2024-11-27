@@ -447,9 +447,12 @@ export default async function decorate(block) {
         return response.json();
       })
       .then((data) => {
-        if (data.items.length > 0) {
-          document.querySelector('.cart-count').toggle('hidden');
-          document.querySelector('.cart-count').textContent = data.items.length;
+        const jsonData = JSON.parse(data);
+        if (jsonData.items.length > 0) {
+          document.querySelector('.cart-count')?.classList?.remove('hidden');
+          document.querySelector('.cart-count').textContent = jsonData.items.length;
+        } else {
+          document.querySelector('.cart-count')?.classList?.add('hidden');
         }
         cartButton.addEventListener('click', () => {
           window.location.href = `https://${hostName}/en-us/shopping-basket/${shoppingBaskedId}?country=${selectedCountry}`;
