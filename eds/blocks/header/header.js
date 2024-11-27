@@ -286,7 +286,7 @@ function myAccount(session) {
   const hostName = (!window.location.host.includes('localhost') && !window.location.host.includes('.hlx'))
     ? window.location.host
     : 'pp.abcam.com';
-  const myAccoundDiv = div({ class: 'my-account-items w-full fixed sm:relative left-0 overflow-hidden bg-white md:h-full text-black rounded sm:rounded-lg shadow-lg' });
+  const myAccoundDiv = div({ class: 'my-account-items w-full fixed lg:relative left-0 overflow-hidden bg-white lg:h-full text-black rounded sm:rounded-lg shadow-lg' });
   if (session) {
     const sessionVal = parsePayload(session);
     if (sessionVal) {
@@ -433,7 +433,8 @@ export default async function decorate(block) {
       'x-correlation-id': 'abcam-eds',
       'Content-Type': 'application/json',
     };
-    const url = `https://proxy-gateway.abcam.com/ecommerce/rest/v1/basket/${shoppingBaskedId}?country=${selectedCountry}`;
+    const host = window.location.host === 'www.abcam.com' ? 'proxy-gateway.abcam.com' : 'proxy-gateway-preprod.abcam.com';
+    const url = `https://${host}/ecommerce/rest/v1/basket/${shoppingBaskedId}?country=${selectedCountry}`;
     fetch(url, {
       method: 'GET',
       headers,
