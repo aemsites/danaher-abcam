@@ -432,6 +432,8 @@ export default async function decorate(block) {
       'x-abcam-app-id': 'b2c-public-website',
       'x-correlation-id': 'abcam-eds',
       'Content-Type': 'application/json',
+      'origin': window.location.host,
+      'host': window.location.host,
     };
     const host = window.location.host === 'www.abcam.com' ? 'proxy-gateway.abcam.com' : 'proxy-gateway-preprod.abcam.com';
     const url = `https://${host}/ecommerce/rest/v1/basket/${shoppingBaskedId}?country=${selectedCountry}`;
