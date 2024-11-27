@@ -328,7 +328,7 @@ const fileMappings = [
     content: './eds/blocks/video-transcript/video-transcript.js',
     output: './eds/blocks/video-transcript/video-transcript.css',
     wrapper: 'video-transcript-wrapper',
-  }
+  },
 ];
 
 const watch = process.argv[2];

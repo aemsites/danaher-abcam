@@ -40,10 +40,13 @@ export default function decorate(block) {
         const paragraph4 = childDiv.querySelector('.paragraph-4');
         if (paragraph1) {
           paragraph1.classList.add('text-2xl', 'font-bold');
-          paragraph1.innerHTML = `
-            <span class="hidden sm:block">Welcome to our new website</span>
-            <span class="block sm:hidden">New Abcam Experience</span>
-          `;
+          const span1 = span({ class: 'hidden sm:block' });
+          span1.textContent = 'Welcome to our new website';
+          const span2 = span({ class: 'block sm:hidden' });
+          span2.textContent = 'New Abcam Experience';
+          paragraph1.textContent = '';
+          paragraph1.appendChild(span1);
+          paragraph1.appendChild(span2);
         }
         if (paragraph3) {
           paragraph3.classList.add('border-b', 'border-white', 'pb-3', 'mr-10', 'mt-10');
