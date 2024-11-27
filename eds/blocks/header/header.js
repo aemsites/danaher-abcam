@@ -423,7 +423,7 @@ export default async function decorate(block) {
   });
 
   // Cart icon
-  const hostName = (!window.location.host.includes('localhost') && !window.location.host.includes('.hlx')) && window.location.host;
+  const hostName = window.location.host;
   const shoppingBaskedId = localStorage.getItem('shoppingBasketId');
   const selectedCountry = (lastSelectedCountry !== null) ? lastSelectedCountry : 'US';
 
