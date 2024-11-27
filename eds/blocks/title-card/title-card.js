@@ -44,4 +44,3 @@ export default function decorate(block) {
     applyClasses(block, 'mx-auto max-w-7xl px-4 pb-4 font-sans text-base md:flex flex-col justify-center');
   }
 }
-
