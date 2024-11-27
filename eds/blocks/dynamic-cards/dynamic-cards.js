@@ -6,6 +6,7 @@ import {
 import { getMetadata, toClassName } from '../../scripts/aem.js';
 import createArticleCard from './articleCard.js';
 import { applyClasses } from '../../scripts/scripts.js';
+import { buildCollectionSchema } from '../../scripts/schema.js';
 
 let title;
 
@@ -168,6 +169,7 @@ export default async function decorate(block) {
   }
   // render cards application style
   filteredArticles.sort((card1, card2) => card2.publishDate - card1.publishDate);
+  buildCollectionSchema(filteredArticles);
 
   let page = parseInt(getPageFromUrl(), 10);
   page = Number.isNaN(page) ? 1 : page;
