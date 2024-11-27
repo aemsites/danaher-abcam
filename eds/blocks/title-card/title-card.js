@@ -36,7 +36,7 @@ export default function decorate(block) {
       }
       const buttonEl = block.querySelector('.button-container');
       if (buttonEl) {
-        applyClasses(buttonEl,'mt-8 md:mt-12');
+        applyClasses(buttonEl, 'mt-8 md:mt-12');
         block.querySelector('h1').parentElement.parentElement.append(buttonEl);
       }
     }
@@ -44,3 +44,4 @@ export default function decorate(block) {
     applyClasses(block, 'mx-auto max-w-7xl px-4 pb-4 font-sans text-base md:flex flex-col justify-center');
   }
 }
+
