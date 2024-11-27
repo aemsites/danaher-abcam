@@ -3,7 +3,7 @@ import {
   a, button, div, p, span,
 } from '../../scripts/dom-builder.js';
 import { decorateIcons } from '../../scripts/aem.js';
-import { buildArticleSchema, buildGuidesCollectionSchema } from '../../scripts/schema.js';
+import { buildArticleSchema, buildCollectionSchema } from '../../scripts/schema.js';
 
 const modal = div({ class: 'w-screen h-full top-0 left-0 fixed block lg:hidden inset-0 z-30 bg-black bg-opacity-80 flex justify-center items-end transition-all translate-y-full' });
 const stickyChapterLinks = div({ class: 'sticky-bottom' });
@@ -77,7 +77,7 @@ export default async function decorate(block) {
   const filteredChapters = chapters.filter((item) => item.title !== undefined);
   filteredChapters.sort((chapter1, chapter2) => chapter1.pageOrder - chapter2.pageOrder);
   if (parentPage === 'guides') {
-    buildGuidesCollectionSchema(filteredChapters);
+    buildCollectionSchema(filteredChapters);
   } else {
     buildArticleSchema();
   }

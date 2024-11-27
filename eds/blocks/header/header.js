@@ -378,12 +378,15 @@ export default async function decorate(block) {
       }
     });
   });
-
+  const dropdownLabel = document.querySelector('label[for="account-dropdown"]');
   decorateIcons(document.querySelector('.country-dd'), 16, 16);
   block.querySelector('.country-dropdown')?.classList.add('hover:bg-[#3B3B3B]');
   block.querySelector('.country-dropdown')?.addEventListener('click', (event) => {
     const countrySearch = document.querySelector('.country-search');
     if (event.target === event.currentTarget || event.target.alt === 'chevron-down-white' || event.target.parentElement.classList.contains('country-flag-icon')) {
+      if (!dropdownLabel.contains(event.target) && dropdownLabel.previousElementSibling.checked) {
+        dropdownLabel.click();
+      }
       countrySearch?.classList.toggle('hidden');
       const searchValue = block.querySelector('#country-search-input');
       if (searchValue) searchValue.value = '';
@@ -408,7 +411,6 @@ export default async function decorate(block) {
   const session = getLocalStorageToken();
   accountEl.append(myAccount(session));
   document.addEventListener('click', (event) => {
-    const dropdownLabel = document.querySelector('label[for="account-dropdown"]');
     const isChecked = document.getElementById('account-dropdown');
     if (isChecked.checked) {
       if (!dropdownLabel.contains(event.target) && dropdownLabel.previousElementSibling.checked) {

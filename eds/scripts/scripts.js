@@ -859,19 +859,20 @@ async function loadEager(doc) {
 }
 
 // Changes date format from excel general format to date
-export function formatDateRange(date) {
-  const options = {
-    month: 'short', day: '2-digit', year: 'numeric', timeZone: 'UTC',
+export function formatTime(date) {
+  const timeOptions = {
+    hour: '2-digit', minute: '2-digit', hour12: true, timeZone: 'America/New_York', // ET format
   };
-  const startDate = new Date(Number(date - 25569) * 24 * 60 * 60 * 1000).toUTCString();
-  const formattedStartDate = new Date(startDate).toLocaleDateString('en-us', options);
-  return formattedStartDate;
+  const lastModifiedDate = new Date(Number(date) * 1000);
+  const timeFormatted = new Intl.DateTimeFormat('en-us', timeOptions).format(lastModifiedDate);
+  const timeWithET = timeFormatted ? `${timeFormatted} ET` : '';
+  return timeWithET;
 }
 
 // Changes date format from Unix Epoch to date
 export function formatDate(date) {
   const options = {
-    weekday: 'short', day: '2-digit', month: 'short', year: 'numeric', timeZone: 'UTC',
+    month: 'long', day: '2-digit', year: 'numeric', timeZone: 'UTC',
   };
   const lastModifiedDate = new Date(Number(date) * 1000);
   const formattedDate = new Intl.DateTimeFormat('en-us', options).format(lastModifiedDate);
@@ -956,8 +957,19 @@ export function createFilters({
   clearFilterHandler = () => {},
   limit = 6,
   sort = 'ASC',
+  dateRange = '',
 }) {
   const tempArr = {};
+  let startDate = new Date();
+  let endDate = new Date();
+  let appliedFilters = {}; // Keep track of applied filters
+
+  if (dateRange !== '' && filterNames.includes(dateRange)) {
+    lists.sort((listA, listB) => listB.publishDate - listA.publishDate);
+    startDate = lists[0].publishDate;
+    endDate = lists[lists.length - 1].publishDate;
+    appliedFilters[dateRange] = { from: startDate, to: endDate }; // Track the date filter
+  }
   lists.forEach((list) => {
     const parts = list?.tags?.split(', ');
     parts.forEach((part) => {
@@ -966,11 +978,13 @@ export function createFilters({
         if (key.includes(name)) {
           if (!(name in tempArr)) tempArr[name] = [];
           if (!tempArr[name].includes(value)) tempArr[name].push(value);
-        }
-        if (name in tempArr && tempArr[name].length > 0) {
-          sort.toUpperCase() === 'ASC'
-            ? tempArr[name].sort()
-            : tempArr[name].sort().reverse()
+          if (name in tempArr && tempArr[name].length > 0) {
+            sort.toUpperCase() === 'ASC'
+              ? tempArr[name].sort()
+              : tempArr[name].sort().reverse()
+          }
+        } else if (dateRange !== '' && filterNames.includes(dateRange)) {
+          tempArr[dateRange] = dateRange;
         }
       });
     });
@@ -978,30 +992,90 @@ export function createFilters({
 
   Object.keys(tempArr).forEach((categoryKey, categoryIndex) => {
     const listsEl = ul({ class: 'space-y-2 mt-2' });
-    [...tempArr[categoryKey]].map((categoryValue, categoryIndex) => {
-      listsEl.append(li(
-        categoryIndex >= limit ? { class: 'hidden' } : '',
-        label(
-          {
-            class: 'w-full flex items-center gap-3 py-1 md:hover:bg-gray-50 text-sm font-medium cursor-pointer',
-            for: `${[categoryKey]}-${categoryValue}`,
-          },
-          input({
-            class: 'accent-[#378189]',
-            type: 'checkbox',
-            name: [categoryKey],
-            id: `${[categoryKey]}-${categoryValue}`,
-            onchange: () => {
-              listActionHandler(categoryKey, categoryValue);
+    if (typeof tempArr[categoryKey] === 'object') {
+      [...tempArr[categoryKey]].map((categoryValue, categoryIndex) => {  
+        listsEl.append(li(
+          categoryIndex >= limit ? { class: 'hidden' } : '',
+          label(
+            {
+              class: 'w-full flex items-center gap-3 py-1 md:hover:bg-gray-50 text-sm font-medium cursor-pointer z-[5] relative',
+              for: `${[categoryKey]}-${categoryValue}`,
             },
-          }),
-          categoryValue.replace(/-/g, ' ').replace(/^\w/, (char) => char.toUpperCase()),
+            input({
+              class: 'accent-[#378189] z-[1] cursor-pointer',
+              type: 'checkbox',
+              name: [categoryKey],
+              id: `${[categoryKey]}-${categoryValue}`,
+              onchange: () => listActionHandler(categoryKey, categoryValue),
+            }),
+            categoryValue.replace(/-/g, ' ').replace(/^\w/, (char) => char.toUpperCase()),
+          ),
+        ));
+      });
+    } else if (typeof tempArr[categoryKey] === 'string') {
+      const fromDate = input({
+        class: 'bg-gray-50 border rounded-md p-2',
+        type: 'date',
+        id: 'date-from',
+        value: new Date(startDate).toLocaleDateString(), // Ensure it's a valid date format for the input
+        'data-start-value': new Date(startDate).toLocaleDateString(),
+      });
+      const toDate = input({
+        class: 'bg-gray-50 border rounded-md p-2',
+        type: 'date',
+        id: 'date-to',
+        value: new Date(endDate).toLocaleDateString(),
+      });
+      const dateFilterSection = li({ class: 'mt-2 flex flex-col gap-2' },
+        label(
+          { class: 'flex flex-col text-sm font-medium text-gray-700' },
+          'From',
+          fromDate,
         ),
-      ));
-    });
+        label(
+          { class: 'flex flex-col text-sm font-medium text-gray-700' },
+          'To',
+          toDate,
+        ),
+        button({
+          class: 'mt-3 text-sm font-medium text-black bg-white hover:!bg-gray-50 border border-px border-black px-4 py-2 rounded-full cursor-pointer',
+          onclick: () => {
+            const formatFromDate = new Date(fromDate.value).getTime();
+            const formatToDate = new Date(toDate.value).getTime();
+
+            // Ensure both from and to dates are selected before applying the filter
+            if (formatFromDate && formatToDate) {
+              listActionHandler('listed-within', { from: formatFromDate, to: formatToDate });
+              appliedFilters[dateRange] = { from: formatFromDate, to: formatToDate }; // Track date filter
+            }
+          }
+        }, 'Apply'),
+      );
+      listsEl.append(dateFilterSection);
+
+      // Add "Clear filter" logic for the date filter (listed-within)
+      if (appliedFilters[dateRange]) {
+        listsEl.append(
+          li(
+            span({
+              class: 'text-xs leading-5 font-medium text-[#378189] mt-1 cursor-pointer hover:underline underline-offset-1',
+              onclick: () => {
+                // Reset date range filters
+                appliedFilters[dateRange] = null;
+                listActionHandler('listed-within', {}); // Reset the date range filter action
+                
+                // Reset the from and to date inputs
+                fromDate.value = new Date(startDate).toLocaleDateString(); // Reset to default
+                toDate.value = new Date(endDate).toLocaleDateString(); // Reset to default
+              },
+            }, 'Clear filter'),
+          ),
+        );
+      }
+    }
 
     // Add "Show More" button if needed
-    if (limit !== 0 && tempArr[categoryKey].length > limit) {
+    if (limit !== 0 && tempArr[categoryKey].length > limit && typeof tempArr[categoryKey] === 'object') {
       listsEl.append(
         li(
           span(
@@ -1040,7 +1114,7 @@ export function createFilters({
         span({ class: 'icon icon-chevron-down size-5 rotate-180' }),
       ),
       div(
-        { class: 'flex flex-col-reverse [&_ul:has(:checked)+*]:block' },
+        { class: 'flex flex-col-reverse [&_ul:has(:checked)+*]:block' },//conditional-wise css implementation
         listsEl,
         span({
           class: 'hidden text-xs leading-5 font-medium text-[#378189] mt-1 cursor-pointer hover:underline underline-offset-1',
@@ -1052,6 +1126,7 @@ export function createFilters({
     if (listsEl.children.length > 0) element.append(accordionSection);
   });
 }
+
 
 export function createCard({
   titleImage = '',
