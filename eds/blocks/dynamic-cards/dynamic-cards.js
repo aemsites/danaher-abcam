@@ -6,12 +6,9 @@ import {
 import { getMetadata, toClassName } from '../../scripts/aem.js';
 import createArticleCard from './articleCard.js';
 import { applyClasses } from '../../scripts/scripts.js';
+import { buildCollectionSchema } from '../../scripts/schema.js';
 
-const title = getMetadata('og:title')
-  ?.toLowerCase()
-  .replace(' | abcam', '')
-  .trim()
-  .replace(/\s+/g, '-');
+let title;
 
 const getSelectionFromUrl = () => (window.location.pathname.indexOf(`/${title}/`) > -1 ? toClassName(window.location.pathname.replace('.html', '').split('/').pop()) : '');
 export const getPageFromUrl = () => toClassName(new URLSearchParams(window.location.search).get('page')) || '';
@@ -23,10 +20,10 @@ const createTopicUrl = (currentUrl, keyword = '') => {
   return `${currentUrl.replace('.html', '')}/${toClassName(keyword).toLowerCase()}`;
 };
 
-const patchBannerHeading = (heading) => {
-  const pageHeading = document.querySelector('main h1');
-  pageHeading.classList.add('capitalize');
-  if (heading !== 'View All') pageHeading.textContent = heading;
+const patchBannerHeading = () => {
+  document.querySelector('body .title-card h1').textContent = getMetadata('heading');
+  document.querySelector('body .title-card p').textContent = getMetadata('description');
+  document.title = `${getMetadata('heading')} | ${getMetadata('title')}`;
 };
 
 const createPaginationLink = (page, label, current = false) => {
@@ -141,7 +138,6 @@ export function createFilters(articles, viewAll = false) {
   [...tags.children].forEach((tag) => {
     const url = new URL(tag.href);
     if (url.pathname === window.location.pathname) {
-      patchBannerHeading(tag?.textContent);
       tag.classList.add('!bg-black', '!text-white');
       tag.setAttribute('aria-current', 'tag');
     } else {
@@ -149,10 +145,16 @@ export function createFilters(articles, viewAll = false) {
     }
   });
 
+  // patch banner heading with selected tag only on topics pages
+  if (getMetadata('heading') && window.location.pathname.split('/')?.pop() !== 'knowledge-center') {
+    patchBannerHeading();
+  }
+
   return tags;
 }
 
 export default async function decorate(block) {
+  title = block.querySelector('div:first-child')?.textContent?.trim();
   // fetch and sort all articles
   const articles = await ffetch(`/en-us/${title}/query-index.json`)
     .filter((item) => item.tags !== '')
@@ -167,6 +169,7 @@ export default async function decorate(block) {
   }
   // render cards application style
   filteredArticles.sort((card1, card2) => card2.publishDate - card1.publishDate);
+  buildCollectionSchema(filteredArticles);
 
   let page = parseInt(getPageFromUrl(), 10);
   page = Number.isNaN(page) ? 1 : page;

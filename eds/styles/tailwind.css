@@ -282,5 +282,9 @@
     main .section.guides-middle-container h2{
         @apply !font-normal !text-2xl !leading-7 !tracking-[0.3px] !mb-2;
     }
-   
+
+    main .section.elouqa-form-container {
+        @apply bg-[#F2F2F2];
+    }
+    
 }   

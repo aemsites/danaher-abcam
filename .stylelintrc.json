@@ -2,6 +2,7 @@
   "extends": ["stylelint-config-standard"],
   "ignoreFiles": [
     "eds/styles/styles.css",
+    "eds/styles/elouqa-form.css",
     "eds/blocks/**/*.css"
   ],
   "rules": {

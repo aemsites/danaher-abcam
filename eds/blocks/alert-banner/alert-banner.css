@@ -1,37 +1,3 @@
-.container {
-  width: 100%
-}
-
-@media (min-width: 640px) {
-  .container {
-    max-width: 640px
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    max-width: 768px
-  }
-}
-
-@media (min-width: 1024px) {
-  .container {
-    max-width: 1024px
-  }
-}
-
-@media (min-width: 1280px) {
-  .container {
-    max-width: 1280px
-  }
-}
-
-@media (min-width: 1536px) {
-  .container {
-    max-width: 1536px
-  }
-}
-
 .alert-banner-wrapper :is(.absolute) {
   position: absolute
 }
@@ -72,20 +38,12 @@
   margin-top: 2.5rem
 }
 
-.alert-banner-wrapper :is(.mt-12) {
-  margin-top: 3rem
-}
-
 .alert-banner-wrapper :is(.mt-4) {
   margin-top: 1rem
 }
 
 .alert-banner-wrapper :is(.mt-6) {
   margin-top: 1.5rem
-}
-
-.alert-banner-wrapper :is(.mt-1) {
-  margin-top: 0.25rem
 }
 
 .alert-banner-wrapper :is(.block) {
@@ -114,21 +72,8 @@
   width: fit-content
 }
 
-.alert-banner-wrapper :is(.w-4) {
-  width: 1rem
-}
-
 .alert-banner-wrapper :is(.rotate-180) {
   --tw-rotate: 180deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
-}
-
-.alert-banner-wrapper :is(.rotate-0) {
-  --tw-rotate: 0deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
-}
-
-.alert-banner-wrapper :is(.transform) {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 
@@ -136,45 +81,12 @@
   cursor: pointer
 }
 
-.alert-banner-wrapper :is(.flex-col) {
-  flex-direction: column
-}
-
-.alert-banner-wrapper :is(.flex-wrap) {
-  flex-wrap: wrap
-}
-
-.alert-banner-wrapper :is(.items-center) {
-  align-items: center
-}
-
 .alert-banner-wrapper :is(.justify-center) {
   justify-content: center
 }
 
-.alert-banner-wrapper :is(.justify-between) {
-  justify-content: space-between
-}
-
-.alert-banner-wrapper :is(.gap-2) {
-  gap: 0.5rem
-}
-
-.alert-banner-wrapper :is(.gap-4) {
-  gap: 1rem
-}
-
-.alert-banner-wrapper :is(.gap-x-32) {
-  -moz-column-gap: 8rem;
-       column-gap: 8rem
-}
-
 .alert-banner-wrapper :is(.rounded-full) {
   border-radius: 9999px
-}
-
-.alert-banner-wrapper :is(.rounded-xl) {
-  border-radius: 0.75rem
 }
 
 .alert-banner-wrapper :is(.border-b) {
@@ -196,34 +108,9 @@
   background-color: rgb(0 0 0 / var(--tw-bg-opacity))
 }
 
-.alert-banner-wrapper :is(.bg-slate-700) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(51 65 85 / var(--tw-bg-opacity))
-}
-
-.alert-banner-wrapper :is(.bg-slate-950) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(2 6 23 / var(--tw-bg-opacity))
-}
-
-.alert-banner-wrapper :is(.bg-gray-700) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(55 65 81 / var(--tw-bg-opacity))
-}
-
-.alert-banner-wrapper :is(.bg-white) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity))
-}
-
 .alert-banner-wrapper :is(.bg-gray-900) {
   --tw-bg-opacity: 1;
   background-color: rgb(17 24 39 / var(--tw-bg-opacity))
-}
-
-.alert-banner-wrapper :is(.bg-\[\#edf6f7\]) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(237 246 247 / var(--tw-bg-opacity))
 }
 
 .alert-banner-wrapper :is(.p-2) {
@@ -232,10 +119,6 @@
 
 .alert-banner-wrapper :is(.p-8) {
   padding: 2rem
-}
-
-.alert-banner-wrapper :is(.p-6) {
-  padding: 1.5rem
 }
 
 .alert-banner-wrapper :is(.px-2) {
@@ -257,11 +140,6 @@
   line-height: 2rem
 }
 
-.alert-banner-wrapper :is(.text-xl) {
-  font-size: 1.25rem;
-  line-height: 1.75rem
-}
-
 .alert-banner-wrapper :is(.font-bold) {
   font-weight: 700
 }
@@ -271,11 +149,6 @@
   color: rgb(255 255 255 / var(--tw-text-opacity))
 }
 
-.alert-banner-wrapper :is(.text-\[\#378189\]) {
-  --tw-text-opacity: 1;
-  color: rgb(55 129 137 / var(--tw-text-opacity))
-}
-
 @media (min-width: 640px) {
   .alert-banner-wrapper :is(.sm\:block) {
     display: block
@@ -283,17 +156,6 @@
 
   .alert-banner-wrapper :is(.sm\:hidden) {
     display: none
-  }
-
-  .alert-banner-wrapper :is(.sm\:w-fit) {
-    width: -moz-fit-content;
-    width: fit-content
-  }
-}
-
-@media (min-width: 768px) {
-  .alert-banner-wrapper :is(.md\:flex-row) {
-    flex-direction: row
   }
 }
 

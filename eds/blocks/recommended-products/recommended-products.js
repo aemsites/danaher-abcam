@@ -68,10 +68,7 @@ function updateFeatureProducts(products) {
 }
 
 export default async function decorate(block) {
-  if (block.className.includes('featured-products')) {
-    applyClasses(block, 'my-8 flex flex-col lg:flex-row gap-4');
-    updateFeatureProducts(Array.from(block.children));
-  } else {
+  if (block.className.includes('products-recommended')) {
     block.classList.add(...'container mx-auto px-6 md:px-0'.split(' '));
     const response = await getProductResponse();
     const allRecommendations = response?.at(0)?.raw?.crosssellrecommendationsjson;
@@ -84,5 +81,8 @@ export default async function decorate(block) {
         console.error('Error while parsing recommendations', error);
       }
     }
+  } else if (block.className.includes('featured-products')) {
+    applyClasses(block, 'my-8 flex flex-col lg:flex-row gap-4');
+    updateFeatureProducts(Array.from(block.children));
   }
 }
