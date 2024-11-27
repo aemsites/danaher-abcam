@@ -430,10 +430,7 @@ export default async function decorate(block) {
   if (shoppingBaskedId !== null) {
     const headers = {
       'x-abcam-app-id': 'b2c-public-website',
-      'x-correlation-id': 'abcam-eds',
       'Content-Type': 'application/json',
-      origin: window.location.host,
-      host,
     };
 
     const url = `https://${host}/ecommerce/rest/v1/basket/${shoppingBaskedId}?country=${selectedCountry}`;
