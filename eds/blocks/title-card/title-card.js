@@ -22,7 +22,7 @@ export default function decorate(block) {
     }
     const readingTime = getMetadata('readingtime');
     const expectedPublishFormat = new Date(getMetadata('publishdate'));
-    if (readingTime && !isNaN(expectedPublishFormat.getTime())) {
+    if (readingTime && !Number.isNaN(expectedPublishFormat.getTime())) {
       const formattedDate = `${expectedPublishFormat.toLocaleString('default', { month: 'long' })} ${expectedPublishFormat.getDate()} ${expectedPublishFormat.getFullYear()} | ${readingTime} Mins`;
       const readDateTimeDiv = div(
         {
