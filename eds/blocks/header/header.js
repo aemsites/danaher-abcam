@@ -424,7 +424,7 @@ export default async function decorate(block) {
 
   // Cart icon
   const hostName = window.location.host;
-  const shoppingBaskedId = localStorage.getItem('shoppingBasketId');
+  const shoppingBaskedId = localStorage.getItem('shoppingBasketId')?.replace(/"/g, '');
   const selectedCountry = (lastSelectedCountry !== null) ? lastSelectedCountry : 'US';
   const host = window.location.host === 'www.abcam.com' ? 'proxy-gateway.abcam.com' : 'proxy-gateway-preprod.abcam.com';
   if (shoppingBaskedId !== null) {
@@ -445,7 +445,7 @@ export default async function decorate(block) {
         return response.json();
       })
       .then((data) => {
-        const totalProducts = data.basket.items.length;
+        const totalProducts = data.items.length;
         block.querySelector('.cart-count').textContent = totalProducts;
       })
       .catch((error) => {
