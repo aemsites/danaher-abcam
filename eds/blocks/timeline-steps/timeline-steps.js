@@ -16,7 +16,8 @@ export default async function decorate(block) {
       const stepDivider = div({ class: 'border border-gray-100' });
       const stepContent = div({ class: 'flex flex-col gap-y-4 py-2' });
       const subPoints = child.querySelector('ul');
-      subPoints?.classList.add(...'list-inside list-disc ml-2 text-gray-400'.split(' '));
+      if (subPoints?.querySelectorAll('li').length > 1) subPoints?.classList.add(...'list-disc ml-2 text-gray-400'.split(' '));
+      else subPoints?.classList.add(...'ml-2 text-gray-400'.split(' '));
       stepContent.innerHTML = child.innerHTML;
       child.innerHTML = '';
       child.prepend(stepDivider);

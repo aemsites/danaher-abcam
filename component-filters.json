@@ -161,12 +161,14 @@
     "components": [
       "steps",
       "table",
-      "image"
+      "image",
+      "alert"
     ]
   },
   {
     "id": "steps",
     "components": [
+      "alert",
       "table",
       "image"
     ]

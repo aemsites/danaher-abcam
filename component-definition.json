@@ -892,6 +892,21 @@
           }
         },
         {
+          "title": "Alert",
+          "id": "alert",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "alert",
+                  "model": "alert"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Title Card",
           "id": "title-card",
           "plugins": {
