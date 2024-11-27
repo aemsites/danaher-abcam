@@ -1737,8 +1737,16 @@ main .section.elouqa-form-container {
   height: 126px;
 }
 
+.h-\[17\.6px\] {
+  height: 17.6px;
+}
+
 .h-\[1px\] {
   height: 1px;
+}
+
+.h-\[22px\] {
+  height: 22px;
 }
 
 .h-\[25\] {
@@ -1793,6 +1801,14 @@ main .section.elouqa-form-container {
   width: 126px;
 }
 
+.w-\[17\.6px\] {
+  width: 17.6px;
+}
+
+.w-\[22px\] {
+  width: 22px;
+}
+
 .w-\[25px\] {
   width: 25px;
 }
@@ -1801,12 +1817,12 @@ main .section.elouqa-form-container {
   width: 35rem;
 }
 
-.w-\[54px\] {
-  width: 54px;
-}
-
 .w-\[55\%\] {
   width: 55%;
+}
+
+.w-\[58\.631px\] {
+  width: 58.631px;
 }
 
 .w-\[82px\] {
@@ -1843,16 +1859,16 @@ main .section.elouqa-form-container {
   min-width: 15rem;
 }
 
+.max-w-24 {
+  max-width: 6rem;
+}
+
 .max-w-\[2464px\] {
   max-width: 2464px;
 }
 
 .max-w-full {
   max-width: 100%;
-}
-
-.max-w-24 {
-  max-width: 6rem;
 }
 
 .flex-1 {
@@ -1991,6 +2007,10 @@ main .section.elouqa-form-container {
 
 .gap-0 {
   gap: 0px;
+}
+
+.gap-1 {
+  gap: 0.25rem;
 }
 
 .gap-2 {
@@ -2239,6 +2259,11 @@ main .section.elouqa-form-container {
 
 .bg-gray-900\/50 {
   background-color: rgb(17 24 39 / 0.5);
+}
+
+.bg-red-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
 }
 
 .bg-transparent {
@@ -2675,14 +2700,14 @@ main .section.elouqa-form-container {
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
 
-.ring-\[\#6fafb8\] {
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(111 175 184 / var(--tw-ring-opacity));
-}
-
 .ring-\[\#6db9c1\] {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(109 185 193 / var(--tw-ring-opacity));
+}
+
+.ring-\[\#6fafb8\] {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(111 175 184 / var(--tw-ring-opacity));
 }
 
 .ring-offset-1 {
@@ -2880,6 +2905,10 @@ main .section.elouqa-form-container {
 
   .sm\:w-\[50\%\] {
     width: 50%;
+  }
+
+  .sm\:w-\[74\] {
+    width: 74;
   }
 
   .sm\:grid-cols-3 {
@@ -3082,6 +3111,18 @@ main .section.elouqa-form-container {
     width: 100%;
   }
 
+  .lg\:w-\[50\%\] {
+    width: 50%;
+  }
+
+  .lg\:w-\[45\%\] {
+    width: 45%;
+  }
+
+  .lg\:w-\[48\%\] {
+    width: 48%;
+  }
+
   .lg\:max-w-72 {
     max-width: 18rem;
   }
@@ -3115,6 +3156,10 @@ main .section.elouqa-form-container {
 
   .xl\:w-\[1120px\] {
     width: 1120px;
+  }
+
+  .xl\:w-\[90\%\] {
+    width: 90%;
   }
 
   .xl\:px-\[80px\] {
