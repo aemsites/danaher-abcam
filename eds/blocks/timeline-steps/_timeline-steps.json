@@ -58,7 +58,7 @@
           "value": "",
           "label": "Steps Data",
           "valueType": "string"
-        }        
+        }       
       ]
     },
      {
@@ -101,16 +101,13 @@
       "components": [
         "steps",
         "table",
-        "image",
-        "alert"
+        "image"
       ]
     },
     {
       "id": "steps",
       "components": [
-        "alert",
-        "table",
-        "image"
+        "alert"
       ]
     },
     {
