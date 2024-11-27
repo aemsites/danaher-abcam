@@ -312,15 +312,6 @@ function myAccount(session) {
 }
 
 export default async function decorate(block) {
-  function generateUUID() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
-      const r = Math.floor(Math.random() * 16);
-      // eslint-disable-next-line no-bitwise
-      const v = c === 'x' ? r : ((r & 0x3) | 0x8);
-      return v.toString(16);
-    });
-  }
-
   const resp = await fetch('/eds/fragments/header.html');
   block.classList.add(...'relative bg-black flex justify-center flex-col pt-4 z-40'.split(' '));
   if (resp.ok) {
@@ -437,7 +428,7 @@ export default async function decorate(block) {
   if (shoppingBaskedId !== null) {
     const headers = {
       'x-abcam-app-id': 'b2c-public-website',
-      'x-correlation-id': generateUUID(),
+      'x-correlation-id': 'abcam-eds',
       'Content-Type': 'application/json',
     };
     const url = `https://proxy-gateway.abcam.com/ecommerce/rest/v1/basket/${shoppingBaskedId}?country=${selectedCountry}`;
@@ -471,8 +462,7 @@ export default async function decorate(block) {
     if (productCount > 0) {
       window.location.href = `https://${hostName}/en-us/shopping-basket/${shoppingBaskedId}?country=${selectedCountry}`;
     } else {
-      // eslint-disable-next-line no-alert
-      alert(`You have ${productCount} products in your cart!`);
+      window.location.href = `https://${hostName}/en-us/shopping-basket?country=${selectedCountry}`;
     }
   });
 }
