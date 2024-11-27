@@ -41,6 +41,10 @@
   height: 12rem
 }
 
+.title-card-wrapper :is(.h-4) {
+  height: 1rem
+}
+
 .title-card-wrapper :is(.w-1\/6) {
   width: 16.666667%
 }
