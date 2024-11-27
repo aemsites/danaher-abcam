@@ -1,6 +1,6 @@
 import { div, span } from '../../scripts/dom-builder.js';
 import { decorateIcons } from '../../scripts/aem.js';
- 
+
 export default function decorate(block) {
   block.classList.add(...'bg-black text-white p-8 lg:w-full w-fit'.split(' '));
   const containerDiv = div({ class: 'flex' });
