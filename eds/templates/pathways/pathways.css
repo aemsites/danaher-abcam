@@ -14,10 +14,22 @@
   width: 75%
 }
 
+.w-full {
+  width: 100%
+}
+
 .border-b {
   border-bottom-width: 1px
 }
 
+.border-t {
+  border-top-width: 1px
+}
+
 .border-b-slate-300\/70 {
   border-bottom-color: rgb(203 213 225 / 0.7)
+}
+
+.pt-4 {
+  padding-top: 1rem
 }
