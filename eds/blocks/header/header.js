@@ -446,7 +446,7 @@ export default async function decorate(block) {
         }
         return response.json();
       })
-      .then((data) => {
+      .then(() => {
         cartButton.addEventListener('click', () => {
           window.location.href = `https://${hostName}/en-us/shopping-basket/${shoppingBaskedId}?country=${selectedCountry}`;
         });
