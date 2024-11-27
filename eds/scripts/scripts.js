@@ -752,7 +752,7 @@ export const applyClasses = (element, classes) => element?.classList.add(...clas
 
 export function postFormAction(link = '') {
   // Show the download links (if any)
-  document.querySelectorAll('.downloads-wrapper .downloads a')?.forEach((downloadLink) => {
+  document.querySelectorAll('.downloads-wrapper .downloads p:has(a)')?.forEach((downloadLink) => {
     downloadLink.classList.remove('hidden');
   });
   const token = Math.random().toString(36).substr(2) + Math.random().toString(36).substr(2);;

@@ -2,12 +2,31 @@ import ffetch from '../../scripts/ffetch.js';
 import { decorateIcons, toClassName } from '../../scripts/aem.js';
 import { buildStoryHubSchema } from '../../scripts/schema.js';
 import {
-  button, div, p, span, ul, li, a,
+  button, div, p, span, ul, li,
 } from '../../scripts/dom-builder.js';
 import { createFilters } from '../../scripts/scripts.js';
 import createCard from '../dynamic-cards/articleCard.js';
 
 const getPageFromUrl = () => toClassName(new URLSearchParams(window.location.search).get('page')) || '';
+
+function updateUrlWithParams(key, value, url) {
+  const newUrl = new URL(url);
+  if (key !== 'stories-type') {
+    const values = newUrl.searchParams.get(key)?.split('|') || [];
+    if (newUrl.searchParams.has('page')) newUrl.searchParams.set('page', '1');
+
+    if (values.includes(value)) {
+      newUrl.searchParams.set(key, values.filter((v) => v !== value).join('|') || '');
+    } else {
+      newUrl.searchParams.set(key, [...values, value].filter(Boolean).join('|'));
+    }
+    if (key !== 'stories-type' && !newUrl.searchParams.get(key)) newUrl.searchParams.delete(key);
+  } else {
+    newUrl.searchParams.set(key, value);
+    newUrl.searchParams.set('page', '1');
+  }
+  window.history.pushState(null, '', newUrl);
+}
 
 const excludedPages = [
   '/en-us/stories/films',
@@ -15,8 +34,7 @@ const excludedPages = [
   '/en-us/stories/articles',
 ];
 let lists = [];
-let filterContainer = {};
-
+let tempList = [];
 let itemsPerPage;
 
 const hub = div();
@@ -76,11 +94,17 @@ function showMoreOrLessTags(mode) {
 const createPaginationLink = (page, label, current = false) => {
   const newUrl = new URL(window.location);
   newUrl.searchParams.set('page', page);
-  const link = a(
+  const link = span(
     {
-      href: newUrl.toString(),
+      onclick: () => {
+        const url = new URL(window.location.href);
+        url.searchParams.set('page', page || label);
+        window.history.pushState(null, '', url.toString());
+        // eslint-disable-next-line no-use-before-define
+        handleRenderContent(tempList);
+      },
       class:
-        'font-medium text-sm leading-5 pt-4 px-4 items-center inline-flex hover:border-t-2 hover:border-gray-300 hover:text-gray-700',
+        'cursor-pointer font-medium text-sm leading-5 pt-4 px-4 items-center inline-flex hover:border-t-2 hover:border-gray-300 hover:text-gray-700',
     },
     label || page,
   );
@@ -133,11 +157,14 @@ const createPagination = (entries, page, limit) => {
 function handleRenderTags() {
   const tagsList = allSelectedTags.querySelector('ul');
   tagsList.innerHTML = '';
-  if (Object.keys(filterContainer).length > 0) {
+  const params = new URLSearchParams(window.location.search);
+
+  if (params.toString()) {
     let filterCount = 0;
-    Object.keys(filterContainer).forEach((filterArr) => {
-      if (filterArr !== 'stories-type') {
-        filterContainer[filterArr].forEach((filt) => {
+    [...params.keys()].forEach((filterArr) => {
+      if (filterArr !== 'stories-type' && filterArr !== 'page') {
+        const filterValues = params.get(filterArr)?.split('|') || [];
+        filterValues.forEach((filt) => {
           filterCount += 1;
           tagsList.append(li(
             {
@@ -146,9 +173,18 @@ function handleRenderTags() {
               onclick: () => {
                 const selectedTag = allSelectedTags.querySelector(`ul li[title=${filt}]`);
                 selectedTag.outerHTML = '';
+
+                const updatedValues = filterValues.filter((value) => value !== filt).join('|');
+
+                if (updatedValues) {
+                  params.set(filterArr, updatedValues);
+                } else {
+                  params.delete(filterArr);
+                }
                 hub.querySelector(`#${filterArr}-${filt}`).checked = false;
                 // eslint-disable-next-line no-use-before-define
                 handleChangeFilter(filterArr, filt);
+                window.history.pushState(null, '', `?${params.toString()}`);
               },
             },
             filt,
@@ -157,6 +193,7 @@ function handleRenderTags() {
         });
       }
     });
+
     if (filterCount > 2) {
       tagsList.insertBefore(
         li({
@@ -170,9 +207,10 @@ function handleRenderTags() {
           class: 'showlesstags md:hidden flex items-center gap-x-1 text-xs text-[#378189] font-semibold bg-[#EDF6F7] px-2 py-1 rounded cursor-pointer capitalize',
           onclick: () => showMoreOrLessTags('show-less-tags'),
         }, 'Show Less'),
-        tagsList.childNodes[tagsList.children - 2],
+        tagsList.childNodes[tagsList.children.length - 2],
       );
     }
+
     if (filterCount >= 1) tagsList.append(li({ class: 'clear-all' }, clearAllEl));
     decorateIcons(tagsList);
   }
@@ -198,72 +236,68 @@ function handleRenderContent(newLists = lists) {
   }
 }
 
-function handleChangeFilter(key, value, mode) {
+function handleChangeFilter(key, value) {
+  if ((key !== undefined && value !== 'undefined') && (value !== null || value === '')) updateUrlWithParams(key, value, window.location.href);
+
   let newLists = lists;
-  if (!(key in filterContainer) && key === 'stories-type') {
-    newLists = lists.filter((list) => (value
+  let storiesList = [];
+  if (key === 'stories-type' && (value !== null || value !== '' || value !== 'undefined')) {
+    storiesList = lists.filter((list) => (value
       ? list.tags.includes(value)
       : true));
   } else {
-    if (mode !== 'skip-filter') {
-      if (key !== 'undefined' && (value === 'undefined' || value === null)) {
-        delete filterContainer[key];
-      } else if (key in filterContainer) {
-        if (filterContainer[key].includes(value)) {
-          if (key !== 'stories-type') filterContainer[key] = filterContainer[key].filter((val) => val !== value);
-          if (key !== 'stories-type' && filterContainer[key].length === 0) delete filterContainer[key];
-        } else filterContainer[key].push(value);
-      } else filterContainer[key] = [value];
-      const totalFilterKeys = Object.keys(filterContainer);
-      newLists = lists.map((list) => {
-        const totalChecks = totalFilterKeys.filter((filt) => {
-          if (filterContainer[filt].length > 0) {
-            const arrNameRes = filterContainer[filt].filter((arrName) => {
-              if (filt === 'stories-type' && arrName === '') return true;
-              return list.tags.includes(arrName);
-            });
-            if (arrNameRes.length > 0) return true;
-          }
-          return false;
-        });
-        return totalChecks.length === totalFilterKeys.length && list;
-      }).filter(Boolean);
-    }
-    handleRenderTags();
+    storiesList = lists;
   }
-  if (mode === 'reset-page') {
-    const url = new URL(window.location.href);
-    const params = new URLSearchParams(url.search);
-    params.delete('page');
-    let newUrl = url.pathname;
-    if (params.toString()) {
-      newUrl += `?${params.toString()}`;
-    }
-    window.history.replaceState({}, '', newUrl);
-  }
-
+  newLists = storiesList.filter((list) => {
+    const params = new URLSearchParams(window.location.search);
+    return [...params.keys()].every((filterKey) => {
+      if (filterKey !== 'page') {
+        const filterValues = params.get(filterKey)?.split('|') || [];
+        return filterValues.some((val) => (filterKey === 'stories-type' && val === '') || list.tags.includes(val));
+      }
+      return true; // eslint-disable-line array-callback-return
+    });
+  });
+  handleRenderTags();
+  tempList = newLists;
   handleRenderContent(newLists);
 }
 
-function handleResetFilters(value = '') {
-  Object.keys(filterContainer).forEach((filt) => {
-    for (let eachFilt = 0; eachFilt < filterContainer[filt].length; eachFilt += 1) {
-      const filterInp = hub.querySelector(`#${filt}-${filterContainer[filt][eachFilt]}`);
+function handleResetFilters() {
+  const url = new URL(window.location.href);
+  const params = url.searchParams;
+
+  [...params.entries()].forEach(([key, values]) => {
+    values.split('|').forEach((value) => {
+      const filterInp = hub.querySelector(`#${key}-${value}`);
       if (filterInp) filterInp.checked = false;
-    }
+    });
   });
-  filterContainer = {};
-  filterContainer['stories-type'] = [value];
+  if (params.has('stories-type')) {
+    [...params.keys()].forEach((k) => {
+      if (k !== 'stories-type') {
+        params.delete(k);
+      }
+    });
+  }
+  window.history.replaceState(null, '', url.toString());
   // eslint-disable-next-line no-use-before-define
-  handleChangeFilter(null, null, 'skip-filter');
+  handleChangeFilter('stories-type', params.has('stories-type') ? params.get('stories-type') : '');
 }
 
 function handleClearCategoryFilter(key) {
-  filterContainer[key].forEach((filt) => {
-    const selectedTag = allSelectedTags.querySelector(`ul li[title=${filt}]`);
-    selectedTag.outerHTML = '';
-    hub.querySelector(`#${key}-${filt}`).checked = false;
+  const params = new URLSearchParams(window.location.search);
+
+  (params.get(key)?.split('|') || []).forEach((filt) => {
+    allSelectedTags.querySelector(`ul li[title="${filt}"]`)?.remove();
+    const checkbox = hub.querySelector(`#${key}-${filt}`);
+    if (checkbox instanceof HTMLInputElement && checkbox.type === 'checkbox') {
+      checkbox.checked = false;
+    }
   });
+
+  params.delete(key);
+  window.history.pushState(null, '', `?${params.toString()}`);
   handleChangeFilter(key, null);
 }
 
@@ -284,11 +318,10 @@ function toggleMobileFilters(mode) {
 function toggleTabs(tabId, tabElement) {
   const tabs = tabElement.querySelectorAll('.tab');
   const [key, value] = tabId.split('/');
-  if (!filterContainer[key].includes(value)) handleResetFilters(value);
+  handleChangeFilter(key, value);
   tabs.forEach((tab) => {
     if (tab.id === tabId) {
       tab.classList.add('active', 'border-b-8', 'border-[#ff7223]');
-      handleChangeFilter(key, value);
     } else {
       tab.classList.remove('active', 'border-b-8', 'border-[#ff7223]');
     }
@@ -318,7 +351,7 @@ export default async function decorate(block) {
       element: allFilters,
       listActionHandler: async (categoryKey, categoryValue) => {
         await initiateRequest();
-        handleChangeFilter(categoryKey, categoryValue, 'reset-page');
+        handleChangeFilter(categoryKey, categoryValue);
       },
       clearFilterHandler: async (categoryKey) => {
         await initiateRequest();
@@ -383,9 +416,20 @@ export default async function decorate(block) {
       }, tab.name);
       tabElement.appendChild(btn);
     });
-    filterContainer['stories-type'] = [''];
-    toggleTabs(tabs[0].tabId, tabElement);
     block.innerHTML = '';
     block.append(tabElement, horizondalLine, hub);
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('stories-type') === '' || params.get('stories-type') === null) toggleTabs(tabs[0].tabId, tabElement);
+    [...params.entries()].forEach(([key, values]) => {
+      if (key === 'stories-type') {
+        toggleTabs(`${key}/${values}`, tabElement);
+      }
+      if (key !== 'page') {
+        values.split('|').forEach((value) => {
+          const filterInp = hub.querySelector(`#${key}-${value}`);
+          if (filterInp) filterInp.checked = true;
+        });
+      }
+    });
   }
 }
