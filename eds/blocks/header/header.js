@@ -456,7 +456,7 @@ export default async function decorate(block) {
         block.querySelector('.cart-count').textContent = totalProducts;
       })
       .catch((error) => {
-        // eslint-disable-next-line no-bitwise
+        //  eslint-disable-next-line no-console
         console.error('There was an error making the API call:', error);
       });
   }
@@ -471,7 +471,7 @@ export default async function decorate(block) {
     if (productCount > 0) {
       window.location.href = `https://${hostName}/en-us/shopping-basket/${shoppingBaskedId}?country=${selectedCountry}`;
     } else {
-      // eslint-disable-next-line no-bitwise
+      // eslint-disable-next-line no-alert
       alert(`You have ${productCount} products in your cart!`);
     }
   });
