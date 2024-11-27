@@ -447,10 +447,9 @@ export default async function decorate(block) {
         return response.json();
       })
       .then((data) => {
-        const jsonData = JSON.parse(data);
-        if (jsonData.items.length > 0) {
+        if (data.items.length > 0) {
           document.querySelector('.cart-count')?.classList?.remove('hidden');
-          document.querySelector('.cart-count').textContent = jsonData.items.length;
+          document.querySelector('.cart-count').textContent = data.items.length;
         } else {
           document.querySelector('.cart-count')?.classList?.add('hidden');
         }
