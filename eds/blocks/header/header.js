@@ -384,7 +384,9 @@ export default async function decorate(block) {
   block.querySelector('.country-dropdown')?.addEventListener('click', (event) => {
     const countrySearch = document.querySelector('.country-search');
     if (event.target === event.currentTarget || event.target.alt === 'chevron-down-white' || event.target.parentElement.classList.contains('country-flag-icon')) {
-      if (!dropdownLabel.contains(event.target) && dropdownLabel.previousElementSibling.checked) dropdownLabel.click();
+      if (!dropdownLabel.contains(event.target) && dropdownLabel.previousElementSibling.checked) {
+        dropdownLabel.click();
+      }
       countrySearch?.classList.toggle('hidden');
       const searchValue = block.querySelector('#country-search-input');
       if (searchValue) searchValue.value = '';
@@ -408,7 +410,7 @@ export default async function decorate(block) {
   const accountEl = document.getElementById('my-account');
   const session = getLocalStorageToken();
   accountEl.append(myAccount(session));
-  document.addEventListener('click', (event) => {    
+  document.addEventListener('click', (event) => {
     const isChecked = document.getElementById('account-dropdown');
     if (isChecked.checked) {
       if (!dropdownLabel.contains(event.target) && dropdownLabel.previousElementSibling.checked) {
