@@ -6,9 +6,7 @@ export default function decorate(block) {
   block.querySelector('h1').classList.add(...'my-5 text-black-0 !text-3xl md:!text-4xl lg:!text-6xl font-semibold !tracking-wider'.split(' '));
   block.querySelector('h1').after(p({ class: 'w-1/6 mb-5 border-t-4 border-[#ff7223]' }));
   const description = block.querySelector('p:nth-of-type(2)');
-  if(description) {
-    description.classList.add(...'text-lg tracking-[0.3px] leading-7'.split(' '));
-  }
+  if (description) description.classList.add(...'text-lg tracking-[0.3px] leading-7'.split(' '));
   if (block && block.classList.contains('title-image')) {
     block.querySelector('h1').parentElement.parentElement.classList.add(...'2xl:h-[400px] w-full lg:w-1/2 lg:py-6 lg:pr-6'.split(' '));
     applyClasses(block, 'text-center-align image-full-width font-sans text-base flex flex-col gap-y-6 px-6 lg:pr-0 justify-center lg:flex-row 2xl:container 2xl:max-w-7xl mx-auto items-center');
