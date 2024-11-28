@@ -48,7 +48,7 @@ function updateFeatureProducts(products) {
     const leftEls = div({ class: 'w-2/3' });
     const rightEls = div({ class: 'pt-20 w-1/3' });
     getTag(product);
-    applyClasses(product, 'capitalize h-auto size-full flex flex-row align-center text-left p-4 bg-white border border-[#0711121a] rounded hover:bg-[#0000000d] cursor-pointer');
+    applyClasses(product, 'h-auto size-full flex flex-row align-center text-left p-4 bg-white border border-[#0711121a] rounded hover:bg-[#0000000d] cursor-pointer');
     applyClasses(product.querySelector('div:nth-child(1)'), 'w-fit px-2 py-1 rounded text-xs text-emerald-800 border border-emerald-900 bg-[#edf6f7]');
     applyClasses(product.querySelector('div:nth-child(2)'), 'mt-4 text-xs text-[#65797c] font-medium font-sans lowercase');
     applyClasses(product.querySelector('div:nth-child(3)'), 'mb-4 mt-2 text-sm text-black font-medium');
