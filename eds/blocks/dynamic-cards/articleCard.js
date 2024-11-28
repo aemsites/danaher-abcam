@@ -33,7 +33,7 @@ export default function createCard(article, firstCard = false, cardType = 'story
       break;
     case 'on-demand-webinar':
       footerLink = 'Watch webinar';
-      minRead = ` | ${time} mintues`;
+      minRead = ` | ${time} minutes`;
       break;
     default:
       footerLink = 'Read article';
