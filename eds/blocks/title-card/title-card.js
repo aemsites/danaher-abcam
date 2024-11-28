@@ -43,9 +43,8 @@ export default function decorate(block) {
     applyClasses(block, 'mx-auto max-w-7xl px-4 pb-4 font-sans text-base md:flex flex-col justify-center');
   }
   block.querySelectorAll('div').forEach((divEle) => {
-    // Check if the div is empty or contains only whitespace, but exclude divs with images
     if (!divEle.textContent.trim() && !divEle.querySelector('picture')) {
-      divEle.remove(); // Remove the parent `<div>` and its children
+      divEle.remove();
     }
   });
 }
