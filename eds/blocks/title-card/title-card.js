@@ -8,12 +8,13 @@ export default function decorate(block) {
   const description = block.querySelector('p:nth-of-type(2)');
   if (description) description.classList.add(...'text-lg tracking-[0.3px] leading-7'.split(' '));
   if (block && block.classList.contains('title-image')) {
-    block.querySelector('h1').parentElement.parentElement.classList.add(...'2xl:h-[400px] w-full lg:w-1/2 lg:py-6 lg:pr-6'.split(' '));
-    applyClasses(block, 'text-center-align image-full-width font-sans text-base flex flex-col gap-y-6 px-6 lg:pr-0 justify-center lg:flex-row 2xl:container 2xl:max-w-7xl mx-auto items-center');
+    block.parentElement.parentElement.classList.add('relative');
+    block.querySelector('h1').parentElement.parentElement.classList.add(...'xl:min-h-[400px] w-full lg:w-1/2 lg:py-6 lg:pr-6'.split(' '));
+    applyClasses(block, 'text-center-align image-full-width font-sans text-base flex flex-col gap-y-6 pb-4 px-6 lg:pr-0 justify-center lg:flex-row xl:container xl:max-w-7xl mx-auto items-center');
     const image = block.querySelector('picture');
     image.parentElement.parentElement.classList.add(...'w-full lg:w-1/2 my-auto'.split(' '));
     const titleImage = block.querySelector('img');
-    applyClasses(titleImage, 'w-full h-48 md:h-[400px] object-cover relative 2xl:w-1/2 2xl:absolute 2xl:right-0 2xl:top-36');
+    applyClasses(titleImage, 'w-full h-48 md:h-[400px] object-cover relative xl:w-1/2 xl:absolute xl:right-0 xl:top-0');
     const subTitleEl = block.querySelector('h4');
     if (subTitleEl) {
       applyClasses(subTitleEl, 'text-xs text-[#378189] bg-[#EDF6F7] font-semibold rounded capitalize py-1 px-2');
@@ -41,4 +42,10 @@ export default function decorate(block) {
   } else {
     applyClasses(block, 'mx-auto max-w-7xl px-4 pb-4 font-sans text-base md:flex flex-col justify-center');
   }
+  block.querySelectorAll('div').forEach((divEle) => {
+    // Check if the div is empty or contains only whitespace, but exclude divs with images
+    if (!divEle.textContent.trim() && !divEle.querySelector('picture')) {
+      divEle.remove(); // Remove the parent `<div>` and its children
+    }
+  });
 }
