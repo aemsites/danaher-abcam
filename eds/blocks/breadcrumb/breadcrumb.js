@@ -2,12 +2,13 @@ import { getMetadata } from '../../scripts/aem.js';
 import {
   div, nav, ul, li, a,
 } from '../../scripts/dom-builder.js';
+import { removeAbcamTitle } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
   const pageUrl = window.location.pathname;
   const path = pageUrl.split('/').slice(2);
   const ogTitle = getMetadata('og:title');
-  const title = (ogTitle.indexOf('| abcam') || ogTitle.indexOf('| Abcam')) > -1 ? (ogTitle.split('| abcam')[0] || ogTitle.split('| Abcam')[0]) : ogTitle;
+  const title = removeAbcamTitle(ogTitle);
   const newUrl = new URL(window.location);
 
   const pathFragments = [
