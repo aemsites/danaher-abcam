@@ -880,6 +880,18 @@ export function formatDate(date) {
   return formatDate;
 }
 
+export function removeAbcamTitle(ogTitle){
+  let title;
+  if(ogTitle.indexOf('| abcam') > -1) {
+    title = ogTitle.split('| abcam')[0];
+  } else if(ogTitle.indexOf('| Abcam') > -1) {
+    title = ogTitle.split('| Abcam')[0];
+  } else {
+    title = ogTitle;
+  }
+  return title;
+}
+
 // Check if OneTrust is accepted
 export function isOTEnabled() {
   const otCookie = getCookie("OptanonConsent");
