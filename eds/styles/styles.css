@@ -847,12 +847,12 @@ header {
   padding-top: 2rem;
 }
 
-.default-content-wrapper > ol {
+.default-content-wrapper > ol, .recommended-products ul {
   list-style-type: decimal;
   padding-left: 1.5rem;
 }
 
-.default-content-wrapper > ul {
+.default-content-wrapper > ul, .recommended-products ul {
   list-style-type: disc;
   padding-left: 1.5rem;
 }
@@ -1817,10 +1817,6 @@ main .section.elouqa-form-container {
   width: 35rem;
 }
 
-.w-\[55\%\] {
-  width: 55%;
-}
-
 .w-\[58\.631px\] {
   width: 58.631px;
 }
@@ -1859,10 +1855,6 @@ main .section.elouqa-form-container {
   min-width: 15rem;
 }
 
-.max-w-24 {
-  max-width: 6rem;
-}
-
 .max-w-\[2464px\] {
   max-width: 2464px;
 }
@@ -1889,10 +1881,6 @@ main .section.elouqa-form-container {
 
 .basis-1\/4 {
   flex-basis: 25%;
-}
-
-.basis-3\/5 {
-  flex-basis: 60%;
 }
 
 .basis-3\/4 {
@@ -2111,12 +2099,6 @@ main .section.elouqa-form-container {
 
 .scroll-smooth {
   scroll-behavior: smooth;
-}
-
-.truncate {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .whitespace-nowrap {
@@ -2886,24 +2868,12 @@ main .section.elouqa-form-container {
     width: 20.9375rem;
   }
 
-  .sm\:w-\[50\%\] {
-    width: 50%;
-  }
-
-  .sm\:w-\[74\] {
-    width: 74;
-  }
-
   .sm\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .sm\:\!flex-row {
     flex-direction: row !important;
-  }
-
-  .sm\:gap-6 {
-    gap: 1.5rem;
   }
 
   .sm\:border-t-\[0\.5px\] {
@@ -2952,28 +2922,12 @@ main .section.elouqa-form-container {
     height: 16rem;
   }
 
-  .md\:\!w-auto {
-    width: auto !important;
-  }
-
   .md\:w-2\/5 {
     width: 40%;
   }
 
   .md\:w-3\/5 {
     width: 60%;
-  }
-
-  .md\:w-\[30\%\] {
-    width: 30%;
-  }
-
-  .md\:w-\[40\%\] {
-    width: 40%;
-  }
-
-  .md\:w-\[55\%\] {
-    width: 55%;
   }
 
   .md\:w-auto {
@@ -3074,16 +3028,16 @@ main .section.elouqa-form-container {
     display: none;
   }
 
+  .lg\:\!w-auto {
+    width: auto !important;
+  }
+
   .lg\:w-1\/2 {
     width: 50%;
   }
 
-  .lg\:w-\[15\%\] {
-    width: 15%;
-  }
-
-  .lg\:w-\[48\%\] {
-    width: 48%;
+  .lg\:w-\[74px\] {
+    width: 74px;
   }
 
   .lg\:w-\[900px\] {
@@ -3092,10 +3046,6 @@ main .section.elouqa-form-container {
 
   .lg\:w-full {
     width: 100%;
-  }
-
-  .lg\:\!w-auto {
-    width: auto !important;
   }
 
   .lg\:max-w-72 {
@@ -3137,10 +3087,6 @@ main .section.elouqa-form-container {
     width: 1120px;
   }
 
-  .xl\:w-\[90\%\] {
-    width: 90%;
-  }
-
   .xl\:px-\[80px\] {
     padding-left: 80px;
     padding-right: 80px;
@@ -3155,18 +3101,6 @@ main .section.elouqa-form-container {
 
   .\32xl\:max-h-\[500px\] {
     max-height: 500px;
-  }
-
-  .\32xl\:w-\[15\%\] {
-    width: 15%;
-  }
-
-  .\32xl\:w-\[65\%\] {
-    width: 65%;
-  }
-
-  .\32xl\:w-\[20\%\] {
-    width: 20%;
   }
 }
 
