@@ -1,5 +1,5 @@
 import {
-  formatDate, formatTime, getContentType, imageHelper,
+  formatDate, formatTime, getContentType, imageHelper, removeAbcamTitle
 } from '../../scripts/scripts.js';
 import {
   li, a, p, div, h3, span,
@@ -51,7 +51,7 @@ export default function createCard(article, firstCard = false, cardType = 'story
       titleImage,
       div(
         { class: 'flex-1' },
-        title && h3({ class: 'text-black font-medium mt-4 break-words line-clamp-4' }, title),
+        removeAbcamTitle(title) && h3({ class: 'text-black font-medium mt-4 break-words line-clamp-4' }, removeAbcamTitle(title)),
         description && p({ class: 'text-sm line-clamp-3' }, description),
       ),
       footerLink !== ''
