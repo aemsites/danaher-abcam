@@ -6,7 +6,7 @@ import { toolTip } from '../../scripts/scripts.js';
 function toggleTabs(tabId, mmgTabs, tabType) {
   const contentSections = document.querySelectorAll('[data-tabname]');
   contentSections.forEach((section) => {
-    if (section.dataset.tabname?.toLowerCase() === tabId) {
+    if (section.dataset.tabname === tabId) {
       section.classList.remove('hide-section');
     } else {
       section.classList.add('hide-section');
