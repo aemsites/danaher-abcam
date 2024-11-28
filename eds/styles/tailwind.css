@@ -94,7 +94,7 @@
         @apply pt-8;
     }
 
-    .default-content-wrapper > ol, .recommended-products ul {
+    .default-content-wrapper > ol, .recommended-products ol {
         @apply pl-6 list-decimal;
     }
 
