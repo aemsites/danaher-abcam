@@ -94,11 +94,11 @@
         @apply pt-8;
     }
 
-    .default-content-wrapper > ol {
+    .default-content-wrapper > ol, .recommended-products ol {
         @apply pl-6 list-decimal;
     }
 
-    .default-content-wrapper > ul {
+    .default-content-wrapper > ul, .recommended-products ul {
         @apply pl-6 list-disc;
     }
 

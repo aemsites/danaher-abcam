@@ -69,7 +69,7 @@ function decorateButtonTabs(block) {
   const tabs = getTabName();
   tabs.forEach((tab) => {
     const buttonTab = button({
-      class: 'tab px-6 py-2 border border-black border-solid bg-white text-black font-bold rounded-full capitalize',
+      class: 'tab px-6 py-2 border border-black border-solid bg-white text-black font-bold rounded-full',
       id: tab,
     }, tab);
     mmgTabs.appendChild(buttonTab);
