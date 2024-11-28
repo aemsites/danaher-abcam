@@ -1,5 +1,5 @@
 import {
-  formatDate, formatTime, getContentType, imageHelper, removeAbcamTitle
+  formatDate, formatTime, getContentType, imageHelper, removeAbcamTitle,
 } from '../../scripts/scripts.js';
 import {
   li, a, p, div, h3, span,
