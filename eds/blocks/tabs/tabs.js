@@ -30,7 +30,7 @@ function getTabName() {
   const contentSections = document.querySelectorAll('[data-tabname]');
   const tabName = new Set();
   contentSections.forEach((section) => {
-    tabName.add(section.dataset.tabname?.toLowerCase());
+    tabName.add(section.dataset.tabname);
   });
   return [...tabName];
 }
