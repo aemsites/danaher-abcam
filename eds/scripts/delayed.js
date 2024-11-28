@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-cycle
 import { sampleRUM, loadScript } from './aem.js';
 // eslint-disable-next-line import/no-cycle
-import { isOTEnabled } from './scripts.js';
+import { isOTEnabled, getCookie } from './scripts.js';
 
 // Core Web Vitals RUM collection
 sampleRUM('cwv');
@@ -80,6 +80,7 @@ function loadFreshChat() {
 if (
   !window.location.hostname.includes('localhost')
   && !window.location.hostname.includes('.hlx')
+  && (getCookie('cq-authoring-mode') !== 'TOUCH')
 ) {
   loadGTM();
   loadrelicScript();
