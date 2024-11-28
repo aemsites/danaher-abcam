@@ -17,12 +17,12 @@
   margin-bottom: auto
 }
 
-.title-card-wrapper :is(.mb-2) {
-  margin-bottom: 0.5rem
-}
-
 .title-card-wrapper :is(.mb-5) {
   margin-bottom: 1.25rem
+}
+
+.title-card-wrapper :is(.mb-2) {
+  margin-bottom: 0.5rem
 }
 
 .title-card-wrapper :is(.mt-8) {
@@ -96,14 +96,19 @@
      object-fit: cover
 }
 
-.title-card-wrapper :is(.px-2) {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem
-}
-
 .title-card-wrapper :is(.px-4) {
   padding-left: 1rem;
   padding-right: 1rem
+}
+
+.title-card-wrapper :is(.px-\[30px\]) {
+  padding-left: 30px;
+  padding-right: 30px
+}
+
+.title-card-wrapper :is(.px-2) {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem
 }
 
 .title-card-wrapper :is(.px-6) {
@@ -124,18 +129,37 @@
   padding-top: 1rem
 }
 
+.title-card-wrapper :is(.text-center) {
+  text-align: center
+}
+
 .title-card-wrapper :is(.font-sans) {
   font-family: Noto Sans
 }
 
-.title-card-wrapper :is(.\!text-3xl) {
-  font-size: 1.875rem !important;
-  line-height: 2.25rem !important
+.title-card-wrapper :is(.text-2xl) {
+  font-size: 1.5rem;
+  line-height: 2rem
+}
+
+.title-card-wrapper :is(.text-5xl) {
+  font-size: 3rem;
+  line-height: 1
 }
 
 .title-card-wrapper :is(.text-base) {
   font-size: 1rem;
   line-height: 1.5rem
+}
+
+.title-card-wrapper :is(.text-xl) {
+  font-size: 1.25rem;
+  line-height: 1.75rem
+}
+
+.title-card-wrapper :is(.\!text-3xl) {
+  font-size: 1.875rem !important;
+  line-height: 2.25rem !important
 }
 
 .title-card-wrapper :is(.text-lg) {
@@ -153,12 +177,16 @@
   line-height: 1rem
 }
 
-.title-card-wrapper :is(.font-normal) {
-  font-weight: 400
+.title-card-wrapper :is(.font-light) {
+  font-weight: 300
 }
 
 .title-card-wrapper :is(.font-semibold) {
   font-weight: 600
+}
+
+.title-card-wrapper :is(.font-normal) {
+  font-weight: 400
 }
 
 .title-card-wrapper :is(.capitalize) {
@@ -171,6 +199,10 @@
 
 .title-card-wrapper :is(.leading-7) {
   line-height: 1.75rem
+}
+
+.title-card-wrapper :is(.tracking-normal) {
+  letter-spacing: 0em
 }
 
 .title-card-wrapper :is(.\!tracking-wider) {
@@ -227,6 +259,12 @@
   }
 }
 
+@media (min-width: 640px) {
+  .title-card-wrapper :is(.sm\:\!text-\[24px\]) {
+    font-size: 24px !important
+  }
+}
+
 @media (min-width: 768px) {
   .title-card-wrapper :is(.md\:mt-12) {
     margin-top: 3rem
@@ -242,6 +280,15 @@
 
   .title-card-wrapper :is(.md\:h-\[400px\]) {
     height: 400px
+  }
+
+  .title-card-wrapper :is(.md\:\!text-\[42px\]) {
+    font-size: 42px !important
+  }
+
+  .title-card-wrapper :is(.md\:text-6xl) {
+    font-size: 3.75rem;
+    line-height: 1
   }
 
   .title-card-wrapper :is(.md\:\!text-4xl) {
@@ -272,9 +319,29 @@
     padding-right: 1.5rem
   }
 
+  .title-card-wrapper :is(.lg\:\!text-\[56px\]) {
+    font-size: 56px !important
+  }
+
+  .title-card-wrapper :is(.lg\:text-3xl) {
+    font-size: 1.875rem;
+    line-height: 2.25rem
+  }
+
   .title-card-wrapper :is(.lg\:\!text-6xl) {
     font-size: 3.75rem !important;
     line-height: 1 !important
+  }
+}
+
+@media (min-width: 1280px) {
+  .title-card-wrapper :is(.xl\:max-w-\[1120px\]) {
+    max-width: 1120px
+  }
+
+  .title-card-wrapper :is(.xl\:px-0) {
+    padding-left: 0px;
+    padding-right: 0px
   }
 }
 
