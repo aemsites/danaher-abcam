@@ -4,6 +4,7 @@ import {
 } from '../../scripts/dom-builder.js';
 import { decorateIcons, getMetadata } from '../../scripts/aem.js';
 import { renderChapters } from '../chapter-links/chapter-links.js';
+import { removeAbcamTitle } from '../../scripts/scripts.js';
 
 const modal = div({ class: 'w-screen h-full top-0 left-0 fixed block lg:hidden inset-0 z-30 bg-black bg-opacity-80 flex justify-center items-end transition-all translate-y-full' });
 const stickyChapterLinks = div({ class: 'sticky-bottom' });
@@ -37,7 +38,7 @@ export default async function decorate(block) {
     .filter((item) => item.tags && extractedTags.some((tag) => item.tags.includes(tag)))
     .all();
   const chapters = chapterItems.map((element) => ({
-    title: element.title.indexOf('| abcam') > -1 ? element.title.split('| abcam')[0] : element.title,
+    title: removeAbcamTitle(element.title),
     description: element.description,
     pageOrder: element.pageOrder,
     path: element.path,
