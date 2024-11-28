@@ -65,4 +65,67 @@ indices:
       pageOrder:
         select: head > meta[name="pageorder"]
         value: attribute(el, "content")
-
+  knowledgecenter:
+    include:
+      - /en-us/knowledge-center/**
+    exclude:
+      - /en-us/knowledge-center
+      - /en-us/knowledge-center/query-index.json
+    target: /en-us/knowledge-center/query-index.json
+    properties:
+      lastModified:
+        select: head > meta[name="modified-time"]
+        value: parseTimestamp(attribute(el, "content"), "YYYY-MM-DDTHH:mm:ss")
+      title:
+        select: head > meta[property="og:title"]
+        value: attribute(el, "content")
+      description:
+        select: head > meta[property="og:description"]
+        value: attribute(el, "content")
+      image:
+        select: head > meta[property="og:image"]
+        value: match(attribute(el, "content"), "^https?:\/\/[^\/]+(\/.*)")
+      tags:
+        select: head > meta[name="pagetags"]
+        value: attribute(el, "content")
+      readingTime:
+        select: head > meta[name="readingtime"]
+        value: attribute(el, "content")
+      publishDate:
+        select: head > meta[name="published-time"]
+        value: parseTimestamp(attribute(el, "content"), "YYYY-MM-DDTHH:mm:ss")
+      template:
+        select: head > meta[name="template"]
+        value: attribute(el, "content")
+  webinars:
+    include:
+      - /en-us/webinars/**
+    exclude:
+      - /en-us/webinars
+      - /en-us/webinars/query-index.json
+    target: /en-us/webinars/query-index.json
+    properties:
+      lastModified:
+        select: head > meta[name="modified-time"]
+        value: parseTimestamp(attribute(el, "content"), "YYYY-MM-DDTHH:mm:ss")
+      title:
+        select: head > meta[property="og:title"]
+        value: attribute(el, "content")
+      description:
+        select: head > meta[property="og:description"]
+        value: attribute(el, "content")
+      image:
+        select: head > meta[property="og:image"]
+        value: match(attribute(el, "content"), "^https?:\/\/[^\/]+(\/.*)")
+      tags:
+        select: head > meta[name="pagetags"]
+        value: attribute(el, "content")
+      readingTime:
+        select: head > meta[name="readingtime"]
+        value: attribute(el, "content")
+      publishDate:
+        select: head > meta[name="publishdate"]
+        value: parseTimestamp(attribute(el, "content"), "YYYY-MM-DDTHH:mm:ss")
+      template:
+        select: head > meta[name="template"]
+        value: attribute(el, "content")

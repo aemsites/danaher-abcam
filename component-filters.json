@@ -24,7 +24,7 @@
       "title-card",
       "podcasts",
       "alert-banner",
-      "product-tabs",
+      "tabs",
       "product-overview",
       "product-buybox",
       "product-reactivity",
@@ -43,7 +43,11 @@
       "story-hub",
       "speakers-info",
       "download",
-      "table"
+      "table",
+      "downloads",
+      "elouqa-form",
+      "video-transcript",
+      "cta-banner"
     ]
   },
   {
@@ -76,6 +80,16 @@
     ]
   },
   {
+    "id": "downloads",
+    "components": [
+      "download"
+    ]
+  },
+  {
+    "id": "elouqa-form",
+    "components": []
+  },
+  {
     "id": "mini-teasers",
     "components": [
       "mini-teaser"
@@ -85,6 +99,12 @@
     "id": "podcasts",
     "components": [
       "podcast"
+    ]
+  },
+  {
+    "id": "recommended-products",
+    "components": [
+      "product"
     ]
   },
   {

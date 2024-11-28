@@ -1,0 +1,106 @@
+.video-transcript-wrapper :is(.left-\[3px\]) {
+  left: 3px
+}
+
+.video-transcript-wrapper :is(.top-\[3px\]) {
+  top: 3px
+}
+
+.video-transcript-wrapper :is(.block) {
+  display: block
+}
+
+.video-transcript-wrapper :is(.flex) {
+  display: flex
+}
+
+.video-transcript-wrapper :is(.hidden) {
+  display: none
+}
+
+.video-transcript-wrapper :is(.h-\[18px\]) {
+  height: 18px
+}
+
+.video-transcript-wrapper :is(.w-\[18px\]) {
+  width: 18px
+}
+
+.video-transcript-wrapper :is(.cursor-pointer) {
+  cursor: pointer
+}
+
+.video-transcript-wrapper :is(.items-center) {
+  align-items: center
+}
+
+.video-transcript-wrapper :is(.justify-between) {
+  justify-content: space-between
+}
+
+.video-transcript-wrapper :is(.border-y) {
+  border-top-width: 1px;
+  border-bottom-width: 1px
+}
+
+.video-transcript-wrapper :is(.border-solid) {
+  border-style: solid
+}
+
+.video-transcript-wrapper :is(.border-gray-300) {
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity))
+}
+
+.video-transcript-wrapper :is(.py-8) {
+  padding-top: 2rem;
+  padding-bottom: 2rem
+}
+
+.video-transcript-wrapper :is(.text-left) {
+  text-align: left
+}
+
+.video-transcript-wrapper :is(.font-sans) {
+  font-family: Noto Sans
+}
+
+.video-transcript-wrapper :is(.text-2xl) {
+  font-size: 1.5rem;
+  line-height: 2rem
+}
+
+.video-transcript-wrapper :is(.text-lg) {
+  font-size: 1.125rem;
+  line-height: 1.75rem
+}
+
+.video-transcript-wrapper :is(.font-normal) {
+  font-weight: 400
+}
+
+.video-transcript-wrapper :is(.font-semibold) {
+  font-weight: 600
+}
+
+.video-transcript-wrapper :is(.leading-7) {
+  line-height: 1.75rem
+}
+
+.video-transcript-wrapper :is(.leading-\[27px\]) {
+  line-height: 27px
+}
+
+.video-transcript-wrapper :is(.tracking-\[0\.3px\]) {
+  letter-spacing: 0.3px
+}
+
+@media (min-width: 768px) {
+  .video-transcript-wrapper :is(.md\:h-\[27px\]) {
+    height: 27px
+  }
+
+  .video-transcript-wrapper :is(.md\:w-\[489px\]) {
+    width: 489px
+  }
+}

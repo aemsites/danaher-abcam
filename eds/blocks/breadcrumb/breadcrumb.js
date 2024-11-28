@@ -4,13 +4,22 @@ import {
 } from '../../scripts/dom-builder.js';
 
 export default function decorate(block) {
-  const path = window.location.pathname.split('/').slice(2);
+  const pageUrl = window.location.pathname;
+  const path = pageUrl.split('/').slice(2);
   const ogTitle = getMetadata('og:title');
-  const title = ogTitle.indexOf('| Abcam') > -1 ? ogTitle.split('| Abcam')[0] : ogTitle;
+  const title = (ogTitle.indexOf('| abcam') || ogTitle.indexOf('| Abcam')) > -1 ? (ogTitle.split('| abcam')[0] || ogTitle.split('| Abcam')[0]) : ogTitle;
   const newUrl = new URL(window.location);
-  if (window.location.pathname.indexOf('technical-resources/guides') > -1) {
-    newUrl.pathname = window.location.pathname.substring(0, window.location.pathname.indexOf('/technical-resources/'));
+
+  const pathFragments = [
+    '/technical-resources/guides',
+    '/knowledge-center',
+    '/webinars',
+  ];
+  const matchingFragment = pathFragments.find((fragment) => pageUrl.includes(fragment));
+  if (matchingFragment) {
+    newUrl.pathname = pageUrl.substring(0, pageUrl.indexOf(matchingFragment));
   }
+
   const { length } = path;
   if (length > 0) {
     const breadcrumbLiLinks = li({ class: 'flex gap-x-2' });

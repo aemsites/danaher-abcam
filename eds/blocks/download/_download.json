@@ -39,11 +39,25 @@
           "...": "../../../models/_common.json#/button-fields"
         },
         {
-          "component": "text",
+          "component": "multiselect",
           "valueType": "string",
           "name": "download_doctype",
           "value": "",
-          "label": "Document Type"
+          "label": "Document Type",
+          "options": [
+            {
+              "name": "Document",
+              "value": "DOC"
+            },
+            {
+              "name": "PDF",
+              "value": "PDF"
+            },
+            {
+              "name": "Presentation",
+              "value": "PPT"
+            }
+          ]
         }
       ]
     }

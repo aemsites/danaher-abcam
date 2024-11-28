@@ -44,14 +44,14 @@
   border-bottom-width: 1px
 }
 
-.learn-more-wrapper :is(.px-6) {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem
-}
-
 .learn-more-wrapper :is(.py-8) {
   padding-top: 2rem;
   padding-bottom: 2rem
+}
+
+.learn-more-wrapper :is(.px-6) {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem
 }
 
 .learn-more-wrapper :is(.pb-8) {
@@ -107,6 +107,11 @@
     justify-content: space-between
   }
 
+  .learn-more-wrapper :is(.md\:px-0) {
+    padding-left: 0px;
+    padding-right: 0px
+  }
+
   .learn-more-wrapper :is(.md\:px-8) {
     padding-left: 2rem;
     padding-right: 2rem
@@ -118,7 +123,19 @@
 }
 
 @media (min-width: 1024px) {
+  .learn-more-wrapper :is(.lg\:px-6) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem
+  }
+
   .learn-more-wrapper :is(.lg\:pt-0) {
     padding-top: 0px
+  }
+}
+
+@media (min-width: 1280px) {
+  .learn-more-wrapper :is(.xl\:px-0) {
+    padding-left: 0px;
+    padding-right: 0px
   }
 }

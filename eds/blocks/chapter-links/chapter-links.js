@@ -3,13 +3,13 @@ import {
   a, button, div, p, span,
 } from '../../scripts/dom-builder.js';
 import { decorateIcons } from '../../scripts/aem.js';
-import { buildArticleSchema, buildGuidesCollectionSchema } from '../../scripts/schema.js';
+import { buildArticleSchema, buildCollectionSchema } from '../../scripts/schema.js';
 
-const modal = div({ class: 'w-screen h-full top-0 left-0 fixed block lg:hidden inset-0 z-30 bg-black bg-opacity-80 flex justify-center items-end transition-all -translate-y-full' });
+const modal = div({ class: 'w-screen h-full top-0 left-0 fixed block lg:hidden inset-0 z-30 bg-black bg-opacity-80 flex justify-center items-end transition-all translate-y-full' });
 const stickyChapterLinks = div({ class: 'sticky-bottom' });
 
 function toggleModal() {
-  modal.classList.toggle('-translate-y-full');
+  modal.classList.toggle('translate-y-full');
   stickyChapterLinks.classList.toggle('hidden');
 }
 
@@ -17,34 +17,42 @@ function renderModal(el) {
   const closeButton = button({
     type: 'button',
     class: 'size-full flex items-center gap-x-2 justify-center py-2 focus:outline-none border border-solid border-black rounded-full text-black text-sm font-semibold',
-    onclick: () => toggleModal(),
+    onclick: toggleModal,
   }, span({ class: 'icon icon-close invert' }), 'Close');
 
-  const modalContent = div({ class: 'bg-white w-96 m-4 rounded lg:hidden' });
-  const modalClose = div({ class: 'w-full flex justify-center px-3 py-4' }, closeButton);
-  const modalList = div({ class: 'flex flex-col gap-2' }, el);
-  modalContent.append(modalList, modalClose);
+  const modalContent = div({ class: 'relative flex flex-col bg-white w-11/12 max-h-[70%] mb-4 rounded lg:hidden' });
+  const modalClose = div({ class: 'w-full bottom-0 flex justify-center px-3 py-4' }, closeButton);
+  modalContent.append(el, modalClose);
   modal.append(modalContent);
   decorateIcons(modal);
 }
 
-function renderChapters(chapterItems) {
+export function renderChapters(chapterItems, navHeading, withDescription = false) {
   const chaptersDesktopEl = div({ class: 'hidden lg:flex flex-col items-start' });
-  const chaptersMobileEl = div({ class: 'max-h-96 lg:hidden [&_span]:pl-2 overflow-scroll px-4' });
+  const chaptersMobileEl = div({ class: 'lg:hidden [&_span]:pl-2 overflow-scroll px-4' });
   const url = new URL(window.location.href);
   const currentPage = url.pathname;
-  const navHeadingEl = p({ class: 'text-sm leading-6 font-semibold uppercase text-[#65797C] px-3 pt-2 pb-1 my-0' }, 'CHAPTERS');
+  const navHeadingEl = p({ class: 'text-sm leading-6 font-semibold uppercase text-[#65797C] px-3 pt-2 pb-1 my-0' }, navHeading);
   chapterItems.forEach((item) => {
     const chaptersEl = div(
       { class: 'w-full border-b border-b-[#D8D8D8]' },
       a(
         {
           href: item.path,
-          class: `block text-base lg:text-sm leading-6 font-semibold px-3 py-4 hover:underline ${item.path === currentPage ? 'text-black bg-[#EDF6F7]' : 'text-[#378189]'}`,
+          class: `block text-base leading-7 font-semibold px-3 py-3 hover:underline ${item.path === currentPage ? 'text-black bg-[#EDF6F7]' : 'text-[#378189]'}`,
         },
         item.title,
       ),
     );
+
+    if (withDescription && item.description) {
+      const descriptionEl = p(
+        { class: 'text-sm text-[#65797C] px-3 py-2' },
+        item.description,
+      );
+      chaptersEl.append(descriptionEl);
+    }
+
     chaptersMobileEl.append(chaptersEl);
   });
   chaptersMobileEl.prepend(navHeadingEl);
@@ -62,21 +70,22 @@ export default async function decorate(block) {
       return item.parent === parentPage;
     }).all();
   const chapters = chapterItems.map((element) => ({
-    title: element.title.indexOf('| Abcam') > -1 ? element.title.split('| Abcam')[0] : element.title,
+    title: (element.title.indexOf('| abcam') || element.title.indexOf('| Abcam')) > -1 ? (element.title.split('| abcam')[0] || element.title.split('| Abcam')[0]) : element.title,
     pageOrder: element.pageOrder,
     path: element.path,
   }));
   const filteredChapters = chapters.filter((item) => item.title !== undefined);
   filteredChapters.sort((chapter1, chapter2) => chapter1.pageOrder - chapter2.pageOrder);
   if (parentPage === 'guides') {
-    buildGuidesCollectionSchema(filteredChapters);
+    buildCollectionSchema(filteredChapters);
   } else {
     buildArticleSchema();
   }
 
   // Append button and chapters to block
-  const { chaptersDesktopEl, chaptersMobileEl } = renderChapters(filteredChapters);
+  const { chaptersDesktopEl, chaptersMobileEl } = renderChapters(filteredChapters, 'chapters');
   renderModal(chaptersMobileEl);
+  block.innerHTML = '';
   block.append(chaptersDesktopEl, modal);
 
   // Create Show/Hide button - bottom of footer
@@ -85,7 +94,7 @@ export default async function decorate(block) {
     {
       type: 'button',
       class: 'size-full flex items-center gap-x-3 justify-center focus:outline-none bg-black rounded-full text-white px-12 py-4',
-      onclick: () => toggleModal(),
+      onclick: toggleModal,
     },
     span({ class: 'icon icon-chevron-right size-7 invert' }),
     'Browse Chapters',

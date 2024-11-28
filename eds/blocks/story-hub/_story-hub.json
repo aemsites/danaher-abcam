@@ -20,25 +20,36 @@
         {
             "id": "story-hub",
             "fields": [
-                {
-                    "component": "multiselect",
-                    "name": "filterName",
-                    "label": "Filter Name",
-                    "options": [
-                      {
-                        "name": "Content Type",
-                        "value": "content-type"
-                      },
-                      {
-                        "name": "Research Areas",
-                        "value": "research-areas"
-                      },
-                      {
-                        "name": "Applications",
-                        "value": "applications"
-                      }
-                    ]
+              {
+                "component": "multiselect",
+                "name": "filterName",
+                "label": "Filter Name",
+                "options": [
+                  {
+                    "name": "Content Type",
+                    "value": "content-type"
+                  },
+                  {
+                    "name": "Research Areas",
+                    "value": "research-areas"
+                  },
+                  {
+                    "name": "Applications",
+                    "value": "applications"
+                  },
+                  {
+                    "name": "Listen Within",
+                    "value": "listed-within"
                   }
+                ]
+              },
+              {
+                "component": "text",
+                "valueType": "string",
+                "name": "itemsPerPage",
+                "value": "",
+                "label": "Items per page"
+              }
             ]
           }
     ],
