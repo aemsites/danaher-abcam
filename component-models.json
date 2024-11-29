@@ -398,9 +398,9 @@
       },
       {
         "component": "richtext",
-        "name": "alert-banner_description",
+        "name": "alert-banner_subtitle",
         "value": "",
-        "label": "Description",
+        "label": "Subtitle",
         "valueType": "string"
       },
       {
@@ -484,9 +484,9 @@
       },
       {
         "component": "richtext",
-        "name": "alert-banner_description_hidden",
+        "name": "alert-banner_description",
         "value": "",
-        "label": "Description_Hidden",
+        "label": "Description",
         "valueType": "string"
       }
     ]
