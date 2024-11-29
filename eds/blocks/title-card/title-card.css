@@ -291,10 +291,6 @@
     top: 0px
   }
 
-  .title-card-wrapper :is(.xl\:h-\[500px\]) {
-    height: 500px
-  }
-
   .title-card-wrapper :is(.xl\:min-h-\[400px\]) {
     min-height: 400px
   }

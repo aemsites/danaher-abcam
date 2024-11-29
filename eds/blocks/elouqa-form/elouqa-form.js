@@ -75,7 +75,7 @@ export default async function decorate(block) {
         block.append(formEl);
         formEl.prepend(p({ class: 'font-bold text-center text-2xl my-2' }, 'Fill the form to watch webinar'));
         const descriptionEl = block.querySelector('div p').parentElement.parentElement;
-        descriptionEl.classList.add('basis-3/5');
+        descriptionEl.classList.add('basis-3/5', 'pl-4');
         descriptionEl.nextElementSibling.remove();
       }
       if (fragmentCSS) {
