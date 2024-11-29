@@ -49,7 +49,7 @@ export default function decorate(block) {
     divEl,
   );
 
-  block.innerHTML = '';
+  // block.innerHTML = '';
   block.appendChild(mainDiv);
   decorateIcons(block);
 }
