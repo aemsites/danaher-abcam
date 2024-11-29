@@ -26,9 +26,19 @@ export default function decorate(block) {
     const icon = span({ class: 'icon icon-arrow-down-circle' });
     const linkEl = element.querySelector('p > a');
     if (linkEl) {
-      linkEl.parentElement?.parentElement?.classList.add(...'ml-auto mr-6 shrink-0'.split(' '));
+      applyClasses(linkEl.parentElement?.parentElement, 'ml-auto mr-6 shrink-0');
+      if (sessionStorage.getItem('ELOUQA')) {
+        applyClasses(linkEl.parentElement, 'block');
+      } else {
+        applyClasses(linkEl.parentElement, 'hidden');
+      }
       linkEl.textContent = '';
       linkEl.append(icon);
+      linkEl.addEventListener('click', (event) => {
+        if (!sessionStorage.getItem('ELOUQA')) {
+          event.preventDefault();
+        }
+      });
     }
   });
   decorateIcons(block, 32, 32);

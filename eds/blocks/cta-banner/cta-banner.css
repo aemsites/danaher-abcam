@@ -1,0 +1,94 @@
+.cta-banner-wrapper :is(.my-6) {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem
+}
+
+.cta-banner-wrapper :is(.mt-1) {
+  margin-top: 0.25rem
+}
+
+.cta-banner-wrapper :is(.block) {
+  display: block
+}
+
+.cta-banner-wrapper :is(.flex) {
+  display: flex
+}
+
+.cta-banner-wrapper :is(.w-4) {
+  width: 1rem
+}
+
+.cta-banner-wrapper :is(.w-full) {
+  width: 100%
+}
+
+.cta-banner-wrapper :is(.rotate-0) {
+  --tw-rotate: 0deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+
+.cta-banner-wrapper :is(.transform) {
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+
+.cta-banner-wrapper :is(.flex-col) {
+  flex-direction: column
+}
+
+.cta-banner-wrapper :is(.items-center) {
+  align-items: center
+}
+
+.cta-banner-wrapper :is(.justify-between) {
+  justify-content: space-between
+}
+
+.cta-banner-wrapper :is(.gap-2) {
+  gap: 0.5rem
+}
+
+.cta-banner-wrapper :is(.gap-4) {
+  gap: 1rem
+}
+
+.cta-banner-wrapper :is(.break-words) {
+  overflow-wrap: break-word
+}
+
+.cta-banner-wrapper :is(.rounded-xl) {
+  border-radius: 0.75rem
+}
+
+.cta-banner-wrapper :is(.bg-\[\#edf6f7\]) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(237 246 247 / var(--tw-bg-opacity))
+}
+
+.cta-banner-wrapper :is(.p-6) {
+  padding: 1.5rem
+}
+
+.cta-banner-wrapper :is(.text-xl) {
+  font-size: 1.25rem;
+  line-height: 1.75rem
+}
+
+.cta-banner-wrapper :is(.font-bold) {
+  font-weight: 700
+}
+
+.cta-banner-wrapper :is(.text-\[\#378189\]) {
+  --tw-text-opacity: 1;
+  color: rgb(55 129 137 / var(--tw-text-opacity))
+}
+
+@media (min-width: 768px) {
+  .cta-banner-wrapper :is(.md\:ml-auto) {
+    margin-left: auto
+  }
+
+  .cta-banner-wrapper :is(.md\:flex-row) {
+    flex-direction: row
+  }
+}

@@ -3,6 +3,7 @@ import {
 } from '../../scripts/dom-builder.js';
 import { decorateIcons } from '../../scripts/aem.js';
 import countriesAndCodes from '../../scripts/country-list.js';
+import { applyClasses } from '../../scripts/scripts.js';
 
 function megaMeunu() {
   return div({ class: 'w-[360px] z-40 hidden max-w-sm fixed h-full bg-black px-3 py-4 ease-out transition-all' });
@@ -145,55 +146,168 @@ function countrySelector() {
   });
 }
 
+function clearSession() {
+  const keys = Object.keys(localStorage);
+  keys.forEach((key) => {
+    if (key.includes('CognitoIdentityServiceProvider')) {
+      localStorage.removeItem(key);
+    }
+  });
+  return `${window.location.origin}`;
+}
+
+function getLocalStorageToken() {
+  let tokenId;
+  const keys = Object.keys(localStorage);
+  keys.forEach((key) => {
+    if (key.includes('.idToken')) {
+      tokenId = localStorage[key];
+    }
+  });
+  if (tokenId) {
+    return JSON.stringify(tokenId);
+  }
+  return null;
+}
+
+function parsePayload(token) {
+  try {
+    return JSON.parse(atob(token.split('.')[1]));
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.error('Error parsing token :', e);
+    return null;
+  }
+}
+
 function accountMenuList(iconName, linkText, linkUrl) {
   const divEl = li({ class: 'group flex flex-row items-center gap-x-3 px-4 py-2 hover:bg-[#0711120d] cursor-pointer text-sm font-semibold leading-5 text-black' });
+  if (iconName) {
+    divEl.append(
+      span({ class: `icon icon-${iconName} group-hover:hidden ${iconName.includes('sign-out') ? '-rotate-90' : ''}` }),
+      span({ class: `icon icon-${iconName}-solid hidden group-hover:block ${iconName.includes('sign-out') ? '-rotate-90' : ''}` }),
+    );
+    decorateIcons(divEl, 24, 24);
+  }
   divEl.append(
-    span({ class: `icon icon-${iconName} group-hover:hidden` }),
-    span({ class: `icon icon-${iconName}-solid hidden group-hover:block` }),
     a({
       class: 'text-sm font-semibold leading-5 text-black p-2 pl-2',
       href: linkUrl,
+      onclick: clearSession,
     }, linkText),
   );
-  decorateIcons(divEl, 24, 24);
   return divEl;
 }
 
-function myAccount() {
-  const myAccoundDiv = div({ class: 'w-full overflow-hidden bg-white md:h-full text-black md:rounded-lg rounded' });
-  myAccoundDiv.append(
-    ul(
-      { class: 'flex flex-col w-full min-w-60' },
-      li(
-        { class: 'mb-3 md:mb-0 border-b border-b-[#D8D8D8] px-4 pt-4 pb-3 space-y-2' },
-        a({
-          class: 'flex justify-center py-2 focus:outline-none bg-[#378189] hover:bg-[#2a5f65] rounded-full text-white text-sm font-semibold',
-          href: 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fen-us',
-        }, 'Sign In'),
-        p(
-          { class: 'w-full flex items-center text-black text-xs font-normal tracking-wide' },
-          'New to Abcam?',
-          a({
-            class: 'hover:underline leading-5 text-[#378189] ml-2 md:ml-auto',
-            href: 'https://www.abcam.com/auth/register?redirect=https%3A%2F%2Fwww.abcam.com%2Fen-us',
-          }, 'Create an account'),
-        ),
-      ),
-      accountMenuList('orders', 'My Orders', 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fmy-account%2Forders'),
-      accountMenuList('addresses', 'My Addresses', 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fmy-account%2Faddress-book'),
-      accountMenuList('inquiries', 'My Inquiries', 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fmy-account%2Finquiries'),
-      accountMenuList('reviews', 'My Reviews', 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fmy-account%2Freviews'),
-      accountMenuList('rewards', 'My Rewards', 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fmy-account%2Freward-points'),
-      accountMenuList('profile', 'My Profile', 'https://www.abcam.com/auth/login?redirect=https%3A%2F%2Fwww.abcam.com%2Fmy-account%2Fprofile'),
-      li(
-        { class: 'mb-3 md:mb-0 px-4 pt-4 pb-3' },
-        a({
-          class: 'flex justify-center py-2 focus:outline-none hover:bg-[#0711120d] border border-black rounded-full text-black text-sm font-semibold',
-          href: 'https://www.abcam.com/en-us/contact-us',
-        }, 'Contact Us'),
-      ),
-    ),
-  );
+function buttonsEl(linkText, linkUrl, session) {
+  const hostName = window.location.host;
+  let btnColor;
+  let myAccLink;
+  let createAccLink;
+  const liEl = li({ class: 'mb-3 md:mb-0 px-4 pt-3 pb-3' });
+  if (session) {
+    applyClasses(liEl, 'border-b border-b-[#D8D8D8] space-y-2');
+    applyClasses(liEl, 'flex flex-row-reverse justify-between items-center');
+    btnColor = 'text-white bg-[#378189] hover:bg-[#2a5f65] basis-2/5 shrink-0';
+  } else if (linkText === 'Sign In') {
+    applyClasses(liEl, 'border-b border-b-[#D8D8D8] space-y-2');
+    btnColor = 'text-white bg-[#378189] hover:bg-[#2a5f65]';
+  } else {
+    btnColor = 'border border-black text-black hover:bg-[#0711120d]';
+  }
+  const anchEl = a({
+    class: `flex justify-center py-2 focus:outline-none rounded-full text-xs font-semibold ${btnColor}`,
+    href: linkUrl,
+  }, linkText);
+  liEl.append(anchEl);
+  if (!hostName.includes('localhost') && !hostName.includes('.hlx')) {
+    myAccLink = `https://${hostName}/my-account`;
+    createAccLink = `https://${hostName}/auth/register?redirect=https%3A%2F%2F${hostName}%2Fen-us`;
+  } else {
+    myAccLink = 'https://pp.abcam.com/my-account';
+    createAccLink = 'https://pp.abcam.com/auth/register?redirect=https%3A%2F%2Fpp.abcam.com';
+  }
+  if (session) {
+    liEl.append(a(
+      {
+        class: 'flex flex-col gap-y-1.5 text-black text-xs font-normal tracking-wide truncate',
+        title: `${session.given_name} ${session.family_name}`,
+        href: myAccLink,
+      },
+      span({ class: 'font-semibold' }, `${session.given_name} ${session.family_name}`),
+      p({
+        class: 'w-5/6 underline-offset-2 text-gray-400 text-[10px] font-semibold text-clip sm:truncate',
+        title: `${session.email}`,
+      }, `${session.email}`),
+    ));
+  } else if (linkText === 'Sign In') {
+    liEl.append(p(
+      { class: 'w-full flex items-center text-black text-xs font-normal tracking-wide' },
+      'New to Abcam?',
+      a({
+        class: 'hover:underline leading-5 text-[#378189] ml-2 md:ml-auto',
+        href: createAccLink,
+      }, 'Create an account'),
+    ));
+  }
+  return liEl;
+}
+
+function ulEls(hostName, sessionVal) {
+  const ulEl = ul({ class: 'flex flex-col w-full lg:w-[17rem]' });
+  const pathName = window.location.pathname;
+  if (sessionVal) {
+    ulEl.append(
+      buttonsEl('Contact Us', `https://${hostName}/en-us/contact-us`, sessionVal),
+      accountMenuList('orders', 'My Orders', `https://${hostName}/my-account/orders`),
+      accountMenuList('addresses', 'My Addresses', `https://${hostName}/my-account/address-book`),
+      accountMenuList('inquiries', 'My Inquiries', `https://${hostName}/my-account/inquiries`),
+      accountMenuList('reviews', 'My Reviews', `https://${hostName}/my-account/reviews`),
+      accountMenuList('rewards', 'My Rewards', `https://${hostName}/my-account/reward-points`),
+      accountMenuList('profile', 'My Profile', `https://${hostName}/my-account/profile`),
+      accountMenuList('sign-out', 'Sign Out', `https://${hostName}`),
+    );
+  } else {
+    ulEl.append(
+      buttonsEl('Sign In', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}${pathName}`),
+      accountMenuList('orders', 'My Orders', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Forders`),
+      accountMenuList('addresses', 'My Addresses', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Faddress-book`),
+      accountMenuList('inquiries', 'My Inquiries', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Finquiries`),
+      accountMenuList('reviews', 'My Reviews', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Freviews`),
+      accountMenuList('rewards', 'My Rewards', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Freward-points`),
+      accountMenuList('profile', 'My Profile', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Fprofile`),
+      buttonsEl('Contact Us', `https://${hostName}/en-us/contact-us`),
+    );
+  }
+  return ulEl;
+}
+
+function myAccount(session) {
+  const hostName = (!window.location.host.includes('localhost') && !window.location.host.includes('.hlx'))
+    ? window.location.host
+    : 'pp.abcam.com';
+  const myAccoundDiv = div({ class: 'my-account-items w-full fixed lg:relative left-0 overflow-hidden bg-white lg:h-full text-black rounded sm:rounded-lg shadow-lg' });
+  if (session) {
+    const sessionVal = parsePayload(session);
+    if (sessionVal) {
+      document.querySelectorAll('.account-dropdown').forEach((item) => {
+        if (item.querySelector('.user-icon')?.classList.contains('icon-user')) {
+          item.querySelector('.user-icon')?.classList.replace('icon-user', 'icon-user-solid');
+          item.querySelector('.user-icon')?.firstElementChild?.remove();
+          item.querySelector('.user-icon-dd')?.firstElementChild?.remove();
+          decorateIcons(item, 16, 16);
+        }
+      });
+      document.querySelectorAll('.account-dropdown > span').forEach((item) => {
+        if (item?.textContent === 'My account') {
+          item.textContent = sessionVal.given_name;
+        }
+      });
+      myAccoundDiv.append(ulEls(hostName, sessionVal));
+    }
+  } else {
+    myAccoundDiv.append(ulEls(hostName));
+  }
   return myAccoundDiv;
 }
 
@@ -204,7 +318,6 @@ export default async function decorate(block) {
     const html = await resp.text();
     block.innerHTML = html;
   }
-
   block.append(megaMeunu());
   decorateIcons(block.querySelector('.abcam-logo'));
   decorateIcons(block.querySelector('.logo-home-link'), 120, 25);
@@ -265,11 +378,15 @@ export default async function decorate(block) {
       }
     });
   });
-
+  const dropdownLabel = document.querySelector('label[for="account-dropdown"]');
   decorateIcons(document.querySelector('.country-dd'), 16, 16);
+  block.querySelector('.country-dropdown')?.classList.add('hover:bg-[#3B3B3B]');
   block.querySelector('.country-dropdown')?.addEventListener('click', (event) => {
     const countrySearch = document.querySelector('.country-search');
     if (event.target === event.currentTarget || event.target.alt === 'chevron-down-white' || event.target.parentElement.classList.contains('country-flag-icon')) {
+      if (!dropdownLabel.contains(event.target) && dropdownLabel.previousElementSibling.checked) {
+        dropdownLabel.click();
+      }
       countrySearch?.classList.toggle('hidden');
       const searchValue = block.querySelector('#country-search-input');
       if (searchValue) searchValue.value = '';
@@ -280,7 +397,6 @@ export default async function decorate(block) {
     countrySelector(block);
   });
   setOrUpdateCookie('NEXT_LOCALE', 'en-us', 365);
-
   const flagElement = block.querySelector('.country-flag-container');
   const lastSelectedCountry = getCookie('NEXT_COUNTRY');
   if (flagElement && lastSelectedCountry !== null) {
@@ -290,10 +406,11 @@ export default async function decorate(block) {
   decorateIcons(flagElement, 24, 24, 'flags');
   const dropdownContainer = document.querySelector('.account-dropdown-container');
   decorateIcons(dropdownContainer, 16, 16);
+  document.querySelector('.account-dropdown').classList.add('hover:bg-[#3B3B3B]');
   const accountEl = document.getElementById('my-account');
-  accountEl.append(myAccount());
+  const session = getLocalStorageToken();
+  accountEl.append(myAccount(session));
   document.addEventListener('click', (event) => {
-    const dropdownLabel = document.querySelector('label[for="account-dropdown"]');
     const isChecked = document.getElementById('account-dropdown');
     if (isChecked.checked) {
       if (!dropdownLabel.contains(event.target) && dropdownLabel.previousElementSibling.checked) {
@@ -304,4 +421,45 @@ export default async function decorate(block) {
       dropdownLabel.querySelector('.user-icon-dd').style.transform = 'rotate(0deg)';
     }
   });
+
+  // Cart icon
+  const hostName = window.location.host;
+  const shoppingBaskedId = localStorage.getItem('shoppingBasketId')?.replace(/"/g, '');
+  const selectedCountry = (lastSelectedCountry !== null) ? lastSelectedCountry : 'US';
+  const host = window.location.host === 'www.abcam.com' ? 'proxy-gateway.abcam.com' : 'proxy-gateway-preprod.abcam.com';
+  const cartButton = document.querySelector('.cart-dropdown');
+
+  if (shoppingBaskedId !== null && shoppingBaskedId) {
+    const headers = {
+      'x-abcam-app-id': 'b2c-public-website',
+      'Content-Type': 'application/json',
+    };
+
+    const url = `https://${host}/ecommerce/rest/v1/basket/${shoppingBaskedId}?country=${selectedCountry}`;
+    fetch(url, {
+      method: 'GET',
+      headers,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (data.items.length > 0) {
+          document.querySelector('.cart-count')?.classList?.remove('hidden');
+          document.querySelector('.cart-count').textContent = data.items.length;
+        } else {
+          document.querySelector('.cart-count')?.classList?.add('hidden');
+        }
+        cartButton.addEventListener('click', () => {
+          window.location.href = `https://${hostName}/en-us/shopping-basket/${shoppingBaskedId}?country=${selectedCountry}`;
+        });
+      })
+      .catch((error) => {
+        //  eslint-disable-next-line no-console
+        console.error('There was an error making the API call:', error);
+      });
+  }
 }

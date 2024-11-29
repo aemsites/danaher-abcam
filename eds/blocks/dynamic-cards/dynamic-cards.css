@@ -141,10 +141,6 @@
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 
-.dynamic-cards-wrapper :is(.transform) {
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
-}
-
 .dynamic-cards-wrapper :is(.grid-cols-1) {
   grid-template-columns: repeat(1, minmax(0, 1fr))
 }
@@ -348,10 +344,6 @@
 
 .dynamic-cards-wrapper :is(.duration-700) {
   transition-duration: 700ms
-}
-
-.dynamic-cards-wrapper :is(.duration-500) {
-  transition-duration: 500ms
 }
 
 .dynamic-cards-wrapper :is(.hover\:scale-105:hover) {
