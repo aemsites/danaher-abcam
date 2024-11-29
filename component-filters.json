@@ -165,12 +165,6 @@
     ]
   },
   {
-    "id": "steps",
-    "components": [
-      "alert"
-    ]
-  },
-  {
     "id": "table",
     "components": [
       "table-row"

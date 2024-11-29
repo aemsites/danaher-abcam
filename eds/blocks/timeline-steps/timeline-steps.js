@@ -1,4 +1,4 @@
-import { div, h5 } from '../../scripts/dom-builder.js';
+import { div, h5, img } from '../../scripts/dom-builder.js';
 
 /**
  * loads and decorates the header, mainly the nav
@@ -16,8 +16,15 @@ export default async function decorate(block) {
       const stepDivider = div({ class: 'border border-gray-100' });
       const stepContent = div({ class: 'flex flex-col gap-y-4 py-2' });
       const subPoints = child.querySelector('ul');
+      const subPointsColorH3 = child.querySelector('h3');
       if (subPoints?.querySelectorAll('li').length > 1) subPoints?.classList.add(...'list-disc ml-2 text-gray-400'.split(' '));
       else subPoints?.classList.add(...'ml-2 text-gray-400'.split(' '));
+      if (subPointsColorH3) {
+      // subPointsColorH3.classList.add('relative','py-4,','px-6', 'bg-green-100','text-sm');
+        // subPointsColorH3.appendChild(div({class:'py-4 px-6,bg-green-100 text-sm'},"hello"));
+        const alert = div({ class: 'flex bg-green-100 text-sm  text-gray-400   py-4 px-6' }, div({ class: 'mr-2 mt-0.5' }, img({ src: '/eds/icons/notification-positive.svg', alt: 'no alert' })), subPointsColorH3.innerHTML);
+        child.appendChild(alert);
+      }
       stepContent.innerHTML = child.innerHTML;
       child.innerHTML = '';
       child.prepend(stepDivider);

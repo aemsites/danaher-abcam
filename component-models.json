@@ -2363,39 +2363,27 @@
         "value": "",
         "label": "Steps Data",
         "valueType": "string"
-      }
-    ]
-  },
-  {
-    "id": "alert",
-    "fields": [
-      {
-        "component": "richtext",
-        "name": "alert_data",
-        "value": "",
-        "label": "Alert Data",
-        "valueType": "string"
       },
       {
-        "component": "multiselect",
-        "name": "classes",
-        "value": "",
-        "label": "BG Color",
+        "component": "text",
         "valueType": "string",
-        "options": [
-          {
-            "name": "Gray",
-            "value": "bg-slate-200"
-          },
-          {
-            "name": "Light Pink",
-            "value": "bg-rose-100"
-          },
-          {
-            "name": "Light Green",
-            "value": "bg-green-100"
-          }
-        ]
+        "name": "steps_warning",
+        "value": "",
+        "label": "Warning"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "steps_knowledge",
+        "value": "",
+        "label": "Knowledge"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "steps_help",
+        "value": "",
+        "label": "Help"
       }
     ]
   },
