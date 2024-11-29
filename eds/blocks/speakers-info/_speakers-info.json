@@ -56,7 +56,7 @@
           "value": "",
           "label": "Description",
           "valueType": "string"
-        },        
+        },
         {
           "...": "../../../models/_common.json#/image-fields"
         }
