@@ -1,6 +1,7 @@
 import { buildBlock } from '../../scripts/aem.js';
 import { div, p } from '../../scripts/dom-builder.js';
 import { getCookie } from '../../scripts/scripts.js';
+import { buildArticleSchema } from '../../scripts/schema.js';
 
 async function buildRelatedLinks(main) {
   const allLinks = [];
@@ -37,4 +38,5 @@ export default async function buildAutoBlocks() {
   const breadcrumbBlock = buildBlock('breadcrumb', { elems: [] });
   headerSection.append(breadcrumbBlock);
   main.insertBefore(headerSection, mainEl);
+  buildArticleSchema();
 }

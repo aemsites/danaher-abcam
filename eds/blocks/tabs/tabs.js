@@ -6,7 +6,7 @@ import { toolTip } from '../../scripts/scripts.js';
 function toggleTabs(tabId, mmgTabs, tabType) {
   const contentSections = document.querySelectorAll('[data-tabname]');
   contentSections.forEach((section) => {
-    if (section.dataset.tabname?.toLowerCase() === tabId) {
+    if (section.dataset.tabname === tabId) {
       section.classList.remove('hide-section');
     } else {
       section.classList.add('hide-section');
@@ -30,7 +30,7 @@ function getTabName() {
   const contentSections = document.querySelectorAll('[data-tabname]');
   const tabName = new Set();
   contentSections.forEach((section) => {
-    tabName.add(section.dataset.tabname?.toLowerCase());
+    tabName.add(section.dataset.tabname);
   });
   return [...tabName];
 }
@@ -69,7 +69,7 @@ function decorateButtonTabs(block) {
   const tabs = getTabName();
   tabs.forEach((tab) => {
     const buttonTab = button({
-      class: 'tab px-6 py-2 border border-black border-solid bg-white text-black font-bold rounded-full capitalize',
+      class: 'tab px-6 py-2 border border-black border-solid bg-white text-black font-bold rounded-full',
       id: tab,
     }, tab);
     mmgTabs.appendChild(buttonTab);

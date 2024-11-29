@@ -2,6 +2,10 @@
   position: fixed
 }
 
+.header-wrapper :is(.absolute) {
+  position: absolute
+}
+
 .header-wrapper :is(.relative) {
   position: relative
 }
@@ -36,6 +40,10 @@
 
 .header-wrapper :is(.h-full) {
   height: 100%
+}
+
+.header-wrapper :is(.h-10) {
+  height: 2.5rem
 }
 
 .header-wrapper :is(.w-5\/6) {
@@ -363,6 +371,10 @@
 }
 
 @media (min-width: 768px) {
+  .header-wrapper :is(.md\:relative) {
+    position: relative
+  }
+
   .header-wrapper :is(.md\:mb-0) {
     margin-bottom: 0px
   }
@@ -377,6 +389,14 @@
 }
 
 @media (min-width: 1024px) {
+  .header-wrapper :is(.lg\:relative) {
+    position: relative
+  }
+
+  .header-wrapper :is(.lg\:h-full) {
+    height: 100%
+  }
+
   .header-wrapper :is(.lg\:w-\[17rem\]) {
     width: 17rem
   }

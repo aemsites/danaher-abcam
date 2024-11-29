@@ -10,7 +10,8 @@
             "template": {
               "name": "Title Card",
               "model": "title-card",
-              "title-card_titleType": "h1"
+              "title-card_titleType": "h1",
+              "subTitle_titleType": "h4"
             }
           }
         }
@@ -29,13 +30,10 @@
           "label": "Search Options",
           "options": [
             {
-              "name": "Podcast",
+              "name": "Title with Image",
               "value": "title-image"
             }
           ]
-        },
-        {
-          "...": "../../../models/_common.json#/image-fields"
         },
         {
           "component": "text",
@@ -52,11 +50,31 @@
           "valueType": "string"
         },
         {
+          "component": "text",
+          "valueType": "string",
+          "name": "subTitle_title",
+          "value": "",
+          "label": "SubTitle"
+        },
+        {
+          "component": "select",
+          "name": "subTitle_titleType",
+          "hidden": true,
+          "label": "SubTitle Type",
+          "valueType": "string"
+        },
+        {
           "component": "richtext",
           "name": "title-card_description",
           "value": "",
           "label": "Description",
           "valueType": "string"
+        },
+        {
+          "...": "../../../models/_common.json#/button-fields"
+        },
+        {
+          "...": "../../../models/_common.json#/image-fields"
         }
       ]
     }

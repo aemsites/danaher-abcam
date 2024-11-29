@@ -2,18 +2,25 @@ import { getMetadata } from '../../scripts/aem.js';
 import {
   div, nav, ul, li, a,
 } from '../../scripts/dom-builder.js';
+import { removeAbcamTitle } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
   const pageUrl = window.location.pathname;
   const path = pageUrl.split('/').slice(2);
   const ogTitle = getMetadata('og:title');
-  const title = (ogTitle.indexOf('| abcam') || ogTitle.indexOf('| Abcam')) > -1 ? (ogTitle.split('| abcam')[0] || ogTitle.split('| Abcam')[0]) : ogTitle;
+  const title = removeAbcamTitle(ogTitle);
   const newUrl = new URL(window.location);
-  if (pageUrl.indexOf('technical-resources/guides') > -1) {
-    newUrl.pathname = pageUrl.substring(0, pageUrl.indexOf('/technical-resources/'));
-  } else if (pageUrl.indexOf('/knowledge-center') > -1) {
-    newUrl.pathname = pageUrl.substring(0, pageUrl.indexOf('/knowledge-center/'));
+
+  const pathFragments = [
+    '/technical-resources/guides',
+    '/knowledge-center',
+    '/webinars',
+  ];
+  const matchingFragment = pathFragments.find((fragment) => pageUrl.includes(fragment));
+  if (matchingFragment) {
+    newUrl.pathname = pageUrl.substring(0, pageUrl.indexOf(matchingFragment));
   }
+
   const { length } = path;
   if (length > 0) {
     const breadcrumbLiLinks = li({ class: 'flex gap-x-2' });

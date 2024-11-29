@@ -286,7 +286,7 @@ function myAccount(session) {
   const hostName = (!window.location.host.includes('localhost') && !window.location.host.includes('.hlx'))
     ? window.location.host
     : 'pp.abcam.com';
-  const myAccoundDiv = div({ class: 'my-account-items w-full fixed sm:relative left-0 overflow-hidden bg-white md:h-full text-black rounded sm:rounded-lg shadow-lg' });
+  const myAccoundDiv = div({ class: 'my-account-items w-full fixed lg:relative left-0 overflow-hidden bg-white lg:h-full text-black rounded sm:rounded-lg shadow-lg' });
   if (session) {
     const sessionVal = parsePayload(session);
     if (sessionVal) {
@@ -421,4 +421,45 @@ export default async function decorate(block) {
       dropdownLabel.querySelector('.user-icon-dd').style.transform = 'rotate(0deg)';
     }
   });
+
+  // Cart icon
+  const hostName = window.location.host;
+  const shoppingBaskedId = localStorage.getItem('shoppingBasketId')?.replace(/"/g, '');
+  const selectedCountry = (lastSelectedCountry !== null) ? lastSelectedCountry : 'US';
+  const host = window.location.host === 'www.abcam.com' ? 'proxy-gateway.abcam.com' : 'proxy-gateway-preprod.abcam.com';
+  const cartButton = document.querySelector('.cart-dropdown');
+
+  if (shoppingBaskedId !== null && shoppingBaskedId) {
+    const headers = {
+      'x-abcam-app-id': 'b2c-public-website',
+      'Content-Type': 'application/json',
+    };
+
+    const url = `https://${host}/ecommerce/rest/v1/basket/${shoppingBaskedId}?country=${selectedCountry}`;
+    fetch(url, {
+      method: 'GET',
+      headers,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (data.items.length > 0) {
+          document.querySelector('.cart-count')?.classList?.remove('hidden');
+          document.querySelector('.cart-count').textContent = data.items.length;
+        } else {
+          document.querySelector('.cart-count')?.classList?.add('hidden');
+        }
+        cartButton.addEventListener('click', () => {
+          window.location.href = `https://${hostName}/en-us/shopping-basket/${shoppingBaskedId}?country=${selectedCountry}`;
+        });
+      })
+      .catch((error) => {
+        //  eslint-disable-next-line no-console
+        console.error('There was an error making the API call:', error);
+      });
+  }
 }
