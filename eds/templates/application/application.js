@@ -23,7 +23,6 @@ async function buildRelatedLinks(main) {
 export default async function buildAutoBlocks() {
   const main = document.querySelector('main');
   const allLinks = await buildRelatedLinks(main);
-  console.log(allLinks);
   const mainEl = main.querySelector('div');
   const sectionMiddle = main.querySelector(':scope > div:nth-child(2)');
   sectionMiddle.classList.add(...'application-middle-container w-full pt-4'.split(' '));
