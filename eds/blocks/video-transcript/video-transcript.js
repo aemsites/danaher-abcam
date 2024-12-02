@@ -1,18 +1,18 @@
 import { decorateIcons } from '../../scripts/aem.js';
-import { span } from '../../scripts/dom-builder.js';
+import { h3, span, p, ul } from '../../scripts/dom-builder.js';
 import { applyClasses } from '../../scripts/scripts.js';
 
 export default async function decorate(block) {
   const contentContainer = block.querySelector('div');
-  applyClasses(contentContainer, 'border-y border-solid border-gray-300 py-8');
+  applyClasses(contentContainer, 'video-script hidden border-y border-solid border-gray-300 py-8');
 
   const content = contentContainer.querySelector('div');
   applyClasses(content, 'title-container flex justify-between items-center cursor-pointer');
 
-  const title = content.querySelector('h3');
+  const title = content.querySelector('h3')? content.querySelector('h3') : h3('VideoTranscript')
   applyClasses(title, 'title font-sans font-semibold text-2xl leading-[27px] text-left md:w-[489px] md:h-[27px]');
 
-  const description = content.querySelector('p');
+  const description = content.querySelector('ul')? content.querySelector('ul') : ul('');
   applyClasses(description, 'text hidden font-sans text-lg font-normal leading-7 tracking-[0.3px] text-left');
 
   const plusIcon = span({ class: 'icon icon-plus w-[18px] h-[18px] top-[3px] left-[3px]' });
