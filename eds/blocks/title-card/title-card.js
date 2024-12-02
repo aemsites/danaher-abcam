@@ -1,6 +1,6 @@
 import { getMetadata } from '../../scripts/aem.js';
 import { div, p } from '../../scripts/dom-builder.js';
-import { applyClasses } from '../../scripts/scripts.js';
+import { applyClasses, getCookie, } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
   block.querySelector('h1').classList.add(...'my-5 text-black-0 !text-3xl md:!text-4xl lg:!text-6xl font-semibold !tracking-wider'.split(' '));
@@ -43,8 +43,10 @@ export default function decorate(block) {
     applyClasses(block, 'mx-auto max-w-7xl px-4 pb-4 font-sans text-base md:flex flex-col justify-center');
   }
   block.querySelectorAll('div').forEach((divEle) => {
-    if (!divEle.textContent.trim() && !divEle.querySelector('picture')) {
-      divEle.remove();
+    if (getCookie('cq-authoring-mode') !== 'TOUCH') {
+      if (!divEle.textContent.trim() && !divEle.querySelector('picture')) {
+        divEle.remove();
+      }
     }
   });
 }
