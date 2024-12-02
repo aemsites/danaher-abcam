@@ -46,5 +46,10 @@ export default function decorate(block) {
     if (!divEle.textContent.trim() && !divEle.querySelector('picture')) {
       divEle.remove();
     }
+    if (divEle.querySelector('.button-container') === null
+      && (divEle.textContent.trim().includes('button-')
+      || divEle.textContent.trim().includes('icon-'))) {
+      divEle.remove();
+    }
   });
 }
