@@ -1928,6 +1928,13 @@
         "name": "imageAlt",
         "label": "Alt",
         "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "image_text",
+        "value": "",
+        "label": "Image Text",
+        "valueType": "string"
       }
     ]
   },
