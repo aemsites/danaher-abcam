@@ -7,7 +7,7 @@ import { div, h5, img } from '../../scripts/dom-builder.js';
 export default async function decorate(block) {
   // eslint-disable-next-line no-console
   console.log(block);
-  const stepsData = block.querySelectorAll(':scope > div');
+const stepsData = block.querySelectorAll(':scope > div');
   let index = 1;
   [...stepsData].forEach((element) => {
     element.className = 'flex gap-x-4 mb-6';

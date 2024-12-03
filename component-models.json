@@ -2373,6 +2373,13 @@
       },
       {
         "component": "text",
+        "name": "steps_warningType",
+        "label": "",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
         "valueType": "string",
         "name": "steps_knowledge",
         "value": "",
@@ -2380,10 +2387,24 @@
       },
       {
         "component": "text",
+        "name": "steps_knowledgeType",
+        "label": "",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
         "valueType": "string",
         "name": "steps_help",
         "value": "",
         "label": "Help"
+      },
+      {
+        "component": "text",
+        "name": "steps_helpType",
+        "label": "",
+        "valueType": "string",
+        "hidden": true
       }
     ]
   },
