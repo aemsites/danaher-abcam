@@ -489,10 +489,21 @@
 		
 	<div class="flex flex-col space-y-4">
 		<div class="w-full relative">
-			<input class="search-bar-desktop w-full text-base h-12 rounded-full bg-black border border-white text-white py-2 px-12 font-bold outline-none" placeholder="What are you searching for?">
-			<span class="icon icon-Search-bar pl-4 pr-2 absolute top-3 left-0">
-				<img data-icon-name="Search-bar" src="/eds/icons/Search-bar.svg" alt="Search-bar" width="25" height="25" loading="lazy">
-			</span>
+			<div class="relative">
+				<input class="search-bar-desktop w-full text-base h-12 rounded-full bg-black border border-white text-white py-2 px-12 font-bold outline-none" placeholder="What are you searching for?">
+				<span class="icon icon-Search-bar pl-4 pr-2 absolute top-3 left-0">
+					<img data-icon-name="Search-bar" src="/eds/icons/Search-bar.svg" alt="Search-bar" width="25" height="25" loading="lazy">
+				</span>
+			</div>
+			<div class="w-11/12 absolute bg-white text-black z-10 left-5 top-14 p-2 rounded shadow">
+				<ul id="suggestions" class="flex flex-col gap-y-2 empty:hidden">
+					<li class="text-xs font-semibold tracking-wide text-[#828894] px-2 py-1">RECENT SEARCH</li>
+					<li class="flex items-center gap-x-3 px-2 py-1 mb-1 select-none cursor-pointer hover:bg-gray-100/70 rounded-sm">
+						<span class="text-base font-medium leading-7">p53</span>
+						<span class="icon icon-close"></span>
+					</li>
+				</ul>
+			</div>
 		</div>	
   <div class="text-white px-[30px] flex flex-row gap-x-4">
     <div class="products mega-menu cursor-default px-7 first:pl-0 last:pr-0">
@@ -917,4 +928,4 @@
 	</div>
 	</div>  
 </div>
-<div class="h-[0.1rem] mt-4 z-10" style="background: linear-gradient(90deg, #4ba6b3 0, #c9d3b7 35%, #ff8730 70%, #c54428)"></div>
+<div class="h-[0.1rem] mt-4" style="background: linear-gradient(90deg, #4ba6b3 0, #c9d3b7 35%, #ff8730 70%, #c54428)"></div>
