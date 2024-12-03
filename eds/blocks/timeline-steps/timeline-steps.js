@@ -7,7 +7,7 @@ import { div, h5, img } from '../../scripts/dom-builder.js';
 export default async function decorate(block) {
   // eslint-disable-next-line no-console
   console.log(block);
-const stepsData = block.querySelectorAll(':scope > div');
+  const stepsData = block.querySelectorAll(':scope > div');
   let index = 1;
   [...stepsData].forEach((element) => {
     element.className = 'flex gap-x-4 mb-6';
@@ -20,8 +20,6 @@ const stepsData = block.querySelectorAll(':scope > div');
       if (subPoints?.querySelectorAll('li').length > 1) subPoints?.classList.add(...'list-disc ml-2 text-gray-400'.split(' '));
       else subPoints?.classList.add(...'ml-2 text-gray-400'.split(' '));
       if (subPointsColorH3) {
-      // subPointsColorH3.classList.add('relative','py-4,','px-6', 'bg-green-100','text-sm');
-        // subPointsColorH3.appendChild(div({class:'py-4 px-6,bg-green-100 text-sm'},"hello"));
         const alert = div({ class: 'flex bg-green-100 text-sm  text-gray-400   py-4 px-6' }, div({ class: 'mr-2 mt-0.5' }, img({ src: '/eds/icons/notification-positive.svg', alt: 'no alert' })), subPointsColorH3.innerHTML);
         child.appendChild(alert);
       }
