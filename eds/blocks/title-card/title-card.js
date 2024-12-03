@@ -3,7 +3,7 @@ import { div, p } from '../../scripts/dom-builder.js';
 import { applyClasses, getCookie, } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
-  console.log('title-card.js block:', block);
+  console.log('title-card.js block ... :', block);
   // block.querySelector('h1').classList.add(...'my-5 text-black-0 !text-3xl md:!text-4xl lg:!text-6xl font-semibold !tracking-wider'.split(' '));
   // block.querySelector('h1').after(p({ class: 'w-1/6 mb-5 border-t-4 border-[#ff7223]' }));
   // const description = block.querySelector('p:nth-of-type(2)');
