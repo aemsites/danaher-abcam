@@ -23,6 +23,14 @@
   margin-top: 0.75rem
 }
 
+.downloads-wrapper :is(.mr-auto) {
+  margin-right: auto
+}
+
+.downloads-wrapper :is(.mr-2) {
+  margin-right: 0.5rem
+}
+
 .downloads-wrapper :is(.block) {
   display: block
 }
