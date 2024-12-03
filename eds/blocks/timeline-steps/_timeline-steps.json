@@ -10,10 +10,7 @@
             "template": {
               "name": "Timeline Steps",
               "model": "timeline-steps",
-              "filter": "timeline-steps",
-               "timeline-steps_warningType": "h1",
-               "timeline-steps_knowledgeType": "h2",
-               "timeline-steps_helpType": "h3"
+              "filter": "timeline-steps"
             }
           }
         }
@@ -28,7 +25,10 @@
             "resourceType": "core/franklin/components/block/v1/block/item",
             "template": {
               "name": "Steps",
-              "model": "steps"
+              "model": "steps",              
+              "steps_warningType": "h1",
+              "steps_knowledgeType": "h2",
+              "steps_helpType": "h3"
             }
           }
         }
