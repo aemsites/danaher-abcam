@@ -97,14 +97,14 @@
           "...": "../../../models/_common.json#/button-fields"
         },
         {
-          "...": "../../../models/_common.json#/image-fields"
+          "component": "richtext",
+          "name": "image_alt_description",
+          "value": "",
+          "label": "Image Description",
+          "valueType": "string"
         },
         {
-          "component": "richtext",
-          "name": "image_text",
-          "value": "",
-          "label": "Image Text",
-          "valueType": "string"
+          "...": "../../../models/_common.json#/image-fields"
         }
       ]
     }
