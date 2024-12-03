@@ -21,11 +21,10 @@ export default function decorate(block) {
     const linkEl = element.querySelector('p > a');
     const tempLinkEl = element.querySelector('p');
     if (linkEl) {
-      applyClasses(linkEl.parentElement?.parentElement, 'ml-auto mr-6 shrink-0');
       if (sessionStorage.getItem('ELOUQA')) {
-        applyClasses(linkEl.parentElement, 'block');
+        applyClasses(icon, 'block');
       } else {
-        applyClasses(linkEl.parentElement, 'hidden');
+        applyClasses(icon, 'hidden');
       }
       linkEl.classList.add('ml-auto', 'mr-2');
       linkEl.textContent = '';

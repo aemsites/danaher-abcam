@@ -1335,6 +1335,18 @@ main .section.elouqa-form-container {
   background-color: rgb(242 242 242 / var(--tw-bg-opacity));
 }
 
+main .section.downloads-container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 1280px) {
+  main .section.downloads-container {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
