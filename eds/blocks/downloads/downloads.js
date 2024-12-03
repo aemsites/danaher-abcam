@@ -6,16 +6,10 @@ import { applyClasses } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
   applyClasses(block, 'grid max-w-7xl w-full mx-auto gap-x-2 gap-y-4 grid-cols-1 md:grid-cols-3 lg:grid-cols-4 auto-rows-max sm:px-0 mt-3 mb-3 justify-around border-b border-solid border-gray-300');
-  const divs = document.querySelectorAll('div');
-  divs.forEach((div) => {
-    if (divs.innerHTML === '' || div.textContent === '') {
-      div.remove();
-    }
-  });
   [...block.children].forEach((element) => {
-    applyClasses(element, 'flex lg:flex-row gap-x-6 items-center');
-    const pEl = element.querySelector('p');
-    if (pEl) {
+    applyClasses(element, 'flex lg:flex-row gap-x-6 items-center');    
+    if (element.querySelector('p')) {
+      const pEl = element.querySelector('p');
       const docType = pEl.textContent.toLowerCase();
       pEl.classList.add('shrink-0');
       const icon = span({ class: `icon icon-${docType} size-6` });
@@ -32,7 +26,7 @@ export default function decorate(block) {
       } else {
         applyClasses(linkEl.parentElement, 'hidden');
       }
-      linkEl.textContent = '';
+      // linkEl.textContent = '';
       linkEl.append(icon);
       linkEl.addEventListener('click', (event) => {
         if (!sessionStorage.getItem('ELOUQA')) {
@@ -41,5 +35,10 @@ export default function decorate(block) {
       });
     }
   });
+  block.querySelectorAll('div').forEach((divEle) => {
+    if (!divEle.textContent.trim()) {
+      divEle.remove();
+    }
+  });  
   decorateIcons(block, 32, 32);
 }
