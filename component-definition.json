@@ -870,7 +870,9 @@
                   "name": "Timeline Steps",
                   "model": "timeline-steps",
                   "filter": "timeline-steps",
-                  "timeline-steps_titleType": "h2"
+                  "timeline-steps_warningType": "h1",
+                  "timeline-steps_knowledgeType": "h2",
+                  "timeline-steps_helpType": "h3"
                 }
               }
             }
