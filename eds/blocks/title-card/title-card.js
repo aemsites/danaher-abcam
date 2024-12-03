@@ -17,7 +17,7 @@ export default function decorate(block) {
     applyClasses(titleImage, 'w-full h-48 md:h-[400px] object-cover relative xl:w-1/2 xl:absolute xl:right-0 xl:top-0');
     const subTitleEl = block.querySelector('h4');
     if (subTitleEl) {
-      applyClasses(subTitleEl, 'text-xs text-[#378189] bg-[#EDF6F7] font-semibold rounded capitalize py-1 px-2');
+      applyClasses(subTitleEl, 'text-xs text-[#378189] bg-[#EDF6F7] font-semibold rounded py-1 px-2');
       const divEl = div({ class: 'flex md:inline-flex text-align-center items-center justify-between w-full' });
       divEl.append(subTitleEl);
       block.querySelector('h1').parentElement.parentElement.prepend(divEl);
