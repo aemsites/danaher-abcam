@@ -398,8 +398,8 @@
 	</div>
   </div>
 
-<div class="desktop-menu w-full my-0 mx-auto flex flex-col sm:!flex-row gap-0 sm:gap-6 md:gap-6  px-[30px] xl:px-[80px] max-w-[2464px]">
-  <div class="relative md:w-[55%] lg:w-[15%] flex flex-row items-center justify-start gap-4 md:items-center">
+<div class="desktop-menu w-full my-0 mx-auto flex flex-col sm:!flex-row gap-0 md:gap-6 px-[30px] xl:px-[80px] max-w-[2464px]">
+  <div class="basis-3/4 lg:basis-1/4 barelative flex flex-row items-center justify-start gap-4 md:items-center">
 		<div class="flex flex-row space-x-4">
 			<div class="w-[25px] h-[25] abcam-logo lg:hidden">
 				<button type="button" aria-label="Open mobile menu">
@@ -417,7 +417,7 @@
 			</span>
 		</div>
   </div>
-	<div class="sm:w-[50%] md:w-[40%] 2xl:w-[15%] order-3 pt-2.5 flex flex-row gap-4 relative">
+  <div class="basis-1/4 order-3 pt-2.5 flex flex-row gap-4 relative">
 		<button
 			class="country-dropdown relative flex flex-row items-center gap-2 w-fit-content w-[82px] h-[34px] py-2 px-4 border border-solid border-white text-white rounded-full"
 			type="button"
@@ -458,34 +458,38 @@
 			</div>
 		</button>
 		<!-- My Account starts from here -->
-		<div class="account-dropdown-container static md:relative">
+		<div class="account-dropdown-container static md:relative w-max">
 			<input type="checkbox" id="account-dropdown" class="peer hidden" />
 			<label for="account-dropdown" class="account-dropdown border border-white rounded-2xl px-2 py-3 text-xs h-8 inline-flex justify-center items-center cursor-pointer outline hover:ring ring-[#6db9c1] ring-offset-1">
 				<span class="user-icon icon icon-user pl-0 sm:pl-1"></span>
-				<span class="max-w-24 hidden md:!block user-account text-white font-semibold px-1.5 select-none truncate">My account</span>
-				<span class="hidden md:!block user-icon-dd icon icon-chevron-down-white"></span>			
+				<span class="hidden lg:!block user-account text-white font-semibold px-1.5 select-none">My account</span>
+				<span class="hidden lg:!block user-icon-dd icon icon-chevron-down-white"></span>			
 			</label>
 			<div 
 				id="my-account" 
 				data-side="bottom" 
 				role="dialog" 
-				class="account-dropdown-menu hidden peer-checked:block w-full md:!w-auto absolute top-12 md:top-9 left-0 md:!left-auto sm:right-0 mt-1 z-40 pb-4" 
+				class="account-dropdown-menu hidden peer-checked:block w-full lg:!w-auto absolute top-12 md:top-9 left-0 md:!left-auto sm:right-0 mt-1 z-40 pb-4" 
 				tabindex="-1">
 			</div>
 		</div>
 		<!-- My Account ends here -->
-		<div class="hidden cart-dropdown w-[54px] h-[32px] border border-white rounded-2xl relative inline-flex flex-col">
-			<div class="focus-visible:outline-none focus-visible:shadow-interactiveElement" role="button">
-				<span class="">
-					<button class="" type="button">
-						<span class="cart-icon"> </span>
-						<span class="cart-count"></span>
-					</button>
-				</span>
+		<!-- Header Cart Icon - Starts -->
+		<div class="cart-dropdown w-[58.631px] lg:w-[74px] h-[32px] flex items-center justify-center cursor-pointer border border-white rounded-2xl relative">
+			<div class="focus-visible:outline-none focus-visible:shadow-interactiveElement absolute" role="button">
+				<button class="flex items-center gap-1 text-sm h-8" type="button">
+					<span class="cart-icon">
+						<img data-icon-name="Search-bar" src="/eds/icons/cart_white.svg" height="19px" width="19px" fill="white"
+							stroke="white" alt="Search-bar" loading="lazy">
+					</span>
+					<span
+						class="cart-count hidden bg-red-500 w-[17.6px] h-[17.6px] w-[22px] h-[22px] sm:w rounded-2xl flex items-center justify-center text-white px-1.5"></span>
+				</button>
 			</div>
 		</div>
+		<!-- Header Cart Icon - Ends -->
 	</div>
-  <div class="hidden lg:!block w-[55%] md:w-[30%] lg:w-[90%] 2xl:w-[65%]">
+  <div class="w-full hidden lg:!block">
 		
 	<div class="flex flex-col space-y-4">
 		<div class="w-full relative">

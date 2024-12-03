@@ -35,6 +35,10 @@
   display: grid
 }
 
+.downloads-wrapper :is(.hidden) {
+  display: none
+}
+
 .downloads-wrapper :is(.size-6) {
   width: 1.5rem;
   height: 1.5rem
@@ -102,11 +106,6 @@
 .downloads-wrapper :is(.border-gray-300) {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity))
-}
-
-.downloads-wrapper :is(.text-blue-500) {
-  --tw-text-opacity: 1;
-  color: rgb(59 130 246 / var(--tw-text-opacity))
 }
 
 @media (min-width: 640px) {

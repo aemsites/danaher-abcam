@@ -1,13 +1,15 @@
 import ffetch from '../../scripts/ffetch.js';
-import { decorateIcons, toClassName } from '../../scripts/aem.js';
+import { decorateIcons, toClassName, getMetadata } from '../../scripts/aem.js';
 import { buildStoryHubSchema } from '../../scripts/schema.js';
 import {
-  button, div, p, span, ul, li,
+  button, div, p, span, ul, li, select, option,
 } from '../../scripts/dom-builder.js';
 import { createFilters } from '../../scripts/scripts.js';
 import createCard from '../dynamic-cards/articleCard.js';
 
 const getPageFromUrl = () => toClassName(new URLSearchParams(window.location.search).get('page')) || '';
+
+const template = getMetadata('template') || 'stories';
 
 function updateUrlWithParams(key, value, url) {
   const newUrl = new URL(url);
@@ -39,7 +41,7 @@ let itemsPerPage;
 
 const hub = div();
 const allSelectedTags = div(
-  { class: 'w-fit flex flex-row-reverse items-start gap-2 mb-4 [&_*:empty+span]:hidden [&_*:empty]:mb-8' },
+  { class: 'w-fit flex flex-row-reverse items-center gap-2 [&_*:empty+span]:hidden mb-6 md:mb-0' },
   ul({ class: 'inline-flex items-center flex-wrap gap-2 [&_.showmoretags.active~*:not(.clear-all)]:hidden md:[&_.showmoretags.active~*:not(.clear-all):not(.showlesstags)]:flex md:[&_.showmoretags~*:not(.showlesstags)]:flex' }),
   span({ class: 'text-xs font-semibold text-[#07111299]' }, 'Filters:'),
 );
@@ -52,6 +54,23 @@ const clearAllEl = span({
     handleResetFilters();
   },
 }, 'Clear All');
+const sortByContainer = div(
+  { class: 'w-full md:w-auto flex items-center ml-auto' },
+  span({ class: 'text-xs font-semibold text-[#07111299] mr-2 shrink-0' }, 'Sort By:'),
+  select(
+    {
+      class: 'w-full md:w-auto py-2 px-2 tracking-[0.2px] leading-4 text-sm bg-[#273F3F] bg-opacity-5 rounded-full',
+      onchange: (e) => {
+        // eslint-disable-next-line no-use-before-define
+        handleSortChange(e.target.value);
+      },
+    },
+    option({ value: 'relevance' }, 'Relevance'),
+    option({ value: 'date-descending' }, 'Date Descending'),
+    option({ value: 'date-ascending' }, 'Date Ascending'),
+  ),
+);
+
 const hubDesktopFilters = div(
   { class: 'md:col-span-2 w-full h-screen md:h-auto fixed md:relative flex flex-col-reverse justify-end top-0 left-0 z-50 md:z-auto transition-all duration-150 -translate-y-full md:translate-y-0 [&_*:has(input:checked)~*_.clear-all]:block' },
   p(
@@ -89,6 +108,22 @@ function showMoreOrLessTags(mode) {
     showmoretags.classList.add('active');
     showmoretags.classList.remove('hidden');
   }
+}
+
+function handleSortChange(sortOption) {
+  const newLists = [...lists];
+  switch (sortOption) {
+    case 'date-descending':
+      newLists.sort((a, b) => b.publishDate - a.publishDate);
+      break;
+    case 'date-ascending':
+      newLists.sort((a, b) => a.publishDate - b.publishDate);
+      break;
+    default:
+      break;
+  }
+  // eslint-disable-next-line no-use-before-define
+  handleRenderContent(newLists, false);
 }
 
 const createPaginationLink = (page, label, current = false) => {
@@ -217,15 +252,17 @@ function handleRenderTags() {
 }
 
 // eslint-disable-next-line default-param-last
-function handleRenderContent(newLists = lists) {
-  newLists.sort((card1, card2) => card2.publishDate - card1.publishDate);
+function handleRenderContent(newLists = lists, enableSort = true) {
+  if (enableSort) newLists.sort((card1, card2) => card2.publishDate - card1.publishDate);
   cardList.innerHTML = '';
   let page = parseInt(getPageFromUrl(), 10);
   page = Number.isNaN(page) ? 1 : page;
   const start = (page - 1) * itemsPerPage;
   const storiesToDisplay = newLists.slice(start, start + itemsPerPage);
+  const isWebinar = template; // Assuming template is already defined
+
   storiesToDisplay.forEach((article, index) => {
-    cardList.appendChild(createCard(article, index === 0));
+    cardList.appendChild(createCard(article, index === 0, isWebinar ? 'webinar' : ''));
   });
 
   const paginationElements = createPagination(newLists, page, itemsPerPage);
@@ -237,27 +274,32 @@ function handleRenderContent(newLists = lists) {
 }
 
 function handleChangeFilter(key, value) {
-  if ((key !== undefined && value !== 'undefined') && (value !== null || value === '')) updateUrlWithParams(key, value, window.location.href);
+  if ((key !== undefined && value !== 'undefined') && (value !== null || value === '') && typeof value === 'string') { updateUrlWithParams(key, value, window.location.href); }
 
   let newLists = lists;
   let storiesList = [];
-  if (key === 'stories-type' && (value !== null || value !== '' || value !== 'undefined')) {
-    storiesList = lists.filter((list) => (value
-      ? list.tags.includes(value)
-      : true));
-  } else {
-    storiesList = lists;
-  }
-  newLists = storiesList.filter((list) => {
-    const params = new URLSearchParams(window.location.search);
-    return [...params.keys()].every((filterKey) => {
-      if (filterKey !== 'page') {
-        const filterValues = params.get(filterKey)?.split('|') || [];
-        return filterValues.some((val) => (filterKey === 'stories-type' && val === '') || list.tags.includes(val));
-      }
-      return true; // eslint-disable-line array-callback-return
+  if (typeof value === 'string') {
+    if (key === 'stories-type' && (value !== null || value !== '' || value !== 'undefined')) {
+      storiesList = lists.filter((list) => (value
+        ? list.tags.includes(value)
+        : true));
+    } else storiesList = lists;
+    newLists = storiesList.filter((list) => {
+      const params = new URLSearchParams(window.location.search);
+      return [...params.keys()].every((filterKey) => {
+        if (filterKey !== 'page') {
+          const filterValues = params.get(filterKey)?.split('|') || [];
+          return filterValues.some((val) => (filterKey === 'stories-type' && val === '') || list.tags.includes(val));
+        }
+        return true;
+      });
     });
-  });
+  } else if (typeof value === 'object' && 'from' in value && 'to' in value) {
+    newLists = lists.filter((list) => {
+      const publishDate = list.publishDate * 1000;
+      return publishDate >= value.from && publishDate <= value.to;
+    });
+  }
   handleRenderTags();
   tempList = newLists;
   handleRenderContent(newLists);
@@ -329,7 +371,7 @@ function toggleTabs(tabId, tabElement) {
 }
 
 async function initiateRequest() {
-  let response = await ffetch('/en-us/stories/query-index.json')
+  let response = await ffetch(`/en-us/${template}/query-index.json`)
     .filter(({ path }) => !excludedPages.includes(path))
     .chunks(500)
     .all();
@@ -344,10 +386,11 @@ export default async function decorate(block) {
     itemsPerPage = itemsPerPage ? Number(itemsPerPage) : 12;
     await initiateRequest();
     buildStoryHubSchema(lists);
-    const allFilters = p({ class: 'h-5/6 mb-3 overflow-visible' });
+    const allFilters = p({ class: 'h-5/6 mb-3 overflow-scroll md:overflow-visible z-[1]' });
     createFilters({
       lists,
       filterNames,
+      dateRange: 'listed-within',
       element: allFilters,
       listActionHandler: async (categoryKey, categoryValue) => {
         await initiateRequest();
@@ -361,14 +404,14 @@ export default async function decorate(block) {
 
     const hubContent = div(
       { class: 'col-span-9' },
-      allSelectedTags,
+      div({ class: 'w-full flex flex-col md:flex-row mb-4' }, allSelectedTags, (template === 'webinars') ? sortByContainer : ''),
       cardList,
     );
 
     hubDesktopFilters.prepend(
       allFilters,
       p(
-        { class: 'w-full fixed block md:hidden bottom-0 px-4 py-2 my-0 border-t' },
+        { class: 'w-full fixed block md:hidden bottom-0 px-4 py-2 my-0 border-t z-[2]' },
         button({
           class: 'w-full text-sm text-white font-semibold bg-[#378189] p-3 rounded-full',
           onclick: () => toggleMobileFilters('close'),
@@ -398,38 +441,43 @@ export default async function decorate(block) {
     handleRenderContent();
     decorateIcons(hub);
 
-    const horizondalLine = div({ class: 'flex items-center justify-between border-t mb-8 md:py-0' });
-    const tabElement = div({ class: 'font-semibold text-base text-black md:block flex' });
-    const tabs = [
-      { name: 'All stories', tabId: 'stories-type/' },
-      { name: 'Community stories', tabId: 'stories-type/community' },
-      { name: 'Product stories', tabId: 'stories-type/products' },
-    ];
-    tabs.forEach((tab) => {
-      const btn = button({
-        class: 'tab md:py-1.5 pb-4 mr-8 active border-b-8 border-[#ff7223]',
-        id: tab.tabId,
-        onclick: async () => {
-          await initiateRequest();
-          toggleTabs(tab.tabId, tabElement);
-        },
-      }, tab.name);
-      tabElement.appendChild(btn);
-    });
-    block.innerHTML = '';
-    block.append(tabElement, horizondalLine, hub);
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('stories-type') === '' || params.get('stories-type') === null) toggleTabs(tabs[0].tabId, tabElement);
-    [...params.entries()].forEach(([key, values]) => {
-      if (key === 'stories-type') {
-        toggleTabs(`${key}/${values}`, tabElement);
-      }
-      if (key !== 'page') {
-        values.split('|').forEach((value) => {
-          const filterInp = hub.querySelector(`#${key}-${value}`);
-          if (filterInp) filterInp.checked = true;
-        });
-      }
-    });
+    if (template === 'stories') {
+      const horizondalLine = div({ class: 'flex items-center justify-between border-t mb-8 md:py-0' });
+      const tabElement = div({ class: 'font-semibold text-base text-black md:block flex' });
+      const tabs = [
+        { name: 'All stories', tabId: 'stories-type/' },
+        { name: 'Community stories', tabId: 'stories-type/community' },
+        { name: 'Product stories', tabId: 'stories-type/products' },
+      ];
+      tabs.forEach((tab) => {
+        const btn = button({
+          class: 'tab md:py-1.5 pb-4 mr-8 active border-b-8 border-[#ff7223]',
+          id: tab.tabId,
+          onclick: async () => {
+            await initiateRequest();
+            toggleTabs(tab.tabId, tabElement);
+          },
+        }, tab.name);
+        tabElement.appendChild(btn);
+      });
+      block.innerHTML = '';
+      block.append(tabElement, horizondalLine, hub);
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('stories-type') === '' || params.get('stories-type') === null) toggleTabs(tabs[0].tabId, tabElement);
+      [...params.entries()].forEach(([key, values]) => {
+        if (key === 'stories-type') {
+          toggleTabs(`${key}/${values}`, tabElement);
+        }
+        if (key !== 'page') {
+          values.split('|').forEach((value) => {
+            const filterInp = hub.querySelector(`#${key}-${value}`);
+            if (filterInp) filterInp.checked = true;
+          });
+        }
+      });
+    } else {
+      block.innerHTML = '';
+      block.append(hub);
+    }
   }
 }

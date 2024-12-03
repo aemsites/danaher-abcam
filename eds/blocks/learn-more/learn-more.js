@@ -5,8 +5,8 @@ import {
 import { decorateIcons } from '../../scripts/aem.js';
 
 export default function decorate(block) {
-  block.classList.add(...'px-6 py-8 w-full border-y'.split(' '));
-  block.querySelector('div')?.classList.add(...'flex flex-col sm:flex-row md:flex-row md:justify-between pt-0 pb-8'.split(' '));
+  block.classList.add(...'lg:px-6 xl:px-0 py-8 w-full border-y'.split(' '));
+  block.querySelector('div')?.classList.add(...'md:px-0 flex flex-col sm:flex-row md:flex-row md:justify-between pt-0 pb-8'.split(' '));
   block.querySelector('h3')?.parentElement?.classList.add('md:w-3/4');
   block.querySelector('h3')?.classList.add('text-xl', 'font-bold', 'mb-4');
   block.querySelector('div > p:not(div.button-container > p)')?.classList.add('text-base', 'font-normal', 'mb-4');
