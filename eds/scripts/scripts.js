@@ -309,7 +309,6 @@ const TEMPLATE_LIST = [
   'guide',
   'guides-hub',
   'topic',
-  'pathways',
 ];
 
 async function decorateTemplates(main) {
@@ -564,6 +563,11 @@ function decorateGenericVideo(main) {
           : videoSrc + '?autoplay=1';
         overlay.classList.add('hidden');
       }
+    });
+  });
+  document.querySelectorAll('.video-container')?.forEach(() => {
+    document.querySelectorAll('.video-script')?.forEach((ele) => {
+      ele.classList.remove('hidden');
     });
   });
 }

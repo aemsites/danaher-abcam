@@ -14,6 +14,10 @@
   width: 75%
 }
 
+.w-full {
+  width: 100%
+}
+
 .border {
   border-width: 1px
 }
@@ -21,4 +25,8 @@
 .border-b-slate-400 {
   --tw-border-opacity: 1;
   border-bottom-color: rgb(148 163 184 / var(--tw-border-opacity))
+}
+
+.pt-4 {
+  padding-top: 1rem
 }
