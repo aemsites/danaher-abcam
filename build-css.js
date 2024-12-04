@@ -339,6 +339,11 @@ const fileMappings = [
     output: './eds/blocks/cta-banner/cta-banner.css',
     wrapper: 'cta-banner-wrapper',
   },
+  {
+    content: './eds/blocks/cross-sell-hub-links/cross-sell-hub-links.js',
+    output: './eds/blocks/cross-sell-hub-links/cross-sell-hub-links.css',
+    wrapper: 'cross-sell-hub-links-wrapper',
+  },
 ];
 
 const watch = process.argv[2];
