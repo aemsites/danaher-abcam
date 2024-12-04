@@ -10,7 +10,7 @@ indices:
         value: attribute(el, "content")
       lastModified:
         select: head > meta[name="modified-time"]
-        value: parseTimestamp(attribute(el, "content"), "YYYY-MM-DDTHH:mm:ss")      
+        value: parseTimestamp(attribute(el, "content"), "YYYY-MM-DDTHH:mm:ss")
       robots:
         select: head > meta[name="robots"]
         value: attribute(el, "content")
@@ -128,4 +128,24 @@ indices:
         value: parseTimestamp(attribute(el, "content"), "YYYY-MM-DDTHH:mm:ss")
       template:
         select: head > meta[name="template"]
+        value: attribute(el, "content")
+  protocols:
+    include:
+      - /en-us/technical-resources/protocols/**
+    target: /en-us/technical-resources/protocols/query-index.json
+    properties:
+      title:
+        select: head > meta[property="og:title"]
+        value: attribute(el, "content")
+      description:
+        select: head > meta[property="og:description"]
+        value: attribute(el, "content")
+      tags:
+        select: head > meta[name="pagetags"]
+        value: attribute(el, "content")
+      parent:
+        select: head > meta[property="og:url"]
+        value: match(attribute(el, "content"), "\/([^\/]+)\/[^\/]+$")
+      pageOrder:
+        select: head > meta[name="pageorder"]
         value: attribute(el, "content")
