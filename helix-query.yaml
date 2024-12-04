@@ -133,7 +133,6 @@ protocols:
     include:
       - /en-us/technical-resources/protocols/**
     exclude:
-      - /en-us/technical-resources/protocols
       - /en-us/technical-resources/protocols/query-index.json
     target: /en-us/technical-resources/protocols/query-index.json
     properties:
