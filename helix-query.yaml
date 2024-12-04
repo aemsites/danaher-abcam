@@ -14,6 +14,32 @@ indices:
       robots:
         select: head > meta[name="robots"]
         value: attribute(el, "content")
+  index-us-all:
+    include:
+      - /en-us/**
+    exclude:
+      - /en-us/stories
+      - /en-us/technical-resources/guides
+      - /en-us/knowledge-center
+      - /en-us/webinars
+      - /en-us/stories/query-index.json
+      - /en-us/technical-resources/guides/query-index.json
+      - /en-us/knowledge-center/query-index.json
+      - /en-us/webinars/query-index.json  
+    target: /en-us/query-index-all.json
+    properties:
+      title:
+        select: head > meta[property="og:title"]
+        value: attribute(el, "content")
+      description:
+        select: head > meta[property="og:description"]
+        value: attribute(el, "content")
+      image:
+        select: head > meta[property="og:image"]
+        value: match(attribute(el, "content"), "^https?:\/\/[^\/]+(\/.*)")
+      tags:
+        select: head > meta[name="pagetags"]
+        value: attribute(el, "content")      
   stories:
     include:
       - /en-us/stories/articles/**
