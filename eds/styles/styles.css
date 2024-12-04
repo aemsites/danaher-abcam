@@ -535,30 +535,6 @@ h6 {
   font-weight: 400;
 }
 
-.button-primary {
-  width: -moz-fit-content;
-  width: fit-content;
-  align-items: center;
-  white-space: nowrap;
-  border-radius: 9999px;
-  --tw-bg-opacity: 1;
-  background-color: rgb(55 129 137 / var(--tw-bg-opacity));
-  padding-top: 1px;
-  padding-bottom: 1px;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  text-transform: capitalize;
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.button-primary:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(42 95 101 / var(--tw-bg-opacity));
-}
-
 main .section .button-secondary {
   width: -moz-fit-content;
   width: fit-content;
@@ -1357,6 +1333,18 @@ main .section.guides-middle-container h2 {
 main .section.elouqa-form-container {
   --tw-bg-opacity: 1;
   background-color: rgb(242 242 242 / var(--tw-bg-opacity));
+}
+
+main .section.downloads-container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 1280px) {
+  main .section.downloads-container {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 }
 
 .sr-only {
