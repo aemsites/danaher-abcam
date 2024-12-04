@@ -18,10 +18,6 @@ indices:
     include:
       - /en-us/**
     exclude:
-      - /en-us/stories
-      - /en-us/technical-resources/guides
-      - /en-us/knowledge-center
-      - /en-us/webinars
       - /en-us/stories/query-index.json
       - /en-us/technical-resources/guides/query-index.json
       - /en-us/knowledge-center/query-index.json
