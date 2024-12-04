@@ -17,11 +17,6 @@ indices:
   index-us-all:
     include:
       - /en-us/**
-    exclude:
-      - /en-us/stories/query-index.json
-      - /en-us/technical-resources/guides/query-index.json
-      - /en-us/knowledge-center/query-index.json
-      - /en-us/webinars/query-index.json  
     target: /en-us/query-index-all.json
     properties:
       title:
