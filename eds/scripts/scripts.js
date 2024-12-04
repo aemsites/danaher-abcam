@@ -566,6 +566,11 @@ function decorateGenericVideo(main) {
       }
     });
   });
+  document.querySelectorAll('.video-container')?.forEach(() => {
+    document.querySelectorAll('.video-script')?.forEach((ele) => {
+      ele.classList.remove('hidden');
+    });
+  });
 }
 
 async function decorateVideo(main) {
