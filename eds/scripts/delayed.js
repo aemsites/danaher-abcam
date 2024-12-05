@@ -80,6 +80,13 @@ function loadFreshChat() {
     uuid: FRESHCHAT_UUID,
     widgetUuid: FRESHCHAT_WIDGETUUID,
   };
+
+  // Initialize FreshChat widget
+  window.fcWidget?.init({
+    token: FRESHCHAT_TOKEN,
+    host: FRESHCHAT_HOST,
+    widgetUuid: FRESHCHAT_WIDGETUUID,
+  });
 }
 // freshchat -end
 
