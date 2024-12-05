@@ -68,21 +68,21 @@ function updateFeatureProducts(products) {
 }
 
 export default async function decorate(block) {
-  if (block.className.includes('products-recommended')) {
-    block.classList.add(...'container mx-auto px-6 md:px-0'.split(' '));
-    const response = await getProductResponse();
-    const allRecommendations = response?.at(0)?.raw?.crosssellrecommendationsjson;
-    if (!allRecommendations) block.closest('.section').remove();
-    else {
-      try {
-        block.append(createRecommendations(allRecommendations));
-      } catch (error) {
-        // eslint-disable-next-line no-console
-        console.error('Error while parsing recommendations', error);
-      }
-    }
-  } else if (block.className.includes('featured-products')) {
-    applyClasses(block, 'my-8 flex flex-col lg:flex-row gap-4');
-    updateFeatureProducts(Array.from(block.children));
-  }
+  // if (block.className.includes('products-recommended')) {
+  //   block.classList.add(...'container mx-auto px-6 md:px-0'.split(' '));
+  //   const response = await getProductResponse();
+  //   const allRecommendations = response?.at(0)?.raw?.crosssellrecommendationsjson;
+  //   if (!allRecommendations) block.closest('.section').remove();
+  //   else {
+  //     try {
+  //       block.append(createRecommendations(allRecommendations));
+  //     } catch (error) {
+  //       // eslint-disable-next-line no-console
+  //       console.error('Error while parsing recommendations', error);
+  //     }
+  //   }
+  // } else if (block.className.includes('featured-products')) {
+  //   applyClasses(block, 'my-8 flex flex-col lg:flex-row gap-4');
+  //   updateFeatureProducts(Array.from(block.children));
+  // }
 }

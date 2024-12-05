@@ -1916,13 +1916,6 @@
         ]
       },
       {
-        "component": "richtext",
-        "name": "image_alt_description",
-        "value": "",
-        "label": "Image Description",
-        "valueType": "string"
-      },
-      {
         "component": "reference",
         "valueType": "string",
         "name": "image",
@@ -1935,6 +1928,13 @@
         "name": "imageAlt",
         "label": "Alt",
         "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "image_alt_description",
+        "value": "",
+        "label": "Image Description",
+        "valueType": "string"
       }
     ]
   },
