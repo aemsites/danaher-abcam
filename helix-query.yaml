@@ -17,7 +17,7 @@ indices:
   index-us-all:
     include:
       - /en-us/**
-    target: /en-us/query-index-all.json
+    target: /en-us/full-index.json
     properties:
       title:
         select: head > meta[property="og:title"]
@@ -30,7 +30,7 @@ indices:
         value: match(attribute(el, "content"), "^https?:\/\/[^\/]+(\/.*)")
       tags:
         select: head > meta[name="pagetags"]
-        value: attribute(el, "content")      
+        value: attribute(el, "content")    
   stories:
     include:
       - /en-us/stories/articles/**
