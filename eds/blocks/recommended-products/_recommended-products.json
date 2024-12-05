@@ -94,17 +94,17 @@
           "valueType": "string"
         },
         {
-          "component": "richtext",
-          "name": "image_alt_description",
-          "value": "",
-          "label": "Image Description",
-          "valueType": "string"
-        },
-        {
           "...": "../../../models/_common.json#/button-fields"
         },
         {
           "...": "../../../models/_common.json#/image-fields"
+        },
+        {
+          "component": "text",
+          "name": "imageText",
+          "value": "",
+          "label": "Image Text",
+          "valueType": "string"
         }
       ]
     }

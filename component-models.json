@@ -1837,13 +1837,6 @@
         "valueType": "string"
       },
       {
-        "component": "richtext",
-        "name": "image_alt_description",
-        "value": "",
-        "label": "Image Description",
-        "valueType": "string"
-      },
-      {
         "component": "aem-content",
         "name": "link",
         "label": "Link"
@@ -1935,6 +1928,13 @@
         "name": "imageAlt",
         "label": "Alt",
         "value": ""
+      },
+      {
+        "component": "text",
+        "name": "imageText",
+        "value": "",
+        "label": "Image Text",
+        "valueType": "string"
       }
     ]
   },
