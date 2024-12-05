@@ -1,23 +1,9 @@
 // eslint-disable-next-line import/no-cycle
 import { sampleRUM, loadScript } from './aem.js';
 // eslint-disable-next-line import/no-cycle
-import { isOTEnabled } from './scripts.js';
 
 // Core Web Vitals RUM collection
 sampleRUM('cwv');
-
-// OneTrust Cookies Consent Notice start
-if (window.location.host.includes('abcam.com')) {
-  loadScript('https://cdn.cookielaw.org/scripttemplates/otSDKStub.js', {
-    type: 'text/javascript',
-    charset: 'UTF-8',
-    'data-domain-script': 'b5320615-0900-4f85-996b-7737cc0c62f2',
-  });
-
-  window.OptanonWrapper = () => {
-  };
-}
-// OneTrust Cookies Consent Notice end
 
 // Loading fathom script - start
 const attrs = JSON.parse('{"data-site": "DGRGXILD"}');
@@ -64,26 +50,10 @@ function loadrelicScript() {
 }
 // New relic Script -end
 
-// freshchat -start
-function loadFreshChat() {
-  const FRESHCHAT_TOKEN = (window.location.host === 'www.abcam.com') ? '471c9cd0-248c-41d7-a173-fb32d90b8729' : '471c9cd0-248c-41d7-a173-fb32d90b8729';
-  const FRESHCHAT_HOST = (window.location.host === 'www.abcam.com') ? 'https://abcam.freshchat.com' : 'https://abcam.freshchat.com';
-  const FRESHCHAT_UUID = (window.location.host === 'www.abcam.com') ? '72b36250-f7cd-4488-857c-3bf672e0c6e9' : '72b36250-f7cd-4488-857c-3bf672e0c6e9';
-  const fcScriptTag = document.createElement('script');
-  fcScriptTag.type = 'text/javascript';
-  fcScriptTag.src = `${FRESHCHAT_HOST}/js/widget.js?t=${Date.now()}`;
-  document.head.appendChild(fcScriptTag);
-  window.fcSettings = { token: FRESHCHAT_TOKEN, host: FRESHCHAT_HOST, uuid: FRESHCHAT_UUID };
-}
-// freshchat -end
-
 if (
   !window.location.hostname.includes('localhost')
   && !window.location.hostname.includes('.hlx')
 ) {
   loadGTM();
   loadrelicScript();
-  if (isOTEnabled) {
-    loadFreshChat();
-  }
 }
