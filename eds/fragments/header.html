@@ -490,7 +490,6 @@
 		<!-- Header Cart Icon - Ends -->
 	</div>
   <div class="w-full hidden lg:!block">
-		
 	<div class="flex flex-col space-y-4">
 		<div class="w-full relative">
 			<div class="relative">
@@ -499,14 +498,22 @@
 					<img data-icon-name="Search-bar" src="/eds/icons/Search-bar.svg" alt="Search-bar" width="25" height="25" loading="lazy">
 				</span>
 			</div>
-			<div class="w-11/12 absolute bg-white text-black z-10 left-5 top-14 p-2 rounded shadow">
-				<ul id="suggestions" class="flex flex-col gap-y-2 empty:hidden">
-					<li class="text-xs font-semibold tracking-wide text-[#828894] px-2 py-1">RECENT SEARCH</li>
-					<li class="flex items-center gap-x-3 px-2 py-1 mb-1 select-none cursor-pointer hover:bg-gray-100/70 rounded-sm">
-						<span class="text-base font-medium leading-7">p53</span>
-						<span class="icon icon-close"></span>
-					</li>
-				</ul>
+			<div class="w-11/12 absolute z-10 left-5 top-14">
+				<div class="grid md:grid-cols-3 grid-rows-2 md:grid-rows-1 bg-white text-black rounded shadow-lg">
+					<div class="p-4 col-span-2 rounded">
+						<div class="flex flex-col-reverse gap-y-2 [&_ul:empty+span]:hidden [&_ul:empty]:hidden">
+							<ul id="search-suggestions" class="flex flex-col gap-y-2 text-sm font-normal tracking-wide"></ul>
+							<span class="text-xs text-[#828894] font-semibold tracking-wide uppercase">Suggestions</span>
+						</div>
+						<div class="flex flex-col-reverse gap-y-2 [&_ul:empty+span]:hidden [&_ul:empty]:hidden">
+							<ul id="category-facet" class="flex flex-col gap-y-2 text-sm font-normal tracking-wide"></ul>
+							<span class="text-xs text-[#828894] font-semibold tracking-wide uppercase">Categories</span>
+						</div>
+					</div>
+					<div class="p-4 col-span-1 bg-[#EDF6F7] rounded">
+						<!-- <ul id="search-suggestions" class="flex flex-col gap-y-2 p-2 empty:!hidden"></ul> -->
+					</div>
+				</div>
 			</div>
 		</div>	
   <div class="text-white px-[30px] flex flex-row gap-x-4">
