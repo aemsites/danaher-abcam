@@ -392,7 +392,6 @@ function buildSearchBlock(headerBlock) {
 
   const logoHamburgerMenu = div({ class: 'basis-1/12 md:basis-1/6 2xl:basis-1/4 flex flex-row gap-x-2' }, hamburgerIcon, logoPictureBlock);
   logoSearchBarContianer.append(logoHamburgerMenu);
-  
 
   // Right Main container
   const rightMainContainer = div(
@@ -449,12 +448,12 @@ function buildSearchBlock(headerBlock) {
         span({ class: 'hidden lg:!block user-account text-white font-semibold px-1.5 select-none' }, 'My account'),
         span({ class: 'hidden lg:!block user-icon-dd icon icon-chevron-down-white' }),
       ),
-      div({class:'account-dropdown-menu hidden peer-checked:block w-full lg:!w-auto absolute top-12 md:top-9 left-0 md:!left-auto sm:right-0 mt-1 z-40 pb-4',
-        id:'my-account',
+      div({
+        class: 'account-dropdown-menu hidden peer-checked:block w-full lg:!w-auto absolute top-12 md:top-9 left-0 md:!left-auto sm:right-0 mt-1 z-40 pb-4',
+        id: 'my-account',
         role: 'dialog',
-        tabindex: '-1'
-      },
-      )
+        tabindex: '-1',
+      }),
     ),
     div(
       { class: 'cart-dropdown w-[58.631px] lg:w-[74px] h-[32px] flex items-center justify-center cursor-pointer border border-white rounded-2xl relative' },
