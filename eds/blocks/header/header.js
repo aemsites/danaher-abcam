@@ -435,7 +435,7 @@ export default async function decorate(block) {
       'Content-Type': 'application/json',
     };
 
-    const url = `https://${host}/ecommerce/rest/v1/basket/${shoppingBaskedId}?country=${selectedCountry}`;
+    const url = `https://${host}/ecommerce/rest/v1/basket/${shoppingBaskedId}?country=${lastSelectedCountry.toUpperCase()}`;
     fetch(url, {
       method: 'GET',
       headers,
@@ -454,7 +454,7 @@ export default async function decorate(block) {
           document.querySelector('.cart-count')?.classList?.add('hidden');
         }
         cartButton.addEventListener('click', () => {
-          window.location.href = `https://${hostName}/en-us/shopping-basket/${shoppingBaskedId}?country=${selectedCountry}`;
+          window.location.href = `https://${hostName}/en-us/shopping-basket/${shoppingBaskedId}?country=${lastSelectedCountry.toUpperCase()}`;
         });
       })
       .catch((error) => {
