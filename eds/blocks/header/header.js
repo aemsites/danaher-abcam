@@ -1,13 +1,10 @@
 import {
-  a, div, li, p, span, ul,
+  div, button, span, a, ul, li, h4, input,
+  label, p,
 } from '../../scripts/dom-builder.js';
 import { decorateIcons } from '../../scripts/aem.js';
-import countriesAndCodes from '../../scripts/country-list.js';
 import { applyClasses } from '../../scripts/scripts.js';
-
-function megaMeunu() {
-  return div({ class: 'w-[360px] z-40 hidden max-w-sm fixed h-full bg-black px-3 py-4 ease-out transition-all' });
-}
+import countriesAndCodes from '../../scripts/country-list.js';
 
 function getCookie(name) {
   const match = document.cookie.match(new RegExp(`(^| )${name}=([^;]+)`));
@@ -25,14 +22,14 @@ function setOrUpdateCookie(name, value, days) {
 }
 
 function rotateDropdownIcon(event) {
-  const input = document.getElementById('country-search-input');
+  const inputEle = document.getElementById('country-search-input');
 
   const countrydd = document.querySelector('.country-dd');
   const ddImg = countrydd?.querySelector('img');
   if (event !== undefined && countrydd?.classList.contains('rotate') && ddImg) {
     ddImg.style.transform = 'rotate(180deg)';
     countrydd.classList.remove('rotate');
-  } else if (event === undefined || event.target !== input) {
+  } else if (event === undefined || event.target !== inputEle) {
     ddImg.style.transform = 'rotate(0deg)';
     countrydd.classList.add('rotate');
   }
@@ -95,18 +92,18 @@ function updateActiveItem(items, currentIndex) {
 
 // country Selector
 function countrySelector() {
-  const input = document.getElementById('country-search-input');
+  const inputEle = document.getElementById('country-search-input');
   const resultsContainer = document.getElementById('country-results');
-  input.focus();
+  inputEle.focus();
   resultsContainer.classList.remove('hidden');
-  input.addEventListener('input', (e) => {
-    const query = input.value.toLowerCase();
+  inputEle.addEventListener('input', (e) => {
+    const query = inputEle.value.toLowerCase();
     e.stopImmediatePropagation();
     displayResults(query, resultsContainer);
   });
 
   let currentIndex = -1;
-  input.addEventListener('keydown', (event) => {
+  inputEle.addEventListener('keydown', (event) => {
     if (event.key === 'ArrowDown') {
       const items = resultsContainer.querySelectorAll('.result-item');
       event.preventDefault();
@@ -137,7 +134,7 @@ function countrySelector() {
   });
 
   document.addEventListener('click', (e) => {
-    if (!resultsContainer.contains(e.target) && e.target !== input) {
+    if (!resultsContainer.contains(e.target) && e.target !== inputEle) {
       resultsContainer?.classList.add('hidden');
       document.querySelector('.country-search')?.classList.add('hidden');
       rotateDropdownIcon();
@@ -311,155 +308,420 @@ function myAccount(session) {
   return myAccoundDiv;
 }
 
+function showFlyoutMenu() {
+  document.querySelector('#menu-flyout')?.classList.remove('hidden');
+}
+
+function hideFlyoutMenu() {
+  document.querySelector('#menu-flyout')?.classList.add('hidden');
+}
+
+function sortFlyoutMenus(menuPath) {
+  const menuList = document.querySelector('#menu-flyout ul');
+  const heading = menuPath.split('|');
+  if (heading) document.querySelector('#menu-flyout h4').textContent = heading[heading.length - 1];
+  [...menuList.children].forEach((menu) => {
+    if (menu.getAttribute('data-content') !== menuPath && menu.getAttribute('data-content') !== menuPath) {
+      menu.classList.add('hidden');
+    } else {
+      menu.classList.remove('hidden');
+      const backFlyout = document.querySelector('#back-flyout');
+      const redirectLink = menu.getAttribute('data-content').split('|').slice(0, -1).join('|');
+      if (redirectLink) {
+        backFlyout.setAttribute('data-redirect', redirectLink);
+        backFlyout.classList.remove('hidden');
+      } else backFlyout.classList.add('hidden');
+    }
+  });
+}
+
+function buildSearchBlock(headerBlock) {
+  const searchHtmlBlock = headerBlock.children[0];
+  applyClasses(searchHtmlBlock, 'navbar-wrapper justify-center bg-black z-50 pt-4');
+  searchHtmlBlock.id = 'sticky-header';
+  searchHtmlBlock.querySelector('p').classList.add('hidden');
+  const logoSearchMenuContainer = div({ class: 'logo-search-menu-container flex flex-col gap-y-7' });
+  const logoSearchBarContianer = div({ class: 'logo-searchbar-continer w-full m-0 px-4 md:w-11/12 lg:ml-20 flex flex-row max-[376px]:flex-wrap items-center gap-x-2 md:gap-x-16 gap-y-5 md:items-center' });
+  const searchbarContainer = div(
+    { class: 'max-[376px]:w-[75%] w-[50%] md:w-full relative' },
+    input({
+      class: 'w-full text-base h-12 rounded-full bg-black border border-white text-white py-2 px-12 font-bold outline-none',
+      placeholder: 'What are you searching for?',
+      onkeydown: (event) => {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          const inputValue = event.target.value.trim();
+          if (inputValue) {
+            const searchResultsUrl = `https://www.abcam.com/en-us/search?keywords=${inputValue}`;
+            window.location.href = searchResultsUrl;
+          }
+        }
+      },
+    }),
+    span({ class: 'icon icon-Search-bar pl-4 pr-2 absolute top-3 left-0' }),
+  );
+  logoSearchBarContianer.append(searchbarContainer);
+
+  decorateIcons(logoSearchBarContianer);
+  const borderBottom = div({ class: 'h-0.5 mt-3 lg:mt-4', style: 'background: linear-gradient(90deg, #4ba6b3 0, #c9d3b7 35%, #ff8730 70%, #c54428)' });
+  const extendedSectionBlock = div({ class: 'extended-section md:w-fit 2xl:ml-[21%] md:ml-80 ml-auto mr-2 hidden lg:flex items-center gap-x-16 lg:block' });
+  extendedSectionBlock.id = 'extended-section';
+  const logoPictureBlock = a(
+    { class: 'w-[120px] hidden md:block' },
+    span({ class: 'icon icon-logo' }),
+  );
+  if (window.location.pathname === '/') {
+    logoPictureBlock.href = window.location.href;
+  } else {
+    logoPictureBlock.href = '/';
+  }
+  logoPictureBlock.setAttribute('aria-label', 'Abcam Logo');
+
+  const hamburgerIcon = button(
+    {
+      id: 'nav-hamburger',
+      type: 'button',
+      class: 'open-side-menu block lg:hidden btn btn-sm h-full w-8 my-auto bg-black text-white',
+      'aria-label': 'Menu',
+      'aria-expanded': false,
+      'aria-controls': 'mega-menu-icons',
+      'data-collapse-toggle': 'mega-menu-icons',
+    },
+    span({ class: 'icon icon-Menu flex items-center w-8 h-6' }),
+  );
+
+  const logoHamburgerMenu = div({ class: 'basis-1/12 md:basis-1/6 2xl:basis-1/4 flex flex-row gap-x-2' }, hamburgerIcon, logoPictureBlock);
+  logoSearchBarContianer.append(logoHamburgerMenu);
+  
+
+  // Right Main container
+  const rightMainContainer = div(
+    { class: 'right-main-container basis-1/4 order-3 flex flex-row gap-4 relative' },
+    div(
+      { class: 'country-container' },
+      button(
+        { class: 'country-dropdown relative flex flex-row items-center gap-2 w-fit-content w-[82px] h-[34px] py-2 px-4 border border-solid border-white text-white rounded-full hover:bg-[#3B3B3B]' },
+        div(
+          { class: 'country-flag-container flex flex-row items-center w-6 h-4' },
+          span({ class: 'country-flag-icon object-cover border-[0.5px] icon icon-us' }),
+        ),
+        div(
+          { class: 'country-dd rotate' },
+          span({ class: 'rotate icon icon-chevron-down-white' }),
+        ),
+        div(
+          { class: 'country-search drop-shadow-2xl absolute top-10 sm:right-0 mt-2 hidden z-10' },
+          div(
+            { class: 'relative bg-white pb-4 rounded-2xl shadow-elevation-5' },
+            div(
+              { class: 'text-sm text-black pb-1 font-semibold flex flex-col items-start' },
+              label({ class: 'text-black p-4 pb-2 tracking-normal text-sm md:text-lg block' }, 'Country/Region selector'),
+              div(
+                input({
+                  class: 'text-black bg-[#273F3F] hover:bg-[#f2f2f2] text-sm md:text-normal bg-opacity-10 mx-4 h-12 w-auto sm:w-[20.9375rem] border-2 rounded-md ring-[3px] ring-[#6fafb8] focus:outline-none mb-0.5 pl-3 md:pl-5',
+                  type: 'text',
+                  placeholder: 'Search for a country/region',
+                  id: 'country-search-input',
+                }),
+              ),
+              div({
+                class: 'w-full max-h-[200px] xl:max-h-[345px] 2xl:max-h-[500px] overflow-y-auto hidden',
+                id: 'country-results',
+              }),
+            ),
+          ),
+        ),
+      ),
+    ),
+    div(
+      { class: 'account-dropdown-container static md:relative w-max' },
+      input({
+        type: 'checkbox',
+        id: 'account-dropdown',
+        class: 'peer hidden',
+      }),
+      label(
+        {
+          for: 'account-dropdown',
+          class: 'account-dropdown border border-white rounded-2xl px-2 py-3 text-xs h-8 inline-flex justify-center items-center cursor-pointer outline hover:ring ring-[#6db9c1] ring-offset-1 hover:bg-[#3B3B3B]',
+        },
+        span({ class: 'user-icon icon icon-user pl-0 sm:pl-1' }),
+        span({ class: 'hidden lg:!block user-account text-white font-semibold px-1.5 select-none' }, 'My account'),
+        span({ class: 'hidden lg:!block user-icon-dd icon icon-chevron-down-white' }),
+      ),
+      div({class:'account-dropdown-menu hidden peer-checked:block w-full lg:!w-auto absolute top-12 md:top-9 left-0 md:!left-auto sm:right-0 mt-1 z-40 pb-4',
+        id:'my-account',
+        role: 'dialog',
+        tabindex: '-1'
+      },
+      )
+    ),
+    div(
+      { class: 'cart-dropdown w-[58.631px] lg:w-[74px] h-[32px] flex items-center justify-center cursor-pointer border border-white rounded-2xl relative' },
+      div(
+        { class: 'focus-visible:outline-none focus-visible:shadow-interactiveElement absolute' },
+        button(
+          { class: 'flex items-center gap-1 text-sm h-8', type: 'button' },
+          span({ class: 'cart-icon icon icon-cart_white' }),
+          span({ class: 'cart-count hidden bg-red-500 w-[17.6px] h-[17.6px] w-[22px] h-[22px] sm:w rounded-2xl flex items-center justify-center text-white px-1.5' }),
+        ),
+      ),
+    ),
+  );
+  decorateIcons(rightMainContainer.querySelector('.cart-dropdown'), 16, 16);
+  logoSearchBarContianer.append(rightMainContainer);
+  logoSearchBarContianer.append(searchbarContainer);
+
+  decorateIcons(logoPictureBlock, 120, 25);
+  decorateIcons(hamburgerIcon);
+  logoSearchMenuContainer.append(logoSearchBarContianer);
+  logoSearchMenuContainer.append(extendedSectionBlock);
+  searchHtmlBlock.append(logoSearchMenuContainer);
+  searchHtmlBlock.append(borderBottom);
+  searchHtmlBlock.querySelector('#nav-hamburger').addEventListener('click', (e) => {
+    e.preventDefault();
+    showFlyoutMenu();
+    sortFlyoutMenus('Menu');
+  });
+}
+
+function buildNavBlock(headerBlock) {
+  const extendedSectionBlock = headerBlock.querySelector('div.extended-section');
+  const menuLinks = [];
+  [...headerBlock.children].slice(1).forEach((menuItemEl) => {
+    menuItemEl.className = menuItemEl.innerHTML ? 'menu-flyout hidden' : '';
+    if (menuItemEl.querySelector('p')?.textContent === 'Menu') {
+      menuItemEl.querySelectorAll('ul > li').forEach((childMenuItem) => {
+        menuLinks.push(childMenuItem);
+      });
+    }
+  });
+
+  menuLinks.forEach((item) => {
+    const menuItemName = item.innerText;
+    const menuItemEl = a(
+      {
+        class: 'btn flex items-center font-bold relative bg-black text-white ring-0 border-b-4 border-black hover:border-b-4 hover:border-[#ff7223] ring-offset-0 group',
+        href: item.querySelector('a')?.href || '/',
+      },
+      menuItemName,
+    );
+    menuItemEl.addEventListener('click', (e) => {
+      e.preventDefault();
+      showFlyoutMenu();
+      sortFlyoutMenus(`Menu|${menuItemName}`);
+    });
+    extendedSectionBlock.append(menuItemEl);
+  });
+}
+
+function buildFlyoutMenus(headerBlock) {
+  const allFlyout = headerBlock.querySelectorAll('.menu-flyout');
+  const closeSvg = div({ class: 'close-svg' }, span({ class: 'icon icon-close' }));
+  decorateIcons(closeSvg);
+
+  const closeLogo = div({ class: 'close-Logo' }, span({ class: 'icon icon-logo' }));
+  decorateIcons(closeLogo, 100, 100);
+
+  const closeFlyout = div(
+    { class: 'flex mt-5 p-1 gap-x-4 rounded' },
+    closeSvg,
+    closeLogo,
+  );
+
+  closeFlyout.addEventListener('click', hideFlyoutMenu);
+
+  const backFlyout = button({ id: 'back-flyout', class: 'flex items-center gap-x-1 group' }, span({ class: 'icon icon-chevron-left-orange w-4 h-4 transition-transform group-hover:translate-x-0.5' }), 'Back');
+  backFlyout.addEventListener('click', () => sortFlyoutMenus(backFlyout.getAttribute('data-redirect')));
+
+  const navigateActions = div(
+    { class: 'flex justify-between mt-5 text-base text-white font-bold mx-2' },
+    backFlyout,
+  );
+
+  decorateIcons(backFlyout);
+
+  const menuWrapper = ul({ class: 'h-full flex flex-col text-white gap-y-2 mt-3 overflow-auto [&>li.active]:bg-danaherpurple-50 [&>li.active]:font-bold' });
+  [...allFlyout].forEach((flyMenu) => {
+    const contentText = flyMenu.children[0]?.textContent;
+    const anchorHref = flyMenu.children[1].querySelector('a')?.href;
+    [...flyMenu.children[1].children].map((flyMenuChild) => {
+      const contextPath = `${contentText}|${flyMenuChild.textContent}`;
+      const liTag = li(
+        {
+          class: 'inline-flex justify-between items-center font-extralight text-base hover:font-medium tracking-wider px-2 py-2 select-none cursor-pointer [&>a]:w-full transition group',
+          'data-content': contentText,
+          ...(anchorHref && { 'data-href': anchorHref }),
+        },
+      );
+      if (!(flyMenuChild.querySelector('a'))) {
+        liTag.setAttribute('data-redirect', contextPath);
+        liTag.innerHTML += flyMenuChild.textContent;
+        liTag.classList.add('font-bold');
+        liTag.append(span({ class: 'icon icon-chevron-right-orange w-4 h-4 group-hover:-translate-x-0.5' }));
+        liTag.addEventListener('click', () => sortFlyoutMenus(contextPath));
+      } else liTag.append(a({ href: flyMenuChild.querySelector('a')?.href }, flyMenuChild.textContent));
+      decorateIcons(liTag);
+      menuWrapper.append(liTag);
+      return flyMenuChild;
+    });
+    flyMenu.outerHTML = '';
+  });
+
+  const flyout = div(
+    {
+      id: 'menu-flyout',
+      class: 'w-full hidden fixed top-0 left-0 z-40 h-screen transition-all ease-out backdrop-brightness-50',
+    },
+    div(
+      { class: 'w-[360px] max-w-sm fixed h-full bg-black px-3 py-4 ease-out transition-all' },
+      closeFlyout,
+      h4({ class: 'text-2xl font-medium text-white mt-5 mx-2 mb-2' }, 'Flyout Menu Heading'),
+      navigateActions,
+      div({ class: 'border-b border-b-gray-400 py-2 mx-2' }),
+      menuWrapper,
+    ),
+  );
+  flyout.addEventListener('click', (event) => {
+    if (event.target.id === 'menu-flyout') hideFlyoutMenu();
+  });
+  return flyout;
+}
+
+function handleScroll() {
+  const stickyHeader = document.getElementById('sticky-header');
+  const hamburgerIcon = document.getElementById('nav-hamburger');
+  const extendedSection = document.getElementById('extended-section');
+  const brandLogo = stickyHeader.querySelector('.brand-logo');
+  if (window.scrollY >= 95) {
+    applyClasses(stickyHeader, 'remove-descedents fixed inset-x-0 top-0 w-full shadow-lg');
+    stickyHeader.firstElementChild.classList.add('bg-black');
+    hamburgerIcon?.classList.remove('lg:hidden');
+    hamburgerIcon?.classList.add('lg:block');
+    extendedSection?.classList.remove('lg:grid-rows-2');
+    extendedSection?.classList.add('lg:grid-rows-1');
+    extendedSection?.classList.remove('lg:block');
+    extendedSection?.classList.add('lg:hidden');
+    brandLogo?.classList.remove('h-full');
+    brandLogo?.classList.add('h-10');
+  } else if (window.scrollY < 95) {
+    stickyHeader.classList.remove('remove-descedents', 'fixed', 'inset-x-0', 'top-0', 'w-full', 'shadow-lg');
+    stickyHeader.firstElementChild.classList.remove('bg-danaherblue-600');
+    hamburgerIcon?.classList.add('lg:hidden');
+    hamburgerIcon?.classList.remove('lg:block');
+    extendedSection?.classList.remove('lg:grid-rows-1');
+    extendedSection?.classList.add('lg:grid-rows-2');
+    extendedSection?.classList.remove('lg:hidden');
+    extendedSection?.classList.add('lg:block');
+    brandLogo?.classList.remove('h-10');
+    brandLogo?.classList.add('h-full');
+  }
+}
+
 export default async function decorate(block) {
-  const resp = await fetch('/eds/fragments/header.html');
-  block.classList.add(...'relative bg-black flex justify-center flex-col pt-4 z-40'.split(' '));
+  const resp = await fetch('/nav.plain.html');
+
   if (resp.ok) {
     const html = await resp.text();
-    block.innerHTML = html;
-  }
-  block.append(megaMeunu());
-  decorateIcons(block.querySelector('.abcam-logo'));
-  decorateIcons(block.querySelector('.logo-home-link'), 120, 25);
-  decorateIcons(block.querySelector('.close-hamburger-menu'));
-  block.querySelectorAll('.down-arrow').forEach((divEle) => {
-    decorateIcons(divEle);
-    divEle.addEventListener('click', () => {
-      if (divEle.querySelector('.sub-menu').classList.contains('hidden')) {
-        divEle.querySelector('.sub-menu')?.classList.remove('hidden');
-        const imgElement = divEle.querySelector('img');
-        if (imgElement) {
-          imgElement.style.transform = 'rotate(180deg)';
+
+    // build header DOM
+    const headerBlock = div({ class: 'nav-container pt-0 pb-0 md:p-0 relative z-20 h-full' });
+    headerBlock.innerHTML = html;
+    buildSearchBlock(headerBlock);
+    buildNavBlock(headerBlock);
+
+    const flyout = buildFlyoutMenus(headerBlock);
+
+    window.addEventListener('scroll', handleScroll);
+    block.innerHTML = '';
+    block.append(headerBlock);
+    block.append(flyout);
+    block.classList.add('h-full');
+
+    const dropdownLabel = document.querySelector('label[for="account-dropdown"]');
+    decorateIcons(document.querySelector('.country-dd'), 16, 16);
+    block.querySelector('.country-dropdown')?.classList.add('hover:bg-[#3B3B3B]');
+    block.querySelector('.country-dropdown')?.addEventListener('click', (event) => {
+      const countrySearch = document.querySelector('.country-search');
+      if (event.target === event.currentTarget || event.target.alt === 'chevron-down-white' || event.target.parentElement.classList.contains('country-flag-icon')) {
+        if (!dropdownLabel.contains(event.target) && dropdownLabel.previousElementSibling.checked) {
+          dropdownLabel.click();
+        }
+        countrySearch?.classList.toggle('hidden');
+        const searchValue = block.querySelector('#country-search-input');
+        if (searchValue) searchValue.value = '';
+        block.querySelector('#country-results')?.replaceChildren();
+      }
+      event.stopPropagation();
+      rotateDropdownIcon(event);
+      countrySelector(block);
+    });
+    setOrUpdateCookie('NEXT_LOCALE', 'en-us', 365);
+    const flagElement = block.querySelector('.country-flag-container');
+    const lastSelectedCountry = getCookie('NEXT_COUNTRY');
+    if (flagElement && lastSelectedCountry !== null) {
+      const spanElement = span({ class: `country-flag-icon object-cover border-[0.5px] icon icon-${lastSelectedCountry.toLowerCase()}` });
+      flagElement.replaceChildren(spanElement);
+    }
+    decorateIcons(flagElement, 24, 24, 'flags');
+    const dropdownContainer = document.querySelector('.account-dropdown-container');
+    decorateIcons(dropdownContainer, 16, 16);
+    document.querySelector('.account-dropdown').classList.add('hover:bg-[#3B3B3B]');
+    const accountEl = document.getElementById('my-account');
+    const session = getLocalStorageToken();
+    accountEl.append(myAccount(session));
+    document.addEventListener('click', (event) => {
+      const isChecked = document.getElementById('account-dropdown');
+      if (isChecked.checked) {
+        if (!dropdownLabel.contains(event.target) && dropdownLabel.previousElementSibling.checked) {
+          dropdownLabel.querySelector('.user-icon-dd').style.transform = 'rotate(180deg)';
+          dropdownLabel.click();
         }
       } else {
-        divEle.querySelector('.sub-menu')?.classList.add('hidden');
-        const imgElement = divEle.querySelector('img');
-        if (imgElement) {
-          imgElement.style.transform = 'rotate(0deg)';
-        }
+        dropdownLabel.querySelector('.user-icon-dd').style.transform = 'rotate(0deg)';
       }
     });
-  });
 
-  document.querySelectorAll('.mega-menu')?.forEach((item) => {
-    const megaMenuItem = item.querySelector('.mega-menu-item');
-    const menuItemPostionTop = document.querySelector('.header-wrapper').offsetHeight;
-    megaMenuItem.parentElement.style.top = `${menuItemPostionTop - 35}px`;
+    // Cart icon
+    const hostName = window.location.host;
+    const shoppingBaskedId = localStorage.getItem('shoppingBasketId')?.replace(/"/g, '');
+    const selectedCountry = (lastSelectedCountry !== null) ? lastSelectedCountry : 'US';
+    const host = window.location.host === 'www.abcam.com' ? 'proxy-gateway.abcam.com' : 'proxy-gateway-preprod.abcam.com';
+    const cartButton = document.querySelector('.cart-dropdown');
 
-    item.addEventListener('mouseover', () => {
-      megaMenuItem.classList.remove('hidden');
-    });
-    item.addEventListener('mouseout', (e) => {
-      if (!megaMenuItem.contains(e.relatedTarget)) {
-        megaMenuItem.classList.add('hidden');
-      }
-    });
-  });
+    if (shoppingBaskedId !== null && shoppingBaskedId) {
+      const headers = {
+        'x-abcam-app-id': 'b2c-public-website',
+        'Content-Type': 'application/json',
+      };
 
-  // Show hide hamburger menu in mobile
-  const menuButtons = document.querySelectorAll('.hamburger-menu, .close-hamburger-menu');
-  menuButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      document.querySelector('.main-mobile-menu').classList.toggle('hidden');
-    });
-  });
-
-  // Search funtionality
-  document.querySelectorAll('.search-bar-desktop').forEach((item) => {
-    item.addEventListener('keydown', (event) => {
-      // Check if the pressed key is Enter
-      if (event.key === 'Enter') {
-        event.preventDefault();
-        const inputValue = event.target.value.trim();
-        if (inputValue) {
-          const searchResultsUrl = `https://www.abcam.com/en-us/search?keywords=${inputValue}`;
-          window.location.href = searchResultsUrl;
-        }
-      }
-    });
-  });
-  const dropdownLabel = document.querySelector('label[for="account-dropdown"]');
-  decorateIcons(document.querySelector('.country-dd'), 16, 16);
-  block.querySelector('.country-dropdown')?.classList.add('hover:bg-[#3B3B3B]');
-  block.querySelector('.country-dropdown')?.addEventListener('click', (event) => {
-    const countrySearch = document.querySelector('.country-search');
-    if (event.target === event.currentTarget || event.target.alt === 'chevron-down-white' || event.target.parentElement.classList.contains('country-flag-icon')) {
-      if (!dropdownLabel.contains(event.target) && dropdownLabel.previousElementSibling.checked) {
-        dropdownLabel.click();
-      }
-      countrySearch?.classList.toggle('hidden');
-      const searchValue = block.querySelector('#country-search-input');
-      if (searchValue) searchValue.value = '';
-      block.querySelector('#country-results')?.replaceChildren();
-    }
-    event.stopPropagation();
-    rotateDropdownIcon(event);
-    countrySelector(block);
-  });
-  setOrUpdateCookie('NEXT_LOCALE', 'en-us', 365);
-  const flagElement = block.querySelector('.country-flag-container');
-  const lastSelectedCountry = getCookie('NEXT_COUNTRY');
-  if (flagElement && lastSelectedCountry !== null) {
-    const spanElement = span({ class: `country-flag-icon object-cover border-[0.5px] icon icon-${lastSelectedCountry.toLowerCase()}` });
-    flagElement.replaceChildren(spanElement);
-  }
-  decorateIcons(flagElement, 24, 24, 'flags');
-  const dropdownContainer = document.querySelector('.account-dropdown-container');
-  decorateIcons(dropdownContainer, 16, 16);
-  document.querySelector('.account-dropdown').classList.add('hover:bg-[#3B3B3B]');
-  const accountEl = document.getElementById('my-account');
-  const session = getLocalStorageToken();
-  accountEl.append(myAccount(session));
-  document.addEventListener('click', (event) => {
-    const isChecked = document.getElementById('account-dropdown');
-    if (isChecked.checked) {
-      if (!dropdownLabel.contains(event.target) && dropdownLabel.previousElementSibling.checked) {
-        dropdownLabel.querySelector('.user-icon-dd').style.transform = 'rotate(180deg)';
-        dropdownLabel.click();
-      }
-    } else {
-      dropdownLabel.querySelector('.user-icon-dd').style.transform = 'rotate(0deg)';
-    }
-  });
-
-  // Cart icon
-  const hostName = window.location.host;
-  const shoppingBaskedId = localStorage.getItem('shoppingBasketId')?.replace(/"/g, '');
-  const selectedCountry = (lastSelectedCountry !== null) ? lastSelectedCountry : 'US';
-  const host = window.location.host === 'www.abcam.com' ? 'proxy-gateway.abcam.com' : 'proxy-gateway-preprod.abcam.com';
-  const cartButton = document.querySelector('.cart-dropdown');
-
-  if (shoppingBaskedId !== null && shoppingBaskedId) {
-    const headers = {
-      'x-abcam-app-id': 'b2c-public-website',
-      'Content-Type': 'application/json',
-    };
-
-    const url = `https://${host}/ecommerce/rest/v1/basket/${shoppingBaskedId}?country=${selectedCountry}`;
-    fetch(url, {
-      method: 'GET',
-      headers,
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
+      const url = `https://${host}/ecommerce/rest/v1/basket/${shoppingBaskedId}?country=${selectedCountry}`;
+      fetch(url, {
+        method: 'GET',
+        headers,
       })
-      .then((data) => {
-        if (data.items.length > 0) {
-          document.querySelector('.cart-count')?.classList?.remove('hidden');
-          document.querySelector('.cart-count').textContent = data.items.length;
-        } else {
-          document.querySelector('.cart-count')?.classList?.add('hidden');
-        }
-        cartButton.addEventListener('click', () => {
-          window.location.href = `https://${hostName}/en-us/shopping-basket/${shoppingBaskedId}?country=${selectedCountry}`;
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          if (data.items.length > 0) {
+            document.querySelector('.cart-count')?.classList?.remove('hidden');
+            document.querySelector('.cart-count').textContent = data.items.length;
+          } else {
+            document.querySelector('.cart-count')?.classList?.add('hidden');
+          }
+          cartButton.addEventListener('click', () => {
+            window.location.href = `https://${hostName}/en-us/shopping-basket/${shoppingBaskedId}?country=${selectedCountry}`;
+          });
+        })
+        .catch((error) => {
+          //  eslint-disable-next-line no-console
+          console.error('There was an error making the API call:', error);
         });
-      })
-      .catch((error) => {
-        //  eslint-disable-next-line no-console
-        console.error('There was an error making the API call:', error);
-      });
+    }
   }
+  return block;
 }
