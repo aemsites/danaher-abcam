@@ -81,11 +81,6 @@
   border-top-width: 4px
 }
 
-.title-card-wrapper :is(.border-\[\#ff7223\]) {
-  --tw-border-opacity: 1;
-  border-color: rgb(255 114 35 / var(--tw-border-opacity))
-}
-
 .title-card-wrapper :is(.border-\[red\]) {
   --tw-border-opacity: 1;
   border-color: rgb(255 0 0 / var(--tw-border-opacity))

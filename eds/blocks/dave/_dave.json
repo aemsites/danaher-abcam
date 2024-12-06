@@ -2,14 +2,14 @@
   "definitions": [
     {
       "title": "Dave Example Block",
-      "id": "title-car",
+      "id": "dave",
       "plugins": {
         "xwalk": {
           "page": {
             "resourceType": "core/franklin/components/block/v1/block",
             "template": {
-              "name": "Title Car",
-              "model": "title-car",
+              "name": "dave",
+              "model": "dave",
               "title-card_titleType": "h1",
               "subTitle_titleType": "h4"
             }
@@ -20,7 +20,7 @@
   ],
   "models": [
     {
-      "id": "title-car",
+      "id": "dave",
       "fields": [
         {
           "component": "multiselect",
