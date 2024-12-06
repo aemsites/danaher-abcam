@@ -3,9 +3,14 @@ import {
 } from '../../scripts/dom-builder.js';
 import { decorateIcons } from '../../scripts/aem.js';
 import countriesAndCodes from '../../scripts/country-list.js';
-import { applyClasses } from '../../scripts/scripts.js';
+import { applyClasses, debounce, highlightText } from '../../scripts/scripts.js';
 
-function megaMeunu() {
+
+// import { buildSearchBox } from 'https://static.cloud.coveo.com/headless/v3/headless.esm.js';
+import { searchEngine } from '../../scripts/coveo/engine.js';
+import { searchBoxController } from '../../scripts/coveo/controller.js';
+
+function megaMenu() {
   return div({ class: 'w-[360px] z-40 hidden max-w-sm fixed h-full bg-black px-3 py-4 ease-out transition-all' });
 }
 
@@ -311,6 +316,61 @@ function myAccount(session) {
   return myAccoundDiv;
 }
 
+function handleQuerySuggestions() {
+  const suggestionsElement = document.querySelector('ul#search-suggestions');
+  suggestionsElement.innerHTML = '';
+  const { value, suggestions } = searchBoxController.state;
+  if (suggestions && suggestions.length > 0) {
+    suggestions.forEach((suggestion) => {
+      const suggestionItem = li(
+        {
+          class: 'suggestion-item cursor-pointer',
+          onclick: () => {
+            searchBoxController.updateText(suggestion.rawValue);
+            searchBoxController.submit();
+          },
+        },
+        suggestion.rawValue
+      );
+      const newSuggestionItem = highlightText(suggestionItem, value, 'font-semibold text-amber-400/80');
+      suggestionsElement.appendChild(newSuggestionItem);
+    })
+  }
+
+  // Check if the pressed key is Enter
+  // if (event.key === 'Enter') {
+  //   event.preventDefault();
+
+  //   if (searchTerm) {
+  //     const searchResultsUrl = `https://www.abcam.com/en-us/search?keywords=${searchTerm}`;
+  //     window.location.href = searchResultsUrl;
+  //   }
+  // }
+}
+
+function handleSearchBox() {
+  // Search funtionality
+  document.querySelectorAll('.search-bar-desktop').forEach((item) => {
+    item.addEventListener(
+      'keyup',
+      debounce(function (event) {
+        const { value } = event.target;
+        const searchTerm = value.trim();
+        console.log('SearchTerm: ', searchTerm);
+        searchBoxController.updateText(searchTerm);
+        searchBoxController.selectSuggestion(searchTerm);
+        searchBoxController.submit();
+      }, 600),
+    );
+    item.addEventListener(
+      'blur',
+      function() {
+        document.querySelector('ul#search-suggestions').innerHTML = '';
+      },
+    )
+  });
+}
+
 export default async function decorate(block) {
   const resp = await fetch('/eds/fragments/header.html');
   block.classList.add(...'relative bg-black flex justify-center flex-col pt-4 z-40'.split(' '));
@@ -318,7 +378,7 @@ export default async function decorate(block) {
     const html = await resp.text();
     block.innerHTML = html;
   }
-  block.append(megaMeunu());
+  block.append(megaMenu());
   decorateIcons(block.querySelector('.abcam-logo'));
   decorateIcons(block.querySelector('.logo-home-link'), 120, 25);
   decorateIcons(block.querySelector('.close-hamburger-menu'));
@@ -364,20 +424,6 @@ export default async function decorate(block) {
     });
   });
 
-  // Search funtionality
-  document.querySelectorAll('.search-bar-desktop').forEach((item) => {
-    item.addEventListener('keydown', (event) => {
-      // Check if the pressed key is Enter
-      if (event.key === 'Enter') {
-        event.preventDefault();
-        const inputValue = event.target.value.trim();
-        if (inputValue) {
-          const searchResultsUrl = `https://www.abcam.com/en-us/search?keywords=${inputValue}`;
-          window.location.href = searchResultsUrl;
-        }
-      }
-    });
-  });
   const dropdownLabel = document.querySelector('label[for="account-dropdown"]');
   decorateIcons(document.querySelector('.country-dd'), 16, 16);
   block.querySelector('.country-dropdown')?.classList.add('hover:bg-[#3B3B3B]');
@@ -462,4 +508,14 @@ export default async function decorate(block) {
         console.error('There was an error making the API call:', error);
       });
   }
+
+
+
+
+  // COVEO-HEADLESS WORK
+  handleSearchBox();
+  searchEngine.executeFirstSearch();
+  searchEngine.subscribe(() => {
+    handleQuerySuggestions();
+  });
 }
