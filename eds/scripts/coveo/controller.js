@@ -9,7 +9,7 @@ const { searchEngine } = coveoEngines;
 
 const searchBoxController = buildSearchBox(searchEngine, {
   options: {
-      numberOfSuggestions: 5,
+    numberOfSuggestions: 5,
   },
 });
 // export const searchResultListController = buildResultList(searchEngine);
@@ -41,7 +41,7 @@ const searchBoxController = buildSearchBox(searchEngine, {
 // });
 
 const coveoController = {
-searchBoxController,
+  searchBoxController,
 };
 
 export default coveoController;
