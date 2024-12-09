@@ -275,6 +275,10 @@
   color: rgb(55 129 137 / var(--tw-text-opacity))
 }
 
+.header-wrapper :is(.text-amber-400\/80) {
+  color: rgb(251 191 36 / 0.8)
+}
+
 .header-wrapper :is(.text-black) {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity))
@@ -288,19 +292,6 @@
 .header-wrapper :is(.text-white) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity))
-}
-
-.header-wrapper :is(.text-amber-400) {
-  --tw-text-opacity: 1;
-  color: rgb(251 191 36 / var(--tw-text-opacity))
-}
-
-.header-wrapper :is(.text-amber-400\/60) {
-  color: rgb(251 191 36 / 0.6)
-}
-
-.header-wrapper :is(.text-amber-400\/80) {
-  color: rgb(251 191 36 / 0.8)
 }
 
 .header-wrapper :is(.underline-offset-2) {

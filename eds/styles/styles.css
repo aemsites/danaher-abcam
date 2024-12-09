@@ -1487,16 +1487,12 @@ main .section.downloads-container {
   order: 9999;
 }
 
-.col-span-2 {
-  grid-column: span 2 / span 2;
-}
-
 .col-span-1 {
   grid-column: span 1 / span 1;
 }
 
-.row-span-2 {
-  grid-row: span 2 / span 2;
+.col-span-2 {
+  grid-column: span 2 / span 2;
 }
 
 .float-right {
@@ -1965,24 +1961,12 @@ main .section.downloads-container {
   grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
-.grid-cols-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.grid-cols-3 {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
 .grid-rows-2 {
   grid-template-rows: repeat(2, minmax(0, 1fr));
 }
 
 .flex-row {
   flex-direction: row;
-}
-
-.flex-row-reverse {
-  flex-direction: row-reverse;
 }
 
 .flex-col {
@@ -2071,10 +2055,6 @@ main .section.downloads-container {
 
 .gap-y-2 {
   row-gap: 0.5rem;
-}
-
-.gap-y-4 {
-  row-gap: 1rem;
 }
 
 .space-x-4 > :not([hidden]) ~ :not([hidden]) {
@@ -2169,10 +2149,6 @@ main .section.downloads-container {
   border-radius: 0.375rem;
 }
 
-.rounded-sm {
-  border-radius: 0.125rem;
-}
-
 .rounded-t-lg {
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
@@ -2264,6 +2240,11 @@ main .section.downloads-container {
   background-color: rgb(55 129 137 / var(--tw-bg-opacity));
 }
 
+.bg-\[\#EDF6F7\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(237 246 247 / var(--tw-bg-opacity));
+}
+
 .bg-black {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
@@ -2300,11 +2281,6 @@ main .section.downloads-container {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-\[\#EDF6F7\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(237 246 247 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-10 {
@@ -2631,10 +2607,6 @@ main .section.downloads-container {
   line-height: 1.25rem;
 }
 
-.leading-7 {
-  line-height: 1.75rem;
-}
-
 .leading-none {
   line-height: 1;
 }
@@ -2818,10 +2790,6 @@ main .section.downloads-container {
   margin-left: 0px;
 }
 
-.empty\:hidden:empty {
-  display: none;
-}
-
 .empty\:\!hidden:empty {
   display: none !important;
 }
@@ -2853,10 +2821,6 @@ main .section.downloads-container {
 .hover\:bg-\[\#f2f2f2\]:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(242 242 242 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-gray-100\/70:hover {
-  background-color: rgb(243 244 246 / 0.7);
 }
 
 .hover\:bg-white:hover {
@@ -3208,10 +3172,6 @@ main .section.downloads-container {
       border-color: rgb(148 163 184 / 0.2);
     }
   }
-}
-
-.\[\&_\*\:empty\+span\]\:hidden *:empty+span {
-  display: none;
 }
 
 .\[\&_div\:not\(\.hidden\)\~p\]\:mb-3 div:not(.hidden)~p {

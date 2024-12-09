@@ -1,13 +1,11 @@
-import { buildSearchEngine, getOrganizationEndpoint } from 'https://static.cloud.coveo.com/headless/v3/headless.esm.js';
+import { buildSearchEngine, getOrganizationEndpoint } from 'https://static.cloud.coveo.com/headless/v3/headless.esm.js'; //eslint-disable-line
 // import { buildCommerceEngine } from 'https://static.cloud.coveo.com/headless/v3/headless.esm.js/commerce';
 
-export const searchEngine = buildSearchEngine({
+const searchEngine = buildSearchEngine({
   configuration: {
     organizationId: 'danahernonproduction1892f3fhz',
     accessToken: 'xx26097312-c0ba-4c54-b22d-0a258570650a',
-    organizationEndpoints: getOrganizationEndpoint(
-      'danahernonproduction1892f3fhz'
-    ),
+    organizationEndpoints: getOrganizationEndpoint('danahernonproduction1892f3fhz'),
     search: {
       pipeline: 'Abcam Content Search',
       searchHub: 'AbcamContentSearch',
@@ -35,3 +33,9 @@ export const searchEngine = buildSearchEngine({
 //     },
 //   },
 // });
+
+const coveoEngines = {
+  searchEngine,
+};
+
+export default coveoEngines;

@@ -1,11 +1,13 @@
 import {
   buildSearchBox,
-} from 'https://static.cloud.coveo.com/headless/v3/headless.esm.js';
-import { searchEngine } from './engine.js';
+} from 'https://static.cloud.coveo.com/headless/v3/headless.esm.js'; //eslint-disable-line
+import coveoEngines from './engine.js';
+
+const { searchEngine } = coveoEngines;
 
 // const headlessSearchBox = SearchBoxType;
 
-export const searchBoxController = buildSearchBox(searchEngine, {
+const searchBoxController = buildSearchBox(searchEngine, {
   options: {
     numberOfSuggestions: 5,
   },
@@ -37,4 +39,9 @@ export const searchBoxController = buildSearchBox(searchEngine, {
 //     criterion: { by: 'relevancy' },
 //   },
 // });
-  
+
+const coveoController = {
+  searchBoxController,
+};
+
+export default coveoController;
