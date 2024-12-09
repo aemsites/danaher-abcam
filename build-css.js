@@ -343,7 +343,7 @@ const fileMappings = [
     content: './eds/blocks/coveo-search-results/coveo-search-results.js',
     output: './eds/blocks/coveo-search-results/coveo-search-results.css',
     wrapper: 'coveo-search-results-wrapper',
-  }
+  },
 ];
 
 const watch = process.argv[2];
