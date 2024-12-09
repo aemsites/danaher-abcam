@@ -595,7 +595,7 @@
                 "template": {
                   "name": "Product",
                   "model": "product",
-                  "card_titleType": "h3"
+                  "card_titleType": "span"
                 }
               }
             }

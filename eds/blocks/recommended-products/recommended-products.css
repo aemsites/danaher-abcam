@@ -237,10 +237,6 @@
   text-transform: lowercase
 }
 
-.recommended-products-wrapper :is(.capitalize) {
-  text-transform: capitalize
-}
-
 .recommended-products-wrapper :is(.italic) {
   font-style: italic
 }
