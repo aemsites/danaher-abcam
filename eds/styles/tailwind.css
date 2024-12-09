@@ -223,7 +223,7 @@
         @apply font-normal text-gray-900 mb-2;
     }
 
-    .stories main .story-middle-container, .guide main .chapter-links-container, .topic main .related-articles-container, .application main .application-middle-container {
+    .stories main .story-middle-container, .guide main .chapter-links-container, .topic main .related-articles-container, .protocols main .protocols-middle-container, .application main .application-middle-container {
         @apply flex flex-col gap-x-0 lg:flex-row lg:gap-x-16;
     }
 
@@ -287,4 +287,7 @@
         @apply bg-[#F2F2F2];
     }
     
+    main .section.downloads-container {
+        @apply xl:px-0 px-4;
+    }
 }   
