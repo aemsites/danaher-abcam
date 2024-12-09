@@ -1863,13 +1863,6 @@
         "label": "Title"
       },
       {
-        "component": "text",
-        "name": "card_titleType",
-        "label": "",
-        "valueType": "string",
-        "hidden": true
-      },
-      {
         "component": "richtext",
         "name": "card_description",
         "value": "",

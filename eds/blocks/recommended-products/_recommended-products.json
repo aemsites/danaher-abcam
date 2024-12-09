@@ -25,8 +25,7 @@
             "resourceType": "core/franklin/components/block/v1/block/item",
             "template": {
               "name": "Product",
-              "model": "product",
-              "card_titleType": "span"
+              "model": "product"
             }
           }
         }
@@ -78,13 +77,6 @@
           "name": "card_title",
           "value": "",
           "label": "Title"
-        },
-        {
-          "component": "text",
-          "name": "card_titleType",
-          "label": "",
-          "valueType": "string",
-          "hidden": true
         },
         {
           "component": "richtext",
