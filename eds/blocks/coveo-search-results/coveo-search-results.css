@@ -1,0 +1,3 @@
+.coveo-search-results-wrapper :is(.block) {
+  display: block
+}

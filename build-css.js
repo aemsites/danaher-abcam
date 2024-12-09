@@ -339,6 +339,11 @@ const fileMappings = [
     output: './eds/blocks/cta-banner/cta-banner.css',
     wrapper: 'cta-banner-wrapper',
   },
+  {
+    content: './eds/blocks/coveo-search-results/coveo-search-results.js',
+    output: './eds/blocks/coveo-search-results/coveo-search-results.css',
+    wrapper: 'coveo-search-results-wrapper',
+  }
 ];
 
 const watch = process.argv[2];
