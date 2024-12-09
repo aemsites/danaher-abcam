@@ -43,7 +43,6 @@
     "tailwindcss": "^3.4.3"
   },
   "dependencies": {
-    "@adobe/aem-cli": "^16.3.16",
-    "@coveo/headless": "https://static.cloud.coveo.com/headless/v3/headless.esm.js"
+    "@adobe/aem-cli": "^16.3.16"
   }
 }
