@@ -8,9 +8,9 @@ const { searchEngine } = coveoEngines;
 // const headlessSearchBox = SearchBoxType;
 
 const searchBoxController = buildSearchBox(searchEngine, {
-options: {
-    numberOfSuggestions: 5,
-},
+  options: {
+      numberOfSuggestions: 5,
+  },
 });
 // export const searchResultListController = buildResultList(searchEngine);
 // export const selectSuggestion = buildSearchBox(headlessSearchBox.selectSuggestion('a'));
