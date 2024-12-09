@@ -100,8 +100,8 @@
           "...": "../../../models/_common.json#/image-fields"
         },
         {
-          "component": "text",
-          "name": "imageText",
+          "component": "richtext",
+          "name": "text_image",
           "value": "",
           "label": "Image Text",
           "valueType": "string"
