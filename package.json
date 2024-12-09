@@ -44,6 +44,6 @@
   },
   "dependencies": {
     "@adobe/aem-cli": "^16.3.16",
-    "coveo/headless": "https://static.cloud.coveo.com/headless/v3/headless.esm.js"
+    "@coveo/headless": "https://static.cloud.coveo.com/headless/v3/headless.esm.js"
   }
 }
