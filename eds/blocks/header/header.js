@@ -721,6 +721,12 @@ export default async function decorate(block) {
           console.error('There was an error making the API call:', error);
         });
     }
+    else
+    {
+      cartButton.addEventListener('click', () => {
+        window.location.href = `https://${hostName}/en-us/shopping-basket?country=${selectedCountry.toUpperCase()}`;
+      });
+    }
   }
   return block;
 }
