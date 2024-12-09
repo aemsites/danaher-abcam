@@ -46,45 +46,44 @@ function createRecommendations(allRecommendations) {
 function updateFeatureProducts(products) {
   products.forEach((product) => {
     const divEls = div({ class: 'w-full' });
-const imageEls = div({ class: 'pt-20 flex flex-col lg:flex-row lg:space-x-4' }); // flex-col for mobile, flex-row for tablets and above
-getTag(product);
-applyClasses(product, 'w-[299px] h-auto size-full flex flex-row align-center text-left p-4 bg-white border border-[#0711121a] rounded hover:bg-[#0000000d] cursor-pointer');
-applyClasses(product.querySelector('div:nth-child(1)'), 'w-fit px-2 py-1 rounded text-xs text-emerald-800 border border-emerald-900 bg-[#edf6f7]');
-applyClasses(product.querySelector('div:nth-child(2)'), 'mt-4 text-xs text-[#65797c] font-medium font-sans lowercase');
-applyClasses(product.querySelector('div:nth-child(3)'), 'mb-4 mt-2 text-sm text-black font-medium pb-4');
-applyClasses(product.querySelector('div:nth-child(3) > span'), 'line-clamp-2');
-applyClasses(product.querySelector('div:nth-child(3) > p'), 'h-24 overflow-hidden');
-applyClasses(product.querySelector('p > a'), 'w-fit inline-flex text-xs font-semibold items-center text-[#378189]');
-const lastDiv = product.querySelector('div:last-child');
-applyClasses(lastDiv, 'text-xs italic md:w-[55%]');
-const ahref = lastDiv.querySelectorAll('a');
-if (ahref.length > 0) {
-  ahref.forEach((a) => {
-    applyClasses(a, 'underline');
-  });
-}
+    const imageEls = div({ class: 'pt-20 flex flex-col lg:flex-row lg:space-x-4' }); // flex-col for mobile, flex-row for tablets and above
+    getTag(product);
+    applyClasses(product, 'w-[299px] h-auto size-full flex flex-row align-center text-left p-4 bg-white border border-[#0711121a] rounded hover:bg-[#0000000d] cursor-pointer');
+    applyClasses(product.querySelector('div:nth-child(1)'), 'w-fit px-2 py-1 rounded text-xs text-emerald-800 border border-emerald-900 bg-[#edf6f7]');
+    applyClasses(product.querySelector('div:nth-child(2)'), 'mt-4 text-xs text-[#65797c] font-medium font-sans lowercase');
+    applyClasses(product.querySelector('div:nth-child(3)'), 'mb-4 mt-2 text-sm text-black font-medium pb-4');
+    applyClasses(product.querySelector('div:nth-child(3) > span'), 'line-clamp-2');
+    applyClasses(product.querySelector('div:nth-child(3) > p'), 'h-24 overflow-hidden');
+    applyClasses(product.querySelector('p > a'), 'w-fit inline-flex text-xs font-semibold items-center text-[#378189]');
+    const lastDiv = product.querySelector('div:last-child');
+    applyClasses(lastDiv, 'text-xs italic md:w-[55%]');
+    const ahref = lastDiv.querySelectorAll('a');
+    if (ahref.length > 0) {
+      ahref.forEach((a) => {
+        applyClasses(a, 'underline');
+      });
+    }
 
-// Add the second last child to imageEls
-imageEls.append(product.querySelector('div:nth-last-child(2)'));
+    // Add the second last child to imageEls
+    imageEls.append(product.querySelector('div:nth-last-child(2)'));
 
-// Only append lastDiv if it's not empty
-if ((lastDiv && lastDiv.textContent.trim() !== '') || lastDiv.querySelector('a') !== null) {
-  imageEls.append(lastDiv);
-}
+    // Only append lastDiv if it's not empty
+    if ((lastDiv && lastDiv.textContent.trim() !== '') || lastDiv.querySelector('a') !== null) {
+      imageEls.append(lastDiv);
+    }
 
-// Create the divEls structure with all necessary children
-divEls.append(
-  product.querySelector('div:nth-child(1)'),
-  product.querySelector('div:nth-child(2)'),
-  product.querySelector('div:nth-child(3)'),
-  imageEls,
-  product.querySelector('div:nth-child(4)')
-);
+    // Create the divEls structure with all necessary children
+    divEls.append(
+      product.querySelector('div:nth-child(1)'),
+      product.querySelector('div:nth-child(2)'),
+      product.querySelector('div:nth-child(3)'),
+      imageEls,
+      product.querySelector('div:nth-child(4)'),
+    );
 
-// Clear the product container and append the new structure
-product.innerHTML = '';
-product.append(divEls);
-
+    // Clear the product container and append the new structure
+    product.innerHTML = '';
+    product.append(divEls);
   });
 }
 
