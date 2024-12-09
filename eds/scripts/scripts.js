@@ -309,6 +309,7 @@ const TEMPLATE_LIST = [
   'guide',
   'guides-hub',
   'topic',
+  'protocols',
 ];
 
 async function decorateTemplates(main) {
@@ -771,7 +772,7 @@ export const applyClasses = (element, classes) => element?.classList.add(...clas
 
 export function postFormAction(link = '') {
   // Show the download links (if any)
-  document.querySelectorAll('.downloads-wrapper .downloads p:has(a)')?.forEach((downloadLink) => {
+  document.querySelectorAll('.downloads-wrapper .downloads .icon-arrow-down-circle')?.forEach((downloadLink) => {
     downloadLink.classList.remove('hidden');
   });
   const token = Math.random().toString(36).substr(2) + Math.random().toString(36).substr(2);;
