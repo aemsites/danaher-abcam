@@ -103,6 +103,7 @@ window.dataLayer.push({
   pageTitle: document.title,
   page_path: window.location.pathname,
   page_type: getPathType(),
+  page_subtype: getPathSubType(),
   page: getDLPage(),
 });
 // Datalayer End
