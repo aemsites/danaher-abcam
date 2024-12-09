@@ -493,10 +493,29 @@
 		
 	<div class="flex flex-col space-y-4">
 		<div class="w-full relative">
-			<input class="search-bar-desktop w-full text-base h-12 rounded-full bg-black border border-white text-white py-2 px-12 font-bold outline-none" placeholder="What are you searching for?">
-			<span class="icon icon-Search-bar pl-4 pr-2 absolute top-3 left-0">
-				<img data-icon-name="Search-bar" src="/eds/icons/Search-bar.svg" alt="Search-bar" width="25" height="25" loading="lazy">
-			</span>
+			<div class="relative">
+				<input class="search-bar-desktop w-full text-base h-12 rounded-full bg-black border border-white text-white py-2 px-12 font-bold outline-none" placeholder="What are you searching for?">
+				<span class="icon icon-Search-bar pl-4 pr-2 absolute top-3 left-0">
+					<img data-icon-name="Search-bar" src="/eds/icons/Search-bar.svg" alt="Search-bar" width="25" height="25" loading="lazy">
+				</span>
+			</div>
+			<div class="w-11/12 absolute z-10 left-5 top-14">
+				<div class="grid md:grid-cols-3 grid-rows-2 md:grid-rows-1 bg-white text-black rounded shadow-lg">
+					<div class="p-4 col-span-2 rounded">
+						<div class="flex flex-col-reverse gap-y-2 [&_ul:empty+span]:hidden [&_ul:empty]:hidden">
+							<ul id="search-suggestions" class="flex flex-col gap-y-2 text-sm font-normal tracking-wide"></ul>
+							<span class="text-xs text-[#828894] font-semibold tracking-wide uppercase">Suggestions</span>
+						</div>
+						<div class="flex flex-col-reverse gap-y-2 [&_ul:empty+span]:hidden [&_ul:empty]:hidden">
+							<ul id="category-facet" class="flex flex-col gap-y-2 text-sm font-normal tracking-wide"></ul>
+							<span class="text-xs text-[#828894] font-semibold tracking-wide uppercase">Categories</span>
+						</div>
+					</div>
+					<div class="p-4 col-span-1 bg-[#EDF6F7] rounded">
+						<!-- <ul id="search-suggestions" class="flex flex-col gap-y-2 p-2 empty:!hidden"></ul> -->
+					</div>
+				</div>
+			</div>
 		</div>	
   <div class="text-white px-[30px] flex flex-row gap-x-4">
     <div class="products mega-menu cursor-default px-7 first:pl-0 last:pr-0">
@@ -919,6 +938,6 @@
     	</div>
   	</div>
 	</div>
-	</div>  
+	</div>
 </div>
-<div class="h-[0.1rem] mt-4 z-10" style="background: linear-gradient(90deg, #4ba6b3 0, #c9d3b7 35%, #ff8730 70%, #c54428)"></div>
+<div class="h-[0.1rem] mt-4" style="background: linear-gradient(90deg, #4ba6b3 0, #c9d3b7 35%, #ff8730 70%, #c54428)"></div>
