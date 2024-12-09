@@ -241,6 +241,10 @@
   text-transform: capitalize
 }
 
+.recommended-products-wrapper :is(.italic) {
+  font-style: italic
+}
+
 .recommended-products-wrapper :is(.tracking-wide) {
   letter-spacing: 0.025em
 }
@@ -263,6 +267,10 @@
 .recommended-products-wrapper :is(.text-emerald-800) {
   --tw-text-opacity: 1;
   color: rgb(6 95 70 / var(--tw-text-opacity))
+}
+
+.recommended-products-wrapper :is(.underline) {
+  text-decoration-line: underline
 }
 
 .recommended-products-wrapper :is(.hover\:bg-\[\#0000000d\]:hover) {
