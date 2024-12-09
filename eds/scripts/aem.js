@@ -427,8 +427,8 @@ function decorateButtons(element) {
       let linkTypeContainer;
       let iconTypeContainer;
 
-      let linkType = 'button-primary'; // Default value
-      let iconType = 'icon-none'; // Default value
+      let linkType = ''; // Default value
+      let iconType = ''; // Default value
       if (!a.querySelector('img')) {
         const isSingleChild = twoup.children.length === 1 && (up.tagName === 'P' || up.tagName === 'DIV');
         const targetElement = isSingleChild ? twoup : up;
