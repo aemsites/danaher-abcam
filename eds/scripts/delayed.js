@@ -64,6 +64,49 @@ function loadrelicScript() {
 }
 // New relic Script -end
 
+/**
+ * Datalayer Function to get the 'page' object
+ */
+function getPathType() {
+  const pathSegments = window.location.pathname.split('/');
+  return pathSegments.length > 2 ? pathSegments[2] : '';
+}
+
+function getPathSubType() {
+  const pathSegments = window.location.pathname.split('/');
+  return pathSegments.length > 3 ? pathSegments[3] : '';
+}
+
+function getDLPage() {
+  const page = {
+    type: 'Content',
+  };
+  const path = window.location.pathname;
+  const langPrefix = '/en-us/';
+  const regex = new RegExp(`${langPrefix}([^/]+)`);
+  const match = path.match(regex);
+  if (match) {
+    const extractedPath = match[1];
+    page.event = 'Virtual Page View';
+    page.type = extractedPath;
+    page.path = path;
+    page.subType = null;
+  }
+  return page;
+}
+
+// Datalayer Start
+window.dataLayer = [];
+window.dataLayer.push({
+  event: 'Virtual Page View',
+  pageUrl: window.location.href,
+  pageTitle: document.title,
+  page_path: window.location.pathname,
+  page_type: getPathType(),
+  page: getDLPage(),
+});
+// Datalayer End
+
 // freshchat -start
 function loadFreshChat() {
   const FRESHCHAT_TOKEN = (window.location.host.includes('abcam.com')) ? '471c9cd0-248c-41d7-a173-fb32d90b8729' : '4724ee22-6eaf-4880-b130-f8996e9e5d79';

@@ -1238,37 +1238,6 @@ export async function getFragmentFromFile(url) {
   return text;
 }
 
-/**
- * Datalayer Function to get the 'page' object
- */
-function getPathType() {
-  const pathSegments = window.location.pathname.split('/');
-  return pathSegments.length > 2 ? pathSegments[2] : '';
-}
-
-function getPathSubType() {
-  const pathSegments = window.location.pathname.split('/');
-  return pathSegments.length > 3 ? pathSegments[3] : '';
-}
-
-function getDLPage() {
-  const page = {
-    type: 'Content',
-  };
-  const path = window.location.pathname;
-  const langPrefix = '/en-us/';
-  const regex = new RegExp(`${langPrefix}([^/]+)`);
-  const match = path.match(regex);
-  if (match) {
-    const extractedPath = match[1];
-    page.event = 'Virtual Page View';
-    page.type = extractedPath;
-    page.path = path;
-    page.subType = null;
-  }
-  return page;
-}
-
 // Add hreflang tags
 
 const currentPath = window.location.pathname;
@@ -1301,18 +1270,6 @@ hrefJapan.rel = 'alternate';
 hrefJapan.hreflang = 'ja-jp';
 hrefJapan.href = 'https://www.abcam.co.jp' + pwsUrl;
 document.head.appendChild(hrefJapan);
-
-// Datalayer Start
-window.dataLayer = [];
-window.dataLayer.push({
-  event: 'Virtual Page View',
-  pageUrl: window.location.href,
-  pageTitle: document.title,
-  page_path: window.location.pathname,
-  page_type: getPathType(),
-  page: getDLPage(),
-});
-// Datalayer End
 
 loadPage();
 
