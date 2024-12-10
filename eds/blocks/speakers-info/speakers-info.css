@@ -44,11 +44,6 @@
   border-radius: 9999px
 }
 
-.speakers-info-wrapper :is(.text-2xl) {
-  font-size: 1.5rem;
-  line-height: 2rem
-}
-
 .speakers-info-wrapper :is(.text-base) {
   font-size: 1rem;
   line-height: 1.5rem
@@ -62,10 +57,6 @@
 .speakers-info-wrapper :is(.text-sm) {
   font-size: 0.875rem;
   line-height: 1.25rem
-}
-
-.speakers-info-wrapper :is(.font-medium) {
-  font-weight: 500
 }
 
 .speakers-info-wrapper :is(.font-normal) {
@@ -101,11 +92,6 @@
 .speakers-info-wrapper :is(.text-\[\#65797C\]) {
   --tw-text-opacity: 1;
   color: rgb(101 121 124 / var(--tw-text-opacity))
-}
-
-.speakers-info-wrapper :is(.text-black) {
-  --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity))
 }
 
 .speakers-info-wrapper :is(.underline) {

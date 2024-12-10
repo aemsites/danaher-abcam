@@ -309,6 +309,7 @@ const TEMPLATE_LIST = [
   'guide',
   'guides-hub',
   'topic',
+  'protocols',
 ];
 
 async function decorateTemplates(main) {
@@ -565,6 +566,11 @@ function decorateGenericVideo(main) {
       }
     });
   });
+  document.querySelectorAll('.video-container')?.forEach(() => {
+    document.querySelectorAll('.video-script')?.forEach((ele) => {
+      ele.classList.remove('hidden');
+    });
+  });
 }
 
 async function decorateVideo(main) {
@@ -701,6 +707,21 @@ async function decorateVideo(main) {
             const videoId = extractVideoId(link.href);
             const thumbnailObj = filmThumbnails.find((obj) => obj.path === episodeUrl);
             const posterImage = thumbnailObj?.image;
+            const playButtonHTML = `
+              <div class="aspect-video relative w-full h-full">
+                <img src="${posterImage}" class="relative inset-0 w-full h-full object-cover" alt="More episodes in the Series" aria-label="More episodes in the Series"/>
+                <button id="play-button-${videoId}" class="absolute inset-0 flex items-center justify-center bg-opacity-50 rounded-full p-4">
+                  <span class = "video-play-icon icon icon-video-play"/>
+                </button>
+              </div>
+            `;
+            const linkContainer = link.parentElement;
+            linkContainer.innerHTML = playButtonHTML;
+            decorateIcons(linkContainer, 50, 50);
+
+            if (linkContainer.closest('.image-full-width')) {
+              linkContainer.className = 'relative lg:absolute w-full lg:w-1/2 h-full object-cover lg:right-0 lg:bottom-6';
+            }
 
             linkContainer.querySelector(`button[id="play-button-${videoId}"]`).addEventListener('click', (e) => {
               e.preventDefault();
@@ -751,7 +772,7 @@ export const applyClasses = (element, classes) => element?.classList.add(...clas
 
 export function postFormAction(link = '') {
   // Show the download links (if any)
-  document.querySelectorAll('.downloads-wrapper .downloads p:has(a)')?.forEach((downloadLink) => {
+  document.querySelectorAll('.downloads-wrapper .downloads .icon-arrow-down-circle')?.forEach((downloadLink) => {
     downloadLink.classList.remove('hidden');
   });
   const token = Math.random().toString(36).substr(2) + Math.random().toString(36).substr(2);;
@@ -878,6 +899,18 @@ export function formatDate(date) {
   const formattedDate = new Intl.DateTimeFormat('en-us', options).format(lastModifiedDate);
   const formatDate = formattedDate.replace(/,/g, '');
   return formatDate;
+}
+
+export function removeAbcamTitle(ogTitle){
+  let title;
+  if(ogTitle.indexOf('| abcam') > -1) {
+    title = ogTitle.split('| abcam')[0];
+  } else if(ogTitle.indexOf('| Abcam') > -1) {
+    title = ogTitle.split('| Abcam')[0];
+  } else {
+    title = ogTitle;
+  }
+  return title;
 }
 
 // Check if OneTrust is accepted
@@ -1205,37 +1238,6 @@ export async function getFragmentFromFile(url) {
   return text;
 }
 
-/**
- * Datalayer Function to get the 'page' object
- */
-function getPathType() {
-  const pathSegments = window.location.pathname.split('/');
-  return pathSegments.length > 2 ? pathSegments[2] : '';
-}
-
-function getPathSubType() {
-  const pathSegments = window.location.pathname.split('/');
-  return pathSegments.length > 3 ? pathSegments[3] : '';
-}
-
-function getDLPage() {
-  const page = {
-    type: 'Content',
-  };
-  const path = window.location.pathname;
-  const langPrefix = '/en-us/';
-  const regex = new RegExp(`${langPrefix}([^/]+)`);
-  const match = path.match(regex);
-  if (match) {
-    const extractedPath = match[1];
-    page.event = 'Virtual Page View';
-    page.type = extractedPath;
-    page.path = path;
-    page.subType = null;
-  }
-  return page;
-}
-
 // Add hreflang tags
 
 const currentPath = window.location.pathname;
@@ -1268,18 +1270,6 @@ hrefJapan.rel = 'alternate';
 hrefJapan.hreflang = 'ja-jp';
 hrefJapan.href = 'https://www.abcam.co.jp' + pwsUrl;
 document.head.appendChild(hrefJapan);
-
-// Datalayer Start
-window.dataLayer = [];
-window.dataLayer.push({
-  event: 'Virtual Page View',
-  pageUrl: window.location.href,
-  pageTitle: document.title,
-  page_path: window.location.pathname,
-  page_type: getPathType(),
-  page: getDLPage(),
-});
-// Datalayer End
 
 loadPage();
 

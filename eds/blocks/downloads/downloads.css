@@ -23,6 +23,14 @@
   margin-top: 0.75rem
 }
 
+.downloads-wrapper :is(.mr-auto) {
+  margin-right: auto
+}
+
+.downloads-wrapper :is(.mr-2) {
+  margin-right: 0.5rem
+}
+
 .downloads-wrapper :is(.block) {
   display: block
 }
@@ -33,6 +41,10 @@
 
 .downloads-wrapper :is(.grid) {
   display: grid
+}
+
+.downloads-wrapper :is(.hidden) {
+  display: none
 }
 
 .downloads-wrapper :is(.size-6) {
@@ -104,9 +116,9 @@
   border-color: rgb(209 213 219 / var(--tw-border-opacity))
 }
 
-.downloads-wrapper :is(.text-blue-500) {
-  --tw-text-opacity: 1;
-  color: rgb(59 130 246 / var(--tw-text-opacity))
+.downloads-wrapper :is(.px-4) {
+  padding-left: 1rem;
+  padding-right: 1rem
 }
 
 @media (min-width: 640px) {
@@ -129,5 +141,12 @@
 
   .downloads-wrapper :is(.lg\:flex-row) {
     flex-direction: row
+  }
+}
+
+@media (min-width: 1280px) {
+  .downloads-wrapper :is(.xl\:px-0) {
+    padding-left: 0px;
+    padding-right: 0px
   }
 }

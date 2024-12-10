@@ -22,7 +22,7 @@ const createTopicUrl = (currentUrl, keyword = '') => {
 
 const patchBannerHeading = () => {
   document.querySelector('body .title-card h1').textContent = getMetadata('heading');
-  document.querySelector('body .title-card p').textContent = getMetadata('description');
+  document.querySelector('body .title-card p:last-child').textContent = getMetadata('description');
   document.title = `${getMetadata('heading')} | ${getMetadata('title')}`;
 };
 

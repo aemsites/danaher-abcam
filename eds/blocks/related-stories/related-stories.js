@@ -25,6 +25,14 @@ export default async function decorate(block) {
       })
       .filter((item) => item.tags.includes(storyType) && item.tags.includes(contentType))
       .all();
+  } else if (templateName === 'webinar') {
+    articles = await ffetch('/en-us/webinars/query-index.json')
+      .filter((item) => {
+        const url = new URL(getMetadata('og:url'));
+        return item.path !== url.pathname;
+      })
+      .filter((item) => item.tags.includes(contentType))
+      .all();
   } else {
     articles = await ffetch(`/en-us/${templateName}/query-index.json`)
       .filter((item) => {

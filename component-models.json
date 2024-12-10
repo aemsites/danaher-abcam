@@ -182,6 +182,10 @@
         "label": "Link Variant",
         "options": [
           {
+            "name": "None",
+            "value": ""
+          },
+          {
             "name": "Primary",
             "value": "button-primary"
           },
@@ -210,7 +214,7 @@
         "options": [
           {
             "name": "None",
-            "value": "icon-none"
+            "value": ""
           },
           {
             "name": "Both",
@@ -301,6 +305,10 @@
         "label": "Link Variant",
         "options": [
           {
+            "name": "None",
+            "value": ""
+          },
+          {
             "name": "Primary",
             "value": "button-primary"
           },
@@ -329,7 +337,7 @@
         "options": [
           {
             "name": "None",
-            "value": "icon-none"
+            "value": ""
           },
           {
             "name": "Both",
@@ -427,6 +435,10 @@
         "label": "Link Variant",
         "options": [
           {
+            "name": "None",
+            "value": ""
+          },
+          {
             "name": "Primary",
             "value": "button-primary"
           },
@@ -455,7 +467,7 @@
         "options": [
           {
             "name": "None",
-            "value": "icon-none"
+            "value": ""
           },
           {
             "name": "Both",
@@ -542,6 +554,10 @@
         "label": "Link Variant",
         "options": [
           {
+            "name": "None",
+            "value": ""
+          },
+          {
             "name": "Primary",
             "value": "button-primary"
           },
@@ -570,7 +586,7 @@
         "options": [
           {
             "name": "None",
-            "value": "icon-none"
+            "value": ""
           },
           {
             "name": "Both",
@@ -693,6 +709,10 @@
         "label": "Link Variant",
         "options": [
           {
+            "name": "None",
+            "value": ""
+          },
+          {
             "name": "Primary",
             "value": "button-primary"
           },
@@ -721,7 +741,7 @@
         "options": [
           {
             "name": "None",
-            "value": "icon-none"
+            "value": ""
           },
           {
             "name": "Both",
@@ -812,6 +832,10 @@
         "label": "Link Variant",
         "options": [
           {
+            "name": "None",
+            "value": ""
+          },
+          {
             "name": "Primary",
             "value": "button-primary"
           },
@@ -840,7 +864,7 @@
         "options": [
           {
             "name": "None",
-            "value": "icon-none"
+            "value": ""
           },
           {
             "name": "Both",
@@ -980,6 +1004,10 @@
         "label": "Link Variant",
         "options": [
           {
+            "name": "None",
+            "value": ""
+          },
+          {
             "name": "Primary",
             "value": "button-primary"
           },
@@ -1008,7 +1036,7 @@
         "options": [
           {
             "name": "None",
-            "value": "icon-none"
+            "value": ""
           },
           {
             "name": "Both",
@@ -1078,6 +1106,10 @@
         "label": "Link Variant",
         "options": [
           {
+            "name": "None",
+            "value": ""
+          },
+          {
             "name": "Primary",
             "value": "button-primary"
           },
@@ -1106,7 +1138,7 @@
         "options": [
           {
             "name": "None",
-            "value": "icon-none"
+            "value": ""
           },
           {
             "name": "Both",
@@ -1440,6 +1472,10 @@
         "label": "Link Variant",
         "options": [
           {
+            "name": "None",
+            "value": ""
+          },
+          {
             "name": "Primary",
             "value": "button-primary"
           },
@@ -1468,7 +1504,7 @@
         "options": [
           {
             "name": "None",
-            "value": "icon-none"
+            "value": ""
           },
           {
             "name": "Both",
@@ -1663,6 +1699,10 @@
         "label": "Link Variant",
         "options": [
           {
+            "name": "None",
+            "value": ""
+          },
+          {
             "name": "Primary",
             "value": "button-primary"
           },
@@ -1691,7 +1731,7 @@
         "options": [
           {
             "name": "None",
-            "value": "icon-none"
+            "value": ""
           },
           {
             "name": "Both",
@@ -1823,13 +1863,6 @@
         "label": "Title"
       },
       {
-        "component": "text",
-        "name": "card_titleType",
-        "label": "",
-        "valueType": "string",
-        "hidden": true
-      },
-      {
         "component": "richtext",
         "name": "card_description",
         "value": "",
@@ -1867,6 +1900,10 @@
         "label": "Link Variant",
         "options": [
           {
+            "name": "None",
+            "value": ""
+          },
+          {
             "name": "Primary",
             "value": "button-primary"
           },
@@ -1895,7 +1932,7 @@
         "options": [
           {
             "name": "None",
-            "value": "icon-none"
+            "value": ""
           },
           {
             "name": "Both",
@@ -1928,6 +1965,13 @@
         "name": "imageAlt",
         "label": "Alt",
         "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "text_image",
+        "value": "",
+        "label": "Image Text",
+        "valueType": "string"
       }
     ]
   },
@@ -2369,24 +2413,10 @@
         "label": "Search Options",
         "options": [
           {
-            "name": "Podcast",
+            "name": "Title with Image",
             "value": "title-image"
           }
         ]
-      },
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image",
-        "label": "Image",
-        "multi": false
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "imageAlt",
-        "label": "Alt",
-        "value": ""
       },
       {
         "component": "text",
@@ -2403,11 +2433,122 @@
         "valueType": "string"
       },
       {
+        "component": "text",
+        "valueType": "string",
+        "name": "subTitle_title",
+        "value": "",
+        "label": "SubTitle"
+      },
+      {
+        "component": "select",
+        "name": "subTitle_titleType",
+        "hidden": true,
+        "label": "SubTitle Type",
+        "valueType": "string"
+      },
+      {
         "component": "richtext",
         "name": "title-card_description",
         "value": "",
         "label": "Description",
         "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "link",
+        "label": "Link"
+      },
+      {
+        "component": "text",
+        "name": "linkText",
+        "label": "Text"
+      },
+      {
+        "component": "select",
+        "name": "linkTitle",
+        "label": "Button or Link",
+        "options": [
+          {
+            "name": "Button",
+            "value": "button"
+          },
+          {
+            "name": "Link",
+            "value": "link"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "linkVariant",
+        "label": "Link Variant",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Primary",
+            "value": "button-primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "button-secondary"
+          },
+          {
+            "name": "Tertiary Outline",
+            "value": "button-tertiary-outline"
+          },
+          {
+            "name": "Tertiary Filled",
+            "value": "button-tertiary-filled"
+          },
+          {
+            "name": "Text Only",
+            "value": "button-text-only"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "linkIconType",
+        "label": "Icon Type",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Both",
+            "value": "icon-both"
+          },
+          {
+            "name": "Right",
+            "value": "icon-right"
+          },
+          {
+            "name": "Left",
+            "value": "icon-left"
+          },
+          {
+            "name": "Icon Only",
+            "value": "icon-only"
+          }
+        ]
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Alt",
+        "value": ""
       }
     ]
   },
