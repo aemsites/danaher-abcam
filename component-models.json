@@ -1863,13 +1863,6 @@
         "label": "Title"
       },
       {
-        "component": "text",
-        "name": "card_titleType",
-        "label": "",
-        "valueType": "string",
-        "hidden": true
-      },
-      {
         "component": "richtext",
         "name": "card_description",
         "value": "",
@@ -1972,6 +1965,13 @@
         "name": "imageAlt",
         "label": "Alt",
         "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "text_image",
+        "value": "",
+        "label": "Image Text",
+        "valueType": "string"
       }
     ]
   },

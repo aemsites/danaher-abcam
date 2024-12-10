@@ -1,6 +1,7 @@
 import { decorateIcons } from '../../scripts/aem.js';
 import {
   ul, li, span, div, hr, p,
+  a,
 } from '../../scripts/dom-builder.js';
 import { applyClasses } from '../../scripts/scripts.js';
 import { getProductResponse } from '../../scripts/search.js';
@@ -45,25 +46,42 @@ function createRecommendations(allRecommendations) {
 
 function updateFeatureProducts(products) {
   products.forEach((product) => {
-    const leftEls = div({ class: 'w-2/3' });
-    const rightEls = div({ class: 'pt-20 w-1/3' });
+    const divEls = div({ class: 'w-full' });
+    const imageEls = div({ class: 'pt-6 flex flex-col md:flex-row md:space-x-4' }); // flex-col for mobile, flex-row for tablets and above
+    const anchor = a();
+    anchor.href = product.querySelector('p > a')?.href;
+    anchor.classList.add('block', 'h-full');
     getTag(product);
-    applyClasses(product, 'h-auto size-full flex flex-row align-center text-left p-4 bg-white border border-[#0711121a] rounded hover:bg-[#0000000d] cursor-pointer');
+    applyClasses(product, 'w-[299px] h-auto size-full flex flex-row align-center text-left p-4 bg-white border border-[#0711121a] rounded hover:bg-[#0000000d] cursor-pointer');
     applyClasses(product.querySelector('div:nth-child(1)'), 'w-fit px-2 py-1 rounded text-xs text-emerald-800 border border-emerald-900 bg-[#edf6f7]');
     applyClasses(product.querySelector('div:nth-child(2)'), 'mt-4 text-xs text-[#65797c] font-medium font-sans lowercase');
-    applyClasses(product.querySelector('div:nth-child(3)'), 'mb-4 mt-2 text-sm text-black font-medium');
-    applyClasses(product.querySelector('div:nth-child(3) > h3'), 'line-clamp-2');
-    applyClasses(product.querySelector('div:nth-child(3) > p'), 'h-24 overflow-hidden');
-    applyClasses(product.querySelector('p > a'), 'w-fit inline-flex text-sm font-semibold items-center text-[#378189]');
-    leftEls.append(
+    applyClasses(product.querySelector('div:nth-child(3)'), 'mb-4 mt-2 text-black font-normal font-sans text-xs');
+    applyClasses(product.querySelector('div:nth-child(3) > p'), 'text-sm font-semibold pb-4 line-clamp-2');
+    applyClasses(product.querySelector('p > a'), 'w-fit inline-flex text-sm font-semibold font-sans items-center text-[#378189]');
+    applyClasses(product.querySelector('div:nth-last-child(2)').querySelector('picture img'), 'w-full h-full');
+    const lastDiv = product.querySelector('div:last-child');
+    applyClasses(lastDiv, 'text-[10px] font-sans font-normal italic md:w-[80%] text-[#65797C]');
+    const ahrefs = lastDiv.querySelectorAll('a');
+    if (ahrefs.length > 0) {
+      ahrefs.forEach((ahref) => {
+        applyClasses(ahref, 'underline');
+      });
+    }
+    imageEls.append(product.querySelector('div:nth-last-child(2)'));
+    // Only append lastDiv if it's not empty
+    if ((lastDiv && lastDiv.textContent.trim() !== '') || lastDiv.querySelector('a') !== null) {
+      imageEls.append(lastDiv);
+    }
+    divEls.append(
       product.querySelector('div:nth-child(1)'),
       product.querySelector('div:nth-child(2)'),
       product.querySelector('div:nth-child(3)'),
+      imageEls,
       product.querySelector('div:nth-child(4)'),
     );
-    rightEls.append(product.querySelector('div:last-child'));
     product.innerHTML = '';
-    product.append(leftEls, rightEls);
+    anchor.append(divEls);
+    product.append(anchor);
   });
 }
 
