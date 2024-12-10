@@ -1,5 +1,8 @@
 import {
   buildSearchBox,
+  buildResultList,
+  buildPager,
+  buildFacet,
 } from 'https://static.cloud.coveo.com/headless/v3/headless.esm.js'; //eslint-disable-line
 import coveoEngines from './engine.js';
 
@@ -12,10 +15,13 @@ const searchBoxController = buildSearchBox(searchEngine, {
     numberOfSuggestions: 5,
   },
 });
-// export const searchResultListController = buildResultList(searchEngine);
+export const searchResultListController = buildResultList(searchEngine);
+export const pagerController = buildPager(searchEngine);
+export const sourceFacetController = buildFacet(searchEngine, {
+  options: { field: 'source' },
+});
 // export const selectSuggestion = buildSearchBox(headlessSearchBox.selectSuggestion('a'));
 // //export const ecommerceSearchController = buildSearch(ecommerceEngine);
-// export const pagerController = buildPager(searchEngine);
 // export const allTabController = buildTab(searchEngine, {
 //   options: { expression: '', id: 'all' },
 // });
@@ -28,9 +34,6 @@ const searchBoxController = buildSearchBox(searchEngine, {
 // // export const productsTabController = buildTab(ecommerceEngine, {
 // //   options: { expression: '', id: 'products' },
 // // });
-// export const sourceFacetController = buildFacet(searchEngine, {
-//   options: { field: 'source' },
-// });
 // export const filetypeFacetController = buildFacet(searchEngine, {
 //   options: { field: 'filetype' },
 // });
