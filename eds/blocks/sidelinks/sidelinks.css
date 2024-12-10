@@ -88,11 +88,6 @@
   padding-right: 0.75rem
 }
 
-.sidelinks-wrapper :is(.py-2) {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem
-}
-
 .sidelinks-wrapper :is(.py-3) {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem
