@@ -1,6 +1,6 @@
-import { getProductResponse } from '../../scripts/search.js';
+//import { getProductResponse } from '../../scripts/search.js';
 import { div, button } from '../../scripts/dom-builder.js';
-import { toolTip } from '../../scripts/scripts.js';
+//import { toolTip } from '../../scripts/scripts.js';
 
 /* eslint-disable no-unused-expressions */
 function toggleTabs(tabId, mmgTabs, tabType) {
