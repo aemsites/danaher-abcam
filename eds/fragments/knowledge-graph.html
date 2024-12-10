@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Graph</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column; /* Stack elements vertically */
+            height: 100vh; /* Full viewport height */
+        }
+
+        #title {
+            width: 100%;
+            text-align: center;
+            background-color: #777B7E;
+            color: white;
+            padding: 10px 0;
+            font-size: 60px;
+            font-family: Arial, sans-serif;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+
+        #content {
+            display: flex; /* Arrange children horizontally */
+            flex: 1; /* Take remaining space after the title */
+            height: 100%; /* Make sure content stretches to fill available space */
+			min-height: 400px;
+        }
+
+        #dropdown, #infobox {
+            width: 10%;
+            background-color:  #777B7E;
+            display: flex; /* Optional: allows content alignment */
+            align-items: center; /* Center content vertically */
+            justify-content: center; /* Center content horizontally */
+            text-align: center;
+        }
+
+        #cytoscape-container {
+            width: 80%; /* Center container */
+            height: 100%; /* Stretch to fill available height */
+            background-color: #000000;
+        }
+    </style>
+</head>
+<body>
+    <div id="title">Knowledge Graph</div> <!-- Top title -->
+    <div id="content">
+        <div id="dropdown">
+            <!-- Left container content -->
+            <p>Dropdowns to go here</p>
+        </div>
+        <div id="cytoscape-container"></div> <!-- Knowledge graph -->
+        <div id="infobox">
+            <!-- Right container content -->
+            <p>Infobox to go here</p>
+        </div>
+    </div>
+</body>
+</html>

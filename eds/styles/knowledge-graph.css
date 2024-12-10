@@ -1,0 +1,13 @@
+:root {
+    --Disease-Disease: #c9d3b7;
+    --Disease-Gene: #98a7b5;
+    --Gene-Tissue: #ff8a30;
+    --Gene-Gene: #4ba6b3;
+    --Gene-Product: #c54428;
+    --Product-Product-Recommendation: #8168c9;
+    --Product-Product-Relation: #FF00FF;
+    --Disease: #c9d3b7;
+    --Gene: #4ba6b3;
+    --Tissue: #ff8a30;
+    --Product: #c54428;
+}

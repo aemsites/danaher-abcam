@@ -310,6 +310,7 @@ const TEMPLATE_LIST = [
   'guides-hub',
   'topic',
   'protocols',
+  'knowledge-graph',
 ];
 
 async function decorateTemplates(main) {

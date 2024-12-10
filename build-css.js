@@ -7,6 +7,11 @@ const fileMappings = [
     output: './eds/styles/styles.css',
   },
   {
+    content: './eds/blocks/knowledge-graph/knowledge-graph.js',
+    output: './eds/blocks/knowledge-graph/knowledge-graph.css',
+    wrapper: 'knowledge-graph-wrapper',
+  },
+  {
     content: './eds/blocks/header/header.js',
     output: './eds/blocks/header/header.css',
     wrapper: 'header-wrapper',
@@ -342,6 +347,10 @@ const fileMappings = [
   {
     content: './eds/templates/protocols/protocols.js',
     output: './eds/templates/protocols/protocols.css',
+  },
+  {
+    content: './eds/templates/knowledge-graph/knowledge-graph.js',
+    output: './eds/templates/knowledge-graph/knowledge-graph.css',
   },
 ];
 
