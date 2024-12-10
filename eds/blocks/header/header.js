@@ -725,6 +725,6 @@ export default async function decorate(block) {
         window.location.href = `https://${hostName}/en-us/shopping-basket?country=${selectedCountry.toUpperCase()}`;
       });
     }
-    return block;
   }
+  return block;
 }
