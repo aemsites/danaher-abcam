@@ -15,20 +15,12 @@
   margin-right: 0.25rem
 }
 
-.downloads-wrapper :is(.mr-6) {
-  margin-right: 1.5rem
+.downloads-wrapper :is(.mr-2) {
+  margin-right: 0.5rem
 }
 
 .downloads-wrapper :is(.mt-3) {
   margin-top: 0.75rem
-}
-
-.downloads-wrapper :is(.mr-auto) {
-  margin-right: auto
-}
-
-.downloads-wrapper :is(.mr-2) {
-  margin-right: 0.5rem
 }
 
 .downloads-wrapper :is(.block) {
@@ -94,11 +86,6 @@
        column-gap: 0.75rem
 }
 
-.downloads-wrapper :is(.gap-x-6) {
-  -moz-column-gap: 1.5rem;
-       column-gap: 1.5rem
-}
-
 .downloads-wrapper :is(.gap-y-4) {
   row-gap: 1rem
 }
@@ -114,11 +101,6 @@
 .downloads-wrapper :is(.border-gray-300) {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity))
-}
-
-.downloads-wrapper :is(.px-4) {
-  padding-left: 1rem;
-  padding-right: 1rem
 }
 
 @media (min-width: 640px) {
@@ -141,12 +123,5 @@
 
   .downloads-wrapper :is(.lg\:flex-row) {
     flex-direction: row
-  }
-}
-
-@media (min-width: 1280px) {
-  .downloads-wrapper :is(.xl\:px-0) {
-    padding-left: 0px;
-    padding-right: 0px
   }
 }

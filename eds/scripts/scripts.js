@@ -165,6 +165,16 @@ export function debounce(func, timeout = 300) {
   };
 }
 
+export function highlightText(element, text, classes) {
+  var innerHTML = element.innerHTML;
+  var index = innerHTML.indexOf(text);
+  if (index >= 0) { 
+   innerHTML = innerHTML.substring(0,index) + `<span class='${classes}'>` + innerHTML.substring(index,index+text.length) + "</span>" + innerHTML.substring(index + text.length);
+   element.innerHTML = innerHTML;
+  }
+  return element;
+}
+
 export function isValidProperty(property) {
   if (property && String(property).trim() !== '' && String(property).trim() !== 'null' && String(property).trim() !== 'undefined') {
     return true;
