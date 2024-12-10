@@ -10,6 +10,6 @@ export default async function buildAutoBlocks() {
   const sectionMiddle = main.querySelector(':scope > div:nth-child(3)');
   sectionMiddle.classList.add(...'border-t'.split(' '));
   sectionMiddle.append(
-    buildBlock('cross-sell-hub-links', { elems: [] }),
+    buildBlock('guides-hub-links', { elems: [] }),
   );
 }
