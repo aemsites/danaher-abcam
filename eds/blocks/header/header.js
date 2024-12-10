@@ -717,7 +717,7 @@ export default async function decorate(block) {
           });
         })
         .catch((error) => {
-          //  eslint-disable-next-line no-console
+        //  eslint-disable-next-line no-console
           console.error('There was an error making the API call:', error);
         });
     } else {
@@ -725,6 +725,6 @@ export default async function decorate(block) {
         window.location.href = `https://${hostName}/en-us/shopping-basket?country=${selectedCountry.toUpperCase()}`;
       });
     }
+    return block;
   }
-  return block;
 }
