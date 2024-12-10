@@ -6,14 +6,14 @@ indices:
     target: /en-us/query-index.json
     properties:
       title:
-        select: head > meta[property="og:title"]
-        value: attribute(el, "content")
+        select: 'head > meta[property="og:title"]'
+        value: 'attribute(el, "content")'
       lastModified:
-        select: head > meta[name="modified-time"]
-        value: parseTimestamp(attribute(el, "content"), "YYYY-MM-DDTHH:mm:ss")
+        select: 'head > meta[name="modified-time"]'
+        value: 'parseTimestamp(attribute(el, "content"), "YYYY-MM-DDTHH:mm:ss")'
       robots:
-        select: head > meta[name="robots"]
-        value: attribute(el, "content")
+        select: 'head > meta[name="robots"]'
+        value: 'attribute(el, "content")'
   stories:
     include:
       - /en-us/stories/articles/**
@@ -22,49 +22,49 @@ indices:
     target: /en-us/stories/query-index.json
     properties:
       lastModified:
-        select: head > meta[name="modified-time"]
-        value: parseTimestamp(attribute(el, "content"), "YYYY-MM-DDTHH:mm:ss")
+        select: 'head > meta[name="modified-time"]'
+        value: 'parseTimestamp(attribute(el, "content"), "YYYY-MM-DDTHH:mm:ss")'
       title:
-        select: head > meta[property="og:title"]
-        value: attribute(el, "content")
+        select: 'head > meta[property="og:title"]'
+        value: 'attribute(el, "content")'
       description:
-        select: head > meta[property="og:description"]
-        value: attribute(el, "content")
+        select: 'head > meta[property="og:description"]'
+        value: 'attribute(el, "content")'
       image:
-        select: head > meta[property="og:image"]
-        value: match(attribute(el, "content"), "^https?:\/\/[^\/]+(\/.*)")
+        select: 'head > meta[property="og:image"]'
+        value: 'match(attribute(el, "content"), "^https?:\/\/[^\/]+(\/.*)")'
       tags:
-        select: head > meta[name="pagetags"]
-        value: attribute(el, "content")
+        select: 'head > meta[name="pagetags"]'
+        value: 'attribute(el, "content")'
       readingTime:
-        select: head > meta[name="readingtime"]
-        value: attribute(el, "content")
+        select: 'head > meta[name="readingtime"]'
+        value: 'attribute(el, "content")'
       publishDate:
-        select: head > meta[name="published-time"]
-        value: parseTimestamp(attribute(el, "content"), "YYYY-MM-DDTHH:mm:ss")
+        select: 'head > meta[name="published-time"]'
+        value: 'parseTimestamp(attribute(el, "content"), "YYYY-MM-DDTHH:mm:ss")'
       template:
-        select: head > meta[name="template"]
-        value: attribute(el, "content")
+        select: 'head > meta[name="template"]'
+        value: 'attribute(el, "content")'
   guides:
     include:
       - /en-us/technical-resources/guides/**
     target: /en-us/technical-resources/guides/query-index.json
     properties:
       title:
-        select: head > meta[property="og:title"]
-        value: attribute(el, "content")
+        select: 'head > meta[property="og:title"]'
+        value: 'attribute(el, "content")'
       description:
-        select: head > meta[property="og:description"]
-        value: attribute(el, "content")
+        select: 'head > meta[property="og:description"]'
+        value: 'attribute(el, "content")'
       tags:
-        select: head > meta[name="pagetags"]
-        value: attribute(el, "content")
+        select: 'head > meta[name="pagetags"]'
+        value: 'attribute(el, "content")'
       parent:
-        select: head > meta[property="og:url"]
-        value: match(attribute(el, "content"), "\/([^\/]+)\/[^\/]+$")
+        select: 'head > meta[property="og:url"]'
+        value: 'match(attribute(el, "content"), "\/([^\/]+)\/[^\/]+$")'
       pageOrder:
-        select: head > meta[name="pageorder"]
-        value: attribute(el, "content")
+        select: 'head > meta[name="pageorder"]'
+        value: 'attribute(el, "content")'
   knowledgecenter:
     include:
       - /en-us/knowledge-center/**
@@ -74,29 +74,29 @@ indices:
     target: /en-us/knowledge-center/query-index.json
     properties:
       lastModified:
-        select: head > meta[name="modified-time"]
-        value: parseTimestamp(attribute(el, "content"), "YYYY-MM-DDTHH:mm:ss")
+        select: 'head > meta[name="modified-time"]'
+        value: 'parseTimestamp(attribute(el, "content"), "YYYY-MM-DDTHH:mm:ss")'
       title:
-        select: head > meta[property="og:title"]
-        value: attribute(el, "content")
+        select: 'head > meta[property="og:title"]'
+        value: 'attribute(el, "content")'
       description:
-        select: head > meta[property="og:description"]
-        value: attribute(el, "content")
+        select: 'head > meta[property="og:description"]'
+        value: 'attribute(el, "content")'
       image:
-        select: head > meta[property="og:image"]
-        value: match(attribute(el, "content"), "^https?:\/\/[^\/]+(\/.*)")
+        select: 'head > meta[property="og:image"]'
+        value: 'match(attribute(el, "content"), "^https?:\/\/[^\/]+(\/.*)")'
       tags:
-        select: head > meta[name="pagetags"]
-        value: attribute(el, "content")
+        select: 'head > meta[name="pagetags"]'
+        value: 'attribute(el, "content")'
       readingTime:
-        select: head > meta[name="readingtime"]
-        value: attribute(el, "content")
+        select: 'head > meta[name="readingtime"]'
+        value: 'attribute(el, "content")'
       publishDate:
-        select: head > meta[name="published-time"]
-        value: parseTimestamp(attribute(el, "content"), "YYYY-MM-DDTHH:mm:ss")
+        select: 'head > meta[name="published-time"]'
+        value: 'parseTimestamp(attribute(el, "content"), "YYYY-MM-DDTHH:mm:ss")'
       template:
-        select: head > meta[name="template"]
-        value: attribute(el, "content")
+        select: 'head > meta[name="template"]'
+        value: 'attribute(el, "content")'
   webinars:
     include:
       - /en-us/webinars/**
@@ -106,29 +106,29 @@ indices:
     target: /en-us/webinars/query-index.json
     properties:
       lastModified:
-        select: head > meta[name="modified-time"]
-        value: parseTimestamp(attribute(el, "content"), "YYYY-MM-DDTHH:mm:ss")
+        select: 'head > meta[name="modified-time"]'
+        value: 'parseTimestamp(attribute(el, "content"), "YYYY-MM-DDTHH:mm:ss")'
       title:
-        select: head > meta[property="og:title"]
-        value: attribute(el, "content")
+        select: 'head > meta[property="og:title"]'
+        value: 'attribute(el, "content")'
       description:
-        select: head > meta[property="og:description"]
-        value: attribute(el, "content")
+        select: 'head > meta[property="og:description"]'
+        value: 'attribute(el, "content")'
       image:
-        select: head > meta[property="og:image"]
-        value: match(attribute(el, "content"), "^https?:\/\/[^\/]+(\/.*)")
+        select: 'head > meta[property="og:image"]'
+        value: 'match(attribute(el, "content"), "^https?:\/\/[^\/]+(\/.*)")'
       tags:
-        select: head > meta[name="pagetags"]
-        value: attribute(el, "content")
+        select: 'head > meta[name="pagetags"]'
+        value: 'attribute(el, "content")'
       readingTime:
-        select: head > meta[name="readingtime"]
-        value: attribute(el, "content")
+        select: 'head > meta[name="readingtime"]'
+        value: 'attribute(el, "content")'
       publishDate:
-        select: head > meta[name="publishdate"]
-        value: parseTimestamp(attribute(el, "content"), "YYYY-MM-DDTHH:mm:ss")
+        select: 'head > meta[name="publishdate"]'
+        value: 'parseTimestamp(attribute(el, "content"), "YYYY-MM-DDTHH:mm:ss")'
       template:
-        select: head > meta[name="template"]
-        value: attribute(el, "content")
+        select: 'head > meta[name="template"]'
+        value: 'attribute(el, "content")'
   protocols:
     include:
       - /en-us/technical-resources/protocols/**
@@ -138,38 +138,37 @@ indices:
     target: /en-us/technical-resources/protocols/query-index.json
     properties:
       title:
-        select: head > meta[property="og:title"]
-        value: attribute(el, "content")
+        select: 'head > meta[property="og:title"]'
+        value: 'attribute(el, "content")'
       description:
-        select: head > meta[property="og:description"]
-        value: attribute(el, "content")
+        select: 'head > meta[property="og:description"]'
+        value: 'attribute(el, "content")'
       tags:
-        select: head > meta[name="pagetags"]
-        value: attribute(el, "content")
+        select: 'head > meta[name="pagetags"]'
+        value: 'attribute(el, "content")'
       parent:
-        select: head > meta[property="og:url"]
-        value: match(attribute(el, "content"), "\/([^\/]+)\/[^\/]+$")
+        select: 'head > meta[property="og:url"]'
+        value: 'match(attribute(el, "content"), "\/([^\/]+)\/[^\/]+$")'
       pageOrder:
-        select: head > meta[name="pageorder"]
-        value: attribute(el, "content")
+        select: 'head > meta[name="pageorder"]'
+        value: 'attribute(el, "content")'
   cross-sell:
     include:
       - /en-us/products/product-recommendations/cross-sell/**
     target: /en-us/products/product-recommendations/cross-sell/query-index.json
     properties:
       title:
-        select: head > meta[property="og:title"]
-        value: attribute(el, "content")
+        select: 'head > meta[property="og:title"]'
+        value: 'attribute(el, "content")'
       description:
-        select: head > meta[property="og:description"]
-        value: attribute(el, "content")
+        select: 'head > meta[property="og:description"]'
+        value: 'attribute(el, "content")'
       tags:
-        select: head > meta[name="pagetags"]
-        value: attribute(el, "content")
+        select: 'head > meta[name="pagetags"]'
+        value: 'attribute(el, "content")'
       parent:
-        select: head > meta[property="og:url"]
-        value: match(attribute(el, "content"), "\/([^\/]+)\/[^\/]+$")
+        select: 'head > meta[property="og:url"]'
+        value: 'match(attribute(el, "content"), "\/([^\/]+)\/[^\/]+$")'
       pageOrder:
-        select: head > meta[name="pageorder"]
-        value: attribute(el, "content")
-
+        select: 'head > meta[name="pageorder"]'
+        value: 'attribute(el, "content")'
