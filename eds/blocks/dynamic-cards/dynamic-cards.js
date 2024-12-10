@@ -5,19 +5,25 @@ import {
 
 import { getMetadata, toClassName } from '../../scripts/aem.js';
 import createArticleCard from './articleCard.js';
+import { applyClasses } from '../../scripts/scripts.js';
+import { buildCollectionSchema } from '../../scripts/schema.js';
 
-const getSelectionFromUrl = () => (window.location.pathname.indexOf('topics') > -1 ? toClassName(window.location.pathname.replace('.html', '').split('/').pop()) : '');
+let title;
+
+const getSelectionFromUrl = () => (window.location.pathname.indexOf(`/${title}/`) > -1 ? toClassName(window.location.pathname.replace('.html', '').split('/').pop()) : '');
 export const getPageFromUrl = () => toClassName(new URLSearchParams(window.location.search).get('page')) || '';
 
 const createTopicUrl = (currentUrl, keyword = '') => {
-  if (currentUrl.indexOf('topics') > -1) {
+  if (currentUrl.indexOf(`/${title}/`) > -1) {
     return currentUrl.substring(0, currentUrl.lastIndexOf('/') + 1) + toClassName(keyword).toLowerCase();
   }
-  return `${currentUrl.replace('.html', '')}/topics/${toClassName(keyword).toLowerCase()}`;
+  return `${currentUrl.replace('.html', '')}/${toClassName(keyword).toLowerCase()}`;
 };
 
 const patchBannerHeading = () => {
-  document.querySelector('body .banner h1').textContent = getMetadata('heading');
+  document.querySelector('body .title-card h1').textContent = getMetadata('heading');
+  document.querySelector('body .title-card p:last-child').textContent = getMetadata('description');
+  document.title = `${getMetadata('heading')} | ${getMetadata('title')}`;
 };
 
 const createPaginationLink = (page, label, current = false) => {
@@ -79,18 +85,24 @@ export const createPagination = (entries, page, limit) => {
 
 export function createFilters(articles, viewAll = false) {
   // collect tag filters
-  const allKeywords = articles.map((item) => item.topics.replace(/,\s*/g, ',').split(','));
+  const allKeywords = articles.map((item) => {
+    const category = item?.tags?.split(',');
+    const allTags = category.map((cat) => cat?.split('/')?.pop()?.replace(/-/g, ' '));
+    return allTags;
+  });
+
   const keywords = new Set([].concat(...allKeywords));
   keywords.delete('');
-  keywords.delete('Blog'); // filter out generic blog tag
-  keywords.delete('News'); // filter out generic news tag
 
   // render tag cloud
   const newUrl = new URL(window.location);
   newUrl.searchParams.delete('page');
-  if (window.location.pathname.indexOf('topics') > -1) {
-    newUrl.pathname = window.location.pathname.substring(0, window.location.pathname.indexOf('/topics/'));
+
+  const index = window.location.pathname.indexOf(title);
+  if (index > -1) {
+    newUrl.pathname = window.location.pathname.substring(0, index + title.length);
   }
+
   const tags = viewAll ? div(
     { class: 'flex flex-wrap gap-2 gap-y-0 mb-4' },
     a(
@@ -116,7 +128,7 @@ export function createFilters(articles, viewAll = false) {
     const tagAnchor = a(
       {
         class:
-          'text-center my-2 inline-block border-[1px] rounded-full border-black px-4 py-0.5 font-semibold text-black bg-white hover:text-white hover:bg-black',
+          'text-center my-2 inline-block border-[1px] rounded-full border-black px-4 py-0.5 font-semibold text-black bg-white hover:text-white hover:bg-black capitalize',
         href: newUrl.toString(),
       },
       keyword,
@@ -134,7 +146,7 @@ export function createFilters(articles, viewAll = false) {
   });
 
   // patch banner heading with selected tag only on topics pages
-  if (getMetadata('heading') && window.location.pathname.indexOf('topics') > -1) {
+  if (getMetadata('heading') && window.location.pathname.split('/')?.pop() !== 'knowledge-center') {
     patchBannerHeading();
   }
 
@@ -142,27 +154,26 @@ export function createFilters(articles, viewAll = false) {
 }
 
 export default async function decorate(block) {
-  const articleType = 'blog';
-
+  title = block.querySelector('div:first-child')?.textContent?.trim();
   // fetch and sort all articles
-  const articles = await ffetch('https://stage.lifesciences.danaher.com/us/en/article-index.json')
+  const articles = await ffetch(`/en-us/${title}/query-index.json`)
+    .filter((item) => item.tags !== '')
     .chunks(500)
-    .filter(({ type }) => type.toLowerCase() === articleType)
-    .filter((article) => !article.path.includes('/topics-template'))
     .all();
   let filteredArticles = articles;
-  const activeTagFilter = block.classList.contains('url-filtered') ? getSelectionFromUrl() : '';
+  const activeTagFilter = getSelectionFromUrl();
   if (activeTagFilter) {
     filteredArticles = articles.filter(
-      (item) => toClassName(item.topics).toLowerCase().indexOf(activeTagFilter) > -1,
+      (item) => toClassName(item.tags).toLowerCase().indexOf(activeTagFilter) > -1,
     );
   }
   // render cards application style
   filteredArticles.sort((card1, card2) => card2.publishDate - card1.publishDate);
+  buildCollectionSchema(filteredArticles);
 
   let page = parseInt(getPageFromUrl(), 10);
   page = Number.isNaN(page) ? 1 : page;
-  const limitPerPage = 18;
+  const limitPerPage = 9;
   const start = (page - 1) * limitPerPage;
   const articlesToDisplay = filteredArticles.slice(start, start + limitPerPage);
 
@@ -171,11 +182,13 @@ export default async function decorate(block) {
         'container grid max-w-7xl w-full mx-auto gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-4 sm:px-0 justify-items-center mt-3 mb-3',
   });
   articlesToDisplay.forEach((article, index) => {
-    cardList.appendChild(createArticleCard(article, index === 0));
+    cardList.appendChild(createArticleCard(article, index === 0, 'topic'));
   });
 
   // render pagination and filters
   const filterTags = createFilters(articles, true);
   const paginationElements = createPagination(filteredArticles, page, limitPerPage);
+  block.innerHTML = '';
+  applyClasses(block, 'mx-auto pt-8');
   block.append(filterTags, cardList, paginationElements);
 }

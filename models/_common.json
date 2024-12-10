@@ -31,6 +31,10 @@
       "label": "Link Variant",
       "options": [
         {
+          "name": "None",
+          "value": ""
+        },
+        {
           "name": "Primary",
           "value": "button-primary"
         },
@@ -59,7 +63,7 @@
       "options": [
         {
           "name": "None",
-          "value": "icon-none"
+          "value": ""
         },
         {
           "name": "Both",

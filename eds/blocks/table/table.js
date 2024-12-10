@@ -1,40 +1,71 @@
+import { applyClasses, moveInstrumentation } from '../../scripts/scripts.js';
 import {
-  table, thead, tbody, th, tr, td,
+  table, tbody, td, th, thead, tr, input, div, label,
 } from '../../scripts/dom-builder.js';
+import { decorateIcons } from '../../scripts/aem.js';
 
-function buildCell(rowIndex) {
-  const cell = rowIndex ? td({ class: 'break-words content-baseline text-base text-black py-2 pr-2' }) : th({ class: 'text-left pt-2 pb-1 text-xs text-[#65797c]' });
-  if (!rowIndex) cell.setAttribute('scope', 'col');
-  return cell;
+function handleSearch(event, tableEl) {
+  event.preventDefault();
+  let { value } = event.target;
+  value = value.trim();
+  const bodyEl = tableEl.querySelector('tbody');
+  const filter = value.toLowerCase();
+  [...bodyEl.children].forEach((row) => {
+    if (!row.textContent.toLowerCase().includes(filter) && value !== '') row.classList.add('hidden');
+    else {
+      row.classList.remove('hidden');
+    }
+  });
 }
 
+/**
+ *
+ * @param {Element} block
+ */
 export default async function decorate(block) {
-  // const mainTable = table({ class: 'table-fixed table-auto w-full' });
-  // const mainThead = thead({});
-  // const mainTbody = tbody({});
+  const tableEl = table({ class: 'table-auto w-full' });
+  const filterEl = input({
+    id: 'search-filter',
+    type: 'search',
+    name: 'modification',
+    placeholder: 'Search here...',
+    value: '',
+    onkeyup: (event) => handleSearch(event, tableEl),
+    onsearch: (event) => handleSearch(event, tableEl),
+    class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5',
+  });
+  const formEl = div(
+    { class: 'w-max md:2/5 lg:w-1/4 space-y-1 mb-2' },
+    label({ for: 'modification', class: 'text-sm font-semibold leading-5 text-slate-400' }, 'Enter modification'),
+    filterEl,
+  );
+  const tblHead = thead();
+  const tblBody = tbody();
+  const header = !block.classList.contains('no-header');
+  const searchFilter = block.classList.contains('search-filter');
 
-  // const header = !block.classList.contains('no-header');
-  // if (header) {
-  //   mainTable.append(mainThead);
-  // }
-  // mainTable.append(mainTbody);
+  [...block.children].forEach((row, i) => {
+    const tblRow = tr();
+    moveInstrumentation(row, tblRow);
 
-  // [...block.children].forEach((child, i) => {
-  //   const tableRow = tr({ class: 'border-b-2 border-[#e5e7eb]' });
-  //   if (header && i === 0) mainThead.append(tableRow);
-  //   else mainTbody.append(tableRow);
-  //   [...child.children].forEach((col) => {
-  //     const cell = buildCell(header ? i : i + 1);
-  //     tableRow.append(cell);
-  //     const anchorTd = col.querySelector('a');
-  //     if (anchorTd) {
-  //       anchorTd.classList.add(...'text-base text-[#378189] underline'.split(' '));
-  //       cell.appendChild(anchorTd);
-  //     } else {
-  //       cell.innerHTML = col.innerHTML;
-  //     }
-  //   });
-  // });
-  // block.innerHTML = '';
-  // block.append(mainTable);
+    [...row.children].forEach((cell) => {
+      const tblData = (i === 0 && header) ? th() : td();
+      applyClasses(tblData, 'p-4');
+      if (i === 0) tblData.setAttribute('scope', 'column');
+      tblData.innerHTML = cell.innerHTML;
+      applyClasses(tblData, 'border-t border-[#273F3F] border-opacity-25 text-left');
+      tblData.querySelectorAll('a').forEach((aEl) => {
+        applyClasses(aEl, 'text-[#378189] underline');
+      });
+      tblRow.append(tblData);
+    });
+    if (i === 0 && header) tblHead.append(tblRow);
+    else tblBody.append(tblRow);
+  });
+  tableEl.append(tblHead, tblBody);
+  if (searchFilter) block.parentElement.insertBefore(formEl, block);
+  block.replaceChildren(tableEl);
+  block.classList.remove('table');
+  block.classList.add(...'relative overflow-x-auto'.split(' '));
+  decorateIcons(block, 20, 20);
 }

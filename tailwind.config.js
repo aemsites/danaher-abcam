@@ -11,7 +11,7 @@ module.exports = {
           'Noto Sans',
         ],
         heading: [
-          'rockwell',
+          'Lubalin Graph Std',
         ],
       },
     },

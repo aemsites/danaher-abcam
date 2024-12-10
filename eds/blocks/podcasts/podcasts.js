@@ -45,12 +45,6 @@ function decoratePodcast(podcast) {
     audioDiv,
   );
   contentDiv.prepend(headContainer);
-
-  const audioPlayIconContainers = podcast.querySelector('.audio-play-icon');
-  audioPlayIconContainers.addEventListener('click', () => {
-    const audioPlayer = audioPlayIconContainers.parentElement.querySelector('.audio-player');
-    h3El.after(audioPlayer);
-  });
 }
 
 export default function decorate(block) {

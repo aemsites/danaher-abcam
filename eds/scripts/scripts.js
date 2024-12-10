@@ -21,10 +21,23 @@ import {
 // eslint-disable-next-line import/prefer-default-export
 import { buildVideoSchema } from './schema.js';
 import ffetch from './ffetch.js';
+import { yetiToPWSurlsMap } from './pws.js';
 
 const LCP_BLOCKS = ['hero', 'hero-video', 'carousel']; // add your LCP blocks to the list
+let ytPlayer;
 
-export function getStoryType(pageTags) {
+export function getCookie(name) {
+  const cookieArr = document.cookie.split(';');
+  for (let i = 0; i < cookieArr.length; i++) {
+    const cookie = cookieArr[i].trim();
+    if (cookie.startsWith(`${name}=`)) {
+      return decodeURIComponent(cookie.substring(name.length + 1));
+    }
+  }
+  return null;
+}
+
+export function getContentType(pageTags) {
   const tags = pageTags || getMetadata('pagetags');
   let type = null;
   tags?.split(',').forEach((tag) => {
@@ -258,7 +271,11 @@ const TEMPLATE_LIST = [
   'product-detail',
   'search-results',
   'stories',
-  'webinars',
+  'webinar',
+  'guide',
+  'guides-hub',
+  'topic',
+  'protocols',
 ];
 
 async function decorateTemplates(main) {
@@ -293,6 +310,7 @@ function buildAutoBlocks(main) {
 
 function decorateStoryPage(main) {
   const sectionEl = main.querySelector(':scope > div.section.story-info-container.social-media-container.sidelinks-container');
+  
   if (sectionEl) {
     const toBeRemoved = ['story-info-wrapper', 'social-media-wrapper', 'sidelinks-wrapper'];
     const rightSideElements = div({ class: 'w-full' });
@@ -312,6 +330,50 @@ function decorateStoryPage(main) {
   }
 }
 
+function decorateGuidePage(main) {
+  const sectionEl = main.querySelector(':scope > div.section.chapter-links-container.sidelinks-container');
+  if (sectionEl) {
+    const toBeRemoved = ['chapter-links-wrapper', 'sidelinks-wrapper'];
+    const rightSideElements = div({ class: 'w-full pr-0 lg:pr-8' });
+    const sticky = div({ class: 'sticky top-0 space-y-12 pt-6' });
+    const divEl = div({ class: 'ml-0 lg:ml-4 xl:ml-4 min-w-60 lg:max-w-72 flex flex-col gap-y-2 z-20' }, sticky);
+
+    toBeRemoved.forEach((ele) => {
+      const existingEl = sectionEl?.querySelector(`.${ele}`);
+      sticky.append(existingEl);
+    });
+    Array.from(sectionEl?.children).forEach((element) => {
+      if (!toBeRemoved.includes(element.classList[0])) {
+        rightSideElements.append(element);
+      }
+    });
+    sectionEl?.prepend(divEl);
+    sectionEl?.append(rightSideElements);
+  }
+}
+
+function decorateTopicPage(main) {
+  const sectionEl = main.querySelector(':scope > div.section.related-articles-container.sidelinks-container');
+  if (sectionEl) {
+    const toBeRemoved = ['related-articles-wrapper', 'sidelinks-wrapper'];
+    const rightSideElements = div({ class: 'w-full pr-0 lg:pr-8' });
+    const sticky = div({ class: 'sticky top-0 space-y-12 pt-6' });
+    const divEl = div({ class: 'ml-0 lg:ml-4 xl:ml-4 min-w-60 lg:max-w-72 flex flex-col gap-y-2 z-20' }, sticky);
+
+    toBeRemoved.forEach((ele) => {
+      const existingEl = sectionEl?.querySelector(`.${ele}`);
+      sticky.append(existingEl);
+    });
+    Array.from(sectionEl?.children).forEach((element) => {
+      if (!toBeRemoved.includes(element.classList[0])) {
+        rightSideElements.append(element);
+      }
+    });
+    sectionEl?.prepend(divEl);
+    sectionEl?.append(rightSideElements);
+  }
+}
+
 /**
  * Decorates the sticky right navigation block from main element.
  * @param {Element} main The main element
@@ -320,13 +382,11 @@ function decorateStickyRightNav(main) {
   const stickySection = main.querySelector('div.sticky-right-navigation-container');
   if (stickySection) {
     const divEl = div();
-    stickySection.classList.add('flex');
+    stickySection.classList.add('max-w-full');
     const stricyBlock = stickySection.querySelector('.sticky-right-navigation-wrapper')?.firstElementChild;
-    stricyBlock?.classList.add('sticky', 'top-32', 'mt-4', 'ml-20', 'mr-[-8rem]');
+    stricyBlock?.classList.add('w-full');
     [...stickySection.children].forEach((child, index, childs) => {
-      if (index !== childs.length - 1) {
-        divEl.append(child);
-      }
+      if (index !== childs.length - 1) divEl.append(child);
     });
     stickySection.prepend(divEl);
   }
@@ -421,137 +481,219 @@ async function getOgImage() {
   return articles;
 }
 
-async function decorateVideo(main) {
-  const divContainers = main.querySelectorAll('.stories main .section');
-  const type = getMetadata('pagetags');
-  const filmThumbnails = await getOgImage();
+// This function is to add the title to the audio if it not the link
+function isValidUrl(string) {
+  const urlPattern = /^(https?:\/\/)?([a-z0-9\-]+\.)+[a-z]{2,}(:\d+)?(\/[^\s]*)?$/i;
+  return urlPattern.test(string);
+}
 
-  let firstVideo = 0;
-  divContainers.forEach((divContainer) => {
-    if (type.includes('podcast')) {
-      divContainer.querySelectorAll('p a').forEach((link) => {
-        if (link.title === 'video') {
-          const linkContainer = link.parentElement;
-          linkContainer.classList.add('h-full');
-          const videoId = new URL(link.href).searchParams.get('v');
-          if (videoId) {
-            const embedURL = `https://www.youtube.com/embed/${videoId}`;
-            const embedHTML = `
-              <div class="relative w-full h-full">
-                <iframe src="${embedURL}"
+function decorateGenericVideo(main) {
+  main.querySelectorAll(".section a[title='video']").forEach((link) => {
+    const linkContainer = link.parentElement;
+    linkContainer.classList.add('h-full');
+    let embedURL;
+    let showControls = 0;
+    embedURL = link.href + '?controls=' + showControls;
+    const embedHTML = `
+      <div class="video-container relative w-full">
+        <iframe src="${embedURL}"
+          class="w-full aspect-video multi-player" 
+          allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" 
+          scrolling="no" title="Content from Vimeo" loading="lazy"></iframe>
+          <button id="play-button-${embedURL}" class="video-overlay absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-opacity-50 rounded-full p-4 flex items-center justify-center w-[126px] h-[126px]">
+            <span class="video-play-icon icon icon-video-play"></span>
+          </button>
+        </div>
+      </div>`;
+    linkContainer.innerHTML = embedHTML;
+    decorateIcons(linkContainer, 50, 50);
+
+    const playButton = document.getElementById(`play-button-${embedURL}`);
+    const iframe = document.querySelector('.multi-player');
+    const overlay = document.querySelector('.video-overlay');
+    playButton.addEventListener('click', function () {
+      let videoSrc = iframe.src;
+      if (!videoSrc.includes('autoplay=1')) {
+        videoSrc = videoSrc.replace('controls=0', 'controls=1');
+        iframe.src = videoSrc.includes('?')
+          ? videoSrc + '&autoplay=1'
+          : videoSrc + '?autoplay=1';
+        overlay.classList.add('hidden');
+      }
+    });
+  });
+  document.querySelectorAll('.video-container')?.forEach(() => {
+    document.querySelectorAll('.video-script')?.forEach((ele) => {
+      ele.classList.remove('hidden');
+    });
+  });
+}
+
+async function decorateVideo(main) {
+  const template = getMetadata('template');
+  if (template == "stories") {
+    const divContainers = main.querySelectorAll('.stories main .section');
+    const type = getMetadata('pagetags');
+    const filmThumbnails = await getOgImage();
+
+    let firstVideo = 0;
+    divContainers.forEach((divContainer) => {
+      if (type.includes('podcast')) {
+        divContainer.querySelectorAll('p a').forEach((link) => {
+          if (link.title === 'video') {
+            const linkContainer = link.parentElement;
+            linkContainer.classList.add('h-full');
+            const videoId = new URL(link.href).searchParams.get('v');
+            if (videoId) {
+              const embedURL = `https://www.youtube.com/embed/${videoId}?enablejsapi=1`;
+              const embedHTML = `
+              <div class="relative w-full h-0 pt-[56.25%]">
+                <iframe id="youtubePlayer" src="${embedURL}"
+                class="absolute h-full w-full top-0 left-0 border-0"
+                allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture"
+                scrolling="no" title="Content from Youtube" loading="lazy"></iframe>
+              </div>`;
+              linkContainer.innerHTML = embedHTML;
+              const scriptTag = document.createElement('script');
+              scriptTag.src = 'https://www.youtube.com/iframe_api';
+              const firstScriptTag = document.getElementsByTagName('script')[0];
+              firstScriptTag.parentNode.insertBefore(scriptTag, firstScriptTag);
+              window.onYouTubeIframeAPIReady = function () {
+                ytPlayer = new YT.Player('youtubePlayer', {
+                  events: {
+                    onStateChange: onPlayerStateChange,
+                  },
+                });
+              };
+              function onPlayerStateChange(event) {
+                if (event.data === 1 || event.data === -1) {
+                  currentlyPlayingAudio = previousPlayingAudio;
+                  pauseCurrentAudio();
+                }
+              }
+            } else {
+              const embedHTML = `<div class="relative w-full h-full">
+                <iframe src="${link.href}"
                 class="relative w-full h-full border-0 top-0 left-0" 
                 allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" 
-                scrolling="no" title="Content from Youtube" loading="eager"></iframe>
+                scrolling="no" title="Content from Youtube" loading="lazy"></iframe>
               </div>`;
-            linkContainer.innerHTML = embedHTML;
-          } else {
-            const embedHTML = `<div class="relative w-full h-full">
-              <iframe src="${link.href}"
-              class="relative w-full h-full border-0 top-0 left-0" 
-              allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" 
-              scrolling="no" title="Content from Youtube" loading="eager"></iframe>
-            </div>`;
-            linkContainer.innerHTML = embedHTML;
-          }
-        } else if (link.title === 'audio') {
-          link.textContent = '';
-          const audioContainer = div(
-            { class: 'flex flex-col' },
-            p({ class: 'audio-label text-black no-underline ' }, link.text || ''),
-            span({ class: 'audio-play-icon cursor-pointer w-14 icon icon-Play' }),
-            span({ class: 'audio-play-pause-icon hidden cursor-pointer w-14 icon icon-play-pause' }),
-          );
-
-          const parent = link.parentElement;
-          parent.replaceChildren(audioContainer);
-          const audioPlayer = div({ class: 'audio-player w-full md:mb-2' });
-          audioPlayer.innerHTML = playAudio({ src: link.href || '#' });
-          decorateIcons(audioContainer, 80, 80);
-
-          let isPlaying = false;
-          const playIcon = audioContainer.querySelector('.audio-play-icon');
-          const pauseIcon = audioContainer.querySelector('.audio-play-pause-icon');
-          const audioElement = audioPlayer.querySelector('audio');
-
-          function updateIconVisibility() {
-            if (isPlaying) {
-              playIcon.classList.add('hidden');
-              pauseIcon.classList.remove('hidden');
-            } else {
-              playIcon.classList.remove('hidden');
-              pauseIcon.classList.add('hidden');
+              linkContainer.innerHTML = embedHTML;
             }
-          }
+          } else if (link.title === 'audio') {
+            const h3El = link.closest('div.grid')?.querySelector('h3');
+            let linkTitle = isValidUrl(link.textContent) ? '' : link.textContent;
+            const audioContainer = div(
+              { class: 'flex flex-col' },
+              p({ class: 'audio-label text-black no-underline ' }, linkTitle || ''),
+              span({ class: 'checkStatus audio-play-icon cursor-pointer w-14 icon icon-Play' }),
+              span({ class: 'checkStatus audio-play-pause-icon hidden cursor-pointer w-14 icon icon-play-pause' }),
+            );
 
-          playIcon.addEventListener('click', () => {
-            if (audioElement) {
-              pauseCurrentAudio(); // Pause any currently playing audio
-              audioElement.play();
-              audioContainer.appendChild(audioPlayer);
-              currentlyPlayingAudio = audioElement; // Update the currently playing audio
+            const parent = link.parentElement;
+            parent.replaceChildren(audioContainer);
+            const audioPlayer = div({ class: 'audio-player w-full md:mb-2' });
+            audioPlayer.innerHTML = playAudio({ src: link.href || '#' });
+            decorateIcons(audioContainer, 80, 80);
+
+            let isPlaying = false;
+            const playIcon = audioContainer.querySelector('.audio-play-icon');
+            const pauseIcon = audioContainer.querySelector('.audio-play-pause-icon');
+            const audioElement = audioPlayer.querySelector('audio');
+
+            function updateIconVisibility() {
+              if (isPlaying) {
+                playIcon.classList.add('hidden');
+                pauseIcon.classList.remove('hidden');
+              } else {
+                playIcon.classList.remove('hidden');
+                pauseIcon.classList.add('hidden');
+              }
+            }
+
+            playIcon.addEventListener('click', () => {
+              if (audioElement) {
+                pauseCurrentAudio(); // Pause any currently playing audio
+                audioElement.play();
+                audioContainer.appendChild(audioPlayer);
+                currentlyPlayingAudio = audioElement; // Update the currently playing audio
+                isPlaying = true;
+                updateIconVisibility();
+                if (playIcon.closest('.columns')) {
+                  playIcon.style.display = 'none';
+                  pauseIcon.style.display = 'none';
+                }
+              }
+            });
+
+            pauseIcon.addEventListener('click', () => {
+              if (audioElement) {
+                audioElement.pause();
+                isPlaying = false;
+                updateIconVisibility();
+              }
+            });
+
+            audioElement.addEventListener('play', () => {
+              if (previousPlayingAudio) previousPlayingAudio.pause();
+              previousPlayingAudio = audioElement;
+              checkVideoStatus();        
               isPlaying = true;
               updateIconVisibility();
-            }
-          });
+            });
 
-          pauseIcon.addEventListener('click', () => {
-            if (audioElement) {
-              audioElement.pause();
+            audioElement.addEventListener('pause', () => {
+              if (audioElement === previousPlayingAudio) previousPlayingAudio = null;
               isPlaying = false;
               updateIconVisibility();
-            }
-          });
+            });
 
-          audioElement.addEventListener('play', () => {
-            isPlaying = true;
             updateIconVisibility();
-          });
+            audioContainer.querySelector('.checkStatus')?.addEventListener('click', checkVideoStatus);
 
-          audioElement.addEventListener('pause', () => {
-            isPlaying = false;
-            updateIconVisibility();
-          });
-
-          updateIconVisibility();
-        }
-      });
-    } else if (type.includes('film')) {
-      divContainer.querySelectorAll('p a').forEach((link) => {
-        if (link.title === 'video') {
-          let episodeUrl = link.parentElement?.parentElement?.nextElementSibling?.querySelector('p a')?.pathname;
-          if (episodeUrl === undefined) { episodeUrl = window.location.pathname; }
-          firstVideo += 1;
-          const videoId = extractVideoId(link.href);
-          const thumbnailObj = filmThumbnails.find((obj) => obj.path === episodeUrl);
-          const posterImage = thumbnailObj?.image;
-
-          const playButtonHTML = `
-            <div class="aspect-video relative w-full h-full">
-              <img src="${posterImage}" class="relative inset-0 w-full h-full object-cover" alt="More episodes in the Series" aria-label="More episodes in the Series"/>
-              <button id="play-button-${videoId}" class="absolute inset-0 flex items-center justify-center bg-opacity-50 rounded-full p-4">
-                <span class = "video-play-icon icon icon-video-play"/>
-              </button>
-            </div>
-          `;
-          const linkContainer = link.parentElement;
-          linkContainer.innerHTML = playButtonHTML;
-          decorateIcons(linkContainer, 50, 50);
-
-          if (linkContainer.closest('.image-full-width')) {
-            linkContainer.className = 'relative lg:absolute w-full lg:w-1/2 h-full object-cover lg:right-0 lg:bottom-6';
+            playIcon.addEventListener('click', () => h3El.after(audioPlayer));
           }
+        });
+      } else if (type.includes('film')) {
+        divContainer.querySelectorAll('p a').forEach((link) => {
+          if (link.title === 'video') {
+            let episodeUrl = link.parentElement?.parentElement?.nextElementSibling?.querySelector('p a')?.pathname;
+            if (episodeUrl === undefined) { episodeUrl = window.location.pathname; }
+            firstVideo += 1;
+            const videoId = extractVideoId(link.href);
+            const thumbnailObj = filmThumbnails.find((obj) => obj.path === episodeUrl);
+            const posterImage = thumbnailObj?.image;
+            const playButtonHTML = `
+              <div class="aspect-video relative w-full h-full">
+                <img src="${posterImage}" class="relative inset-0 w-full h-full object-cover" alt="More episodes in the Series" aria-label="More episodes in the Series"/>
+                <button id="play-button-${videoId}" class="absolute inset-0 flex items-center justify-center bg-opacity-50 rounded-full p-4">
+                  <span class = "video-play-icon icon icon-video-play"/>
+                </button>
+              </div>
+            `;
+            const linkContainer = link.parentElement;
+            linkContainer.innerHTML = playButtonHTML;
+            decorateIcons(linkContainer, 50, 50);
 
-          linkContainer.querySelector(`button[id="play-button-${videoId}"]`).addEventListener('click', (e) => {
-            e.preventDefault();
-            toggleModalPopUp(link.href, linkContainer);
-          });
-          if (firstVideo === 1) buildVideoSchema(posterImage, link.href);
-          const modalPopUp = createModalPopUp(link.href, linkContainer);
-          linkContainer.appendChild(modalPopUp);
-        }
-      });
-    }
-  });
+            if (linkContainer.closest('.image-full-width')) {
+              linkContainer.className = 'relative lg:absolute w-full lg:w-1/2 h-full object-cover lg:right-0 lg:bottom-6';
+            }
+
+            linkContainer.querySelector(`button[id="play-button-${videoId}"]`).addEventListener('click', (e) => {
+              e.preventDefault();
+              toggleModalPopUp(link.href, linkContainer);
+            });
+            const publishDate = getMetadata('publishdate');
+            const publishTime = getMetadata('published-time');
+            const videoPublishDate = publishDate ? new Date(publishDate) : new Date(publishTime);
+            if (firstVideo === 1) buildVideoSchema(videoPublishDate, posterImage, link.href);
+            const modalPopUp = createModalPopUp(link.href, linkContainer);
+            linkContainer.appendChild(modalPopUp);
+          }
+        });
+      }
+    });
+  } else decorateGenericVideo(main);
 }
 
 /**
@@ -566,22 +708,34 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
-  decorateVideo(main);
+  const observer = new IntersectionObserver((entries) => {
+    if (entries.some((e) => e.isIntersecting)) {
+      observer.disconnect();
+      setTimeout(() => {
+        decorateVideo(main);
+      }, 3000);
+    }
+  });
+  observer.observe(main);
   decorateStickyRightNav(main);
   decorateStoryPage(main);
+  decorateGuidePage(main);
+  decorateTopicPage(main) 
+  
 }
 
 export const applyClasses = (element, classes) => element?.classList.add(...classes.split(' '));
 
-function capitalizeWords(str) {
-  const words = str.split(' ');
-  const capitalizedWords = words.map((word) => {
-    if (word.length > 0) {
-      return word.charAt(0).toUpperCase() + word.slice(1);
-    }
-    return word;
+export function postFormAction(link = '') {
+  // Show the download links (if any)
+  document.querySelectorAll('.downloads-wrapper .downloads .icon-arrow-down-circle')?.forEach((downloadLink) => {
+    downloadLink.classList.remove('hidden');
   });
-  return capitalizedWords.join(' ');
+  const token = Math.random().toString(36).substr(2) + Math.random().toString(36).substr(2);;
+  sessionStorage.setItem('ELOUQA', token);
+  const mainEl = document.querySelector('main');
+  if (mainEl && link) 
+    decorateGenericVideo(mainEl);
 }
 
 /**
@@ -682,24 +836,46 @@ async function loadEager(doc) {
 }
 
 // Changes date format from excel general format to date
-export function formatDateRange(date) {
-  const options = {
-    month: 'short', day: '2-digit', year: 'numeric', timeZone: 'UTC',
+export function formatTime(date) {
+  const timeOptions = {
+    hour: '2-digit', minute: '2-digit', hour12: true, timeZone: 'America/New_York', // ET format
   };
-  const startDate = new Date(Number(date - 25569) * 24 * 60 * 60 * 1000).toUTCString();
-  const formattedStartDate = new Date(startDate).toLocaleDateString('en-us', options);
-  return formattedStartDate;
+  const lastModifiedDate = new Date(Number(date) * 1000);
+  const timeFormatted = new Intl.DateTimeFormat('en-us', timeOptions).format(lastModifiedDate);
+  const timeWithET = timeFormatted ? `${timeFormatted} ET` : '';
+  return timeWithET;
 }
 
 // Changes date format from Unix Epoch to date
 export function formatDate(date) {
   const options = {
-    weekday: 'short', day: '2-digit', month: 'short', year: 'numeric', timeZone: 'UTC',
+    month: 'long', day: '2-digit', year: 'numeric', timeZone: 'UTC',
   };
   const lastModifiedDate = new Date(Number(date) * 1000);
   const formattedDate = new Intl.DateTimeFormat('en-us', options).format(lastModifiedDate);
   const formatDate = formattedDate.replace(/,/g, '');
   return formatDate;
+}
+
+export function removeAbcamTitle(ogTitle){
+  let title;
+  if(ogTitle.indexOf('| abcam') > -1) {
+    title = ogTitle.split('| abcam')[0];
+  } else if(ogTitle.indexOf('| Abcam') > -1) {
+    title = ogTitle.split('| Abcam')[0];
+  } else {
+    title = ogTitle;
+  }
+  return title;
+}
+
+// Check if OneTrust is accepted
+export function isOTEnabled() {
+  const otCookie = getCookie("OptanonConsent");
+  if (typeof otCookie === "string") {
+      return otCookie.includes("C0002:1")
+  }
+  return true;
 }
 
 /**
@@ -737,34 +913,6 @@ function loadDelayed() {
 }
 
 /**
- * Returns the valid public url with or without .html extension
- * @param {string} url
- * @returns new string with the formatted url
- */
-export function makePublicUrl(url) {
-  const isProd = window.location.hostname.includes('abcam.com');
-  try {
-    const newURL = new URL(url, window.location.origin);
-    if (isProd) {
-      if (newURL.pathname.endsWith('.html')) {
-        return newURL.pathname;
-      }
-      newURL.pathname += '.html';
-      return newURL.pathname;
-    }
-    if (newURL.pathname.endsWith('.html')) {
-      newURL.pathname = newURL.pathname.slice(0, -5);
-      return newURL.pathname;
-    }
-    return newURL.pathname;
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error('Invalid URL:', error);
-    return url;
-  }
-}
-
-/**
  * Set the JSON-LD script in the head
  * @param {*} data
  * @param {string} name
@@ -798,8 +946,19 @@ export function createFilters({
   clearFilterHandler = () => {},
   limit = 6,
   sort = 'ASC',
+  dateRange = '',
 }) {
   const tempArr = {};
+  let startDate = new Date();
+  let endDate = new Date();
+  let appliedFilters = {}; // Keep track of applied filters
+
+  if (dateRange !== '' && filterNames.includes(dateRange)) {
+    lists.sort((listA, listB) => listB.publishDate - listA.publishDate);
+    startDate = lists[0].publishDate;
+    endDate = lists[lists.length - 1].publishDate;
+    appliedFilters[dateRange] = { from: startDate, to: endDate }; // Track the date filter
+  }
   lists.forEach((list) => {
     const parts = list?.tags?.split(', ');
     parts.forEach((part) => {
@@ -808,11 +967,13 @@ export function createFilters({
         if (key.includes(name)) {
           if (!(name in tempArr)) tempArr[name] = [];
           if (!tempArr[name].includes(value)) tempArr[name].push(value);
-        }
-        if (name in tempArr && tempArr[name].length > 0) {
-          sort.toUpperCase() === 'ASC'
-            ? tempArr[name].sort()
-            : tempArr[name].sort().reverse()
+          if (name in tempArr && tempArr[name].length > 0) {
+            sort.toUpperCase() === 'ASC'
+              ? tempArr[name].sort()
+              : tempArr[name].sort().reverse()
+          }
+        } else if (dateRange !== '' && filterNames.includes(dateRange)) {
+          tempArr[dateRange] = dateRange;
         }
       });
     });
@@ -820,30 +981,90 @@ export function createFilters({
 
   Object.keys(tempArr).forEach((categoryKey, categoryIndex) => {
     const listsEl = ul({ class: 'space-y-2 mt-2' });
-    [...tempArr[categoryKey]].map((categoryValue, categoryIndex) => {
-      listsEl.append(li(
-        categoryIndex >= limit ? { class: 'hidden' } : '',
-        label(
-          {
-            class: 'w-full flex items-center gap-3 py-1 md:hover:bg-gray-50 text-sm font-medium cursor-pointer',
-            for: `${[categoryKey]}-${categoryValue}`,
-          },
-          input({
-            class: 'accent-[#378189]',
-            type: 'checkbox',
-            name: [categoryKey],
-            id: `${[categoryKey]}-${categoryValue}`,
-            onchange: () => {
-              listActionHandler(categoryKey, categoryValue);
+    if (typeof tempArr[categoryKey] === 'object') {
+      [...tempArr[categoryKey]].map((categoryValue, categoryIndex) => {  
+        listsEl.append(li(
+          categoryIndex >= limit ? { class: 'hidden' } : '',
+          label(
+            {
+              class: 'w-full flex items-center gap-3 py-1 md:hover:bg-gray-50 text-sm font-medium cursor-pointer z-[5] relative',
+              for: `${[categoryKey]}-${categoryValue}`,
             },
-          }),
-          categoryValue.replace(/-/g, ' ').replace(/^\w/, (char) => char.toUpperCase()),
+            input({
+              class: 'accent-[#378189] z-[1] cursor-pointer',
+              type: 'checkbox',
+              name: [categoryKey],
+              id: `${[categoryKey]}-${categoryValue}`,
+              onchange: () => listActionHandler(categoryKey, categoryValue),
+            }),
+            categoryValue.replace(/-/g, ' ').replace(/^\w/, (char) => char.toUpperCase()),
+          ),
+        ));
+      });
+    } else if (typeof tempArr[categoryKey] === 'string') {
+      const fromDate = input({
+        class: 'bg-gray-50 border rounded-md p-2',
+        type: 'date',
+        id: 'date-from',
+        value: new Date(startDate).toLocaleDateString(), // Ensure it's a valid date format for the input
+        'data-start-value': new Date(startDate).toLocaleDateString(),
+      });
+      const toDate = input({
+        class: 'bg-gray-50 border rounded-md p-2',
+        type: 'date',
+        id: 'date-to',
+        value: new Date(endDate).toLocaleDateString(),
+      });
+      const dateFilterSection = li({ class: 'mt-2 flex flex-col gap-2' },
+        label(
+          { class: 'flex flex-col text-sm font-medium text-gray-700' },
+          'From',
+          fromDate,
         ),
-      ));
-    });
+        label(
+          { class: 'flex flex-col text-sm font-medium text-gray-700' },
+          'To',
+          toDate,
+        ),
+        button({
+          class: 'mt-3 text-sm font-medium text-black bg-white hover:!bg-gray-50 border border-px border-black px-4 py-2 rounded-full cursor-pointer',
+          onclick: () => {
+            const formatFromDate = new Date(fromDate.value).getTime();
+            const formatToDate = new Date(toDate.value).getTime();
+
+            // Ensure both from and to dates are selected before applying the filter
+            if (formatFromDate && formatToDate) {
+              listActionHandler('listed-within', { from: formatFromDate, to: formatToDate });
+              appliedFilters[dateRange] = { from: formatFromDate, to: formatToDate }; // Track date filter
+            }
+          }
+        }, 'Apply'),
+      );
+      listsEl.append(dateFilterSection);
+
+      // Add "Clear filter" logic for the date filter (listed-within)
+      if (appliedFilters[dateRange]) {
+        listsEl.append(
+          li(
+            span({
+              class: 'text-xs leading-5 font-medium text-[#378189] mt-1 cursor-pointer hover:underline underline-offset-1',
+              onclick: () => {
+                // Reset date range filters
+                appliedFilters[dateRange] = null;
+                listActionHandler('listed-within', {}); // Reset the date range filter action
+                
+                // Reset the from and to date inputs
+                fromDate.value = new Date(startDate).toLocaleDateString(); // Reset to default
+                toDate.value = new Date(endDate).toLocaleDateString(); // Reset to default
+              },
+            }, 'Clear filter'),
+          ),
+        );
+      }
+    }
 
     // Add "Show More" button if needed
-    if (limit !== 0 && tempArr[categoryKey].length > limit) {
+    if (limit !== 0 && tempArr[categoryKey].length > limit && typeof tempArr[categoryKey] === 'object') {
       listsEl.append(
         li(
           span(
@@ -882,7 +1103,7 @@ export function createFilters({
         span({ class: 'icon icon-chevron-down size-5 rotate-180' }),
       ),
       div(
-        { class: 'flex flex-col-reverse [&_ul:has(:checked)+*]:block' },
+        { class: 'flex flex-col-reverse [&_ul:has(:checked)+*]:block' },//conditional-wise css implementation
         listsEl,
         span({
           class: 'hidden text-xs leading-5 font-medium text-[#378189] mt-1 cursor-pointer hover:underline underline-offset-1',
@@ -895,8 +1116,9 @@ export function createFilters({
   });
 }
 
+
 export function createCard({
-  titleImage,
+  titleImage = '',
   title = '',
   description = '',
   footerLink = '',
@@ -917,8 +1139,8 @@ export function createCard({
       titleImage,
       div(
         { class: 'flex-1' },
-        h3({ class: 'text-black font-medium mt-4 break-words line-clamp-4' }, title),
-        p({ class: 'text-sm line-clamp-3' }, description),
+        title && h3({ class: 'text-black font-medium mt-4 break-words line-clamp-4' }, title),
+        description && p({ class: 'text-sm line-clamp-3' }, description),
         bodyEl,
       ),
       footerLink !== ''
@@ -932,7 +1154,7 @@ export function createCard({
   );
   if (isStoryCard) {
     let minRead;
-    switch (getStoryType(tags)) {
+    switch (getContentType(tags)) {
       case 'podcast':
         minRead = ` | ${time} mins listen`;
         break;
@@ -944,7 +1166,7 @@ export function createCard({
         break;
     }
     card.querySelector('.flex-1').prepend(
-      span({ class: 'capitalize font-normal text-sm text-[#65697C] font-["rockwell"]' }, `${getStoryType(tags)}`),
+      span({ class: 'capitalize font-normal text-sm text-[#65697C] font-["rockwell"]' }, `${getContentType(tags)}`),
       span({ class: 'font-normal text-sm text-[#65697C] font-["rockwell"]' }, `${minRead}`),
     );
   }
@@ -952,28 +1174,58 @@ export function createCard({
 }
 
 /**
- * Datalayer Function to get the 'page' object
+ * Fetches an HTML fragment from the given URL
+ * @param {string} url
+ * @returns the HTML text of the fragment
  */
-function getDLPage() {
-  const page = {
-    type: 'Content',
-  };
-  const path = window.location.pathname;
-  if (path.includes('/en-us/stories')) {
-    page.event = 'Virtual Page View';
-    page.type = 'Stories';
-    page.path = path;
-    page.subType = null;
+export async function getFragmentFromFile(url) {
+  const response = await fetch(url);
+  if (!response.ok) {
+    // eslint-disable-next-line no-console
+    console.error('error loading fragment details', response);
+    return null;
   }
-  return page;
+  const text = await response.text();
+  if (!text) {
+    // eslint-disable-next-line no-console
+    console.error('fragment details empty', url);
+    return null;
+  }
+  return text;
 }
 
-// Datalayer Start
-window.dataLayer = [];
-window.dataLayer.push({
-  page: getDLPage(),
-});
-// Datalayer End
+// Add hreflang tags
+
+const currentPath = window.location.pathname;
+const pathWithoutLocale = currentPath.replace(/^\/[a-z]{2}-[a-z]{2}\//, '/');
+let pwsUrl = currentPath;
+if (yetiToPWSurlsMap.hasOwnProperty(pathWithoutLocale)) {
+  pwsUrl = yetiToPWSurlsMap[pathWithoutLocale];
+}
+
+const hrefAlt = document.createElement('link');
+hrefAlt.rel = 'alternate';
+hrefAlt.hreflang = 'en-us';
+hrefAlt.href = 'https://www.abcam.com' + window.location.pathname;
+document.head.appendChild(hrefAlt);
+
+const hrefDefault = document.createElement('link');
+hrefDefault.rel = 'alternate';
+hrefDefault.hreflang = 'x-default';
+hrefDefault.href = 'https://www.abcam.com' + window.location.pathname;
+document.head.appendChild(hrefDefault);
+
+const hrefChina = document.createElement('link');
+hrefChina.rel = 'alternate';
+hrefChina.hreflang = 'zh-cn';
+hrefChina.href = 'https://www.abcam.cn' + pwsUrl;
+document.head.appendChild(hrefChina);
+
+const hrefJapan = document.createElement('link');
+hrefJapan.rel = 'alternate';
+hrefJapan.hreflang = 'ja-jp';
+hrefJapan.href = 'https://www.abcam.co.jp' + pwsUrl;
+document.head.appendChild(hrefJapan);
 
 loadPage();
 

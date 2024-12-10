@@ -37,8 +37,9 @@
   margin-right: auto
 }
 
-.recommended-products-wrapper :is(.mb-3) {
-  margin-bottom: 0.75rem
+.recommended-products-wrapper :is(.my-8) {
+  margin-top: 2rem;
+  margin-bottom: 2rem
 }
 
 .recommended-products-wrapper :is(.mb-4) {
@@ -76,6 +77,10 @@
   display: flex
 }
 
+.recommended-products-wrapper :is(.inline-flex) {
+  display: inline-flex
+}
+
 .recommended-products-wrapper :is(.grid) {
   display: grid
 }
@@ -90,6 +95,10 @@
   height: 100%
 }
 
+.recommended-products-wrapper :is(.h-24) {
+  height: 6rem
+}
+
 .recommended-products-wrapper :is(.h-auto) {
   height: auto
 }
@@ -98,9 +107,37 @@
   height: 1px
 }
 
+.recommended-products-wrapper :is(.h-full) {
+  height: 100%
+}
+
+.recommended-products-wrapper :is(.w-1\/3) {
+  width: 33.333333%
+}
+
+.recommended-products-wrapper :is(.w-2\/3) {
+  width: 66.666667%
+}
+
 .recommended-products-wrapper :is(.w-fit) {
   width: -moz-fit-content;
   width: fit-content
+}
+
+.recommended-products-wrapper :is(.w-72) {
+  width: 18rem
+}
+
+.recommended-products-wrapper :is(.w-80) {
+  width: 20rem
+}
+
+.recommended-products-wrapper :is(.w-full) {
+  width: 100%
+}
+
+.recommended-products-wrapper :is(.w-\[299px\]) {
+  width: 299px
 }
 
 .recommended-products-wrapper :is(.cursor-pointer) {
@@ -109,6 +146,10 @@
 
 .recommended-products-wrapper :is(.grid-cols-1) {
   grid-template-columns: repeat(1, minmax(0, 1fr))
+}
+
+.recommended-products-wrapper :is(.flex-row) {
+  flex-direction: row
 }
 
 .recommended-products-wrapper :is(.flex-col) {
@@ -126,6 +167,10 @@
 .recommended-products-wrapper :is(.gap-x-1) {
   -moz-column-gap: 0.25rem;
        column-gap: 0.25rem
+}
+
+.recommended-products-wrapper :is(.overflow-hidden) {
+  overflow: hidden
 }
 
 .recommended-products-wrapper :is(.rounded) {
@@ -178,6 +223,18 @@
   padding-bottom: 0.25rem
 }
 
+.recommended-products-wrapper :is(.pt-20) {
+  padding-top: 5rem
+}
+
+.recommended-products-wrapper :is(.pb-4) {
+  padding-bottom: 1rem
+}
+
+.recommended-products-wrapper :is(.pt-6) {
+  padding-top: 1.5rem
+}
+
 .recommended-products-wrapper :is(.text-left) {
   text-align: left
 }
@@ -191,26 +248,46 @@
   line-height: 1.25rem
 }
 
-.recommended-products-wrapper :is(.text-xl) {
-  font-size: 1.25rem;
-  line-height: 1.75rem
-}
-
 .recommended-products-wrapper :is(.text-xs) {
   font-size: 0.75rem;
   line-height: 1rem
+}
+
+.recommended-products-wrapper :is(.text-\[10px\]) {
+  font-size: 10px
 }
 
 .recommended-products-wrapper :is(.font-medium) {
   font-weight: 500
 }
 
+.recommended-products-wrapper :is(.font-semibold) {
+  font-weight: 600
+}
+
+.recommended-products-wrapper :is(.font-normal) {
+  font-weight: 400
+}
+
 .recommended-products-wrapper :is(.lowercase) {
   text-transform: lowercase
 }
 
+.recommended-products-wrapper :is(.capitalize) {
+  text-transform: capitalize
+}
+
+.recommended-products-wrapper :is(.italic) {
+  font-style: italic
+}
+
 .recommended-products-wrapper :is(.tracking-wide) {
   letter-spacing: 0.025em
+}
+
+.recommended-products-wrapper :is(.text-\[\#378189\]) {
+  --tw-text-opacity: 1;
+  color: rgb(55 129 137 / var(--tw-text-opacity))
 }
 
 .recommended-products-wrapper :is(.text-\[\#65797c\]) {
@@ -228,6 +305,15 @@
   color: rgb(6 95 70 / var(--tw-text-opacity))
 }
 
+.recommended-products-wrapper :is(.text-\[\#65797C\]) {
+  --tw-text-opacity: 1;
+  color: rgb(101 121 124 / var(--tw-text-opacity))
+}
+
+.recommended-products-wrapper :is(.underline) {
+  text-decoration-line: underline
+}
+
 .recommended-products-wrapper :is(.hover\:bg-\[\#0000000d\]:hover) {
   background-color: #0000000d
 }
@@ -239,6 +325,32 @@
 }
 
 @media (min-width: 768px) {
+  .recommended-products-wrapper :is(.md\:w-\[55\%\]) {
+    width: 55%
+  }
+
+  .recommended-products-wrapper :is(.md\:w-\[65\%\]) {
+    width: 65%
+  }
+
+  .recommended-products-wrapper :is(.md\:w-\[80\%\]) {
+    width: 80%
+  }
+
+  .recommended-products-wrapper :is(.md\:flex-row) {
+    flex-direction: row
+  }
+
+  .recommended-products-wrapper :is(.md\:gap-4) {
+    gap: 1rem
+  }
+
+  .recommended-products-wrapper :is(.md\:space-x-4 > :not([hidden]) ~ :not([hidden])) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(1rem * var(--tw-space-x-reverse));
+    margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)))
+  }
+
   .recommended-products-wrapper :is(.md\:px-0) {
     padding-left: 0px;
     padding-right: 0px
@@ -248,6 +360,16 @@
 @media (min-width: 1024px) {
   .recommended-products-wrapper :is(.lg\:grid-cols-3) {
     grid-template-columns: repeat(3, minmax(0, 1fr))
+  }
+
+  .recommended-products-wrapper :is(.lg\:flex-row) {
+    flex-direction: row
+  }
+
+  .recommended-products-wrapper :is(.lg\:space-x-4 > :not([hidden]) ~ :not([hidden])) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(1rem * var(--tw-space-x-reverse));
+    margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)))
   }
 }
 

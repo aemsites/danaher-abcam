@@ -77,6 +77,12 @@
             "valueType": "string",
             "name": "template",
             "label": "Template"
+          },
+          {
+            "component": "text",
+            "valueType": "number",
+            "name": "pageOrder",
+            "label": "Page Order"
           }
         ]
       }
@@ -87,12 +93,12 @@
     "fields": [
       {
         "component": "text",
-        "name": "title",
+        "name": "jcr:title",
         "label": "Title"
       },
       {
         "component": "select",
-        "name": "titleType",
+        "name": "type",
         "label": "Title Type",
         "options": [
           {
@@ -176,6 +182,10 @@
         "label": "Link Variant",
         "options": [
           {
+            "name": "None",
+            "value": ""
+          },
+          {
             "name": "Primary",
             "value": "button-primary"
           },
@@ -204,7 +214,7 @@
         "options": [
           {
             "name": "None",
-            "value": "icon-none"
+            "value": ""
           },
           {
             "name": "Both",
@@ -295,6 +305,10 @@
         "label": "Link Variant",
         "options": [
           {
+            "name": "None",
+            "value": ""
+          },
+          {
             "name": "Primary",
             "value": "button-primary"
           },
@@ -323,7 +337,7 @@
         "options": [
           {
             "name": "None",
-            "value": "icon-none"
+            "value": ""
           },
           {
             "name": "Both",
@@ -364,24 +378,12 @@
         ]
       },
       {
-        "component": "select",
+        "component": "text",
         "name": "tabName",
         "value": "",
-        "label": "Select PDP Tabs",
-        "options": [
-          {
-            "name": "Overview",
-            "value": "Overview"
-          },
-          {
-            "name": "Datasheet",
-            "value": "Datasheet"
-          },
-          {
-            "name": "Support & Downloads",
-            "value": "Support & Downloads"
-          }
-        ]
+        "label": "Provide Tab Name",
+        "description": "Provide a name for the tab (Applicable only when Tabs block is added)",
+        "valueType": "string"
       }
     ]
   },
@@ -433,6 +435,10 @@
         "label": "Link Variant",
         "options": [
           {
+            "name": "None",
+            "value": ""
+          },
+          {
             "name": "Primary",
             "value": "button-primary"
           },
@@ -461,7 +467,7 @@
         "options": [
           {
             "name": "None",
-            "value": "icon-none"
+            "value": ""
           },
           {
             "name": "Both",
@@ -548,6 +554,10 @@
         "label": "Link Variant",
         "options": [
           {
+            "name": "None",
+            "value": ""
+          },
+          {
             "name": "Primary",
             "value": "button-primary"
           },
@@ -576,7 +586,7 @@
         "options": [
           {
             "name": "None",
-            "value": "icon-none"
+            "value": ""
           },
           {
             "name": "Both",
@@ -699,6 +709,10 @@
         "label": "Link Variant",
         "options": [
           {
+            "name": "None",
+            "value": ""
+          },
+          {
             "name": "Primary",
             "value": "button-primary"
           },
@@ -727,7 +741,7 @@
         "options": [
           {
             "name": "None",
-            "value": "icon-none"
+            "value": ""
           },
           {
             "name": "Both",
@@ -818,6 +832,10 @@
         "label": "Link Variant",
         "options": [
           {
+            "name": "None",
+            "value": ""
+          },
+          {
             "name": "Primary",
             "value": "button-primary"
           },
@@ -846,7 +864,7 @@
         "options": [
           {
             "name": "None",
-            "value": "icon-none"
+            "value": ""
           },
           {
             "name": "Both",
@@ -939,6 +957,108 @@
     ]
   },
   {
+    "id": "cta-banner",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "cta-banner_title",
+        "value": "",
+        "label": "Title"
+      },
+      {
+        "component": "text",
+        "name": "cta-banner_titleType",
+        "hidden": true,
+        "label": "Title Type",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "link",
+        "label": "Link"
+      },
+      {
+        "component": "text",
+        "name": "linkText",
+        "label": "Text"
+      },
+      {
+        "component": "select",
+        "name": "linkTitle",
+        "label": "Button or Link",
+        "options": [
+          {
+            "name": "Button",
+            "value": "button"
+          },
+          {
+            "name": "Link",
+            "value": "link"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "linkVariant",
+        "label": "Link Variant",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Primary",
+            "value": "button-primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "button-secondary"
+          },
+          {
+            "name": "Tertiary Outline",
+            "value": "button-tertiary-outline"
+          },
+          {
+            "name": "Tertiary Filled",
+            "value": "button-tertiary-filled"
+          },
+          {
+            "name": "Text Only",
+            "value": "button-text-only"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "linkIconType",
+        "label": "Icon Type",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Both",
+            "value": "icon-both"
+          },
+          {
+            "name": "Right",
+            "value": "icon-right"
+          },
+          {
+            "name": "Left",
+            "value": "icon-left"
+          },
+          {
+            "name": "Icon Only",
+            "value": "icon-only"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "download",
     "fields": [
       {
@@ -986,6 +1106,10 @@
         "label": "Link Variant",
         "options": [
           {
+            "name": "None",
+            "value": ""
+          },
+          {
             "name": "Primary",
             "value": "button-primary"
           },
@@ -1014,7 +1138,7 @@
         "options": [
           {
             "name": "None",
-            "value": "icon-none"
+            "value": ""
           },
           {
             "name": "Both",
@@ -1035,11 +1159,81 @@
         ]
       },
       {
-        "component": "text",
+        "component": "multiselect",
         "valueType": "string",
         "name": "download_doctype",
         "value": "",
-        "label": "Document Type"
+        "label": "Document Type",
+        "options": [
+          {
+            "name": "Document",
+            "value": "DOC"
+          },
+          {
+            "name": "PDF",
+            "value": "PDF"
+          },
+          {
+            "name": "Presentation",
+            "value": "PPT"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dynamic-cards",
+    "fields": [
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "indexUrl",
+        "value": "",
+        "label": "Select the index URL",
+        "options": [
+          {
+            "name": "Knowledge Center",
+            "value": "knowledge-center"
+          },
+          {
+            "name": "None",
+            "value": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "elouqa-form",
+    "fields": [
+      {
+        "component": "select",
+        "name": "classes",
+        "label": "Column Layout",
+        "options": [
+          {
+            "name": "One Column",
+            "value": "cols-1"
+          },
+          {
+            "name": "Two Column",
+            "value": "cols-2"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "video_link",
+        "value": "",
+        "label": "Video Link"
       }
     ]
   },
@@ -1278,6 +1472,10 @@
         "label": "Link Variant",
         "options": [
           {
+            "name": "None",
+            "value": ""
+          },
+          {
             "name": "Primary",
             "value": "button-primary"
           },
@@ -1306,7 +1504,7 @@
         "options": [
           {
             "name": "None",
-            "value": "icon-none"
+            "value": ""
           },
           {
             "name": "Both",
@@ -1501,6 +1699,10 @@
         "label": "Link Variant",
         "options": [
           {
+            "name": "None",
+            "value": ""
+          },
+          {
             "name": "Primary",
             "value": "button-primary"
           },
@@ -1529,7 +1731,7 @@
         "options": [
           {
             "name": "None",
-            "value": "icon-none"
+            "value": ""
           },
           {
             "name": "Both",
@@ -1616,6 +1818,164 @@
     ]
   },
   {
+    "id": "recommended-products",
+    "fields": [
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "value": "",
+        "label": "Block Options",
+        "options": [
+          {
+            "name": "Recommended Products",
+            "value": "products-recommended"
+          },
+          {
+            "name": "Featured Products",
+            "value": "featured-products"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "product",
+    "fields": [
+      {
+        "component": "aem-tag",
+        "valueType": "string",
+        "name": "tags",
+        "label": "Product Tag"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "productId",
+        "value": "",
+        "label": "Product ID"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "card_title",
+        "value": "",
+        "label": "Title"
+      },
+      {
+        "component": "richtext",
+        "name": "card_description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "link",
+        "label": "Link"
+      },
+      {
+        "component": "text",
+        "name": "linkText",
+        "label": "Text"
+      },
+      {
+        "component": "select",
+        "name": "linkTitle",
+        "label": "Button or Link",
+        "options": [
+          {
+            "name": "Button",
+            "value": "button"
+          },
+          {
+            "name": "Link",
+            "value": "link"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "linkVariant",
+        "label": "Link Variant",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Primary",
+            "value": "button-primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "button-secondary"
+          },
+          {
+            "name": "Tertiary Outline",
+            "value": "button-tertiary-outline"
+          },
+          {
+            "name": "Tertiary Filled",
+            "value": "button-tertiary-filled"
+          },
+          {
+            "name": "Text Only",
+            "value": "button-text-only"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "linkIconType",
+        "label": "Icon Type",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Both",
+            "value": "icon-both"
+          },
+          {
+            "name": "Right",
+            "value": "icon-right"
+          },
+          {
+            "name": "Left",
+            "value": "icon-left"
+          },
+          {
+            "name": "Icon Only",
+            "value": "icon-only"
+          }
+        ]
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Alt",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "text_image",
+        "value": "",
+        "label": "Image Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "speakers-info",
     "fields": [
       {
@@ -1688,14 +2048,65 @@
           {
             "name": "Applications",
             "value": "applications"
+          },
+          {
+            "name": "Listen Within",
+            "value": "listed-within"
           }
         ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "itemsPerPage",
+        "value": "",
+        "label": "Items per page"
       }
     ]
   },
   {
     "id": "table",
     "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "value": "",
+        "label": "Options",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Border",
+            "children": [
+              {
+                "name": "Striped",
+                "value": "striped"
+              },
+              {
+                "name": "Bordered",
+                "value": "bordered"
+              }
+            ]
+          },
+          {
+            "name": "Header",
+            "children": [
+              {
+                "name": "No Header",
+                "value": "no-header"
+              }
+            ]
+          },
+          {
+            "name": "Search",
+            "children": [
+              {
+                "name": "Include Search Filter",
+                "value": "search-filter"
+              }
+            ]
+          }
+        ]
+      },
       {
         "component": "select",
         "name": "filter",
@@ -1722,6 +2133,14 @@
           {
             "name": "5 Columns",
             "value": "table-5-columns"
+          },
+          {
+            "name": "6 Columns",
+            "value": "table-6-columns"
+          },
+          {
+            "name": "7 Columns",
+            "value": "table-7-columns"
           }
         ]
       }
@@ -1884,6 +2303,73 @@
     ]
   },
   {
+    "id": "table-col-7",
+    "fields": [
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "column1text",
+        "label": "Column1"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "column2text",
+        "label": "Column2"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "column3text",
+        "label": "Column3"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "column4text",
+        "label": "Column4"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "column5text",
+        "label": "Column5"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "column6text",
+        "label": "Column6"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "column7text",
+        "label": "Column7"
+      }
+    ]
+  },
+  {
+    "id": "tabs",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Tabs Style",
+        "options": [
+          {
+            "name": "Tabs",
+            "value": "product-tabs"
+          },
+          {
+            "name": "Button Tabs",
+            "value": "button-tabs"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "teaser",
     "fields": [
       {
@@ -1920,6 +2406,19 @@
     "id": "title-card",
     "fields": [
       {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "value": "",
+        "label": "Search Options",
+        "options": [
+          {
+            "name": "Title with Image",
+            "value": "title-image"
+          }
+        ]
+      },
+      {
         "component": "text",
         "valueType": "string",
         "name": "title-card_title",
@@ -1934,8 +2433,145 @@
         "valueType": "string"
       },
       {
+        "component": "text",
+        "valueType": "string",
+        "name": "subTitle_title",
+        "value": "",
+        "label": "SubTitle"
+      },
+      {
+        "component": "select",
+        "name": "subTitle_titleType",
+        "hidden": true,
+        "label": "SubTitle Type",
+        "valueType": "string"
+      },
+      {
         "component": "richtext",
         "name": "title-card_description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "link",
+        "label": "Link"
+      },
+      {
+        "component": "text",
+        "name": "linkText",
+        "label": "Text"
+      },
+      {
+        "component": "select",
+        "name": "linkTitle",
+        "label": "Button or Link",
+        "options": [
+          {
+            "name": "Button",
+            "value": "button"
+          },
+          {
+            "name": "Link",
+            "value": "link"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "linkVariant",
+        "label": "Link Variant",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Primary",
+            "value": "button-primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "button-secondary"
+          },
+          {
+            "name": "Tertiary Outline",
+            "value": "button-tertiary-outline"
+          },
+          {
+            "name": "Tertiary Filled",
+            "value": "button-tertiary-filled"
+          },
+          {
+            "name": "Text Only",
+            "value": "button-text-only"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "linkIconType",
+        "label": "Icon Type",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Both",
+            "value": "icon-both"
+          },
+          {
+            "name": "Right",
+            "value": "icon-right"
+          },
+          {
+            "name": "Left",
+            "value": "icon-left"
+          },
+          {
+            "name": "Icon Only",
+            "value": "icon-only"
+          }
+        ]
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Alt",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "video-transcript",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "video_transcript_title",
+        "value": "",
+        "label": "Title"
+      },
+      {
+        "component": "select",
+        "name": "video_transcript_titleType",
+        "hidden": true,
+        "label": "Title Type",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "video_transcript_description",
         "value": "",
         "label": "Description",
         "valueType": "string"
