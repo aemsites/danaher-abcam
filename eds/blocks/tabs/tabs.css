@@ -38,6 +38,10 @@
   border-bottom-width: 1px
 }
 
+.tabs-wrapper :is(.border-b-4) {
+  border-bottom-width: 4px
+}
+
 .tabs-wrapper :is(.border-b-8) {
   border-bottom-width: 8px
 }

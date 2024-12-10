@@ -35,33 +35,52 @@ function getTabName() {
   return [...tabName];
 }
 
-async function decorateProductTabs(block) {
-  const response = await getProductResponse();
-  const rawData = response?.at(0)?.raw;
-  const { title } = rawData;
-  if (title !== undefined || title === ' ') {
-    document.title = title;
-  }
-  block.classList.add(...'md:border-b sm:border-b flex-col md:flex-col md:relative text-xl text-[#65797C]'.split(' '));
-  const mmgTabs = div({ class: 'md:border-none border-b sm:border-none mmg-tabs md:absolute md:right-0 md:top-[-15px] font-semibold text-base text-black md:block flex order-1' });
+// async function decorateProductTabs(block) {
+//   const response = await getProductResponse();
+//   const rawData = response?.at(0)?.raw;
+//   const { title } = rawData;
+//   if (title !== undefined || title === ' ') {
+//     document.title = title;
+//   }
+//   block.classList.add(...'md:border-b sm:border-b flex-col md:flex-col md:relative text-xl text-[#65797C]'.split(' '));
+//   const mmgTabs = div({ class: 'md:border-none border-b sm:border-none mmg-tabs md:absolute md:right-0 md:top-[-15px] font-semibold text-base text-black md:block flex order-1' });
+//   const tabs = getTabName();
+//   tabs.forEach((tab) => {
+//     const li = button({
+//       class: 'tab md:py-1.5 pb-4 lg:mx-8 mr-8 capitalize',
+//       id: tab,
+//     });
+//     li.innerHTML = tab;
+//     mmgTabs.appendChild(li);
+//     li.addEventListener('click', () => {
+//       toggleTabs(tab, mmgTabs, 'product-tabs');
+//     });
+//   });
+//   const skuItem = toolTip('skuitem', 'skutooltip', response?.at(0).raw.productslug.split('-').slice(-1), true);
+//   block.innerHTML = '';
+//   block.appendChild(skuItem);
+//   block.appendChild(mmgTabs);
+
+//   toggleTabs(tabs[0], mmgTabs, 'product-tabs');
+// }
+
+function decorateContentTabs(block) {
+  const mmgTabs = div({ class: 'content-tab flex flex-wrap gap-6' });
+  console.log('hello');
   const tabs = getTabName();
   tabs.forEach((tab) => {
-    const li = button({
-      class: 'tab md:py-1.5 pb-4 lg:mx-8 mr-8 capitalize',
+    const contentTab = button({
+      class: 'tab active border-b-4 border-[#ff7223]',
       id: tab,
-    });
-    li.innerHTML = tab;
-    mmgTabs.appendChild(li);
-    li.addEventListener('click', () => {
-      toggleTabs(tab, mmgTabs, 'product-tabs');
+    }, tab);
+    mmgTabs.appendChild(contentTab);
+    contentTab.addEventListener('click', () => {
+      toggleTabs(tab, mmgTabs, 'content-tab');
     });
   });
-  const skuItem = toolTip('skuitem', 'skutooltip', response?.at(0).raw.productslug.split('-').slice(-1), true);
   block.innerHTML = '';
-  block.appendChild(skuItem);
   block.appendChild(mmgTabs);
-
-  toggleTabs(tabs[0], mmgTabs, 'product-tabs');
+  toggleTabs(tabs[0], mmgTabs, 'content-tab');
 }
 
 function decorateButtonTabs(block) {
@@ -83,6 +102,7 @@ function decorateButtonTabs(block) {
 }
 
 export default async function decorate(block) {
-  if (block.classList.contains('product-tabs')) decorateProductTabs(block);
+  //if (block.classList.contains('product-tabs')) decorateProductTabs(block);
+  if (block.classList.contains('content-tab')) decorateContentTabs(block);
   if (block.classList.contains('button-tabs')) decorateButtonTabs(block);
 }
