@@ -309,7 +309,6 @@ const TEMPLATE_LIST = [
   'guide',
   'guides-hub',
   'topic',
-  'protocols',
 ];
 
 async function decorateTemplates(main) {
