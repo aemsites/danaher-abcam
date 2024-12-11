@@ -160,7 +160,30 @@ indices:
   protocols:
     include:
       - /en-us/technical-resources/protocols/**
+    exclude:
+      - /en-us/technical-resources/protocols
+      - /en-us/technical-resources/protocols/query-index.json
     target: /en-us/technical-resources/protocols/query-index.json
+    properties:
+      title:
+        select: head > meta[property="og:title"]
+        value: attribute(el, "content")
+      description:
+        select: head > meta[property="og:description"]
+        value: attribute(el, "content")
+      tags:
+        select: head > meta[name="pagetags"]
+        value: attribute(el, "content")
+      parent:
+        select: head > meta[property="og:url"]
+        value: match(attribute(el, "content"), "\/([^\/]+)\/[^\/]+$")
+      pageOrder:
+        select: head > meta[name="pageorder"]
+        value: attribute(el, "content")
+  cross-sell:
+    include:
+      - /en-us/products/product-recommendations/**
+    target: /en-us/products/product-recommendations/query-index.json
     properties:
       title:
         select: head > meta[property="og:title"]
