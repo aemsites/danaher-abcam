@@ -44,7 +44,7 @@ export default async function decorate(block) {
     allGuides = allGuides.sort((item1, item2) => item1.title.localeCompare(item2.title));
     buildCollectionSchema(allGuides);
   } else if (template === 'cross-sell-hub') {
-    let appGuides = await ffetch('/en-us/products/product-recommendations/cross-sell/query-index.json').all();
+    let appGuides = await ffetch('/en-us/products/product-recommendations/query-index.json').all();
 
     appGuides = appGuides.sort((item1, item2) => item1.title.localeCompare(item2.title));
     const applicationGuidesDiv = div({ class: 'pt-6 basis-1/2' }, ul());
