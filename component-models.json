@@ -182,6 +182,10 @@
         "label": "Link Variant",
         "options": [
           {
+            "name": "None",
+            "value": ""
+          },
+          {
             "name": "Primary",
             "value": "button-primary"
           },
@@ -210,7 +214,7 @@
         "options": [
           {
             "name": "None",
-            "value": "icon-none"
+            "value": ""
           },
           {
             "name": "Both",
@@ -301,6 +305,10 @@
         "label": "Link Variant",
         "options": [
           {
+            "name": "None",
+            "value": ""
+          },
+          {
             "name": "Primary",
             "value": "button-primary"
           },
@@ -329,7 +337,7 @@
         "options": [
           {
             "name": "None",
-            "value": "icon-none"
+            "value": ""
           },
           {
             "name": "Both",
@@ -427,6 +435,10 @@
         "label": "Link Variant",
         "options": [
           {
+            "name": "None",
+            "value": ""
+          },
+          {
             "name": "Primary",
             "value": "button-primary"
           },
@@ -455,7 +467,7 @@
         "options": [
           {
             "name": "None",
-            "value": "icon-none"
+            "value": ""
           },
           {
             "name": "Both",
@@ -542,6 +554,10 @@
         "label": "Link Variant",
         "options": [
           {
+            "name": "None",
+            "value": ""
+          },
+          {
             "name": "Primary",
             "value": "button-primary"
           },
@@ -570,7 +586,7 @@
         "options": [
           {
             "name": "None",
-            "value": "icon-none"
+            "value": ""
           },
           {
             "name": "Both",
@@ -693,6 +709,10 @@
         "label": "Link Variant",
         "options": [
           {
+            "name": "None",
+            "value": ""
+          },
+          {
             "name": "Primary",
             "value": "button-primary"
           },
@@ -721,7 +741,7 @@
         "options": [
           {
             "name": "None",
-            "value": "icon-none"
+            "value": ""
           },
           {
             "name": "Both",
@@ -812,6 +832,10 @@
         "label": "Link Variant",
         "options": [
           {
+            "name": "None",
+            "value": ""
+          },
+          {
             "name": "Primary",
             "value": "button-primary"
           },
@@ -840,7 +864,7 @@
         "options": [
           {
             "name": "None",
-            "value": "icon-none"
+            "value": ""
           },
           {
             "name": "Both",
@@ -980,6 +1004,10 @@
         "label": "Link Variant",
         "options": [
           {
+            "name": "None",
+            "value": ""
+          },
+          {
             "name": "Primary",
             "value": "button-primary"
           },
@@ -1008,7 +1036,7 @@
         "options": [
           {
             "name": "None",
-            "value": "icon-none"
+            "value": ""
           },
           {
             "name": "Both",
@@ -1078,6 +1106,10 @@
         "label": "Link Variant",
         "options": [
           {
+            "name": "None",
+            "value": ""
+          },
+          {
             "name": "Primary",
             "value": "button-primary"
           },
@@ -1106,7 +1138,7 @@
         "options": [
           {
             "name": "None",
-            "value": "icon-none"
+            "value": ""
           },
           {
             "name": "Both",
@@ -1440,6 +1472,10 @@
         "label": "Link Variant",
         "options": [
           {
+            "name": "None",
+            "value": ""
+          },
+          {
             "name": "Primary",
             "value": "button-primary"
           },
@@ -1468,7 +1504,7 @@
         "options": [
           {
             "name": "None",
-            "value": "icon-none"
+            "value": ""
           },
           {
             "name": "Both",
@@ -1663,6 +1699,10 @@
         "label": "Link Variant",
         "options": [
           {
+            "name": "None",
+            "value": ""
+          },
+          {
             "name": "Primary",
             "value": "button-primary"
           },
@@ -1691,7 +1731,7 @@
         "options": [
           {
             "name": "None",
-            "value": "icon-none"
+            "value": ""
           },
           {
             "name": "Both",
@@ -1823,13 +1863,6 @@
         "label": "Title"
       },
       {
-        "component": "text",
-        "name": "card_titleType",
-        "label": "",
-        "valueType": "string",
-        "hidden": true
-      },
-      {
         "component": "richtext",
         "name": "card_description",
         "value": "",
@@ -1867,6 +1900,10 @@
         "label": "Link Variant",
         "options": [
           {
+            "name": "None",
+            "value": ""
+          },
+          {
             "name": "Primary",
             "value": "button-primary"
           },
@@ -1895,7 +1932,7 @@
         "options": [
           {
             "name": "None",
-            "value": "icon-none"
+            "value": ""
           },
           {
             "name": "Both",
@@ -1928,6 +1965,13 @@
         "name": "imageAlt",
         "label": "Alt",
         "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "text_image",
+        "value": "",
+        "label": "Image Text",
+        "valueType": "string"
       }
     ]
   },
@@ -2440,6 +2484,10 @@
         "label": "Link Variant",
         "options": [
           {
+            "name": "None",
+            "value": ""
+          },
+          {
             "name": "Primary",
             "value": "button-primary"
           },
@@ -2468,7 +2516,7 @@
         "options": [
           {
             "name": "None",
-            "value": "icon-none"
+            "value": ""
           },
           {
             "name": "Both",
