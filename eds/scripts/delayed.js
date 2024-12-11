@@ -1,10 +1,7 @@
 // eslint-disable-next-line import/no-cycle
-import { sampleRUM, loadScript } from './aem.js';
+import { loadScript } from './aem.js';
 // eslint-disable-next-line import/no-cycle
 import { getCookie } from './scripts.js';
-
-// Core Web Vitals RUM collection
-sampleRUM('cwv');
 
 // Loading fathom script - start
 const attrs = JSON.parse('{"data-site": "DGRGXILD"}');
