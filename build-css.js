@@ -339,10 +339,6 @@ const fileMappings = [
     output: './eds/blocks/cta-banner/cta-banner.css',
     wrapper: 'cta-banner-wrapper',
   },
-  {
-    content: './eds/templates/protocols/protocols.js',
-    output: './eds/templates/protocols/protocols.css',
-  },
 ];
 
 const watch = process.argv[2];
