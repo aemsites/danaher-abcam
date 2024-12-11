@@ -14,19 +14,21 @@ indices:
       robots:
         select: head > meta[name="robots"]
         value: attribute(el, "content")
-  index-us-all:
+  related-articles:
     include:
-      - /en-us/**
+      - /en-us/stories/**
+      - /en-us/technical-resources/guides/**
+      - /en-us/technical-resources/protocols/**
+      - /en-us/technical-resources/pathways/**
+      - /en-us/knowledge-center/**
+      - /en-us/webinars/**
     exclude:
-      - /en-us/stories
-      - /en-us/technical-resources/guides
-      - /en-us/knowledge-center
-      - /en-us/webinars
       - /en-us/stories/query-index.json
       - /en-us/technical-resources/guides/query-index.json
+      - /en-us/technical-resources/protocols/query-index.json
       - /en-us/knowledge-center/query-index.json
       - /en-us/webinars/query-index.json
-    target: /en-us/full-index.json
+    target: /en-us/related-articles-index.json
     properties:
       title:
         select: head > meta[property="og:title"]
