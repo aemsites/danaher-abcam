@@ -47,7 +47,7 @@ function createRecommendations(allRecommendations) {
 function updateFeatureProducts(products) {
   products.forEach((product) => {
     const divEls = div({ class: 'w-full' });
-    const imageEls = div({ class: 'pt-6 flex flex-col md:flex-row md:space-x-4' }); // flex-col for mobile, flex-row for tablets and above
+    const imageEls = div({ class: 'pt-6 flex flex-col md:flex-row' }); // flex-col for mobile, flex-row for tablets and above
     const anchor = a();
     anchor.href = product.querySelector('p > a')?.href;
     anchor.classList.add('block', 'h-full');
@@ -58,9 +58,9 @@ function updateFeatureProducts(products) {
     applyClasses(product.querySelector('div:nth-child(3)'), 'mb-4 mt-2 text-black font-normal font-sans text-xs');
     applyClasses(product.querySelector('div:nth-child(3) > p'), 'text-sm font-semibold pb-4 line-clamp-2');
     applyClasses(product.querySelector('p > a'), 'w-fit inline-flex text-sm font-semibold font-sans items-center text-[#378189]');
-    applyClasses(product.querySelector('div:nth-last-child(2)').querySelector('picture img'), 'w-full h-full');
+    applyClasses(product.querySelector('div:nth-last-child(2)').querySelector('picture img'), 'w-5/6 h-auto');
     const lastDiv = product.querySelector('div:last-child');
-    applyClasses(lastDiv, 'text-[10px] font-sans font-normal italic md:w-[80%] text-[#65797C]');
+    applyClasses(lastDiv, 'text-[10px] font-sans font-normal italic md:w-full text-[#65797C]');
     const ahrefs = lastDiv.querySelectorAll('a');
     if (ahrefs.length > 0) {
       ahrefs.forEach((ahref) => {

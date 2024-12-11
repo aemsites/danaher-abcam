@@ -1,5 +1,7 @@
 // eslint-disable-next-line import/no-cycle
 import { sampleRUM, loadScript } from './aem.js';
+// eslint-disable-next-line import/no-cycle
+import { getCookie } from './scripts.js';
 
 // Core Web Vitals RUM collection
 sampleRUM('cwv');
@@ -96,6 +98,7 @@ window.dataLayer.push({
 if (
   !window.location.hostname.includes('localhost')
   && !window.location.hostname.includes('.hlx')
+  && (getCookie('cq-authoring-mode') !== 'TOUCH')
 ) {
   loadGTM();
   loadrelicScript();
