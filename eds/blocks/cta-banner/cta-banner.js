@@ -8,7 +8,7 @@ export default async function decorate(block) {
   const parsedJson = JSON.parse(productFullResponse || '{}');
   block.classList.add(...'cta-container flex md:items-center flex-col md:flex-row justify-between gap-8 md:gap-8 w-full p-6 mt-10 mb-14 rounded-xl bg-[#edf6f7]'.split(' '));
   const title = block.querySelector('h3');
-  applyClasses(title, 'title mt-0 mb-4 !leading-[22px] !font-bold text-xl text-[#378189] break-words')
+  applyClasses(title, 'title mt-0 mb-4 !leading-[22px] !font-bold text-xl text-[#378189] break-words');
   const totalCountEl = span({ class: 'font-bold text-xl text-[#378189]' }, ` ${parsedJson.totalCount ? `(${parsedJson.totalCount})` : ''}`);
   title.append(totalCountEl);
   const description = block.querySelector('p');
@@ -20,7 +20,7 @@ export default async function decorate(block) {
     title.insertAdjacentElement('afterend', descriptionDiv);
 
     block.querySelectorAll('div').forEach((parent) => {
-     if ([...parent.children].every((child) => child.tagName === 'DIV' && !child.innerHTML.trim())) {
+      if ([...parent.children].every((child) => child.tagName === 'DIV' && !child.innerHTML.trim())) {
         parent.remove();
       }
     });
