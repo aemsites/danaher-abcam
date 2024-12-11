@@ -183,6 +183,9 @@ indices:
   cross-sell:
     include:
       - /en-us/products/product-recommendations/**
+    exclude:
+      - /en-us/products/product-recommendations
+      - /en-us/products/product-recommendations/query-index.json
     target: /en-us/products/product-recommendations/query-index.json
     properties:
       title:
