@@ -180,8 +180,8 @@ indices:
         value: attribute(el, "content")
   cross-sell:
     include:
-      - /en-us/products/product-recommendations/cross-sell/**
-    target: /en-us/products/product-recommendations/cross-sell/query-index.json
+      - /en-us/products/product-recommendations/**
+    target: /en-us/products/product-recommendations/query-index.json
     properties:
       title:
         select: head > meta[property="og:title"]
