@@ -343,6 +343,11 @@ const fileMappings = [
     content: './eds/templates/protocols/protocols.js',
     output: './eds/templates/protocols/protocols.css',
   },
+  {
+    content: './eds/blocks/search-results/search-results.js',
+    output: './eds/blocks/search-results/search-results.css',
+    wrapper: 'search-results-wrapper',
+  },
 ];
 
 const watch = process.argv[2];
