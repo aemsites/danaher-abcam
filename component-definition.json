@@ -593,8 +593,7 @@
                 "resourceType": "core/franklin/components/block/v1/block/item",
                 "template": {
                   "name": "Product",
-                  "model": "product",
-                  "card_titleType": "h3"
+                  "model": "product"
                 }
               }
             }

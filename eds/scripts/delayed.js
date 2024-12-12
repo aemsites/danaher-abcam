@@ -1,10 +1,17 @@
 // eslint-disable-next-line import/no-cycle
 import { sampleRUM, loadScript } from './aem.js';
 // eslint-disable-next-line import/no-cycle
-import { isOTEnabled } from './scripts.js';
+import { isOTEnabled, getCookie } from './scripts.js';
 
 // Core Web Vitals RUM collection
 sampleRUM('cwv');
+
+// Loading fathom script - start
+const attrs = JSON.parse('{"data-site": "DGRGXILD"}');
+loadScript('https://cdn.usefathom.com/script.js', attrs);
+// Loading fathom script - end
+
+// ##### This data below will move to GTM #####
 
 // OneTrust Cookies Consent Notice start
 if (window.location.host.includes('abcam.com')) {
@@ -19,10 +26,33 @@ if (window.location.host.includes('abcam.com')) {
 }
 // OneTrust Cookies Consent Notice end
 
-// Loading fathom script - start
-const attrs = JSON.parse('{"data-site": "DGRGXILD"}');
-loadScript('https://cdn.usefathom.com/script.js', attrs);
-// Loading fathom script - end
+// freshchat -start
+function loadFreshChat() {
+  const FRESHCHAT_TOKEN = (window.location.host.includes('abcam.com')) ? '471c9cd0-248c-41d7-a173-fb32d90b8729' : '4724ee22-6eaf-4880-b130-f8996e9e5d79';
+  const FRESHCHAT_HOST = (window.location.host.includes('abcam.com')) ? 'https://abcam.freshchat.com' : 'https://abcam-sandbox.freshchat.com';
+  const FRESHCHAT_UUID = (window.location.host.includes('abcam.com')) ? '72b36250-f7cd-4488-857c-3bf672e0c6e9' : 'b800ad67-208f-4baf-ba9f-5ba75d7a6532';
+  const FRESHCHAT_WIDGETUUID = (window.location.host.includes('abcam.com')) ? '72b36250-f7cd-4488-857c-3bf672e0c6e9' : 'b800ad67-208f-4baf-ba9f-5ba75d7a6532';
+  const fcScriptTag = document.createElement('script');
+  fcScriptTag.type = 'text/javascript';
+  fcScriptTag.src = `${FRESHCHAT_HOST}/js/widget.js?t=${Date.now()}`;
+  document.head.appendChild(fcScriptTag);
+  window.fcSettings = {
+    token: FRESHCHAT_TOKEN,
+    host: FRESHCHAT_HOST,
+    uuid: FRESHCHAT_UUID,
+    widgetUuid: FRESHCHAT_WIDGETUUID,
+  };
+
+  // Initialize FreshChat widget
+  window.fcWidget?.init({
+    token: FRESHCHAT_TOKEN,
+    host: FRESHCHAT_HOST,
+    widgetUuid: FRESHCHAT_WIDGETUUID,
+  });
+}
+// freshchat -end
+
+// ##### This data above will move to GTM #####
 
 // google tag manager -start
 function loadGTM() {
@@ -64,22 +94,54 @@ function loadrelicScript() {
 }
 // New relic Script -end
 
-// freshchat -start
-function loadFreshChat() {
-  const FRESHCHAT_TOKEN = (window.location.host === 'www.abcam.com') ? '471c9cd0-248c-41d7-a173-fb32d90b8729' : '471c9cd0-248c-41d7-a173-fb32d90b8729';
-  const FRESHCHAT_HOST = (window.location.host === 'www.abcam.com') ? 'https://abcam.freshchat.com' : 'https://abcam.freshchat.com';
-  const FRESHCHAT_UUID = (window.location.host === 'www.abcam.com') ? '72b36250-f7cd-4488-857c-3bf672e0c6e9' : '72b36250-f7cd-4488-857c-3bf672e0c6e9';
-  const fcScriptTag = document.createElement('script');
-  fcScriptTag.type = 'text/javascript';
-  fcScriptTag.src = `${FRESHCHAT_HOST}/js/widget.js?t=${Date.now()}`;
-  document.head.appendChild(fcScriptTag);
-  window.fcSettings = { token: FRESHCHAT_TOKEN, host: FRESHCHAT_HOST, uuid: FRESHCHAT_UUID };
+/**
+ * Datalayer Function to get the 'page' object
+ */
+function getPathType() {
+  const pathSegments = window.location.pathname.split('/');
+  return pathSegments.length > 2 ? pathSegments[2] : '';
 }
-// freshchat -end
+
+function getPathSubType() {
+  const pathSegments = window.location.pathname.split('/');
+  return pathSegments.length > 3 ? pathSegments[3] : '';
+}
+
+function getDLPage() {
+  const page = {
+    type: 'Content',
+  };
+  const path = window.location.pathname;
+  const langPrefix = '/en-us/';
+  const regex = new RegExp(`${langPrefix}([^/]+)`);
+  const match = path.match(regex);
+  if (match) {
+    const extractedPath = match[1];
+    page.event = 'Virtual Page View';
+    page.type = extractedPath;
+    page.path = path;
+    page.subType = null;
+  }
+  return page;
+}
+
+// Datalayer Start
+window.dataLayer = [];
+window.dataLayer.push({
+  event: 'Virtual Page View',
+  pageUrl: window.location.href,
+  pageTitle: document.title,
+  page_path: window.location.pathname,
+  page_type: getPathType(),
+  page_subtype: getPathSubType(),
+  page: getDLPage(),
+});
+// Datalayer End
 
 if (
   !window.location.hostname.includes('localhost')
   && !window.location.hostname.includes('.hlx')
+  && (getCookie('cq-authoring-mode') !== 'TOUCH')
 ) {
   loadGTM();
   loadrelicScript();

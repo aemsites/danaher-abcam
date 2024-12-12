@@ -116,12 +116,21 @@
   padding-bottom: 0.25rem
 }
 
+.title-card-wrapper :is(.px-\[30px\]) {
+  padding-left: 30px;
+  padding-right: 30px
+}
+
 .title-card-wrapper :is(.pb-4) {
   padding-bottom: 1rem
 }
 
 .title-card-wrapper :is(.pt-4) {
   padding-top: 1rem
+}
+
+.title-card-wrapper :is(.text-center) {
+  text-align: center
 }
 
 .title-card-wrapper :is(.font-sans) {
@@ -153,12 +162,31 @@
   line-height: 1rem
 }
 
+.title-card-wrapper :is(.text-2xl) {
+  font-size: 1.5rem;
+  line-height: 2rem
+}
+
+.title-card-wrapper :is(.text-5xl) {
+  font-size: 3rem;
+  line-height: 1
+}
+
+.title-card-wrapper :is(.text-xl) {
+  font-size: 1.25rem;
+  line-height: 1.75rem
+}
+
 .title-card-wrapper :is(.font-normal) {
   font-weight: 400
 }
 
 .title-card-wrapper :is(.font-semibold) {
   font-weight: 600
+}
+
+.title-card-wrapper :is(.font-light) {
+  font-weight: 300
 }
 
 .title-card-wrapper :is(.capitalize) {
@@ -179,6 +207,10 @@
 
 .title-card-wrapper :is(.tracking-\[0\.3px\]) {
   letter-spacing: 0.3px
+}
+
+.title-card-wrapper :is(.tracking-normal) {
+  letter-spacing: 0em
 }
 
 .title-card-wrapper :is(.text-\[\#378189\]) {
@@ -227,6 +259,12 @@
   }
 }
 
+@media (min-width: 640px) {
+  .title-card-wrapper :is(.sm\:\!text-\[24px\]) {
+    font-size: 24px !important
+  }
+}
+
 @media (min-width: 768px) {
   .title-card-wrapper :is(.md\:mt-12) {
     margin-top: 3rem
@@ -247,6 +285,15 @@
   .title-card-wrapper :is(.md\:\!text-4xl) {
     font-size: 2.25rem !important;
     line-height: 2.5rem !important
+  }
+
+  .title-card-wrapper :is(.md\:\!text-\[42px\]) {
+    font-size: 42px !important
+  }
+
+  .title-card-wrapper :is(.md\:text-6xl) {
+    font-size: 3.75rem;
+    line-height: 1
   }
 }
 
@@ -276,6 +323,15 @@
     font-size: 3.75rem !important;
     line-height: 1 !important
   }
+
+  .title-card-wrapper :is(.lg\:\!text-\[56px\]) {
+    font-size: 56px !important
+  }
+
+  .title-card-wrapper :is(.lg\:text-3xl) {
+    font-size: 1.875rem;
+    line-height: 2.25rem
+  }
 }
 
 @media (min-width: 1280px) {
@@ -291,10 +347,6 @@
     top: 0px
   }
 
-  .title-card-wrapper :is(.xl\:h-\[500px\]) {
-    height: 500px
-  }
-
   .title-card-wrapper :is(.xl\:min-h-\[400px\]) {
     min-height: 400px
   }
@@ -305,5 +357,14 @@
 
   .title-card-wrapper :is(.xl\:max-w-7xl) {
     max-width: 80rem
+  }
+
+  .title-card-wrapper :is(.xl\:max-w-\[1120px\]) {
+    max-width: 1120px
+  }
+
+  .title-card-wrapper :is(.xl\:px-0) {
+    padding-left: 0px;
+    padding-right: 0px
   }
 }

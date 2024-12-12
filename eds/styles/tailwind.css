@@ -223,7 +223,7 @@
         @apply font-normal text-gray-900 mb-2;
     }
 
-    .stories main .story-middle-container, .guide main .chapter-links-container, .topic main .related-articles-container {
+    .stories main .story-middle-container, .guide main .chapter-links-container, .topic main .related-articles-container, .protocols main .protocols-middle-container, .pathways main .pathways-middle-container {
         @apply flex flex-col gap-x-0 lg:flex-row lg:gap-x-16;
     }
 
@@ -235,7 +235,7 @@
         @apply pt-8;
     }
 
-    .guide main .chapter-links-container, .topic main .related-articles-container {
+    .guide main .chapter-links-container, .topic main .related-articles-container, .pathways main .related-articles-container {
         @apply lg:flex-row flex-col-reverse;
     }
 
@@ -247,7 +247,7 @@
         @apply lg:px-6 xl:px-0 !pt-0;
     }
 
-    .guide .sticky-bottom, .topic .sticky-bottom {
+    .guide .sticky-bottom, .topic .sticky-bottom, .pathways .sticky-bottom {
         @apply sticky bottom-0 lg:hidden bg-transparent py-4 px-6 z-20;
     }
 
@@ -276,7 +276,7 @@
     }
     
     main .section.guides-middle-container p ~ p {
-        @apply !font-normal !text-lg !leading-7 !tracking-[0.3px] !mt-0 !mb-6;
+        @apply !font-normal !text-lg !leading-7 !tracking-[0.3px] !mt-0 !mb-0;
     }
  
     main .section.guides-middle-container h2{
@@ -287,4 +287,7 @@
         @apply bg-[#F2F2F2];
     }
     
+    main .section.downloads-container {
+        @apply xl:px-0 px-4;
+    }
 }   
