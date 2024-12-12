@@ -36,6 +36,13 @@
             "valueType": "string"
           },
           {
+            "component": "richtext",
+            "name": "cta_description",
+            "value": "",
+            "label": "Description",
+            "valueType": "string"
+          },
+          {
             "...": "../../../models/_common.json#/button-fields"
           }
         ]
