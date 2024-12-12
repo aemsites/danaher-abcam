@@ -126,16 +126,18 @@ function getDLPage() {
 }
 
 // Datalayer Start
-window.dataLayer = [];
-window.dataLayer.push({
-  event: 'Virtual Page View',
-  pageUrl: window.location.href,
-  pageTitle: document.title,
-  page_path: window.location.pathname,
-  page_type: getPathType(),
-  page_subtype: getPathSubType(),
-  page: getDLPage(),
-});
+function initializeDataLayer() {
+  window.dataLayer = [];
+  window.dataLayer.push({
+    event: 'Virtual Page View',
+    pageUrl: window.location.href,
+    pageTitle: document.title,
+    page_path: window.location.pathname,
+    page_type: getPathType(),
+    page_subtype: getPathSubType(),
+    page: getDLPage(),
+  });
+}
 // Datalayer End
 
 if (
@@ -145,6 +147,7 @@ if (
 ) {
   loadGTM();
   loadrelicScript();
+  initializeDataLayer();
   if (isOTEnabled) {
     loadFreshChat();
   }
