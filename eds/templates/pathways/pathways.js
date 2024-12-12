@@ -1,15 +1,40 @@
 import { buildBlock } from '../../scripts/aem.js';
-import { div } from '../../scripts/dom-builder.js';
+import { div, p } from '../../scripts/dom-builder.js';
+import { getCookie } from '../../scripts/scripts.js';
+
+async function buildRelatedLinks(main) {
+  const allLinks = [];
+  const fragmentBlock = main.querySelector('div.fragment');
+  const fragmentPath = fragmentBlock?.querySelector('a')?.getAttribute('href');
+  if (getCookie('cq-authoring-mode') !== 'TOUCH') fragmentBlock?.remove();
+  const resp = fragmentPath ? await fetch(`${fragmentPath}.plain.html`) : null;
+  if (resp && resp.ok) {
+    const fragment = div();
+    fragment.innerHTML = await resp.text();
+    const links = fragment.querySelectorAll('a[title="link"]');
+    links.forEach((link) => {
+      const pEl = p(link);
+      allLinks.push(pEl);
+    });
+  }
+  return allLinks;
+}
 
 export default async function buildAutoBlocks() {
-  const mainEl = document.querySelector('main');
-  const section = mainEl.querySelector('div');
-  section.classList.add('w-3/4', 'm-auto', 'mb-8');
-  const headerSection = div({ class: 'border-b border-b-slate-300/70 mb-10' });
-  const titleBlock = buildBlock('title-card', { elems: [] });
-  const paginationBlock = buildBlock('pagination', { elems: [] });
+  const main = document.querySelector('main');
+  const allLinks = await buildRelatedLinks(main);
+  const mainEl = main.querySelector('div');
+  const sectionMiddle = main.querySelector(':scope > div:nth-child(2)');
+  sectionMiddle.classList.add(...'pathways-middle-container w-full pt-4'.split(' '));
+  sectionMiddle.prepend(
+    buildBlock('related-articles', { elems: [] }),
+    buildBlock('sidelinks', { elems: allLinks }),
+  );
+  sectionMiddle.prepend(
+    buildBlock('sticky-sections-list', { elems: [] }),
+  );
+  const headerSection = div();
   const breadcrumbBlock = buildBlock('breadcrumb', { elems: [] });
-  section.append(paginationBlock);
-  headerSection.append(breadcrumbBlock, titleBlock);
-  mainEl.insertBefore(headerSection, section);
+  headerSection.append(breadcrumbBlock);
+  main.insertBefore(headerSection, mainEl);
 }
