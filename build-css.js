@@ -340,8 +340,8 @@ const fileMappings = [
     wrapper: 'cta-banner-wrapper',
   },
   {
-    content: './eds/templates/protocols/protocols.js',
-    output: './eds/templates/protocols/protocols.css',
+    content: './eds/templates/cross-sell-hub/cross-sell-hub.js',
+    output: './eds/templates/cross-sell-hub/cross-sell-hub.css',
   },
 ];
 

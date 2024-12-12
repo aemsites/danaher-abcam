@@ -275,7 +275,7 @@ const TEMPLATE_LIST = [
   'guide',
   'guides-hub',
   'topic',
-  'protocols',
+  'cross-sell-hub'
 ];
 
 async function decorateTemplates(main) {

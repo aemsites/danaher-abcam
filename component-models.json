@@ -974,6 +974,13 @@
         "valueType": "string"
       },
       {
+        "component": "richtext",
+        "name": "cta_description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
         "component": "aem-content",
         "name": "link",
         "label": "Link"
