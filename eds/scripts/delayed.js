@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-cycle
 import { sampleRUM, loadScript } from './aem.js';
 // eslint-disable-next-line import/no-cycle
-import { getCookie } from './scripts.js';
+import { isOTEnabled, getCookie } from './scripts.js';
 
 // Core Web Vitals RUM collection
 sampleRUM('cwv');
@@ -10,6 +10,49 @@ sampleRUM('cwv');
 const attrs = JSON.parse('{"data-site": "DGRGXILD"}');
 loadScript('https://cdn.usefathom.com/script.js', attrs);
 // Loading fathom script - end
+
+// ##### This data below will move to GTM #####
+
+// OneTrust Cookies Consent Notice start
+if (window.location.host.includes('abcam.com')) {
+  loadScript('https://cdn.cookielaw.org/scripttemplates/otSDKStub.js', {
+    type: 'text/javascript',
+    charset: 'UTF-8',
+    'data-domain-script': 'b5320615-0900-4f85-996b-7737cc0c62f2',
+  });
+
+  window.OptanonWrapper = () => {
+  };
+}
+// OneTrust Cookies Consent Notice end
+
+// freshchat -start
+function loadFreshChat() {
+  const FRESHCHAT_TOKEN = (window.location.host.includes('abcam.com')) ? '471c9cd0-248c-41d7-a173-fb32d90b8729' : '4724ee22-6eaf-4880-b130-f8996e9e5d79';
+  const FRESHCHAT_HOST = (window.location.host.includes('abcam.com')) ? 'https://abcam.freshchat.com' : 'https://abcam-sandbox.freshchat.com';
+  const FRESHCHAT_UUID = (window.location.host.includes('abcam.com')) ? '72b36250-f7cd-4488-857c-3bf672e0c6e9' : 'b800ad67-208f-4baf-ba9f-5ba75d7a6532';
+  const FRESHCHAT_WIDGETUUID = (window.location.host.includes('abcam.com')) ? '72b36250-f7cd-4488-857c-3bf672e0c6e9' : 'b800ad67-208f-4baf-ba9f-5ba75d7a6532';
+  const fcScriptTag = document.createElement('script');
+  fcScriptTag.type = 'text/javascript';
+  fcScriptTag.src = `${FRESHCHAT_HOST}/js/widget.js?t=${Date.now()}`;
+  document.head.appendChild(fcScriptTag);
+  window.fcSettings = {
+    token: FRESHCHAT_TOKEN,
+    host: FRESHCHAT_HOST,
+    uuid: FRESHCHAT_UUID,
+    widgetUuid: FRESHCHAT_WIDGETUUID,
+  };
+
+  // Initialize FreshChat widget
+  window.fcWidget?.init({
+    token: FRESHCHAT_TOKEN,
+    host: FRESHCHAT_HOST,
+    widgetUuid: FRESHCHAT_WIDGETUUID,
+  });
+}
+// freshchat -end
+
+// ##### This data above will move to GTM #####
 
 // google tag manager -start
 function loadGTM() {
@@ -102,4 +145,7 @@ if (
 ) {
   loadGTM();
   loadrelicScript();
+  if (isOTEnabled) {
+    loadFreshChat();
+  }
 }
