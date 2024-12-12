@@ -388,6 +388,39 @@
     ]
   },
   {
+    "id": "item",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "item_heading",
+        "value": "",
+        "label": "Heading"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "item_description",
+        "value": "",
+        "label": "Description"
+      },
+      {
+        "component": "text",
+        "name": "item_headingType",
+        "label": "",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "name": "item_descriptionType",
+        "label": "",
+        "valueType": "string",
+        "hidden": true
+      }
+    ]
+  },
+  {
     "id": "alert-banner",
     "fields": [
       {
