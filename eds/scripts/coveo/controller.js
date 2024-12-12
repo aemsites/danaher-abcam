@@ -3,6 +3,7 @@ import {
   buildResultList,
   buildPager,
   buildFacet,
+  buildSort,
 } from 'https://static.cloud.coveo.com/headless/v3/headless.esm.js'; //eslint-disable-line
 import coveoEngines from './engine.js';
 
@@ -37,11 +38,11 @@ export const sourceFacetController = buildFacet(searchEngine, {
 // export const filetypeFacetController = buildFacet(searchEngine, {
 //   options: { field: 'filetype' },
 // });
-// export const sortController = buildSort(searchEngine, {
-//   initialState: {
-//     criterion: { by: 'relevancy' },
-//   },
-// });
+export const sortController = buildSort(searchEngine, {
+  initialState: {
+    criterion: { by: 'relevancy' },
+  },
+});
 
 const coveoController = {
   searchBoxController,

@@ -992,6 +992,23 @@ async function loadPage() {
   loadDelayed();
 }
 
+export function createAccordion({
+  name,
+  accordionClass = 'border rounded',
+  body,
+  toggleCallback = () => {},
+}) {
+  return div(
+    { class: accordionClass },
+    p(
+      { class: 'flex items-center justify-between my-0 cursor-pointer', onclick: toggleCallback },
+      span({ class: 'text-base font-bold capitalize' }, name.replace('-', ' ')),
+      span({ class: 'icon icon-chevron-down size-5 rotate-180' }),
+    ),
+    body
+  );
+}
+
 export function createFilters({
   lists = [],
   filterNames = [],
@@ -1032,7 +1049,7 @@ export function createFilters({
       });
     });
   });
-
+  console.log(tempArr);
   Object.keys(tempArr).forEach((categoryKey, categoryIndex) => {
     const listsEl = ul({ class: 'space-y-2 mt-2' });
     if (typeof tempArr[categoryKey] === 'object') {
@@ -1143,33 +1160,77 @@ export function createFilters({
       );
     }
 
-    const accordionSection = div(
-      { class: `flex flex-col px-6 py-4 border-b md:border border-gray-300 ${categoryIndex > 0 ? 'md:mt-4' : ''} md:rounded-xl [&_div:not(.hidden)~p]:mb-3 [&_div:not(.hidden)~p_.icon]:rotate-180` },
-      p(
-        {
-          class: 'flex items-center justify-between my-0 cursor-pointer',
-          onclick: () => {
-            listsEl.parentElement.classList.toggle('hidden');
-            listsEl.parentElement.previousElementSibling.children[1].classList.toggle('rotate-180');
-          },
-        },
-        span({ class: 'text-base font-bold capitalize' }, categoryKey.replace('-', ' ')),
-        span({ class: 'icon icon-chevron-down size-5 rotate-180' }),
-      ),
-      div(
-        { class: 'flex flex-col-reverse [&_ul:has(:checked)+*]:block' },//conditional-wise css implementation
+    const accordionSection = createAccordion({
+      name: categoryKey,
+      accordionClass: `flex flex-col px-6 py-4 border-b md:border border-gray-300 ${categoryIndex > 0 ? 'md:mt-4' : ''} md:rounded-xl [&_div:not(.hidden)~p]:mb-3 [&_div:not(.hidden)~p_.icon]:rotate-180`,
+      body: div(
+        { class: 'flex flex-col-reverse [&_ul:has(:checked)+*]:block' }, // conditional-wise css implementation
         listsEl,
         span({
           class: 'hidden text-xs leading-5 font-medium text-[#378189] mt-1 cursor-pointer hover:underline underline-offset-1',
           onclick: () => clearFilterHandler(categoryKey),
         }, 'Clear filters'),
       ),
-    );
+      toggleCallback: () => {
+        listsEl.parentElement.classList.toggle('hidden');
+        listsEl.parentElement.previousElementSibling.children[1].classList.toggle('rotate-180');
+      },
+    });
 
     if (listsEl.children.length > 0) element.append(accordionSection);
   });
 }
 
+export function createNewFilters({
+  lists,
+  element,
+  listActionHandler = () => {},
+  clearFilterHandler = () => {},
+}) {
+  Object.values(lists).forEach((category) => {
+    const listEl = ul({ class: 'space-y-2 mt-2' });
+    category.values.forEach((categoryItem) => {
+      const inputName = `${category.name}-${categoryItem.value.replaceAll(' ', '-')}`;
+      if (['checkbox', 'radio'].includes(category.type)) {
+        const inputEl = input({
+          class: 'accent-[#378189] z-[1] cursor-pointer',
+          type: category.type,
+          name: category.name,
+          id: inputName,
+          onchange: (event) => listActionHandler(category, categoryItem, event.target),
+        });
+        listEl.append(li(
+          { class: '' },
+          label(
+            {
+              class: 'w-full flex items-center gap-3 py-1 md:hover:bg-gray-50 text-sm font-medium cursor-pointer z-[5] relative',
+              for: inputName,
+            },
+            inputEl,
+            categoryItem.value,
+          ),
+        ));
+      }
+    });
+    const accordionSection = createAccordion({
+      name: category.name,
+      accordionClass: `flex flex-col px-6 py-4 border-b md:border border-gray-300 md:rounded-xl [&_div:not(.hidden)~p]:mb-3 [&_div:not(.hidden)~p_.icon]:rotate-180`,
+      body: div(
+        { class: 'flex flex-col-reverse [&_ul:has(:checked)+*]:block' }, // conditional-wise css implementation
+        listEl,
+        span({
+          class: 'hidden text-xs leading-5 font-medium text-[#378189] mt-1 cursor-pointer hover:underline underline-offset-1',
+          onclick: () => clearFilterHandler(category.name),
+        }, 'Clear filters'),
+      ),
+      toggleCallback: () => {
+        listEl.parentElement.classList.toggle('hidden');
+        listEl.parentElement.previousElementSibling.children[1].classList.toggle('rotate-180');
+      },
+    });
+    if (listEl.children.length > 0) element.append(accordionSection);
+  });
+}
 
 export function createCard({
   titleImage = '',

@@ -278,7 +278,7 @@ function handleChangeFilter(key, value) {
 
   let newLists = lists;
   let storiesList = [];
-  if (typeof value === 'string') {
+  if (typeof value === 'string' || typeof value) {
     if (key === 'stories-type' && (value !== null || value !== '' || value !== 'undefined')) {
       storiesList = lists.filter((list) => (value
         ? list.tags.includes(value)
