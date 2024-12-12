@@ -33,7 +33,7 @@ export default async function decorate(block) {
   const extractedTags = kcTags.map((tag) => tag.split('/').pop());
   const title = getMetadata('og:title');
 
-  const chapterItems = await ffetch('/en-us/knowledge-center/query-index.json')
+  const chapterItems = await ffetch('/en-us/related-articles-index.json')
     .filter((item) => item.title && item.title !== title)
     .filter((item) => item.tags && extractedTags.some((tag) => item.tags.includes(tag)))
     .all();
