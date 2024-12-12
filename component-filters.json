@@ -47,7 +47,15 @@
       "downloads",
       "elouqa-form",
       "video-transcript",
-      "cta-banner"
+      "cta-banner",
+      "accordion"
+    ]
+  },
+  {
+    "id": "accordion",
+    "components": [
+      "text",
+      "item"
     ]
   },
   {

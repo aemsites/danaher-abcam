@@ -71,6 +71,8 @@ function createAccordionBlock(
  */
 export default async function decorate(block) {
   const customUUID = generateUUID();
+  // eslint-disable-next-line no-console
+  console.log(block);
   const blockChilds = [...block.children].map((el) => {
     let title;
     let subTitle;
