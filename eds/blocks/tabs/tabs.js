@@ -15,12 +15,12 @@ function toggleTabs(tabId, mmgTabs, tabType) {
   const tabss = mmgTabs.querySelectorAll('.tab');
   tabss.forEach((tab) => {
     if (tab.id === tabId) {
-      tabType === 'product-tabs'
-        ? tab.classList.add('active', 'border-b-8', 'border-[#ff7223]')
+      tabType === 'content-tabs'
+        ? tab.classList.add('active', 'border-b-4', 'border-[#ff7223]')
         : tab.classList.add('bg-black', 'text-white'); tab.classList.remove('bg-white', 'text-black');
     } else {
-      tabType === 'product-tabs'
-        ? tab.classList.remove('active', 'border-b-8', 'border-[#ff7223]')
+      tabType === 'content-tabs'
+        ? tab.classList.remove('active', 'border-b-4', 'border-[#ff7223]')
         : tab.classList.remove('bg-black', 'text-white'); tab.classList.add('bg-white', 'text-black');
     }
   });
@@ -65,22 +65,21 @@ async function decorateProductTabs(block) {
 }
 
 function decorateContentTabs(block) {
-  const mmgTabs = div({ class: 'content-tab flex flex-wrap gap-6' });
-  console.log('hello');
+  const mmgTabs = div({ class: 'content-tabs border-b w-fit flex flex-wrap gap-6' });
   const tabs = getTabName();
   tabs.forEach((tab) => {
     const contentTab = button({
-      class: 'tab active border-b-4 border-[#ff7223]',
+      class: 'tab active py-2 hover:border-b-4 border-[#ff7223]',
       id: tab,
     }, tab);
     mmgTabs.appendChild(contentTab);
     contentTab.addEventListener('click', () => {
-      toggleTabs(tab, mmgTabs, 'content-tab');
+      toggleTabs(tab, mmgTabs, 'content-tabs');
     });
   });
   block.innerHTML = '';
   block.appendChild(mmgTabs);
-  toggleTabs(tabs[0], mmgTabs, 'content-tab');
+  toggleTabs(tabs[0], mmgTabs, 'content-tabs');
 }
 
 function decorateButtonTabs(block) {
@@ -103,6 +102,6 @@ function decorateButtonTabs(block) {
 
 export default async function decorate(block) {
   if (block.classList.contains('product-tabs')) decorateProductTabs(block);
-  if (block.classList.contains('content-tab')) decorateContentTabs(block);
+  if (block.classList.contains('content-tabs')) decorateContentTabs(block);
   if (block.classList.contains('button-tabs')) decorateButtonTabs(block);
 }
