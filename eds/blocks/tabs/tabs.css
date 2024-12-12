@@ -65,6 +65,16 @@
   border-color: rgb(0 0 0 / var(--tw-border-opacity))
 }
 
+.tabs-wrapper :is(.border-b-\[white\]) {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(255 255 255 / var(--tw-border-opacity))
+}
+
+.tabs-wrapper :is(.border-b-white) {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(255 255 255 / var(--tw-border-opacity))
+}
+
 .tabs-wrapper :is(.bg-black) {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity))
@@ -73,6 +83,16 @@
 .tabs-wrapper :is(.bg-white) {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+}
+
+.tabs-wrapper :is(.bg-blue-500) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 130 246 / var(--tw-bg-opacity))
+}
+
+.tabs-wrapper :is(.bg-green-500) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(34 197 94 / var(--tw-bg-opacity))
 }
 
 .tabs-wrapper :is(.px-6) {
