@@ -340,6 +340,11 @@ const fileMappings = [
     wrapper: 'cta-banner-wrapper',
   },
   {
+    content: './eds/blocks/accordion/accordion.js',
+    output: './eds/blocks/accordion/accordion.css',
+    wrapper: 'accordion-wrapper',
+  },
+  {
     content: './eds/templates/protocols/protocols.js',
     output: './eds/templates/protocols/protocols.css',
   },
