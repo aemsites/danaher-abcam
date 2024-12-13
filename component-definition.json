@@ -139,8 +139,8 @@
                 "template": {
                   "name": "Item",
                   "model": "item",
-                  "item_headingType": "h2",
-                  "item_descriptionType": "h3"
+                  "item_headingType": "h3",
+                  "item_descriptionType": "h4"
                 }
               }
             }
