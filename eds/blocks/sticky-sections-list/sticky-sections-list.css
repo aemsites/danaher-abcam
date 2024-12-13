@@ -23,11 +23,6 @@
   margin-right: auto
 }
 
-.sticky-sections-list :is(.my-4) {
-  margin-top: 1rem;
-  margin-bottom: 1rem
-}
-
 .sticky-sections-list :is(.ml-auto) {
   margin-left: auto
 }
@@ -46,14 +41,6 @@
 
 .sticky-sections-list :is(.hidden) {
   display: none
-}
-
-.sticky-sections-list :is(.h-\[72px\]) {
-  height: 72px
-}
-
-.sticky-sections-list :is(.h-\[40px\]) {
-  height: 40px
 }
 
 .sticky-sections-list :is(.max-h-\[400px\]) {
@@ -163,29 +150,14 @@
   padding-right: 1.5rem
 }
 
-.sticky-sections-list :is(.py-3) {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem
-}
-
-.sticky-sections-list :is(.py-6) {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem
-}
-
-.sticky-sections-list :is(.px-4) {
-  padding-left: 1rem;
-  padding-right: 1rem
-}
-
-.sticky-sections-list :is(.px-5) {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem
-}
-
 .sticky-sections-list :is(.px-7) {
   padding-left: 1.75rem;
   padding-right: 1.75rem
+}
+
+.sticky-sections-list :is(.py-3) {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem
 }
 
 .sticky-sections-list :is(.py-4) {
@@ -258,10 +230,6 @@
     left: 0px
   }
 
-  .sticky-sections-list :is(.lg\:h-\[40px\]) {
-    height: 40px
-  }
-
   .sticky-sections-list :is(.lg\:h-\[72px\]) {
     height: 72px
   }
@@ -270,25 +238,17 @@
     width: 5rem !important
   }
 
-  .sticky-sections-list :is(.lg\:w-full) {
-    width: 100%
-  }
-
   .sticky-sections-list :is(.lg\:w-1\/2) {
     width: 50%
   }
 
-  .sticky-sections-list :is(.lg\:\!w-32) {
-    width: 8rem !important
+  .sticky-sections-list :is(.lg\:w-full) {
+    width: 100%
   }
 }
 
 @media (min-width: 1280px) {
   .sticky-sections-list :is(.xl\:max-h-\[500px\]) {
     max-height: 500px
-  }
-
-  .sticky-sections-list :is(.xl\:pl-8) {
-    padding-left: 2rem
   }
 }
