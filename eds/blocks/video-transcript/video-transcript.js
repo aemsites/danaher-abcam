@@ -3,8 +3,15 @@ import { h3, span, ul } from '../../scripts/dom-builder.js';
 import { applyClasses } from '../../scripts/scripts.js';
 
 export default async function decorate(block) {
+  const main = document.querySelector('main');
   const contentContainer = block.querySelector('div');
   applyClasses(contentContainer, 'video-script hidden border-y border-solid border-gray-300 py-8');
+
+  if (main.querySelector('.section.elouqa-form-container')) {
+    contentContainer.classList.add('hidden');
+  } else {
+    contentContainer.classList.remove('hidden');
+  }
 
   const content = contentContainer.querySelector('div');
   applyClasses(content, 'title-container flex justify-between items-center cursor-pointer');
