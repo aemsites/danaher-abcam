@@ -1,4 +1,4 @@
-import { span } from '../../scripts/dom-builder.js';
+import { div,span } from '../../scripts/dom-builder.js';
 import { decorateIcons } from '../../scripts/aem.js';
 import { getProductsListResponse } from '../../scripts/search.js';
 import { applyClasses } from '../../scripts/scripts.js';
@@ -11,14 +11,14 @@ export default async function decorate(block) {
   const totalCountEl = span({ class: 'font-bold text-xl text-[#378189]' }, ` ${parsedJson.totalCount ? `(${parsedJson.totalCount})` : ''}`);
   title.append(totalCountEl);
   const description = block.querySelector('p');
-  const descriptionDiv = document.createElement('div');
+  const descriptionDiv = div();
   if (description && (!description.parentElement || !description.parentElement.classList.contains('button-container'))) {
     descriptionDiv.classList.add('cta-desc', 'flex-grow', 'text-[#378189]', 'text-sm', 'break-words');
     descriptionDiv.appendChild(description);
     description.classList.add('my-0', '!text-lg', 'font-semibold');
     title.insertAdjacentElement('afterend', descriptionDiv);
   }
-  applyClasses(title, `title mt-0 ${descriptionDiv.classList.contains('cta-desc') ? 'mb-4' : 'mb-0'} !leading-[22px] !font-bold text-xl text-[#378189] break-words`);
+  applyClasses(title, `title mt-0 ${descriptionDiv.classList.contains('cta-desc') ? 'mb-4' : 'mb-0'} !font-bold !text-xl text-[#378189] break-words`);
   block.querySelectorAll('div').forEach((parent) => {
     if ([...parent.children].every((child) => child.tagName === 'DIV' && !child.innerHTML.trim())) {
       parent.remove();

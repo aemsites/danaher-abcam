@@ -118,6 +118,11 @@
   line-height: 1.75rem
 }
 
+.cta-banner-wrapper :is(.\!text-xl) {
+  font-size: 1.25rem !important;
+  line-height: 1.75rem !important
+}
+
 .cta-banner-wrapper :is(.\!font-bold) {
   font-weight: 700 !important
 }
