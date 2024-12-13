@@ -19,7 +19,7 @@ function toggleTabs(tabId, mmgTabs, tabType) {
         tab.classList.add('active', 'border-b-8', 'border-[#ff7223]');
       } else if (tabType === 'content-tabs') {
         tab.classList.add('active', 'border-b-4', 'border-[#ff7223]');
-      }  else {
+      } else {
         tab.classList.add('bg-black', 'text-white');
       }
       tab.classList.remove('bg-white', 'text-black');
@@ -29,7 +29,7 @@ function toggleTabs(tabId, mmgTabs, tabType) {
       } else if (tabType === 'content-tabs') {
         tab.classList.remove('active', 'border-b-4', 'border-[#ff7223]');
       } else {
-        tab.classList.remove('bg-black', 'text-white'); 
+        tab.classList.remove('bg-black', 'text-white');
       }
       tab.classList.add('bg-white', 'text-black');
     }
