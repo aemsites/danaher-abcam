@@ -13,7 +13,7 @@ export default async function decorate(block) {
   const description = block.querySelector('p');
   const descriptionDiv = document.createElement('div');
   if (description && (!description.parentElement || !description.parentElement.classList.contains('button-container'))) {
-    descriptionDiv.classList.add('cta-desc','flex-grow', 'text-[#378189]', 'text-sm', 'break-words');
+    descriptionDiv.classList.add('cta-desc', 'flex-grow', 'text-[#378189]', 'text-sm', 'break-words');
     descriptionDiv.appendChild(description);
     description.classList.add('my-0', '!text-lg', 'font-semibold');
     title.insertAdjacentElement('afterend', descriptionDiv);
