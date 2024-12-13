@@ -1,4 +1,4 @@
-import { div,span } from '../../scripts/dom-builder.js';
+import { div, span } from '../../scripts/dom-builder.js';
 import { decorateIcons } from '../../scripts/aem.js';
 import { getProductsListResponse } from '../../scripts/search.js';
 import { applyClasses } from '../../scripts/scripts.js';
