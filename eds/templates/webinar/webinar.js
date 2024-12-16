@@ -2,6 +2,7 @@ import {
   buildBlock,
 } from '../../scripts/aem.js';
 import { div } from '../../scripts/dom-builder.js';
+import { buildOndemandWebinarSchema } from '../../scripts/schema.js';
 
 export default async function buildAutoBlocks() {
   const main = document.querySelector('main');
@@ -11,4 +12,5 @@ export default async function buildAutoBlocks() {
   headerSection.append(breadcrumbBlock);
   headerSection.querySelector('nav')?.classList.add('');
   main.insertBefore(headerSection, mainEl);
+  buildOndemandWebinarSchema();
 }

@@ -543,7 +543,7 @@ function decorateGenericVideo(main) {
         <iframe src="${embedURL}"
           class="w-full aspect-video multi-player" 
           allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" 
-          scrolling="no" title="Content from Vimeo" loading="lazy"></iframe>
+          scrolling="no" title="${link.textContent}" loading="lazy"></iframe>
           <button id="play-button-${embedURL}" class="video-overlay absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-opacity-50 rounded-full p-4 flex items-center justify-center w-[126px] h-[126px]">
             <span class="video-play-icon icon icon-video-play"></span>
           </button>

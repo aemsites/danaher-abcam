@@ -180,6 +180,30 @@ function generateCollectionElement(type, url, name) {
   };
 }
 
+function generateCrossSellCollectionElement(type, url, name, image, description) {
+  return {
+    '@type': type,
+    url,
+    name,
+    image,
+    description,
+  };
+}
+
+function addPerformerstoWebinar(type, name, jobTitle, image, description) {
+  return {
+    '@type': type,
+    name,
+    jobTitle,
+    worksFor: {
+      '@type': 'Organization',
+      name: 'Abcam',
+    },
+    image,
+    description,
+  };
+}
+
 export function buildCollectionSchema(srcObj) {
   const data = {
     '@context': 'https://schema.org',
@@ -200,3 +224,72 @@ export function buildCollectionSchema(srcObj) {
 
   setJsonLd(data, 'Collection');
 }
+
+export function buildCrossSellCollectionSchema() {
+  const featuredProducts = document.querySelectorAll('.recommended-products.featured-products');
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: document.querySelector('h1') ? document.querySelector('h1').textContent : getMetadata('og:title'),
+    description: getMetadata('description'),
+    url: `https://www.abcam.com${window.location.pathname}`,
+    mainEntity: [],
+  };
+  if(featuredProducts.length > 0) {
+    featuredProducts.forEach((obj) => {
+      [...obj.children].forEach((objItem) => {
+        let desc = '';
+        objItem.querySelector('div:nth-child(3) > ul > li') ? Array.from(objItem.querySelectorAll('div:nth-child(3) > ul > li'),li => desc= desc + ' ' + li.textContent) : '';
+        data.mainEntity.push(generateCrossSellCollectionElement(
+          'Product',
+          objItem.querySelector('a')?.href,
+          objItem.querySelector('div:nth-child(3) > p') ? objItem.querySelector('div:nth-child(3) > p').textContent.replace(/\s*\|\s*abcam$/i, '') : '',
+          objItem.querySelector('div:nth-last-child(2)').querySelector('picture img') ? objItem.querySelector('div:nth-last-child(2)').querySelector('picture img').src : '',
+          desc,
+        ));
+      });
+    });
+  }
+  setJsonLd(data, 'Collection');
+}
+
+export function buildOndemandWebinarSchema(srcObj) {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    'eventAttendanceMode': 'https://schema.org/OnlineEventAttendanceMode',
+    name: document.querySelector('h1') ? document.querySelector('h1').textContent : getMetadata('og:title'),
+    description: getMetadata('description'),
+    image: getMetadata('og:image'),
+    location: {
+      '@type': 'VirtualLocation',
+      url: `https://www.abcam.com${window.location.pathname}`,
+    },
+    performer: [],
+    organizer: {
+      '@type': 'Organization',
+      name: 'Abcam',
+      url: 'https://www.abcam.com/en-us',
+    },
+    recordedIn: {
+      '@type': 'VideoObject',
+      "name": "[Webinar recording title]",
+      "description": "[Description of the webinar recording.]",
+      "contentUrl": "[Recording URL]",
+      "thumbnailUrl": "[Thumbnail Image URL]",
+      "uploadDate": "[Date, Time, Time Zone]"
+    }  
+  };
+
+  /*srcObj.forEach((obj) => {
+    data.mainEntity.push(addPerformerstoWebinar(
+      'Person',
+      '',
+      '',
+      '',
+      '',
+    ));
+  });*/
+  setJsonLd(data, 'Collection');
+}
+
