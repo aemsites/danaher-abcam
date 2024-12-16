@@ -12,5 +12,5 @@ export default async function buildAutoBlocks() {
   headerSection.append(breadcrumbBlock);
   headerSection.querySelector('nav')?.classList.add('');
   main.insertBefore(headerSection, mainEl);
-  buildOndemandWebinarSchema();
+  buildOndemandWebinarSchema([]);
 }

@@ -235,11 +235,11 @@ export function buildCrossSellCollectionSchema() {
     url: `https://www.abcam.com${window.location.pathname}`,
     mainEntity: [],
   };
-  if(featuredProducts.length > 0) {
+  if (featuredProducts.length > 0) {
     featuredProducts.forEach((obj) => {
       [...obj.children].forEach((objItem) => {
-        let desc = '';
-        objItem.querySelector('div:nth-child(3) > ul > li') ? Array.from(objItem.querySelectorAll('div:nth-child(3) > ul > li'),li => desc= desc + ' ' + li.textContent) : '';
+        let desc = objItem.querySelector('div:nth-child(3) > ul > li') ? objItem.querySelector('div:nth-child(3) > ul')?.innerText.trim() : '';
+        if (desc !== '') desc = desc.replaceAll('\n', '.');
         data.mainEntity.push(generateCrossSellCollectionElement(
           'Product',
           objItem.querySelector('a')?.href,
@@ -254,10 +254,11 @@ export function buildCrossSellCollectionSchema() {
 }
 
 export function buildOndemandWebinarSchema(srcObj) {
+  const videoEl = document.querySelector('iframe');
   const data = {
     '@context': 'https://schema.org',
     '@type': 'Event',
-    'eventAttendanceMode': 'https://schema.org/OnlineEventAttendanceMode',
+    eventAttendanceMode: 'https://schema.org/OnlineEventAttendanceMode',
     name: document.querySelector('h1') ? document.querySelector('h1').textContent : getMetadata('og:title'),
     description: getMetadata('description'),
     image: getMetadata('og:image'),
@@ -273,23 +274,21 @@ export function buildOndemandWebinarSchema(srcObj) {
     },
     recordedIn: {
       '@type': 'VideoObject',
-      "name": "[Webinar recording title]",
-      "description": "[Description of the webinar recording.]",
-      "contentUrl": "[Recording URL]",
-      "thumbnailUrl": "[Thumbnail Image URL]",
-      "uploadDate": "[Date, Time, Time Zone]"
-    }  
+      name: videoEl?.title,
+      description: '',
+      contentUrl: videoEl?.src,
+      thumbnailUrl: '',
+      uploadDate: getMetadata('publishdate') ? new Date(getMetadata('publishdate')) : new Date(getMetadata('published-time')),
+    },
   };
-
-  /*srcObj.forEach((obj) => {
-    data.mainEntity.push(addPerformerstoWebinar(
+  srcObj.forEach(() => {
+    data.performer.push(addPerformerstoWebinar(
       'Person',
       '',
       '',
       '',
       '',
     ));
-  });*/
+  });
   setJsonLd(data, 'Collection');
 }
-
