@@ -1,0 +1,3 @@
+.product-header-wrapper :is(.block) {
+  display: block
+}

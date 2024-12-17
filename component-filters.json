@@ -47,7 +47,9 @@
       "downloads",
       "elouqa-form",
       "video-transcript",
-      "cta-banner"
+      "cta-banner",
+      "header-notification-banner",
+      "product-header"
     ]
   },
   {
