@@ -204,6 +204,17 @@ function addPerformerstoWebinar(type, name, jobTitle, image, description) {
   };
 }
 
+function addVideotoWebinar(type, name, description, contentUrl, thumbnailUrl, uploadDate) {
+  return {
+    '@type': type,
+    name,
+    description,
+    contentUrl,
+    thumbnailUrl,
+    uploadDate,
+  };
+}
+
 export function buildCollectionSchema(srcObj) {
   const data = {
     '@context': 'https://schema.org',
@@ -253,42 +264,49 @@ export function buildCrossSellCollectionSchema() {
   setJsonLd(data, 'Collection');
 }
 
-export function buildOndemandWebinarSchema(srcObj) {
-  const videoEl = document.querySelector('iframe');
-  const data = {
-    '@context': 'https://schema.org',
-    '@type': 'Event',
-    eventAttendanceMode: 'https://schema.org/OnlineEventAttendanceMode',
-    name: document.querySelector('h1') ? document.querySelector('h1').textContent : getMetadata('og:title'),
-    description: getMetadata('description'),
-    image: getMetadata('og:image'),
-    location: {
-      '@type': 'VirtualLocation',
-      url: `https://www.abcam.com${window.location.pathname}`,
-    },
-    performer: [],
-    organizer: {
-      '@type': 'Organization',
-      name: 'Abcam',
-      url: 'https://www.abcam.com/en-us',
-    },
-    recordedIn: {
-      '@type': 'VideoObject',
-      name: videoEl?.title,
-      description: '',
-      contentUrl: videoEl?.src,
-      thumbnailUrl: '',
-      uploadDate: getMetadata('publishdate') ? new Date(getMetadata('publishdate')) : new Date(getMetadata('published-time')),
-    },
-  };
-  srcObj.forEach(() => {
-    data.performer.push(addPerformerstoWebinar(
-      'Person',
-      '',
-      '',
-      '',
-      '',
-    ));
-  });
-  setJsonLd(data, 'Collection');
+export function buildOndemandWebinarSchema({ srcObj, custom = {} }) {
+  if (typeof custom === 'object' && Object.keys(custom).length > 0) {
+    const schemaObj = JSON.parse(document.querySelector('[data-name="Collection"]')?.textContent);
+    custom.videoArr.forEach((obj) => {
+      schemaObj.recordedIn.push(addVideotoWebinar(
+        'VideoObject',
+        obj.title,
+        '',
+        obj.href,
+        '',
+        getMetadata('publishdate') ? new Date(getMetadata('publishdate')) : new Date(getMetadata('published-time')),
+      ));
+    });
+    setJsonLd(schemaObj, 'Collection');
+  } else {
+    const data = {
+      '@context': 'https://schema.org',
+      '@type': 'Event',
+      eventAttendanceMode: 'https://schema.org/OnlineEventAttendanceMode',
+      name: document.querySelector('h1') ? document.querySelector('h1').textContent : getMetadata('og:title'),
+      description: getMetadata('description'),
+      image: getMetadata('og:image'),
+      location: {
+        '@type': 'VirtualLocation',
+        url: `https://www.abcam.com${window.location.pathname}`,
+      },
+      performer: [],
+      organizer: {
+        '@type': 'Organization',
+        name: 'Abcam',
+        url: 'https://www.abcam.com/en-us',
+      },
+      recordedIn: [],
+    };
+    srcObj.forEach(() => {
+      data.performer.push(addPerformerstoWebinar(
+        'Person',
+        '',
+        '',
+        '',
+        '',
+      ));
+    });
+    setJsonLd(data, 'Collection');
+  }
 }

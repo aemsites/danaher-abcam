@@ -19,7 +19,7 @@ import {
   div, span, button, iframe, p, img, li, label, input, ul, a, h3,
 } from './dom-builder.js';
 // eslint-disable-next-line import/prefer-default-export
-import { buildVideoSchema } from './schema.js';
+import { buildOndemandWebinarSchema, buildVideoSchema } from './schema.js';
 import ffetch from './ffetch.js';
 import { yetiToPWSurlsMap } from './pws.js';
 
@@ -532,7 +532,9 @@ function isValidUrl(string) {
 }
 
 function decorateGenericVideo(main) {
+  let videoArr = [];
   main.querySelectorAll(".section a[title='video']").forEach((link) => {
+    videoArr.push({ href: link.href, title: link.textContent });
     const linkContainer = link.parentElement;
     linkContainer.classList.add('h-full');
     let embedURL;
@@ -571,6 +573,7 @@ function decorateGenericVideo(main) {
       ele.classList.remove('hidden');
     });
   });
+  buildOndemandWebinarSchema({ srcObj: null, custom: { videoArr } });
 }
 
 async function decorateVideo(main) {
