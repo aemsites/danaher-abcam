@@ -347,7 +347,7 @@ const fileMappings = [
     content: './eds/blocks/product-storage-info/product-storage-info.js',
     output: './eds/blocks/product-storage-info/product-storage-info.css',
     wrapper: 'product-storage-info-wrapper',
-  },  
+  },
 ];
 
 const watch = process.argv[2];
