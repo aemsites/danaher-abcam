@@ -145,6 +145,31 @@
   line-height: 1.25rem !important
 }
 
+.product-storage-info-wrapper :is(.\!text-base) {
+  font-size: 1rem !important;
+  line-height: 1.5rem !important
+}
+
+.product-storage-info-wrapper :is(.\!text-xs\/6) {
+  font-size: 0.75rem !important;
+  line-height: 1.5rem !important
+}
+
+.product-storage-info-wrapper :is(.\!text-xs) {
+  font-size: 0.75rem !important;
+  line-height: 1rem !important
+}
+
+.product-storage-info-wrapper :is(.\!text-xs\/5) {
+  font-size: 0.75rem !important;
+  line-height: 1.25rem !important
+}
+
+.product-storage-info-wrapper :is(.\!text-xs\/4) {
+  font-size: 0.75rem !important;
+  line-height: 1rem !important
+}
+
 .product-storage-info-wrapper :is(.font-bold) {
   font-weight: 700
 }
@@ -161,6 +186,10 @@
   font-weight: 600 !important
 }
 
+.product-storage-info-wrapper :is(.\!font-normal) {
+  font-weight: 400 !important
+}
+
 .product-storage-info-wrapper :is(.leading-7) {
   line-height: 1.75rem
 }
@@ -171,6 +200,14 @@
 
 .product-storage-info-wrapper :is(.leading-5) {
   line-height: 1.25rem
+}
+
+.product-storage-info-wrapper :is(.\!leading-6) {
+  line-height: 1.5rem !important
+}
+
+.product-storage-info-wrapper :is(.\!leading-5) {
+  line-height: 1.25rem !important
 }
 
 .product-storage-info-wrapper :is(.tracking-wider) {
