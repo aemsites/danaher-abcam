@@ -54,8 +54,9 @@ export default function decorate(block) {
   block.append(mainContainer);
   block.append(
     hr({
-    class: 'h-px my-2 bg-interactive-grey-active mb-4',
-  }));
+      class: 'h-px my-2 bg-interactive-grey-active mb-4',
+    }),
+  );
   const childDiv = block.querySelectorAll('div');
   childDiv.forEach((divEl) => {
     if (!divEl.innerHTML.trim()) {
