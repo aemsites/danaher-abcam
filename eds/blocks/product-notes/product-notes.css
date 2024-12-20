@@ -1,0 +1,33 @@
+.product-notes-wrapper :is(.my-2) {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem
+}
+
+.product-notes-wrapper :is(.mb-4) {
+  margin-bottom: 1rem
+}
+
+.product-notes-wrapper :is(.mr-2) {
+  margin-right: 0.5rem
+}
+
+.product-notes-wrapper :is(.block) {
+  display: block
+}
+
+.product-notes-wrapper :is(.h-px) {
+  height: 1px
+}
+
+.product-notes-wrapper :is(.pl-5) {
+  padding-left: 1.25rem
+}
+
+.product-notes-wrapper :is(.text-\[\#378189\]) {
+  --tw-text-opacity: 1;
+  color: rgb(55 129 137 / var(--tw-text-opacity))
+}
+
+.product-notes-wrapper :is(.hover\:underline:hover) {
+  text-decoration-line: underline
+}
