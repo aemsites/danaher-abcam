@@ -29,9 +29,8 @@ export default function decorate(block) {
       <p>Upon delivery aliquot</p>
     </div>
   </div>`;
-  const storageInfo = document.querySelector('h2');
   const storageH6El = document.querySelectorAll('h6');
-  const storageH6Div = div({ class: 'p-4 pl-0 md:ml-2' });
+  const storageH6Div = div({ class: 'p-4 pl-0' });
   storageH6El.forEach((heading) => {
     applyClasses(heading, '!text-xs !font-normal !leading-5 text-[#65797C]');
     storageH6Div.appendChild(heading);
@@ -50,13 +49,7 @@ export default function decorate(block) {
   block.prepend(hr({
     class: 'h-px my-2 bg-interactive-grey-active mb-4',
   }));
-  block.append(storageInfo);
   block.append(mainContainer);
-  block.append(
-    hr({
-      class: 'h-px my-2 bg-interactive-grey-active mb-4',
-    }),
-  );
   const childDiv = block.querySelectorAll('div');
   childDiv.forEach((divEl) => {
     if (!divEl.innerHTML.trim()) {
