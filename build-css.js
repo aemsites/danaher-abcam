@@ -347,7 +347,7 @@ const fileMappings = [
     content: './eds/blocks/product-notes/product-notes.js',
     output: './eds/blocks/product-notes/product-notes.css',
     wrapper: 'product-notes-wrapper',
-  },  
+  },
 ];
 
 const watch = process.argv[2];

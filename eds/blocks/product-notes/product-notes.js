@@ -1,3 +1,5 @@
+import { div, hr } from '../../scripts/dom-builder.js';
+
 export default function decorate(block) {
   block.innerHTML = `<div class="product-notes-block">
     <div><h2>Notes</h2></div>
@@ -9,4 +11,17 @@ export default function decorate(block) {
       <p>Abcam antibodies are extensively validated in a wide range of species and applications, so please check the reagent specifications meet your scientific needs before purchasing. If you have any questions or bespoke requirements, simply visit the Contact Us page to send us an inquiry or contact our Support Team ahead of purchase.</p>
     </div>    
   </div>`;
+  const storageNotes = block.querySelector('h2');
+  const storagePEl = div();
+  block.prepend(
+    hr({
+      class: 'h-px my-2 bg-interactive-grey-active mb-4',
+    }),
+  );
+  block.append(storageNotes);
+  block.querySelectorAll('p').forEach((p) => {
+    p.classList.add(...'mb-2 text-base font-normal'.split(' '));
+    storagePEl.appendChild(p);
+  });
+  block.append(storagePEl);
 }
