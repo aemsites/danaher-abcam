@@ -759,7 +759,7 @@ function decorateCartPopUp(block) {
           ),
           button(
             { class: 'quick-add mt-2 w-full text-sm racking-[.0125rem] px-5 py-2.5 flex justify-center gap-x-2 focus:outline-none rounded-full font-semibold text-white bg-[#378189] hover:bg-[#2a5f65]' },
-            span({ class: 'plus-icon icon icon-plus' }),
+            span({ class: 'plus-icon icon icon-white-plus' }),
             span({ class: 'font-semibold text-white' }, 'Quick add'),
           ),
         ),
