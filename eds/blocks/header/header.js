@@ -6,7 +6,6 @@ import {
 import { decorateIcons } from '../../scripts/aem.js';
 import { applyClasses } from '../../scripts/scripts.js';
 import countriesAndCodes from '../../scripts/country-list.js';
-import cartResponse from './cartresponse.js';
 
 function getCookie(name) {
   const match = document.cookie.match(new RegExp(`(^| )${name}=([^;]+)`));
@@ -466,7 +465,7 @@ function buildSearchBlock(headerBlock) {
     ),
     div(
       { class: 'cart-dropdown relative w-[58.631px] lg:w-[74px] h-[32px] flex items-center justify-center cursor-pointer border border-white rounded-2xl relative' },
-      input({ type: 'checkbox', id: 'cart-toggle',class: 'hidden peer' }),
+      input({ type: 'checkbox', id: 'cart-toggle', class: 'hidden peer' }),
       div(
         { class: 'focus-visible:outline-none focus-visible:shadow-interactiveElement' },
         button(
@@ -627,92 +626,158 @@ function handleScroll() {
   }
 }
 async function decorateCartItems(cartMainContainer) {
+  const shoppingBaskedId = localStorage.getItem('shoppingBasketId')?.replace(/"/g, '');
+  const lastSelectedCountry = getCookie('NEXT_COUNTRY');
+  const selectedCountry = (lastSelectedCountry !== null) ? lastSelectedCountry : 'US';
+  const host = window.location.host === 'www.abcam.com' ? 'proxy-gateway.abcam.com' : 'proxy-gateway-preprod.abcam.com';
+  let cartRes;
+
+  const headers = {
+    'x-abcam-app-id': 'b2c-public-website',
+    'Content-Type': 'application/json',
+  };
+
+  const url = `https://${host}/ecommerce/rest/v1/basket/${shoppingBaskedId}?country=${selectedCountry.toUpperCase()}`;
+  fetch(url, {
+    method: 'GET',
+    headers,
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      if (data.items.length > 0) {
+        cartRes = data;
+        const cartCount = document.querySelector('.cart-count');
+        cartCount?.classList.remove('hidden');
+        cartCount.innerText = cartRes.items.length;
+      } else {
+        document.querySelector('.cart-count')?.classList?.add('hidden');
+      }
+      // cartButton.addEventListener('click', () => {
+      //   window.location.href = `https://${hostName}/en-us/shopping-basket/${shoppingBaskedId}?country=${selectedCountry.toUpperCase()}`;
+      // });
+    })
+    .catch((error) => {
+    //  eslint-disable-next-line no-console
+      console.error('There was an error making the API call:', error);
+    });
+
   const cartItemsContainer = cartMainContainer.querySelector('.cart-items-container');
-  const cartRes = (await cartResponse());
-  const cartCount = document.querySelector('.cart-count')
-  cartCount?.classList.remove('hidden');
-  cartCount.innerText = cartRes.items.length;
-  cartRes.items.forEach(item => {
-    const itemContainer = div({class:'my-5 font-normal'},
-      div({class: 'font-semibold lowercase text-xs text-[#65797C] tracking-[.03125rem]'},`${item.assetDefinitionNumber}`),
-      div({class: 'flex text-sm tracking-[.03125rem]'},
-        span({class:'w-2/3 py-[2px]'},`${item.lineDescription}`),
-        span({class: 'ml-auto'})
+  cartRes.items.forEach((item) => {
+    const itemContainer = div(
+      { class: 'my-5 font-normal' },
+      div({ class: 'font-semibold lowercase text-xs text-[#65797C] tracking-[.03125rem]' }, `${item.assetDefinitionNumber}`),
+      div(
+        { class: 'flex text-sm tracking-[.03125rem]' },
+        span({ class: 'w-2/3 py-[2px]' }, `${item.lineDescription}`),
+        span({ class: 'ml-auto' }),
       ),
-      div({class: 'flex text-xs'},
-        span({class:'mr-3'},
-          span({class:'mr-1 font-semibold'},'Size:'),
-          span({class: ''},`${item.size.value} ${item.size.unit}`),
+      div(
+        { class: 'flex text-xs' },
+        span(
+          { class: 'mr-3' },
+          span({ class: 'mr-1 font-semibold' }, 'Size:'),
+          span({ class: '' }, `${item.size.value} ${item.size.unit}`),
         ),
-        span({class:'mr-1 font-semibold'}, 'Qty:'),
-        span({class:'item-quantity'},item.quantity),
-        span({class: 'ml-auto cursor-pointer'})
-      )
-    )
+        span({ class: 'mr-1 font-semibold' }, 'Qty:'),
+        span({ class: 'item-quantity' }, item.quantity),
+        span({ class: 'ml-auto cursor-pointer icon icon-bin' }),
+      ),
+    );
     cartItemsContainer.append(itemContainer);
   });
 }
 
 function decorateCartPopUp(block) {
-  const lastSelectedCountry = getCookie('NEXT_COUNTRY');
-  const hostName = window.location.host;
   const shoppingBaskedId = localStorage.getItem('shoppingBasketId')?.replace(/"/g, '');
+  const lastSelectedCountry = getCookie('NEXT_COUNTRY');
   const selectedCountry = (lastSelectedCountry !== null) ? lastSelectedCountry : 'US';
   const host = window.location.host === 'www.abcam.com' ? 'proxy-gateway.abcam.com' : 'proxy-gateway-preprod.abcam.com';
+
   let cartMainContainer;
-  //shoppingBaskedId !== null && shoppingBaskedId
-  if (true ) {
-    cartMainContainer = div({class: 'cart-popup-main-container max-[376px]:-left-36 absolute hidden peer-checked:block top-full z-50 right-0 mt-1.5 w-[320px] md:w-[368px]'},
-      div({class: 'shadow-2xl p-4 font-semibold bg-white rounded-xl text-black'},
-        div({class: 'mb-4 text-xl'}, 'Inquiry basket'),
-        hr({class: 'mt-4 -mx-4'}),
-        div ({class: 'cart-items-container overflow-y-auto max-h-[376px]'}),
-        hr({class: 'mt-4 -mx-4'}),
-        div({class: 'flex flex-wrap mt-1'},
-          button({class: 'rounded-3xl mt-3 w-full text-sm tracking-[.0125rem] px-5 py-2.5'},
-            span({class: 'font-semibold'}, 'Go to basket')
+  // shoppingBaskedId !== null && shoppingBaskedId
+  if (shoppingBaskedId !== null && shoppingBaskedId) {
+    cartMainContainer = div(
+      { class: 'cart-popup-main-container max-[376px]:-left-36 absolute hidden peer-checked:block top-full z-50 right-0 mt-1.5 w-[320px] md:w-[368px]' },
+      div(
+        { class: 'shadow-2xl p-4 font-semibold bg-white rounded-xl text-black' },
+        div({ class: 'mb-4 text-xl' }, 'Inquiry basket'),
+        hr({ class: 'mt-4 -mx-4' }),
+        div({ class: 'cart-items-container overflow-y-auto max-h-[376px]' }),
+        hr({ class: 'mt-4 -mx-4' }),
+        div(
+          { class: 'flex flex-wrap mt-1' },
+          button(
+            { class: 'go-to-basket rounded-3xl mt-3 w-full text-sm tracking-[.0125rem] px-5 py-2.5' },
+            span({ class: 'font-semibold' }, 'Go to basket'),
           ),
-          button({class: 'mt-2 w-full text-sm racking-[.0125rem] px-5 py-2.5 focus:outline-none rounded-full font-semibold text-white bg-[#378189] hover:bg-[#2a5f65]'},
-            span({class:'font-semibold text-white'}, 'Contact distributor')
-          )
+          button(
+            { class: 'contact-distributor mt-2 w-full text-sm racking-[.0125rem] px-5 py-2.5 focus:outline-none rounded-full font-semibold text-white bg-[#378189] hover:bg-[#2a5f65]' },
+            span({ class: 'font-semibold text-white' }, 'Contact distributor'),
+          ),
         ),
-        hr({class: 'my-4 -mx-4'}),
-        div({class: 'flex flex-wrap'},
-          button({class: 'mt-2 w-full text-sm tracking-[.0125rem] px-5 py-2.5 focus:outline-none rounded-full font-semibold bg-[#F2F3F3] hover:bg-[#E6E7E7]'},
-            span({class:'font-semibold text-black'}, 'Quick add')
-          )
-        )
-      )
-    )
+        hr({ class: 'my-4 -mx-4' }),
+        div(
+          { class: 'flex flex-wrap' },
+          button(
+            { class: 'mt-2 w-full text-sm tracking-[.0125rem] px-5 py-2.5 flex justify-center gap-x-2 focus:outline-none rounded-full font-semibold bg-[#F2F3F3] hover:bg-[#E6E7E7]' },
+            span({ class: 'icon icon-plus' }),
+            span({ class: 'font-semibold text-black' }, 'Quick add'),
+          ),
+        ),
+      ),
+    );
+    cartMainContainer.querySelector('.go-to-basket')?.addEventListener('click', () => {
+      window.location.href = `https://${host}/en-us/shopping-basket/${shoppingBaskedId}?country=${selectedCountry.toUpperCase()}`;
+    });
+    cartMainContainer.querySelector('.contact-distributor')?.addEventListener('click', () => {
+      window.location.href = `https://${host}/en-us/inquiry/${shoppingBaskedId}`;
+    });
     decorateCartItems(cartMainContainer);
   } else {
-      cartMainContainer = div({class: 'cart-popup-main-container absolute hidden peer-checked:block top-full z-50 right-0 mt-1.5 w-[368px]'},
-      div({class: 'shadow-2xl p-4 font-semibold bg-white rounded-xl text-black'},
-        div({class: 'mb-4 text-xl'}, 'Inquiry basket'),
-        hr({class: 'mt-4 -mx-4'}),
-        div({class: 'font-normal'},
-          div( {class: 'flex'},
-            span( {class: 'mx-auto my-7 icon icon-orders' })
+    cartMainContainer = div(
+      { class: 'cart-popup-main-container absolute hidden cursor-default peer-checked:block top-full z-50 right-0 mt-1.5 w-[368px]' },
+      div(
+        { class: 'shadow-2xl p-4 font-semibold bg-white rounded-xl text-black' },
+        div({ class: 'mb-4 text-xl' }, 'Inquiry basket'),
+        hr({ class: 'mt-4 -mx-4' }),
+        div(
+          { class: 'font-normal' },
+          div(
+            { class: 'flex' },
+            span({ class: 'mx-auto my-7 icon icon-empty-cart-basket' }),
           ),
-          div({class: 'text-center whitespace-pre-line text-xs text-[#65797C] tracking-[.03125rem]'}, 'Start adding products to your basket to contact your distributor'),
-          hr({class: 'mt-4 -mx-4'}),
-          button({class: 'rounded-3xl mt-3 w-full text-sm tracking-[.0125rem] px-5 py-2.5'},
-            span({class: 'font-semibold'}, 'Go to inquiry basket')
+          div({ class: 'text-center whitespace-pre-line text-xs text-[#65797C] tracking-[.03125rem]' }, 'Start adding products to your basket to contact your distributor'),
+          hr({ class: 'mt-4 -mx-4' }),
+          button(
+            { class: 'inquiry-basket rounded-3xl mt-3 w-full text-sm tracking-[.0125rem] px-5 py-2.5' },
+            span({ class: 'font-semibold' }, 'Go to inquiry basket'),
           ),
-          button({class: 'mt-2 w-full text-sm racking-[.0125rem] px-5 py-2.5 focus:outline-none rounded-full font-semibold text-white bg-[#378189] hover:bg-[#2a5f65]'},
-            span({class:'plus-icon'}),
-            span({class:'font-semibold text-white'}, 'Quick add')
-          )
+          button(
+            { class: 'quick-add mt-2 w-full text-sm racking-[.0125rem] px-5 py-2.5 flex justify-center gap-x-2 focus:outline-none rounded-full font-semibold text-white bg-[#378189] hover:bg-[#2a5f65]' },
+            span({ class: 'plus-icon icon icon-plus' }),
+            span({ class: 'font-semibold text-white' }, 'Quick add'),
+          ),
         ),
-        div({class:'text-center font-normal text-sm text-black tracking-[0.025rem] px-12 mt-5'},
-          div('Are you an Abcam distributor?   ',
-            a({class: 'underline cursor-pointer text-[#378189]', href:'https://www.abcam.com/auth/login?redirect=https://www.abcam.com/en-us'},'Sign in'), ' to complete your purchase'
-          )
-        )
-      )
+        div(
+          { class: 'text-center font-normal text-sm text-black tracking-[0.025rem] px-12 mt-5' },
+          div(
+            'Are you an Abcam distributor?   ',
+            a({ class: 'underline cursor-pointer text-[#378189]', href: 'https://www.abcam.com/auth/login?redirect=https://www.abcam.com/en-us' }, 'Sign in'),
+            ' to complete your purchase',
+          ),
+        ),
+      ),
     );
   }
   decorateIcons(cartMainContainer);
+  cartMainContainer.querySelector('.inquiry-basket')?.addEventListener('click', () => {
+    window.location.href = `https://${host}/en-us/shopping-basket/?country=${selectedCountry.toUpperCase()}`;
+  });
   block.querySelector('.cart-dropdown')?.append(cartMainContainer);
 }
 export default async function decorate(block) {
@@ -746,8 +811,7 @@ export default async function decorate(block) {
         if (!dropdownLabel.contains(event.target) && dropdownLabel.previousElementSibling.checked) {
           dropdownLabel.click();
         }
-        if(!cartBtn.contains(event.target) && isCartOpen.checked)
-          isCartOpen.click();
+        if (!cartBtn.contains(event.target) && isCartOpen.checked) isCartOpen.click();
         countrySearch?.classList.toggle('hidden');
         const searchValue = block.querySelector('#country-search-input');
         if (searchValue) searchValue.value = '';
@@ -781,8 +845,7 @@ export default async function decorate(block) {
       } else {
         dropdownLabel.querySelector('.user-icon-dd').style.transform = 'rotate(0deg)';
       }
-      if(!cartBtn.contains(event.target) && isCartOpen.checked)
-        isCartOpen.click();
+      if (!cartBtn.contains(event.target) && isCartOpen.checked) isCartOpen.click();
     });
 
     // Cart icon

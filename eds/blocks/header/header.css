@@ -387,6 +387,10 @@
   cursor: pointer
 }
 
+.header-wrapper :is(.cursor-default) {
+  cursor: default
+}
+
 .header-wrapper :is(.select-none) {
   -webkit-user-select: none;
      -moz-user-select: none;
