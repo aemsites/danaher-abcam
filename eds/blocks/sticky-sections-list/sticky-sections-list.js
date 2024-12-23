@@ -74,7 +74,7 @@ export default function decorate(block) {
       h2Eles.forEach((heading) => {
         const headingTop = heading.offsetTop;
         const headingHeight = heading.offsetHeight;
-        if (window.scrollY >= (headingTop - headingHeight) - -65 / 3) {
+        if (window.scrollY >= (headingTop - headingHeight) - 70 / 3) {
           lastCrossedHeadingId = heading.id;
         }
       });
