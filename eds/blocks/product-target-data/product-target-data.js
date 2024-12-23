@@ -9,14 +9,14 @@ import { applyClasses } from '../../scripts/scripts.js';
 
 export default async function decorate(block) {
   block.innerHTML = `<div class="product-target-block ">
-    <h3>Target Data</h3>
-    <div>
-      <a href="/en-us/target/rbfox3/27304" target="_blank">See full target information RBFOX3</a>
-    </div>
-    <div>
-      <strong>Function</strong> 
-      <div>Pre-mRNA alternative splicing regulator. Regulates alternative splicing of RBFOX2 to enhance the production of mRNA species that are targeted for nonsense-mediated decay (NMD).</div>
-    </div>
+      <h3>Target Data</h3>
+      <div>
+          <a href="/en-us/target/mki67/27304" target="_blank">See full target information MKI67</a>
+      </div>
+      <div>
+          <strong>Function</strong> 
+          <div>Required to maintain individual mitotic chromosomes dispersed in the cytoplasm following nuclear envelope disassembly (PubMed:27362226). Associates with the surface of the mitotic chromosome, the perichromosomal layer, and covers a substantial fraction of the chromosome surface (PubMed:27362226). Prevents chromosomes from collapsing into a single chromatin mass by forming a steric and electrostatic charge barrier: the protein has a high net electrical charge and acts as a surfactant, dispersing chromosomes and enabling independent chromosome motility (PubMed:27362226). Binds DNA, with a preference for supercoiled DNA and AT-rich DNA (PubMed:10878551). Does not contribute to the internal structure of mitotic chromosomes (By similarity). May play a role in chromatin organization (PubMed:24867636). It is however unclear whether it plays a direct role in chromatin organization or whether it is an indirect consequence of its function in maintaining mitotic chromosomes dispersed (Probable).</div>
+      </div>
   </div>`;
   const targetContainer = div({ class: 'py-2 flex flex-col' });
   const h3El = block.querySelector('h3');
