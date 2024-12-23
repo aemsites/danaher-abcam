@@ -309,7 +309,8 @@ const TEMPLATE_LIST = [
   'guide',
   'guides-hub',
   'topic',
-  'cross-sell-hub'
+  'cross-sell-hub',
+  'support'
 ];
 
 async function decorateTemplates(main) {
@@ -405,6 +406,30 @@ function decorateTopicPage(main) {
     });
     sectionEl?.prepend(divEl);
     sectionEl?.append(rightSideElements);
+  }
+}
+
+
+function decorateSupportPage(main) {
+  const sectionEl = main.querySelector(':scope > div.section.chapter-links-container');
+  if (sectionEl) {
+    const toBeRemoved = ['chapter-links-wrapper'];
+    const rightSideElements = div({ class: 'w-full pr-0 lg:pr-8' });
+    const sticky = div({ class: 'sticky top-20 space-y-12 pt-6' });
+    const divEl = div({ class: 'ml-0 lg:ml-4 xl:ml-4 min-w-60 lg:max-w-72 flex flex-col gap-y-2 z-20' }, sticky);
+
+    toBeRemoved.forEach((ele) => {
+      const existingEl = sectionEl?.querySelector(`.${ele}`);
+      sticky.append(existingEl);
+    });
+    Array.from(sectionEl?.children).forEach((element) => {
+      if (!toBeRemoved.includes(element.classList[0])) {
+        rightSideElements.append(element);
+      }
+    });
+    sectionEl?.prepend(divEl);
+    sectionEl?.append(rightSideElements);
+    // setJumpToSectionPosition(main);
   }
 }
 
@@ -764,8 +789,8 @@ export function decorateMain(main) {
   decorateStickyRightNav(main);
   decorateStoryPage(main);
   decorateGuidePage(main);
-  decorateTopicPage(main) 
-  
+  decorateTopicPage(main);
+  decorateSupportPage(main) 
 }
 
 export const applyClasses = (element, classes) => element?.classList.add(...classes.split(' '));
