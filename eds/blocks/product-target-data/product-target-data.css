@@ -1,3 +1,11 @@
+.product-target-data-wrapper :is(.m-0) {
+  margin: 0px
+}
+
+.product-target-data-wrapper :is(.m-2) {
+  margin: 0.5rem
+}
+
 .product-target-data-wrapper :is(.my-2) {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem
@@ -13,6 +21,18 @@
 
 .product-target-data-wrapper :is(.mb-4) {
   margin-bottom: 1rem
+}
+
+.product-target-data-wrapper :is(.mr-0) {
+  margin-right: 0px
+}
+
+.product-target-data-wrapper :is(.mb-6) {
+  margin-bottom: 1.5rem
+}
+
+.product-target-data-wrapper :is(.mt-2) {
+  margin-top: 0.5rem
 }
 
 .product-target-data-wrapper :is(.block) {
@@ -49,6 +69,14 @@
   align-items: center
 }
 
+.product-target-data-wrapper :is(.p-2) {
+  padding: 0.5rem
+}
+
+.product-target-data-wrapper :is(.p-0) {
+  padding: 0px
+}
+
 .product-target-data-wrapper :is(.py-2) {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem
@@ -57,6 +85,14 @@
 .product-target-data-wrapper :is(.text-lg) {
   font-size: 1.125rem;
   line-height: 1.75rem
+}
+
+.product-target-data-wrapper :is(.font-normal) {
+  font-weight: 400
+}
+
+.product-target-data-wrapper :is(.font-bold) {
+  font-weight: 700
 }
 
 .product-target-data-wrapper :is(.text-\[\#378189\]) {
