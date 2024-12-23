@@ -348,6 +348,11 @@ const fileMappings = [
     output: './eds/blocks/product-header/product-header.css',
     wrapper: 'product-header-wrapper',
   },
+  {
+    content: './eds/blocks/product-publications-block/product-publications-block.js',
+    output: './eds/blocks/product-publications-block/product-publications-block.css',
+    wrapper: 'product-publications-block-wrapper',
+  },
 ];
 
 const watch = process.argv[2];
