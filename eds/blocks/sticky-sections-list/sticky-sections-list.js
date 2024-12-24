@@ -3,8 +3,7 @@ import {
   span,
 } from '../../scripts/dom-builder.js';
 import { applyClasses } from '../../scripts/scripts.js';
-import { decorateIcons } from '../../scripts/aem.js';
-import { getMetadata } from '../../scripts/aem.js';
+import { decorateIcons,getMetadata} from '../../scripts/aem.js';
 
 export default function decorate(block) {
   const chevIcon = span({ class: 'icon icon-chevron-down shrink-0 ml-auto transition' });
