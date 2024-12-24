@@ -344,9 +344,9 @@ const fileMappings = [
     output: './eds/templates/cross-sell-hub/cross-sell-hub.css',
   },
   {
-    content: './eds/blocks/product-publications/product-publications.js',
-    output: './eds/blocks/product-publications/product-publications.css',
-    wrapper: 'product-publications-wrapper',
+    content: './eds/blocks/product-publications-block/product-publications-block.js',
+    output: './eds/blocks/product-publications-block/product-publications-block.css',
+    wrapper: 'product-publications-block-wrapper',
   },
 ];
 

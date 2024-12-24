@@ -1,0 +1,3 @@
+.product-publications-block-wrapper :is(.block) {
+  display: block
+}
