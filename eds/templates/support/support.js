@@ -1,5 +1,5 @@
 import { buildBlock } from '../../scripts/aem.js';
-import { div, } from '../../scripts/dom-builder.js';
+import { div } from '../../scripts/dom-builder.js';
 
 export default async function buildAutoBlocks() {
   const main = document.querySelector('main');
@@ -9,7 +9,7 @@ export default async function buildAutoBlocks() {
   sectionMiddle.prepend(
     buildBlock('chapter-links', { elems: [] }),
   );
-   const jumpToSectionDiv = div(
+  const jumpToSectionDiv = div(
     buildBlock('sticky-sections-list', { elems: [] }),
   );
   const headerTitle = main.querySelector(':scope > div:nth-child(1)');
