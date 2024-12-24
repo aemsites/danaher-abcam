@@ -235,7 +235,7 @@
         @apply pt-8;
     }
 
-    .guide main .chapter-links-container, .topic main .related-articles-container, .pathways main .related-articles-container {
+    .guide main .chapter-links-container, .topic main .related-articles-container, .pathways main .related-articles-container, .support main .chapter-links-container {
         @apply lg:flex-row flex-col-reverse;
     }
 
