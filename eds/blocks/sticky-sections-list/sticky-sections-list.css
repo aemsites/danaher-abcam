@@ -6,28 +6,21 @@
   position: relative
 }
 
-.sticky-sections-list :is(.sticky) {
-  position: sticky
-}
-
 .sticky-sections-list :is(.right-0) {
   right: 0px
-}
-
-.sticky-sections-list :is(.top-0) {
-  top: 0px
 }
 
 .sticky-sections-list :is(.top-full) {
   top: 100%
 }
 
-.sticky-sections-list :is(.z-10) {
-  z-index: 10
-}
-
 .sticky-sections-list :is(.z-20) {
   z-index: 20
+}
+
+.sticky-sections-list :is(.mx-auto) {
+  margin-left: auto;
+  margin-right: auto
 }
 
 .sticky-sections-list :is(.ml-auto) {
@@ -58,6 +51,10 @@
   max-height: 100vh
 }
 
+.sticky-sections-list :is(.min-h-\[40px\]) {
+  min-height: 40px
+}
+
 .sticky-sections-list :is(.w-28) {
   width: 7rem
 }
@@ -68,6 +65,10 @@
 
 .sticky-sections-list :is(.w-full) {
   width: 100%
+}
+
+.sticky-sections-list :is(.max-w-7xl) {
+  max-width: 80rem
 }
 
 .sticky-sections-list :is(.shrink-0) {
@@ -112,18 +113,9 @@
   border-width: 1px
 }
 
-.sticky-sections-list :is(.\!border-b) {
-  border-bottom-width: 1px !important
-}
-
 .sticky-sections-list :is(.border-\[\#EAECEC\]) {
   --tw-border-opacity: 1;
   border-color: rgb(234 236 236 / var(--tw-border-opacity))
-}
-
-.sticky-sections-list :is(.border-b-\[\#D8D8D8\]) {
-  --tw-border-opacity: 1;
-  border-bottom-color: rgb(216 216 216 / var(--tw-border-opacity))
 }
 
 .sticky-sections-list :is(.border-opacity-5) {
@@ -158,14 +150,19 @@
   padding-right: 1.5rem
 }
 
+.sticky-sections-list :is(.px-7) {
+  padding-left: 1.75rem;
+  padding-right: 1.75rem
+}
+
 .sticky-sections-list :is(.py-3) {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem
 }
 
-.sticky-sections-list :is(.py-6) {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem
+.sticky-sections-list :is(.py-4) {
+  padding-top: 1rem;
+  padding-bottom: 1rem
 }
 
 .sticky-sections-list :is(.pt-5) {
@@ -233,8 +230,16 @@
     left: 0px
   }
 
+  .sticky-sections-list :is(.lg\:h-\[72px\]) {
+    height: 72px
+  }
+
   .sticky-sections-list :is(.lg\:\!w-20) {
     width: 5rem !important
+  }
+
+  .sticky-sections-list :is(.lg\:w-1\/2) {
+    width: 50%
   }
 
   .sticky-sections-list :is(.lg\:w-full) {
