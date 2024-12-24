@@ -1,11 +1,3 @@
-import {
-  div,
-  a,
-  h2,
-  ul,
-  li,
-} from '../../scripts/dom-builder.js';
-
 export default async function decorate(block) {
   block.innerHTML = `<div>
                       <div class="product-publications-block ">
