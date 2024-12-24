@@ -845,7 +845,7 @@ main .section .default-content-wrapper a {
   color: rgb(55 129 137 / var(--tw-text-opacity));
 }
 
-main .section:not(.no-section-padding, .title-card-container) {
+main .section:not(.no-section-padding, .title-card-container, .sticky-sections-list-container) {
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.5rem;
@@ -855,16 +855,26 @@ main .section:not(.no-section-padding, .title-card-container) {
 }
 
 @media (min-width: 1024px) {
-  main .section:not(.no-section-padding, .title-card-container) {
+  main .section:not(.no-section-padding, .title-card-container, .sticky-sections-list-container) {
     padding-left: 0px;
     padding-right: 0px;
   }
 }
 
 @media (min-width: 1280px) {
-  main .section:not(.no-section-padding, .title-card-container) {
+  main .section:not(.no-section-padding, .title-card-container, .sticky-sections-list-container) {
     max-width: 80rem;
   }
+}
+
+main .guides-middle-container .default-content-wrapper:first-child {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+main .topic-middle-container .default-content-wrapper:first-child {
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 main .section .back-navigation-wrapper {
@@ -2653,6 +2663,12 @@ main .section.downloads-container {
 .shadow {
   --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.shadow-\[0_6px_12px_0px_rgba\(7\2c 17\2c 18\2c 0\.12\)\] {
+  --tw-shadow: 0 6px 12px 0px rgba(7,17,18,0.12);
+  --tw-shadow-colored: 0 6px 12px 0px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
