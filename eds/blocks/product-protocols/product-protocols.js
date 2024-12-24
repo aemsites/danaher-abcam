@@ -37,7 +37,7 @@ export default async function decorate(block) {
       li(a(
         { class: 'w-fit inline-flex items-center underline text-[#378189]', href },
         `${hrefText}`,
-        span({ class: 'icon icon-arrow-right-green size-4 ml-2 mt-2 text-bold' }),
+        span({ class: 'icon icon-arrow-right-green size-4 ml-2 mt-2' }),
       )),
     );
     protocolsContainer.append(ulEle);
