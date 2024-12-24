@@ -74,6 +74,10 @@ const fileMappings = [
     output: './eds/templates/product-category/product-category.css',
   },
   {
+    content: './eds/templates/support/support.js',
+    output: './eds/templates/support/support.css',
+  },
+  {
     content: './eds/blocks/mini-teasers/mini-teasers.js',
     output: './eds/blocks/mini-teasers/mini-teasers.css',
     wrapper: 'mini-teasers-wrapper',
