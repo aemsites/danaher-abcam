@@ -30,7 +30,7 @@ export default async function decorate(block) {
   targetContainer.append(a(
     { class: 'w-fit inline-flex items-center underline text-[#378189]', href },
     `${targetData}`,
-    span({ class: 'icon icon-arrow-right size-4 ml-2' }),
+    span({ class: 'icon icon-arrow-right-green size-4 ml-2 mt-2' }),
   ));
   decorateIcons(targetContainer);
   block.append(targetContainer);
