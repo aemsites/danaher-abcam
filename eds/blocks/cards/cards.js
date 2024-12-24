@@ -15,7 +15,7 @@ export default function decorate(block) {
     });
 
     const cardHeading = row.querySelector('h3');
-    cardHeading.classList.add(...'card-heading text-2xl pt-8 tracking-[-0.03em]'.split(' '));
+    cardHeading?.classList.add(...'card-heading text-2xl pt-8 tracking-[-0.03em]'.split(' '));
 
     const cardDescription = row.querySelector('p');
     if (cardDescription) {
