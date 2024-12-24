@@ -22,14 +22,14 @@ export default async function decorate(block) {
     </div>`;
   const protocolsContainer = div({ class: 'py-2 flex flex-col' });
   const h2El = block.querySelector('h2');
-  protocolsContainer.appendChild(h2El);  
+  protocolsContainer.appendChild(h2El);
   const protocolsPEl = block.querySelectorAll('p');
   protocolsPEl.forEach((para) => {
     applyClasses(para, 'font-normal');
     protocolsContainer.appendChild(para);
   });
   const liEle = block.querySelectorAll('li');
-  const ulEle = ul({ class: 'list-disc list-inside' });  
+  const ulEle = ul({ class: 'list-disc list-inside' });
   liEle.forEach((listItem) => {
     const href = listItem.querySelector('a').getAttribute('href');
     const hrefText = listItem.querySelector('a').textContent;
