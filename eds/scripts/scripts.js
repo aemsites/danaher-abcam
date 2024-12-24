@@ -445,7 +445,7 @@ function decorateSupportPage(main) {
     });
     sectionEl?.prepend(divEl);
     sectionEl?.append(rightSideElements);
-    // setJumpToSectionPosition(main);
+    setJumpToSectionPosition(main);
   }
 }
 
