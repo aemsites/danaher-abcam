@@ -4,12 +4,12 @@ import {
 } from '../../scripts/dom-builder.js';
 import { applyClasses } from '../../scripts/scripts.js';
 import { decorateIcons } from '../../scripts/aem.js';
+import { getMetadata } from '../../scripts/aem.js';
 
 export default function decorate(block) {
   const chevIcon = span({ class: 'icon icon-chevron-down shrink-0 ml-auto transition' });
-  const parentURL = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/'));
-  const currentPage = parentURL.split('/').pop();
-  const jumpToText = currentPage === 'support' ? 'QUESTION' : 'JUMP TO:';
+  const template = getMetadata('template');
+  const jumpToText = template === 'support' ? 'QUESTION' : 'JUMP TO:';
   const dropdownContainer = div(
     { class: 'dd-main-container mx-auto max-w-7xl lg:h-[72px] flex items-center relative px-7  py-4 font-semibold' },
     div({ class: 'jump-to-label text-[#65797c] text-sm w-28  md:!w-24 lg:!w-20' }, jumpToText),
