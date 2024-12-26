@@ -13,7 +13,7 @@ export default function decorate(block) {
             </div>
         </div>`;
   const h3El = block.querySelector('h3');
-  h3El.classList.add('mb-3');  
+  h3El.classList.add('mb-3');
   const notesLinks = block.querySelectorAll('a');
   notesLinks.forEach((link) => {
     link.classList.add('hover:underline', 'mr-2', 'text-[#378189]');
@@ -26,5 +26,5 @@ export default function decorate(block) {
     hr({
       class: 'h-px my-2 bg-interactive-grey-active mb-4',
     }),
-  );  
+  );
 }
