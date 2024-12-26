@@ -11,18 +11,18 @@ import { decorateIcons } from '../../scripts/aem.js';
 
 export default async function decorate(block) {
   block.innerHTML = `<div class="product-protocols-block protocols">
-    <div><h2>Product protocols</h2></div>
-      <div>
-        <p>For this product, it's our understanding that no specific protocols are required. You can:</p>
-        <ul>
-          <li><a href="/en-us/technical-resources/protocols">General protocols</a></li>            
-          <li><a href="/en-us/technical-resources/troubleshooting">Troubleshooting</a></li>
-        </ul>
-      </div>
-    </div>`;
+            <div><h3>Product protocols</h3></div>
+            <div>
+                <p>For this product, it's our understanding that no specific protocols are required. You can:</p>
+                <ul>
+                    <li><a href="/en-us/technical-resources/protocols">General protocols</a></li>            
+                    <li><a href="/en-us/technical-resources/troubleshooting">Troubleshooting</a></li>
+                </ul>
+            </div>
+        </div>`;
   const protocolsContainer = div({ class: 'py-2 flex flex-col' });
-  const h2El = block.querySelector('h2');
-  protocolsContainer.appendChild(h2El);
+  const h3El = block.querySelector('h3');
+  protocolsContainer.appendChild(h3El);
   const protocolsPEl = block.querySelectorAll('p');
   protocolsPEl.forEach((para) => {
     applyClasses(para, 'font-normal');
