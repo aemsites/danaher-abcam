@@ -155,6 +155,10 @@
         @apply grid grid-cols-3 gap-11 max-[799px]:grid-cols-1;
     }
 
+    main .section .cards-wrapper .cols-2 {
+        @apply grid grid-cols-2 gap-11 max-[426px]:grid-cols-1;
+    }
+
     main .section .mini-teasers-wrapper {
         @apply bg-black;
     }
@@ -231,7 +235,7 @@
         @apply font-normal text-gray-900 mb-2;
     }
 
-    .stories main .story-middle-container, .guide main .chapter-links-container, .topic main .related-articles-container, .protocols main .protocols-middle-container, .pathways main .pathways-middle-container {
+    .stories main .story-middle-container, .guide main .chapter-links-container, .topic main .related-articles-container, .protocols main .protocols-middle-container {
         @apply flex flex-col gap-x-0 lg:flex-row lg:gap-x-16;
     }
 
@@ -243,7 +247,7 @@
         @apply pt-8;
     }
 
-    .guide main .chapter-links-container, .topic main .related-articles-container, .pathways main .related-articles-container {
+    .guide main .chapter-links-container, .topic main .related-articles-container {
         @apply lg:flex-row flex-col-reverse;
     }
 
@@ -255,7 +259,7 @@
         @apply lg:px-6 xl:px-0 !pt-0;
     }
 
-    .guide .sticky-bottom, .topic .sticky-bottom, .pathways .sticky-bottom {
+    .guide .sticky-bottom, .topic .sticky-bottom {
         @apply sticky bottom-0 lg:hidden bg-transparent py-4 px-6 z-20;
     }
 
