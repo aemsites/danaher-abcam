@@ -2,8 +2,8 @@ import { div, hr } from '../../scripts/dom-builder.js';
 import { applyClasses } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
-  block.innerHTML = `<div class="product-storage-block">
-    <div><h2>Storage Information</h2></div>
+  block.innerHTML = `<div class="product-storage-block storage">
+    <div><h3>Storage</h3></div>
     <div>
       <h6>Storage information</h6>
       <p>Avoid freeze / thaw cycle</p>
