@@ -17,17 +17,19 @@ const searchBoxController = buildSearchBox(searchEngine, {
   },
 });
 export const searchResultListController = buildResultList(searchEngine, {
-  options: { fieldsToInclude: [
-    'productcode',
-    'producttags',
-    'reviewssummaryjson',
-    'target',
-    'reactivityapplications',
-    'reactivityspecies',
-    'hostspecies',
-    'imagesjson',
-    'numpublications'
-  ] },
+  options: {
+    fieldsToInclude: [
+      'productcode',
+      'producttags',
+      'reviewssummaryjson',
+      'target',
+      'reactivityapplications',
+      'reactivityspecies',
+      'hostspecies',
+      'imagesjson',
+      'numpublications',
+    ],
+  },
 });
 
 export const pagerController = buildPager(searchEngine);
