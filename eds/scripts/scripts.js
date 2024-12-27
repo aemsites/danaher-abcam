@@ -309,7 +309,8 @@ const TEMPLATE_LIST = [
   'guide',
   'guides-hub',
   'topic',
-  'cross-sell-hub'
+  'cross-sell-hub',
+  'cross-sell-detail',
 ];
 
 async function decorateTemplates(main) {
@@ -344,16 +345,20 @@ function buildAutoBlocks(main) {
 
 function setJumpToSectionPosition(main) {
   const sectionListContainer = main.querySelector('.sticky-sections-list-container');
-  const firstH2 = main.querySelector('h2');
+  const firstElement = document.querySelector('.tabs-wrapper') || document.querySelector('h2');
   sectionListContainer?.classList.add(...'hidden sticky top-0 bg-white shadow-[0_6px_12px_0px_rgba(7,17,18,0.12)] z-30'.split(' '));
   window.addEventListener('scroll', () => {
-    const rect = firstH2?.getBoundingClientRect();
+    const rect = firstElement?.getBoundingClientRect();
     if (rect && rect.top <= -72) {
         sectionListContainer?.classList.remove('hidden');
     } else {
         sectionListContainer?.classList.add('hidden');
     }
   });
+}
+
+function decorateCrossDetailPage(main) { 
+  setJumpToSectionPosition(main);
 }
 
 function decorateStoryPage(main) {
@@ -781,7 +786,7 @@ export function decorateMain(main) {
   decorateStoryPage(main);
   decorateGuidePage(main);
   decorateTopicPage(main) 
-  
+  decorateCrossDetailPage(main);
 }
 
 export const applyClasses = (element, classes) => element?.classList.add(...classes.split(' '));

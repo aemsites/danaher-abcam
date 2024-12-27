@@ -1,3 +1,37 @@
+.container {
+  width: 100%
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px
+  }
+}
+
 .sticky-sections-list :is(.absolute) {
   position: absolute
 }
@@ -244,6 +278,18 @@
 
   .sticky-sections-list :is(.lg\:w-full) {
     width: 100%
+  }
+
+  .sticky-sections-list :is(.lg\:\!w-24) {
+    width: 6rem !important
+  }
+
+  .sticky-sections-list :is(.lg\:\!w-28) {
+    width: 7rem !important
+  }
+
+  .sticky-sections-list :is(.lg\:\!w-40) {
+    width: 10rem !important
   }
 }
 
