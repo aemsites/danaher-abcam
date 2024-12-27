@@ -1,0 +1,8 @@
+main .section .timeline .default-content-wrapper {
+    padding-top: 0rem;
+  }
+
+  main .section .timeline .default-content-wrapper ul{
+    margin-left: 2px;
+    color: #a0aec0;
+  }  
