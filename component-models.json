@@ -387,7 +387,7 @@
       },
       {
         "component": "text",
-        "name": "StepNumber",
+        "name": "stepNumber",
         "value": "",
         "label": "Provide Step Number",
         "description": "Provide step number for the timeline (Applicable only when Timeline block is added)",
