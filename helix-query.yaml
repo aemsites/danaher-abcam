@@ -28,7 +28,7 @@ indices:
       - /en-us/technical-resources/protocols/query-index.json
       - /en-us/knowledge-center/query-index.json
       - /en-us/webinars/query-index.json
-    target: /en-us/related-articles-index.json
+    target: /eds/related-articles-index.json
     properties:
       title:
         select: head > meta[property="og:title"]
