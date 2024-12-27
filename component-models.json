@@ -2439,15 +2439,15 @@
         "options": [
           {
             "name": "Knowledge",
-            "value": "knowledge"
+            "value": "knowledge py-0.5 px-1 bg-gray-300"
           },
           {
             "name": "Warning",
-            "value": "warning"
+            "value": "warning py-0.5 px-1 bg-orange-50"
           },
           {
             "name": "Help",
-            "value": "help"
+            "value": "help py-0.5 px-1 bg-green-200"
           }
         ]
       },

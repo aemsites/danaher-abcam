@@ -1,0 +1,16 @@
+.timeline-notification :is(.block) {
+  display: block
+}
+
+.timeline-notification :is(.text-lg) {
+  font-size: 1.125rem;
+  line-height: 1.75rem
+}
+
+.timeline-notification :is(.leading-7) {
+  line-height: 1.75rem
+}
+
+.timeline-notification :is(.tracking-\[0\.3px\]) {
+  letter-spacing: 0.3px
+}
