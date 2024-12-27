@@ -24,7 +24,7 @@ export default async function decorate(block) {
       stepEl.prepend(stepIndexElement);
       stepEl.append(stepContent);
       block.appendChild(stepEl);
-      block.innerHTML+= '&nbsp;';
+      block.innerHTML += '&nbsp;';
     });
   }
 }
