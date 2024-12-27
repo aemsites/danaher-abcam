@@ -9,7 +9,7 @@ import { decorateIcons } from '../../scripts/aem.js';
 import { applyClasses } from '../../scripts/scripts.js';
 import countriesAndCodes from '../../scripts/country-list.js';
 import {
-  basicDetails, getCartItems, getCartType, quickAddLineItems,
+  basicDetails, deleteLineItem, getCartItems, getCartType, quickAddLineItems,
 } from './header-api-calls.js';
 
 function setOrUpdateCookie(name, value, days) {
@@ -657,7 +657,7 @@ function openQuickAddModal() {
           class: 'rounded-2xl p-1',
           onclick() { document.querySelector('.modal-container')?.classList.add('hidden'); },
         },
-        span({ class: 'icon icon-close' }),
+        span({ class: 'icon icon-cross-black' }),
       ),
     ),
     div(
@@ -685,6 +685,18 @@ function openQuickAddModal() {
           ),
         ),
         div({ class: 'relative' }, productSearchArea),
+      ),
+      div({class:'quick-add-success bg-[#E8FCF4] flex items-center justify-between rounded-[8px] mt-2 py-4 px-6 text-sm'},
+        span({class:'success-tick icon icon-check-green mr-4'}),
+        div({class:'success-message flex-grow text-[#0B5B3A]'}, '2 items have been added to your basket.'),
+        button({class:'success-close'},span({class:'icon icon-cross-green'})),
+      ),
+      div({class:'quick-add-failed bg-[#FAEAEB] flex items-center justify-between rounded-[8px] mt-2 py-4 px-6 mb-4 text-sm'},
+        span({class:'warning-alert icon icon-alert-red mr-4'}),
+        div({class:'flex-grow text-[#B22626]'},'items have not been added',
+          li({class:'Product(s) ab1234,ab12345 : Not found'})
+        ),
+        button({class:'fail-close'},span({class: 'icon icon-cross-red'}))
       ),
       div(
         { class: 'flex justify-end text-right mb-4' },
@@ -733,7 +745,7 @@ function openQuickAddModal() {
 function deleteCartItem(event) {
   const cartItem = event.target.parentElement.id;
   if (cartItem) {
-    deleteCartItem(cartItem);
+    deleteLineItem(cartItem);
   }
 }
 
