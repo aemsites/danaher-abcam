@@ -398,10 +398,17 @@
         "label": "Title"
       },
       {
-        "component": "text",
-        "name": "alert-banner_titleType",
+        "component": "select",
+        "name": "alert-bannerType",
         "hidden": true,
         "label": "Title Type",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "alert-banner_subtitle",
+        "value": "",
+        "label": "Subtitle",
         "valueType": "string"
       },
       {
@@ -486,6 +493,13 @@
             "value": "icon-only"
           }
         ]
+      },
+      {
+        "component": "richtext",
+        "name": "alert-banner_description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
       }
     ]
   },
@@ -971,6 +985,13 @@
         "name": "cta-banner_titleType",
         "hidden": true,
         "label": "Title Type",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "cta_description",
+        "value": "",
+        "label": "Description",
         "valueType": "string"
       },
       {

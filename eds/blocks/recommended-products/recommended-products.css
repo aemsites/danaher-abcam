@@ -140,6 +140,14 @@
   width: 299px
 }
 
+.recommended-products-wrapper :is(.w-11\/12) {
+  width: 91.666667%
+}
+
+.recommended-products-wrapper :is(.w-5\/6) {
+  width: 83.333333%
+}
+
 .recommended-products-wrapper :is(.cursor-pointer) {
   cursor: pointer
 }
@@ -335,6 +343,10 @@
 
   .recommended-products-wrapper :is(.md\:w-\[80\%\]) {
     width: 80%
+  }
+
+  .recommended-products-wrapper :is(.md\:w-full) {
+    width: 100%
   }
 
   .recommended-products-wrapper :is(.md\:flex-row) {

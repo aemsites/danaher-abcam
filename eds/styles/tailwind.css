@@ -111,8 +111,16 @@
         @apply font-bold text-[#378189];
     }
 
-    main .section:not(.no-section-padding, .title-card-container) {
+    main .section:not(.no-section-padding, .title-card-container, .sticky-sections-list-container) {
         @apply mx-auto xl:max-w-7xl px-6 lg:px-0 py-10;
+    }
+
+    main .guides-middle-container .default-content-wrapper:first-child {
+        @apply py-0;
+    }
+
+    main .topic-middle-container .default-content-wrapper:first-child {
+        @apply py-0;
     }
 
     main .section .back-navigation-wrapper{
@@ -145,6 +153,10 @@
 
     main .section .cards-wrapper .cols-3 {
         @apply grid grid-cols-3 gap-11 max-[799px]:grid-cols-1;
+    }
+
+    main .section .cards-wrapper .cols-2 {
+        @apply grid grid-cols-2 gap-11 max-[426px]:grid-cols-1;
     }
 
     main .section .mini-teasers-wrapper {
