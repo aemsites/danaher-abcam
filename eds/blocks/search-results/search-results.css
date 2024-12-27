@@ -30,10 +30,6 @@
   top: 0px
 }
 
-.search-results-wrapper :is(.top-\[3px\]) {
-  top: 3px
-}
-
 .search-results-wrapper :is(.top-28) {
   top: 7rem
 }
@@ -88,6 +84,14 @@
   margin-bottom: 1.5rem
 }
 
+.search-results-wrapper :is(.ml-2) {
+  margin-left: 0.5rem
+}
+
+.search-results-wrapper :is(.mr-2) {
+  margin-right: 0.5rem
+}
+
 .search-results-wrapper :is(.mr-4) {
   margin-right: 1rem
 }
@@ -102,14 +106,6 @@
 
 .search-results-wrapper :is(.mt-4) {
   margin-top: 1rem
-}
-
-.search-results-wrapper :is(.mr-2) {
-  margin-right: 0.5rem
-}
-
-.search-results-wrapper :is(.ml-2) {
-  margin-left: 0.5rem
 }
 
 .search-results-wrapper :is(.block) {
@@ -132,19 +128,14 @@
   display: none
 }
 
-.search-results-wrapper :is(.size-7) {
-  width: 1.75rem;
-  height: 1.75rem
+.search-results-wrapper :is(.size-4) {
+  width: 1rem;
+  height: 1rem
 }
 
 .search-results-wrapper :is(.size-8) {
   width: 2rem;
   height: 2rem
-}
-
-.search-results-wrapper :is(.size-4) {
-  width: 1rem;
-  height: 1rem
 }
 
 .search-results-wrapper :is(.h-10) {
@@ -237,12 +228,6 @@
   cursor: pointer
 }
 
-.search-results-wrapper :is(.appearance-none) {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none
-}
-
 .search-results-wrapper :is(.grid-cols-7) {
   grid-template-columns: repeat(7, minmax(0, 1fr))
 }
@@ -257,10 +242,6 @@
 
 .search-results-wrapper :is(.flex-col-reverse) {
   flex-direction: column-reverse
-}
-
-.search-results-wrapper :is(.items-end) {
-  align-items: flex-end
 }
 
 .search-results-wrapper :is(.items-center) {
@@ -279,6 +260,10 @@
   justify-content: space-between
 }
 
+.search-results-wrapper :is(.gap-1) {
+  gap: 0.25rem
+}
+
 .search-results-wrapper :is(.gap-2) {
   gap: 0.5rem
 }
@@ -289,10 +274,6 @@
 
 .search-results-wrapper :is(.gap-3\.5) {
   gap: 0.875rem
-}
-
-.search-results-wrapper :is(.gap-1) {
-  gap: 0.25rem
 }
 
 .search-results-wrapper :is(.gap-x-2) {
@@ -353,11 +334,6 @@
   border-radius: 0.5rem
 }
 
-.search-results-wrapper :is(.rounded-b) {
-  border-bottom-right-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem
-}
-
 .search-results-wrapper :is(.rounded-br) {
   border-bottom-right-radius: 0.25rem
 }
@@ -407,6 +383,11 @@
   background-color: rgb(237 246 247 / var(--tw-bg-opacity))
 }
 
+.search-results-wrapper :is(.bg-black) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity))
+}
+
 .search-results-wrapper :is(.bg-gray-200) {
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity))
@@ -415,11 +396,6 @@
 .search-results-wrapper :is(.bg-white) {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
-}
-
-.search-results-wrapper :is(.bg-black) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity))
 }
 
 .search-results-wrapper :is(.object-cover) {
@@ -443,6 +419,11 @@
   padding: 1.5rem
 }
 
+.search-results-wrapper :is(.px-2) {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem
+}
+
 .search-results-wrapper :is(.px-4) {
   padding-left: 1rem;
   padding-right: 1rem
@@ -451,6 +432,11 @@
 .search-results-wrapper :is(.px-6) {
   padding-left: 1.5rem;
   padding-right: 1.5rem
+}
+
+.search-results-wrapper :is(.py-1) {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem
 }
 
 .search-results-wrapper :is(.py-2) {
@@ -473,31 +459,8 @@
   padding-bottom: 1rem
 }
 
-.search-results-wrapper :is(.px-1) {
-  padding-left: 0.25rem;
-  padding-right: 0.25rem
-}
-
-.search-results-wrapper :is(.px-2) {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem
-}
-
-.search-results-wrapper :is(.py-1) {
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem
-}
-
-.search-results-wrapper :is(.pl-2) {
-  padding-left: 0.5rem
-}
-
 .search-results-wrapper :is(.pl-6) {
   padding-left: 1.5rem
-}
-
-.search-results-wrapper :is(.pr-2) {
-  padding-right: 0.5rem
 }
 
 .search-results-wrapper :is(.pr-8) {
@@ -610,11 +573,6 @@
 .search-results-wrapper :is(.text-\[\#D8D8D8\]) {
   --tw-text-opacity: 1;
   color: rgb(216 216 216 / var(--tw-text-opacity))
-}
-
-.search-results-wrapper :is(.text-\[rgb\(55\2c 129\2c 137\)\]) {
-  --tw-text-opacity: 1;
-  color: rgb(55 129 137 / var(--tw-text-opacity))
 }
 
 .search-results-wrapper :is(.text-black) {

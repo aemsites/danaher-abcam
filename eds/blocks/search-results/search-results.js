@@ -92,10 +92,9 @@ function handleSearchResults(element) {
               { class: 'space-x-4' },
               item.raw.producttags && (
                 (Array.isArray(item.raw.producttags) && item.raw.producttags.length > 0)
-								|| (typeof item.raw.producttags === 'string'
-									&& item.raw.producttags.trim().length > 0)
-              )
-                ? span(
+                || (typeof item.raw.producttags === 'string'
+                  && item.raw.producttags.trim().length > 0)
+              ) ? span(
                   { class: 'text-xs font-semibold text-[#378189] bg-[#EDF6F7] p-2' },
                   (() => {
                     if (Array.isArray(item.raw.producttags)) {
