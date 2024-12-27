@@ -339,6 +339,12 @@ const fileMappings = [
     output: './eds/blocks/cta-banner/cta-banner.css',
     wrapper: 'cta-banner-wrapper',
   },
+  ,
+  {
+    content: './eds/blocks/timeline-notification/timeline-notification.js',
+    output: './eds/blocks/timeline-notification/timeline-notification.css',
+    wrapper: 'timeline-notification',
+  },
   {
     content: './eds/templates/cross-sell-hub/cross-sell-hub.js',
     output: './eds/templates/cross-sell-hub/cross-sell-hub.css',
