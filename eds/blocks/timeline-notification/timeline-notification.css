@@ -2,6 +2,36 @@
   display: block
 }
 
+.timeline-notification :is(.bg-gray-300) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(209 213 219 / var(--tw-bg-opacity))
+}
+
+.timeline-notification :is(.bg-green-200) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(187 247 208 / var(--tw-bg-opacity))
+}
+
+.timeline-notification :is(.bg-orange-50) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 247 237 / var(--tw-bg-opacity))
+}
+
+.timeline-notification :is(.px-1) {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem
+}
+
+.timeline-notification :is(.py-0) {
+  padding-top: 0px;
+  padding-bottom: 0px
+}
+
+.timeline-notification :is(.py-0\.5) {
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem
+}
+
 .timeline-notification :is(.text-lg) {
   font-size: 1.125rem;
   line-height: 1.75rem

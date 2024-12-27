@@ -29,15 +29,15 @@
           "options": [
             {
               "name": "Knowledge",
-              "value": "knowledge py-0.5 px-1 bg-gray-300"
+              "value": "knowledge"
             },
             {
               "name": "Warning",
-              "value": "warning py-0.5 px-1 bg-orange-50"
+              "value": "warning"
             },
             {
               "name": "Help",
-              "value": "help py-0.5 px-1 bg-green-200"
+              "value": "help"
             }
           ]
         },        
