@@ -384,6 +384,14 @@
         "label": "Provide Tab Name",
         "description": "Provide a name for the tab (Applicable only when Tabs block is added)",
         "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "timelineName",
+        "value": "",
+        "label": "Provide TimeLine Name",
+        "description": "Provide a name for the timeline (Applicable only when Timeline block is added)",
+        "valueType": "string"
       }
     ]
   },
@@ -649,6 +657,10 @@
           {
             "name": "3 Columns",
             "value": "cols-3"
+          },
+          {
+            "name": "2 Columns",
+            "value": "cols-2"
           }
         ]
       }
