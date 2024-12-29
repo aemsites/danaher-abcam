@@ -1,292 +1,266 @@
-import { decorateIcons } from '../../scripts/aem.js';
-import {
-  div, h6, p, h3, ul, li, span, a as anchorElement, button,
-} from '../../scripts/dom-builder.js';
-import { getProductResponse } from '../../scripts/search.js';
-import { decorateModals } from '../../scripts/modal.js';
-import { toolTip } from '../../scripts/scripts.js';
-import { decorateDrawer, showDrawer } from '../../scripts/drawer.js';
-
-function toRGBA(waveLength) {
-  let r; let g; let b; let a;
-
-  if (Number.isNaN(waveLength) || waveLength < 380 || waveLength > 780) {
-    r = 0;
-    g = 0;
-    b = 0;
-    a = 0;
-  } else if (waveLength >= 380 && waveLength < 440) {
-    r = (-1 * (waveLength - 440)) / (440 - 380);
-    g = 0;
-    b = 1;
-  } else if (waveLength >= 440 && waveLength < 490) {
-    r = 0;
-    g = (waveLength - 440) / (490 - 440);
-    b = 1;
-  } else if (waveLength >= 490 && waveLength < 510) {
-    r = 0;
-    g = 1;
-    b = (-1 * (waveLength - 510)) / (510 - 490);
-  } else if (waveLength >= 510 && waveLength < 580) {
-    r = (waveLength - 510) / (580 - 510);
-    g = 1;
-    b = 0;
-  } else if (waveLength >= 580 && waveLength < 645) {
-    r = 1;
-    g = (-1 * (waveLength - 645)) / (645 - 580);
-    b = 0.0;
-  } else if (waveLength >= 645 && waveLength <= 780) {
-    r = 1;
-    g = 0;
-    b = 0;
-  } else {
-    r = 0;
-    g = 0;
-    b = 0;
-  }
-
-  if (waveLength > 780 || waveLength < 380) {
-    a = 0;
-  } else if (waveLength > 700) {
-    a = (780 - waveLength) / (780 - 700);
-  } else if (waveLength < 420) {
-    a = (waveLength - 380) / (420 - 380);
-  } else {
-    a = 1;
-  }
-
-  return {
-    r, g, b, a,
-  };
-}
-
-function createColourIndicator(waveLength) {
-  if (!waveLength) {
-    return span({ class: '' });
-  }
-  const {
-    r, g, b, a,
-  } = toRGBA(waveLength);
-  return span(
-    {
-      class: 'inline-block w-3 h-1 mb-1 mr-1',
-      style: `background-color: rgba(${r * 100}%, ${g * 100}%, ${b * 100}%, ${a});`,
-    },
-  );
-}
-
-function createKeyFactElement(key, value) {
-  return div(
-    { class: '' },
-    h6({ class: 'text-base font-semibold text-[#2a3c3c] mb-1' }, key),
-    p({ class: 'text-base text-black' }, value),
-  );
-}
-export function getStarRating(rating, starParent, size = 'size-7') {
-  // eslint-disable-next-line no-plusplus
-  for (let i = 1; i <= 5; i++) {
-    const spanEl = span();
-    if (i <= rating) {
-      spanEl.classList.add('icon', 'icon-star-rating', size, 'h-auto');
-    } else {
-      spanEl.classList.add('icon', 'icon-star-rating-empty', size, 'h-auto');
-    }
-    decorateIcons(spanEl);
-    starParent.append(spanEl);
-  }
-  return starParent;
-}
-
-// Function to generate star ratings based on aggregatedRating
-function getReviewsRatings(ratings, numOfReviews) {
-  if (ratings === 0) {
-    const noReviewsDiv = div(
-      { class: 'mt-4' },
-      span({ class: 'font-normal text-grey-dark' }, 'This product has no reviews yet! '),
-      anchorElement({
-        class: 'text-[#378189] underline font-normal', href: '#',
-      }, ' Submit a review'),
-    );
-    return noReviewsDiv;
-  }
-  const starButton = document.createElement('button');
-  starButton.classList.add(...'flex items-end appearance-none'.split(' '));
-  starButton.appendChild(span({ class: 'relative pr-2 font-semibold top-[3px] text-black text-2xl' }, ratings));
-  getStarRating(ratings, starButton);
-  starButton.appendChild(span({ class: 'pl-2 underline text-xl text-[rgb(55,129,137)] font-lighter' }, `(${numOfReviews} Reviews)`));
-  return starButton;
-}
-
-// Function to generate alternative button
-function getButtonAlternative(rawData, title) {
-  const buttonAlternative = document.createElement('button');
-  const titleDiv = document.createElement('div');
-  if (rawData) {
-    const directAlternative = JSON.parse(rawData);
-    const { name } = directAlternative;
-    const { productCode } = directAlternative;
-    const { categoryType } = directAlternative;
-    buttonAlternative.classList.add(...'bg-white w-full border border-interactive-grey-transparent-active rounded-md hover:bg-[#0000000d] cursor-pointer text-left'.split(' '));
-    buttonAlternative.appendChild(div({ class: 'h-[5px] mb-4', style: 'background: linear-gradient(90deg, #4ba6b3 0, #c9d3b7 35%, #ff8730 70%, #c54428)' }));
-    buttonAlternative.appendChild(p({ class: 'w-fit mx-4 px-2 py-1 rounded-md text-xs font-semibold bg-[#edf6f7] text-[#2c656b] border-blue-70 border ' }, categoryType));
-    buttonAlternative.appendChild(p({ class: 'mt-4 mx-4 text-xs text-[#65797c]' }, productCode));
-    buttonAlternative.appendChild(p({ class: 'pb-4 mt-2 mx-4 text-sm text-black-0' }, name));
-    buttonAlternative.appendChild(p({ class: 'border-t-[1px] border-[#dde1e1] my-6 mx-4' }));
-    titleDiv.appendChild(h3(
-      { class: 'mb-6 font-semibold text-2xl text-[#2a3c3c]' },
-      title,
-    ));
-    titleDiv.appendChild(ul(
-      { class: 'relative flex w-full overflow-x-auto overflow-y-hidden select-none scrollbar-hide flex-nowrap rounded-md gap-4 touch-pan-x' },
-      li(
-        { class: 'w-full h-44 bg-white' },
-        buttonAlternative,
-      ),
-    ));
-    const insteadbtn = titleDiv.appendChild(anchorElement(
-      { class: 'font-2xl mt-4', href: '/modals/consider-this-alternative' },
-      span({ class: 'learnmore align-center mt-4 underline text-[#378189]' }, 'why should I try this instead?'),
-    ));
-    decorateModals(insteadbtn);
-    titleDiv.appendChild(insteadbtn);
-    return titleDiv;
-  }
-  return '';
-}
-
 export default async function decorate(block) {
-  const response = await getProductResponse();
-  const rawData = response?.at(0)?.raw;
-
-  const variationsObject = rawData.variationsjson;
-  const variationsArray = JSON.parse(variationsObject);
-
-  const conjFormulationLength = variationsArray.length;
-  const variationsContainer = div({ class: 'variations-content h-[90%] overflow-y-auto overflow-x-hidden' });
-  const conjProducts = ul({});
-  variationsArray.forEach((products) => {
-    const { product, relationship } = products;
-    const emission = (product.conjugation && product.conjugation.emission) || '';
-    const colourIndicator = createColourIndicator(emission);
-    const conjProductsLink = anchorElement(
-      { class: 'cursor-pointer hover:underline', href: product.productSlug },
-      span({ class: 'text-sm lowercase text-gray-400' }, product.productCode),
-      span({ class: 'px-3 py-2 text-xs rounded-xs bg-gray-200 text-slate-400 ml-2' }, relationship),
-      div(
-        { class: 'pt-2 font-normal text-black' },
-        colourIndicator,
-        product.name,
-      ),
-    );
-    const listConj = li({ class: 'py-3 pl-8 -mt-px list-none border-t border-b' }, conjProductsLink);
-    conjProducts.appendChild(listConj);
-  });
-  variationsContainer.appendChild(conjProducts);
-
-  const targetJson = rawData?.targetjson;
-  // Extracting alternativeNames array
-  const targetJsonData = targetJson ? JSON.parse(targetJson) : [];
-  const alternativeNames = targetJsonData.alternativeNames
-    ? div({ class: 'text-[#575757] font-thin break-words' }, (`Alternative names=${targetJsonData.alternativeNames}`)) : '';
-  // for variationLink onclick showDrawer is goes here
-  const variationLink = variationsObject
-    ? button({
-      type: 'button',
-      onclick: () => {
-        showDrawer('conj-formulations');
-      },
-      class: 'text-[#378189] break-words underline',
-    }, (`See all related conjugates and formulations (${conjFormulationLength})`)) : '';
-
-  const { title } = rawData;
-  const description = rawData.description
-    ? div({ class: 'text-black text-xl font-normal' }, rawData.description) : '';
-  const reviewSummary = JSON.parse(rawData.reviewssummaryjson);
-  const { aggregatedRating, numberOfReviews } = reviewSummary;
-  const dataIsotype = rawData.isotype;
-  const { hostspecies } = rawData;
-  const storageBuffer = rawData.formulation;
-  const dataForm = rawData.form;
-  const dataClonality = rawData.clonality;
-  const immunogenObject = rawData?.immunogenjson ? JSON.parse(rawData.immunogenjson) : {};
-  const dataImmunogen = immunogenObject.sensitivity
-    ? div({ class: 'mt-8 mb-2' }, createKeyFactElement('Immunogen', immunogenObject.sensitivity)) : '';
-  const buttonAlternative = getButtonAlternative(rawData.directreplacementproductjson, 'Consider this alternative');
-  const productTags = rawData?.producttags;
-  const keyFactsElements = [];
-  if (dataIsotype) {
-    keyFactsElements.push(createKeyFactElement('Isotype', dataIsotype));
-  }
-  if (dataIsotype) {
-    keyFactsElements.push(createKeyFactElement('Host Species', hostspecies));
-  }
-  if (dataIsotype) {
-    keyFactsElements.push(createKeyFactElement('Storage Buffer', storageBuffer));
-  }
-  if (dataForm) {
-    keyFactsElements.push(createKeyFactElement('Form', dataForm));
-  }
-  if (dataClonality) {
-    keyFactsElements.push(createKeyFactElement('Clonality', dataClonality));
-  }
-
-  block.classList.add('h-full', 'bg-white', 'col-span-7');
-  // Constructing the product tags
-  const productTagsDiv = div({ class: 'flex flex-wrap pb-4 gap-2' });
-  productTags?.forEach((item) => {
-    const productTagsButton = document.createElement('button');
-    productTagsButton.classList.add(...'appearance-none px-2 py-1 rounded-e text-xs font-semibold tracking-wider break-keep bg-[rgb(237,246,247)] text-[rgb(44,101,107)] border-[rgb(44,101,107)] border'.split(' '));
-    productTagsButton.appendChild(span({ class: 'pt-0' }, item));
-    productTagsDiv.appendChild(productTagsButton);
-  });
-
-  // Constructing the container with title, description, alternative names, and key-value pairs
-  const overviewTitle = toolTip('overviewtitle', 'overviewtooltip', title, null);
-  const datasheetTitle = toolTip('datasheettitle', 'datasheettooltip', title, null);
-  const supportAndDownloadTitle = toolTip('supportanddownloadtitle', 'supportanddownloadtooltip', title, null);
-  if (block.classList.contains('datasheet')) {
-    const datasheetContainer = div(
-      { class: 'font-sans' },
-      div({ class: 'text-black text-4xl pb-4 font-bold' }, datasheetTitle),
-      div({ class: 'text-black text-xl font-normal' }, description),
-      productTagsDiv,
-      alternativeNames,
-      variationLink,
-    );
-    block.appendChild(datasheetContainer);
-  } else if (block.classList.contains('download')) {
-    const supportContainer = div(
-      { class: 'font-sans' },
-      div({ class: 'text-black text-4xl pb-4 font-bold' }, supportAndDownloadTitle),
-      productTagsDiv,
-    );
-    block.appendChild(supportContainer);
-  } else {
-    const overviewContainer = div(
-      { class: 'font-sans py-6' },
-      div({ class: 'text-black text-4xl pb-4 font-bold' }, overviewTitle),
-      div({ class: 'text-black text-xl font-normal tracking-wide' }, description),
-      getReviewsRatings(aggregatedRating, numberOfReviews),
-      div({ class: 'border-t-[1px] border-[#dde1e1] my-6' }),
-      productTagsDiv,
-      alternativeNames,
-      variationLink,
-      div(
-        { class: 'grid pt-10 max-[799px]:grid-cols-1' },
-        div({ class: 'grid grid-cols-3 gap-x-3 gap-y-10' }, ...keyFactsElements),
-      ),
-      dataImmunogen,
-      buttonAlternative,
-    );
-    // conjugates and formulations integration with drawer
-    const { block: publicationDrawerBlock, drawerBody } = await decorateDrawer({
-      id: 'conj-formulations', title: 'Related conjugates and formulations', isBackdrop: true,
-    });
-    drawerBody.append(variationsContainer);
-    decorateIcons(publicationDrawerBlock);
-    block.append(publicationDrawerBlock);
-
-    decorateIcons(overviewContainer);
-    block.appendChild(overviewContainer);
-  }
+  block.innerHTML = `<div>
+          <div>
+            <span>17 Images</span>
+              <div>
+                <div>
+                  <img src=products/images/application/immunohistochemistry-formalin-pfa-fixed-paraffin-embedded-sections/123/IMG123091.png>
+                </div>
+                <div>
+                  <div>IHC-P</div>
+                  <h6>Immunohistochemistry (Formalin/PFA-fixed paraffin-embedded sections) - Anti-Ki67 antibody (AB15580)</h6>
+                  <p>Confocal images of mouse trachea epithelium collected at steady state, 24 and 48&amp;thinsp;h after SO&lt;sub&gt;2&lt;/sub&gt; injury. Tissue sections were co-stained with UHRF1 and Ki67, a proliferation marker. 
+      &lt;p&gt;ab15580 was used to stain Ki67 at a dilution of 1:1&amp;thinsp;000&lt;/p&gt;</p>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <img src=products/images/application/immunocytochemistry-immunofluorescence/5/IMG5077.jpg>
+                </div>
+                <div>
+                  <div>ICC/IF</div>
+                  <h6>Immunocytochemistry/ Immunofluorescence - Anti-Ki67 antibody (AB15580)</h6>
+                  <p>Fluorescent confocal microscopy (20x) of mouse (P0) olfactory bulb, outer glomeruli layer, showing Ki67 immunoreactivity (ab15580; 1/1000; overnight at RT, 0.25% TX-100 no blocking step) using a secondary goat anti-rabbit fluorescent antibody (Alexa Fluor 488;1/300 2h at RT.</p>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <img src=products/images/application/immunocytochemistry-immunofluorescence/0/IMG65.jpg>
+                </div>
+                <div>
+                  <div>ICC/IF</div>
+                  <h6>Immunocytochemistry/ Immunofluorescence - Anti-Ki67 antibody (AB15580)</h6>
+                  <p>Paraformaldehyde-fixed Rabbit cell (Retina) labeling Ki67 (Green) using ab15580 at 1/200 dilution followed by a Donkey anti-rabbit Alexa Fluor® 568 secondary antibody in ICC analysis. Normal Donkey serum was used as the blocking agent for 15 hours at 4°C. 
+      &lt;p&gt;Tissue was immersion fixed in 4% paraformaldehyde overnight at 4 degrees Celsius. Tissue was then embedded in 10% agarose and section at 100 microns. Sections were placed in 2N HCL for 1 hour before commencing immunocytochemistry. Ki-67 (dividing cells red).&lt;/p&gt;</p>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <img src=products/images/application/western-blot/158/IMG158766.jpg>
+                </div>
+                <div>
+                  <div>WB</div>
+                  <h6>Western blot - Anti-Ki67 antibody (AB15580)</h6>
+                  <p>&lt;strong&gt;Observed band sizes :&lt;/strong&gt; 345kDa, 395kDa</p>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <img src=products/images/application/immunocytochemistry-immunofluorescence/131/IMG131458.jpg>
+                </div>
+                <div>
+                  <div>ICC/IF</div>
+                  <h6>Immunocytochemistry/ Immunofluorescence - Anti-Ki67 antibody (AB15580)</h6>
+                  <p>ab15580 staining Ki67 in Mef1 cells. The cells were fixed with 100% methanol (5 min), permeabilized with 0.1% PBS-Triton X-100 for 5 minutes and then blocked with 1% BSA/10% normal goat serum/0.3M glycine in 0.1%PBS-Tween for 1h. The cells were then incubated overnight at 4°C with ab15580 at 0.5 μg/ml and ab7291, Mouse monoclonal [DM1A] to alpha Tubulin - Loading Control. Cells were then incubated with ab150081, Goat polyclonal Secondary Antibody to Rabbit IgG - H&amp;L (Alexa Fluor&lt;sup&gt;®&lt;/sup&gt; 488), pre-adsorbed at 1/1000 dilution (shown in green) and ab150120, Goat polyclonal Secondary Antibody to Mouse IgG - H&amp;L (Alexa Fluor&lt;sup&gt;®&lt;/sup&gt; 594), pre-adsorbed at 1/1000 dilution (shown in pseudocolour red). Nuclear DNA was labelled with DAPI (shown in blue).
+      &lt;p&gt;Also suitable in cells fixed with 4% paraformaldehyde (10 min).&lt;/p&gt;
+      &lt;p&gt;Image was acquired with a high-content analyser (Operetta CLS, Perkin Elmer) and a single confocal section is shown.&lt;/p&gt;</p>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <img src=products/images/application/immunocytochemistry-immunofluorescence/71/IMG71808.jpg>
+                </div>
+                <div>
+                  <div>ICC/IF</div>
+                  <h6>Immunocytochemistry/ Immunofluorescence - Anti-Ki67 antibody (AB15580)</h6>
+                  <p>ab15580 staining Ki67 in HeLa cells. The cells were fixed with 100% methanol (5 min), permeabilized with 0.1% PBS-Triton X-100 for 5 minutes and then blocked with 1% BSA/10% normal goat serum/0.3M glycine in 0.1%PBS-Tween for 1h. The cells were then incubated overnight at 4°C with ab15580 at 0.5 μg/ml and ab7291, Mouse monoclonal [DM1A] to alpha Tubulin - Loading Control. Cells were then incubated with ab150081, Goat polyclonal Secondary Antibody to Rabbit IgG - H&amp;L (Alexa Fluor&lt;sup&gt;®&lt;/sup&gt; 488), pre-adsorbed at 1/1000 dilution (shown in green) and ab150120, Goat polyclonal Secondary Antibody to Mouse IgG - H&amp;L (Alexa Fluor&lt;sup&gt;®&lt;/sup&gt; 594), pre-adsorbed at 1/1000 dilution (shown in pseudocolour red). Nuclear DNA was labelled with DAPI (shown in blue).
+      &lt;p&gt;Also suitable in cells fixed with 4% paraformaldehyde (10 min).&lt;/p&gt;
+      &lt;p&gt;Image was acquired with a high-content analyser (Operetta CLS, Perkin Elmer) and a maximum intensity projection of confocal sections is shown.&lt;/p&gt;</p>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <img src=products/images/application/immunohistochemistry-formalin-pfa-fixed-paraffin-embedded-sections/86/IMG86101.jpg>
+                </div>
+                <div>
+                  <div>IHC-P</div>
+                  <h6>Immunohistochemistry (Formalin/PFA-fixed paraffin-embedded sections) - Anti-Ki67 antibody (AB15580)</h6>
+                  <p>IHC image of ab15580 staining in mouse spleen formalin fixed paraffin embedded tissue section, performed on a Leica Bond&lt;sup&gt;TM&lt;/sup&gt; system using the standard protocol B. The section was pre-treated using heat mediated antigen retrieval with sodium citrate buffer (pH6) for 20 mins. The section was then incubated with ab15580, 5μg/ml, for 15 mins at room temperature. A goat anti-rabbit biotinylated secondary antibody was used to detect the primary, and visualized using an HRP conjugated ABC system. DAB was used as the chromogen. The section was then counterstained with haematoxylin and mounted with DPX.</p>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <img src=products/images/application/immunohistochemistry-formalin-pfa-fixed-paraffin-embedded-sections/128/IMG128994.jpg>
+                </div>
+                <div>
+                  <div>IHC-P</div>
+                  <h6>Immunohistochemistry (Formalin/PFA-fixed paraffin-embedded sections) - Anti-Ki67 antibody (AB15580)</h6>
+                  <p>IHC image of Ki67 staining in human spleen formalin fixed paraffin embedded tissue section, performed on a Leica Bond&lt;sup&gt;TM&lt;/sup&gt; system using the standard protocol F. The section was pre-treated using heat mediated antigen retrieval with sodium citrate buffer (pH6) for 20 mins. The section was then incubated with ab15580, 1μg/ml, for 15 mins at room temperature and detected using an HRP conjugated compact polymer system. DAB was used as the chromogen. The section was then counterstained with haematoxylin and mounted with DPX.
+      &lt;p&gt;For other IHC staining systems (automated and non-automated) customers should optimize variable parameters such as antigen retrieval conditions, primary antibody concentration and antibody incubation times.&lt;/p&gt;</p>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <img src=products/images/application/immunocytochemistry-immunofluorescence/120/IMG120704.jpg>
+                </div>
+                <div>
+                  <div>ICC/IF</div>
+                  <h6>Immunocytochemistry/ Immunofluorescence - Anti-Ki67 antibody (AB15580)</h6>
+                  <p>ab15580 staining Ki67 in wild-type HAP1 cells (top panel) and Ki67 knockout HAP1 cells (bottom panel). The cells were fixed with 100% methanol (5min), permeabilized with 0.1% Triton X-100 for 5 minutes and then blocked with 1% BSA/10% normal goat serum/0.3M glycine in 0.1% PBS-Tween for 1h. The cells were then incubated with ab15580 at 1μg/ml concentration and ab195889 at 1/250 dilution (shown in pseudo colour red) overnight at +4°C, followed by a further incubation at room temperature for 1h with a goat anti-rabbit IgG Alexa Fluor&lt;sup&gt;®&lt;/sup&gt; 488 (ab150081) at 2 μg/ml (shown in green). Nuclear DNA was labelled in blue with DAPI.</p>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <img src=products/images/application/immunohistochemistry-formalin-pfa-fixed-paraffin-embedded-sections/96/IMG96171.jpg>
+                </div>
+                <div>
+                  <div>IHC-P</div>
+                  <h6>Immunohistochemistry (Formalin/PFA-fixed paraffin-embedded sections) - Anti-Ki67 antibody (AB15580)</h6>
+                  <p>ab15580 staining Ki67 - Proliferation Marker in Human skin tissue sections by Immunohistochemistry (IHC-P - paraformaldehyde-fixed, paraffin-embedded sections). Tissue was fixed with paraformaldehyde and blocked with 4% serum for 30 minutes at 25°C; antigen retrieval was by heat mediation in a citrate buffer (pH 6.0). Samples were incubated with primary antibody (5 µg/ml in blocking buffer) for 16 hours at 4°C. A Texas Red ® Goat anti-rabbit IgG polyclonal (1/100) was used as the secondary antibody.</p>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <img src=products/images/application/immunocytochemistry-immunofluorescence/105/IMG105825.jpg>
+                </div>
+                <div>
+                  <div>ICC/IF</div>
+                  <h6>Immunocytochemistry/ Immunofluorescence - Anti-Ki67 antibody (AB15580)</h6>
+                  <p>SK-N-SH cells were permitted to grow to confluency, then serum starved for 48 hours and predominantly driven into G0. The cells were then paraformaldehyde fixed and immunofluorescently labelled with anti-Ki67 (ab15580) at a dilution of 1/1000. The majority of the cells show little or no Ki67 staining, indicating they are in G0 arrest (red cells). Two cells however show strong nucleolar Ki67 staining indicating they are still cycling (green cells). The DNA is stained with DAPI and is shown in red. The Ki67 staining is shown in green. x 63 magnification.&lt;p&gt;Similar results were seen with an asynchronous population of HeLa cells. The Ki67 staining was localised to the periphery of the nucleoli and throughout the nucleoplasm of proliferating cells. (This data is not shown but is available upon request).&lt;/p&gt;</p>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <img src=products/images/application/immunocytochemistry-immunofluorescence/117/IMG117962.jpg>
+                </div>
+                <div>
+                  <div>ICC/IF</div>
+                  <h6>Immunocytochemistry/ Immunofluorescence - Anti-Ki67 antibody (AB15580)</h6>
+                  <p>ab15580 at 1/50 staining Human umbilical artery endothelial cells by ICC. The tissue was paraformaldehyde fixed and blocked before permeabilization with saponin and incubation with the antibody for 16 hours. A FITC conjugated goat anti-rabbit IgG was used as the secondary. The merged image shows those cells expressing Ki67 from the total number of exponential cells.</p>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <img src=products/images/application/immunohistochemistry-formalin-pfa-fixed-paraffin-embedded-sections/128/IMG128468.jpg>
+                </div>
+                <div>
+                  <div>IHC-P</div>
+                  <h6>Immunohistochemistry (Formalin/PFA-fixed paraffin-embedded sections) - Anti-Ki67 antibody (AB15580)</h6>
+                  <p>IHC image of ab15580 stained human skin carcinoma FFPE section. Section was pre-treated using pressure cooker heat mediated antigen retrieval with sodium citrate buffer (pH6) for 30 seconds at 125°C.  Section was incubated with ab15580 at a dilution of 1:200 for 1h at room temperature and detected using an HRP conjugated polymer system. DAB was used as the chromogen. The section was then counterstained with haematoxylin and mounted with DPX.</p>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <img src=products/images/application/immunohistochemistry-formalin-pfa-fixed-paraffin-embedded-sections/100/IMG100114.jpg>
+                </div>
+                <div>
+                  <div>IHC-P</div>
+                  <h6>Immunohistochemistry (Formalin/PFA-fixed paraffin-embedded sections) - Anti-Ki67 antibody (AB15580)</h6>
+                  <p>Immunohistochemistry analysis of Formaldehyde-fixed paraffin-embedded mouse tumour tissue sections labelling Ki67 with ab15580 at 1/2000. The secondary antibody was biotin conjugated goat polyclonal vector at a dilution of 1/250.</p>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <img src=products/images/application/immunocytochemistry-immunofluorescence/57/IMG57287.jpg>
+                </div>
+                <div>
+                  <div>ICC/IF</div>
+                  <h6>Immunocytochemistry/ Immunofluorescence - Anti-Ki67 antibody (AB15580)</h6>
+                  <p>ab15580 staining Ki67 in SK-N-SH cells treated with NADA (N-Arachidonyldopamine) (ab120099), by ICC. Decrease in Ki67 expression correlates with increased concentration of NADA (N-Arachidonyldopamine), as described in literature.&lt;br /&gt;The cells were incubated at 37°C for 10 minutes in media containing different concentrations of ab120099 (NADA (N-Arachidonyldopamine)) in ethanol, fixed with 4% formaldehyde for 10 minutes at room temperature and blocked with PBS containing 10% goat serum, 0.3 M glycine, 1% BSA and 0.1% tween for 2h at room temperature. Staining of the treated cells with ab15580 (1 μg/ml) was performed overnight at 4°C in PBS containing 1% BSA and 0.1% tween. A goat anti-rabbit DyLight 488 secondary antibody (ab96899) at 1/250 dilution was used as the secondary antibody. Nuclei were counterstained with DAPI and are shown in blue.</p>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <img src=products/images/application/immunohistochemistry-formalin-pfa-fixed-paraffin-embedded-sections/426/IMG426042.jpg>
+                </div>
+                <div>
+                  <div>IHC-P</div>
+                  <h6>Immunohistochemistry (Formalin/PFA-fixed paraffin-embedded sections) - Anti-Ki67 antibody (AB15580)</h6>
+                  <p>Immunohistochemical analysis of formalin fixed paraffin embedded human tonsil labelling Ki67 with ab15580 at a concentration of 0.5 µg/ml. The immunostaining was performed on a Ventana DISCOVERY ULTRA (Roche Tissue Diagnostics) instrument with an OptiView DAB IHC Detection Kit. Heat mediated antigen retrieval was conducted for 32min with ULTRA cell conditioning solution (CC1 pH8.5). ab15580 anti Ki67 antibody was incubated at 37°C for 16min. Sections were counterstained is with Hematoxylin II. Image inset shows absence of staining in secondary antibody only control</p>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <img src=products/images/application/immunohistochemistry-formalin-pfa-fixed-paraffin-embedded-sections/434/IMG434773.png>
+                </div>
+                <div>
+                  <div>IHC-P</div>
+                  <h6>Immunohistochemistry (Formalin/PFA-fixed paraffin-embedded sections) - Anti-Ki67 antibody (AB15580)</h6>
+                  <p>Immunohistochemistry analysis (Formalin/PFA-fixed paraffin-embedded sections) of paraformaldehyde-fixed human Palatine tonsil tissue. Stained with ab15580 at 1/500 dilution. Secondary antibody used was Biotinylated Goat Anti-Rabbit IgG Antibody BA-100 at 1/200 dilution. Blocking was done with 5% serum for 1 hour at 21&amp;deg;C. The sample was incubated with the primary antibody and 5% Normal Goat Serum for 19 hours at 4&amp;deg;C. Antigen retrieval method was heat mediated, Citrate.</p>
+                </div>
+              </div>
+            <div>
+                <ul>
+                  <li>
+                    <img src=products/images/application/immunohistochemistry-formalin-pfa-fixed-paraffin-embedded-sections/123/IMG123091.png>
+                  </li>
+                  <li>
+                    <img src=products/images/application/immunocytochemistry-immunofluorescence/5/IMG5077.jpg>
+                  </li>
+                  <li>
+                    <img src=products/images/application/immunocytochemistry-immunofluorescence/0/IMG65.jpg>
+                  </li>
+                  <li>
+                    <img src=products/images/application/western-blot/158/IMG158766.jpg>
+                  </li>
+                  <li>
+                    <img src=products/images/application/immunocytochemistry-immunofluorescence/131/IMG131458.jpg>
+                  </li>
+                  <li>
+                    <img src=products/images/application/immunocytochemistry-immunofluorescence/71/IMG71808.jpg>
+                  </li>
+                  <li>
+                    <img src=products/images/application/immunohistochemistry-formalin-pfa-fixed-paraffin-embedded-sections/86/IMG86101.jpg>
+                  </li>
+                  <li>
+                    <img src=products/images/application/immunohistochemistry-formalin-pfa-fixed-paraffin-embedded-sections/128/IMG128994.jpg>
+                  </li>
+                  <li>
+                    <img src=products/images/application/immunocytochemistry-immunofluorescence/120/IMG120704.jpg>
+                  </li>
+                  <li>
+                    <img src=products/images/application/immunohistochemistry-formalin-pfa-fixed-paraffin-embedded-sections/96/IMG96171.jpg>
+                  </li>
+                  <li>
+                    <img src=products/images/application/immunocytochemistry-immunofluorescence/105/IMG105825.jpg>
+                  </li>
+                  <li>
+                    <img src=products/images/application/immunocytochemistry-immunofluorescence/117/IMG117962.jpg>
+                  </li>
+                  <li>
+                    <img src=products/images/application/immunohistochemistry-formalin-pfa-fixed-paraffin-embedded-sections/128/IMG128468.jpg>
+                  </li>
+                  <li>
+                    <img src=products/images/application/immunohistochemistry-formalin-pfa-fixed-paraffin-embedded-sections/100/IMG100114.jpg>
+                  </li>
+                  <li>
+                    <img src=products/images/application/immunocytochemistry-immunofluorescence/57/IMG57287.jpg>
+                  </li>
+                  <li>
+                    <img src=products/images/application/immunohistochemistry-formalin-pfa-fixed-paraffin-embedded-sections/426/IMG426042.jpg>
+                  </li>
+                  <li>
+                    <img src=products/images/application/immunohistochemistry-formalin-pfa-fixed-paraffin-embedded-sections/434/IMG434773.png>
+                  </li>
+                </ul>
+            </div>
+          </div>  
+          <div>
+            <div><h2>Key Facts</h2></div>
+            <div>
+              <h6>Isotype</h6>
+              <p>IgG</p>
+            </div>
+            <div>
+              <h6>Clonality</h6>
+              <p>Polyclonal</p>
+            </div>  
+            <div>
+              <h6>Purification technique</h6>
+              <p>Affinity purification Immunogen</p>
+            </div>
+            <div>
+              <h6>Form</h6>
+              <p>Liquid</p>
+            </div>
+            <div>
+              <h6>Immunogen</h6>
+              <p>The exact immunogen used to generate this antibody is proprietary information.</p>
+            </div>
+            <div>
+              <h6>Specificity</h6>
+              <p>From Jan 2024, QC testing of replenishment batches of this polyclonal changed. All tested and expected application and reactive species combinations are still covered by our Abcam product promise. However, we no longer test all applications. For more information on a specific batch, please contact our Scientific Support who will be happy to help.</p>
+            </div>
+          </div>
+        </div>`;
 }
