@@ -571,8 +571,6 @@ function decorateCartPopUp() {
   let cartMainContainer;
   const cartType = getCartType();
   const cartItemsRes = getCartItems();
-  // const cartType = 'Distributorr';
-  // basicDetails().shoppingBaskedId !== null && basicDetails().shoppingBaskedId
   if (cartItemsRes.items.length > 0) {
     cartMainContainer = div(
       { class: 'cart-popup-main-container max-[376px]:-left-36 absolute hidden peer-checked:block top-full z-50 right-0 mt-1.5 max-[320px]:w-[285px] w-[320px] md:w-[368px]' },
