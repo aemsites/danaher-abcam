@@ -317,10 +317,183 @@ function myAccount(session) {
   return myAccoundDiv;
 }
 
+// function performSearch(query) {
+//   // getCategorySuggestions(query);
+//   getContentSuggestions(query);
+//   // getProductSuggestions(query);
+// }
+
+async function getCategorySuggestions(query) {
+
+  document.querySelectorAll('.search-bar-desktop ').forEach((inputField) => {
+    if (inputField) {
+      inputField.addEventListener('keyup', function () {
+        const query = inputField.value;
+      });
+    }
+  });
+
+  const url =
+    'https://danahernonproduction1892f3fhz.org.coveo.com/rest/search/v2/facet';
+
+  const data = {
+    captions: {},
+    numberOfValues: 8,
+    query: '*',
+    field: 'categorytype',
+    ignoreValues: [],
+    filterFacetCount: true,
+    type: 'specific',
+    searchContext: {
+      accessToken: 'xx27ea823a-e994-4d71-97f6-403174ec592a',
+      organizationId: 'danahernonproduction1892f3fhz',
+      url: 'https://danahernonproduction1892f3fhz.org.coveo.com/rest/search/v2',
+      locale: 'en',
+      pipeline: 'Abcam Product Listing',
+      q: query,
+      enableQuerySyntax: false,
+      searchHub: 'AbcamProductListing',
+      firstResult: 0,
+      facetOptions: {
+        freezeFacetOrder: false,
+      },
+    },
+  };
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: 'Bearer xx27ea823a-e994-4d71-97f6-403174ec592a',
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok ' + response.statusText);
+    }
+
+    const resultData = await response.json();
+    displayCategoryResults(query, resultData);
+  } catch (error) {
+    console.error('There was a problem with the fetch operation:', error);
+  }
+}
+
+function displayCategoryResults(query, results) {
+
+  if (typeof query !== 'string' || !query.trim() || !results || !Array.isArray(results.values)) {
+    return;
+  }
+
+  const expressions = results.values;
+  const sortedExpressions = sortJsonArrayByKeyDesc(expressions, 'count');
+  const resultsContainer = document.querySelector('ul#category-suggestions');
+  resultsContainer.innerHTML = '';
+  setTimeout(() => {
+    sortedExpressions.forEach((expression) => {
+      const resultElement = document.createElement('div');
+      resultElement.textContent =
+        query + ' in ' + expression.displayValue + ' (' + expression.count + ')';
+      resultsContainer.appendChild(resultElement);
+    });
+  }, '800');
+}
+
+
+function sortJsonArrayByKeyDesc(jsonArray, key) {
+  return jsonArray.sort((a, b) => {
+    if (a[key] > b[key]) {
+      return -1;
+    }
+    if (a[key] < b[key]) {
+      return 1;
+    }
+    return 0;
+  });
+}
+
+async function getContentSuggestions(query) {
+  const url =
+    'https://danahernonproduction1892f3fhz.org.coveo.com/rest/search/v2/facet';
+
+  const data = {
+    captions: {},
+    numberOfValues: 8,
+    query: '*',
+    field: 'pagetype',
+    ignoreValues: [],
+    filterFacetCount: true,
+    type: 'specific',
+    searchContext: {
+      accessToken: 'xx26097312-c0ba-4c54-b22d-0a258570650a',
+      organizationId: 'danahernonproduction1892f3fhz',
+      url: 'https://danahernonproduction1892f3fhz.org.coveo.com/rest/search/v2',
+      locale: 'en',
+      pipeline: 'AbcamContentSearch',
+      q: query,
+      enableQuerySyntax: false,
+      searchHub: 'AbcamContentSearch',
+      firstResult: 0,
+      facetOptions: {
+        freezeFacetOrder: false,
+      },
+    },
+  };
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: 'Bearer xx26097312-c0ba-4c54-b22d-0a258570650a',
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok ' + response.statusText);
+    }
+
+    const resultData = await response.json();
+    displayContentResults(query, resultData);
+  } catch (error) {
+    console.error('There was a problem with the fetch operation:', error);
+  }
+}
+
+function displayContentResults(query = '', results) {
+
+  if (typeof query !== 'string' || !query.trim() || !results || !Array.isArray(results.values)) {
+    return;
+  }
+
+  const expressions = results.values;
+  const sortedexpressions = sortJsonArrayByKeyDesc(expressions, 'count');
+  const resultsContainer = document.querySelector('ul#resources-suggestions');
+  resultsContainer.innerHTML = '';
+
+  setTimeout(() => {
+    sortedexpressions.forEach((expression) => {
+      const resultElement = div({});
+      resultElement.textContent =
+        query + ' in ' + expression.displayValue + ' (' + expression.count + ')';
+      resultsContainer.appendChild(resultElement);
+    });
+  }, '900');
+}
+
+
+
 function handleQuerySuggestions() {
   const suggestionsElement = document.querySelector('ul#search-suggestions');
+
   suggestionsElement.innerHTML = '';
   const { value, suggestions } = searchBoxController.state;
+
   if (suggestions && suggestions.length > 0) {
     suggestions.forEach((suggestion) => {
       const suggestionItem = li(
@@ -371,6 +544,26 @@ function handleSearchBox() {
     );
   });
 }
+
+// document.addEventListener('DOMContentLoaded', function() {
+//   console.log("Hello");
+
+//   const inputField = document.querySelector('#search-input');
+//   console.log(inputField);
+
+//   if (inputField) {
+//     inputField.addEventListener('keyup', function () {
+//       const query = inputField.value;
+//       console.log("q val", query);
+
+//       if (query.length > 1) {
+//         performSearch(query);
+//       }
+//     });
+//   } else {
+//     console.error("Search input field not found");
+//   }
+// });
 
 export default async function decorate(block) {
   const resp = await fetch('/eds/fragments/header.html');
@@ -512,8 +705,11 @@ export default async function decorate(block) {
   }
   // COVEO-HEADLESS WORK
   handleSearchBox();
+  
   searchEngine.executeFirstSearch();
   searchEngine.subscribe(() => {
     handleQuerySuggestions();
+    getCategorySuggestions();
+  getContentSuggestions();
   });
 }
