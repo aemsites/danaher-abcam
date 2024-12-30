@@ -845,7 +845,7 @@ main .section .default-content-wrapper a {
   color: rgb(55 129 137 / var(--tw-text-opacity));
 }
 
-main .section:not(.no-section-padding, .title-card-container) {
+main .section:not(.no-section-padding, .title-card-container, .sticky-sections-list-container) {
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.5rem;
@@ -855,16 +855,26 @@ main .section:not(.no-section-padding, .title-card-container) {
 }
 
 @media (min-width: 1024px) {
-  main .section:not(.no-section-padding, .title-card-container) {
+  main .section:not(.no-section-padding, .title-card-container, .sticky-sections-list-container) {
     padding-left: 0px;
     padding-right: 0px;
   }
 }
 
 @media (min-width: 1280px) {
-  main .section:not(.no-section-padding, .title-card-container) {
+  main .section:not(.no-section-padding, .title-card-container, .sticky-sections-list-container) {
     max-width: 80rem;
   }
+}
+
+main .guides-middle-container .default-content-wrapper:first-child {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+main .topic-middle-container .default-content-wrapper:first-child {
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 main .section .back-navigation-wrapper {
@@ -917,6 +927,18 @@ main .section .cards-wrapper .cols-3 {
 
 @media (max-width: 799px) {
   main .section .cards-wrapper .cols-3 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
+main .section .cards-wrapper .cols-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.75rem;
+}
+
+@media (max-width: 426px) {
+  main .section .cards-wrapper .cols-2 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 }
@@ -1134,7 +1156,7 @@ dialog .modal-content .section > .default-content-wrapper p {
   color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 
-.stories main .story-middle-container, .guide main .chapter-links-container, .topic main .related-articles-container, .protocols main .protocols-middle-container, .pathways main .pathways-middle-container {
+.stories main .story-middle-container, .guide main .chapter-links-container, .topic main .related-articles-container, .protocols main .protocols-middle-container {
   display: flex;
   flex-direction: column;
   -moz-column-gap: 0px;
@@ -1142,7 +1164,7 @@ dialog .modal-content .section > .default-content-wrapper p {
 }
 
 @media (min-width: 1024px) {
-  .stories main .story-middle-container, .guide main .chapter-links-container, .topic main .related-articles-container, .protocols main .protocols-middle-container, .pathways main .pathways-middle-container {
+  .stories main .story-middle-container, .guide main .chapter-links-container, .topic main .related-articles-container, .protocols main .protocols-middle-container {
     flex-direction: row;
     -moz-column-gap: 4rem;
          column-gap: 4rem;
@@ -1166,12 +1188,12 @@ main .section.no-section-padding.columns-container {
   padding-top: 2rem;
 }
 
-.guide main .chapter-links-container, .topic main .related-articles-container, .pathways main .related-articles-container {
+.guide main .chapter-links-container, .topic main .related-articles-container {
   flex-direction: column-reverse;
 }
 
 @media (min-width: 1024px) {
-  .guide main .chapter-links-container, .topic main .related-articles-container, .pathways main .related-articles-container {
+  .guide main .chapter-links-container, .topic main .related-articles-container {
     flex-direction: row;
   }
 }
@@ -1198,7 +1220,7 @@ main .section.related-stories-container .default-content-wrapper h2 {
   }
 }
 
-.guide .sticky-bottom, .topic .sticky-bottom, .pathways .sticky-bottom {
+.guide .sticky-bottom, .topic .sticky-bottom {
   position: sticky;
   bottom: 0px;
   z-index: 20;
@@ -1210,7 +1232,7 @@ main .section.related-stories-container .default-content-wrapper h2 {
 }
 
 @media (min-width: 1024px) {
-  .guide .sticky-bottom, .topic .sticky-bottom, .pathways .sticky-bottom {
+  .guide .sticky-bottom, .topic .sticky-bottom {
     display: none;
   }
 }
@@ -1429,6 +1451,10 @@ main .section.downloads-container {
 
 .top-12 {
   top: 3rem;
+}
+
+.top-20 {
+  top: 5rem;
 }
 
 .top-3 {
@@ -2649,6 +2675,12 @@ main .section.downloads-container {
 .shadow {
   --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.shadow-\[0_6px_12px_0px_rgba\(7\2c 17\2c 18\2c 0\.12\)\] {
+  --tw-shadow: 0 6px 12px 0px rgba(7,17,18,0.12);
+  --tw-shadow-colored: 0 6px 12px 0px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 

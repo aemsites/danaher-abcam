@@ -47,6 +47,10 @@
             {
               "name": "3 Columns",
               "value": "cols-3"
+            },
+            {
+              "name": "2 Columns",
+              "value": "cols-2"
             }
           ]
         }
