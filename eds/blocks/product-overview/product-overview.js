@@ -1,10 +1,12 @@
+import Carousel from '../../scripts/carousel.js';
+
 export default async function decorate(block) {
   block.innerHTML = `<div>
           <div>
             <span>17 Images</span>
               <div>
                 <div>
-                  <img src=products/images/application/immunohistochemistry-formalin-pfa-fixed-paraffin-embedded-sections/123/IMG123091.png>
+                  <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                 </div>
                 <div>
                   <div>IHC-P</div>
@@ -15,7 +17,7 @@ export default async function decorate(block) {
               </div>
               <div>
                 <div>
-                  <img src=products/images/application/immunocytochemistry-immunofluorescence/5/IMG5077.jpg>
+                  <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                 </div>
                 <div>
                   <div>ICC/IF</div>
@@ -25,7 +27,7 @@ export default async function decorate(block) {
               </div>
               <div>
                 <div>
-                  <img src=products/images/application/immunocytochemistry-immunofluorescence/0/IMG65.jpg>
+                  <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                 </div>
                 <div>
                   <div>ICC/IF</div>
@@ -36,7 +38,7 @@ export default async function decorate(block) {
               </div>
               <div>
                 <div>
-                  <img src=products/images/application/western-blot/158/IMG158766.jpg>
+                  <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                 </div>
                 <div>
                   <div>WB</div>
@@ -46,7 +48,7 @@ export default async function decorate(block) {
               </div>
               <div>
                 <div>
-                  <img src=products/images/application/immunocytochemistry-immunofluorescence/131/IMG131458.jpg>
+                  <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                 </div>
                 <div>
                   <div>ICC/IF</div>
@@ -58,7 +60,7 @@ export default async function decorate(block) {
               </div>
               <div>
                 <div>
-                  <img src=products/images/application/immunocytochemistry-immunofluorescence/71/IMG71808.jpg>
+                  <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$g>
                 </div>
                 <div>
                   <div>ICC/IF</div>
@@ -70,7 +72,7 @@ export default async function decorate(block) {
               </div>
               <div>
                 <div>
-                  <img src=products/images/application/immunohistochemistry-formalin-pfa-fixed-paraffin-embedded-sections/86/IMG86101.jpg>
+                  <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                 </div>
                 <div>
                   <div>IHC-P</div>
@@ -80,7 +82,7 @@ export default async function decorate(block) {
               </div>
               <div>
                 <div>
-                  <img src=products/images/application/immunohistochemistry-formalin-pfa-fixed-paraffin-embedded-sections/128/IMG128994.jpg>
+                  <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                 </div>
                 <div>
                   <div>IHC-P</div>
@@ -91,7 +93,7 @@ export default async function decorate(block) {
               </div>
               <div>
                 <div>
-                  <img src=products/images/application/immunocytochemistry-immunofluorescence/120/IMG120704.jpg>
+                  <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                 </div>
                 <div>
                   <div>ICC/IF</div>
@@ -101,7 +103,7 @@ export default async function decorate(block) {
               </div>
               <div>
                 <div>
-                  <img src=products/images/application/immunohistochemistry-formalin-pfa-fixed-paraffin-embedded-sections/96/IMG96171.jpg>
+                  <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                 </div>
                 <div>
                   <div>IHC-P</div>
@@ -111,7 +113,7 @@ export default async function decorate(block) {
               </div>
               <div>
                 <div>
-                  <img src=products/images/application/immunocytochemistry-immunofluorescence/105/IMG105825.jpg>
+                  <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                 </div>
                 <div>
                   <div>ICC/IF</div>
@@ -121,7 +123,7 @@ export default async function decorate(block) {
               </div>
               <div>
                 <div>
-                  <img src=products/images/application/immunocytochemistry-immunofluorescence/117/IMG117962.jpg>
+                  <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                 </div>
                 <div>
                   <div>ICC/IF</div>
@@ -131,7 +133,7 @@ export default async function decorate(block) {
               </div>
               <div>
                 <div>
-                  <img src=products/images/application/immunohistochemistry-formalin-pfa-fixed-paraffin-embedded-sections/128/IMG128468.jpg>
+                  <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                 </div>
                 <div>
                   <div>IHC-P</div>
@@ -141,7 +143,7 @@ export default async function decorate(block) {
               </div>
               <div>
                 <div>
-                  <img src=products/images/application/immunohistochemistry-formalin-pfa-fixed-paraffin-embedded-sections/100/IMG100114.jpg>
+                  <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                 </div>
                 <div>
                   <div>IHC-P</div>
@@ -151,7 +153,7 @@ export default async function decorate(block) {
               </div>
               <div>
                 <div>
-                  <img src=products/images/application/immunocytochemistry-immunofluorescence/57/IMG57287.jpg>
+                  <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                 </div>
                 <div>
                   <div>ICC/IF</div>
@@ -161,7 +163,7 @@ export default async function decorate(block) {
               </div>
               <div>
                 <div>
-                  <img src=products/images/application/immunohistochemistry-formalin-pfa-fixed-paraffin-embedded-sections/426/IMG426042.jpg>
+                  <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                 </div>
                 <div>
                   <div>IHC-P</div>
@@ -171,7 +173,7 @@ export default async function decorate(block) {
               </div>
               <div>
                 <div>
-                  <img src=products/images/application/immunohistochemistry-formalin-pfa-fixed-paraffin-embedded-sections/434/IMG434773.png>
+                  <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                 </div>
                 <div>
                   <div>IHC-P</div>
@@ -182,55 +184,55 @@ export default async function decorate(block) {
             <div>
                 <ul>
                   <li>
-                    <img src=products/images/application/immunohistochemistry-formalin-pfa-fixed-paraffin-embedded-sections/123/IMG123091.png>
+                    <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                   </li>
                   <li>
-                    <img src=products/images/application/immunocytochemistry-immunofluorescence/5/IMG5077.jpg>
+                    <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                   </li>
                   <li>
-                    <img src=products/images/application/immunocytochemistry-immunofluorescence/0/IMG65.jpg>
+                    <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                   </li>
                   <li>
-                    <img src=products/images/application/western-blot/158/IMG158766.jpg>
+                    <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                   </li>
                   <li>
-                    <img src=products/images/application/immunocytochemistry-immunofluorescence/131/IMG131458.jpg>
+                    <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                   </li>
                   <li>
-                    <img src=products/images/application/immunocytochemistry-immunofluorescence/71/IMG71808.jpg>
+                    <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$g>
                   </li>
                   <li>
-                    <img src=products/images/application/immunohistochemistry-formalin-pfa-fixed-paraffin-embedded-sections/86/IMG86101.jpg>
+                    <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                   </li>
                   <li>
-                    <img src=products/images/application/immunohistochemistry-formalin-pfa-fixed-paraffin-embedded-sections/128/IMG128994.jpg>
+                    <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                   </li>
                   <li>
-                    <img src=products/images/application/immunocytochemistry-immunofluorescence/120/IMG120704.jpg>
+                    <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                   </li>
                   <li>
-                    <img src=products/images/application/immunohistochemistry-formalin-pfa-fixed-paraffin-embedded-sections/96/IMG96171.jpg>
+                    <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                   </li>
                   <li>
-                    <img src=products/images/application/immunocytochemistry-immunofluorescence/105/IMG105825.jpg>
+                    <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                   </li>
                   <li>
-                    <img src=products/images/application/immunocytochemistry-immunofluorescence/117/IMG117962.jpg>
+                    <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                   </li>
                   <li>
-                    <img src=products/images/application/immunohistochemistry-formalin-pfa-fixed-paraffin-embedded-sections/128/IMG128468.jpg>
+                    <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                   </li>
                   <li>
-                    <img src=products/images/application/immunohistochemistry-formalin-pfa-fixed-paraffin-embedded-sections/100/IMG100114.jpg>
+                    <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                   </li>
                   <li>
-                    <img src=products/images/application/immunocytochemistry-immunofluorescence/57/IMG57287.jpg>
+                    <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                   </li>
                   <li>
-                    <img src=products/images/application/immunohistochemistry-formalin-pfa-fixed-paraffin-embedded-sections/426/IMG426042.jpg>
+                    <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                   </li>
                   <li>
-                    <img src=products/images/application/immunohistochemistry-formalin-pfa-fixed-paraffin-embedded-sections/434/IMG434773.png>
+                    <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                   </li>
                 </ul>
             </div>
@@ -263,4 +265,20 @@ export default async function decorate(block) {
             </div>
           </div>
         </div>`;
+
+  const carouselWrapperEl = block.querySelector('ul')?.parentElement;
+  carouselWrapperEl.id = 'carousel-wrapper';
+  block.querySelector('ul').className = 'carousel';
+  block.querySelector('ul')?.querySelectorAll('li').forEach((li) => {
+    li.className = 'carousel-slider';
+  });
+  new Carousel({
+    wrapperEl: 'carousel-wrapper',
+    mainEl: '.carousel',
+    delay: 5000,
+    previousElAction: 'button[data-carousel-prev]',
+    nextElAction: 'button[data-carousel-next]',
+    isAutoPlay: false,
+    copyChild: 4,
+  });
 }
