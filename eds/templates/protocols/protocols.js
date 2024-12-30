@@ -30,9 +30,11 @@ export default async function buildAutoBlocks() {
     buildBlock('chapter-links', { elems: [] }),
     buildBlock('sidelinks', { elems: allLinks }),
   );
-  sectionMiddle.prepend(
+  const jumpToSectionDiv = div(
     buildBlock('sticky-sections-list', { elems: [] }),
   );
+  const headerTitle = main.querySelector(':scope > div:nth-child(1)');
+  headerTitle.parentNode.insertBefore(jumpToSectionDiv, headerTitle.nextSibling);
   const headerSection = div();
   const breadcrumbBlock = buildBlock('breadcrumb', { elems: [] });
   headerSection.append(breadcrumbBlock);
