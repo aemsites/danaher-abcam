@@ -782,7 +782,6 @@ export function decorateMain(main) {
   decorateStoryPage(main);
   decorateGuidePage(main);
   decorateTopicPage(main);
-  //decorateSupportPage(main);
 }
 
 export const applyClasses = (element, classes) => element?.classList.add(...classes.split(' '));
