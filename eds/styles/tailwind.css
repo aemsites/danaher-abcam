@@ -155,6 +155,10 @@
         @apply grid grid-cols-3 gap-11 max-[799px]:grid-cols-1;
     }
 
+    main .section .cards-wrapper .cols-2 {
+        @apply grid grid-cols-2 gap-11 max-[426px]:grid-cols-1;
+    }
+
     main .section .mini-teasers-wrapper {
         @apply bg-black;
     }
