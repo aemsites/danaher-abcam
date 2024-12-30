@@ -545,26 +545,6 @@ function handleSearchBox() {
   });
 }
 
-// document.addEventListener('DOMContentLoaded', function() {
-//   console.log("Hello");
-
-//   const inputField = document.querySelector('#search-input');
-//   console.log(inputField);
-
-//   if (inputField) {
-//     inputField.addEventListener('keyup', function () {
-//       const query = inputField.value;
-//       console.log("q val", query);
-
-//       if (query.length > 1) {
-//         performSearch(query);
-//       }
-//     });
-//   } else {
-//     console.error("Search input field not found");
-//   }
-// });
-
 export default async function decorate(block) {
   const resp = await fetch('/eds/fragments/header.html');
   block.classList.add(...'relative bg-black flex justify-center flex-col pt-4 z-40'.split(' '));
@@ -705,11 +685,11 @@ export default async function decorate(block) {
   }
   // COVEO-HEADLESS WORK
   handleSearchBox();
-  
+
   searchEngine.executeFirstSearch();
   searchEngine.subscribe(() => {
     handleQuerySuggestions();
     getCategorySuggestions();
-  getContentSuggestions();
+    getContentSuggestions();
   });
 }
