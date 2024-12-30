@@ -7,7 +7,7 @@ const titlecard = (main, document) => {
     headingEl.textContent = heading;
     const description = headDivEl.querySelector('div[data-testid="content-head-description"]')?.firstElementChild?.textContent;
     const descriptionEl = document.createElement('p');
-    descriptionEl.textContent = 'description';
+    descriptionEl.textContent = description;
     const subTitleEl = document.createElement('h4');
     subTitleEl.textContent = 'subtitle';
     const link = document.createElement('a');
@@ -29,13 +29,13 @@ const titlecard = (main, document) => {
     titleCardDivEl.append(headingEl, descriptionEl);
     cells.push([headingEl]);
     cells.push([subTitleEl]);
+    cells.push([descriptionEl]);
     cells.push([link]);
     cells.push([linkVariant]);
     cells.push([iconVariant]);
     cells.push([image]);
     cells.push([linktext]);
     cells.push([linktitle]);
-    cells.push([descriptionEl]);
     if (cells.length > 0) {
       headDivEl.innerHTML = '';
       const block = WebImporter.DOMUtils.createTable(cells, document);

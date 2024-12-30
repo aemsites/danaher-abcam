@@ -23,19 +23,6 @@
       "id": "title-card",
       "fields": [
         {
-          "component": "multiselect",
-          "valueType": "string",
-          "name": "classes",
-          "value": "",
-          "label": "Search Options",
-          "options": [
-            {
-              "name": "Title with Image",
-              "value": "title-image"
-            }
-          ]
-        },
-        {
           "component": "text",
           "valueType": "string",
           "name": "title-card_title",
@@ -65,7 +52,7 @@
         },
         {
           "component": "richtext",
-          "name": "title-card_description",
+          "name": "description",
           "value": "",
           "label": "Description",
           "valueType": "string"
