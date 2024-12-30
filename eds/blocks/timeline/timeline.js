@@ -1,4 +1,5 @@
 import { div, h5 } from '../../scripts/dom-builder.js';
+import { applyClasses } from '../../scripts/scripts.js';
 
 export default async function decorate(block) {
   const contentSections = document.querySelectorAll('[data-stepnumber]');
@@ -16,10 +17,14 @@ export default async function decorate(block) {
       contentSections.forEach((section) => {
         if (section.dataset.stepnumber === step) {
           stepContent.innerHTML = section.innerHTML;
-          section.remove();
+          //section.remove();
+          //let theFirstChild = section.firstChild;
+          //console.log(theFirstChild);
+          //section.insertBefore(stepDivider, theFirstChild);
+          //theFirstChild = section.firstChild;
+          //section.insertBefore(stepIndexElement, theFirstChild);
         }
       });
-      stepEl.innerHTML = '';
       stepEl.prepend(stepDivider);
       stepEl.prepend(stepIndexElement);
       stepEl.append(stepContent);
