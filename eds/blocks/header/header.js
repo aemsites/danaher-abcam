@@ -511,6 +511,7 @@ function handleQuerySuggestions() {
     });
   }
 
+
   // Check if the pressed key is Enter
   // if (event.key === 'Enter') {
   //   event.preventDefault();
