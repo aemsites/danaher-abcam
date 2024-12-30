@@ -1,19 +1,16 @@
 import { div, h5 } from '../../scripts/dom-builder.js';
 import { applyClasses } from '../../scripts/scripts.js';
 
-export default async function decorate(block) {
+export default async function decorate() {
   const contentSections = document.querySelectorAll('[data-stepnumber]');
-  const allSteps = new Set();
   contentSections.forEach((section) => {
-    allSteps.add(section.dataset.stepnumber);
+    const stepIndexElement = h5({ class: 'size-10 flex items-center text-lg p-3 border-2 border-black rounded-full' }, section.dataset.stepnumber);
+    const stepDivider = div({ class: 'border border-gray-100' });
+    const wrapper = document.createElement('div');
+    wrapper.prepend(stepDivider);
+    wrapper.prepend(stepIndexElement);
+    wrapper.append(...section.childNodes);
+    section.append(wrapper);
+    applyClasses(wrapper, 'flex gap-x-4 mb-6');
   });
-  block.innerHTML = '';
-  if (allSteps.size > 0) {
-    allSteps.forEach((step) => {
-      const stepEl = div({ class: 'flex gap-x-4 mb-6' });
-      const stepIndexElement = h5({ class: 'size-10 flex items-center text-lg p-3 border-2 border-black rounded-full' }, step);
-      const stepDivider = div({ class: 'border border-gray-100' });
-      const stepContent = div({ class: 'flex flex-col gap-y-4 py-2' });
-    });
-  }
 }
