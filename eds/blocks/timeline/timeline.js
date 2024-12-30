@@ -14,22 +14,6 @@ export default async function decorate(block) {
       const stepIndexElement = h5({ class: 'size-10 flex items-center text-lg p-3 border-2 border-black rounded-full' }, step);
       const stepDivider = div({ class: 'border border-gray-100' });
       const stepContent = div({ class: 'flex flex-col gap-y-4 py-2' });
-      contentSections.forEach((section) => {
-        if (section.dataset.stepnumber === step) {
-          stepContent.innerHTML = section.innerHTML;
-          //section.remove();
-          //let theFirstChild = section.firstChild;
-          //console.log(theFirstChild);
-          //section.insertBefore(stepDivider, theFirstChild);
-          //theFirstChild = section.firstChild;
-          //section.insertBefore(stepIndexElement, theFirstChild);
-        }
-      });
-      stepEl.prepend(stepDivider);
-      stepEl.prepend(stepIndexElement);
-      stepEl.append(stepContent);
-      block.appendChild(stepEl);
-      block.innerHTML += '&nbsp;';
     });
   }
 }
