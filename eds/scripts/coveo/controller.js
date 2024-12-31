@@ -36,6 +36,18 @@ export const pagerController = buildPager(searchEngine);
 export const sourceFacetController = buildFacet(searchEngine, {
   options: { field: 'source' },
 });
+export const categoriesFacetController = buildFacet(searchEngine, {
+  options: {
+    field: 'categorytype',
+    fieldsToInclude: ['categorytype'],
+  },
+});
+// export const resourcesFacetController = buildFacet(searchEngine, {
+//   options: {
+//     field: 'pagetype',
+//     fieldsToInclude: ['pagetype'],
+//   },
+// });
 // export const selectSuggestion = buildSearchBox(headlessSearchBox.selectSuggestion('a'));
 // //export const ecommerceSearchController = buildSearch(ecommerceEngine);
 // export const allTabController = buildTab(searchEngine, {
@@ -54,7 +66,11 @@ export const sourceFacetController = buildFacet(searchEngine, {
 //   options: { field: 'filetype' },
 // });
 export const pagetypeFacetController = buildFacet(searchEngine, {
-  options: { field: 'pagetype' },
+  options: {
+    field: 'pagetype',
+    fieldsToInclude: ['pagetype'],
+    canShowMoreValues: true,
+  },
 });
 export const sortController = buildSort(searchEngine, {
   initialState: {

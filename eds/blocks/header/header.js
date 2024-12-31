@@ -6,7 +6,7 @@ import countriesAndCodes from '../../scripts/country-list.js';
 import { applyClasses, debounce, highlightText } from '../../scripts/scripts.js';
 
 import coveoEngines from '../../scripts/coveo/engine.js';
-import coveoController from '../../scripts/coveo/controller.js';
+import coveoController, { categoriesFacetController, pagetypeFacetController } from '../../scripts/coveo/controller.js';
 
 const { searchBoxController } = coveoController;
 const { searchEngine } = coveoEngines;
@@ -195,19 +195,12 @@ function accountMenuList(iconName, linkText, linkUrl) {
     );
     decorateIcons(divEl, 24, 24);
   }
-  const anchorEl = iconName === 'sign-out'
-    ? a({
-      class: 'text-sm font-semibold leading-5 text-black p-2 pl-2',
-      href: linkUrl,
-      onClick: clearSession,
-    }, linkText)
-    : a({
-      class: 'text-sm font-semibold leading-5 text-black p-2 pl-2',
-      href: linkUrl,
-    }, linkText);
-
   divEl.append(
-    anchorEl,
+    a({
+      class: 'text-sm font-semibold leading-5 text-black p-2 pl-2',
+      href: linkUrl,
+      onclick: clearSession,
+    }, linkText),
   );
   return divEl;
 }
@@ -324,176 +317,40 @@ function myAccount(session) {
   return myAccoundDiv;
 }
 
-// function performSearch(query) {
-//   // getCategorySuggestions(query);
-//   getContentSuggestions(query);
-//   // getProductSuggestions(query);
-// }
+function handleCategorySuggestions() {
 
-async function getCategorySuggestions(query) {
+  const categoryEl = document.querySelector('ul#categories-suggestions');
 
-  document.querySelectorAll('.search-bar-desktop ').forEach((inputField) => {
-    if (inputField) {
-      inputField.addEventListener('keyup', function () {
-        const query = inputField.value;
-      });
-    }
-  });
-
-  const url =
-    'https://danahernonproduction1892f3fhz.org.coveo.com/rest/search/v2/facet';
-
-  const data = {
-    captions: {},
-    numberOfValues: 8,
-    query: '*',
-    field: 'categorytype',
-    ignoreValues: [],
-    filterFacetCount: true,
-    type: 'specific',
-    searchContext: {
-      accessToken: 'xx27ea823a-e994-4d71-97f6-403174ec592a',
-      organizationId: 'danahernonproduction1892f3fhz',
-      url: 'https://danahernonproduction1892f3fhz.org.coveo.com/rest/search/v2',
-      locale: 'en',
-      pipeline: 'Abcam Product Listing',
-      q: query,
-      enableQuerySyntax: false,
-      searchHub: 'AbcamProductListing',
-      firstResult: 0,
-      facetOptions: {
-        freezeFacetOrder: false,
-      },
-    },
-  };
-
-  try {
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        Authorization: 'Bearer xx27ea823a-e994-4d71-97f6-403174ec592a',
-      },
-      body: JSON.stringify(data),
+  categoryEl.innerHTML = '';
+  const { values } = categoriesFacetController.state;
+  console.log(categoriesFacetController.state, values);
+  if (values && values.length > 0) {
+    values.forEach((value) => {
+      // console.log(value);
+      const suggestionItem = li({ class: 'suggestion-item cursor-pointer' },
+        `${value.value} (${value.numberOfResults})`,
+      );
+      categoryEl.appendChild(suggestionItem);
     });
-
-    if (!response.ok) {
-      throw new Error('Network response was not ok ' + response.statusText);
-    }
-
-    const resultData = await response.json();
-    displayCategoryResults(query, resultData);
-  } catch (error) {
-    console.error('There was a problem with the fetch operation:', error);
   }
 }
 
-function displayCategoryResults(query, results) {
+function handleResourcesSuggestions() {
+  const resourceEl = document.querySelector('ul#resources-suggestions');
 
-  if (typeof query !== 'string' || !query.trim() || !results || !Array.isArray(results.values)) {
-    return;
-  }
-
-  const expressions = results.values;
-  const sortedExpressions = sortJsonArrayByKeyDesc(expressions, 'count');
-  const resultsContainer = document.querySelector('ul#category-suggestions');
-  resultsContainer.innerHTML = '';
-  setTimeout(() => {
-    sortedExpressions.forEach((expression) => {
-      const resultElement = document.createElement('div');
-      resultElement.textContent =
-        query + ' in ' + expression.displayValue + ' (' + expression.count + ')';
-      resultsContainer.appendChild(resultElement);
-    });
-  }, '800');
+  resourceEl.innerHTML = '';
+  const { values } = pagetypeFacetController.state;
+  console.log("state", pagetypeFacetController.state, values);
+  // if (values && values.length > 0) {
+  //   values.forEach((value) => {
+  //   console.log("single",value);
+  //     const suggestionItem = li({ class: 'suggestion-item cursor-pointer' },
+  //       `${value.value} (${value.numberOfResults})`,
+  //     );
+  //     resourceEl.appendChild(suggestionItem);
+  //   });
+  // }
 }
-
-
-function sortJsonArrayByKeyDesc(jsonArray, key) {
-  return jsonArray.sort((a, b) => {
-    if (a[key] > b[key]) {
-      return -1;
-    }
-    if (a[key] < b[key]) {
-      return 1;
-    }
-    return 0;
-  });
-}
-
-async function getContentSuggestions(query) {
-  const url =
-    'https://danahernonproduction1892f3fhz.org.coveo.com/rest/search/v2/facet';
-
-  const data = {
-    captions: {},
-    numberOfValues: 8,
-    query: '*',
-    field: 'pagetype',
-    ignoreValues: [],
-    filterFacetCount: true,
-    type: 'specific',
-    searchContext: {
-      accessToken: 'xx26097312-c0ba-4c54-b22d-0a258570650a',
-      organizationId: 'danahernonproduction1892f3fhz',
-      url: 'https://danahernonproduction1892f3fhz.org.coveo.com/rest/search/v2',
-      locale: 'en',
-      pipeline: 'AbcamContentSearch',
-      q: query,
-      enableQuerySyntax: false,
-      searchHub: 'AbcamContentSearch',
-      firstResult: 0,
-      facetOptions: {
-        freezeFacetOrder: false,
-      },
-    },
-  };
-
-  try {
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        Authorization: 'Bearer xx26097312-c0ba-4c54-b22d-0a258570650a',
-      },
-      body: JSON.stringify(data),
-    });
-
-    if (!response.ok) {
-      throw new Error('Network response was not ok ' + response.statusText);
-    }
-
-    const resultData = await response.json();
-    displayContentResults(query, resultData);
-  } catch (error) {
-    console.error('There was a problem with the fetch operation:', error);
-  }
-}
-
-function displayContentResults(query = '', results) {
-
-  if (typeof query !== 'string' || !query.trim() || !results || !Array.isArray(results.values)) {
-    return;
-  }
-
-  const expressions = results.values;
-  const sortedexpressions = sortJsonArrayByKeyDesc(expressions, 'count');
-  const resultsContainer = document.querySelector('ul#resources-suggestions');
-  resultsContainer.innerHTML = '';
-
-  setTimeout(() => {
-    sortedexpressions.forEach((expression) => {
-      const resultElement = div({});
-      resultElement.textContent =
-        query + ' in ' + expression.displayValue + ' (' + expression.count + ')';
-      resultsContainer.appendChild(resultElement);
-    });
-  }, '900');
-}
-
-
 
 function handleQuerySuggestions() {
   const suggestionsElement = document.querySelector('ul#search-suggestions');
@@ -517,28 +374,15 @@ function handleQuerySuggestions() {
       suggestionsElement.appendChild(newSuggestionItem);
     });
   }
-
-
-  // Check if the pressed key is Enter
-  // if (event.key === 'Enter') {
-  //   event.preventDefault();
-
-  //   if (searchTerm) {
-  //     const searchResultsUrl = `https://www.abcam.com/en-us/search?keywords=${searchTerm}`;
-  //     window.location.href = searchResultsUrl;
-  //   }
-  // }
 }
 
 function handleSearchBox() {
-  // Search funtionality
   document.querySelectorAll('.search-bar-desktop').forEach((item) => {
     item.addEventListener(
       'keyup',
       debounce((event) => {
         const { value } = event.target;
         const searchTerm = value.trim();
-        // console.log('SearchTerm: ', searchTerm);
         searchBoxController.updateText(searchTerm);
         searchBoxController.selectSuggestion(searchTerm);
         searchBoxController.submit();
@@ -548,6 +392,7 @@ function handleSearchBox() {
       'blur',
       () => {
         document.querySelector('ul#search-suggestions').innerHTML = '';
+        document.querySelector('ul#categories-suggestions').innerHTML = '';
       },
     );
   });
@@ -697,7 +542,7 @@ export default async function decorate(block) {
   searchEngine.executeFirstSearch();
   searchEngine.subscribe(() => {
     handleQuerySuggestions();
-    getCategorySuggestions();
-    getContentSuggestions();
+    handleCategorySuggestions();
+    handleResourcesSuggestions();
   });
 }
