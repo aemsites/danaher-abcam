@@ -318,16 +318,14 @@ function myAccount(session) {
 }
 
 function handleCategorySuggestions() {
-
   const categoryEl = document.querySelector('ul#categories-suggestions');
 
   categoryEl.innerHTML = '';
   const { values } = categoriesFacetController.state;
-  console.log(categoriesFacetController.state, values);
   if (values && values.length > 0) {
     values.forEach((value) => {
-      // console.log(value);
-      const suggestionItem = li({ class: 'suggestion-item cursor-pointer' },
+      const suggestionItem = li(
+        { class: 'suggestion-item cursor-pointer' },
         `${value.value} (${value.numberOfResults})`,
       );
       categoryEl.appendChild(suggestionItem);
@@ -340,7 +338,6 @@ function handleResourcesSuggestions() {
 
   resourceEl.innerHTML = '';
   const { values } = pagetypeFacetController.state;
-  console.log("state", pagetypeFacetController.state, values);
   // if (values && values.length > 0) {
   //   values.forEach((value) => {
   //   console.log("single",value);
