@@ -3,7 +3,7 @@ import {
   h3, p, div, span, hr, ul, li,
 } from '../../scripts/dom-builder.js';
 import { decorateIcons } from '../../scripts/aem.js';
-import { getStarRating } from '../product-overview/product-overview.js';
+// import { getStarRating } from '../product-overview/product-overview.js';
 import { decorateDrawer, showDrawer } from '../../scripts/drawer.js';
 import decorateProductQuickLook from '../../scripts/product-quick-look.js';
 
@@ -55,7 +55,7 @@ function createSlides(productsArray) {
   return container;
 }
 
-function createDots(totalSlides) {
+export function createDots(totalSlides) {
   const dotsContainer = ul({ class: 'dots flex justify-center gap-2 mt-8' });
   const isMobile = window.matchMedia('(max-width: 768px)').matches;
   const isTablet = window.matchMedia('(min-width: 769px) and (max-width: 1024px)').matches;
@@ -118,7 +118,7 @@ function quickViewContainer(block) {
   });
 }
 
-function initializeSlider(sliderContainer, wrapper, prevButton, nextButton, dotsContainer) {
+export function initializeSlider(sliderContainer, wrapper, prevButton, nextButton, dotsContainer) {
   let index = 0;
   const totalSlides = wrapper.children.length;
 

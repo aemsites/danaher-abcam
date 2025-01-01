@@ -1,4 +1,32 @@
-import Carousel from '../../scripts/carousel.js';
+import { applyClasses } from '../../scripts/scripts.js';
+import { createDots, initializeSlider } from '../recently-viewed/recently-viewed.js';
+import { div, span } from '../../scripts/dom-builder.js';
+import { decorateIcons } from '../../scripts/aem.js';
+
+function createSlides(slideWrapperEl) {
+  
+  applyClasses(slideWrapperEl, 'slider-wrapper flex gap-4 transition-transform duration-300 ease-in-out');
+ 
+  [...slideWrapperEl.children].forEach((slide) => {
+    applyClasses(slide, 'slide-item h-full min-w-28 flex items-center justify-center border border-[#0711121a] rounded hover:bg-[#0000000d] cursor-pointer');
+    slideWrapperEl.appendChild(slide);
+  });
+    return slideWrapperEl;
+}
+
+function createSliderNavigation() {
+  const prevButton = div(
+    { class: 'slider-button absolute translate-y-[-50%] z-10 prev hidden rotate-90 top-[50%]' },
+    span({ class: 'icon icon-chevron-down' }),
+  );
+  const nextButton = div(
+    { class: 'slider-button absolute z-10 prev hidden rotate-[270deg] top-[35%] right-[1%]' },
+    span({ class: 'icon icon-chevron-down' }),
+  );
+  decorateIcons(prevButton);
+  decorateIcons(nextButton);
+  return { prevButton, nextButton };
+}
 
 export default async function decorate(block) {
   block.innerHTML = `<div>
@@ -60,7 +88,7 @@ export default async function decorate(block) {
               </div>
               <div>
                 <div>
-                  <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$g>
+                  <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                 </div>
                 <div>
                   <div>ICC/IF</div>
@@ -199,7 +227,7 @@ export default async function decorate(block) {
                     <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                   </li>
                   <li>
-                    <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$g>
+                    <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
                   </li>
                   <li>
                     <img src=https://s7d9.scene7.com/is/image/danaherstage/no-image-availble?$danaher-mobile$>
@@ -266,19 +294,21 @@ export default async function decorate(block) {
           </div>
         </div>`;
 
-  const carouselWrapperEl = block.querySelector('ul')?.parentElement;
-  carouselWrapperEl.id = 'carousel-wrapper';
-  block.querySelector('ul').className = 'carousel';
-  block.querySelector('ul')?.querySelectorAll('li').forEach((li) => {
-    li.className = 'carousel-slider';
-  });
-  new Carousel({
-    wrapperEl: 'carousel-wrapper',
-    mainEl: '.carousel',
-    delay: 5000,
-    previousElAction: 'button[data-carousel-prev]',
-    nextElAction: 'button[data-carousel-next]',
-    isAutoPlay: false,
-    copyChild: 4,
-  });
+  const slideWrapperEl = block.querySelector('ul');
+  createSlides(slideWrapperEl);
+  const { prevButton = '', nextButton = '' } = slideWrapperEl.children.length > 4 ? createSliderNavigation() : '';
+  slideWrapperEl.parentElement.className = 'relative overflow-hidden w-full h-16';
+  slideWrapperEl.parentElement.append(
+    prevButton,
+    slideWrapperEl,
+    nextButton,
+  );
+
+  const dotsContainer = createDots(slideWrapperEl.children.length);
+  slideWrapperEl.parentElement.appendChild(dotsContainer);
+
+  if (slideWrapperEl.children.length > 4) {
+    initializeSlider(slideWrapperEl.parentElement, slideWrapperEl, prevButton, nextButton, dotsContainer);
+  }
+
 }
