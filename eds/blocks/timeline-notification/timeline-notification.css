@@ -6,6 +6,10 @@
   display: flex
 }
 
+.timeline-notification :is(.rounded-lg) {
+  border-radius: 0.5rem
+}
+
 .timeline-notification :is(.bg-gray-300) {
   --tw-bg-opacity: 1;
   background-color: rgb(209 213 219 / var(--tw-bg-opacity))
@@ -19,6 +23,21 @@
 .timeline-notification :is(.bg-orange-50) {
   --tw-bg-opacity: 1;
   background-color: rgb(255 247 237 / var(--tw-bg-opacity))
+}
+
+.timeline-notification :is(.bg-\[\#E8FCF4\]) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(232 252 244 / var(--tw-bg-opacity))
+}
+
+.timeline-notification :is(.bg-\[\#F2F2F2\]) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(242 242 242 / var(--tw-bg-opacity))
+}
+
+.timeline-notification :is(.bg-orange-100) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 237 213 / var(--tw-bg-opacity))
 }
 
 .timeline-notification :is(.p-2) {
