@@ -31,7 +31,7 @@ function renderModal(el) {
 export default async function decorate(block) {
   const pageTags = getMetadata('pagetags');
   let kcTags = [];
-  if(pageTags.length > 0) {
+  if (pageTags.length > 0) {
     kcTags = pageTags?.split(',');
   }
   const extractedTags = kcTags.map((tag) => tag.split('/').pop());

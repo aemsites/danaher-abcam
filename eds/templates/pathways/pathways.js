@@ -38,7 +38,7 @@ export default async function buildAutoBlocks() {
   const headerTitle = main.querySelector(':scope > div:nth-child(1)');
   headerTitle.parentNode.insertBefore(jumpToSectionDiv, headerTitle.nextSibling);
   const defaultContainer = sectionMiddle.querySelector('div > p:first-of-type');
-  const editedTime = p({ class: 'text-[#65797C] !mb-10' }, "Last edited " + formattedDate);
+  const editedTime = p({ class: 'text-[#65797C] !mb-10' }, `Last edited ${formattedDate}`);
   defaultContainer.parentNode.insertBefore(editedTime, defaultContainer);
   const headerSection = div();
   const breadcrumbBlock = buildBlock('breadcrumb', { elems: [] });
