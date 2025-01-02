@@ -10,6 +10,10 @@
   border-radius: 0.5rem
 }
 
+.timeline-notification :is(.rounded) {
+  border-radius: 0.25rem
+}
+
 .timeline-notification :is(.bg-gray-300) {
   --tw-bg-opacity: 1;
   background-color: rgb(209 213 219 / var(--tw-bg-opacity))
@@ -38,6 +42,11 @@
 .timeline-notification :is(.bg-orange-100) {
   --tw-bg-opacity: 1;
   background-color: rgb(255 237 213 / var(--tw-bg-opacity))
+}
+
+.timeline-notification :is(.bg-\[\#EDF1F7\]) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(237 241 247 / var(--tw-bg-opacity))
 }
 
 .timeline-notification :is(.p-2) {

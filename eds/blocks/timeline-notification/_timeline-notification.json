@@ -38,6 +38,10 @@
             {
               "name": "Help",
               "value": "help"
+            },
+            {
+              "name": "Timer",
+              "value": "timer"
             }
           ]
         },        

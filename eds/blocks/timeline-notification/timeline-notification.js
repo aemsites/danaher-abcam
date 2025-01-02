@@ -16,6 +16,10 @@ export default function decorate(block) {
     applyClasses(notification, 'flex pt-0.5 px-1 bg-[#E8FCF4] rounded-lg');
     const icon = span({ class: 'icon icon-help p-2.5 ' });
     notification.prepend(icon);
+  } else if (block && block.classList.contains('timer')) {
+    applyClasses(notification, 'flex pt-0.5 px-1 bg-[#EDF1F7] rounded');
+    const icon = span({ class: 'icon icon-timer p-2.5 ' });
+    notification.prepend(icon);
   }
   decorateIcons(notification);
 }
