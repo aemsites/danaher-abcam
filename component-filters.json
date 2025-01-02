@@ -54,8 +54,7 @@
   {
     "id": "accordion",
     "components": [
-      "text",
-      "item"
+      "accordion-item"
     ]
   },
   {

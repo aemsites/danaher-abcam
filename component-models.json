@@ -388,7 +388,7 @@
     ]
   },
   {
-    "id": "item",
+    "id": "accordion-item",
     "fields": [
       {
         "component": "text",
@@ -398,13 +398,6 @@
         "label": "Heading"
       },
       {
-        "component": "richtext",
-        "valueType": "string",
-        "name": "item_description",
-        "value": "",
-        "label": "Description"
-      },
-      {
         "component": "text",
         "name": "item_headingType",
         "label": "",
@@ -412,11 +405,11 @@
         "hidden": true
       },
       {
-        "component": "text",
-        "name": "item_descriptionType",
-        "label": "",
+        "component": "richtext",
         "valueType": "string",
-        "hidden": true
+        "name": "item_description",
+        "value": "",
+        "label": "Description"
       }
     ]
   },
