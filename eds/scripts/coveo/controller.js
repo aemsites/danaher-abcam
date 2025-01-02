@@ -69,7 +69,6 @@ export const pagetypeFacetController = buildFacet(searchEngine, {
   options: {
     field: 'pagetype',
     fieldsToInclude: ['pagetype'],
-    canShowMoreValues: true,
   },
 });
 export const sortController = buildSort(searchEngine, {
