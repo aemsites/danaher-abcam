@@ -3,14 +3,15 @@ import {
   span,
 } from '../../scripts/dom-builder.js';
 import { applyClasses } from '../../scripts/scripts.js';
-import { decorateIcons } from '../../scripts/aem.js';
+import { decorateIcons, getMetadata } from '../../scripts/aem.js';
 
 export default function decorate(block) {
   const chevIcon = span({ class: 'icon icon-chevron-down shrink-0 ml-auto transition' });
-
+  const template = getMetadata('template');
+  const jumpToText = template === 'support' ? 'QUESTION' : 'JUMP TO:';
   const dropdownContainer = div(
     { class: 'dd-main-container mx-auto max-w-7xl lg:h-[72px] flex items-center relative px-7  py-4 font-semibold' },
-    div({ class: 'jump-to-label text-[#65797c] text-sm w-28  md:!w-24 lg:!w-20' }, 'JUMP TO:'),
+    div({ class: 'jump-to-label text-[#65797c] text-sm w-28  md:!w-24 lg:!w-20' }, jumpToText),
     div(
       { class: 'dd-container flex flex-row items-center w-full lg:w-1/2 min-h-[40px] gap-x-4 !bg-[#F4F5F5] tracking-[0.2px] leading-4 text-sm border border-[#EAECEC] border-opacity-5 bg-[#273F3F] bg-opacity-5 rounded-full px-6 w-full bg-white cursor-pointer relative' },
       span({ class: 'dd-selected' }, ''),

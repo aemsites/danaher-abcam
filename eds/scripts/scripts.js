@@ -309,7 +309,8 @@ const TEMPLATE_LIST = [
   'guide',
   'guides-hub',
   'topic',
-  'cross-sell-hub'
+  'cross-sell-hub',
+  'support'
 ];
 
 async function decorateTemplates(main) {
@@ -379,7 +380,7 @@ function decorateStoryPage(main) {
 }
 
 function decorateGuidePage(main) {
-  const sectionEl = main.querySelector(':scope > div.section.chapter-links-container.sidelinks-container');
+  const sectionEl =  main.querySelector(':scope > div.section.chapter-links-container.sidelinks-container') ?  main.querySelector(':scope > div.section.chapter-links-container.sidelinks-container') :  main.querySelector(':scope > div.section.chapter-links-container')
   if (sectionEl) {
     const toBeRemoved = ['chapter-links-wrapper', 'sidelinks-wrapper'];
     const rightSideElements = div({ class: 'w-full pr-0 lg:pr-8' });
@@ -780,8 +781,7 @@ export function decorateMain(main) {
   decorateStickyRightNav(main);
   decorateStoryPage(main);
   decorateGuidePage(main);
-  decorateTopicPage(main) 
-  
+  decorateTopicPage(main);
 }
 
 export const applyClasses = (element, classes) => element?.classList.add(...classes.split(' '));
