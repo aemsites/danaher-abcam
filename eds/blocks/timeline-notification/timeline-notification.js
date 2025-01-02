@@ -17,8 +17,8 @@ export default function decorate(block) {
     const icon = span({ class: 'icon icon-help p-2.5 ' });
     notification.prepend(icon);
   } else if (block && block.classList.contains('timer')) {
-    applyClasses(notification, 'flex pt-0.5 px-1 bg-[#EDF1F7] rounded');
-    const icon = span({ class: 'icon icon-timer p-2.5 ' });
+    applyClasses(notification, 'flex pt-0.5 px-1 w-1/4 bg-[#EDF1F7] rounded');
+    const icon = span({ class: 'icon icon-timer p-2.5' });
     notification.prepend(icon);
   }
   decorateIcons(notification);
