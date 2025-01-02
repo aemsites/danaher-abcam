@@ -2,6 +2,17 @@ import { getMetadata } from '../../scripts/aem.js';
 import { div, p } from '../../scripts/dom-builder.js';
 import { applyClasses } from '../../scripts/scripts.js';
 
+export function getContentType(pageTags) {
+  const tags = pageTags || getMetadata('pagetags');
+  let type = null;
+  tags?.split(',').forEach((tag) => {
+    if (tag.includes('content-type')) {
+      type = tag.split('/').pop();
+    }
+  });
+  return type;
+}
+
 export default function decorate(block) {
   block.querySelector('h1').classList.add(...'my-5 text-black-0 !text-3xl md:!text-4xl lg:!text-6xl font-semibold !tracking-wider'.split(' '));
   block.querySelector('h1').after(p({ class: 'w-1/6 mb-5 border-t-4 border-[#ff7223]' }));
@@ -12,6 +23,15 @@ export default function decorate(block) {
     block.parentElement.parentElement.classList.add('relative');
     block.querySelector('h1').parentElement.parentElement.classList.add(...'xl:min-h-[400px] w-full lg:w-1/2 lg:py-6 lg:pr-6'.split(' '));
     applyClasses(block, 'text-center-align image-full-width font-sans text-base flex flex-col gap-y-6 pb-4 px-6 lg:pr-0 justify-center lg:flex-row xl:container xl:max-w-7xl mx-auto items-center');
+    if (getContentType() && template === 'stories') {
+      block.firstElementChild?.firstElementChild
+        ?.prepend(
+          div(
+            { class: 'font-[rockwell] text-sm leading-4 text-[#435656] capitalize mb-2' },
+            getContentType(),
+          ),
+        );
+    }
     const image = block.querySelector('picture');
     if (image) {
       image.parentElement.parentElement.classList.add(...'w-full lg:w-1/2 my-auto'.split(' '));
@@ -20,7 +40,7 @@ export default function decorate(block) {
         applyClasses(titleImage, 'w-full h-48 md:h-[400px] object-cover relative xl:w-1/2 xl:absolute xl:right-0 xl:top-0');
       } else {
         applyClasses(titleImage, 'w-full h-48 md:h-[400px] object-cover relative xl:w-1/2 xl:absolute xl:right-0 xl:top-28');
-      } 
+      }
     } else {
       const video = block.querySelector('a');
       video.parentElement.parentElement.parentElement.classList.add(...'w-full lg:w-1/2 my-auto'.split(' '));
