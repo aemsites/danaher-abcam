@@ -2428,6 +2428,43 @@
     ]
   },
   {
+    "id": "timeline-notification",
+    "fields": [
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "value": "",
+        "label": "Notification Type",
+        "options": [
+          {
+            "name": "Knowledge",
+            "value": "knowledge"
+          },
+          {
+            "name": "Warning",
+            "value": "warning"
+          },
+          {
+            "name": "Help",
+            "value": "help"
+          },
+          {
+            "name": "Timer",
+            "value": "timer"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "name": "timeline-notification_description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "title-card",
     "fields": [
       {
