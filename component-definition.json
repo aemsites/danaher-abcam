@@ -873,8 +873,7 @@
                 "template": {
                   "name": "Title Card",
                   "model": "title-card",
-                  "title-card_titleType": "h1",
-                  "subTitle_titleType": "h4"
+                  "title-card_titleType": "h1"
                 }
               }
             }
