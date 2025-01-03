@@ -238,7 +238,7 @@ export default function decorate(block) {
   });
 
   allPublications.addEventListener('click', () => {
-	const allPublicationsUrl = allPublications.getAttribute('id');
+    const allPublicationsUrl = allPublications.getAttribute('id');
     const apiUrl = encodeURIComponent(allPublicationsUrl);
     const url = `/en-us/page-test/publications?apiUrl=${apiUrl}`;
     window.open(url, '_blank');
