@@ -1,3 +1,12 @@
 .product-alternate-block-wrapper :is(.block) {
   display: block
 }
+
+.product-alternate-block-wrapper :is(.bg-\[\#f2f2f2\]) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(242 242 242 / var(--tw-bg-opacity))
+}
+
+.product-alternate-block-wrapper :is(.p-10) {
+  padding: 2.5rem
+}

@@ -13,4 +13,8 @@ export default function decorate(block) {
             </ul>
         </div>
       </div> `;
+
+      console.log(block.parentElement);
+      block.classList.add(...'bg-[#f2f2f2] p-12'.split(' '));
+      
 }
