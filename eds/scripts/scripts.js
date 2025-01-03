@@ -737,7 +737,7 @@ async function decorateVideo(main) {
             decorateIcons(linkContainer, 50, 50);
 
             if (linkContainer.closest('.image-full-width')) {
-              linkContainer.className = 'relative lg:absolute w-full lg:w-1/2 h-full object-cover lg:right-0 lg:bottom-6';
+              linkContainer.className = 'relative lg:absolute w-full lg:w-1/2 h-full md:h-[400px] object-cover lg:right-0 lg:bottom-6';
             }
 
             linkContainer.querySelector(`button[id="play-button-${videoId}"]`).addEventListener('click', (e) => {

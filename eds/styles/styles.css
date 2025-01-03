@@ -2942,6 +2942,10 @@ main .section.downloads-container {
     height: 16rem;
   }
 
+  .md\:h-\[400px\] {
+    height: 400px;
+  }
+
   .md\:w-2\/5 {
     width: 40%;
   }

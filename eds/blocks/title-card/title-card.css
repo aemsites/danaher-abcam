@@ -37,8 +37,16 @@
   display: flex
 }
 
+.title-card-wrapper :is(.aspect-video) {
+  aspect-ratio: 16 / 9
+}
+
 .title-card-wrapper :is(.h-48) {
   height: 12rem
+}
+
+.title-card-wrapper :is(.h-full) {
+  height: 100%
 }
 
 .title-card-wrapper :is(.w-1\/6) {
@@ -116,11 +124,6 @@
   padding-bottom: 0.25rem
 }
 
-.title-card-wrapper :is(.px-\[30px\]) {
-  padding-left: 30px;
-  padding-right: 30px
-}
-
 .title-card-wrapper :is(.pb-4) {
   padding-bottom: 1rem
 }
@@ -129,12 +132,12 @@
   padding-top: 1rem
 }
 
-.title-card-wrapper :is(.text-center) {
-  text-align: center
-}
-
 .title-card-wrapper :is(.font-sans) {
   font-family: Noto Sans
+}
+
+.title-card-wrapper :is(.font-\[rockwell\]) {
+  font-family: rockwell
 }
 
 .title-card-wrapper :is(.\!text-3xl) {
@@ -162,31 +165,12 @@
   line-height: 1rem
 }
 
-.title-card-wrapper :is(.text-2xl) {
-  font-size: 1.5rem;
-  line-height: 2rem
-}
-
-.title-card-wrapper :is(.text-5xl) {
-  font-size: 3rem;
-  line-height: 1
-}
-
-.title-card-wrapper :is(.text-xl) {
-  font-size: 1.25rem;
-  line-height: 1.75rem
-}
-
 .title-card-wrapper :is(.font-normal) {
   font-weight: 400
 }
 
 .title-card-wrapper :is(.font-semibold) {
   font-weight: 600
-}
-
-.title-card-wrapper :is(.font-light) {
-  font-weight: 300
 }
 
 .title-card-wrapper :is(.capitalize) {
@@ -209,10 +193,6 @@
   letter-spacing: 0.3px
 }
 
-.title-card-wrapper :is(.tracking-normal) {
-  letter-spacing: 0em
-}
-
 .title-card-wrapper :is(.text-\[\#378189\]) {
   --tw-text-opacity: 1;
   color: rgb(55 129 137 / var(--tw-text-opacity))
@@ -221,6 +201,15 @@
 .title-card-wrapper :is(.text-\[\#8B8B8B\]) {
   --tw-text-opacity: 1;
   color: rgb(139 139 139 / var(--tw-text-opacity))
+}
+
+.title-card-wrapper :is(.text-\[\#435656\]) {
+  --tw-text-opacity: 1;
+  color: rgb(67 86 86 / var(--tw-text-opacity))
+}
+
+.title-card-wrapper :is(.\[title\:video\]) {
+  title: video
 }
 
 @media (min-width: 1280px) {
@@ -259,13 +248,11 @@
   }
 }
 
-@media (min-width: 640px) {
-  .title-card-wrapper :is(.sm\:\!text-\[24px\]) {
-    font-size: 24px !important
-  }
-}
-
 @media (min-width: 768px) {
+  .title-card-wrapper :is(.md\:absolute) {
+    position: absolute
+  }
+
   .title-card-wrapper :is(.md\:mt-12) {
     margin-top: 3rem
   }
@@ -286,20 +273,35 @@
     font-size: 2.25rem !important;
     line-height: 2.5rem !important
   }
-
-  .title-card-wrapper :is(.md\:\!text-\[42px\]) {
-    font-size: 42px !important
-  }
-
-  .title-card-wrapper :is(.md\:text-6xl) {
-    font-size: 3.75rem;
-    line-height: 1
-  }
 }
 
 @media (min-width: 1024px) {
+  .title-card-wrapper :is(.lg\:absolute) {
+    position: absolute
+  }
+
+  .title-card-wrapper :is(.lg\:relative) {
+    position: relative
+  }
+
+  .title-card-wrapper :is(.lg\:bottom-6) {
+    bottom: 1.5rem
+  }
+
+  .title-card-wrapper :is(.lg\:right-0) {
+    right: 0px
+  }
+
+  .title-card-wrapper :is(.lg\:top-14) {
+    top: 3.5rem
+  }
+
   .title-card-wrapper :is(.lg\:w-1\/2) {
     width: 50%
+  }
+
+  .title-card-wrapper :is(.lg\:w-full) {
+    width: 100%
   }
 
   .title-card-wrapper :is(.lg\:flex-row) {
@@ -323,15 +325,6 @@
     font-size: 3.75rem !important;
     line-height: 1 !important
   }
-
-  .title-card-wrapper :is(.lg\:\!text-\[56px\]) {
-    font-size: 56px !important
-  }
-
-  .title-card-wrapper :is(.lg\:text-3xl) {
-    font-size: 1.875rem;
-    line-height: 2.25rem
-  }
 }
 
 @media (min-width: 1280px) {
@@ -347,6 +340,22 @@
     top: 0px
   }
 
+  .title-card-wrapper :is(.xl\:top-\[117px\]) {
+    top: 117px
+  }
+
+  .title-card-wrapper :is(.xl\:top-\[0px\]) {
+    top: 0px
+  }
+
+  .title-card-wrapper :is(.xl\:top-28) {
+    top: 7rem
+  }
+
+  .title-card-wrapper :is(.xl\:top-14) {
+    top: 3.5rem
+  }
+
   .title-card-wrapper :is(.xl\:min-h-\[400px\]) {
     min-height: 400px
   }
@@ -357,14 +366,5 @@
 
   .title-card-wrapper :is(.xl\:max-w-7xl) {
     max-width: 80rem
-  }
-
-  .title-card-wrapper :is(.xl\:max-w-\[1120px\]) {
-    max-width: 1120px
-  }
-
-  .title-card-wrapper :is(.xl\:px-0) {
-    padding-left: 0px;
-    padding-right: 0px
   }
 }

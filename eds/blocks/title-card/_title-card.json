@@ -75,6 +75,9 @@
         },
         {
           "...": "../../../models/_common.json#/image-fields"
+        },
+        {
+          "...": "../../../models/_common.json#/media-fields"
         }
       ]
     }
