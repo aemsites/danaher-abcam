@@ -41,7 +41,7 @@
           "label": "Provide Tab Name",
           "description": "Provide a name for the tab (Applicable only when Tabs block is added)",
           "valueType": "string"
-        }
+        }        
       ]
     }
   ],

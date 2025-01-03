@@ -384,14 +384,6 @@
         "label": "Provide Tab Name",
         "description": "Provide a name for the tab (Applicable only when Tabs block is added)",
         "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": "timelineName",
-        "value": "",
-        "label": "Provide TimeLine Name",
-        "description": "Provide a name for the timeline (Applicable only when Timeline block is added)",
-        "valueType": "string"
       }
     ]
   },
