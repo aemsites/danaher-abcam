@@ -388,6 +388,32 @@
     ]
   },
   {
+    "id": "accordion-item",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "item_heading",
+        "value": "",
+        "label": "Heading"
+      },
+      {
+        "component": "text",
+        "name": "item_headingType",
+        "label": "",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "item_description",
+        "value": "",
+        "label": "Description"
+      }
+    ]
+  },
+  {
     "id": "alert-banner",
     "fields": [
       {
