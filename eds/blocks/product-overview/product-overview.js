@@ -1,26 +1,58 @@
 import { applyClasses } from '../../scripts/scripts.js';
-import { createDots, initializeSlider } from '../recently-viewed/recently-viewed.js';
 import { div, span } from '../../scripts/dom-builder.js';
 import { decorateIcons } from '../../scripts/aem.js';
 
 function createSlides(slideWrapperEl) {
-  
   applyClasses(slideWrapperEl, 'slider-wrapper flex gap-4 transition-transform duration-300 ease-in-out');
- 
+
   [...slideWrapperEl.children].forEach((slide) => {
     applyClasses(slide, 'slide-item h-full min-w-28 flex items-center justify-center border border-[#0711121a] rounded hover:bg-[#0000000d] cursor-pointer');
     slideWrapperEl.appendChild(slide);
   });
-    return slideWrapperEl;
+  return slideWrapperEl;
 }
 
-function createSliderNavigation() {
+let currentIndex = 0;
+const visibleSlides = 6;
+
+function updateButtonState(block) {
+  const prevButton = document.querySelector('.slider-button.prev');
+  if (prevButton) prevButton.style.display = currentIndex === 0 ? 'none' : 'block';
+
+  const nextButton = document.querySelector('.slider-button.next');
+  const slideItems = block.querySelectorAll('.slide-item');
+  if (nextButton) nextButton.style.display = currentIndex >= slideItems.length - visibleSlides ? 'none' : 'block';
+}
+
+// update slider position
+function updateSliderPosition(block) {
+  document.querySelector('.slider-wrapper').style.transform = `translateX(-${currentIndex * (document.querySelector('.slide-item').offsetWidth + 16)}px)`;
+  updateButtonState(block);
+}
+
+function createSliderNavigation(block) {
   const prevButton = div(
-    { class: 'slider-button absolute translate-y-[-50%] z-10 prev hidden rotate-90 top-[50%]' },
+    {
+      class: 'slider-button left-0 -translate-y-1/2 transform absolute prev hidden rotate-90 top-[50%] z-10',
+      onclick() {
+        if (currentIndex > 0) {
+          currentIndex -= 1;
+          updateSliderPosition(block);
+        }
+      },
+    },
     span({ class: 'icon icon-chevron-down' }),
   );
   const nextButton = div(
-    { class: 'slider-button absolute z-10 prev hidden rotate-[270deg] top-[35%] right-[1%]' },
+    {
+      class: 'slider-button absolute next rotate-[270deg] top-[35%] right-0',
+      onclick() {
+        if (currentIndex < block.querySelectorAll('.slide-item').length - visibleSlides) {
+          currentIndex += 1;
+          updateSliderPosition(block);
+        }
+      },
+    },
     span({ class: 'icon icon-chevron-down' }),
   );
   decorateIcons(prevButton);
@@ -296,19 +328,14 @@ export default async function decorate(block) {
 
   const slideWrapperEl = block.querySelector('ul');
   createSlides(slideWrapperEl);
-  const { prevButton = '', nextButton = '' } = slideWrapperEl.children.length > 4 ? createSliderNavigation() : '';
-  slideWrapperEl.parentElement.className = 'relative overflow-hidden w-full h-16';
+  const { prevButton = '', nextButton = '' } = slideWrapperEl.children.length > 4 ? createSliderNavigation(block) : '';
+  slideWrapperEl.parentElement.className = 'relative overflow-hidden w-full h-16 px-12';
   slideWrapperEl.parentElement.append(
     prevButton,
     slideWrapperEl,
     nextButton,
   );
 
-  const dotsContainer = createDots(slideWrapperEl.children.length);
-  slideWrapperEl.parentElement.appendChild(dotsContainer);
-
-  if (slideWrapperEl.children.length > 4) {
-    initializeSlider(slideWrapperEl.parentElement, slideWrapperEl, prevButton, nextButton, dotsContainer);
-  }
-
+  // Initialize button states
+  updateButtonState(block);
 }
