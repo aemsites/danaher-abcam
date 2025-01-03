@@ -33,7 +33,7 @@ function updateSliderPosition(block) {
 function createSliderNavigation(block) {
   const prevButton = div(
     {
-      class: 'slider-button left-0 -translate-y-1/2 transform absolute prev hidden rotate-90 top-[50%] z-10',
+      class: 'slider-button bg-white h-16 left-0 px-4 py-6 -translate-y-1/2 transform absolute prev hidden top-[50%] z-10',
       onclick() {
         if (currentIndex > 0) {
           currentIndex -= 1;
@@ -41,11 +41,11 @@ function createSliderNavigation(block) {
         }
       },
     },
-    span({ class: 'icon icon-chevron-down' }),
+    span({ class: 'icon icon-chevron-previous' }),
   );
   const nextButton = div(
     {
-      class: 'slider-button absolute next rotate-[270deg] top-[35%] right-0',
+      class: 'slider-button bg-white h-16 px-4 py-6 absolute next top-0 right-0',
       onclick() {
         if (currentIndex < block.querySelectorAll('.slide-item').length - visibleSlides) {
           currentIndex += 1;
@@ -53,10 +53,10 @@ function createSliderNavigation(block) {
         }
       },
     },
-    span({ class: 'icon icon-chevron-down' }),
+    span({ class: 'icon icon-chevron-next' }),
   );
-  decorateIcons(prevButton);
-  decorateIcons(nextButton);
+  decorateIcons(prevButton, 8, 16);
+  decorateIcons(nextButton, 8, 16);
   return { prevButton, nextButton };
 }
 
