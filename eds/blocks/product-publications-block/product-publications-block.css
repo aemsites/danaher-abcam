@@ -1,13 +1,5 @@
-.product-publications-block-wrapper :is(.absolute) {
-  position: absolute
-}
-
 .product-publications-block-wrapper :is(.relative) {
   position: relative
-}
-
-.product-publications-block-wrapper :is(.left-1\/2) {
-  left: 50%
 }
 
 .product-publications-block-wrapper :is(.left-\[3px\]) {
@@ -16,6 +8,10 @@
 
 .product-publications-block-wrapper :is(.top-\[3px\]) {
   top: 3px
+}
+
+.product-publications-block-wrapper :is(.m-0) {
+  margin: 0px
 }
 
 .product-publications-block-wrapper :is(.my-4) {
@@ -55,30 +51,17 @@
   width: 18px
 }
 
+.product-publications-block-wrapper :is(.w-fit) {
+  width: -moz-fit-content;
+  width: fit-content
+}
+
 .product-publications-block-wrapper :is(.min-w-\[88px\]) {
   min-width: 88px
 }
 
-.product-publications-block-wrapper :is(.max-w-\[941px\]) {
-  max-width: 941px
-}
-
 .product-publications-block-wrapper :is(.basis-\[95\%\]) {
   flex-basis: 95%
-}
-
-.product-publications-block-wrapper :is(.-translate-x-1\/2) {
-  --tw-translate-x: -50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
-}
-
-.product-publications-block-wrapper :is(.-translate-y-1\/2) {
-  --tw-translate-y: -50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
-}
-
-.product-publications-block-wrapper :is(.transform) {
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 
 .product-publications-block-wrapper :is(.cursor-pointer) {
@@ -105,6 +88,14 @@
   gap: 1.5rem
 }
 
+.product-publications-block-wrapper :is(.gap-2) {
+  gap: 0.5rem
+}
+
+.product-publications-block-wrapper :is(.gap-4) {
+  gap: 1rem
+}
+
 .product-publications-block-wrapper :is(.gap-x-1) {
   -moz-column-gap: 0.25rem;
        column-gap: 0.25rem
@@ -112,6 +103,18 @@
 
 .product-publications-block-wrapper :is(.gap-y-4) {
   row-gap: 1rem
+}
+
+.product-publications-block-wrapper :is(.gap-y-6) {
+  row-gap: 1.5rem
+}
+
+.product-publications-block-wrapper :is(.gap-y-2) {
+  row-gap: 0.5rem
+}
+
+.product-publications-block-wrapper :is(.self-center) {
+  align-self: center
 }
 
 .product-publications-block-wrapper :is(.rounded-\[9999px\]) {
@@ -272,6 +275,18 @@
 .product-publications-block-wrapper :is(.text-white) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+
+@media (min-width: 640px) {
+  .product-publications-block-wrapper :is(.sm\:w-fit) {
+    width: -moz-fit-content;
+    width: fit-content
+  }
+
+  .product-publications-block-wrapper :is(.sm\:max-w-fit) {
+    max-width: -moz-fit-content;
+    max-width: fit-content
+  }
 }
 
 @media (min-width: 768px) {

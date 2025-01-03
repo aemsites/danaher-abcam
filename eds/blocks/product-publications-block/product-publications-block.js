@@ -148,7 +148,7 @@ export default function decorate(block) {
   // console.log('Block: ', block);
 
   const primaryDiv = block.querySelector('.product-publications-block .product-publications-block');
-  applyClasses(primaryDiv, 'relative border-b border-gray-300');
+  applyClasses(primaryDiv, 'relative flex flex-col border-b border-gray-300');
   // console.log("primaryDiv: ", primaryDiv);
 
   const primaryChildList = primaryDiv.querySelectorAll('.product-publications-block > div');
@@ -163,7 +163,7 @@ export default function decorate(block) {
 
   const allPublications = primaryChildList[2];
   allPublications.textContent = 'View All Publications';
-  applyClasses(allPublications, 'allpublications hidden absolute cursor-pointer left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-2 px-4 rounded-[9999px] bg-black text-white text-[12px] font-semibold leading-[16px] tracking-[0.2px] text-center my-4');
+  applyClasses(allPublications, 'allpublications hidden cursor-pointer w-fit self-center p-2 px-4 bg-black text-white text-[12px] font-semibold leading-[16px] tracking-[0.2px] text-center my-4 rounded-[9999px]');
   // console.log("allPublications: ", allPublications);
 
   const upIcon = span({ class: 'icon icon-chevron-up hidden w-[18px] h-[18px] top-[3px] left-[3px]' });
@@ -179,12 +179,12 @@ export default function decorate(block) {
   applyClasses(publicationCount, 'font-noto text-base font-semibold leading-6 tracking-[0.2px] text-left');
 
   const publications = contentDiv.querySelector('div:nth-child(2)');
-  applyClasses(publications, 'publications flex flex-col gap-y-4 mb-[16px]');
+  applyClasses(publications, 'publications flex flex-col gap-y-4');
 
   [...publications.children].forEach((element, index) => {
     // console.log("Elemets: ", element);
 
-    applyClasses(element, 'element p-4 px-6 rounded-md border border-[#0711121A]');
+    applyClasses(element, 'element flex flex-col gap-2 p-4 px-6 rounded-md border border-[#0711121A]');
     const subtitle = element.querySelector('div');
     applyClasses(subtitle, 'subtitle flex flex-row gap-x-1 justify-between items-center text-xs text-[#65797C] font-semibold leading-4 tracking-[0.2px] text-left');
     applyClasses(subtitle.querySelector('div'), 'inline font-noto text-[12px] font-semibold text-gray-600 leading-[16px] tracking-[0.2px] text-left');
@@ -212,10 +212,9 @@ export default function decorate(block) {
     });
 
     [...applications.children].forEach((application) => {
-      applyClasses(application, 'font-noto text-[14px] font-semibold leading-[23px] tracking-[0.3px] text-left text-black');
       const app = application.querySelector('p');
-      applyClasses(app, 'min-w-[88px] md:min-w-[200px] inline-block font-noto text-[13px] font-normal leading-[21px] tracking-[0.3px] text-left');
-      applyClasses(application.querySelector('p:nth-child(2)'), 'inline');
+      applyClasses(app, 'min-w-[88px] md:min-w-[200px] inline-block font-noto text-[13px] text-gray-600 font-normal leading-[21px] tracking-[0.3px] text-left m-0');
+      applyClasses(application.querySelector('p:nth-child(2)'), 'inline font-noto text-[14px] font-semibold leading-[23px] tracking-[0.3px] text-left text-black m-0');
     });
 
     if (index >= 4) {
@@ -239,7 +238,8 @@ export default function decorate(block) {
   });
 
   allPublications.addEventListener('click', () => {
-    const apiUrl = encodeURIComponent('https://asset.productmarketingcloud.com/api/assetstorage/6187_bf85758f-928d-4b3d-965c-adf02ceb5537');
+	const allPublicationsUrl = allPublications.getAttribute('id');
+    const apiUrl = encodeURIComponent(allPublicationsUrl);
     const url = `/en-us/page-test/publications?apiUrl=${apiUrl}`;
     window.open(url, '_blank');
   });
