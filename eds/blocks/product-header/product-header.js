@@ -1,4 +1,38 @@
+import { decorateIcons } from '../../scripts/aem.js';
+import { div, span, a as anchorElement } from '../../scripts/dom-builder.js';
 import { applyClasses } from '../../scripts/scripts.js';
+
+// Function to create the stars based on the rating
+function createStars(rating) {
+  let starParent;
+  // If no reviews (rating is 0)
+  if (rating === 0) {
+    starParent = div(
+      { class: 'mt-4' },
+      span({ class: 'font-normal text-grey-dark' }, 'This product has no reviews yet! '),
+      anchorElement({
+        class: 'text-[#378189] underline font-normal', href: '#',
+      }, ' Submit a review'),
+    );
+  } else {
+    // If rating exists, create the stars
+    starParent = div({ class: 'flex flex-row items-center gap-1' });
+    for (let i = 1; i <= 5; i += 1) {
+      const spanEl = span({ class: 'flex flex-row' });
+      if (i <= rating) {
+        spanEl.classList.add('icon', 'icon-star-rating');
+      } else {
+        spanEl.classList.add('icon', 'icon-star-rating-empty');
+      }
+      starParent.append(spanEl);
+    }
+    decorateIcons(starParent, 16, 14);
+
+    const ratingNumber = span({ class: 'ml-2 text-sm font-medium' }, `${rating}.0`);
+    starParent.prepend(ratingNumber);
+  }
+  return starParent;
+}
 
 export default function decorate(block) {
   block.innerHTML = `<div class="product-header ">
@@ -12,7 +46,7 @@ export default function decorate(block) {
                     <li>KO Validated</li>
                     <li><a href="#">What is this?</a></li>
                     </ul>
-                    <em>5</em>
+                    <em>4</em>
                     <em>(225 Reviews)</em>
                     | <em>(4218 Publications)</em>
                     <p>Rabbit Polyclonal Ki67 antibody.Suitable for IHC-P, ICC/IF and reacts with Mouse, Human samples.Cited in 4218 publications.</p>
@@ -29,12 +63,38 @@ export default function decorate(block) {
                 </div>
             </div>
         </div>`;
-    const productHeader = block.querySelector('.product-header .product-header div');
-    console.log(productHeader);
-    applyClasses(productHeader.querySelector('div:nth-child(1)'),'font-sans text-base text-[#65797C] font-semibold !leading-7 lowercase');
-    applyClasses(productHeader.querySelector('div:nth-child(1) > em'),'!not-italic');
-    applyClasses(productHeader.querySelector('div:nth-child(2) > h1'),'lg:!text-3xl !font-semibold tracking-[1px]');
-    applyClasses(productHeader.querySelector('div:nth-child(2) > ul'), 'flex felx-row gap-4 font-sans');
-    applyClasses(productHeader.querySelector('div:nth-child(2) > ul > li'), 'px-2 py-1 rounded text-xs font-semibold tracking-wide break-keep bg-[#EDF6F7] text-[#378189] border-[#EDF6F7] border');
-    applyClasses(productHeader.querySelector('div:nth-child(2) > ul > li> a'), '!text-[10px] !leading-3 font-medium underline')
+  const productHeader = block.querySelector('.product-header .product-header div');
+  applyClasses(productHeader.querySelector('div:nth-child(1)'), 'font-sans text-base text-[#65797C] font-semibold !leading-7 lowercase');
+  applyClasses(productHeader.querySelector('div:nth-child(1) > em'), '!not-italic');
+  applyClasses(productHeader.querySelector('div:nth-child(2) > h1'), 'lg:!text-3xl !font-semibold tracking-[1px]');
+  applyClasses(productHeader.querySelector('div:nth-child(2) > ul'), 'flex felx-row gap-4 font-sans py-2');
+  applyClasses(productHeader.querySelector('div:nth-child(2) > ul > li'), 'px-2 py-1 rounded text-xs font-semibold tracking-wide break-keep bg-[#EDF6F7] text-[#378189] border-[#EDF6F7] border');
+  applyClasses(productHeader.querySelector('div:nth-child(2) > ul > li> a'), '!text-[10px] !leading-3 font-medium underline');
+  applyClasses(productHeader.querySelector('div:nth-child(2) > p'), 'font-sans text-sm tracking-wide font-normal pb-2');
+  applyClasses(productHeader.querySelector('div:nth-child(3) > p'), 'font-sans text-sm tracking-wide font-normal text-[#378189]');
+
+  const reviewDiv = div({ class: 'flex flex-row gap-2.5 font-sans text-sm tracking-wide font-normal py-2' });
+  const emReview = productHeader.querySelectorAll('div:nth-child(2) > em');
+  emReview.forEach((em) => em.classList.add('!not-italic'));
+  const rating = parseInt(emReview[0].textContent, 10);
+  const stars = createStars(rating);
+  emReview[0].innerHTML = '';
+  emReview[0].append(stars);
+  reviewDiv.append(emReview[0]);
+  emReview[1].classList.add('text-[#378089]');
+  emReview[2].classList.add('text-[#378089]');
+  reviewDiv.append(emReview[1]);
+
+  const { childNodes } = productHeader.querySelector('div:nth-child(2)');
+  let separatorNode;
+
+  // Loop through childNodes to find the separator
+  childNodes.forEach((node) => {
+    if (node.nodeType === Node.TEXT_NODE && node.textContent.trim() === '|') {
+      separatorNode = node;
+    }
+  });
+  reviewDiv.append(separatorNode);
+  reviewDiv.append(emReview[2]);
+  productHeader.querySelector('div:nth-child(2) > ul').insertAdjacentElement('afterend', reviewDiv);
 }
