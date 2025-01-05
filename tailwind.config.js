@@ -14,6 +14,9 @@ module.exports = {
           'Lubalin Graph Std',
         ],
       },
+      colors: {
+        'gradient': 'linear-gradient(90.42deg, #4BA6B3 0.44%, #C9D3B7 35.08%, #FF8730 69.72%, #C54428 99.71%)',
+      },
     },
   },
   plugins: [],
