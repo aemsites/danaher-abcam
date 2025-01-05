@@ -8,10 +8,9 @@ function createStars(rating) {
   // If no reviews (rating is 0)
   if (rating === 0) {
     starParent = div(
-      { class: 'mt-4' },
-      span({ class: 'font-normal text-grey-dark' }, 'This product has no reviews yet! '),
+      span({ class: 'text-black' }, 'This product has no reviews yet! '),
       anchorElement({
-        class: 'text-[#378189] underline font-normal', href: '#',
+        class: 'text-[#378089] underline', href: '#',
       }, ' Submit a review'),
     );
   } else {
@@ -27,7 +26,6 @@ function createStars(rating) {
       starParent.append(spanEl);
     }
     decorateIcons(starParent, 16, 14);
-
     const ratingNumber = span({ class: 'ml-2 text-sm font-medium' }, `${rating}.0`);
     starParent.prepend(ratingNumber);
   }
@@ -46,7 +44,7 @@ export default function decorate(block) {
                     <li>KO Validated</li>
                     <li><a href="#">What is this?</a></li>
                     </ul>
-                    <em>4</em>
+                    <em>5</em>
                     <em>(225 Reviews)</em>
                     | <em>(4218 Publications)</em>
                     <p>Rabbit Polyclonal Ki67 antibody.Suitable for IHC-P, ICC/IF and reacts with Mouse, Human samples.Cited in 4218 publications.</p>
@@ -63,6 +61,7 @@ export default function decorate(block) {
                 </div>
             </div>
         </div>`;
+
   const productHeader = block.querySelector('.product-header .product-header div');
   applyClasses(productHeader.querySelector('div:nth-child(1)'), 'font-sans text-base text-[#65797C] font-semibold !leading-7 lowercase');
   applyClasses(productHeader.querySelector('div:nth-child(1) > em'), '!not-italic');
@@ -71,7 +70,9 @@ export default function decorate(block) {
   applyClasses(productHeader.querySelector('div:nth-child(2) > ul > li'), 'px-2 py-1 rounded text-xs font-semibold tracking-wide break-keep bg-[#EDF6F7] text-[#378189] border-[#EDF6F7] border');
   applyClasses(productHeader.querySelector('div:nth-child(2) > ul > li> a'), '!text-[10px] !leading-3 font-medium underline');
   applyClasses(productHeader.querySelector('div:nth-child(2) > p'), 'font-sans text-sm tracking-wide font-normal pb-2');
+  applyClasses(productHeader.querySelector('div:nth-child(3)'), 'flex flex-col gap-1');
   applyClasses(productHeader.querySelector('div:nth-child(3) > p'), 'font-sans text-sm tracking-wide font-normal text-[#378189]');
+  const viewAlternativeEl = productHeader.querySelector('div:nth-child(3)');
 
   const reviewDiv = div({ class: 'flex flex-row gap-2.5 font-sans text-sm tracking-wide font-normal py-2' });
   const emReview = productHeader.querySelectorAll('div:nth-child(2) > em');
@@ -97,4 +98,24 @@ export default function decorate(block) {
   reviewDiv.append(separatorNode);
   reviewDiv.append(emReview[2]);
   productHeader.querySelector('div:nth-child(2) > ul').insertAdjacentElement('afterend', reviewDiv);
+
+  const alternativeDiv = div({ class: 'flex flex-row gap-1 items-center' });
+  const alternativeIcon = span({ class: 'icon icon-chevron-down cursor-pointer transition-transform duration-300' });
+  const alternativeList = viewAlternativeEl.querySelector('ul');
+  alternativeList.style.display = 'none';
+
+  alternativeIcon.addEventListener('click', () => {
+    // Toggle the visibility of the list
+    if (alternativeList.style.display === 'none') {
+      alternativeList.style.display = 'block';
+      alternativeIcon.classList.add('rotate-180');
+    } else {
+      alternativeList.style.display = 'none';
+      alternativeIcon.classList.remove('rotate-180');
+    }
+  });
+  alternativeDiv.append(viewAlternativeEl.querySelector('p'));
+  alternativeDiv.append(alternativeIcon);
+  decorateIcons(alternativeDiv, 20, 20);
+  viewAlternativeEl.insertBefore(alternativeDiv, alternativeList);
 }
