@@ -72,8 +72,9 @@ export default function decorate(block) {
   applyClasses(productHeader.querySelector('div:nth-child(2) > p'), 'font-sans text-sm tracking-wide font-normal pb-2');
   applyClasses(productHeader.querySelector('div:nth-child(3)'), 'flex flex-col gap-1');
   applyClasses(productHeader.querySelector('div:nth-child(3) > p'), 'font-sans text-sm tracking-wide font-normal text-[#378189]');
-  const viewAlternativeEl = productHeader.querySelector('div:nth-child(3)');
+  applyClasses(productHeader.querySelector('div:nth-child(3) > ul'), 'font-sans text-sm tracking-wide font-normal');
 
+  const viewAlternativeEl = productHeader.querySelector('div:nth-child(3)');
   const reviewDiv = div({ class: 'flex flex-row gap-2.5 font-sans text-sm tracking-wide font-normal py-2' });
   const emReview = productHeader.querySelectorAll('div:nth-child(2) > em');
   emReview.forEach((em) => em.classList.add('!not-italic'));
@@ -95,7 +96,9 @@ export default function decorate(block) {
       separatorNode = node;
     }
   });
-  reviewDiv.append(separatorNode);
+  const seperatorEl = span({ class: 'text-[#D8D8D8]' });
+  seperatorEl.append(separatorNode);
+  reviewDiv.append(seperatorEl);
   reviewDiv.append(emReview[2]);
   productHeader.querySelector('div:nth-child(2) > ul').insertAdjacentElement('afterend', reviewDiv);
 

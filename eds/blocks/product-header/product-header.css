@@ -10,6 +10,11 @@
   display: flex
 }
 
+.product-header-wrapper :is(.rotate-180) {
+  --tw-rotate: 180deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+
 .product-header-wrapper :is(.cursor-pointer) {
   cursor: pointer
 }
@@ -159,6 +164,11 @@
 .product-header-wrapper :is(.text-\[\#65797C\]) {
   --tw-text-opacity: 1;
   color: rgb(101 121 124 / var(--tw-text-opacity))
+}
+
+.product-header-wrapper :is(.text-\[\#D8D8D8\]) {
+  --tw-text-opacity: 1;
+  color: rgb(216 216 216 / var(--tw-text-opacity))
 }
 
 .product-header-wrapper :is(.text-black) {
