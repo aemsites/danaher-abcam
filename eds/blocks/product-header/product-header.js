@@ -1,3 +1,5 @@
+import { applyClasses } from '../../scripts/scripts.js';
+
 export default function decorate(block) {
   block.innerHTML = `<div class="product-header ">
             <div>
@@ -27,4 +29,12 @@ export default function decorate(block) {
                 </div>
             </div>
         </div>`;
+    const productHeader = block.querySelector('.product-header .product-header div');
+    console.log(productHeader);
+    applyClasses(productHeader.querySelector('div:nth-child(1)'),'font-sans text-base text-[#65797C] font-semibold !leading-7 lowercase');
+    applyClasses(productHeader.querySelector('div:nth-child(1) > em'),'!not-italic');
+    applyClasses(productHeader.querySelector('div:nth-child(2) > h1'),'lg:!text-3xl !font-semibold tracking-[1px]');
+    applyClasses(productHeader.querySelector('div:nth-child(2) > ul'), 'flex felx-row gap-4 font-sans');
+    applyClasses(productHeader.querySelector('div:nth-child(2) > ul > li'), 'px-2 py-1 rounded text-xs font-semibold tracking-wide break-keep bg-[#EDF6F7] text-[#378189] border-[#EDF6F7] border');
+    applyClasses(productHeader.querySelector('div:nth-child(2) > ul > li> a'), '!text-[10px] !leading-3 font-medium underline')
 }
