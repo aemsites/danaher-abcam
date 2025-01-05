@@ -2,6 +2,10 @@
   margin-left: 0.5rem
 }
 
+.product-header-wrapper :is(.ml-auto) {
+  margin-left: auto
+}
+
 .product-header-wrapper :is(.block) {
   display: block
 }
@@ -25,6 +29,10 @@
 
 .product-header-wrapper :is(.flex-col) {
   flex-direction: column
+}
+
+.product-header-wrapper :is(.items-end) {
+  align-items: flex-end
 }
 
 .product-header-wrapper :is(.items-center) {

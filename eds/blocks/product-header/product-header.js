@@ -63,7 +63,7 @@ export default function decorate(block) {
         </div>`;
 
   const productHeader = block.querySelector('.product-header .product-header div');
-  applyClasses(productHeader.querySelector('div:nth-child(1)'), 'font-sans text-base text-[#65797C] font-semibold !leading-7 lowercase');
+  applyClasses(productHeader.querySelector('div:nth-child(1)'), 'flex flex-row font-sans text-base text-[#65797C] font-semibold !leading-7 lowercase');
   applyClasses(productHeader.querySelector('div:nth-child(1) > em'), '!not-italic');
   applyClasses(productHeader.querySelector('div:nth-child(2) > h1'), 'lg:!text-3xl !font-semibold tracking-[1px]');
   applyClasses(productHeader.querySelector('div:nth-child(2) > ul'), 'flex felx-row gap-4 font-sans py-2');
@@ -121,4 +121,33 @@ export default function decorate(block) {
   alternativeDiv.append(alternativeIcon);
   decorateIcons(alternativeDiv, 20, 20);
   viewAlternativeEl.insertBefore(alternativeDiv, alternativeList);
+
+  const secondDivEl = productHeader.querySelector('div:nth-child(2)');
+  const firstDivEl = productHeader.querySelector('div:nth-child(1)');
+  const shareCopyDiv = div(
+    { class: 'flex flex-row gap-4 items-end ml-auto' },
+    span({ class: 'icon icon-click-copy' }),
+    span({ class: 'icon icon-click-copy' }),
+    span({ class: 'icon icon-click-copy' }),
+  );
+  decorateIcons(shareCopyDiv, 20, 20);
+  firstDivEl.append(shareCopyDiv);
+
+  // Add the click event listener to the first icon
+  const copyIcon = shareCopyDiv.querySelector('.icon-click-copy');
+
+  copyIcon.addEventListener('click', () => {
+    const emText = firstDivEl.querySelector('em').textContent;
+    const h1Text = secondDivEl.querySelector('h1').textContent;
+
+    // Create a text to copy combining the two elements' text
+    const textToCopy = `${emText} ${h1Text}`;
+
+    // Use the Clipboard API to copy the text
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      console.log(`Text copied to clipboard: ${textToCopy}`); // eslint-disable-line
+    }).catch((err) => {
+      console.error('Error copying text: ', err); // eslint-disable-line
+    });
+  });
 }
