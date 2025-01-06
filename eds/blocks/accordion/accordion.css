@@ -1,41 +1,10 @@
-.accordion-wrapper :is(.absolute) {
-  position: absolute
+
+.accordion-wrapper :is(.m-0) {
+  margin: 0px
 }
 
-.accordion-wrapper :is(.relative) {
-  position: relative
-}
-
-.accordion-wrapper :is(.left-8) {
-  left: 2rem
-}
-
-.accordion-wrapper :is(.right-12) {
-  right: 3rem
-}
-
-.accordion-wrapper :is(.mb-2) {
-  margin-bottom: 0.5rem
-}
-
-.accordion-wrapper :is(.ms-16) {
-  margin-inline-start: 4rem
-}
-
-.accordion-wrapper :is(.mt-1) {
-  margin-top: 0.25rem
-}
-
-.accordion-wrapper :is(.mt-2) {
-  margin-top: 0.5rem
-}
-
-.accordion-wrapper :is(.mt-4) {
-  margin-top: 1rem
-}
-
-.accordion-wrapper :is(.box-border) {
-  box-sizing: border-box
+.accordion-wrapper :is(.ml-auto) {
+  margin-left: auto
 }
 
 .accordion-wrapper :is(.block) {
@@ -46,48 +15,12 @@
   display: flex
 }
 
-.accordion-wrapper :is(.grid) {
-  display: grid
-}
-
-.accordion-wrapper :is(.contents) {
-  display: contents
-}
-
 .accordion-wrapper :is(.hidden) {
   display: none
 }
 
-.accordion-wrapper :is(.size-6) {
-  width: 1.5rem;
-  height: 1.5rem
-}
-
-.accordion-wrapper :is(.size-7) {
-  width: 1.75rem;
-  height: 1.75rem
-}
-
-.accordion-wrapper :is(.w-\[90\%\]) {
-  width: 90%
-}
-
-.accordion-wrapper :is(.w-full) {
-  width: 100%
-}
-
-.accordion-wrapper :is(.w-max) {
-  width: -moz-max-content;
-  width: max-content
-}
-
-.accordion-wrapper :is(.max-w-screen-lg) {
-  max-width: 1024px
-}
-
-.accordion-wrapper :is(.-rotate-90) {
-  --tw-rotate: -90deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+.accordion-wrapper :is(.shrink-0) {
+  flex-shrink: 0
 }
 
 .accordion-wrapper :is(.transform) {
@@ -98,10 +31,6 @@
   cursor: pointer
 }
 
-.accordion-wrapper :is(.grid-rows-\[0fr\]) {
-  grid-template-rows: 0fr
-}
-
 .accordion-wrapper :is(.items-center) {
   align-items: center
 }
@@ -110,69 +39,22 @@
   justify-content: space-between
 }
 
-.accordion-wrapper :is(.space-y-4 > :not([hidden]) ~ :not([hidden])) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(1rem * var(--tw-space-y-reverse))
+.accordion-wrapper :is(.gap-6) {
+  gap: 1.5rem
 }
 
-.accordion-wrapper :is(.space-y-6 > :not([hidden]) ~ :not([hidden])) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse))
+.accordion-wrapper :is(.border-b) {
+  border-bottom-width: 1px
 }
 
-.accordion-wrapper :is(.overflow-hidden) {
-  overflow: hidden
+.accordion-wrapper :is(.border-b-\[\#D8D8D8\]) {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(216 216 216 / var(--tw-border-opacity))
 }
 
-.accordion-wrapper :is(.rounded-2xl) {
-  border-radius: 1rem
-}
-
-.accordion-wrapper :is(.rounded-full) {
-  border-radius: 9999px
-}
-
-.accordion-wrapper :is(.border) {
-  border-width: 1px
-}
-
-.accordion-wrapper :is(.bg-black) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity))
-}
-
-.accordion-wrapper :is(.bg-gray-200\/40) {
-  background-color: rgb(229 231 235 / 0.4)
-}
-
-.accordion-wrapper :is(.fill-current) {
-  fill: currentColor
-}
-
-.accordion-wrapper :is(.p-4) {
-  padding: 1rem
-}
-
-.accordion-wrapper :is(.px-4) {
-  padding-left: 1rem;
-  padding-right: 1rem
-}
-
-.accordion-wrapper :is(.px-6) {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem
-}
-
-.accordion-wrapper :is(.py-2) {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem
-}
-
-.accordion-wrapper :is(.py-3) {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem
+.accordion-wrapper :is(.px-0) {
+  padding-left: 0px;
+  padding-right: 0px
 }
 
 .accordion-wrapper :is(.py-6) {
@@ -180,12 +62,8 @@
   padding-bottom: 1.5rem
 }
 
-.accordion-wrapper :is(.pl-16) {
-  padding-left: 4rem
-}
-
-.accordion-wrapper :is(.text-left) {
-  text-align: left
+.accordion-wrapper :is(.font-sans) {
+  font-family: Noto Sans
 }
 
 .accordion-wrapper :is(.text-2xl) {
@@ -198,135 +76,35 @@
   line-height: 1.5rem
 }
 
-.accordion-wrapper :is(.text-sm) {
-  font-size: 0.875rem;
-  line-height: 1.25rem
-}
-
-.accordion-wrapper :is(.text-xl) {
-  font-size: 1.25rem;
-  line-height: 1.75rem
-}
-
-.accordion-wrapper :is(.font-bold) {
-  font-weight: 700
-}
-
 .accordion-wrapper :is(.font-semibold) {
   font-weight: 600
 }
 
-.accordion-wrapper :is(.leading-5) {
-  line-height: 1.25rem
+.accordion-wrapper :is(.leading-8) {
+  line-height: 2rem
 }
 
-.accordion-wrapper :is(.leading-7) {
-  line-height: 1.75rem
+.accordion-wrapper :is(.leading-\[23px\]) {
+  line-height: 23px
 }
 
-.accordion-wrapper :is(.tracking-wide) {
-  letter-spacing: 0.025em
+.accordion-wrapper :is(.tracking-\[-0\.5px\]) {
+  letter-spacing: -0.5px
 }
 
-.accordion-wrapper :is(.text-gray-300) {
+.accordion-wrapper :is(.tracking-\[0\.3px\]) {
+  letter-spacing: 0.3px
+}
+
+.accordion-wrapper :is(.text-\[\#378189\]) {
   --tw-text-opacity: 1;
-  color: rgb(209 213 219 / var(--tw-text-opacity))
+  color: rgb(55 129 137 / var(--tw-text-opacity))
 }
 
-.accordion-wrapper :is(.text-gray-400) {
-  --tw-text-opacity: 1;
-  color: rgb(156 163 175 / var(--tw-text-opacity))
-}
-
-.accordion-wrapper :is(.text-teal-600) {
-  --tw-text-opacity: 1;
-  color: rgb(13 148 136 / var(--tw-text-opacity))
-}
-
-.accordion-wrapper :is(.text-white) {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity))
-}
-
-.accordion-wrapper :is(.underline) {
-  text-decoration-line: underline
-}
-
-.accordion-wrapper :is(.opacity-0) {
-  opacity: 0
-}
-
-.accordion-wrapper :is(.transition-all) {
-  transition-property: all;
+.accordion-wrapper :is(.transition) {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms
-}
-
-.accordion-wrapper :is(.duration-300) {
-  transition-duration: 300ms
-}
-
-.accordion-wrapper :is(.ease-in-out) {
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)
-}
-
-.accordion-wrapper :is(.group:hover .group-hover\:rotate-0) {
-  --tw-rotate: 0deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
-}
-
-.accordion-wrapper :is(.peer:checked ~ .peer-checked\:grid-rows-\[1fr\]) {
-  grid-template-rows: 1fr
-}
-
-.accordion-wrapper :is(.peer:checked ~ .peer-checked\:py-2) {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem
-}
-
-.accordion-wrapper :is(.peer:checked ~ .peer-checked\:opacity-100) {
-  opacity: 1
-}
-
-.accordion-wrapper :is(.peer ~ .peer-\[\&_span\.plus\]\:opacity-100 span.plus) {
-  opacity: 1
-}
-
-@media (max-width: 767px) {
-  .accordion-wrapper :is(.max-\[767px\]\:right-4) {
-    right: 1rem
-  }
-
-  .accordion-wrapper :is(.max-\[767px\]\:w-\[75\%\]) {
-    width: 75%
-  }
-
-  .accordion-wrapper :is(.max-\[767px\]\:pl-4) {
-    padding-left: 1rem
-  }
-}
-
-@media (max-width: 374px) {
-  .accordion-wrapper :is(.max-\[374px\]\:ms-12) {
-    margin-inline-start: 3rem
-  }
-
-  .accordion-wrapper :is(.max-\[374px\]\:size-5) {
-    width: 1.25rem;
-    height: 1.25rem
-  }
-}
-
-.accordion-wrapper :is(.peer:checked ~ .peer-checked\:\[\&_span\.open-close-icon\]\:rotate-0 span.open-close-icon) {
-  --tw-rotate: 0deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
-}
-
-.accordion-wrapper :is(.peer:checked ~ .peer-checked\:\[\&_span\.plus\]\:rotate-45 span.plus) {
-  --tw-rotate: 45deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
-}
-
-.accordion-wrapper :is(.peer:checked ~ .peer-checked\:\[\&_span\.plus\]\:opacity-0 span.plus) {
-  opacity: 0
 }
