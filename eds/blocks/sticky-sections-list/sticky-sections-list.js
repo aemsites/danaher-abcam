@@ -141,9 +141,9 @@ const dropdownContainer = div(
         });
         applyClasses(matchingOption, 'bg-[#273F3F] bg-opacity-10 text-[#273F3F]');
       } else if (targetElements[0] && targetElements[0].trim()) {
-        ddSelected.innerText = targetElements[0];
+        ddSelected.textContent = targetElements[0];
       } else {
-        ddSelected.innerText = 'Select a Tab';
+        ddSelected.textContent = 'Select a Tab';
       }
     });
   }
