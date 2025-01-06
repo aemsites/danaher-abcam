@@ -14,32 +14,32 @@
   left: 0px
 }
 
-.header-wrapper :is(.right-0) {
-  right: 0px
-}
-
-.header-wrapper :is(.top-full) {
-  top: 100%
-}
-
 .header-wrapper :is(.bottom-0) {
   bottom: 0px
+}
+
+.header-wrapper :is(.right-0) {
+  right: 0px
 }
 
 .header-wrapper :is(.top-0) {
   top: 0px
 }
 
+.header-wrapper :is(.top-full) {
+  top: 100%
+}
+
 .header-wrapper :is(.z-40) {
   z-index: 40
 }
 
-.header-wrapper :is(.z-50) {
-  z-index: 50
-}
-
 .header-wrapper :is(.z-10) {
   z-index: 10
+}
+
+.header-wrapper :is(.z-50) {
+  z-index: 50
 }
 
 .header-wrapper :is(.z-\[300\]) {
@@ -56,16 +56,6 @@
   margin-right: auto
 }
 
-.header-wrapper :is(.my-4) {
-  margin-top: 1rem;
-  margin-bottom: 1rem
-}
-
-.header-wrapper :is(.my-7) {
-  margin-top: 1.75rem;
-  margin-bottom: 1.75rem
-}
-
 .header-wrapper :is(.my-0) {
   margin-top: 0px;
   margin-bottom: 0px
@@ -76,9 +66,19 @@
   margin-bottom: 0.25rem
 }
 
+.header-wrapper :is(.my-4) {
+  margin-top: 1rem;
+  margin-bottom: 1rem
+}
+
 .header-wrapper :is(.my-5) {
   margin-top: 1.25rem;
   margin-bottom: 1.25rem
+}
+
+.header-wrapper :is(.my-7) {
+  margin-top: 1.75rem;
+  margin-bottom: 1.75rem
 }
 
 .header-wrapper :is(.mb-3) {
@@ -91,6 +91,26 @@
 
 .header-wrapper :is(.mb-4) {
   margin-bottom: 1rem
+}
+
+.header-wrapper :is(.ml-auto) {
+  margin-left: auto
+}
+
+.header-wrapper :is(.mr-1) {
+  margin-right: 0.25rem
+}
+
+.header-wrapper :is(.mr-2) {
+  margin-right: 0.5rem
+}
+
+.header-wrapper :is(.mr-3) {
+  margin-right: 0.75rem
+}
+
+.header-wrapper :is(.mr-4) {
+  margin-right: 1rem
 }
 
 .header-wrapper :is(.mt-1) {
@@ -115,26 +135,6 @@
 
 .header-wrapper :is(.mt-5) {
   margin-top: 1.25rem
-}
-
-.header-wrapper :is(.ml-auto) {
-  margin-left: auto
-}
-
-.header-wrapper :is(.mr-1) {
-  margin-right: 0.25rem
-}
-
-.header-wrapper :is(.mr-2) {
-  margin-right: 0.5rem
-}
-
-.header-wrapper :is(.mr-3) {
-  margin-right: 0.75rem
-}
-
-.header-wrapper :is(.mr-4) {
-  margin-right: 1rem
 }
 
 .header-wrapper :is(.block) {
@@ -182,16 +182,16 @@
   width: 100%
 }
 
+.header-wrapper :is(.w-2\/3) {
+  width: 66.666667%
+}
+
 .header-wrapper :is(.w-\[320px\]) {
   width: 320px
 }
 
 .header-wrapper :is(.w-\[368px\]) {
   width: 368px
-}
-
-.header-wrapper :is(.w-2\/3) {
-  width: 66.666667%
 }
 
 .header-wrapper :is(.w-\[560px\]) {
@@ -329,20 +329,20 @@
   border-radius: 9999px
 }
 
-.header-wrapper :is(.rounded-3xl) {
-  border-radius: 1.5rem
-}
-
-.header-wrapper :is(.rounded-xl) {
-  border-radius: 0.75rem
-}
-
 .header-wrapper :is(.rounded-2xl) {
   border-radius: 1rem
 }
 
+.header-wrapper :is(.rounded-3xl) {
+  border-radius: 1.5rem
+}
+
 .header-wrapper :is(.rounded-\[8px\]) {
   border-radius: 8px
+}
+
+.header-wrapper :is(.rounded-xl) {
+  border-radius: 0.75rem
 }
 
 .header-wrapper :is(.border) {
@@ -392,14 +392,14 @@
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
 }
 
-.header-wrapper :is(.bg-\[\#F2F3F3\]) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(242 243 243 / var(--tw-bg-opacity))
-}
-
 .header-wrapper :is(.bg-\[\#E8FCF4\]) {
   --tw-bg-opacity: 1;
   background-color: rgb(232 252 244 / var(--tw-bg-opacity))
+}
+
+.header-wrapper :is(.bg-\[\#F2F3F3\]) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(242 243 243 / var(--tw-bg-opacity))
 }
 
 .header-wrapper :is(.bg-\[\#FAEAEB\]) {
@@ -448,21 +448,6 @@
   padding-bottom: 1rem
 }
 
-.header-wrapper :is(.px-12) {
-  padding-left: 3rem;
-  padding-right: 3rem
-}
-
-.header-wrapper :is(.px-5) {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem
-}
-
-.header-wrapper :is(.py-2\.5) {
-  padding-top: 0.625rem;
-  padding-bottom: 0.625rem
-}
-
 .header-wrapper :is(.px-1) {
   padding-left: 0.25rem;
   padding-right: 0.25rem
@@ -473,9 +458,24 @@
   padding-right: 0.375rem
 }
 
+.header-wrapper :is(.px-12) {
+  padding-left: 3rem;
+  padding-right: 3rem
+}
+
+.header-wrapper :is(.px-5) {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem
+}
+
 .header-wrapper :is(.px-6) {
   padding-left: 1.5rem;
   padding-right: 1.5rem
+}
+
+.header-wrapper :is(.py-2\.5) {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem
 }
 
 .header-wrapper :is(.py-3) {
@@ -554,11 +554,6 @@
   line-height: 1rem
 }
 
-.header-wrapper :is(.text-xl) {
-  font-size: 1.25rem;
-  line-height: 1.75rem
-}
-
 .header-wrapper :is(.text-2xl) {
   font-size: 1.5rem;
   line-height: 2rem
@@ -567,6 +562,11 @@
 .header-wrapper :is(.text-base) {
   font-size: 1rem;
   line-height: 1.5rem
+}
+
+.header-wrapper :is(.text-xl) {
+  font-size: 1.25rem;
+  line-height: 1.75rem
 }
 
 .header-wrapper :is(.font-normal) {
@@ -621,11 +621,6 @@
   color: rgb(255 255 255 / var(--tw-text-opacity))
 }
 
-.header-wrapper :is(.text-\[\#65797C\]) {
-  --tw-text-opacity: 1;
-  color: rgb(101 121 124 / var(--tw-text-opacity))
-}
-
 .header-wrapper :is(.text-\[\#0B5B3A\]) {
   --tw-text-opacity: 1;
   color: rgb(11 91 58 / var(--tw-text-opacity))
@@ -634,6 +629,11 @@
 .header-wrapper :is(.text-\[\#0F8554\]) {
   --tw-text-opacity: 1;
   color: rgb(15 133 84 / var(--tw-text-opacity))
+}
+
+.header-wrapper :is(.text-\[\#65797C\]) {
+  --tw-text-opacity: 1;
+  color: rgb(101 121 124 / var(--tw-text-opacity))
 }
 
 .header-wrapper :is(.text-\[\#B22626\]) {

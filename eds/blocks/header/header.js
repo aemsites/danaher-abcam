@@ -10,11 +10,37 @@ import countriesAndCodes from '../../scripts/country-list.js';
 import { applyClasses } from '../../scripts/scripts.js';
 import {
   basicDetails, deleteLineItem, getCartItems, getCartType, quickAddLineItems,
-} from './header-api-calls.js';
+} from './header-utils.js';
 
 function megaMeunu() {
   return div({ class: 'w-[360px] z-40 hidden max-w-sm fixed h-full bg-black px-3 py-4 ease-out transition-all' });
 }
+
+const placeholdersText = {
+  'createAnAccount':'Create an account',
+  'myOrders':'My Orders',
+  'myAddress':'My Addresses',
+  'myInquires':'My Inquiries',
+  'myReviews':'My Reviews',
+  'myRewards':'My Rewards',
+  'myProfile':'My Profile',
+  'signOut':'Sign Out',
+  'enterProductsCode':'Enter product codes below and click "add products"',
+  'close':'Close',
+  'addProducts':'Add products',
+  'goToBasket':'Go to basket',
+  'contactDistributor':'Contact distributor',
+  'goToCheckout':'Go to checkout',
+  'quickAdd':'Quick add',
+  'inquiryBasket':'Inquiry basket',
+  'goToInquiryBasket':'Go to inquiry basket',
+  'shoppingBasketOneItem':'Shopping basket (1 item)',
+  'startAddingProducts':'Start adding products to your basket to contact your distributor',
+  'yourBasketIsEmpty':'Your basket is empty'
+
+
+
+};
 
 function getCookie(name) {
   const match = document.cookie.match(new RegExp(`(^| )${name}=([^;]+)`));
@@ -263,7 +289,7 @@ function buttonsEl(linkText, linkUrl, session) {
       a({
         class: 'hover:underline leading-5 text-[#378189] ml-2 md:ml-auto',
         href: createAccLink,
-      }, 'Create an account'),
+      }, placeholdersText.createAnAccount),
     ));
   }
   return liEl;
@@ -275,23 +301,23 @@ function ulEls(hostName, sessionVal) {
   if (sessionVal) {
     ulEl.append(
       buttonsEl('Contact Us', `https://${hostName}/en-us/contact-us`, sessionVal),
-      accountMenuList('orders', 'My Orders', `https://${hostName}/my-account/orders`),
-      accountMenuList('addresses', 'My Addresses', `https://${hostName}/my-account/address-book`),
-      accountMenuList('inquiries', 'My Inquiries', `https://${hostName}/my-account/inquiries`),
-      accountMenuList('reviews', 'My Reviews', `https://${hostName}/my-account/reviews`),
-      accountMenuList('rewards', 'My Rewards', `https://${hostName}/my-account/reward-points`),
-      accountMenuList('profile', 'My Profile', `https://${hostName}/my-account/profile`),
-      accountMenuList('sign-out', 'Sign Out', `https://${hostName}`),
+      accountMenuList('orders', placeholdersText.myOrders, `https://${hostName}/my-account/orders`),
+      accountMenuList('addresses', placeholdersText.myAddress, `https://${hostName}/my-account/address-book`),
+      accountMenuList('inquiries', placeholdersText.myInquires, `https://${hostName}/my-account/inquiries`),
+      accountMenuList('reviews', placeholdersText.myReviews, `https://${hostName}/my-account/reviews`),
+      accountMenuList('rewards', placeholdersText.myRewards, `https://${hostName}/my-account/reward-points`),
+      accountMenuList('profile', placeholdersText.myProfile, `https://${hostName}/my-account/profile`),
+      accountMenuList('sign-out', placeholdersText.signOut, `https://${hostName}`),
     );
   } else {
     ulEl.append(
       buttonsEl('Sign In', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}${pathName}`),
-      accountMenuList('orders', 'My Orders', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Forders`),
-      accountMenuList('addresses', 'My Addresses', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Faddress-book`),
-      accountMenuList('inquiries', 'My Inquiries', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Finquiries`),
-      accountMenuList('reviews', 'My Reviews', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Freviews`),
-      accountMenuList('rewards', 'My Rewards', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Freward-points`),
-      accountMenuList('profile', 'My Profile', `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Fprofile`),
+      accountMenuList('orders', placeholdersText.myOrders, `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Forders`),
+      accountMenuList('addresses', placeholdersText.myAddress, `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Faddress-book`),
+      accountMenuList('inquiries', placeholdersText.myInquires, `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Finquiries`),
+      accountMenuList('reviews', placeholdersText.myReviews, `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Freviews`),
+      accountMenuList('rewards', placeholdersText.myRewards, `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Freward-points`),
+      accountMenuList('profile', placeholdersText.myProfile, `https://${hostName}/auth/login?redirect=https%3A%2F%2F${hostName}%2Fmy-account%2Fprofile`),
       buttonsEl('Contact Us', `https://${hostName}/en-us/contact-us`),
     );
   }
@@ -351,7 +377,7 @@ function openQuickAddModal() {
     },
     div(
       { class: 'flex flex-row justify-between pl-6 pr-5 pt-5' },
-      h3({ class: 'self-center text-2xl font-semibold' }, 'Quick add'),
+      h3({ class: 'self-center text-2xl font-semibold' }, placeholdersText.quickAdd),
       button(
         {
           class: 'rounded-2xl p-1',
@@ -370,7 +396,7 @@ function openQuickAddModal() {
             { class: 'flex flex-col text-xs' },
             div(
               { class: 'inline-flex items-center pb-1' },
-              label({ class: 'font-semibold' }, 'Enter product codes below and click "add products"'),
+              label({ class: 'font-semibold' }, placeholdersText.enterProductsCode),
             ),
             p(
               { class: 'text-[#65797C] my-0' },
@@ -423,12 +449,11 @@ function openQuickAddModal() {
           span({
             class: 'font-semibold px-1.5',
             onclick() { productSearchArea.value = ''; },
-          }, 'Close'),
+          }, placeholdersText.close),
         ),
-        //
         button(
           { class: 'modal-add-products rounded-3xl self-center bg-[#378189] text-sm text-white px-5 py-2.5 opacity-30 cursor-not-allowed' },
-          span({ class: 'font-semibold px-1.5' }, 'Add products'),
+          span({ class: 'font-semibold px-1.5' }, placeholdersText.addProducts),
         ),
       ),
     ),
@@ -490,7 +515,7 @@ async function decorateCartItems(cartMainContainer, cartType, cartItemRes) {
 
     if (cartTitleElement) {
       cartTitleElement.textContent = cartType === 'Distributor'
-        ? 'Inquiry basket'
+        ? placeholdersText.inquiryBasket
         : `Shopping basket (${cartItemRes.items.length} items)`;
     }
   } else {
@@ -527,7 +552,6 @@ async function decorateCartItems(cartMainContainer, cartType, cartItemRes) {
         ),
         span({ class: 'mr-1 font-semibold' }, 'Qty:'),
         span({ class: 'item-quantity' }, item.quantity),
-        // span({ class: 'line-item hidden'},item.lineNumber),
         span({ class: 'delete-item ml-auto cursor-pointer icon icon-bin', id: `${item.lineNumber}` }),
       ),
     );
@@ -576,7 +600,7 @@ function decorateCartPopUp() {
       { class: 'cart-popup-main-container max-[376px]:-left-36 absolute hidden peer-checked:block top-full z-50 right-0 mt-1.5 max-[320px]:w-[285px] w-[320px] md:w-[368px]' },
       div(
         { class: 'shadow-2xl p-4 font-semibold bg-white rounded-xl text-black' },
-        div({ class: 'cart-title mb-4 text-xl' }, cartType === 'Distributor' ? 'Inquiry basket' : 'Shopping basket (1 item)'),
+        div({ class: 'cart-title mb-4 text-xl' }, cartType === 'Distributor' ? placeholdersText.inquiryBasket : placeholdersText.shoppingBasketOneItem),
         hr({ class: 'mt-4 -mx-4' }),
         div({ class: 'cart-items-container overflow-y-auto max-h-[376px]' }),
         hr({ class: 'mt-4 -mx-4' }),
@@ -584,11 +608,11 @@ function decorateCartPopUp() {
           { class: 'sub-total-container flex flex-wrap mt-1' },
           button(
             { class: 'go-to-basket rounded-3xl mt-3 w-full text-sm tracking-[.0125rem] px-5 py-2.5' },
-            span({ class: 'font-semibold' }, 'Go to basket'),
+            span({ class: 'font-semibold' }, placeholdersText.goToBasket),
           ),
           button(
             { class: 'contact-distributor mt-2 w-full text-sm racking-[.0125rem] px-5 py-2.5 focus:outline-none rounded-full font-semibold text-white bg-[#378189] hover:bg-[#2a5f65]' },
-            span({ class: 'font-semibold text-white' }, cartType === 'Distributor' ? 'Contact distributor' : 'Go to checkout'),
+            span({ class: 'font-semibold text-white' }, cartType === 'Distributor' ? placeholdersText.contactDistributor : placeholdersText.goToCheckout),
           ),
         ),
         hr({ class: 'my-4 -mx-4' }),
@@ -600,7 +624,7 @@ function decorateCartPopUp() {
               onclick() { document.querySelector('.modal-container')?.classList.remove('hidden'); },
             },
             span({ class: 'icon icon-plus' }),
-            span({ class: 'font-semibold text-black' }, 'Quick add'),
+            span({ class: 'font-semibold text-black' }, placeholdersText.quickAdd),
           ),
         ),
       ),
@@ -617,7 +641,7 @@ function decorateCartPopUp() {
       { class: 'cart-popup-main-container absolute hidden cursor-default peer-checked:block top-full z-50 right-0 mt-1.5 w-[368px]' },
       div(
         { class: 'middle-container shadow-2xl p-4 font-semibold bg-white rounded-xl text-black' },
-        div({ class: 'mb-4 text-xl' }, cartType === 'Distributor' ? 'Inquiry basket' : 'Shopping basket (1 item)'),
+        div({ class: 'mb-4 text-xl' }, cartType === 'Distributor' ? placeholdersText.inquiryBasket : placeholdersText.shoppingBasketOneItem),
         hr({ class: 'mt-4 -mx-4' }),
         div(
           { class: 'font-normal' },
@@ -625,11 +649,11 @@ function decorateCartPopUp() {
             { class: 'flex' },
             span({ class: 'mx-auto my-7 icon icon-empty-cart-basket' }),
           ),
-          div({ class: 'text-center whitespace-pre-line text-xs text-[#65797C] tracking-[.03125rem]' }, cartType === 'Distributor' ? 'Start adding products to your basket to contact your distributor' : 'Your basket is empty'),
+          div({ class: 'text-center whitespace-pre-line text-xs text-[#65797C] tracking-[.03125rem]' }, cartType === 'Distributor' ? placeholdersText.startAddingProducts : placeholdersText.yourBasketIsEmpty),
           hr({ class: 'mt-4 -mx-4' }),
           button(
             { class: 'inquiry-basket rounded-3xl mt-3 w-full text-sm tracking-[.0125rem] px-5 py-2.5' },
-            span({ class: 'font-semibold' }, cartType === 'Distributor' ? 'Go to inquiry basket' : 'Go to basket'),
+            span({ class: 'font-semibold' }, cartType === 'Distributor' ? placeholdersText.goToInquiryBasket : placeholdersText.goToBasket),
           ),
           button(
             {
@@ -637,7 +661,7 @@ function decorateCartPopUp() {
               onclick() { document.querySelector('.modal-container')?.classList.remove('hidden'); },
             },
             span({ class: 'plus-icon icon icon-white-plus' }),
-            span({ class: 'font-semibold text-white' }, 'Quick add'),
+            span({ class: 'font-semibold text-white' }, placeholdersText.quickAdd),
           ),
         ),
       ),
