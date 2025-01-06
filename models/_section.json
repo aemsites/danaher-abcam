@@ -41,6 +41,14 @@
           "label": "Provide Tab Name",
           "description": "Provide a name for the tab (Applicable only when Tabs block is added)",
           "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "stepNumber",
+          "value": "",
+          "label": "Provide Step Number",
+          "description": "Provide step number for the timeline (Applicable only when Timeline block is added)",
+          "valueType": "string"
         }        
       ]
     }
