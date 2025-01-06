@@ -24,7 +24,7 @@ export default function decorate(block) {
     { class: `${baseClasses}` },
     div(
       { class: `${jumpToLabelClasses} ${crossSellClasses}` },
-      jumpToTextCrossSell
+      jumpToTextCrossSell,
     ),
     div(
       { class: 'dd-container flex flex-row items-center w-full lg:w-1/2 min-h-[40px] gap-x-4 !bg-[#F4F5F5] tracking-[0.2px] leading-4 text-sm border border-[#EAECEC] border-opacity-5 bg-[#273F3F] bg-opacity-5 rounded-full px-6 w-full bg-white cursor-pointer relative' },
@@ -47,11 +47,11 @@ export default function decorate(block) {
     targetElements = tabNames;
   } else {
     targetElements = document.querySelectorAll('h2');
-  } 
+  }
   if (targetElements.length > 0) {
     const ddOptionsContainer = dropdownContainer.querySelector('.dd-options');
     const ddSelected = dropdownContainer.querySelector('.dd-selected');
-    ddSelected.textContent = targetElements[0] || 'Select a Tab'; 
+    ddSelected.textContent = targetElements[0] || 'Select a Tab';
     if (isCrossSellTemplate) {
       targetElements.slice(1).forEach((tabName, index) => {
         const optionEle = div(
@@ -81,7 +81,7 @@ export default function decorate(block) {
     } else {
       ddSelected.textContent = targetElements[0].textContent || 'Select a Section';
       targetElements.forEach((element, index) => {
-        if (index > 0) { 
+        if (index > 0) {
           const optionEle = div(
             { class: 'dd-option py-3 px-6 hover:bg-[#f2f2f2] hover:text-black cursor-pointer' },
             element.textContent || `Section ${index + 1}`,
@@ -140,12 +140,10 @@ export default function decorate(block) {
           option.classList.remove('bg-[#273F3F]', 'bg-opacity-10', 'text-[#273F3F]');
         });
         applyClasses(matchingOption, 'bg-[#273F3F] bg-opacity-10 text-[#273F3F]');
+      } else if (targetElements[0] && targetElements[0].trim()) {
+        ddSelected.textContent = targetElements[0];
       } else {
-        if (targetElements[0] && targetElements[0].trim()) {
-          ddSelected.textContent = targetElements[0];
-        } else {
-          ddSelected.textContent = 'Select a Tab';
-        }
+        ddSelected.textContent = 'Select a Tab';
       }
     });
   }
