@@ -51,7 +51,7 @@ export default function decorate(block) {
   if (targetElements.length > 0) {
     const ddOptionsContainer = dropdownContainer.querySelector('.dd-options');
     const ddSelected = dropdownContainer.querySelector('.dd-selected');
-    ddSelected.textContent = targetElements[0] || 'Select a Tab';
+    ddSelected.innerText = targetElements[0] || 'Select a Tab';
     if (isCrossSellTemplate) {
       targetElements.slice(1).forEach((tabName, index) => {
         const optionEle = div(
@@ -60,9 +60,9 @@ export default function decorate(block) {
         );
         optionEle.dataset.value = `tab-${index + 1}`;
         optionEle.addEventListener('click', function optionSelection(event) {
-          ddSelected.textContent = this.textContent;
-          toggleTabs(this.textContent, ddOptionsContainer, 'button-tabs');
-          const selectedTab = document.querySelector(`[data-tabname="${this.textContent}"]`);
+          ddSelected.innerText = this.innerText;
+          toggleTabs(this.innerText, ddOptionsContainer, 'button-tabs');
+          const selectedTab = document.querySelector(`[data-tabname="${this.innerText}"]`);
           if (selectedTab) {
             window.scrollTo({
               top: selectedTab.offsetTop - 65,
@@ -79,16 +79,15 @@ export default function decorate(block) {
         ddOptionsContainer.appendChild(optionEle);
       });
     } else {
-      ddSelected.textContent = targetElements[0].textContent || 'Select a Section';
+      ddSelected.innerText = targetElements[0].innerText || 'Select a Section';
       targetElements.forEach((element, index) => {
         if (index > 0) {
           const optionEle = div(
             { class: 'dd-option py-3 px-6 hover:bg-[#f2f2f2] hover:text-black cursor-pointer' },
-            element.textContent || `Section ${index + 1}`,
+            element.innerText || `Section ${index + 1}`,
           );
           optionEle.dataset.value = element.id || `section-${index + 1}`;
           optionEle.addEventListener('click', function optionSelection(event) {
-            ddSelected.textContent = this.textContent;
             const selectedSection = document.getElementById(this.dataset.value);
             if (selectedSection) {
               window.scrollTo({
@@ -135,15 +134,15 @@ export default function decorate(block) {
       if (lastCrossedHeadingId) {
         const matchingOption = Array.from(ddOptionsContainer.children)
           .find((option) => option.dataset.value === lastCrossedHeadingId);
-        ddSelected.textContent = matchingOption.textContent;
+        ddSelected.innerText = matchingOption.innerText;
         Array.from(ddOptionsContainer.children).forEach((option) => {
           option.classList.remove('bg-[#273F3F]', 'bg-opacity-10', 'text-[#273F3F]');
         });
         applyClasses(matchingOption, 'bg-[#273F3F] bg-opacity-10 text-[#273F3F]');
       } else if (targetElements[0] && targetElements[0].trim()) {
-        ddSelected.textContent = targetElements[0];
+        ddSelected.innerText = targetElements[0];
       } else {
-        ddSelected.textContent = 'Select a Tab';
+        ddSelected.innerText = 'Select a Tab';
       }
     });
   }
