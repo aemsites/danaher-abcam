@@ -1,0 +1,59 @@
+{
+  "definitions": [
+    {
+      "title": "Timeline Notification",
+      "id": "timeline-notification",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Timeline Notification",
+              "model": "timeline-notification"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "timeline-notification",
+      "fields": [
+        {
+          "component": "multiselect",
+          "valueType": "string",
+          "name": "classes",
+          "value": "",
+          "label": "Notification Type",
+          "options": [
+            {
+              "name": "Knowledge",
+              "value": "knowledge"
+            },
+            {
+              "name": "Warning",
+              "value": "warning"
+            },
+            {
+              "name": "Help",
+              "value": "help"
+            },
+            {
+              "name": "Timer",
+              "value": "timer"
+            }
+          ]
+        },        
+        {
+          "component": "richtext",
+          "name": "timeline-notification_description",
+          "value": "",
+          "label": "Description",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}
