@@ -17,28 +17,26 @@ function megaMeunu() {
 }
 
 const placeholdersText = {
-  'createAnAccount':'Create an account',
-  'myOrders':'My Orders',
-  'myAddress':'My Addresses',
-  'myInquires':'My Inquiries',
-  'myReviews':'My Reviews',
-  'myRewards':'My Rewards',
-  'myProfile':'My Profile',
-  'signOut':'Sign Out',
-  'enterProductsCode':'Enter product codes below and click "add products"',
-  'close':'Close',
-  'addProducts':'Add products',
-  'goToBasket':'Go to basket',
-  'contactDistributor':'Contact distributor',
-  'goToCheckout':'Go to checkout',
-  'quickAdd':'Quick add',
-  'inquiryBasket':'Inquiry basket',
-  'goToInquiryBasket':'Go to inquiry basket',
-  'shoppingBasketOneItem':'Shopping basket (1 item)',
-  'startAddingProducts':'Start adding products to your basket to contact your distributor',
-  'yourBasketIsEmpty':'Your basket is empty'
-
-
+  createAnAccount: 'Create an account',
+  myOrders: 'My Orders',
+  myAddress: 'My Addresses',
+  myInquires: 'My Inquiries',
+  myReviews: 'My Reviews',
+  myRewards: 'My Rewards',
+  myProfile: 'My Profile',
+  signOut: 'Sign Out',
+  enterProductsCode: 'Enter product codes below and click "add products"',
+  close: 'Close',
+  addProducts: 'Add products',
+  goToBasket: 'Go to basket',
+  contactDistributor: 'Contact distributor',
+  goToCheckout: 'Go to checkout',
+  quickAdd: 'Quick add',
+  inquiryBasket: 'Inquiry basket',
+  goToInquiryBasket: 'Go to inquiry basket',
+  shoppingBasketOneItem: 'Shopping basket (1 item)',
+  startAddingProducts: 'Start adding products to your basket to contact your distributor',
+  yourBasketIsEmpty: 'Your basket is empty',
 
 };
 
