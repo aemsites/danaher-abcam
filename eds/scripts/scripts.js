@@ -310,7 +310,8 @@ const TEMPLATE_LIST = [
   'guides-hub',
   'topic',
   'cross-sell-hub',
-  'support'
+  'support',
+  'legal'
 ];
 
 async function decorateTemplates(main) {
