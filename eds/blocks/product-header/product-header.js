@@ -1,5 +1,7 @@
 import { decorateIcons } from '../../scripts/aem.js';
-import { div, span, a as anchorElement } from '../../scripts/dom-builder.js';
+import {
+  div, span, a as anchorElement, button, p,
+} from '../../scripts/dom-builder.js';
 import { applyClasses } from '../../scripts/scripts.js';
 
 // Function to create the stars based on the rating
@@ -31,6 +33,20 @@ function createStars(rating) {
   }
   return starParent;
 }
+
+// Create the modal element
+const createModal = () => {
+  const modal = div({ class: 'modal hidden fixed inset-0 bg-white bg-opacity-50 flex justify-center items-center z-50' });
+  const modalContent = div({ class: 'bg-white p-6 rounded-md w-1/2 h-max' });
+  modalContent.append(
+    p({ class: 'px-2 py-1 rounded text-xs font-semibold tracking-wide break-keep bg-[#EDF6F7] text-[#378189] border-[#EDF6F7] border' }, 'KO Validated'),
+    p({ class: 'text-sm mb-4' }, 'Knock-out (KO) validation is a robust technique used to confirm antibody specificity by testing the antibody of interest in a cell line or tissue that has been engineered to not express the target protein.'),
+    button({ class: 'mt-4 bg-[#378089] text-black px-6 py-2 rounded-md hover:bg-blue-600 focus:outline-none' }, 'Close'),
+  );
+  modal.append(modalContent);
+  document.body.append(modal);
+  return modal;
+};
 
 export default function decorate(block) {
   block.innerHTML = `<div class="product-header ">
@@ -126,28 +142,43 @@ export default function decorate(block) {
   const firstDivEl = productHeader.querySelector('div:nth-child(1)');
   const shareCopyDiv = div(
     { class: 'flex flex-row gap-4 items-end ml-auto' },
-    span({ class: 'icon icon-click-copy' }),
-    span({ class: 'icon icon-click-copy' }),
-    span({ class: 'icon icon-click-copy' }),
+    span({ class: 'icon icon-click-copy cursor-pointer' }),
+    span({ class: 'icon icon-share-pdp-icon cursor-pointer' }),
   );
   decorateIcons(shareCopyDiv, 20, 20);
   firstDivEl.append(shareCopyDiv);
 
-  // Add the click event listener to the first icon
-  const copyIcon = shareCopyDiv.querySelector('.icon-click-copy');
+  // Create and hide the modal initially
+  const modal = createModal();
+  const tagInfo = secondDivEl.querySelector('a');
+  tagInfo.addEventListener('click', (e) => {
+    e.preventDefault(); // Prevent default behavior of the link
+    modal.classList.remove('hidden');
+  });
+  const closeButton = modal.querySelector('button');
+  closeButton.addEventListener('click', () => {
+    modal.classList.add('hidden');
+  });
 
+  const copyIcon = shareCopyDiv.querySelector('.icon-click-copy');
   copyIcon.addEventListener('click', () => {
     const emText = firstDivEl.querySelector('em').textContent;
     const h1Text = secondDivEl.querySelector('h1').textContent;
-
-    // Create a text to copy combining the two elements' text
     const textToCopy = `${emText} ${h1Text}`;
-
-    // Use the Clipboard API to copy the text
     navigator.clipboard.writeText(textToCopy).then(() => {
       console.log(`Text copied to clipboard: ${textToCopy}`); // eslint-disable-line
     }).catch((err) => {
       console.error('Error copying text: ', err); // eslint-disable-line
+    });
+  });
+
+  const shareIcon = shareCopyDiv.querySelector('.icon-share-pdp-icon');
+  shareIcon.addEventListener('click', () => {
+    const urlToCopy = window.location.href;
+    navigator.clipboard.writeText(urlToCopy).then(() => {
+      console.log(`URL copied to clipboard: ${urlToCopy}`); // eslint-disable-line
+    }).catch((err) => {
+      console.error('Error copying URL: ', err); // eslint-disable-line
     });
   });
 }
