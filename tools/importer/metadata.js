@@ -108,7 +108,7 @@ const addArticleMeta = (document, meta) => {
       meta.canonical = canonicalUrl;
     }
 
-    meta.template = "pathways";
+    meta.template = "protocols";
     meta.modelFields = "[title,description,canonical,keywords,publishDate,image,pageTags,authorName,authorImage,readingTime,template,pageOrder]";
   
     const keywords = document.querySelector('[name="keywords"]');

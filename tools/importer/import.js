@@ -52,6 +52,9 @@ export default {
       'div[data-title="about-us"]',
       'span[data-cy="header-search-input"]',
       'p.sr-only',
+      'div.order-last',
+      'div[class="xxld:order-last xxlu:ml-[-18%] xlu:min-w-[30%]"]',
+      'div[class="steps_step__CxbDj"]',
     ]);
 
     return main;
