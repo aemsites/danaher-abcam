@@ -5,7 +5,7 @@ export default async function buildAutoBlocks() {
   const main = document.querySelector('main');
   const mainEl = main.querySelector('div');
   const sectionMiddle = main.querySelector(':scope > div:nth-child(2)');
-  sectionMiddle.classList.add(...'protocols-middle-container w-full pt-4'.split(' '));
+  sectionMiddle.classList.add(...'legal-middle-container w-full pt-4'.split(' '));
   sectionMiddle.prepend(
     buildBlock('chapter-links', { elems: [] }),
   );
