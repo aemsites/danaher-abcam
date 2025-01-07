@@ -247,7 +247,7 @@
         @apply pt-8;
     }
 
-    .guide main .chapter-links-container, .topic main .related-articles-container, .protocols main .chapter-links-container .pathways main .related-articles-container, .support main .chapter-links-container {
+    .guide main .chapter-links-container, .topic main .related-articles-container, .protocols main .chapter-links-container .pathways main .related-articles-container, .support main .chapter-links-container, .legal main .chapter-links-container {
         @apply lg:flex-row flex-col-reverse;
     }
 
@@ -259,7 +259,7 @@
         @apply lg:px-6 xl:px-0 !pt-0;
     }
 
-    .guide .sticky-bottom, .topic .sticky-bottom, .protocols .sticky-bottom, .pathways .sticky-bottom, .support .sticky-bottom {
+    .guide .sticky-bottom, .topic .sticky-bottom, .protocols .sticky-bottom, .pathways .sticky-bottom, .support .sticky-bottom, .legal .sticky-bottom {
         @apply sticky bottom-0 lg:hidden bg-transparent py-4 px-6 z-20;
     }
 
