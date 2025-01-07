@@ -1,3 +1,223 @@
+.publications-wrapper :is(.relative) {
+  position: relative
+}
+
+.publications-wrapper :is(.left-\[3px\]) {
+  left: 3px
+}
+
+.publications-wrapper :is(.top-\[3px\]) {
+  top: 3px
+}
+
+.publications-wrapper :is(.m-0) {
+  margin: 0px
+}
+
 .publications-wrapper :is(.block) {
   display: block
+}
+
+.publications-wrapper :is(.inline-block) {
+  display: inline-block
+}
+
+.publications-wrapper :is(.inline) {
+  display: inline
+}
+
+.publications-wrapper :is(.flex) {
+  display: flex
+}
+
+.publications-wrapper :is(.hidden) {
+  display: none
+}
+
+.publications-wrapper :is(.h-\[18px\]) {
+  height: 18px
+}
+
+.publications-wrapper :is(.w-\[18px\]) {
+  width: 18px
+}
+
+.publications-wrapper :is(.min-w-\[88px\]) {
+  min-width: 88px
+}
+
+.publications-wrapper :is(.basis-\[95\%\]) {
+  flex-basis: 95%
+}
+
+.publications-wrapper :is(.flex-row) {
+  flex-direction: row
+}
+
+.publications-wrapper :is(.flex-col) {
+  flex-direction: column
+}
+
+.publications-wrapper :is(.items-center) {
+  align-items: center
+}
+
+.publications-wrapper :is(.justify-between) {
+  justify-content: space-between
+}
+
+.publications-wrapper :is(.gap-2) {
+  gap: 0.5rem
+}
+
+.publications-wrapper :is(.gap-x-1) {
+  -moz-column-gap: 0.25rem;
+       column-gap: 0.25rem
+}
+
+.publications-wrapper :is(.gap-y-4) {
+  row-gap: 1rem
+}
+
+.publications-wrapper :is(.rounded-md) {
+  border-radius: 0.375rem
+}
+
+.publications-wrapper :is(.border) {
+  border-width: 1px
+}
+
+.publications-wrapper :is(.border-b) {
+  border-bottom-width: 1px
+}
+
+.publications-wrapper :is(.border-\[\#0711121A\]) {
+  border-color: #0711121A
+}
+
+.publications-wrapper :is(.border-gray-300) {
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity))
+}
+
+.publications-wrapper :is(.p-0) {
+  padding: 0px
+}
+
+.publications-wrapper :is(.p-4) {
+  padding: 1rem
+}
+
+.publications-wrapper :is(.p-\[1\.67px\]) {
+  padding: 1.67px
+}
+
+.publications-wrapper :is(.px-6) {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem
+}
+
+.publications-wrapper :is(.pr-1) {
+  padding-right: 0.25rem
+}
+
+.publications-wrapper :is(.text-left) {
+  text-align: left
+}
+
+.publications-wrapper :is(.text-\[12px\]) {
+  font-size: 12px
+}
+
+.publications-wrapper :is(.text-\[13px\]) {
+  font-size: 13px
+}
+
+.publications-wrapper :is(.text-\[14px\]) {
+  font-size: 14px
+}
+
+.publications-wrapper :is(.text-base) {
+  font-size: 1rem;
+  line-height: 1.5rem
+}
+
+.publications-wrapper :is(.text-lg) {
+  font-size: 1.125rem;
+  line-height: 1.75rem
+}
+
+.publications-wrapper :is(.text-xs) {
+  font-size: 0.75rem;
+  line-height: 1rem
+}
+
+.publications-wrapper :is(.font-normal) {
+  font-weight: 400
+}
+
+.publications-wrapper :is(.font-semibold) {
+  font-weight: 600
+}
+
+.publications-wrapper :is(.leading-4) {
+  line-height: 1rem
+}
+
+.publications-wrapper :is(.leading-6) {
+  line-height: 1.5rem
+}
+
+.publications-wrapper :is(.leading-7) {
+  line-height: 1.75rem
+}
+
+.publications-wrapper :is(.leading-\[16px\]) {
+  line-height: 16px
+}
+
+.publications-wrapper :is(.leading-\[21px\]) {
+  line-height: 21px
+}
+
+.publications-wrapper :is(.leading-\[23px\]) {
+  line-height: 23px
+}
+
+.publications-wrapper :is(.tracking-\[0\.2px\]) {
+  letter-spacing: 0.2px
+}
+
+.publications-wrapper :is(.tracking-\[0\.3px\]) {
+  letter-spacing: 0.3px
+}
+
+.publications-wrapper :is(.text-\[\#65797C\]) {
+  --tw-text-opacity: 1;
+  color: rgb(101 121 124 / var(--tw-text-opacity))
+}
+
+.publications-wrapper :is(.text-black) {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity))
+}
+
+.publications-wrapper :is(.text-gray-600) {
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity))
+}
+
+.publications-wrapper :is(.text-teal-800) {
+  --tw-text-opacity: 1;
+  color: rgb(17 94 89 / var(--tw-text-opacity))
+}
+
+.publications-wrapper :is(.filter) {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
+}
+
+@media (min-width: 768px) {
+  .publications-wrapper :is(.md\:min-w-\[200px\]) {
+    min-width: 200px
+  }
 }

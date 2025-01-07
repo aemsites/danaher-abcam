@@ -19,10 +19,6 @@
   margin-bottom: 1rem
 }
 
-.product-publications-block-wrapper :is(.mb-\[16px\]) {
-  margin-bottom: 16px
-}
-
 .product-publications-block-wrapper :is(.block) {
   display: block
 }
@@ -84,16 +80,12 @@
   justify-content: space-between
 }
 
-.product-publications-block-wrapper :is(.gap-6) {
-  gap: 1.5rem
-}
-
 .product-publications-block-wrapper :is(.gap-2) {
   gap: 0.5rem
 }
 
-.product-publications-block-wrapper :is(.gap-4) {
-  gap: 1rem
+.product-publications-block-wrapper :is(.gap-6) {
+  gap: 1.5rem
 }
 
 .product-publications-block-wrapper :is(.gap-x-1) {
@@ -103,14 +95,6 @@
 
 .product-publications-block-wrapper :is(.gap-y-4) {
   row-gap: 1rem
-}
-
-.product-publications-block-wrapper :is(.gap-y-6) {
-  row-gap: 1.5rem
-}
-
-.product-publications-block-wrapper :is(.gap-y-2) {
-  row-gap: 0.5rem
 }
 
 .product-publications-block-wrapper :is(.self-center) {
@@ -275,18 +259,6 @@
 .product-publications-block-wrapper :is(.text-white) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity))
-}
-
-@media (min-width: 640px) {
-  .product-publications-block-wrapper :is(.sm\:w-fit) {
-    width: -moz-fit-content;
-    width: fit-content
-  }
-
-  .product-publications-block-wrapper :is(.sm\:max-w-fit) {
-    max-width: -moz-fit-content;
-    max-width: fit-content
-  }
 }
 
 @media (min-width: 768px) {
