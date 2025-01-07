@@ -8,12 +8,14 @@ export default async function decorate(block) {
   [...block.children].forEach((el) => {
     applyClasses(el, 'border-b border-b-[#D8D8D8] py-6 px-0');
     const contentDiv = el.querySelector('div');
-    applyClasses(contentDiv, 'hidden text-base leading-[23px] tracking-[0.3px]');
-    const titleDiv = div(
-      { class: 'text-[#378189] font-sans text-2xl font-semibold leading-8 tracking-[-0.5px] flex items-center cursor-pointer gap-6 justify-between m-0' },
-      contentDiv.querySelector('h2'),
-      span({ class: 'accordion-arrow icon icon-chevron-down shrink-0 ml-auto transition' }),
-    );
+    applyClasses(contentDiv, 'hidden text-base leading-[23px] tracking-[0.3px] font-normal pt-2');
+    const accHeading = contentDiv.querySelector('h2');
+    const titleDiv = div();
+    applyClasses(titleDiv, 'acc-title flex items-center cursor-pointer gap-6 justify-between');
+    titleDiv.append(accHeading);
+    const icon = span({ class: 'accordion-arrow icon icon-chevron-down shrink-0 ml-auto transition' });
+    titleDiv.append(icon);
+    applyClasses(accHeading, 'text-[#378189] font-sans !text-xl md:!text-2xl m-0 !font-semibold md:!leading-8 md:!tracking-[-0.5px]');
     el.prepend(titleDiv);
     titleDiv.addEventListener('click', () => {
       contentDiv.classList.toggle('hidden');
@@ -21,5 +23,5 @@ export default async function decorate(block) {
       else titleDiv.querySelector('.accordion-arrow').style.transform = 'rotate(180deg)';
     });
   });
-  decorateIcons(block, 20, 20);
+  decorateIcons(block, 24, 24);
 }
