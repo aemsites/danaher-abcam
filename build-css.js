@@ -78,6 +78,10 @@ const fileMappings = [
     output: './eds/templates/support/support.css',
   },
   {
+    content: './eds/templates/legal/legal.js',
+    output: './eds/templates/legal/legal.css',
+  },
+  {
     content: './eds/blocks/mini-teasers/mini-teasers.js',
     output: './eds/blocks/mini-teasers/mini-teasers.css',
     wrapper: 'mini-teasers-wrapper',
