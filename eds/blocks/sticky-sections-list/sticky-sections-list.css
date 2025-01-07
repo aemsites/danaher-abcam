@@ -1,3 +1,37 @@
+.container {
+  width: 100%
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px
+  }
+}
+
 .sticky-sections-list :is(.absolute) {
   position: absolute
 }
@@ -88,8 +122,16 @@
   flex-direction: row
 }
 
+.sticky-sections-list :is(.flex-wrap) {
+  flex-wrap: wrap
+}
+
 .sticky-sections-list :is(.items-center) {
   align-items: center
+}
+
+.sticky-sections-list :is(.gap-6) {
+  gap: 1.5rem
 }
 
 .sticky-sections-list :is(.gap-x-4) {
@@ -113,9 +155,23 @@
   border-width: 1px
 }
 
+.sticky-sections-list :is(.border-solid) {
+  border-style: solid
+}
+
 .sticky-sections-list :is(.border-\[\#EAECEC\]) {
   --tw-border-opacity: 1;
   border-color: rgb(234 236 236 / var(--tw-border-opacity))
+}
+
+.sticky-sections-list :is(.border-\[\#ff7223\]) {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 114 35 / var(--tw-border-opacity))
+}
+
+.sticky-sections-list :is(.border-black) {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity))
 }
 
 .sticky-sections-list :is(.border-opacity-5) {
@@ -135,6 +191,11 @@
 .sticky-sections-list :is(.bg-white) {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+}
+
+.sticky-sections-list :is(.bg-black) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity))
 }
 
 .sticky-sections-list :is(.bg-opacity-10) {
@@ -165,6 +226,11 @@
   padding-bottom: 1rem
 }
 
+.sticky-sections-list :is(.py-2) {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem
+}
+
 .sticky-sections-list :is(.pt-5) {
   padding-top: 1.25rem
 }
@@ -176,6 +242,10 @@
 
 .sticky-sections-list :is(.font-semibold) {
   font-weight: 600
+}
+
+.sticky-sections-list :is(.font-bold) {
+  font-weight: 700
 }
 
 .sticky-sections-list :is(.leading-4) {
@@ -194,6 +264,16 @@
 .sticky-sections-list :is(.text-\[\#65797c\]) {
   --tw-text-opacity: 1;
   color: rgb(101 121 124 / var(--tw-text-opacity))
+}
+
+.sticky-sections-list :is(.text-black) {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity))
+}
+
+.sticky-sections-list :is(.text-white) {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity))
 }
 
 .sticky-sections-list :is(.drop-shadow-2xl) {

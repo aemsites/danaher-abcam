@@ -2,7 +2,7 @@ import { div, span } from '../../scripts/dom-builder.js';
 import { applyClasses } from '../../scripts/scripts.js';
 import { decorateIcons, getMetadata } from '../../scripts/aem.js';
 
-function toggleTabs(tabId) {
+function toggleTabs(tabId, mmgTabs, tabType) {
   const contentSections = document.querySelectorAll('[data-tabname]');
   contentSections.forEach((section) => {
     if (section.dataset.tabname === tabId) {
@@ -11,22 +11,36 @@ function toggleTabs(tabId) {
       section.classList.add('hide-section');
     }
   });
+  const tabss = mmgTabs.querySelectorAll('.tab');
+  tabss.forEach((tab) => {
+    if (tab.id === tabId) {
+      tabType === 'button-tabs'
+        ? tab.classList.add('active', 'bg-[#273F3F]', 'text-white', 'border-[#ff7223]')
+        : tab.classList.add('bg-black', 'text-white');
+      tab.classList.remove('bg-white', 'text-black');
+    } else {
+      tabType === 'button-tabs'
+        ? tab.classList.remove('active', 'bg-[#273F3F]', 'text-white', 'border-[#ff7223]')
+        : tab.classList.remove('bg-black', 'text-white');
+      tab.classList.add('bg-white', 'text-black');
+    }
+  });
 }
 export default function decorate(block) {
-const chevIcon = span({ class: 'icon icon-chevron-down shrink-0 ml-auto transition' });
-const templateMetaTag = document.querySelector('meta[name="template"][content="cross-sell-detail"]');
-const template = getMetadata('template');
-const isCrossSellTemplate = templateMetaTag && templateMetaTag.getAttribute('content') === 'cross-sell-detail';
-const jumpToText = template === 'support' ? 'QUESTION' : (isCrossSellTemplate ? 'SELECT ANTIBODY:' : 'JUMP TO:');
-const baseClasses = 'dd-main-container mx-auto max-w-7xl lg:h-[72px] flex items-center relative px-7 py-4 font-semibold';
-const jumpToLabelClasses = 'jump-to-label text-[#65797c] text-sm w-28 md:!w-24 lg:!w-20';
-const crossSellClasses = isCrossSellTemplate ? 'md:!w-36 lg:!w-36' : '';
-const dropdownContainer = div(
-  { class: `${baseClasses}` },
-  div(
-    { class: `${jumpToLabelClasses} ${crossSellClasses}` },
-    jumpToText,
-  ),
+  const chevIcon = span({ class: 'icon icon-chevron-down shrink-0 ml-auto transition' });
+  const templateMetaTag = document.querySelector('meta[name="template"][content="cross-sell-detail"]');
+  const template = getMetadata('template');
+  const isCrossSellTemplate = templateMetaTag && templateMetaTag.getAttribute('content') === 'cross-sell-detail';
+  const jumpToText = template === 'support' ? 'QUESTION' : (isCrossSellTemplate ? 'SELECT ANTIBODY:' : 'JUMP TO:');
+  const baseClasses = 'dd-main-container mx-auto max-w-7xl lg:h-[72px] flex items-center relative px-7 py-4 font-semibold';
+  const jumpToLabelClasses = 'jump-to-label text-[#65797c] text-sm w-28 md:!w-24 lg:!w-20';
+  const crossSellClasses = isCrossSellTemplate ? 'md:!w-36 lg:!w-36' : '';
+  const dropdownContainer = div(
+    { class: `${baseClasses}` },
+    div(
+      { class: `${jumpToLabelClasses} ${crossSellClasses}` },
+      jumpToText,
+    ),
     div(
       { class: 'dd-container flex flex-row items-center w-full lg:w-1/2 min-h-[40px] gap-x-4 !bg-[#F4F5F5] tracking-[0.2px] leading-4 text-sm border border-[#EAECEC] border-opacity-5 bg-[#273F3F] bg-opacity-5 rounded-full px-6 w-full bg-white cursor-pointer relative' },
       span({ class: 'dd-selected' }, ''),
@@ -53,6 +67,16 @@ const dropdownContainer = div(
     const ddOptionsContainer = dropdownContainer.querySelector('.dd-options');
     const ddSelected = dropdownContainer.querySelector('.dd-selected');
     ddSelected.innerText = targetElements[0] || 'Select a Tab';
+    const mmgTabs = document.querySelector('.button-tabs'); 
+    if(mmgTabs) {
+      const buttonTabs = mmgTabs.querySelectorAll('.tab');
+    buttonTabs.forEach((buttonTab) => {
+      buttonTab.addEventListener('click', () => {
+        ddSelected.innerText = buttonTab.innerText;
+        toggleTabs(buttonTab.innerText, mmgTabs, 'button-tabs');
+      });
+    });
+    }
     if (isCrossSellTemplate) {
       targetElements.slice(1).forEach((tabName, index) => {
         const optionEle = div(
@@ -62,7 +86,7 @@ const dropdownContainer = div(
         optionEle.dataset.value = `tab-${index + 1}`;
         optionEle.addEventListener('click', function optionSelection(event) {
           ddSelected.innerText = this.innerText;
-          toggleTabs(this.innerText, ddOptionsContainer, 'button-tabs');
+          toggleTabs(this.innerText, mmgTabs, 'button-tabs');
           const selectedTab = document.querySelector(`[data-tabname="${this.innerText}"]`);
           if (selectedTab) {
             window.scrollTo({
@@ -70,6 +94,17 @@ const dropdownContainer = div(
               behavior: 'smooth',
             });
           }
+          const matchingButtonTab = mmgTabs.querySelector(`#${this.innerText}`);
+          if (matchingButtonTab) {
+            matchingButtonTab.classList.add('active', 'bg-[#273F3F]', 'text-white', 'border-[#ff7223]');
+            matchingButtonTab.classList.remove('bg-white', 'text-black');
+          }
+          buttonTabs.forEach((tab) => {
+            if (tab !== matchingButtonTab) {
+              tab.classList.remove('active', 'bg-[#273F3F]', 'text-white', 'border-[#ff7223]');
+              tab.classList.add('bg-white', 'text-black');
+            }
+          });
           Array.from(ddOptionsContainer.children).forEach((opt) => {
             opt.classList.remove('bg-[#273F3F]', 'bg-opacity-10', 'text-[#273F3F]');
           });
