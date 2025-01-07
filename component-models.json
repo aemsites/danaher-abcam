@@ -649,6 +649,10 @@
           {
             "name": "3 Columns",
             "value": "cols-3"
+          },
+          {
+            "name": "2 Columns",
+            "value": "cols-2"
           }
         ]
       }
@@ -2419,6 +2423,43 @@
         "name": "teaser_reference",
         "value": "",
         "label": "Select the page to link to",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "timeline-notification",
+    "fields": [
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "value": "",
+        "label": "Notification Type",
+        "options": [
+          {
+            "name": "Knowledge",
+            "value": "knowledge"
+          },
+          {
+            "name": "Warning",
+            "value": "warning"
+          },
+          {
+            "name": "Help",
+            "value": "help"
+          },
+          {
+            "name": "Timer",
+            "value": "timer"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "name": "timeline-notification_description",
+        "value": "",
+        "label": "Description",
         "valueType": "string"
       }
     ]
