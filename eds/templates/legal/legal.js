@@ -1,6 +1,5 @@
 import { buildBlock } from '../../scripts/aem.js';
-import { div, p } from '../../scripts/dom-builder.js';
-import { getCookie } from '../../scripts/scripts.js';
+import { div } from '../../scripts/dom-builder.js';
 
 export default async function buildAutoBlocks() {
   const main = document.querySelector('main');
