@@ -1,0 +1,60 @@
+.timeline-notification :is(.block) {
+  display: block
+}
+
+.timeline-notification :is(.flex) {
+  display: flex
+}
+
+.timeline-notification :is(.w-1\/4) {
+  width: 25%
+}
+
+.timeline-notification :is(.rounded) {
+  border-radius: 0.25rem
+}
+
+.timeline-notification :is(.rounded-lg) {
+  border-radius: 0.5rem
+}
+
+.timeline-notification :is(.bg-\[\#E8FCF4\]) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(232 252 244 / var(--tw-bg-opacity))
+}
+
+.timeline-notification :is(.bg-\[\#EDF1F7\]) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(237 241 247 / var(--tw-bg-opacity))
+}
+
+.timeline-notification :is(.bg-\[\#F2F2F2\]) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(242 242 242 / var(--tw-bg-opacity))
+}
+
+.timeline-notification :is(.bg-orange-100) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 237 213 / var(--tw-bg-opacity))
+}
+
+.timeline-notification :is(.p-2) {
+  padding: 0.5rem
+}
+
+.timeline-notification :is(.p-2\.5) {
+  padding: 0.625rem
+}
+
+.timeline-notification :is(.px-1) {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem
+}
+
+.timeline-notification :is(.pt-0) {
+  padding-top: 0px
+}
+
+.timeline-notification :is(.pt-0\.5) {
+  padding-top: 0.125rem
+}
