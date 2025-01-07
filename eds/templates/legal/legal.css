@@ -1,7 +1,16 @@
+.\!mb-10 {
+  margin-bottom: 2.5rem !important
+}
+
 .w-full {
   width: 100%
 }
 
 .pt-4 {
   padding-top: 1rem
+}
+
+.text-\[\#65797C\] {
+  --tw-text-opacity: 1;
+  color: rgb(101 121 124 / var(--tw-text-opacity))
 }
