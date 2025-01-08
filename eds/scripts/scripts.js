@@ -19,7 +19,7 @@ import {
   div, span, button, iframe, p, img, li, label, input, ul, a, h3,
 } from './dom-builder.js';
 // eslint-disable-next-line import/prefer-default-export
-import { buildVideoSchema } from './schema.js';
+import { buildOndemandWebinarSchema, buildVideoSchema } from './schema.js';
 import ffetch from './ffetch.js';
 import { yetiToPWSurlsMap } from './pws.js';
 
@@ -309,7 +309,8 @@ const TEMPLATE_LIST = [
   'guide',
   'guides-hub',
   'topic',
-  'protocols',
+  'cross-sell-hub',
+  'support'
 ];
 
 async function decorateTemplates(main) {
@@ -342,6 +343,20 @@ function buildAutoBlocks(main) {
   }
 }
 
+function setJumpToSectionPosition(main) {
+  const sectionListContainer = main.querySelector('.sticky-sections-list-container');
+  const firstH2 = main.querySelector('h2');
+  sectionListContainer?.classList.add(...'hidden sticky top-0 bg-white shadow-[0_6px_12px_0px_rgba(7,17,18,0.12)] z-30'.split(' '));
+  window.addEventListener('scroll', () => {
+    const rect = firstH2?.getBoundingClientRect();
+    if (rect && rect.top <= -72) {
+        sectionListContainer?.classList.remove('hidden');
+    } else {
+        sectionListContainer?.classList.add('hidden');
+    }
+  });
+}
+
 function decorateStoryPage(main) {
   const sectionEl = main.querySelector(':scope > div.section.story-info-container.social-media-container.sidelinks-container');
   
@@ -365,11 +380,11 @@ function decorateStoryPage(main) {
 }
 
 function decorateGuidePage(main) {
-  const sectionEl = main.querySelector(':scope > div.section.chapter-links-container.sidelinks-container');
+  const sectionEl =  main.querySelector(':scope > div.section.chapter-links-container.sidelinks-container') ?  main.querySelector(':scope > div.section.chapter-links-container.sidelinks-container') :  main.querySelector(':scope > div.section.chapter-links-container')
   if (sectionEl) {
     const toBeRemoved = ['chapter-links-wrapper', 'sidelinks-wrapper'];
     const rightSideElements = div({ class: 'w-full pr-0 lg:pr-8' });
-    const sticky = div({ class: 'sticky top-0 space-y-12 pt-6' });
+    const sticky = div({ class: 'sticky top-20 space-y-12 pt-6' });
     const divEl = div({ class: 'ml-0 lg:ml-4 xl:ml-4 min-w-60 lg:max-w-72 flex flex-col gap-y-2 z-20' }, sticky);
 
     toBeRemoved.forEach((ele) => {
@@ -383,6 +398,7 @@ function decorateGuidePage(main) {
     });
     sectionEl?.prepend(divEl);
     sectionEl?.append(rightSideElements);
+    setJumpToSectionPosition(main);
   }
 }
 
@@ -391,7 +407,7 @@ function decorateTopicPage(main) {
   if (sectionEl) {
     const toBeRemoved = ['related-articles-wrapper', 'sidelinks-wrapper'];
     const rightSideElements = div({ class: 'w-full pr-0 lg:pr-8' });
-    const sticky = div({ class: 'sticky top-0 space-y-12 pt-6' });
+    const sticky = div({ class: 'sticky top-20 space-y-12 pt-6' });
     const divEl = div({ class: 'ml-0 lg:ml-4 xl:ml-4 min-w-60 lg:max-w-72 flex flex-col gap-y-2 z-20' }, sticky);
 
     toBeRemoved.forEach((ele) => {
@@ -405,6 +421,7 @@ function decorateTopicPage(main) {
     });
     sectionEl?.prepend(divEl);
     sectionEl?.append(rightSideElements);
+    setJumpToSectionPosition(main);
   }
 }
 
@@ -532,7 +549,9 @@ function isValidUrl(string) {
 }
 
 function decorateGenericVideo(main) {
+  let videoArr = [];
   main.querySelectorAll(".section a[title='video']").forEach((link) => {
+    videoArr.push({ href: link.href, title: link.textContent });
     const linkContainer = link.parentElement;
     linkContainer.classList.add('h-full');
     let embedURL;
@@ -543,7 +562,7 @@ function decorateGenericVideo(main) {
         <iframe src="${embedURL}"
           class="w-full aspect-video multi-player" 
           allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" 
-          scrolling="no" title="Content from Vimeo" loading="lazy"></iframe>
+          scrolling="no" title="${link.textContent}" loading="lazy"></iframe>
           <button id="play-button-${embedURL}" class="video-overlay absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-opacity-50 rounded-full p-4 flex items-center justify-center w-[126px] h-[126px]">
             <span class="video-play-icon icon icon-video-play"></span>
           </button>
@@ -571,6 +590,7 @@ function decorateGenericVideo(main) {
       ele.classList.remove('hidden');
     });
   });
+  buildOndemandWebinarSchema({ srcObj: null, custom: { videoArr } });
 }
 
 async function decorateVideo(main) {
@@ -720,7 +740,7 @@ async function decorateVideo(main) {
             decorateIcons(linkContainer, 50, 50);
 
             if (linkContainer.closest('.image-full-width')) {
-              linkContainer.className = 'relative lg:absolute w-full lg:w-1/2 h-full object-cover lg:right-0 lg:bottom-6';
+              linkContainer.className = 'relative lg:absolute w-full lg:w-1/2 h-full md:h-[400px] object-cover lg:right-0 lg:bottom-6';
             }
 
             linkContainer.querySelector(`button[id="play-button-${videoId}"]`).addEventListener('click', (e) => {
@@ -764,8 +784,7 @@ export function decorateMain(main) {
   decorateStickyRightNav(main);
   decorateStoryPage(main);
   decorateGuidePage(main);
-  decorateTopicPage(main) 
-  
+  decorateTopicPage(main);
 }
 
 export const applyClasses = (element, classes) => element?.classList.add(...classes.split(' '));
@@ -1238,37 +1257,6 @@ export async function getFragmentFromFile(url) {
   return text;
 }
 
-/**
- * Datalayer Function to get the 'page' object
- */
-function getPathType() {
-  const pathSegments = window.location.pathname.split('/');
-  return pathSegments.length > 2 ? pathSegments[2] : '';
-}
-
-function getPathSubType() {
-  const pathSegments = window.location.pathname.split('/');
-  return pathSegments.length > 3 ? pathSegments[3] : '';
-}
-
-function getDLPage() {
-  const page = {
-    type: 'Content',
-  };
-  const path = window.location.pathname;
-  const langPrefix = '/en-us/';
-  const regex = new RegExp(`${langPrefix}([^/]+)`);
-  const match = path.match(regex);
-  if (match) {
-    const extractedPath = match[1];
-    page.event = 'Virtual Page View';
-    page.type = extractedPath;
-    page.path = path;
-    page.subType = null;
-  }
-  return page;
-}
-
 // Add hreflang tags
 
 const currentPath = window.location.pathname;
@@ -1301,18 +1289,6 @@ hrefJapan.rel = 'alternate';
 hrefJapan.hreflang = 'ja-jp';
 hrefJapan.href = 'https://www.abcam.co.jp' + pwsUrl;
 document.head.appendChild(hrefJapan);
-
-// Datalayer Start
-window.dataLayer = [];
-window.dataLayer.push({
-  event: 'Virtual Page View',
-  pageUrl: window.location.href,
-  pageTitle: document.title,
-  page_path: window.location.pathname,
-  page_type: getPathType(),
-  page: getDLPage(),
-});
-// Datalayer End
 
 loadPage();
 

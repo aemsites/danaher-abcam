@@ -189,12 +189,19 @@ function accountMenuList(iconName, linkText, linkUrl) {
     );
     decorateIcons(divEl, 24, 24);
   }
-  divEl.append(
-    a({
+  const anchorEl = iconName === 'sign-out'
+    ? a({
       class: 'text-sm font-semibold leading-5 text-black p-2 pl-2',
       href: linkUrl,
-      onclick: clearSession,
-    }, linkText),
+      onClick: clearSession,
+    }, linkText)
+    : a({
+      class: 'text-sm font-semibold leading-5 text-black p-2 pl-2',
+      href: linkUrl,
+    }, linkText);
+
+  divEl.append(
+    anchorEl,
   );
   return divEl;
 }
@@ -461,5 +468,9 @@ export default async function decorate(block) {
         //  eslint-disable-next-line no-console
         console.error('There was an error making the API call:', error);
       });
+  } else {
+    cartButton.addEventListener('click', () => {
+      window.location.href = `https://${hostName}/en-us/shopping-basket?country=${selectedCountry.toUpperCase()}`;
+    });
   }
 }

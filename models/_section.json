@@ -41,7 +41,7 @@
           "label": "Provide Tab Name",
           "description": "Provide a name for the tab (Applicable only when Tabs block is added)",
           "valueType": "string"
-        }
+        }        
       ]
     }
   ],
@@ -88,7 +88,10 @@
         "downloads",
         "elouqa-form",
         "video-transcript",
-        "cta-banner"
+        "cta-banner",
+        "header-notification-banner",
+        "timeline-notification",
+        "accordion"
       ]
     }
   ]

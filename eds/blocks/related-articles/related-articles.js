@@ -29,11 +29,14 @@ function renderModal(el) {
 }
 
 export default async function decorate(block) {
-  const kcTags = getMetadata('pagetags')?.split(',');
+  const pageTags = getMetadata('pagetags');
+  let kcTags = [];
+  if (pageTags.length > 0) {
+    kcTags = pageTags?.split(',');
+  }
   const extractedTags = kcTags.map((tag) => tag.split('/').pop());
   const title = getMetadata('og:title');
-
-  const chapterItems = await ffetch('/en-us/knowledge-center/query-index.json')
+  const chapterItems = await ffetch('/en-us/related-articles-index.json')
     .filter((item) => item.title && item.title !== title)
     .filter((item) => item.tags && extractedTags.some((tag) => item.tags.includes(tag)))
     .all();

@@ -1,23 +1,33 @@
-.m-auto {
-  margin: auto
+.mt-10 {
+  margin-top: 2.5rem
 }
 
 .mb-10 {
   margin-bottom: 2.5rem
 }
 
-.mb-8 {
-  margin-bottom: 2rem
+.\!mb-10 {
+  margin-bottom: 2.5rem !important
 }
 
-.w-3\/4 {
-  width: 75%
+.w-full {
+  width: 100%
 }
 
-.border-b {
-  border-bottom-width: 1px
+.pt-4 {
+  padding-top: 1rem
 }
 
-.border-b-slate-300\/70 {
-  border-bottom-color: rgb(203 213 225 / 0.7)
+.pr-0 {
+  padding-right: 0px
+}
+
+.text-\[\#f2f2f2\] {
+  --tw-text-opacity: 1;
+  color: rgb(242 242 242 / var(--tw-text-opacity))
+}
+
+.text-\[\#65797C\] {
+  --tw-text-opacity: 1;
+  color: rgb(101 121 124 / var(--tw-text-opacity))
 }

@@ -14,19 +14,21 @@ indices:
       robots:
         select: head > meta[name="robots"]
         value: attribute(el, "content")
-  index-us-all:
+  related-articles:
     include:
-      - /en-us/**
+      - /en-us/stories/**
+      - /en-us/technical-resources/guides/**
+      - /en-us/technical-resources/protocols/**
+      - /en-us/technical-resources/pathways/**
+      - /en-us/knowledge-center/**
+      - /en-us/webinars/**
     exclude:
-      - /en-us/stories
-      - /en-us/technical-resources/guides
-      - /en-us/knowledge-center
-      - /en-us/webinars
       - /en-us/stories/query-index.json
       - /en-us/technical-resources/guides/query-index.json
+      - /en-us/technical-resources/protocols/query-index.json
       - /en-us/knowledge-center/query-index.json
       - /en-us/webinars/query-index.json
-    target: /en-us/full-index.json
+    target: /en-us/related-articles-index.json
     properties:
       title:
         select: head > meta[property="og:title"]
@@ -158,6 +160,9 @@ indices:
   protocols:
     include:
       - /en-us/technical-resources/protocols/**
+    exclude:
+      - /en-us/technical-resources/protocols
+      - /en-us/technical-resources/protocols/query-index.json
     target: /en-us/technical-resources/protocols/query-index.json
     properties:
       title:
@@ -175,3 +180,58 @@ indices:
       pageOrder:
         select: head > meta[name="pageorder"]
         value: attribute(el, "content")
+  cross-sell:
+    include:
+      - /en-us/products/product-recommendations/**
+    exclude:
+      - /en-us/products/product-recommendations
+      - /en-us/products/product-recommendations/query-index.json
+    target: /en-us/products/product-recommendations/query-index.json
+    properties:
+      title:
+        select: head > meta[property="og:title"]
+        value: attribute(el, "content")
+      description:
+        select: head > meta[property="og:description"]
+        value: attribute(el, "content")
+      tags:
+        select: head > meta[name="pagetags"]
+        value: attribute(el, "content")
+      parent:
+        select: head > meta[property="og:url"]
+        value: match(attribute(el, "content"), "\/([^\/]+)\/[^\/]+$")
+      pageOrder:
+        select: head > meta[name="pageorder"]
+        value: attribute(el, "content")
+  pathways:
+    include:
+      - /en-us/technical-resources/pathways/**
+    exclude:
+      - /en-us/technical-resources/pathways
+      - /en-us/technical-resources/pathways/query-index.json
+    target: /en-us/technical-resources/pathways/query-index.json
+    properties:
+      lastModified:
+        select: head > meta[name="modified-time"]
+        value: parseTimestamp(attribute(el, "content"), "YYYY-MM-DDTHH:mm:ss")
+      title:
+        select: head > meta[property="og:title"]
+        value: attribute(el, "content")
+      description:
+        select: head > meta[property="og:description"]
+        value: attribute(el, "content")
+      image:
+        select: head > meta[property="og:image"]
+        value: match(attribute(el, "content"), "^https?:\/\/[^\/]+(\/.*)")
+      tags:
+        select: head > meta[name="pagetags"]
+        value: attribute(el, "content")
+      readingTime:
+        select: head > meta[name="readingtime"]
+        value: attribute(el, "content")
+      publishDate:
+        select: head > meta[name="published-time"]
+        value: parseTimestamp(attribute(el, "content"), "YYYY-MM-DDTHH:mm:ss")
+      template:
+        select: head > meta[name="template"]
+        value: attribute(el, "content")    
