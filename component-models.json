@@ -2415,6 +2415,10 @@
           {
             "name": "Button Tabs",
             "value": "button-tabs"
+          },
+          {
+            "name": "Content Tabs",
+            "value": "content-tabs"
           }
         ]
       }
