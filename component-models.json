@@ -388,6 +388,32 @@
     ]
   },
   {
+    "id": "accordion-item",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "item_heading",
+        "value": "",
+        "label": "Heading"
+      },
+      {
+        "component": "text",
+        "name": "item_headingType",
+        "label": "",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "item_description",
+        "value": "",
+        "label": "Description"
+      }
+    ]
+  },
+  {
     "id": "alert-banner",
     "fields": [
       {
@@ -2611,6 +2637,36 @@
         "name": "imageAlt",
         "label": "Alt",
         "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_href",
+        "value": "",
+        "label": "Media Link"
+      },
+      {
+        "component": "text",
+        "label": "Media Title",
+        "name": "media_hrefText",
+        "valueType": "string",
+        "value": ""
+      },
+      {
+        "component": "radio-group",
+        "label": "Media Type",
+        "name": "media_hrefTitle",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Video",
+            "value": "video"
+          },
+          {
+            "name": "Audio",
+            "value": "audio"
+          }
+        ]
       }
     ]
   },

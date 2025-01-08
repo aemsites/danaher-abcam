@@ -3,7 +3,8 @@ import { buildArticleSchema, buildPodcastEpisodeSchema } from '../../scripts/sch
 
 export default async function buildAutoBlocks() {
   const main = document.querySelector('main');
-  const sectionColumns = main.querySelector(':scope > div > div.columns')?.parentElement;
+  const firstSection = main.querySelector(':scope > div > div.title-card') ? main.querySelector(':scope > div > div.title-card') : main.querySelector(':scope > div > div.columns');
+  const sectionColumns = firstSection?.parentElement;
   const sectionMiddle = main.querySelector(':scope > div:nth-child(2)');
   sectionColumns.prepend(
     buildBlock('back-navigation', { elems: [] }),
