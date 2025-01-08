@@ -89,7 +89,9 @@
         "elouqa-form",
         "video-transcript",
         "cta-banner",
-        "timeline-notification"
+        "header-notification-banner",
+        "timeline-notification",
+        "accordion"
       ]
     }
   ]
