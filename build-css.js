@@ -42,9 +42,9 @@ const fileMappings = [
     wrapper: 'alternating-wrapper',
   },
   {
-    content: './eds/blocks/timeline-steps/timeline-steps.js',
-    output: './eds/blocks/timeline-steps/timeline-steps.css',
-    wrapper: 'timeline-steps-wrapper',
+    content: './eds/blocks/timeline/timeline.js',
+    output: './eds/blocks/timeline/timeline.css',
+    wrapper: 'timeline-wrapper',
   },
   {
     content: './eds/blocks/accordion/accordion.js',
