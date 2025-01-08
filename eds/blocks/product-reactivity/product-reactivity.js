@@ -115,86 +115,69 @@ function getProductPromiseDetails(promiseList) {
 }
 
 block.innerHTML = `<div class="product-reactivity-block reactivity">
-<div>
-  <h3>Reactivity Data</h3>
-</div>
-<div class="applicationsfilter">
-  <p>Select an application</p>
-  <ul>
-    <li>All applications</li>
-    <li>IP:Immunoprecipitation</li>
-    <li>WB:Western blot</li>
-    <li>ICC/IF:Immunocytochemistry/ Immunofluorescence</li>
-  </ul>
-</div>
-<div class="productpromise">
-  <p>Product promise</p>
-  <ul>
-    <li>All</li>
-    <li>Tested</li>
-    <li>Expected</li>
-    <li>Predicted</li>
-    <li>Not recommended</li>
-  </ul>
-  <p><a href="/modals/product-promise">Learn more</a></p>
-</div>
-<div class="reactivitytable">
-    <div class="species">
-      <span>Human</span>      
-      <div class="applications">
-        <h6>IP</h6>
-        <div class="reactivitydata">
-          <h5>EXPECTED_TO_REACT</h5>
-          <p>none here</p>
-          <h4></h4>
-        </div>
-      </div>
-      <div class="applications">
-        <h6>WB</h6>
-        <div class="reactivitydata">
-          <h5>REACTS</h5>
-          <p>Please note that expression of target protein may be very low without stimulation/treatment (e.g. DNA damaging agent).</p>
-          <h4>1.00000-5.00000 µg/mL</h4>
-        </div>
-      </div>        
-      <div class="applications">
-        <h6>ICC/IF</h6>
-        <div class="reactivitydata">
-          <h5>TESTED_AND_REACTS</h5>
-          <p>We recommend using 3% milk as the blocking agent for Western blot.</p>
-          <h4>0.50000-1.00000 µg/mL</h4>
-        </div>
-      </div>
-    </div>
-    <div class="species">
-      <span>Mouse</span>      
-      <div class="applications">
-        <h6>IP</h6>
-        <div class="reactivitydata">
-          <h5>REACTS</h5>
-          <p>We recommend using 3% milk as the blocking agent for Western blot.</p>
-          <h4></h4>
-        </div>  
-      </div>
-      <div class="applications">
-        <h6>WB</h6>
-        <div class="reactivitydata">
-          <h5>TESTED_AND_REACTS</h5>
-          <p>Please note that expression of target protein may be very low without stimulation/treatment</p>
-          <h4>1.00000-5.00000 µg/mL</h4>
-        </div>
-      </div>        
-      <div class="applications">
-        <h6>ICC/IF</h6>
-        <div class="reactivitydata">
-          <h5>EXPECTED_TO_REACT</h5>
-          <p>none</p>
-          <h4>0.50000-1.00000 µg/mL</h4>
-        </div>
-      </div>
-    </div>    
-</div>
-</div>`;
+            <div><h3>Reactivity Data</h3></div>
+            <div class="applicationsfilter">
+              <p>Select an application</p>
+              <ul>
+                <li>All applications</li>
+                <li>IHC-P:Immunohistochemistry (Formalin/PFA-fixed paraffin-embedded sections)</li>
+                <li>ICC/IF:Immunocytochemistry/ Immunofluorescence</li>
+              </ul>
+            </div>
+            <div class="productpromise">
+              <p>Product promise</p>
+              <ul>
+                <li>All</li>
+                <li>Tested</li>
+                <li>Expected</li>
+                <li>Predicted</li>
+                <li>Not recommended</li>
+              </ul>
+              <p><a href="/modals/product-promise">Learn more</a></p>
+            </div>    
+            <div class="reactivitytable">
+              <div class="species">
+                <span>Mouse</span>        
+                  <div class="applications">
+                    <h6>IHC-P</h6>
+                    <div class="reactivitydata">
+                      <h5 class="suitability">NO_EXPERIMENTAL_DATA_EXPECTED_TO_REACT</h5>
+                      <p>Perform heat-mediated antigen retrieval before commencing with IHC staining protocol.</p>
+                      <h4 class="dilution">0.10000-5.00000 µg/mL</h4>
+                    </div>
+                  </div>
+                  <div class="applications">
+                    <h6>ICC/IF</h6>
+                    <div class="reactivitydata">
+                      <h5 class="suitability">NO_EXPERIMENTAL_DATA_EXPECTED_TO_REACT</h5>
+                      <p>If fixing cells in 4% PFA (20 min, room temp), it is recommended to permeabilized cells with 0.1% Triton-X for 5 min.</p><p>Positive Control: HeLa and HAP1 cells</p>
+                      <h4 class="dilution">0.50000-1.00000 µg/mL</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="species">
+                <span>Human</span>        
+                  <div class="applications">
+                    <h6>IHC-P</h6>
+                    <div class="reactivitydata">
+                      <h5 class="suitability">TESTED_AND_REACTS</h5>
+                      <p>Perform heat-mediated antigen retrieval before commencing with IHC staining protocol.</p>
+                      <h4 class="dilution">0.10000-5.00000 µg/mL</h4>
+                    </div>
+                  </div>
+                  <div class="applications">
+                    <h6>ICC/IF</h6>
+                    <div class="reactivitydata">
+                      <h5 class="suitability">TESTED_AND_REACTS</h5>
+                      <p>If fixing cells in 4% PFA (20 min, room temp), it is recommended to permeabilized cells with 0.1% Triton-X for 5 min.</p><p>Positive Control: HeLa and HAP1 cells</p>
+                      <h4 class="dilution">0.50000-1.00000 µg/mL</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>`;
 
 const filterH3El = document.querySelector('h3');
 const appsFilterEl = document.querySelector('.applicationsfilter');
