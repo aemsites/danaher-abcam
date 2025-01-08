@@ -12,9 +12,9 @@ export default async function decorate(block) {
       const wrapper = document.createElement('div');
       wrapper.prepend(stepDivider);
       wrapper.prepend(stepIndexElement);
-      let sectionContentEl = div({class: 'flex flex-col space-y-4'});
-    sectionContentEl.append(...section.childNodes);
-    wrapper.append(stepIndexElement, stepDivider, sectionContentEl);
+      const sectionContentEl = div({ class: 'flex flex-col space-y-4' });
+      sectionContentEl.append(...section.childNodes);
+      wrapper.append(stepIndexElement, stepDivider, sectionContentEl);
       section.append(wrapper);
       applyClasses(wrapper, 'flex gap-x-4 mb-6');
       indexNum += 1;
