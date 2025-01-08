@@ -6,6 +6,7 @@ import {
 import { applyClasses } from '../../scripts/scripts.js';
 import { getProductResponse } from '../../scripts/search.js';
 import { getStarRating } from '../product-overview/product-overview.js';
+import { buildCrossSellCollectionSchema } from '../../scripts/schema.js';
 
 function getTag(tagEl) {
   const tag = tagEl?.firstElementChild?.textContent?.split('/')?.pop()?.replace(/-/g, ' ');
@@ -102,5 +103,6 @@ export default async function decorate(block) {
   } else if (block.className.includes('featured-products')) {
     applyClasses(block, 'my-8 flex flex-col lg:flex-row gap-4');
     updateFeatureProducts(Array.from(block.children));
+    buildCrossSellCollectionSchema();
   }
 }
