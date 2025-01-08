@@ -309,7 +309,8 @@ const TEMPLATE_LIST = [
   'guide',
   'guides-hub',
   'topic',
-  'cross-sell-hub'
+  'cross-sell-hub',
+  'support'
 ];
 
 async function decorateTemplates(main) {
@@ -342,6 +343,20 @@ function buildAutoBlocks(main) {
   }
 }
 
+function setJumpToSectionPosition(main) {
+  const sectionListContainer = main.querySelector('.sticky-sections-list-container');
+  const firstH2 = main.querySelector('h2');
+  sectionListContainer?.classList.add(...'hidden sticky top-0 bg-white shadow-[0_6px_12px_0px_rgba(7,17,18,0.12)] z-30'.split(' '));
+  window.addEventListener('scroll', () => {
+    const rect = firstH2?.getBoundingClientRect();
+    if (rect && rect.top <= -72) {
+        sectionListContainer?.classList.remove('hidden');
+    } else {
+        sectionListContainer?.classList.add('hidden');
+    }
+  });
+}
+
 function decorateStoryPage(main) {
   const sectionEl = main.querySelector(':scope > div.section.story-info-container.social-media-container.sidelinks-container');
   
@@ -365,11 +380,11 @@ function decorateStoryPage(main) {
 }
 
 function decorateGuidePage(main) {
-  const sectionEl = main.querySelector(':scope > div.section.chapter-links-container.sidelinks-container');
+  const sectionEl =  main.querySelector(':scope > div.section.chapter-links-container.sidelinks-container') ?  main.querySelector(':scope > div.section.chapter-links-container.sidelinks-container') :  main.querySelector(':scope > div.section.chapter-links-container')
   if (sectionEl) {
     const toBeRemoved = ['chapter-links-wrapper', 'sidelinks-wrapper'];
     const rightSideElements = div({ class: 'w-full pr-0 lg:pr-8' });
-    const sticky = div({ class: 'sticky top-0 space-y-12 pt-6' });
+    const sticky = div({ class: 'sticky top-20 space-y-12 pt-6' });
     const divEl = div({ class: 'ml-0 lg:ml-4 xl:ml-4 min-w-60 lg:max-w-72 flex flex-col gap-y-2 z-20' }, sticky);
 
     toBeRemoved.forEach((ele) => {
@@ -383,6 +398,7 @@ function decorateGuidePage(main) {
     });
     sectionEl?.prepend(divEl);
     sectionEl?.append(rightSideElements);
+    setJumpToSectionPosition(main);
   }
 }
 
@@ -391,7 +407,7 @@ function decorateTopicPage(main) {
   if (sectionEl) {
     const toBeRemoved = ['related-articles-wrapper', 'sidelinks-wrapper'];
     const rightSideElements = div({ class: 'w-full pr-0 lg:pr-8' });
-    const sticky = div({ class: 'sticky top-0 space-y-12 pt-6' });
+    const sticky = div({ class: 'sticky top-20 space-y-12 pt-6' });
     const divEl = div({ class: 'ml-0 lg:ml-4 xl:ml-4 min-w-60 lg:max-w-72 flex flex-col gap-y-2 z-20' }, sticky);
 
     toBeRemoved.forEach((ele) => {
@@ -405,6 +421,7 @@ function decorateTopicPage(main) {
     });
     sectionEl?.prepend(divEl);
     sectionEl?.append(rightSideElements);
+    setJumpToSectionPosition(main);
   }
 }
 
@@ -723,7 +740,7 @@ async function decorateVideo(main) {
             decorateIcons(linkContainer, 50, 50);
 
             if (linkContainer.closest('.image-full-width')) {
-              linkContainer.className = 'relative lg:absolute w-full lg:w-1/2 h-full object-cover lg:right-0 lg:bottom-6';
+              linkContainer.className = 'relative lg:absolute w-full lg:w-1/2 h-full md:h-[400px] object-cover lg:right-0 lg:bottom-6';
             }
 
             linkContainer.querySelector(`button[id="play-button-${videoId}"]`).addEventListener('click', (e) => {
@@ -767,8 +784,7 @@ export function decorateMain(main) {
   decorateStickyRightNav(main);
   decorateStoryPage(main);
   decorateGuidePage(main);
-  decorateTopicPage(main) 
-  
+  decorateTopicPage(main);
 }
 
 export const applyClasses = (element, classes) => element?.classList.add(...classes.split(' '));

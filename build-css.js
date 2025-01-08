@@ -74,6 +74,10 @@ const fileMappings = [
     output: './eds/templates/product-category/product-category.css',
   },
   {
+    content: './eds/templates/support/support.js',
+    output: './eds/templates/support/support.css',
+  },
+  {
     content: './eds/blocks/mini-teasers/mini-teasers.js',
     output: './eds/blocks/mini-teasers/mini-teasers.css',
     wrapper: 'mini-teasers-wrapper',
@@ -338,6 +342,11 @@ const fileMappings = [
     content: './eds/blocks/cta-banner/cta-banner.js',
     output: './eds/blocks/cta-banner/cta-banner.css',
     wrapper: 'cta-banner-wrapper',
+  },
+  {
+    content: './eds/blocks/timeline-notification/timeline-notification.js',
+    output: './eds/blocks/timeline-notification/timeline-notification.css',
+    wrapper: 'timeline-notification',
   },
   {
     content: './eds/templates/cross-sell-hub/cross-sell-hub.js',

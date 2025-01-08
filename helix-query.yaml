@@ -203,3 +203,35 @@ indices:
       pageOrder:
         select: head > meta[name="pageorder"]
         value: attribute(el, "content")
+  pathways:
+    include:
+      - /en-us/technical-resources/pathways/**
+    exclude:
+      - /en-us/technical-resources/pathways
+      - /en-us/technical-resources/pathways/query-index.json
+    target: /en-us/technical-resources/pathways/query-index.json
+    properties:
+      lastModified:
+        select: head > meta[name="modified-time"]
+        value: parseTimestamp(attribute(el, "content"), "YYYY-MM-DDTHH:mm:ss")
+      title:
+        select: head > meta[property="og:title"]
+        value: attribute(el, "content")
+      description:
+        select: head > meta[property="og:description"]
+        value: attribute(el, "content")
+      image:
+        select: head > meta[property="og:image"]
+        value: match(attribute(el, "content"), "^https?:\/\/[^\/]+(\/.*)")
+      tags:
+        select: head > meta[name="pagetags"]
+        value: attribute(el, "content")
+      readingTime:
+        select: head > meta[name="readingtime"]
+        value: attribute(el, "content")
+      publishDate:
+        select: head > meta[name="published-time"]
+        value: parseTimestamp(attribute(el, "content"), "YYYY-MM-DDTHH:mm:ss")
+      template:
+        select: head > meta[name="template"]
+        value: attribute(el, "content")    
