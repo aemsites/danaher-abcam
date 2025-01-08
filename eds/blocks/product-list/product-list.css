@@ -44,6 +44,10 @@
   cursor: pointer
 }
 
+.product-list-wrapper :is(.cursor-text) {
+  cursor: text
+}
+
 .product-list-wrapper :is(.appearance-none) {
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -185,4 +189,16 @@
 
 .product-list-wrapper :is(.hover\:underline:hover) {
   text-decoration-line: underline
+}
+
+.product-list-wrapper :is(.disabled\:cursor-not-allowed:disabled) {
+  cursor: not-allowed
+}
+
+.product-list-wrapper :is(.disabled\:opacity-75:disabled) {
+  opacity: 0.75
+}
+
+.product-list-wrapper :is(.disabled\:opacity-25:disabled) {
+  opacity: 0.25
 }
