@@ -388,6 +388,32 @@
     ]
   },
   {
+    "id": "accordion-item",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "item_heading",
+        "value": "",
+        "label": "Heading"
+      },
+      {
+        "component": "text",
+        "name": "item_headingType",
+        "label": "",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "item_description",
+        "value": "",
+        "label": "Description"
+      }
+    ]
+  },
+  {
     "id": "alert-banner",
     "fields": [
       {
@@ -649,6 +675,10 @@
           {
             "name": "3 Columns",
             "value": "cols-3"
+          },
+          {
+            "name": "2 Columns",
+            "value": "cols-2"
           }
         ]
       }
@@ -2385,6 +2415,10 @@
           {
             "name": "Button Tabs",
             "value": "button-tabs"
+          },
+          {
+            "name": "Content Tabs",
+            "value": "content-tabs"
           }
         ]
       }
@@ -2419,6 +2453,43 @@
         "name": "teaser_reference",
         "value": "",
         "label": "Select the page to link to",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "timeline-notification",
+    "fields": [
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "value": "",
+        "label": "Notification Type",
+        "options": [
+          {
+            "name": "Knowledge",
+            "value": "knowledge"
+          },
+          {
+            "name": "Warning",
+            "value": "warning"
+          },
+          {
+            "name": "Help",
+            "value": "help"
+          },
+          {
+            "name": "Timer",
+            "value": "timer"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "name": "timeline-notification_description",
+        "value": "",
+        "label": "Description",
         "valueType": "string"
       }
     ]
@@ -2570,6 +2641,36 @@
         "name": "imageAlt",
         "label": "Alt",
         "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_href",
+        "value": "",
+        "label": "Media Link"
+      },
+      {
+        "component": "text",
+        "label": "Media Title",
+        "name": "media_hrefText",
+        "valueType": "string",
+        "value": ""
+      },
+      {
+        "component": "radio-group",
+        "label": "Media Type",
+        "name": "media_hrefTitle",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Video",
+            "value": "video"
+          },
+          {
+            "name": "Audio",
+            "value": "audio"
+          }
+        ]
       }
     ]
   },

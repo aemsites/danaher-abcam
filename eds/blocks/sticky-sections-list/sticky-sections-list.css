@@ -6,12 +6,24 @@
   position: relative
 }
 
+.sticky-sections-list :is(.sticky) {
+  position: sticky
+}
+
 .sticky-sections-list :is(.right-0) {
   right: 0px
 }
 
+.sticky-sections-list :is(.top-0) {
+  top: 0px
+}
+
 .sticky-sections-list :is(.top-full) {
   top: 100%
+}
+
+.sticky-sections-list :is(.z-10) {
+  z-index: 10
 }
 
 .sticky-sections-list :is(.z-20) {
@@ -113,9 +125,18 @@
   border-width: 1px
 }
 
+.sticky-sections-list :is(.\!border-b) {
+  border-bottom-width: 1px !important
+}
+
 .sticky-sections-list :is(.border-\[\#EAECEC\]) {
   --tw-border-opacity: 1;
   border-color: rgb(234 236 236 / var(--tw-border-opacity))
+}
+
+.sticky-sections-list :is(.border-b-\[\#D8D8D8\]) {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(216 216 216 / var(--tw-border-opacity))
 }
 
 .sticky-sections-list :is(.border-opacity-5) {
@@ -150,14 +171,19 @@
   padding-right: 1.5rem
 }
 
-.sticky-sections-list :is(.px-7) {
-  padding-left: 1.75rem;
-  padding-right: 1.75rem
-}
-
 .sticky-sections-list :is(.py-3) {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem
+}
+
+.sticky-sections-list :is(.py-6) {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem
+}
+
+.sticky-sections-list :is(.px-7) {
+  padding-left: 1.75rem;
+  padding-right: 1.75rem
 }
 
 .sticky-sections-list :is(.py-4) {
@@ -238,12 +264,12 @@
     width: 5rem !important
   }
 
-  .sticky-sections-list :is(.lg\:w-1\/2) {
-    width: 50%
-  }
-
   .sticky-sections-list :is(.lg\:w-full) {
     width: 100%
+  }
+
+  .sticky-sections-list :is(.lg\:w-1\/2) {
+    width: 50%
   }
 }
 
