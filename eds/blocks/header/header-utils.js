@@ -12,7 +12,7 @@ export function basicDetails() {
     host: window.location.host === 'www.abcam.com' ? 'proxy-gateway.abcam.com' : 'proxy-gateway-preprod.abcam.com',
   };
 }
-function getApiResponse(url, methodType, body) {
+async function getApiResponse(url, methodType, body) {
   const options = {
     method: methodType,
     headers: {
@@ -23,7 +23,7 @@ function getApiResponse(url, methodType, body) {
   if (methodType === 'POST') {
     options.body = JSON.stringify(body);
   }
-  fetch(url, options)
+  await fetch(url, options)
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -37,9 +37,9 @@ function getApiResponse(url, methodType, body) {
     });
 }
 
-export function getCartType() {
+export async function getCartType() {
   const url = `https://${basicDetails().host}/ecommerce/rest/v1/market-info?country=${basicDetails().selectedCountry.toUpperCase()}`;
-  const jsonRes = getApiResponse(url, 'GET');
+  const jsonRes = await getApiResponse(url, 'GET');
   const { marketType } = jsonRes;
   return marketType;
 }
