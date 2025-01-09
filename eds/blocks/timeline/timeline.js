@@ -16,7 +16,7 @@ export default async function decorate(block) {
       sectionContentEl.append(...section.childNodes);
       const subPoint = sectionContentEl.querySelectorAll('ul');
       subPoint.forEach((item) => {
-        item.classList.add(...'text-[#D8D8D8] ml-4'.split(' '));
+       // item.classList.add(...'text-[#D8D8D8] ml-4'.split(' '));
       });
       wrapper.append(stepIndexElement, stepDivider, sectionContentEl);
       section.append(wrapper);
