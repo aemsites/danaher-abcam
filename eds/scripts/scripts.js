@@ -19,7 +19,7 @@ import {
   div, span, button, iframe, p, img, li, label, input, ul, a, h3,
 } from './dom-builder.js';
 // eslint-disable-next-line import/prefer-default-export
-import { buildVideoSchema } from './schema.js';
+import { buildOndemandWebinarSchema, buildVideoSchema } from './schema.js';
 import ffetch from './ffetch.js';
 import { yetiToPWSurlsMap } from './pws.js';
 
@@ -549,7 +549,9 @@ function isValidUrl(string) {
 }
 
 function decorateGenericVideo(main) {
+  let videoArr = [];
   main.querySelectorAll(".section a[title='video']").forEach((link) => {
+    videoArr.push({ href: link.href, title: link.textContent });
     const linkContainer = link.parentElement;
     linkContainer.classList.add('h-full');
     let embedURL;
@@ -560,7 +562,7 @@ function decorateGenericVideo(main) {
         <iframe src="${embedURL}"
           class="w-full aspect-video multi-player" 
           allow="autoplay; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" 
-          scrolling="no" title="Content from Vimeo" loading="lazy"></iframe>
+          scrolling="no" title="${link.textContent}" loading="lazy"></iframe>
           <button id="play-button-${embedURL}" class="video-overlay absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-opacity-50 rounded-full p-4 flex items-center justify-center w-[126px] h-[126px]">
             <span class="video-play-icon icon icon-video-play"></span>
           </button>
@@ -588,6 +590,7 @@ function decorateGenericVideo(main) {
       ele.classList.remove('hidden');
     });
   });
+  buildOndemandWebinarSchema({ srcObj: null, custom: { videoArr } });
 }
 
 async function decorateVideo(main) {
@@ -737,7 +740,7 @@ async function decorateVideo(main) {
             decorateIcons(linkContainer, 50, 50);
 
             if (linkContainer.closest('.image-full-width')) {
-              linkContainer.className = 'relative lg:absolute w-full lg:w-1/2 h-full object-cover lg:right-0 lg:bottom-6';
+              linkContainer.className = 'relative lg:absolute w-full lg:w-1/2 h-full md:h-[400px] object-cover lg:right-0 lg:bottom-6';
             }
 
             linkContainer.querySelector(`button[id="play-button-${videoId}"]`).addEventListener('click', (e) => {

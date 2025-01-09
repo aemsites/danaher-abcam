@@ -99,7 +99,8 @@
         "cta-banner",
         "header-notification-banner",
         "timeline-notification",
-        "timeline"
+        "timeline",
+        "accordion"
       ]
     }
   ]
