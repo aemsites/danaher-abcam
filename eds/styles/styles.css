@@ -1371,7 +1371,7 @@ main .section.downloads-container {
 
 .protocols main .section .default-content-wrapper ul {
   line-height: 2.25rem;
-  letter-spacing: .01875rem;
+  letter-spacing: .0187rem;
   --tw-text-opacity: 1;
   color: rgb(101 124 121 / var(--tw-text-opacity));
 }

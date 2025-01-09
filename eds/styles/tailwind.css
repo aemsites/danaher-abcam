@@ -304,7 +304,7 @@
     }
 
     .protocols main .section .default-content-wrapper ul  {
-        @apply text-[#657C79] leading-9 tracking-[.01875rem]
+        @apply text-[#657C79] leading-9 tracking-[.0187rem]
     }
 
     .protocols main .section .default-content-wrapper {
