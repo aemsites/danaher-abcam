@@ -1376,6 +1376,11 @@ main .section.downloads-container {
   color: rgb(101 124 121 / var(--tw-text-opacity));
 }
 
+.protocols main .section .default-content-wrapper {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
