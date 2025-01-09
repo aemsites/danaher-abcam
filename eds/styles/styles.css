@@ -1369,6 +1369,25 @@ main .section.downloads-container {
   }
 }
 
+.troubleshooting main .troubleshooting-middle-container .default-content-wrapper:first-child h2 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.troubleshooting main .troubleshooting-middle-container .table-wrapper table tbody tr td ul li {
+  margin-bottom: 1.5rem;
+  list-style-type: disc;
+}
+
+.troubleshooting main .troubleshooting-middle-container .table-wrapper table tbody tr td p {
+  margin-bottom: 1.5rem;
+}
+
+.troubleshooting main .troubleshooting-middle-container .table-wrapper table tbody tr td:first-child p:not(:first-child) {
+  --tw-text-opacity: 1;
+  color: rgb(101 124 121 / var(--tw-text-opacity));
+}
+
 .sr-only {
   position: absolute;
   width: 1px;

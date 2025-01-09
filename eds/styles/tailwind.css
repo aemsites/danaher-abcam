@@ -302,4 +302,19 @@
     main .section.downloads-container {
         @apply xl:px-0 px-4;
     }
+
+    .troubleshooting main .troubleshooting-middle-container .default-content-wrapper:first-child h2 {
+        @apply py-8;
+    }
+    .troubleshooting main .troubleshooting-middle-container .table-wrapper table tbody tr td ul li {
+        @apply list-disc mb-6;
+    }
+
+    .troubleshooting main .troubleshooting-middle-container .table-wrapper table tbody tr td p {
+        @apply mb-6;
+    }
+
+    .troubleshooting main .troubleshooting-middle-container .table-wrapper table tbody tr td:first-child p:not(:first-child) {
+        @apply text-[#657C79];
+    }
 }   
