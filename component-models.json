@@ -148,7 +148,7 @@
       },
       {
         "component": "richtext",
-        "name": "img-text-description",
+        "name": "imageDescription",
         "value": "",
         "label": "Description",
         "valueType": "string"
