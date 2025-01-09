@@ -90,7 +90,8 @@
         "video-transcript",
         "cta-banner",
         "header-notification-banner",
-        "timeline-notification"
+        "timeline-notification",
+        "accordion"
       ]
     }
   ]

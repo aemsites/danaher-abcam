@@ -180,6 +180,41 @@ function generateCollectionElement(type, url, name) {
   };
 }
 
+function generateCrossSellCollectionElement(type, url, name, image, description) {
+  return {
+    '@type': type,
+    url,
+    name,
+    image,
+    description,
+  };
+}
+
+function addPerformerstoWebinar(type, name, jobTitle, image, description) {
+  return {
+    '@type': type,
+    name,
+    jobTitle,
+    worksFor: {
+      '@type': 'Organization',
+      name: 'Abcam',
+    },
+    image,
+    description,
+  };
+}
+
+function addVideotoWebinar(type, name, description, contentUrl, thumbnailUrl, uploadDate) {
+  return {
+    '@type': type,
+    name,
+    description,
+    contentUrl,
+    thumbnailUrl,
+    uploadDate,
+  };
+}
+
 export function buildCollectionSchema(srcObj) {
   const data = {
     '@context': 'https://schema.org',
@@ -199,4 +234,79 @@ export function buildCollectionSchema(srcObj) {
   });
 
   setJsonLd(data, 'Collection');
+}
+
+export function buildCrossSellCollectionSchema() {
+  const featuredProducts = document.querySelectorAll('.recommended-products.featured-products');
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: document.querySelector('h1') ? document.querySelector('h1').textContent : getMetadata('og:title'),
+    description: getMetadata('description'),
+    url: `https://www.abcam.com${window.location.pathname}`,
+    mainEntity: [],
+  };
+  if (featuredProducts.length > 0) {
+    featuredProducts.forEach((obj) => {
+      [...obj.children].forEach((objItem) => {
+        let desc = objItem.querySelector('div:nth-child(3) > ul > li') ? objItem.querySelector('div:nth-child(3) > ul')?.innerText.trim() : '';
+        if (desc !== '') desc = desc.replaceAll('\n', '.');
+        data.mainEntity.push(generateCrossSellCollectionElement(
+          'Product',
+          objItem.querySelector('a')?.href,
+          objItem.querySelector('div:nth-child(3) > p') ? objItem.querySelector('div:nth-child(3) > p').textContent.replace(/\s*\|\s*abcam$/i, '') : '',
+          objItem.querySelector('div:nth-last-child(2)').querySelector('picture img') ? objItem.querySelector('div:nth-last-child(2)').querySelector('picture img').src : '',
+          desc,
+        ));
+      });
+    });
+  }
+  setJsonLd(data, 'Collection');
+}
+
+export function buildOndemandWebinarSchema({ srcObj, custom = {} }) {
+  if (typeof custom === 'object' && Object.keys(custom).length > 0) {
+    const schemaObj = JSON.parse(document.querySelector('[data-name="Collection"]')?.textContent);
+    custom.videoArr.forEach((obj) => {
+      schemaObj.recordedIn.push(addVideotoWebinar(
+        'VideoObject',
+        obj.title,
+        '',
+        obj.href,
+        '',
+        getMetadata('publishdate') ? new Date(getMetadata('publishdate')) : new Date(getMetadata('published-time')),
+      ));
+    });
+    setJsonLd(schemaObj, 'Collection');
+  } else {
+    const data = {
+      '@context': 'https://schema.org',
+      '@type': 'Event',
+      eventAttendanceMode: 'https://schema.org/OnlineEventAttendanceMode',
+      name: document.querySelector('h1') ? document.querySelector('h1').textContent : getMetadata('og:title'),
+      description: getMetadata('description'),
+      image: getMetadata('og:image'),
+      location: {
+        '@type': 'VirtualLocation',
+        url: `https://www.abcam.com${window.location.pathname}`,
+      },
+      performer: [],
+      organizer: {
+        '@type': 'Organization',
+        name: 'Abcam',
+        url: 'https://www.abcam.com/en-us',
+      },
+      recordedIn: [],
+    };
+    srcObj.forEach(() => {
+      data.performer.push(addPerformerstoWebinar(
+        'Person',
+        '',
+        '',
+        '',
+        '',
+      ));
+    });
+    setJsonLd(data, 'Collection');
+  }
 }
