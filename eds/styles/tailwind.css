@@ -304,9 +304,9 @@
     }
 
     .protocols main .section .default-content-wrapper ul  {
-        @apply text-[#657C79] list-none !pl-0; 
+        @apply text-[#657C79] leading-9 tracking-[.01875rem]
     }
-    
+
     .protocols main .section .default-content-wrapper {
         @apply py-0;
     }
