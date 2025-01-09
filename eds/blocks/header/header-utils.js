@@ -40,7 +40,7 @@ function getApiResponse(url, methodType, body) {
 export function getCartType() {
   const url = `https://${basicDetails().host}/ecommerce/rest/v1/market-info?country=${basicDetails().selectedCountry.toUpperCase()}`;
   const jsonRes = getApiResponse(url, 'GET');
-  const { marketType } = jsonRes;
+  const { marketType } = jsonRes || '';
   return marketType;
 }
 
