@@ -306,6 +306,7 @@
     .troubleshooting main .troubleshooting-middle-container .default-content-wrapper:first-child h2 {
         @apply py-8;
     }
+    
     .troubleshooting main .troubleshooting-middle-container .table-wrapper table tbody tr td ul li {
         @apply list-disc mb-6;
     }
