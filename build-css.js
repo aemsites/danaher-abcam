@@ -344,13 +344,18 @@ const fileMappings = [
     wrapper: 'cta-banner-wrapper',
   },
   {
-    content: './eds/blocks/timeline-notification/timeline-notification.js',
+    content: ['./eds/blocks/timeline-notification/timeline-notification.js','./eds/blocks/timeline/timeline.js'],
     output: './eds/blocks/timeline-notification/timeline-notification.css',
-    wrapper: 'timeline-notification',
+    wrapper: 'timeline-notification-wrapper',
   },
   {
     content: './eds/templates/cross-sell-hub/cross-sell-hub.js',
     output: './eds/templates/cross-sell-hub/cross-sell-hub.css',
+  },
+  {
+    content: ['./eds/blocks/timeline/timeline.js','./eds/blocks/timeline-notification/timeline-notification.js'],
+    output: './eds/blocks/timeline/timeline.css',
+    wrapper: 'timeline-wrapper',
   },
 ];
 

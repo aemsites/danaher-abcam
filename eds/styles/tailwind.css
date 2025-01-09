@@ -302,4 +302,8 @@
     main .section.downloads-container {
         @apply xl:px-0 px-4;
     }
+    
+    main .timeline-notification-container .default-content-wrapper .ul {
+        @apply text-[#D8D8D8] ml-4;
+    }
 }   
