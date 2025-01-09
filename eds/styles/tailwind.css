@@ -306,6 +306,7 @@
     .protocols main .section .default-content-wrapper ul  {
         @apply text-[#657C79] list-none !pl-0; 
     }
+    
     .protocols main .section .default-content-wrapper {
         @apply py-0;
     }
