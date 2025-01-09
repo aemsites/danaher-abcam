@@ -145,13 +145,6 @@
         "name": "imageAlt",
         "label": "Alt",
         "value": ""
-      },
-      {
-        "component": "richtext",
-        "name": "imageDescription",
-        "value": "",
-        "label": "Description",
-        "valueType": "string"
       }
     ]
   },
@@ -1472,6 +1465,18 @@
             "value": "h2"
           }
         ]
+      }
+    ]
+  },
+  {
+    "id": "img-text-field",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "img-text-description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
       }
     ]
   },
