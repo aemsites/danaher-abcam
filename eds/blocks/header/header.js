@@ -68,9 +68,9 @@ const queryFacetPayload = {
       originContext: 'Search',
       capture: true,
       source: ['@coveo/headless@3.11.0'],
-    }
-  }
-}
+    },
+  },
+};
 
 function megaMenu() {
   return div({ class: 'w-[360px] z-40 hidden max-w-sm fixed h-full bg-black px-3 py-4 ease-out transition-all' });
