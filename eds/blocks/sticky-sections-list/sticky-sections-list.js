@@ -43,20 +43,41 @@ export default function decorate(block) {
               behavior: 'smooth',
             });
           }
-
+          const accordionTitle = selectedSection.closest('.border-b')?.querySelector('.acc-title');
+          const accordionContent = selectedSection.closest('.border-b')?.querySelector('.hidden');
+          if (accordionTitle && accordionContent) {
+            document.querySelectorAll('.border-b').forEach((accordionItem) => {
+              const content = accordionItem.querySelector('.hidden');
+              const arrow = accordionItem.querySelector('.accordion-arrow');
+              if (content && content !== accordionContent) {
+                content.classList.add('hidden');
+              }
+              if (arrow && arrow !== accordionTitle.querySelector('.accordion-arrow')) {
+                arrow.style.transform = 'rotate(0deg)';
+              }
+            });
+            accordionContent.classList.remove('hidden');
+            const arrow = accordionTitle.querySelector('.accordion-arrow');
+            if (arrow) {
+              arrow.style.transform = 'rotate(180deg)';
+            }
+          }
           Array.from(ddOptionsContainer.children).forEach((opt) => {
             opt.classList.remove('bg-[#273F3F]', 'bg-opacity-10', 'text-[#273F3F]');
           });
           applyClasses(this, 'bg-[#273F3F] bg-opacity-10 text-[#273F3F]');
           ddOptionsContainer.classList.add('hidden');
-          event.stopPropagation();
+          
         });
         ddOptionsContainer.appendChild(optionEle);
       });
       applyClasses(ddOptionsContainer.children[0], 'bg-[#273F3F] bg-opacity-10 text-[#273F3F]');
     }
     dropdownContainer.querySelector('.dd-container').addEventListener('click', () => {
-      if (ddOptionsContainer.classList.contains('hidden')) chevIcon.classList.add('rotate-180');
+      if (ddOptionsContainer.classList.contains('hidden')) {
+        chevIcon.classList.add('rotate-180');
+        chevIcon.classList.remove('rotate-0')
+      }
       else chevIcon.classList.remove('rotate-180');
       ddOptionsContainer.classList.toggle('hidden');
     });
@@ -67,6 +88,7 @@ export default function decorate(block) {
       }
     });
     ddOptionsContainer.addEventListener('click', (event) => {
+      chevIcon.classList.add('rotate-0');
       event.stopPropagation();
     });
     block.replaceChildren(dropdownContainer);
