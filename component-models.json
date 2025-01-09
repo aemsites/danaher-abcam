@@ -145,6 +145,13 @@
         "name": "imageAlt",
         "label": "Alt",
         "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "img-text-description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
       }
     ]
   },

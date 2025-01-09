@@ -19,6 +19,13 @@
       "fields": [
         {
           "...": "./_common.json#/image-fields"
+        },
+        {
+          "component": "richtext",
+          "name": "img-text-description",
+          "value": "",
+          "label": "Description",
+          "valueType": "string"
         }
       ]
     }
