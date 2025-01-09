@@ -6,16 +6,16 @@ import { applyClasses } from '../../scripts/scripts.js';
 
 export default async function decorate(block) {
   [...block.children].forEach((el) => {
-    applyClasses(el, 'border-b border-b-[#D8D8D8] py-6 px-0');
+    applyClasses(el, 'border-b border-b-[#D8D8D8] pb-6 px-0 acc-demo');
     const contentDiv = el.querySelector('div');
     applyClasses(contentDiv, 'hidden text-base leading-[23px] tracking-[0.3px] font-normal pt-2');
     const accHeading = contentDiv.querySelector('h2');
     const titleDiv = div();
     applyClasses(titleDiv, 'acc-title flex items-center cursor-pointer gap-6 justify-between');
     titleDiv.append(accHeading);
-    const icon = span({ class: 'accordion-arrow icon icon-chevron-down shrink-0 ml-auto transition' });
+    const icon = span({ class: 'mt-8 accordion-arrow icon icon-chevron-down shrink-0 ml-auto transition' });
     titleDiv.append(icon);
-    applyClasses(accHeading, 'text-[#378189] font-sans !text-xl md:!text-2xl m-0 !font-semibold md:!leading-8 md:!tracking-[-0.5px]');
+    applyClasses(accHeading, 'pt-8 text-[#378189] font-sans !text-xl md:!text-2xl m-0 !font-semibold md:!leading-8 md:!tracking-[-0.5px]');
     el.prepend(titleDiv);
     titleDiv.addEventListener('click', () => {
       contentDiv.classList.toggle('hidden');

@@ -37,22 +37,27 @@ export default function decorate(block) {
         optionEle.addEventListener('click', function optionSelection(event) {
           ddSelected.textContent = this.textContent;
           const selectedSection = document.getElementById(this.dataset.value);
+          console.log(selectedSection,"koniki");
           if (selectedSection) {
+            const offsetAdjustment = selectedSection.closest('.acc-demo') 
+              ? selectedSection.closest('.acc-demo').querySelector('.acc-title')?.offsetHeight || 0 
+              : 0;
             window.scrollTo({
-              top: selectedSection.offsetTop - 65,
+              top: selectedSection.offsetTop - 50,
               behavior: 'smooth',
             });
           }
-          const accordionTitle = selectedSection.closest('.border-b')?.querySelector('.acc-title');
-          const accordionContent = selectedSection.closest('.border-b')?.querySelector('.hidden');
+          
+          const accordionTitle = selectedSection.closest('.acc-demo')?.querySelector('.acc-title');
+          const accordionContent = selectedSection.closest('.acc-demo')?.querySelector('.hidden');
           if (accordionTitle && accordionContent) {
-            document.querySelectorAll('.border-b').forEach((accordionItem) => {
+            document.querySelectorAll('.acc-demo').forEach((accordionItem) => {
               const content = accordionItem.querySelector('.hidden');
               const arrow = accordionItem.querySelector('.accordion-arrow');
               if (content && content !== accordionContent) {
                 content.classList.add('hidden');
               }
-              if (arrow && arrow !== accordionTitle.querySelector('.accordion-arrow')) {
+              if (content && arrow !== accordionTitle.querySelector('.accordion-arrow')) {
                 arrow.style.transform = 'rotate(0deg)';
               }
             });
@@ -96,6 +101,7 @@ export default function decorate(block) {
       let lastCrossedHeadingId = '';
       h2Eles.forEach((heading) => {
         const headingTop = heading.offsetTop;
+        console.log(headingTop,"headingTop");
         const headingHeight = heading.offsetHeight;
         if (window.scrollY >= (headingTop - headingHeight) - 70 / 3) {
           lastCrossedHeadingId = heading.id;
