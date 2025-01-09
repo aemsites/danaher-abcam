@@ -67,15 +67,15 @@ export default function decorate(block) {
     const ddOptionsContainer = dropdownContainer.querySelector('.dd-options');
     const ddSelected = dropdownContainer.querySelector('.dd-selected');
     ddSelected.innerText = targetElements[0] || 'Select a Tab';
-    const mmgTabs = document.querySelector('.button-tabs'); 
-    if(mmgTabs) {
+    const mmgTabs = document.querySelector('.button-tabs');
+    if (mmgTabs) {
       const buttonTabs = mmgTabs.querySelectorAll('.tab');
-    buttonTabs.forEach((buttonTab) => {
-      buttonTab.addEventListener('click', () => {
-        ddSelected.innerText = buttonTab.innerText;
-        toggleTabs(buttonTab.innerText, mmgTabs, 'button-tabs');
+      buttonTabs.forEach((buttonTab) => {
+        buttonTab.addEventListener('click', () => {
+          ddSelected.innerText = buttonTab.innerText;
+          toggleTabs(buttonTab.innerText, mmgTabs, 'button-tabs');
+        });
       });
-    });
     }
     if (isCrossSellTemplate) {
       targetElements.slice(1).forEach((tabName, index) => {
