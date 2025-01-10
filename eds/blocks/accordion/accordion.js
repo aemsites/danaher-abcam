@@ -13,9 +13,9 @@ export default async function decorate(block) {
     const titleDiv = div();
     applyClasses(titleDiv, 'acc-title flex items-center cursor-pointer gap-6 justify-between');
     titleDiv.append(accHeading);
-    const icon = span({ class: 'mt-8 accordion-arrow icon icon-chevron-down shrink-0 ml-auto transition' });
+    const icon = span({ class: 'mt-[26px] accordion-arrow icon icon-chevron-down shrink-0 ml-auto transition' });
     titleDiv.append(icon);
-    applyClasses(accHeading, 'pt-8 text-[#378189] font-sans !text-xl md:!text-2xl m-0 !font-semibold md:!leading-8 md:!tracking-[-0.5px]');
+    applyClasses(accHeading, 'pt-[24px] text-[#378189] font-sans !text-xl md:!text-2xl m-0 !font-semibold md:!leading-8 md:!tracking-[-0.5px]');
     el.prepend(titleDiv);
     titleDiv.addEventListener('click', () => {
       contentDiv.classList.toggle('hidden');
