@@ -75,13 +75,13 @@
   flex-shrink: 0
 }
 
-.sticky-sections-list :is(.rotate-180) {
-  --tw-rotate: 180deg;
+.sticky-sections-list :is(.rotate-0) {
+  --tw-rotate: 0deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 
-.sticky-sections-list :is(.rotate-0) {
-  --tw-rotate: 0deg;
+.sticky-sections-list :is(.rotate-180) {
+  --tw-rotate: 180deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 
@@ -120,10 +120,6 @@
 
 .sticky-sections-list :is(.border) {
   border-width: 1px
-}
-
-.sticky-sections-list :is(.border-b) {
-  border-bottom-width: 1px
 }
 
 .sticky-sections-list :is(.border-\[\#EAECEC\]) {

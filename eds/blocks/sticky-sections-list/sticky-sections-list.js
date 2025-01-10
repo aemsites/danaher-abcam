@@ -39,9 +39,9 @@ export default function decorate(block) {
           const selectedSection = document.getElementById(this.dataset.value);
           console.log(selectedSection,"koniki");
           if (selectedSection) {
-            const offsetAdjustment = selectedSection.closest('.acc-demo') 
-              ? selectedSection.closest('.acc-demo').querySelector('.acc-title')?.offsetHeight || 0 
-              : 0;
+            // const offsetAdjustment = selectedSection.closest('.acc-demo') 
+            //   ? selectedSection.closest('.acc-demo').querySelector('.acc-title')?.offsetHeight || 0 
+            //   : 0;
             window.scrollTo({
               top: selectedSection.offsetTop - 50,
               behavior: 'smooth',

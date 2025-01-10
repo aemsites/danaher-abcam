@@ -6,6 +6,10 @@
   margin-left: auto
 }
 
+.accordion-wrapper :is(.mt-8) {
+  margin-top: 2rem
+}
+
 .accordion-wrapper :is(.block) {
   display: block
 }
@@ -65,28 +69,20 @@
   padding-top: 0.5rem
 }
 
+.accordion-wrapper :is(.pt-8) {
+  padding-top: 2rem
+}
+
+.accordion-wrapper :is(.pb-6) {
+  padding-bottom: 1.5rem
+}
+
+.accordion-wrapper :is(.\!pt-8) {
+  padding-top: 2rem !important
+}
+
 .accordion-wrapper :is(.font-sans) {
   font-family: Noto Sans
-}
-
-.accordion-wrapper :is(.text-2xl) {
-  font-size: 1.5rem;
-  line-height: 2rem
-}
-
-.accordion-wrapper :is(.text-base) {
-  font-size: 1rem;
-  line-height: 1.5rem
-}
-
-.accordion-wrapper :is(.\!text-2xl) {
-  font-size: 1.5rem !important;
-  line-height: 2rem !important
-}
-
-.accordion-wrapper :is(.text-xl) {
-  font-size: 1.25rem;
-  line-height: 1.75rem
 }
 
 .accordion-wrapper :is(.\!text-xl) {
@@ -94,40 +90,25 @@
   line-height: 1.75rem !important
 }
 
-.accordion-wrapper :is(.font-semibold) {
-  font-weight: 600
-}
-
-.accordion-wrapper :is(.font-normal) {
-  font-weight: 400
+.accordion-wrapper :is(.text-base) {
+  font-size: 1rem;
+  line-height: 1.5rem
 }
 
 .accordion-wrapper :is(.\!font-semibold) {
   font-weight: 600 !important
 }
 
-.accordion-wrapper :is(.leading-8) {
-  line-height: 2rem
+.accordion-wrapper :is(.font-normal) {
+  font-weight: 400
 }
 
 .accordion-wrapper :is(.leading-\[23px\]) {
   line-height: 23px
 }
 
-.accordion-wrapper :is(.\!leading-8) {
-  line-height: 2rem !important
-}
-
-.accordion-wrapper :is(.tracking-\[-0\.5px\]) {
-  letter-spacing: -0.5px
-}
-
 .accordion-wrapper :is(.tracking-\[0\.3px\]) {
   letter-spacing: 0.3px
-}
-
-.accordion-wrapper :is(.\!tracking-\[-0\.5px\]) {
-  letter-spacing: -0.5px !important
 }
 
 .accordion-wrapper :is(.text-\[\#378189\]) {
@@ -147,10 +128,6 @@
   .accordion-wrapper :is(.md\:\!text-2xl) {
     font-size: 1.5rem !important;
     line-height: 2rem !important
-  }
-
-  .accordion-wrapper :is(.md\:\!font-semibold) {
-    font-weight: 600 !important
   }
 
   .accordion-wrapper :is(.md\:\!leading-8) {
