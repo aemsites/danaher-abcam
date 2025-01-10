@@ -1,7 +1,6 @@
 import { div, span } from '../../scripts/dom-builder.js';
 import { applyClasses } from '../../scripts/scripts.js';
 import { decorateIcons, getMetadata } from '../../scripts/aem.js';
-// import {decorateButtonTabs} from '../tabs/tabs.js';
 
 function toggleTabs(tabId, mmgTabs, tabType) {
   const contentSections = document.querySelectorAll('[data-tabname]');
