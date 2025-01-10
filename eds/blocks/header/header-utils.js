@@ -40,7 +40,7 @@ async function getApiResponse(url, methodType, body) {
 export async function getCartType() {
   const url = `https://${basicDetails().host}/ecommerce/rest/v1/market-info?country=${basicDetails().selectedCountry.toUpperCase()}`;
   const jsonRes = await getApiResponse(url, 'GET');
-  const  marketType  = jsonRes.marketType;
+  const marketType = String(jsonRes.marketType);
   return marketType;
 }
 
