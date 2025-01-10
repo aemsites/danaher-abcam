@@ -26,7 +26,7 @@ export const data = {
       name: 'Sequential deregulation of histone marks, chromatin accessibility and gene expression in response to PROTAC-induced degradation of ASH2L.',
       pages: '22565',
       productCode: 'AB1791',
-      publicationDate: '2023-12-19T00:00:00+00:00',
+      publicationDate: '2024-12-19T00:00:00+00:00',
       pubmedId: '38114530',
       volume: '13',
       references: [
@@ -44,7 +44,7 @@ export const data = {
       name: 'Atlas of  intraerythrocytic development using expansion microscopy.',
       pages: '',
       productCode: 'AB1791',
-      publicationDate: '2023-12-18T00:00:00+00:00',
+      publicationDate: '2020-12-18T00:00:00+00:00',
       pubmedId: '38108809',
       volume: '12',
       references: [
@@ -80,7 +80,7 @@ export const data = {
       name: 'DEK oncoprotein participates in heterochromatin replication via SUMO-dependent nuclear bodies.',
       pages: '',
       productCode: 'AB1791',
-      publicationDate: '2023-12-15T00:00:00+00:00',
+      publicationDate: '2024-12-15T00:00:00+00:00',
       pubmedId: '37997922',
       volume: '136',
       references: [
@@ -98,7 +98,7 @@ export const data = {
       name: 'Aberrant epithelial cell interaction promotes esophageal squamous-cell carcinoma development and progression.',
       pages: '453',
       productCode: 'AB1791',
-      publicationDate: '2023-12-15T00:00:00+00:00',
+      publicationDate: '2026-12-15T00:00:00+00:00',
       pubmedId: '38097539',
       volume: '8',
       references: [
@@ -121,8 +121,8 @@ export const data = {
       volume: '14',
       references: [
         {
-          application: 'Unspecified application',
-          species: 'Unspecified reactive species',
+          application: 'WB',
+          species: 'Mouse',
         },
       ],
     },
@@ -146,3 +146,37 @@ export const data = {
     },
   ],
 };
+
+
+
+// export default async function decorate(block) {
+//   console.log('Block: ', block);
+
+//   // Function to get query parameters
+//   function getQueryParams() {
+//     const params = new URLSearchParams(window.location.search);
+//     return params.get('apiUrl');
+//   }
+
+//   async function fetchApi() {
+//     const apiUrl = getQueryParams();
+//     // const apiUrl = 'https://main--danaher-abcam--aemsites.hlx.page/en-us/query-index.json';
+//     if (apiUrl) {
+//       console.log('API URL:', apiUrl);
+//       try {
+//         const response = await fetch(apiUrl);
+//         if (!response.ok) {
+//           throw new Error(`HTTP error! status: ${response.status}`);
+//         }
+//         const data = await response.json();
+//         console.log(data);
+//       } catch (error) {
+//         console.error('Error fetching data:', error);
+//       }
+//     } else {
+//       console.error('No API URL provided');
+//     }
+//   }
+
+//   fetchApi(); // Call fetchApi and wait for it to resolve
+// }

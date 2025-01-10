@@ -2,14 +2,6 @@
   position: relative
 }
 
-.publications-wrapper :is(.left-\[3px\]) {
-  left: 3px
-}
-
-.publications-wrapper :is(.top-\[3px\]) {
-  top: 3px
-}
-
 .publications-wrapper :is(.m-0) {
   margin: 0px
 }
@@ -30,24 +22,18 @@
   display: flex
 }
 
-.publications-wrapper :is(.hidden) {
-  display: none
-}
-
-.publications-wrapper :is(.h-\[18px\]) {
-  height: 18px
-}
-
-.publications-wrapper :is(.w-\[18px\]) {
-  width: 18px
-}
-
 .publications-wrapper :is(.min-w-\[88px\]) {
   min-width: 88px
 }
 
 .publications-wrapper :is(.basis-\[95\%\]) {
   flex-basis: 95%
+}
+
+.publications-wrapper :is(.appearance-none) {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none
 }
 
 .publications-wrapper :is(.flex-row) {
@@ -70,6 +56,14 @@
   gap: 0.5rem
 }
 
+.publications-wrapper :is(.gap-6) {
+  gap: 1.5rem
+}
+
+.publications-wrapper :is(.gap-\[10px\]) {
+  gap: 10px
+}
+
 .publications-wrapper :is(.gap-x-1) {
   -moz-column-gap: 0.25rem;
        column-gap: 0.25rem
@@ -77,6 +71,10 @@
 
 .publications-wrapper :is(.gap-y-4) {
   row-gap: 1rem
+}
+
+.publications-wrapper :is(.rounded-\[24px\]) {
+  border-radius: 24px
 }
 
 .publications-wrapper :is(.rounded-md) {
@@ -91,6 +89,10 @@
   border-bottom-width: 1px
 }
 
+.publications-wrapper :is(.border-t) {
+  border-top-width: 1px
+}
+
 .publications-wrapper :is(.border-\[\#0711121A\]) {
   border-color: #0711121A
 }
@@ -98,6 +100,15 @@
 .publications-wrapper :is(.border-gray-300) {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity))
+}
+
+.publications-wrapper :is(.border-t-transparent) {
+  border-top-color: transparent
+}
+
+.publications-wrapper :is(.bg-gray-300) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(209 213 219 / var(--tw-bg-opacity))
 }
 
 .publications-wrapper :is(.p-0) {
@@ -112,9 +123,18 @@
   padding: 1.67px
 }
 
+.publications-wrapper :is(.p-\[10px\]) {
+  padding: 10px
+}
+
 .publications-wrapper :is(.px-6) {
   padding-left: 1.5rem;
   padding-right: 1.5rem
+}
+
+.publications-wrapper :is(.px-\[24px\]) {
+  padding-left: 24px;
+  padding-right: 24px
 }
 
 .publications-wrapper :is(.pr-1) {
@@ -123,6 +143,10 @@
 
 .publications-wrapper :is(.text-left) {
   text-align: left
+}
+
+.publications-wrapper :is(.text-center) {
+  text-align: center
 }
 
 .publications-wrapper :is(.text-\[12px\]) {
@@ -174,6 +198,10 @@
 
 .publications-wrapper :is(.leading-\[16px\]) {
   line-height: 16px
+}
+
+.publications-wrapper :is(.leading-\[20px\]) {
+  line-height: 20px
 }
 
 .publications-wrapper :is(.leading-\[21px\]) {
