@@ -40,16 +40,16 @@ async function getApiResponse(url, methodType, body) {
 export async function getCartType() {
   const url = `https://${basicDetails().host}/ecommerce/rest/v1/market-info?country=${basicDetails().selectedCountry.toUpperCase()}`;
   const jsonRes = await getApiResponse(url, 'GET');
-  const { marketType } = jsonRes;
+  const marketType = String(jsonRes.marketType);
   return marketType;
 }
 
-export function deleteLineItem(lineItem) {
+export async function deleteLineItem(lineItem) {
   const url = `https://${basicDetails().host}/ecommerce/rest/v1/basket/${basicDetails().shoppingBaskedId}/line/${lineItem}?country=${basicDetails().selectedCountry.toUpperCase()}`;
   return getApiResponse(url, 'DELETE');
 }
 
-export function quickAddLineItems(lineItems) {
+export async function quickAddLineItems(lineItems) {
   const url = `https://${basicDetails().host}/ecommerce/rest/v1/basket/${basicDetails().shoppingBaskedId}?country=${basicDetails().lastSelectedCountry.toLocaleUpperCase()}`;
   const resp = getApiResponse(url, 'POST', lineItems);
   const resMap = {};
@@ -64,7 +64,7 @@ export function quickAddLineItems(lineItems) {
   }
   return resMap;
 }
-export function getCartItems() {
+export async function getCartItems() {
   const url = `https://${basicDetails().host}/ecommerce/rest/v1/basket/${basicDetails().shoppingBaskedId}?country=${basicDetails().selectedCountry.toUpperCase()}`;
   return getApiResponse(url, 'GET');
 }
