@@ -1,6 +1,7 @@
 import { div, span } from '../../scripts/dom-builder.js';
 import { applyClasses } from '../../scripts/scripts.js';
 import { decorateIcons, getMetadata } from '../../scripts/aem.js';
+// import {decorateButtonTabs} from '../tabs/tabs.js';
 
 function toggleTabs(tabId, mmgTabs, tabType) {
   const contentSections = document.querySelectorAll('[data-tabname]');
@@ -14,14 +15,18 @@ function toggleTabs(tabId, mmgTabs, tabType) {
   const tabss = mmgTabs.querySelectorAll('.tab');
   tabss.forEach((tab) => {
     if (tab.id === tabId) {
-      tabType === 'button-tabs'
-        ? tab.classList.add('active', 'bg-[#273F3F]', 'text-white', 'border-[#ff7223]')
-        : tab.classList.add('bg-black', 'text-white');
+      if (tabType === 'button-tabs') {
+        tab.classList.add('active', 'bg-[#273F3F]', 'text-white', 'border-[#ff7223]');
+      } else {
+        tab.classList.add('bg-black', 'text-white');
+      }
       tab.classList.remove('bg-white', 'text-black');
     } else {
-      tabType === 'button-tabs'
-        ? tab.classList.remove('active', 'bg-[#273F3F]', 'text-white', 'border-[#ff7223]')
-        : tab.classList.remove('bg-black', 'text-white');
+      if (tabType === 'button-tabs') {
+        tab.classList.remove('active', 'bg-[#273F3F]', 'text-white', 'border-[#ff7223]');
+      } else {
+        tab.classList.remove('bg-black', 'text-white');
+      }
       tab.classList.add('bg-white', 'text-black');
     }
   });
@@ -31,7 +36,14 @@ export default function decorate(block) {
   const templateMetaTag = document.querySelector('meta[name="template"][content="cross-sell-detail"]');
   const template = getMetadata('template');
   const isCrossSellTemplate = templateMetaTag && templateMetaTag.getAttribute('content') === 'cross-sell-detail';
-  const jumpToText = template === 'support' ? 'QUESTION' : (isCrossSellTemplate ? 'SELECT ANTIBODY:' : 'JUMP TO:');
+  let jumpToText;
+  if (template === 'support') {
+    jumpToText = 'QUESTION';
+  } else if (isCrossSellTemplate) {
+    jumpToText = 'SELECT ANTIBODY:';
+  } else {
+    jumpToText = 'JUMP TO:';
+  }
   const baseClasses = 'dd-main-container mx-auto max-w-7xl lg:h-[72px] flex items-center relative px-7 py-4 font-semibold';
   const jumpToLabelClasses = 'jump-to-label text-[#65797c] text-sm w-28 md:!w-24 lg:!w-20';
   const crossSellClasses = isCrossSellTemplate ? 'md:!w-36 lg:!w-36' : '';
@@ -69,8 +81,8 @@ export default function decorate(block) {
     ddSelected.innerText = targetElements[0] || 'Select a Tab';
     const mmgTabs = document.querySelector('.button-tabs');
     if (mmgTabs) {
-      const buttonTabs = mmgTabs.querySelectorAll('.tab');
-      buttonTabs.forEach((buttonTab) => {
+      const tabss = mmgTabs.querySelectorAll('.tab');
+      tabss.forEach((buttonTab) => {
         buttonTab.addEventListener('click', () => {
           ddSelected.innerText = buttonTab.innerText;
           toggleTabs(buttonTab.innerText, mmgTabs, 'button-tabs');
@@ -99,7 +111,7 @@ export default function decorate(block) {
             matchingButtonTab.classList.add('active', 'bg-[#273F3F]', 'text-white', 'border-[#ff7223]');
             matchingButtonTab.classList.remove('bg-white', 'text-black');
           }
-          buttonTabs.forEach((tab) => {
+          mmgTabs.forEach((tab) => {
             if (tab !== matchingButtonTab) {
               tab.classList.remove('active', 'bg-[#273F3F]', 'text-white', 'border-[#ff7223]');
               tab.classList.add('bg-white', 'text-black');
@@ -127,7 +139,7 @@ export default function decorate(block) {
             const selectedSection = document.getElementById(this.dataset.value);
             if (selectedSection) {
               window.scrollTo({
-                top: selectedSection.offsetTop - 65,
+                top: selectedSection.offsetTop - 200,
                 behavior: 'smooth',
               });
             }
@@ -160,7 +172,7 @@ export default function decorate(block) {
     block.replaceChildren(dropdownContainer);
     window.addEventListener('scroll', () => {
       let lastCrossedHeadingId = '';
-      targetElements.forEach((element) => {
+      targetElements.forEach((element, index) => {
         const elementTop = element.offsetTop;
         const elementHeight = element.offsetHeight;
         if (window.scrollY >= (elementTop - elementHeight) - 70 / 3) {
@@ -176,7 +188,8 @@ export default function decorate(block) {
         });
         applyClasses(matchingOption, 'bg-[#273F3F] bg-opacity-10 text-[#273F3F]');
       } else if (targetElements[0] && targetElements[0].trim()) {
-        ddSelected.textContent = targetElements[0];
+        const [firstElement] = targetElements;
+        ddSelected.textContent = firstElement || 'Select a Tab';
       } else {
         ddSelected.textContent = 'Select a Tab';
       }
