@@ -102,7 +102,7 @@ export default function decorate(block) {
           const selectedTab = document.querySelector(`[data-tabname="${this.innerText}"]`);
           if (selectedTab) {
             window.scrollTo({
-              top: selectedTab.offsetTop - 65,
+              top: selectedTab.offsetTop - 200,
               behavior: 'smooth',
             });
           }
@@ -139,7 +139,7 @@ export default function decorate(block) {
             const selectedSection = document.getElementById(this.dataset.value);
             if (selectedSection) {
               window.scrollTo({
-                top: selectedSection.offsetTop - 200,
+                top: selectedSection.offsetTop - 65,
                 behavior: 'smooth',
               });
             }
