@@ -4,7 +4,8 @@ import { applyClasses } from '../../scripts/scripts.js';
 export default async function decorate(block) {
   const contentSections = document.querySelectorAll('[data-stepnumber]');
   let indexNum = 1;
-  const stepNo = block.parentElement?.parentElement?.nextSibling?.nextSibling.dataset.stepnumber;
+  const stepNo = block.parentElement?.parentElement?.nextSibling?.nextSibling?.dataset.stepnumber;
+  console.log(stepNo);
   contentSections.forEach((section) => {
     if (stepNo === section.dataset.stepnumber) {
       const stepIndexElement = h5({ class: 'size-10 flex items-center text-lg p-3 border-2 border-black rounded-full' }, indexNum);
