@@ -2,8 +2,6 @@ import { a, p, div, hr, img, input, span, table, thead, tbody, tr, th, td, label
 import { decorateIcons } from '../../scripts/aem.js';
 import { decorateModals } from '../../scripts/modal.js';
 
-export default async function decorate(block) {
-
 function handleClick(event, block) {
   let { value } = event.target;
   value = value.trim();
@@ -13,7 +11,7 @@ function handleClick(event, block) {
 const getReactivityStatus = (reactivityType) => {
   if (reactivityType === 'TESTED_AND_REACTS') return 'tested'; 
   if (reactivityType === 'REACTS') return 'expected';
-  if (reactivityType === 'EXPECTED_TO_REACT') return 'predicted';
+  if (reactivityType === 'NO_EXPERIMENTAL_DATA_EXPECTED_TO_REACT') return 'predicted';
   return 'not-recommended';
 };
 
@@ -114,6 +112,97 @@ function getProductPromiseDetails(promiseList) {
   return promiseUlEl;
 }
 
+function getDefaultTableData(applicationsList, tableDataEl){ 
+  console.log('applicationsList:', applicationsList);
+  // const tableDataEl = document.querySelectorAll('.species');
+  const tableHeadingRow = tr(th({ class: 'font-semibold text-black text-sm bg-white border border-b-2 px-2 py-3' },));
+  applicationsList.forEach((name) => {
+    tableHeadingRow.appendChild(th({ class: 'font-semibold text-black text-sm bg-white border border-b-2 px-2 py-3' }, name));
+  });
+  const tableColumn = thead();
+  tableColumn.appendChild(tableHeadingRow);
+  const tbodyContent = tbody();
+  const tableHeading = table({ class: 'w-full table-auto md:table-fixed border-separate indent-2 text-left' }, tableColumn);
+  console.log('tableDataEl:', tableDataEl);
+  tableDataEl.forEach((row) => {
+    const species = row.querySelectorAll('span');
+    const tablerow = tr();
+    species.forEach((item) => {
+      tablerow.appendChild(th(
+        { class: 'p-4 text-sm font-semibold break-words bg-white md:p-2' },
+        item.textContent,
+      ));
+    });
+    const applicationsEl = row.querySelectorAll('.applications');
+    applicationsEl.forEach((item) => {
+      const reactivityList = item.querySelectorAll('.reactivitydata');
+      reactivityList.forEach((data) => {
+        const reactivityName = data.querySelector('h5')?.textContent;
+        const tableCell = td({ class: 'p-4 font-normal bg-white' },      
+        span({ class: `icon icon-${getReactivityStatus(reactivityName)}` }),
+      );
+      tablerow.appendChild(tableCell);    
+      });
+    });
+    tbodyContent.appendChild(tablerow);
+    tableHeading.appendChild(tbodyContent);
+  });
+  return tableHeading;
+}
+
+function getApplicationData(event, tableData) {
+  let value = event.target;
+  value = value.href.split('#application=')[1];
+  console.log('selected Application :',value);
+  const tableColumn = thead();
+  const tableHeadingRow = tr(
+    th({ class: 'font-semibold text-black text-sm bg-white border border-b-2 px-2 py-3' }, 'Species'),
+    th({ class: 'font-semibold text-black text-sm bg-white border border-b-2 px-2 py-3' }, 'Dilution info'),
+    th({ class: 'font-semibold text-black text-sm bg-white border border-b-2 px-2 py-3' }, 'Notes')
+  );
+  tableColumn.appendChild(tableHeadingRow);
+  const tbodyContent = tbody();
+  const tableHeading = table({ class: 'w-full table-auto md:table-fixed border-separate indent-2 text-left border-1' }, tableColumn);
+  // console.log('tableData:', tableData);
+  tableData.forEach((row) => {
+    const species = row.querySelectorAll('span');
+    const tablerow = tr();
+    species.forEach((item) => {
+        tablerow.appendChild(th(
+          { class: 'p-4 text-sm font-semibold break-words bg-white md:p-2' },
+          item.textContent,
+        ));
+        const applicationsEl = row.querySelectorAll('.applications');
+        applicationsEl.forEach((item) => {
+          // console.log('applicationsEl:', item.querySelector('h6').textContent.toLowerCase());
+          if(item.querySelector('h6').textContent.toLowerCase() === value) {
+            // console.log('applicationsEl:', item);
+            const reactivityList = item.querySelectorAll('.reactivitydata');
+            reactivityList.forEach((data) => {
+              const reactivityType = data.querySelector('h5')?.textContent;
+              const note = data.querySelector('p')?.textContent;
+              const dilutionInfo = data.querySelector('h4')?.textContent;
+              console.log('reactivityType:', getReactivityStatus(reactivityType));
+              const tableCell = td({ class: 'p-4 font-normal bg-white' },      
+                dilutionInfo,
+              );
+              const tableCell1 = td({ class: 'p-4 font-normal bg-white' },      
+                note,
+              );
+              tablerow.appendChild(tableCell);
+              tablerow.appendChild(tableCell1);  
+            });
+          }
+        });
+        tbodyContent.appendChild(tablerow);
+        tableHeading.appendChild(tbodyContent);
+    });
+  });
+  return tableHeading;  
+}
+
+export default async function decorate(block) {
+
 block.innerHTML = `<div class="product-reactivity-block reactivity">
             <div><h3>Reactivity Data</h3></div>
             <div class="applicationsfilter">
@@ -121,7 +210,10 @@ block.innerHTML = `<div class="product-reactivity-block reactivity">
               <ul>
                 <li>All applications</li>
                 <li>IHC-P:Immunohistochemistry (Formalin/PFA-fixed paraffin-embedded sections)</li>
+                <li>ChIP:ChIP</li>
                 <li>ICC/IF:Immunocytochemistry/ Immunofluorescence</li>
+                <li>IP:Immunoprecipitation</li>
+                <li>WB:Western blot</li>
               </ul>
             </div>
             <div class="productpromise">
@@ -137,138 +229,251 @@ block.innerHTML = `<div class="product-reactivity-block reactivity">
             </div>    
             <div class="reactivitytable">
               <div class="species">
-                <span>Mouse</span>        
+                <span>Human</span>        
                   <div class="applications">
                     <h6>IHC-P</h6>
                     <div class="reactivitydata">
-                      <h5 class="suitability">NO_EXPERIMENTAL_DATA_EXPECTED_TO_REACT</h5>
-                      <p>Perform heat-mediated antigen retrieval before commencing with IHC staining protocol.</p>
-                      <h4 class="dilution">0.10000-5.00000 µg/mL</h4>
+                      <h5>NO_EXPERIMENTAL_DATA_EXPECTED_TO_REACT</h5>
+                      <p>Perform heat-mediated antigen retrieval before commencing with IHC staining protocol.1</p> 
+                      <h4>1/100.00000 - 1/400.00000</h4>
+                    </div>
+                  </div>
+                  <div class="applications">
+                    <h6>ChIP</h6>
+                    <div class="reactivitydata">
+                      <h5>TESTED_AND_REACTS</h5>
+                      <p>Perform heat-mediated antigen retrieval before commencing with IHC staining protocol1.</p>
+                      <h4>2 µg for 10^6 Cells</h4>
                     </div>
                   </div>
                   <div class="applications">
                     <h6>ICC/IF</h6>
                     <div class="reactivitydata">
-                      <h5 class="suitability">NO_EXPERIMENTAL_DATA_EXPECTED_TO_REACT</h5>
-                      <p>If fixing cells in 4% PFA (20 min, room temp), it is recommended to permeabilized cells with 0.1% Triton-X for 5 min.</p><p>Positive Control: HeLa and HAP1 cells</p>
-                      <h4 class="dilution">0.50000-1.00000 µg/mL</h4>
+                      <h5>TESTED_AND_REACTS</h5>
+                      <p></p>
+                      <h4>1 µg/mL</h4>
+                    </div>
+                  </div>
+                  <div class="applications">
+                    <h6>IP</h6>
+                    <div class="reactivitydata">
+                      <h5>NO_EXPERIMENTAL_DATA_EXPECTED_TO_REACT</h5>
+                      <p>Perform heat-mediated antigen retrieval before commencing with IHC staining protocol2.</p>
+                      <h4>5 µg/mL</h4>
+                    </div>
+                  </div>
+                  <div class="applications">
+                    <h6>WB</h6>
+                    <div class="reactivitydata">
+                      <h5>TESTED_AND_REACTS</h5>
+                      <p>We recommend Goat Anti-Rabbit IgG H&amp;L (HRP) (ab6721) secondary antibody.</p>
+                      <h4>1/1000.00000 - 1/5000.00000</h4>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="species">
-                <span>Human</span>        
+                <span>Mouse</span>        
                   <div class="applications">
                     <h6>IHC-P</h6>
                     <div class="reactivitydata">
-                      <h5 class="suitability">TESTED_AND_REACTS</h5>
-                      <p>Perform heat-mediated antigen retrieval before commencing with IHC staining protocol.</p>
-                      <h4 class="dilution">0.10000-5.00000 µg/mL</h4>
+                      <h5>NO_EXPERIMENTAL_DATA_EXPECTED_TO_REACT</h5>
+                      <p>Perform heat-mediated antigen retrieval before commencing with IHC staining protocol.2</p>
+                      <h4>2/100.00000 - 2/400.00000</h4>
+                    </div>
+                  </div>
+                  <div class="applications">
+                    <h6>ChIP</h6>
+                    <div class="reactivitydata">
+                      <h5>REACTS</h5>
+                      <p>Perform heat-mediated antigen retrieval before commencing with IHC staining protocol.3</p>
+                      <h4></h4>
                     </div>
                   </div>
                   <div class="applications">
                     <h6>ICC/IF</h6>
                     <div class="reactivitydata">
-                      <h5 class="suitability">TESTED_AND_REACTS</h5>
-                      <p>If fixing cells in 4% PFA (20 min, room temp), it is recommended to permeabilized cells with 0.1% Triton-X for 5 min.</p><p>Positive Control: HeLa and HAP1 cells</p>
-                      <h4 class="dilution">0.50000-1.00000 µg/mL</h4>
+                      <h5>REACTS</h5>
+                      <p>Perform heat-mediated antigen retrieval before commencing with IHC staining protocol.4</p>
+                      <h4></h4>
+                    </div>
+                  </div>
+                  <div class="applications">
+                    <h6>IP</h6>
+                    <div class="reactivitydata">
+                      <h5>NO_EXPERIMENTAL_DATA_EXPECTED_TO_REACT</h5>
+                      <p>Perform heat-mediated antigen retrieval before commencing with IHC staining protocol.5</p>
+                      <h4>5 µg/mL</h4>
+                    </div>
+                  </div>
+                  <div class="applications">
+                    <h6>WB</h6>
+                    <div class="reactivitydata">
+                      <h5>TESTED_AND_REACTS</h5>
+                      <p>We recommend Goat Anti-Rabbit IgG H&amp;L (HRP) (ab6721) secondary antibody.</p>
+                      <h4>1/1000.00000 - 1/5000.00000</h4>
                     </div>
                   </div>
                 </div>
               </div>
+              <div class="species">
+                <span>Rat</span>        
+                  <div class="applications">
+                    <h6>IHC-P</h6>
+                    <div class="reactivitydata">
+                      <h5>NO_EXPERIMENTAL_DATA_EXPECTED_TO_REACT</h5>
+                      <p>Perform heat-mediated antigen retrieval before commencing with IHC staining protocol.3</p> 
+                      <h4>3/100.00000 - 3/400.00000</h4>
+                    </div>
+                  </div>
+                  <div class="applications">
+                    <h6>ChIP</h6>
+                    <div class="reactivitydata">
+                      <h5>NO_EXPERIMENTAL_DATA_EXPECTED_TO_REACT</h5>
+                      <p></p>
+                      <h4>2 µg for 10^6 Cells</h4>
+                    </div>
+                  </div>
+                  <div class="applications">
+                    <h6>ICC/IF</h6>
+                    <div class="reactivitydata">
+                      <h5>NO_EXPERIMENTAL_DATA_EXPECTED_TO_REACT</h5>
+                      <p></p>
+                      <h4>1 µg/mL</h4>
+                    </div>
+                  </div>
+                  <div class="applications">
+                    <h6>IP</h6>
+                    <div class="reactivitydata">
+                      <h5>NO_EXPERIMENTAL_DATA_EXPECTED_TO_REACT</h5>
+                      <p></p>
+                      <h4>5 µg/mL</h4>
+                    </div>
+                  </div>
+                  <div class="applications">
+                    <h6>WB</h6>
+                    <div class="reactivitydata">
+                      <h5>NO_EXPERIMENTAL_DATA_EXPECTED_TO_REACT</h5>
+                      <p>We recommend Goat Anti-Rabbit IgG H&L (HRP) (ab6721) secondary antibody.</p>
+                      <h4>1/1000 - 1/5000</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="species">
+                <span>Arabidopsis thaliana</span>        
+                  <div class="applications">
+                    <h6>IHC-P</h6>
+                    <div class="reactivitydata">
+                      <h5>NO_EXPERIMENTAL_DATA_EXPECTED_TO_REACT</h5>
+                      <p>Perform heat-mediated antigen retrieval before commencing with IHC staining protocol.4</p> 
+                      <h4>41/100.00000 - 41/400.00000</h4>
+                    </div>
+                  </div>
+                  <div class="applications">
+                    <h6>ChIP</h6>
+                    <div class="reactivitydata">
+                      <h5>NO_EXPERIMENTAL_DATA_EXPECTED_TO_REACT</h5>
+                      <p></p>
+                      <h4>2 µg for 10^6 Cells</h4>
+                    </div>
+                  </div>
+                  <div class="applications">
+                    <h6>ICC/IF</h6>
+                    <div class="reactivitydata">
+                      <h5>NO_EXPERIMENTAL_DATA_EXPECTED_TO_REACT</h5>
+                      <p></p>
+                      <h4>1 µg/mL</h4>
+                    </div>
+                  </div>
+                  <div class="applications">
+                    <h6>IP</h6>
+                    <div class="reactivitydata">
+                      <h5>NO_EXPERIMENTAL_DATA_EXPECTED_TO_REACT</h5>
+                      <p></p>
+                      <h4>5 µg/mL</h4>
+                    </div>
+                  </div>
+                  <div class="applications">
+                    <h6>WB</h6>
+                    <div class="reactivitydata">
+                      <h5>NO_EXPERIMENTAL_DATA_EXPECTED_TO_REACT</h5>
+                      <p>We recommend Goat Anti-Rabbit IgG H&amp;L (HRP) (ab6721) secondary antibody.</p>
+                      <h4>1/1000.00000 - 1/5000.00000</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>              
             </div>
         </div>`;
 
-const filterH3El = document.querySelector('h3');
-const appsFilterEl = document.querySelector('.applicationsfilter');
-const filterPEl = appsFilterEl.querySelector('p');
-const filterUlEl = appsFilterEl.querySelector('ul');
-const filtersListEl = filterUlEl.querySelectorAll('li');
-const applnsFilterDiv = getApplicationsDetails(filtersListEl);
-const fullNameDiv = div(
-  input({ type: 'checkbox', class: 'peer hidden', id: 'fullName', name: 'fullName'}),
-  label({
-  for: 'fullName',
-  class: 'w-full block bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded p-2.5 cursor-pointer',
-}, 'Show full name'));
-const filtersDiv = div({ class: 'w-full flex flex-col md:flex-row md:items-center font-semibold text-sm p-0 bg-white justify-between tracking-wide' },  
-  applnsFilterDiv,
-  fullNameDiv,
-);
-filtersDiv.addEventListener('click', () => {
-  toggleFullName(fullNameDiv, applnsFilterDiv);
-});
-const prodPromiseEl = document.querySelector('.productpromise');
-const promisePEl = prodPromiseEl.querySelector('p');
-const promiseUl = prodPromiseEl.querySelector('ul');
-const promiseLi = promiseUl.querySelectorAll('li');
-const promiseListEl = getProductPromiseDetails(promiseLi);
-const prodPromiseDiv = div({ class: 'w-full flex flex-col md:flex-row md:items-center gap-1 font-semibold text-sm py-4 bg-white mb-4 justify-between tracking-wide' },
-  span({ class: 'flex shrink-0' }, 
-    promisePEl, 
-    promiseListEl),
-    decorateModals(a(
-      {
-        class: 'w-max inline-flex items-center shrink-0 gap-x-2 px-4 mt-2 md:mt-0 md:ml-auto text-xs',
-        href: '/en-us/modals/product-promise',
-      },
-      'What is this?',
-    )),
-);
-const promiseAll = promiseListEl.querySelectorAll('input#productPromise');
-promiseAll.forEach((promise) => {
-  promise.addEventListener('click', (event) => {
-    handleClick(event, block);
+  const filterH3El = document.querySelector('h3');
+  const appsFilterEl = document.querySelector('.applicationsfilter');
+  const filterPEl = appsFilterEl.querySelector('p');
+  const filterUlEl = appsFilterEl.querySelector('ul');
+  const filtersListEl = filterUlEl.querySelectorAll('li');
+  const applnsFilterDiv = getApplicationsDetails(filtersListEl);
+  const fullNameDiv = label({
+    for: 'fullName',
+    class: 'inline-flex items-center mb-5 cursor-pointer',
+    }, 
+    input({ type: 'checkbox', class: 'peer hidden', id: 'fullName', name: 'fullName'}),
+    span({ class: 'mr-1 text-sm font-semibold text-black' }, 'Show full name'), 
+    div({ class: `relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[#378189] dark:peer-focus:ring-[#378189] rounded-full peer dark:bg-black peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-black after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-black peer-checked:bg-[#378189]` },),       
+  );
+  const filtersDiv = div({ class: 'w-full flex flex-col md:flex-row md:items-center font-semibold text-sm p-0 bg-white justify-between tracking-wide' },  
+    applnsFilterDiv,
+    fullNameDiv,
+  );
+  filtersDiv.addEventListener('click', () => {
+    toggleFullName(fullNameDiv, applnsFilterDiv);
   });
-});
-const application = [];
-filtersListEl.forEach((listItem) => {
-  if(listItem.textContent !== 'All applications') {
-    application.push(listItem.textContent.split(':')[0]);
-  }
-});
-const tableDataEl = document.querySelectorAll('.species');
-const allTabData = div({ class: 'individualdata overflow-scroll' });
-const tableColumn = thead();
-const tableHeadingRow = tr(th({ class: 'font-semibold text-black text-sm bg-white border border-b-2 px-2 py-3' }));
-application.forEach((name) => {
-  tableHeadingRow.appendChild(th({ class: 'font-semibold text-black text-sm bg-white border border-b-2 px-2 py-3' }, name));
-});
-tableColumn.appendChild(tableHeadingRow);
-const tbodyContent = tbody();
-const tableHeading = table({ class: 'w-full table-auto md:table-fixed border-separate indent-2 text-left' }, tableColumn);
-tableDataEl.forEach((row) => {
-  const species = row.querySelectorAll('span');
-  const tablerow = tr();
-  species.forEach((item) => {
-    tablerow.appendChild(th(
-      { class: 'p-4 text-sm font-semibold break-words bg-white md:p-2' },
-      item.textContent,
-    ));
-  });
-  const applicationsList = row.querySelectorAll('.applications');
-  applicationsList.forEach((item) => {
-    const reactivityList = item.querySelectorAll('.reactivitydata');
-    reactivityList.forEach((data) => {
-      const reactivityName = data.querySelector('h5')?.textContent;
-      const tableCell = td({ class: 'p-4 font-normal bg-white' },      
-      span({ class: `icon icon-${getReactivityStatus(reactivityName)}` }),
-    );
-    tablerow.appendChild(tableCell);    
+  const prodPromiseEl = document.querySelector('.productpromise');
+  const promisePEl = prodPromiseEl.querySelector('p');
+  const promiseUl = prodPromiseEl.querySelector('ul');
+  const promiseLi = promiseUl.querySelectorAll('li');
+  const promiseListEl = getProductPromiseDetails(promiseLi);
+  const prodPromiseDiv = div({ class: 'w-full flex flex-col md:flex-row md:items-center gap-1 font-semibold text-sm py-4 bg-white mb-4 justify-between tracking-wide' },
+    span({ class: 'flex shrink-0' }, 
+      promisePEl, 
+      promiseListEl),
+      decorateModals(a(
+        {
+          class: 'w-max inline-flex items-center shrink-0 gap-x-2 px-4 mt-2 md:mt-0 md:ml-auto text-xs',
+          href: '/en-us/modals/product-promise',
+        },
+        'What is this?',
+      )),
+  );
+  const promiseAll = promiseListEl.querySelectorAll('input#productPromise');
+  promiseAll.forEach((promise) => {
+    promise.addEventListener('click', (event) => {
+      handleClick(event, block);
     });
   });
-  tbodyContent.appendChild(tablerow);
-  tableHeading.appendChild(tbodyContent);
-});
-allTabData.appendChild(tableHeading);
-
-block.innerHTML = '';
-block.prepend(
-  hr({
-    class: 'h-px my-2 bg-interactive-grey-active mb-4',
-  }),
-);
-block.append(filterH3El, filterPEl, filtersDiv, prodPromiseDiv);
-block.append(allTabData);
-decorateIcons(block);
+  const applications = [];
+  filtersListEl.forEach((listItem) => {
+    if(listItem.textContent !== 'All applications') {
+      applications.push(listItem.textContent.split(':')[0]);
+    }
+  });
+  const reactivityTableData = div({ class: 'individualdata overflow-scroll' });
+  const tableDataEl = document.querySelectorAll('.species');
+  reactivityTableData.innerHTML = '';
+  reactivityTableData.append(getDefaultTableData(applications, tableDataEl));
+  applnsFilterDiv.addEventListener('click', (event) => {
+    // getApplicationData(event, tableDataEl);
+    reactivityTableData.innerHTML = '';
+    reactivityTableData.append(getApplicationData(event, tableDataEl));
+    // decorateIcons(reactivityTableData);
+  });
+  block.innerHTML = '';
+  block.prepend(
+    hr({
+      class: 'h-px my-2 bg-interactive-grey-active mb-4',
+    }),
+  );
+  block.append(filterH3El, filterPEl, filtersDiv, prodPromiseDiv);
+  block.append(reactivityTableData);
+  decorateIcons(block);
 }
