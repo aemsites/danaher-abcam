@@ -1,10 +1,11 @@
-import { div, hr } from '../../scripts/dom-builder.js';
+import { hr } from '../../scripts/dom-builder.js';
 import { applyClasses } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
   block.innerHTML = `<div class="product-summarynotes-block supplementaryinfo">
           <div>
               <h3>Supplementary info</h3>
+              <p>This supplementary information is collated from multiple sources and compiled automatically.</p>
           </div>
           <div>
               <h6>targetSummaryMechanical</h4>
@@ -17,31 +18,25 @@ export default function decorate(block) {
               <p>Ki67 has significant implications in oncology and can be used as a biomarker for cancer prognosis. Its expression levels help determine the aggressiveness of tumors especially in breast cancer and prostate cancer. High Ki67 levels correlate with poor prognosis as it indicates rapid cell division. In cancer Ki67 associates with p53 a protein that regulates the cell cycle and function as a tumor suppressor.</p>
           </div>
       </div>`;
-  const storageH6El = document.querySelectorAll('h6');
-  const storageH6Div = div({ class: 'p-4 pl-0' });
-  storageH6El.forEach((heading) => {
-    applyClasses(heading, '!text-xs !font-normal !leading-5 text-[#65797C]');
-    storageH6Div.appendChild(heading);
+  const h3El = document.querySelector('h3');
+  if (h3El) {
+    applyClasses(h3El, '!text-lg !mb-3 text-black-0');
+  }
+  const headingPEl = document.querySelector('p');
+  if (headingPEl) {
+    applyClasses(headingPEl, 'text-base font-normal leading-5 text-black');
+  }
+  [...block.children].forEach((element) => {
+    const h6El = element.querySelectorAll('h6');
+    h6El.forEach((heading) => {
+      applyClasses(heading, 'text-xs font-normal leading-5 text-[#65797C]');
+    });
+    const pEl = element.querySelector('p');
+    if (pEl) {
+      applyClasses(pEl, 'text-base font-normal leading-5 text-black');
+    }
   });
-  const storagePEl = document.querySelectorAll('p');
-  const storagePDiv = div({ class: 'mr-auto lg:p-4 lg:ml-0' });
-  storagePEl.forEach((para) => {
-    applyClasses(para, '!text-base !font-normal !leading-5 text-black');
-    storagePDiv.appendChild(para);
-  });
-  const mainContainer = div(
-    { class: 'flex flex-col lg:flex-row lg:gap-y-2 justify-between' },
-    storageH6Div,
-    storagePDiv,
-  );
   block.prepend(hr({
     class: 'h-px my-2 bg-interactive-grey-active mb-4',
   }));
-  block.append(mainContainer);
-  const childDiv = block.querySelectorAll('div');
-  childDiv.forEach((divEl) => {
-    if (!divEl.innerHTML.trim()) {
-      divEl.remove();
-    }
-  });
 }
