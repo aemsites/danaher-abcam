@@ -775,14 +775,15 @@ async function handleQuerySuggestions(searchTerm) {
   const { completions } = response;
   if (completions && completions.length > 0) {
     completions.forEach((suggestion) => {
-      const suggestionItem = li({
-        class: 'suggestion-item cursor-pointer',
-        onclick: () => {
-          // console.log('suggestion item clicked: ', suggestion.expression);
-        },
-      }, suggestion.expression);
+      const suggestionItem = a(
+        { href: `${window.location.origin}/en-us/page-test/search-results?q=${suggestion.expression}` },
+        suggestion.expression,
+      );
       const newSuggestionItem = highlightText(suggestionItem, searchTerm, 'font-semibold text-amber-400/80');
-      suggestionsElement.appendChild(newSuggestionItem);
+      suggestionsElement.appendChild(li(
+        { class: 'suggestion-item cursor-pointer py-1 px-4 hover:bg-[#0711120D]' },
+        newSuggestionItem,
+      ));
     });
   }
 }
@@ -799,12 +800,13 @@ async function handleCategoryFacetSuggestions(searchTerm) {
   const { values } = response;
   if (values && values.length > 0) {
     values.forEach((suggestion) => {
-      const suggestionItem = li({
-        class: 'suggestion-item cursor-pointer',
-        onclick: () => {
-          // console.log('suggestion item clicked: ', suggestion.rawValue);
-        },
-      }, `${suggestion.rawValue} (${suggestion.count})`);
+      const suggestionItem = li(
+        { class: 'suggestion-item cursor-pointer py-1 px-4 hover:bg-[#0711120D]' },
+        a(
+          { href: `${window.location.origin}/en-us/page-test/search-results?category-facet=${suggestion.rawValue}` },
+          `${suggestion.rawValue} (${suggestion.count})`,
+        ),
+      );
       categoryEl.appendChild(suggestionItem);
     });
   }
@@ -822,12 +824,13 @@ async function handleResourcesFacetSuggestions(searchTerm) {
   const { values } = response;
   if (values && values.length > 0) {
     values.forEach((suggestion) => {
-      const suggestionItem = li({
-        class: 'suggestion-item cursor-pointer',
-        onclick: () => {
-          // console.log('suggestion item clicked: ', suggestion.rawValue);
-        },
-      }, `${suggestion.rawValue} (${suggestion.count})`);
+      const suggestionItem = li(
+        { class: 'suggestion-item cursor-pointer py-1 px-4 hover:bg-[#0711120D]' },
+        a(
+          { href: `${window.location.origin}/en-us/page-test/search-results?resources-facet=${suggestion.rawValue}` },
+          `${suggestion.rawValue} (${suggestion.count})`,
+        ),
+      );
       resourcesEl.appendChild(suggestionItem);
     });
   }
@@ -848,9 +851,9 @@ function handleSearchBox() {
     item.addEventListener(
       'blur',
       () => {
-        document.querySelector('ul#search-suggestions').innerHTML = '';
-        document.querySelector('ul#categories-suggestions').innerHTML = '';
-        document.querySelector('ul#resources-suggestions').innerHTML = '';
+        // document.querySelector('ul#search-suggestions').innerHTML = '';
+        // document.querySelector('ul#categories-suggestions').innerHTML = '';
+        // document.querySelector('ul#resources-suggestions').innerHTML = '';
       },
     );
   });
