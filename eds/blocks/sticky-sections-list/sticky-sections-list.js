@@ -25,7 +25,6 @@ export default function decorate(block) {
   if (h2Eles.length > 0) {
     const ddOptionsContainer = dropdownContainer.querySelector('.dd-options');
     const ddSelected = dropdownContainer.querySelector('.dd-selected');
-
     if (h2Eles.length > 0) {
       ddSelected.textContent = h2Eles[0].textContent || 'Section 1';
       h2Eles.forEach((h2Ele, index) => {
