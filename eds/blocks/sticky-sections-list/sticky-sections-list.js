@@ -34,30 +34,50 @@ export default function decorate(block) {
           h2Ele.textContent || `Section ${index + 1}`,
         );
         optionEle.dataset.value = h2Ele.id;
-        optionEle.addEventListener('click', function optionSelection(event) {
+        optionEle.addEventListener('click', function optionSelection() {
           ddSelected.textContent = this.textContent;
           const selectedSection = document.getElementById(this.dataset.value);
           if (selectedSection) {
             window.scrollTo({
-              top: selectedSection.offsetTop - 65,
+              top: selectedSection.offsetTop - 60,
               behavior: 'smooth',
             });
           }
 
+          const accordionTitle = selectedSection.closest('.acc-demo')?.querySelector('.acc-title');
+          const accordionContent = selectedSection.closest('.acc-demo')?.querySelector('.hidden');
+          if (accordionTitle && accordionContent) {
+            document.querySelectorAll('.acc-demo').forEach((accordionItem) => {
+              const content = accordionItem.querySelector('.hidden');
+              const arrow = accordionItem.querySelector('.accordion-arrow');
+              if (content && content !== accordionContent) {
+                content.classList.add('hidden');
+              }
+              if (content && arrow !== accordionTitle.querySelector('.accordion-arrow')) {
+                arrow.style.transform = 'rotate(0deg)';
+              }
+            });
+            accordionContent.classList.remove('hidden');
+            const arrow = accordionTitle.querySelector('.accordion-arrow');
+            if (arrow) {
+              arrow.style.transform = 'rotate(180deg)';
+            }
+          }
           Array.from(ddOptionsContainer.children).forEach((opt) => {
             opt.classList.remove('bg-[#273F3F]', 'bg-opacity-10', 'text-[#273F3F]');
           });
           applyClasses(this, 'bg-[#273F3F] bg-opacity-10 text-[#273F3F]');
           ddOptionsContainer.classList.add('hidden');
-          event.stopPropagation();
         });
         ddOptionsContainer.appendChild(optionEle);
       });
       applyClasses(ddOptionsContainer.children[0], 'bg-[#273F3F] bg-opacity-10 text-[#273F3F]');
     }
     dropdownContainer.querySelector('.dd-container').addEventListener('click', () => {
-      if (ddOptionsContainer.classList.contains('hidden')) chevIcon.classList.add('rotate-180');
-      else chevIcon.classList.remove('rotate-180');
+      if (ddOptionsContainer.classList.contains('hidden')) {
+        chevIcon.classList.add('rotate-180');
+        chevIcon.classList.remove('rotate-0');
+      } else chevIcon.classList.remove('rotate-180');
       ddOptionsContainer.classList.toggle('hidden');
     });
     window.addEventListener('click', (e) => {
@@ -67,6 +87,7 @@ export default function decorate(block) {
       }
     });
     ddOptionsContainer.addEventListener('click', (event) => {
+      chevIcon.classList.add('rotate-0');
       event.stopPropagation();
     });
     block.replaceChildren(dropdownContainer);
