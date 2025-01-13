@@ -29,7 +29,7 @@ export default function decorate(block) {
   [...block.children].forEach((element) => {
     const h6El = element.querySelectorAll('h6');
     h6El.forEach((heading) => {
-      applyClasses(heading, 'text-xs font-normal leading-5 text-[#65797C]');
+      applyClasses(heading, '!text-xs !font-normal !leading-5 !text-[#65797C]');
     });
     const pEl = element.querySelector('p');
     if (pEl) {
