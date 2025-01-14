@@ -2,7 +2,10 @@ import {
   a, button, div, h2, h3, p, span,
 } from '../../scripts/dom-builder.js';
 import { decorateIcons } from '../../scripts/aem.js';
-import { paginateIndexes } from '../../scripts/scripts.js';
+import { fetchResponse, paginateIndexes } from '../../scripts/scripts.js';
+
+const organizationId = window.OptimusConfig !== undefined ? window.OptimusConfig.organizationId : 'danahernonproduction1892f3fhz';
+const bearerToken = window.OptimusConfig !== undefined ? window.OptimusConfig.coveoProductBearerToken : 'xx5856f60b-8cb0-474f-9536-b8aa88df3f00';
 
 const body = {
   trackingId: 'abcam_us',
@@ -21,32 +24,6 @@ const body = {
   facets: [],
   sort: { sortCriteria: 'relevance' },
 };
-
-async function fetchProductList({
-  url = 'https://danahernonproduction1892f3fhz.org.coveo.com/rest/organizations/danahernonproduction1892f3fhz/commerce/v2/listing',
-  method = 'POST',
-  payload = {},
-  page = 0,
-}) {
-  try {
-    payload.page = page;
-    const request = await fetch(url, {
-      method,
-      body: JSON.stringify(payload),
-      headers: {
-        Authorization: 'Bearer xx5856f60b-8cb0-474f-9536-b8aa88df3f00',
-        'content-type': 'application/json',
-      },
-    });
-    const response = await request.json();
-
-    return response.products.length > 0 ? response : [];
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error(error);
-    return error;
-  }
-}
 
 // Function to create product tags
 function addProductTags(productTagsArray) {
@@ -88,8 +65,14 @@ function renderNewRecords(records) {
 }
 
 async function loadNewPage(block, page = 0) {
-  const response = await fetchProductList({ payload: body, page });
-  const lists = response.products;
+  body.page = page;
+  const response = await fetchResponse({
+    url: `https://${organizationId}.org.coveo.com/rest/organizations/${organizationId}/commerce/v2/listing`,
+    method: 'POST',
+    authToken: bearerToken,
+    body: JSON.stringify(body),
+  });
+  const lists = response.products && response.products.length > 0 ? response.products : [];
   const content = renderNewRecords(lists, block);
   const totalRecords = response.pagination.totalEntries;
   if (content.children.length > 0) {
