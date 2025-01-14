@@ -12,7 +12,7 @@ export function basicDetails() {
     host: window.location.host === 'www.abcam.com' ? 'proxy-gateway.abcam.com' : 'proxy-gateway-preprod.abcam.com',
   };
 }
-function getApiResponse(url, methodType, body) {
+async function getApiResponse(url, methodType, body) {
   const options = {
     method: methodType,
     headers: {
@@ -23,7 +23,7 @@ function getApiResponse(url, methodType, body) {
   if (methodType === 'POST') {
     options.body = JSON.stringify(body);
   }
-  fetch(url, options)
+  await fetch(url, options)
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -37,21 +37,21 @@ function getApiResponse(url, methodType, body) {
     });
 }
 
-export function getCartType() {
+export async function getCartType() {
   const url = `https://${basicDetails().host}/ecommerce/rest/v1/market-info?country=${basicDetails().selectedCountry.toUpperCase()}`;
-  const jsonRes = JSON.parse(getApiResponse(url, 'GET'));
-  const { marketType } = jsonRes;
+  const jsonRes = await getApiResponse(url, 'GET');
+  const marketType = String(jsonRes.marketType);
   return marketType;
 }
 
-export function deleteLineItem(lineItem) {
+export async function deleteLineItem(lineItem) {
   const url = `https://${basicDetails().host}/ecommerce/rest/v1/basket/${basicDetails().shoppingBaskedId}/line/${lineItem}?country=${basicDetails().selectedCountry.toUpperCase()}`;
-  return JSON.parse(getApiResponse(url, 'DELETE'));
+  return getApiResponse(url, 'DELETE');
 }
 
-export function quickAddLineItems(lineItems) {
+export async function quickAddLineItems(lineItems) {
   const url = `https://${basicDetails().host}/ecommerce/rest/v1/basket/${basicDetails().shoppingBaskedId}?country=${basicDetails().lastSelectedCountry.toLocaleUpperCase()}`;
-  const resp = JSON.parse(getApiResponse(url, 'POST', lineItems));
+  const resp = getApiResponse(url, 'POST', lineItems);
   const resMap = {};
   const failuersCount = Number(resp.failures.failuresCount);
   const successCount = lineItems - failuersCount;
@@ -64,7 +64,7 @@ export function quickAddLineItems(lineItems) {
   }
   return resMap;
 }
-export function getCartItems() {
+export async function getCartItems() {
   const url = `https://${basicDetails().host}/ecommerce/rest/v1/basket/${basicDetails().shoppingBaskedId}?country=${basicDetails().selectedCountry.toUpperCase()}`;
-  return JSON.parse(getApiResponse(url, 'GET'));
+  return getApiResponse(url, 'GET');
 }
