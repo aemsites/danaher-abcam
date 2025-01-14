@@ -82,6 +82,23 @@ function getDLPage() {
   return page;
 }
 
+// Function to get a cookie value by name
+// eslint-disable-next-line consistent-return
+function getCookieOneTrust(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+// Function to get OneTrust active groups from the OptanonConsent cookie
+function getOneTrustActiveGroups() {
+  const consentCookie = getCookieOneTrust('OptanonConsent');
+  if (!consentCookie) return '';
+
+  const groups = consentCookie.split(',').filter((group) => group.includes(':1')).map((group) => group.split(':')[0]);
+  return groups.join(',');
+}
+
 // Datalayer Start
 function initializeDataLayer() {
   window.dataLayer = [];
@@ -93,6 +110,8 @@ function initializeDataLayer() {
     page_type: getPathType(),
     page_subtype: getPathSubType(),
     page: getDLPage(),
+    OnetrustActiveGroups: 'C0001, C0002, C0003, C0004,',
+    OptanonActiveGroups: getOneTrustActiveGroups(),
   });
 }
 // Datalayer End
