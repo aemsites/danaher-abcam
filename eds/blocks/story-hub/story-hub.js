@@ -36,7 +36,6 @@ const excludedPages = [
   '/en-us/stories/articles',
 ];
 let lists = [];
-let tempList = [];
 let itemsPerPage;
 
 const hub = div();
@@ -136,7 +135,7 @@ const createPaginationLink = (page, label, current = false) => {
         url.searchParams.set('page', page || label);
         window.history.pushState(null, '', url.toString());
         // eslint-disable-next-line no-use-before-define
-        handleRenderContent(tempList);
+        handleRenderContent(lists);
       },
       class:
         'cursor-pointer font-medium text-sm leading-5 pt-4 px-4 items-center inline-flex hover:border-t-2 hover:border-gray-300 hover:text-gray-700',
@@ -301,7 +300,6 @@ function handleChangeFilter(key, value) {
     });
   }
   handleRenderTags();
-  tempList = newLists;
   handleRenderContent(newLists);
 }
 
