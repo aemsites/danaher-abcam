@@ -64,7 +64,16 @@ async function fetchProducts(page) {
 
     const data = await response.json();
     const results = data;
-    console.log("facets", results);
+    console.log("products", results.products);
+
+    console.log("facets", results.facets);
+
+    const productsFacets = results.facets.map((facet) => {
+      return {
+        categories: facet.displayName,
+        insideFields: facet.values,
+      }
+    });
 
     const { totalPages, totalEntries } = results.pagination;
     const searchProductsList = results.products.map((product) => {
@@ -101,6 +110,40 @@ async function fetchProducts(page) {
       }
       return {};
     });
+
+    const facetInfo = document.querySelector('.facets-products');
+
+    const facetField = productsFacets.map((productFacet) => {
+      const facetValues = productFacet.insideFields.map(field => {
+        return div({ class: 'flex justify-between mb-4' },
+          span({}, field.value),
+          span({}, field.numberOfResults),
+        );
+      });
+
+      const facetCategories = div({ class: 'accordion cursor-pointer rounded-xl border px-4 pt-4 pb-6 mb-4' },
+        div({ class: 'w-full' },
+          p({ class: 'accordion-header text-base font-bold flex justify-between m-0' }, productFacet.categories,
+            span({ class: 'icon icon-chevron-down text-[#378089] ml-2' })
+          ),
+        ),
+        div({ class: 'accordion-content mt-6 hidden' }, ...facetValues)
+      );
+      decorateIcons(facetCategories);
+
+      const accHeader = facetCategories.querySelector('.accordion-header');
+      const accContent = facetCategories.querySelector('.accordion-content');
+      const accIcon = facetCategories.querySelector('.icon');
+
+      accHeader.addEventListener('click', () => {
+        accContent.classList.toggle('hidden');
+        accIcon.classList.toggle('rotate-180');
+      });
+
+      return facetCategories;
+    });
+
+    facetInfo.append(...facetField);
 
     const searchProducts = document.querySelector('.products-list');
     const searchItems = searchProductsList.map((item) => {
@@ -286,9 +329,52 @@ async function fetchResources(page) {
 
     console.log('facets', data.facets);
 
+  
+
     const { totalCount } = data;
     const results = data.results || [];
     const totalPages = Math.ceil(data.totalCount / contentBodyData.numberOfResults);
+
+    const resourcesFacets = results.facets.map((facet) => {
+      return {
+        categories: facet.displayName,
+        insideFields: facet.values,
+      }
+    });
+
+    const facetInfo1 = document.querySelector('.facets-resources');
+
+    const facetField = resourcesFacets.map((productFacet) => {
+      const facetValues = productFacet.insideFields.map(field => {
+        return div({ class: 'flex justify-between mb-4' },
+          span({}, field.value),
+          span({}, field.numberOfResults),
+        );
+      });
+
+      const facetCategories = div({ class: 'accordion cursor-pointer rounded-xl border px-4 pt-4 pb-6 mb-4' },
+        div({ class: 'w-full' },
+          p({ class: 'accordion-header text-base font-bold flex justify-between m-0' }, productFacet.categories,
+            span({ class: 'icon icon-chevron-down text-[#378089] ml-2' })
+          ),
+        ),
+        div({ class: 'accordion-content mt-6 hidden' }, ...facetValues)
+      );
+      decorateIcons(facetCategories);
+
+      const accHeader = facetCategories.querySelector('.accordion-header');
+      const accContent = facetCategories.querySelector('.accordion-content');
+      const accIcon = facetCategories.querySelector('.icon');
+
+      accHeader.addEventListener('click', () => {
+        accContent.classList.toggle('hidden');
+        accIcon.classList.toggle('rotate-180');
+      });
+
+      return facetCategories;
+    });
+
+    facetInfo1.append(...facetField);
 
     const resourcesContainer = document.querySelector('.products-resources');
     const resourcesItems = results.map((item) => div(
@@ -451,21 +537,9 @@ export default function decorate(block) {
   const wrapper = div(
     { class: 'grid grid-cols-7 space-x-8' },
     div(
-      { class: 'md:col-span-2 w-full h-screen md:h-auto fixed md:relative flex flex-col-reverse justify-end top-0 left-0 z-50 md:z-auto transition-all duration-150 -translate-y-full md:translate-y-0' },
-      p({ class: 'h-5/6 mb-3 overflow-scroll md:overflow-visible z-[1]' }),
-      p(
-        { class: 'w-full fixed block md:hidden bottom-0 px-4 py-2 my-0 border-t z-[2]' },
-        button({ class: 'w-full text-sm text-white font-semibold bg-[#378189] p-3 rounded-full' }, 'View Results'),
-      ),
-      p(
-        { class: 'relative flex flex-row justify-between items-center gap-x-2 px-4 md:px-0 py-2 md:py-0 my-0 text-black' },
-        span({ class: 'text-lg md:text-xl leading-5 md:leading-5 font-normal md:font-bold mb-0 md:mb-4' }, 'Filters'),
-        p(
-          { class: 'flex md:hidden flex-row items-center gap-x-2 my-0' },
-          span({ class: 'clear-all hidden shrink-0 text-xs font-semibold underline cursor-pointer' }, 'Clear All'),
-          span({ class: 'icon icon-close size-8 invert p-1' }),
-        ),
-      ),
+      { class: 'md:col-span-2' },
+      p({ class: 'font-bold text-xl mb-6' }, 'Filter'),
+      div({ class: 'facets-products' }),
     ),
     div(
       { class: 'col-span-5' },
@@ -477,22 +551,9 @@ export default function decorate(block) {
   const resourcesWrapper = div(
     { class: 'resources-content grid grid-cols-7 space-x-8 hidden' },
     div(
-      { class: 'md:col-span-2 w-full h-screen md:h-auto fixed md:relative flex flex-col-reverse justify-end top-0 left-0 z-50 md:z-auto transition-all duration-150 -translate-y-full md:translate-y-0' },
-      p({ class: 'h-5/6 mb-3 overflow-scroll md:overflow-visible z-[1]' }),
-      p(
-        { class: 'w-full fixed block md:hidden bottom-0 px-4 py-2 my-0 border-t z-[2]' },
-        button({ class: 'w-full text-sm text-white font-semibold bg-[#378189] p-3 rounded-full' }, 'View Results'),
-      ),
-      p(
-        { class: 'relative flex flex-row justify-between items-center gap-x-2 px-4 md:px-0 py-2 md:py-0 my-0 text-black' },
-        span({ class: 'text-lg md:text-xl leading-5 md:leading-5 font-normal md:font-bold mb-0 md:mb-4' }, 'Filters'),
-        p(
-          { class: 'flex md:hidden flex-row items-center gap-x-2 my-0' },
-          span({ class: 'clear-all hidden shrink-0 text-xs font-semibold underline cursor-pointer' }, 'Clear All'),
-          span({ class: 'icon icon-close size-8 invert p-1' }),
-        ),
-        p({ class: 'resources-facets' }),
-      ),
+      { class: 'md:col-span-2' },
+      p({ class: 'font-bold text-xl mb-6' }, 'Filter'),
+      div({ class: 'facets-resources' }),
     ),
     div(
       { class: 'col-span-5' },
