@@ -8,6 +8,7 @@ import {
   ul,
   li,
   a,
+  form,
 } from '../../scripts/dom-builder.js';
 import countriesAndCodes from '../../scripts/country-list.js';
 
@@ -315,89 +316,124 @@ function countrySelector(block) {
     }
   });
 }
-function downloadPDF(block) {
+function downloadPDF(block, selectedDownload) {
   const modalContainer = div({
     class: 'modal-container fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center w-full h-full opacity-100 bg-black bg-opacity-50 z-[300] transition-opacity duration-[5000ms] ease-out delay-1000',
   });
-  const modalContent = div(
-    { class: 'modal-content max-[476px]:h-full h-max w-max rounded bottom-0 relative flex flex-col bg-white' },
-    div(
-      { class: 'sds-heading flex flex-row justify-between pl-6 pr-5 pt-5' },
-      h3({ class: 'self-center text-2xl font-semibold my-0' }, 'Safety datasheet'),
-      button(
-        {
-          class: 'rounded-2xl my-0',
-          onclick() { block.querySelector('.modal-container')?.remove(); },
-        },
-        span({ class: 'icon icon-cross-black' }),
-      ),
-    ),
-    div(
-      { class: 'sds-country-lang flex flex-col grow' },
+  let modalContent;
+  if (selectedDownload === 'safety datasheet') {
+    modalContent = div(
+      { class: 'modal-content max-[476px]:h-full h-max w-max rounded bottom-0 relative flex flex-col bg-white' },
       div(
-        { class: 'max-w-lg px-6' },
-        p({ class: 'select-heading pt-1 pr-10 my-0' }, 'Select your chosen country/region and language'),
+        { class: 'sds-heading flex flex-row justify-between pl-6 pr-5 pt-5' },
+        h3({ class: 'self-center text-2xl font-semibold my-0' }, 'Safety datasheet'),
+        button(
+          {
+            class: 'rounded-2xl my-0',
+            onclick() { block.querySelector('.modal-container')?.remove(); },
+          },
+          span({ class: 'icon icon-cross-black' }),
+        ),
+      ),
+      div(
+        { class: 'sds-country-lang flex flex-col grow' },
         div(
-          { class: 'country-and-lang flex flex-row min-w-full pb-5 my-6 gap-4' },
+          { class: 'max-w-lg px-6' },
+          p({ class: 'select-heading pt-1 pr-10 my-0' }, 'Select your chosen country/region and language'),
           div(
-            { class: 'country-dd inline-flex flex-col relative' },
-            input({ class: 'country-checkbox hidden peer', type: 'checkbox' }),
+            { class: 'country-and-lang flex flex-row min-w-full pb-5 my-6 gap-4' },
             div(
-              { class: 'focus-visible:shadow-interactiveElement focus-visible:outline-none rounded-[28px] focus-visible:outline-none focus-visible:shadow-interactiveElement cursor-pointer' },
+              { class: 'country-dd inline-flex flex-col relative' },
+              input({ class: 'country-checkbox hidden peer', type: 'checkbox' }),
               div(
-                {
-                  class: 'country-btn flex flex-row items-center rounded-[28px] w-fit-content border border-black border-opacity-50 text-xs text-black gap-3 py-2.5 pl-6 pr-4 hover:outline-none',
-                  onclick() {
-                    countrySelector(block);
-                    modalContent.querySelector('.country-checkbox')?.click();
-                  },
-                },
-                'Country/Region',
-                span({ class: 'icon icon-chevron-down' }),
-              ),
-            ),
-            div(
-              { class: 'country-container hidden peer-checked:block absolute top-full left-0 mt-1.5' },
-              div(
-                { class: 'country-inner-container text-xs pb-1 font-semibold bg-white pb-4 pt-3 rounded-2xl shadow-2xl shadow-black shadow-elevation-5' },
-                label({ class: 'country-selector-lable text-black pl-4 tracking-normal text-lg' }, 'Country/Region selector'),
+                { class: 'focus-visible:shadow-interactiveElement focus-visible:outline-none rounded-[28px] focus-visible:outline-none focus-visible:shadow-interactiveElement cursor-pointer' },
                 div(
-                  { class: 'input-area relative pt-2' },
-                  input({
-                    type: 'text',
-                    class: 'country-input border border-gray-300 px-4 mb-4 bg-[#F2F3F3] hover:bg-[#E6E7E7] focus:ring-[#6fafb8] focus:ring-[1.5px] focus:outline-none mx-4 h-12 max-[476px]:w-[15rem] w-[20.9375rem] placeholder-gray-300',
-                    placeholder: 'Search for a country/region',
-                  }),
-                  div({ class: 'country-results hidden w-full max-h-[150px] xl:max-h-[210px] 2xl:max-h-[270px] overflow-y-auto' }),
+                  {
+                    class: 'country-btn flex flex-row items-center rounded-[28px] w-fit-content border border-black border-opacity-50 text-xs text-black gap-3 py-2.5 pl-6 pr-4 hover:outline-none',
+                    onclick() {
+                      countrySelector(block);
+                      modalContent.querySelector('.country-checkbox')?.click();
+                    },
+                  },
+                  'Country/Region',
+                  span({ class: 'icon icon-chevron-down' }),
+                ),
+              ),
+              div(
+                { class: 'country-container hidden peer-checked:block absolute top-full left-0 mt-1.5' },
+                div(
+                  { class: 'country-inner-container text-xs pb-1 font-semibold bg-white pb-4 pt-3 rounded-2xl shadow-2xl shadow-black shadow-elevation-5' },
+                  label({ class: 'country-selector-lable text-black pl-4 tracking-normal text-lg' }, 'Country/Region selector'),
+                  div(
+                    { class: 'input-area relative pt-2' },
+                    input({
+                      type: 'text',
+                      class: 'country-input border border-gray-300 px-4 mb-4 bg-[#F2F3F3] hover:bg-[#E6E7E7] focus:ring-[#6fafb8] focus:ring-[1.5px] focus:outline-none mx-4 h-12 max-[476px]:w-[15rem] w-[20.9375rem] placeholder-gray-300',
+                      placeholder: 'Search for a country/region',
+                    }),
+                    div({ class: 'country-results hidden w-full max-h-[150px] xl:max-h-[210px] 2xl:max-h-[270px] overflow-y-auto' }),
+                  ),
                 ),
               ),
             ),
-          ),
-          div(
-            { class: 'lang-dd text-xs tracking-[.0125rem] font-semibold relative inline-block cursor-pointer whitespace-nowrap' },
-            input({ class: 'hidden peer lang-checkbox', type: 'checkbox' }),
             div(
-              {
-                class: 'lang-label border border-black border-opacity-50 rounded-[28px] inline-flex flex-row items-center w-fit-content gap-3 py-2.5 pl-6 pr-4 bg-[#E2E2E2] opacity-30 cursor-not-allowed',
-                onclick() { document.querySelector('.lang-checkbox')?.click(); },
-              },
-              'Language',
-              span({ class: 'icon icon-chevron-down' }),
+              { class: 'lang-dd text-xs tracking-[.0125rem] font-semibold relative inline-block cursor-pointer whitespace-nowrap' },
+              input({ class: 'hidden peer lang-checkbox', type: 'checkbox' }),
+              div(
+                {
+                  class: 'lang-label border border-black border-opacity-50 rounded-[28px] inline-flex flex-row items-center w-fit-content gap-3 py-2.5 pl-6 pr-4 bg-[#E2E2E2] opacity-30 cursor-not-allowed',
+                  onclick() { document.querySelector('.lang-checkbox')?.click(); },
+                },
+                'Language',
+                span({ class: 'icon icon-chevron-down' }),
+              ),
+              ul({ class: 'hidden peer-checked:block lang-name-ul absolute top-full left-5 mt-1.5 text-xs pb-1 font-semibold bg-white pb-4 pt-3 rounded-xl drop-shadow-2xl shadow-elevation-5 hover:ring-[#6fafb8] hover:ring-[1.5px]' }),
             ),
-            ul({ class: 'hidden peer-checked:block lang-name-ul absolute top-full left-5 mt-1.5 text-xs pb-1 font-semibold bg-white pb-4 pt-3 rounded-xl drop-shadow-2xl shadow-elevation-5 hover:ring-[#6fafb8] hover:ring-[1.5px]' }),
           ),
         ),
       ),
-    ),
-  );
-  modalContent.addEventListener('click', (event) => {
-    if (!modalContent.querySelector('.country-btn').contains(event.target) && !modalContent.querySelector('.country-container').contains(event.target) && modalContent.querySelector('.country-checkbox')?.checked) {
-      modalContent.querySelector('.country-checkbox').click();
-    }
-    if (!modalContent.querySelector('.lang-dd').contains(event.target) && !modalContent.querySelector('.lang-name-ul')?.contains(event.target) && modalContent.querySelector('.lang-checkbox')?.checked) {
-      document.querySelector('.lang-checkbox')?.click();
-    }
-  });
+    );
+    modalContent.addEventListener('click', (event) => {
+      if (!modalContent.querySelector('.country-btn').contains(event.target) && !modalContent.querySelector('.country-container').contains(event.target) && modalContent.querySelector('.country-checkbox')?.checked) {
+        modalContent.querySelector('.country-checkbox').click();
+      }
+      if (!modalContent.querySelector('.lang-dd').contains(event.target) && !modalContent.querySelector('.lang-name-ul')?.contains(event.target) && modalContent.querySelector('.lang-checkbox')?.checked) {
+        document.querySelector('.lang-checkbox')?.click();
+      }
+    });
+  }
+  else if (selectedDownload === 'coc') {
+    modalContent = div(
+      { class: 'modal-content max-[476px]:h-full h-max w-max rounded pt-2 bottom-0 relative flex flex-col bg-white' },
+      div({class:'flex flex-row justify-between pl-6 pr-5 pt-5'},
+        h3({class:'align-center'},'COC'),
+        button(
+          {
+            class: 'rounded-2xl my-0',
+            onclick() { block.querySelector('.modal-container')?.remove(); },
+          },
+          span({ class: 'icon icon-cross-black' }),
+        ),
+      ),
+      div({class: 'flex flex-row grow items-center'},
+        div({class: 'mx-6 mt-4 mb-6'},
+          label({class:''},'Enter your lot number'),
+          form({class:'flex items-center mb-4 gap-4'},
+            div({class: 'flex flex-col w-full gap-1 text-sm mt-4 !w-72'},
+              div({class:'relative'},
+                input({class:'text-base tracking-[.03125rem] my-1 py-3 pl-5 !w-full rounded bg-[#F2F3F3] hover:bg-[#E6E7E7] focus:ring-[#6fafb8] focus:ring-[1.5px] focus:outline-none align-middle'})
+              )
+            )
+          )
+        ),
+        div({class:'pb-1 pr-6 h-fit mt-[18px]'},
+          button({class:'rounded-[28px] text-sm py-2.5 px-6 h-10 rounded-full text-xs font-semibold text-white bg-[#378189] hover:bg-[#2a5f65]'},
+            span({class:'px-1.5 font-semibold'},'Submit')
+          )
+        )
+      )
+    );
+  }
   modalContainer.appendChild(modalContent);
   decorateIcons(modalContainer, 20, 20);
   block.append(modalContainer);
@@ -409,7 +445,10 @@ export default async function decorate(block) {
     const btn = button(
       {
         class: 'flex flex-col justify-between w-32 h-32 p-2 text-[#2a3c3c] text-xs font-semibold border rounded-4px border-grey-0 hover:no-underline',
-        onClick() { downloadPDF(block); },
+        onClick() {
+          const selectedDownload = item.trim().toLowerCase();
+          downloadPDF(block, selectedDownload);
+        },
       },
       div(
         { class: 'pt-0 mb-2' },
