@@ -36,7 +36,6 @@ const excludedPages = [
   '/en-us/stories/articles',
 ];
 let lists = [];
-let tempList = [];
 let itemsPerPage;
 
 const hub = div();
@@ -301,7 +300,6 @@ function handleChangeFilter(key, value) {
     });
   }
   handleRenderTags();
-  tempList = newLists;
   handleRenderContent(newLists);
 }
 
