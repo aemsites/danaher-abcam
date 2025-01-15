@@ -235,7 +235,7 @@
         @apply font-normal text-gray-900 mb-2;
     }
 
-    .stories main .story-middle-container, .guide main .chapter-links-container, .topic main .related-articles-container, .protocols main .protocols-middle-container, .pathways main .pathways-middle-container, .support main .support-middle-container {
+    .stories main .story-middle-container, .guide main .chapter-links-container, .topic main .related-articles-container, .protocols main .protocols-middle-container, .pathways main .pathways-middle-container, .support main .support-middle-container, .troubleshooting main .troubleshooting-middle-container {
         @apply flex flex-col gap-x-0 lg:flex-row lg:gap-x-16;
     }
 
@@ -247,7 +247,7 @@
         @apply pt-8;
     }
 
-    .guide main .chapter-links-container, .topic main .related-articles-container, .protocols main .chapter-links-container .pathways main .related-articles-container, .support main .chapter-links-container {
+    .guide main .chapter-links-container, .topic main .related-articles-container, .protocols main .chapter-links-container .pathways main .related-articles-container, .support main .chapter-links-container, .troubleshooting main .chapter-links-container {
         @apply lg:flex-row flex-col-reverse;
     }
 
@@ -259,7 +259,7 @@
         @apply lg:px-6 xl:px-0 !pt-0;
     }
 
-    .guide .sticky-bottom, .topic .sticky-bottom, .protocols .sticky-bottom, .pathways .sticky-bottom, .support .sticky-bottom {
+    .guide .sticky-bottom, .topic .sticky-bottom, .protocols .sticky-bottom, .pathways .sticky-bottom, .support .sticky-bottom, .troubleshooting .sticky-bottom {
         @apply sticky bottom-0 lg:hidden bg-transparent py-4 px-6 z-20;
     }
 
@@ -301,5 +301,21 @@
     
     main .section.downloads-container {
         @apply xl:px-0 px-4;
+    }
+
+    .troubleshooting main .troubleshooting-middle-container .default-content-wrapper:first-child h2 {
+        @apply py-8;
+    }
+    
+    .troubleshooting main .troubleshooting-middle-container .table-wrapper table tbody tr td ul li {
+        @apply list-disc mb-6;
+    }
+
+    .troubleshooting main .troubleshooting-middle-container .table-wrapper table tbody tr td p {
+        @apply mb-6;
+    }
+
+    .troubleshooting main .troubleshooting-middle-container .table-wrapper table tbody tr td:first-child p:not(:first-child) {
+        @apply text-[#657C79];
     }
 }   
