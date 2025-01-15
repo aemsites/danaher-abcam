@@ -488,6 +488,11 @@
   padding-bottom: 2px
 }
 
+.header-wrapper :is(.py-1) {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem
+}
+
 .header-wrapper :is(.pb-1) {
   padding-bottom: 0.25rem
 }
@@ -626,6 +631,10 @@
   color: rgb(178 38 38 / var(--tw-text-opacity))
 }
 
+.header-wrapper :is(.text-amber-400\/80) {
+  color: rgb(251 191 36 / 0.8)
+}
+
 .header-wrapper :is(.text-black) {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity))
@@ -667,6 +676,11 @@
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+}
+
+.header-wrapper :is(.blur) {
+  --tw-blur: blur(8px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
 }
 
 .header-wrapper :is(.filter) {
@@ -727,6 +741,10 @@
 .header-wrapper :is(.hover\:bg-\[\#f2f2f2\]:hover) {
   --tw-bg-opacity: 1;
   background-color: rgb(242 242 242 / var(--tw-bg-opacity))
+}
+
+.header-wrapper :is(.hover\:bg-\[\#0711120D\]:hover) {
+  background-color: #0711120D
 }
 
 .header-wrapper :is(.hover\:underline:hover) {

@@ -7,12 +7,72 @@ import {
 } from '../../scripts/dom-builder.js';
 import { decorateIcons } from '../../scripts/aem.js';
 import countriesAndCodes from '../../scripts/country-list.js';
-import { applyClasses } from '../../scripts/scripts.js';
+import { applyClasses, debounce, highlightText } from '../../scripts/scripts.js';
 import {
   basicDetails, deleteLineItem, getCartItems, getCartType, quickAddLineItems,
 } from './header-utils.js';
 
-function megaMeunu() {
+const querySuggestPayload = {
+  trackingId: 'abcam_us',
+  query: 'anti',
+  clientId: '211576eb-eeaa-4a1d-b6c8-4a51aa806772',
+  context: {
+    user: {
+      href: 'https://vitejsvitelyd2v5-if1e--5173--c8c182a3.local-corp.webcontainer.io/search#q=wes',
+      origin: 'https://vitejsvitelyd2v5-if1e--5173--c8c182a3.local-corp.webcontainer.io',
+      protocol: 'https:',
+      host: 'vitejsvitelyd2v5-if1e--5173--c8c182a3.local-corp.webcontainer.io',
+      hostname: 'vitejsvitelyd2v5-if1e--5173--c8c182a3.local-corp.webcontainer.io',
+      port: '',
+      pathname: '/search',
+      search: '',
+      hash: '#q=wes',
+      userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:133.0) Gecko/20100101 Firefox/133.0',
+    },
+    view: { url: 'https://lifesciences.danaher.com' },
+    capture: true,
+    cart: [],
+    source: ['@coveo/headless@3.11.0'],
+  },
+  language: 'en',
+  country: 'us',
+  currency: 'USD',
+};
+
+const queryFacetPayload = {
+  captions: {},
+  numberOfValues: 10,
+  query: '**',
+  field: '',
+  ignoreValues: [],
+  filterFacetCount: true,
+  type: 'specific',
+  searchContext: {
+    accessToken: 'xx27ea823a-e994-4d71-97f6-403174ec592a',
+    organizationId: 'danahernonproduction1892f3fhz',
+    url: 'https://danahernonproduction1892f3fhz.org.coveo.com/rest/search/v2',
+    locale: 'en-US',
+    debug: false,
+    tab: 'default',
+    referrer: '',
+    timezone: 'America/New_York',
+    pipeline: 'Abcam Product Listing',
+    q: '',
+    enableQuerySyntax: false,
+    searchHub: 'AbcamProductListing',
+    analytics: {
+      clientId: '211576eb-eeaa-4a1d-b6c8-4a51aa806772',
+      clientTimestamp: '2025-01-06T21:51:23.120Z',
+      documentReferrer: '',
+      documentLocation: 'https://vitejsvitelyd2v5-if1e--5173--c8c182a3.local-corp.webcontainer.io/search#q=wes',
+      originContext: 'Search',
+      capture: true,
+      source: ['@coveo/headless@3.11.0'],
+    },
+  },
+};
+
+function megaMenu() {
   return div({ class: 'w-[360px] z-40 hidden max-w-sm fixed h-full bg-black px-3 py-4 ease-out transition-all' });
 }
 
@@ -683,6 +743,121 @@ async function decorateCartPopUp() {
   document.querySelector('.cart-dropdown')?.append(cartMainContainer);
 }
 
+async function fetchResponse({
+  url = 'https://danahernonproduction1892f3fhz.org.coveo.com/rest/organizations/danahernonproduction1892f3fhz/commerce/v2/search/querySuggest',
+  method = 'POST',
+  payload = {},
+}) {
+  try {
+    const request = await fetch(url, {
+      method,
+      body: JSON.stringify(payload),
+      headers: {
+        Authorization: 'Bearer xx27ea823a-e994-4d71-97f6-403174ec592a',
+        'content-type': 'application/json',
+      },
+    });
+    const response = await request.json();
+    return response;
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(error);
+    return error;
+  }
+}
+
+async function handleQuerySuggestions(searchTerm) {
+  querySuggestPayload.query = searchTerm;
+  const response = await fetchResponse({ payload: querySuggestPayload });
+  const suggestionsElement = document.querySelector('ul#search-suggestions');
+  suggestionsElement.innerHTML = '';
+  const { completions } = response;
+  if (completions && completions.length > 0) {
+    completions.forEach((suggestion) => {
+      const suggestionItem = a(
+        { href: `${window.location.origin}/en-us/page-test/search-results?q=${suggestion.expression}` },
+        suggestion.expression,
+      );
+      const newSuggestionItem = highlightText(suggestionItem, searchTerm, 'font-semibold text-amber-400/80');
+      suggestionsElement.appendChild(li(
+        { class: 'suggestion-item cursor-pointer py-1 px-4 hover:bg-[#0711120D]' },
+        newSuggestionItem,
+      ));
+    });
+  }
+}
+
+async function handleCategoryFacetSuggestions(searchTerm) {
+  queryFacetPayload.field = 'adcategorytype';
+  queryFacetPayload.searchContext.q = searchTerm;
+  const response = await fetchResponse({
+    url: 'https://danahernonproduction1892f3fhz.org.coveo.com/rest/search/v2/facet',
+    payload: queryFacetPayload,
+  });
+  const categoryEl = document.querySelector('ul#categories-suggestions');
+  categoryEl.innerHTML = '';
+  const { values } = response;
+  if (values && values.length > 0) {
+    values.forEach((suggestion) => {
+      const suggestionItem = li(
+        { class: 'suggestion-item cursor-pointer py-1 px-4 hover:bg-[#0711120D]' },
+        a(
+          { href: `${window.location.origin}/en-us/page-test/search-results?category-facet=${suggestion.rawValue}` },
+          `${suggestion.rawValue} (${suggestion.count})`,
+        ),
+      );
+      categoryEl.appendChild(suggestionItem);
+    });
+  }
+}
+
+async function handleResourcesFacetSuggestions(searchTerm) {
+  queryFacetPayload.field = 'pagetype';
+  queryFacetPayload.searchContext.q = searchTerm;
+  const response = await fetchResponse({
+    url: 'https://danahernonproduction1892f3fhz.org.coveo.com/rest/search/v2/facet',
+    payload: queryFacetPayload,
+  });
+  const resourcesEl = document.querySelector('ul#resources-suggestions');
+  resourcesEl.innerHTML = '';
+  const { values } = response;
+  if (values && values.length > 0) {
+    values.forEach((suggestion) => {
+      const suggestionItem = li(
+        { class: 'suggestion-item cursor-pointer py-1 px-4 hover:bg-[#0711120D]' },
+        a(
+          { href: `${window.location.origin}/en-us/page-test/search-results?resources-facet=${suggestion.rawValue}` },
+          `${suggestion.rawValue} (${suggestion.count})`,
+        ),
+      );
+      resourcesEl.appendChild(suggestionItem);
+    });
+  }
+}
+
+function handleSearchBox() {
+  document.querySelectorAll('.search-bar-desktop').forEach((item) => {
+    item.addEventListener(
+      'keyup',
+      debounce((event) => {
+        const { value } = event.target;
+        const searchTerm = value.trim();
+        handleQuerySuggestions(searchTerm);
+        handleCategoryFacetSuggestions(searchTerm);
+        handleResourcesFacetSuggestions(searchTerm);
+      }, 600),
+    );
+    item.addEventListener(
+      'blur',
+      () => {
+        // document.querySelector('ul#search-suggestions').innerHTML = '';
+        // document.querySelector('ul#categories-suggestions').innerHTML = '';
+        // document.querySelector('ul#resources-suggestions').innerHTML = '';
+      },
+    );
+  });
+}
+
 export default async function decorate(block) {
   const resp = await fetch('/eds/fragments/header.html');
   block.classList.add(...'relative bg-black flex justify-center flex-col pt-4 z-40'.split(' '));
@@ -690,7 +865,7 @@ export default async function decorate(block) {
     const html = await resp.text();
     block.innerHTML = html;
   }
-  block.append(megaMeunu());
+  block.append(megaMenu());
   decorateIcons(block.querySelector('.abcam-logo'));
   decorateIcons(block.querySelector('.logo-home-link'), 120, 25);
   decorateIcons(block.querySelector('.close-hamburger-menu'));
@@ -736,25 +911,10 @@ export default async function decorate(block) {
     });
   });
 
-  // Search funtionality
-  document.querySelectorAll('.search-bar-desktop').forEach((item) => {
-    item.addEventListener('keydown', (event) => {
-      // Check if the pressed key is Enter
-      if (event.key === 'Enter') {
-        event.preventDefault();
-        const inputValue = event.target.value.trim();
-        if (inputValue) {
-          const searchResultsUrl = `https://www.abcam.com/en-us/search?keywords=${inputValue}`;
-          window.location.href = searchResultsUrl;
-        }
-      }
-    });
-  });
   const dropdownLabel = document.querySelector('label[for="account-dropdown"]');
   const cartButton = document.querySelector('.cart-dropdown');
   const isCartOpen = document.getElementById('cart-toggle');
   decorateIcons(document.querySelector('.country-dd'), 16, 16);
-  block.querySelector('.country-dropdown')?.classList.add('hover:bg-[#3B3B3B]');
   block.querySelector('.country-dropdown')?.addEventListener('click', (event) => {
     const countrySearch = document.querySelector('.country-search');
     if (event.target === event.currentTarget || event.target.alt === 'chevron-down-white' || event.target.parentElement.classList.contains('country-flag-icon')) {
@@ -802,4 +962,6 @@ export default async function decorate(block) {
   cartButton?.addEventListener('click', () => {
     document.querySelector('#cart-toggle')?.click();
   });
+  // COVEO-API WORK
+  handleSearchBox();
 }
