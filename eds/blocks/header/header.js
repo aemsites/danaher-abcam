@@ -360,7 +360,7 @@ function formartCurrency(userLocale, userCurrency, value) {
     .join('');
   return withCurrency;
 }
-function openQuickAddModal() {
+async function openQuickAddModal() {
   const modalContainer = div({
     class: 'modal-container hidden fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center w-full h-full opacity-100 bg-black bg-opacity-50 z-[300] transition-opacity duration-[5000ms] ease-out delay-1000',
   });
@@ -468,14 +468,14 @@ function openQuickAddModal() {
       modalAddProduct.classList.remove('opacity-30', 'cursor-not-allowed');
       modalAddProduct.classList.add('hover:bg-[#2a5f65]');
     }
-    modalAddProduct.addEventListener('click', (event) => {
+    modalAddProduct.addEventListener('click', async (event) => {
       document.querySelector('.quick-add-failed')?.classList.add('hidden');
       document.querySelector('.quick-add-success')?.classList.add('hidden');
       const resultArray = productSearchArea.value.replace(/\n/g, ' ').split(/[ ,;]+/).map((id) => ({
         assetId: id.trim(),
         quantity: 1,
       }));
-      const resMap = quickAddLineItems(resultArray);
+      const resMap = await quickAddLineItems(resultArray);
       if ('failuresCount' in resMap) {
         document.querySelector('.failure-count').innerHTML = resMap.failuresCount;
         document.querySelector('.failure-product').innerHTML = resMap.failuresMessage;
@@ -491,10 +491,10 @@ function openQuickAddModal() {
   document.querySelector('header').append(modalContainer);
 }
 
-function deleteCartItem(event) {
+async function deleteCartItem(event) {
   const cartItem = event.target.parentElement.id;
   if (cartItem) {
-    const res = deleteLineItem(cartItem);
+    const res = await deleteLineItem(cartItem);
     if (res.items.length > 0) {
       // eslint-disable-next-line no-use-before-define
       decorateCartPopUp();
@@ -585,14 +585,14 @@ async function decorateCartItems(cartMainContainer, cartType, cartItemRes) {
   }
 }
 
-function decorateCartPopUp() {
+async function decorateCartPopUp() {
   const cartPopup = document.querySelector('.cart-popup-main-container');
   if (cartPopup) {
     cartPopup.parentNode.removeChild(cartPopup);
   }
   let cartMainContainer;
-  const cartType = getCartType();
-  const cartItemsRes = getCartItems();
+  const cartType = await getCartType();
+  const cartItemsRes = await getCartItems();
   if (cartItemsRes.items.length > 0) {
     cartMainContainer = div(
       { class: 'cart-popup-main-container max-[376px]:-left-36 absolute hidden peer-checked:block top-full z-50 right-0 mt-1.5 max-[320px]:w-[285px] w-[320px] md:w-[368px]' },
