@@ -1469,6 +1469,18 @@
     ]
   },
   {
+    "id": "img-text-field",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "img-text-description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "learn-more",
     "fields": [
       {

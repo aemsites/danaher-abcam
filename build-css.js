@@ -352,6 +352,11 @@ const fileMappings = [
     content: './eds/templates/cross-sell-hub/cross-sell-hub.js',
     output: './eds/templates/cross-sell-hub/cross-sell-hub.css',
   },
+  {
+    content: './eds/blocks/img-text-field/img-text-field.js',
+    output: './eds/blocks/img-text-field/img-text-field.css',
+    wrapper: 'img-text-field-wrapper',
+  },
 ];
 
 const watch = process.argv[2];
