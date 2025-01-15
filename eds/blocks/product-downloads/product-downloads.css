@@ -63,6 +63,11 @@
   margin-bottom: 1.5rem
 }
 
+.product-downloads-wrapper :is(.my-4) {
+  margin-top: 1rem;
+  margin-bottom: 1rem
+}
+
 .product-downloads-wrapper :is(.mb-10) {
   margin-bottom: 2.5rem
 }
@@ -109,6 +114,14 @@
 
 .product-downloads-wrapper :is(.mt-\[18px\]) {
   margin-top: 18px
+}
+
+.product-downloads-wrapper :is(.ml-6) {
+  margin-left: 1.5rem
+}
+
+.product-downloads-wrapper :is(.mt-7) {
+  margin-top: 1.75rem
 }
 
 .product-downloads-wrapper :is(.block) {
@@ -206,6 +219,10 @@
   max-width: 32rem
 }
 
+.product-downloads-wrapper :is(.max-w-sm) {
+  max-width: 24rem
+}
+
 .product-downloads-wrapper :is(.grow) {
   flex-grow: 1
 }
@@ -289,6 +306,10 @@
 
 .product-downloads-wrapper :is(.whitespace-nowrap) {
   white-space: nowrap
+}
+
+.product-downloads-wrapper :is(.break-words) {
+  overflow-wrap: break-word
 }
 
 .product-downloads-wrapper :is(.rounded) {
@@ -484,6 +505,10 @@
   padding-top: 1.25rem
 }
 
+.product-downloads-wrapper :is(.pb-3) {
+  padding-bottom: 0.75rem
+}
+
 .product-downloads-wrapper :is(.align-middle) {
   vertical-align: middle
 }
@@ -542,6 +567,15 @@
 .product-downloads-wrapper :is(.text-white) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+
+.product-downloads-wrapper :is(.text-\[\#378189\]) {
+  --tw-text-opacity: 1;
+  color: rgb(55 129 137 / var(--tw-text-opacity))
+}
+
+.product-downloads-wrapper :is(.underline) {
+  text-decoration-line: underline
 }
 
 .product-downloads-wrapper :is(.placeholder-gray-300)::-moz-placeholder {

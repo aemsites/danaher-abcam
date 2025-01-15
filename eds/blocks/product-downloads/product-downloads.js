@@ -416,7 +416,7 @@ function downloadPDF(block, selectedDownload) {
         ),
       ),
       div({class: 'flex flex-row grow items-center'},
-        div({class: 'mx-6 mt-4 mb-6'},
+        div({class: 'mx-6 mb-4'},
           label({class:''},'Enter your lot number'),
           form({class:'flex items-center mb-4 gap-4'},
             div({class: 'flex flex-col w-full gap-1 text-sm mt-4 !w-72'},
@@ -426,10 +426,15 @@ function downloadPDF(block, selectedDownload) {
             )
           )
         ),
-        div({class:'pb-1 pr-6 h-fit mt-[18px]'},
+        div({class:'pb-1 pr-6 h-fit mt-6'},
           button({class:'rounded-[28px] text-sm py-2.5 px-6 h-10 rounded-full text-xs font-semibold text-white bg-[#378189] hover:bg-[#2a5f65]'},
             span({class:'px-1.5 font-semibold'},'Submit')
           )
+        )
+      ),
+      div({class:'no-response hidden min-w-full max-w-sm p-3 pt-0wrap ml-6'},
+        span({class: 'break-words'},`We don't recognize this lot number. If you need help contact `,
+          a({class:'underline text-[#378189]', href:'mailto:technical@abcam.com'},'technical@abcam.com')
         )
       )
     );
