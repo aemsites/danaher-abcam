@@ -1,0 +1,44 @@
+.separator-wrapper :is(.mt-8) {
+  margin-top: 2rem
+}
+
+.separator-wrapper :is(.block) {
+  display: block
+}
+
+.separator-wrapper :is(.w-px) {
+  width: 1px
+}
+
+.separator-wrapper :is(.w-0) {
+  width: 0px
+}
+
+.separator-wrapper :is(.w-0\.5) {
+  width: 0.125rem
+}
+
+.separator-wrapper :is(.border-t-4) {
+  border-top-width: 4px
+}
+
+.separator-wrapper :is(.border-t) {
+  border-top-width: 1px
+}
+
+.separator-wrapper :is(.border-black) {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity))
+}
+
+.separator-wrapper :is(.border-\[\#07111233\]) {
+  border-color: #07111233
+}
+
+.separator-wrapper :is(.pt-8) {
+  padding-top: 2rem
+}
+
+.separator-wrapper :is(.pb-8) {
+  padding-bottom: 2rem
+}
