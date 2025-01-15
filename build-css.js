@@ -100,10 +100,6 @@ const fileMappings = [
     output: './eds/templates/product-detail/product-detail.css',
   },
   {
-    content: './eds/templates/search-results/search-results.js',
-    output: './eds/templates/search-results/search-results.css',
-  },
-  {
     content: './eds/templates/stories/stories.js',
     output: './eds/templates/stories/stories.css',
   },
@@ -351,6 +347,11 @@ const fileMappings = [
   {
     content: './eds/templates/cross-sell-hub/cross-sell-hub.js',
     output: './eds/templates/cross-sell-hub/cross-sell-hub.css',
+  },
+  {
+    content: './eds/blocks/search-results/search-results.js',
+    output: './eds/blocks/search-results/search-results.css',
+    wrapper: 'search-results-wrapper',
   },
 ];
 
