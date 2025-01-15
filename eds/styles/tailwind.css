@@ -302,4 +302,12 @@
     main .section.downloads-container {
         @apply xl:px-0 px-4;
     }
+
+    .protocols main .section .default-content-wrapper ul  {
+        @apply text-[#657C79] leading-9 tracking-[.0187rem]
+    }
+
+    .protocols main .section .default-content-wrapper {
+        @apply py-0;
+    }
 }   
