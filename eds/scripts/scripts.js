@@ -1293,7 +1293,16 @@ document.head.appendChild(hrefJapan);
 loadPage();
 
 // Optimus Config - Start
-window.OptimusConfig = {
-  organizationId: 'danahernonproduction1892f3fhz',
-  bearerToken: 'xx27ea823a-e994-4d71-97f6-403174ec592a',
-};
+if (window.location.host === 'www.abcam.com') {
+  window.OptimusConfig = {
+    organizationId: '',
+    bearerToken: '',
+    coveoProductBearerToken: '',
+  };
+} else {
+  window.OptimusConfig = {
+    organizationId: 'danahernonproduction1892f3fhz',
+    bearerToken: 'xx27ea823a-e994-4d71-97f6-403174ec592a',
+    coveoProductBearerToken: 'xx5856f60b-8cb0-474f-9536-b8aa88df3f00',
+  };
+}

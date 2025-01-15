@@ -36,12 +36,12 @@
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 
-.product-list-wrapper :is(.cursor-not-allowed) {
-  cursor: not-allowed
-}
-
 .product-list-wrapper :is(.cursor-pointer) {
   cursor: pointer
+}
+
+.product-list-wrapper :is(.cursor-text) {
+  cursor: text
 }
 
 .product-list-wrapper :is(.appearance-none) {
@@ -119,11 +119,6 @@
   padding-right: 1rem
 }
 
-.product-list-wrapper :is(.px-6) {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem
-}
-
 .product-list-wrapper :is(.py-1) {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem
@@ -185,4 +180,12 @@
 
 .product-list-wrapper :is(.hover\:underline:hover) {
   text-decoration-line: underline
+}
+
+.product-list-wrapper :is(.disabled\:cursor-not-allowed:disabled) {
+  cursor: not-allowed
+}
+
+.product-list-wrapper :is(.disabled\:opacity-25:disabled) {
+  opacity: 0.25
 }
