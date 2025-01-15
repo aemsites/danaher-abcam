@@ -36,12 +36,19 @@ function toggleTabs(tabId, mmgTabs, tabType) {
   });
 }
 
-function getTabName() {
-  const contentSections = document.querySelectorAll('[data-tabname]');
+function getTabName(block) {
   const tabName = new Set();
-  contentSections.forEach((section) => {
-    tabName.add(section.dataset.tabname);
-  });
+  const parentEl = block.parentElement.parentElement;
+  let sectionEl = parentEl.nextElementSibling;
+  while (sectionEl && sectionEl !== undefined) {
+    sectionEl = sectionEl.nextElementSibling;
+    if (sectionEl && sectionEl.dataset.tabname === undefined) {
+      break;
+    } else {
+      const tabSection = sectionEl?.dataset;
+      if (tabSection && tabSection.tabname !== undefined) tabName.add(tabSection.tabname);
+    }
+  }
   return [...tabName];
 }
 
@@ -54,7 +61,7 @@ async function decorateProductTabs(block) {
   }
   block.classList.add(...'md:border-b sm:border-b flex-col md:flex-col md:relative text-xl text-[#65797C]'.split(' '));
   const mmgTabs = div({ class: 'md:border-none border-b sm:border-none mmg-tabs md:absolute md:right-0 md:top-[-15px] font-semibold text-base text-black md:block flex order-1' });
-  const tabs = getTabName();
+  const tabs = getTabName(block);
   tabs.forEach((tab) => {
     const li = button({
       class: 'tab md:py-1.5 pb-4 lg:mx-8 mr-8 capitalize',
@@ -76,7 +83,7 @@ async function decorateProductTabs(block) {
 
 function decorateContentTabs(block) {
   const mmgTabs = div({ class: 'content-tabs border-b w-fit flex flex-wrap gap-6' });
-  const tabs = getTabName();
+  const tabs = getTabName(block);
   tabs.forEach((tab) => {
     const contentTab = button({
       class: 'tab active py-2 hover:border-b-4 border-[#ff7223]',
@@ -94,7 +101,7 @@ function decorateContentTabs(block) {
 
 function decorateButtonTabs(block) {
   const mmgTabs = div({ class: 'button-tabs flex flex-wrap gap-6' });
-  const tabs = getTabName();
+  const tabs = getTabName(block);
   tabs.forEach((tab) => {
     const buttonTab = button({
       class: 'tab px-6 py-2 border border-black border-solid bg-white text-black font-bold rounded-full',
